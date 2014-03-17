@@ -19,11 +19,19 @@ body {
   height: $footer-height;
 
   .container {
-    padding: 40px 50px;
+    margin-top: 40px;
   }
 }
 
 .docs-header {
-
+  /*border-bottom: 1px solid #c0c0c0;*/
+  padding-top: 60px;
+  padding-bottom: 80px;
+}
+.docs-feature {
+  padding-top: 30px;
+  .col-lg-4 {
+    padding-bottom: 50px;
+  }
 }
 
