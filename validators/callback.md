@@ -1,7 +1,7 @@
 ---
 layout: validator
 title: callback validator - BootstrapValidator
-permalink: /validators/callback/
+permalink: /callback/
 slug: validators
 ---
 

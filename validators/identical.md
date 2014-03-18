@@ -1,7 +1,7 @@
 ---
 layout: validator
 title: identical validator - BootstrapValidator
-permalink: /validators/identical/
+permalink: /identical/
 slug: validators
 ---
 

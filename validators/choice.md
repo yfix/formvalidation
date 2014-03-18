@@ -1,7 +1,7 @@
 ---
 layout: validator
 title: choice validator - BootstrapValidator
-permalink: /validators/choice/
+permalink: /choice/
 slug: validators
 ---
 

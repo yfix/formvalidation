@@ -1,7 +1,7 @@
 ---
 layout: validator
 title: date validator - BootstrapValidator
-permalink: /validators/date/
+permalink: /date/
 slug: validators
 ---
 
