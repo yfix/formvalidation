@@ -9,8 +9,6 @@ slug: validators
 
 Validate a date
 
-Check if the number of checked boxes are less or more than a given number
-
 Option     | Type   | Description
 -----------|--------|------------
 message    | String | The error message
