@@ -43,3 +43,5 @@ YYYY   | 4 digit year
 h      | 12 hour time
 m      | Minutes
 A      | AM/PM
+
+<a href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages/validators/date.md" class="btn btn-info">Improve this page</a>

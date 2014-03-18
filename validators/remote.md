@@ -31,3 +31,5 @@ remote: {
     }
 }
 ```
+
+<a href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages/validators/remote.md" class="btn btn-info">Improve this page</a>

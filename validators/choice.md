@@ -14,3 +14,5 @@ Option  | Type   | Description
 message | String | The error message
 min     | Number | The minimum number of check boxes required to be checked
 max     | Number | The maximum number of check boxes required to be checked. At least one of ```min``` and ```max``` is required
+
+<a href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages/validators/choice.md" class="btn btn-info">Improve this page</a>

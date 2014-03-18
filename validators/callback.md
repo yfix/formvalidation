@@ -25,3 +25,5 @@ function(fieldValue, validator) {
     // return true or false
 }
 ```
+
+<a href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages/validators/callback.md" class="btn btn-info">Improve this page</a>
