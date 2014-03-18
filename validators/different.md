@@ -29,9 +29,9 @@ _Try to type same value in both the username and password fields_
     </div>
 
     <div class="form-group">
-        <label class="col-lg-3 control-label">Retype password</label>
+        <label class="col-lg-3 control-label">Password</label>
         <div class="col-lg-5">
-            <input type="password" class="form-control" name="confirmPassword" />
+            <input type="password" class="form-control" name="password" />
         </div>
     </div>
 </form>
@@ -48,9 +48,9 @@ Form markup:
     </div>
 
     <div class="form-group">
-        <label class="col-lg-3 control-label">Retype password</label>
+        <label class="col-lg-3 control-label">Password</label>
         <div class="col-lg-5">
-            <input type="password" class="form-control" name="confirmPassword" />
+            <input type="password" class="form-control" name="password" />
         </div>
     </div>
 </form>
