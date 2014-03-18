@@ -1,5 +1,3 @@
-@import "highlight";
-
 // Footer height
 $footer-height: 250px;
 
@@ -33,9 +31,11 @@ aside {
   margin-top: 50px;
 }
 
-//pre {
-//  font-family: 'Source Sans Pro', sans-serif;
-//}
+/*
+pre {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+*/
 
 .intro {
   /*border-bottom: 1px solid #c0c0c0;*/
@@ -58,4 +58,10 @@ aside {
 }
 .content {
   padding-bottom: 60px;
+}
+.demo {
+  padding-bottom: 30px;
+  .tab-pane {
+    padding-top: 30px;
+  }
 }

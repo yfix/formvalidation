@@ -26,8 +26,8 @@
     </div>
 </footer>
 
-<script src="/vendor/jquery/jquery-1.10.2.min.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/vendor/bootstrapvalidator/js/bootstrapValidator.js"></script>
 <script>
 window.twttr = (function (d,s,id) {
     var t, js, fjs = d.getElementsByTagName(s)[0];
@@ -39,5 +39,9 @@ window.twttr = (function (d,s,id) {
 <script>
 $(document).ready(function() {
     $('table').addClass('table table-striped');
+    $('a[data-toggle="tab"]').click(function(e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
 });
 </script>
