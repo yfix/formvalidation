@@ -16,7 +16,6 @@ field (*) | String  | The name of field that will be used to compare with curren
 
 ## Live example
 
-
 The following form requires the password and confirmation one to be the same using ```identical``` validator.
 
 _Try to type in the form fields_
@@ -70,9 +69,6 @@ $(document).ready(function() {
         fields: {
             password: {
                 validators: {
-                    notEmpty: {
-                        message: 'The password is required and cannot be empty'
-                    },
                     identical: {
                         field: 'confirmPassword',
                         message: 'The password and its confirm are not the same'
@@ -81,9 +77,6 @@ $(document).ready(function() {
             },
             confirmPassword: {
                 validators: {
-                    notEmpty: {
-                        message: 'The confirm password is required and cannot be empty'
-                    },
                     identical: {
                         field: 'password',
                         message: 'The password and its confirm are not the same'
@@ -108,9 +101,6 @@ $(document).ready(function() {
         fields: {
             password: {
                 validators: {
-                    notEmpty: {
-                        message: 'The password is required and cannot be empty'
-                    },
                     identical: {
                         field: 'confirmPassword',
                         message: 'The password and its confirm are not the same'
@@ -119,9 +109,6 @@ $(document).ready(function() {
             },
             confirmPassword: {
                 validators: {
-                    notEmpty: {
-                        message: 'The confirm password is required and cannot be empty'
-                    },
                     identical: {
                         field: 'password',
                         message: 'The password and its confirm are not the same'
