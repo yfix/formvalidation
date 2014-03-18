@@ -130,3 +130,5 @@ resetFormData | Boolean | If ```true```, the method resets the fields which have
 $(form).bootstrapValidator(options);
 $(form).data('bootstrapValidator').resetForm();
 ```
+
+<a href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages/api.md" class="btn btn-info">Improve this page</a>

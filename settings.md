@@ -125,5 +125,4 @@ validators | Object  | Map the validator name (```<validatorName>```) with valid
 
 The ```<validatorName>``` can be the name of the built-in validator which are described in the [Validators](/validators/) page.
 
-
-
+<a href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages/settings.md" class="btn btn-info">Improve this page</a>

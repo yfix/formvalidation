@@ -86,5 +86,7 @@ $(document).ready(function() {
 });
 ```
 
+<a href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages/getting-started.md" class="btn btn-info">Improve this page</a>
+
 
 
