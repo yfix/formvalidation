@@ -5,13 +5,13 @@ permalink: /validators/between/
 slug: validators
 ---
 
-# between validator
+# <a href="/validators/">Validators</a> / between
 
 Check if the input value is between (strictly or not) two given numbers
 
-Option      | Type    | Default | Description
-------------|---------|---------|------------
-message     | String  | n/a     | The error message
-min (*)     | Float   | n/a     | The lower value in the range
-max (*)     | Float   | n/a     | The upper value in the range
-inclusive   | Boolean | true    | Can be ```true``` or ```false```. If ```true```, the input value must be in the range strictly
+Option    | Type    | Description
+----------|---------|---------|------------
+message   | String  | The error message
+min (*)   | Float   | The lower value in the range
+max (*)   | Float   | The upper value in the range
+inclusive | Boolean | Can be ```true``` or ```false```. If ```true```, the input value must be in the range strictly

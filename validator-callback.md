@@ -5,14 +5,14 @@ permalink: /validators/callback/
 slug: validators
 ---
 
-# callback validator
+# <a href="/validators/">Validators</a> / callback
 
 Return the validity from a callback method
 
-Option       | Type     | Default | Description
--------------|----------|---------|------------
-message      | String   | n/a     | The error message
-callback (*) | Function | n/a     | The callback method
+Option       | Type     | Description
+-------------|----------|------------
+message      | String   | The error message
+callback (*) | Function | The callback method
 
 The callback method must follow the format below:
 
