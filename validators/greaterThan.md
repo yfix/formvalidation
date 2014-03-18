@@ -1,7 +1,7 @@
 ---
 layout: validator
 title: greaterThan validator - BootstrapValidator
-permalink: /greater-than/
+permalink: /validators/greater-than/
 slug: validators
 ---
 

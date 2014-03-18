@@ -1,7 +1,7 @@
 ---
 layout: validator
 title: stringLength validator - BootstrapValidator
-permalink: /string-length/
+permalink: /validators/string-length/
 slug: validators
 ---
 

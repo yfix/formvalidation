@@ -1,7 +1,7 @@
 ---
 layout: validator
 title: different validator - BootstrapValidator
-permalink: /different/
+permalink: /validators/different/
 slug: validators
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: validator
 title: between validator - BootstrapValidator
-permalink: /between/
+permalink: /validators/between/
 slug: validators
 ---
 

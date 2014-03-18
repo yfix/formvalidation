@@ -1,7 +1,7 @@
 ---
 layout: validator
 title: regexp validator - BootstrapValidator
-permalink: /regexp/
+permalink: /validators/regexp/
 slug: validators
 ---
 
