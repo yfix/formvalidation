@@ -5,3 +5,7 @@ highlighter:  pygments
 
 destination:  _gh_pages
 exclude:      ['node_modules']
+
+redcarpet:
+  extensions:     ['tables']
+  with_toc_data:  1

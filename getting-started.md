@@ -5,6 +5,8 @@ permalink: /getting-started/
 slug: getting-started
 ---
 
+# Getting started
+
 ## Download
 
 You can download the latest version from the [Releases](https://github.com/nghuuphuoc/bootstrapvalidator/releases) page or use [bower](http://bower.io) to install BootstrapValidator:
