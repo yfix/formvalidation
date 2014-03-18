@@ -1,91 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-type"     content="text/html;charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible"  content="IE=edge,chrome=1">
-    <meta name="viewport"       content="width=device-width, initial-scale=1">
-    <meta name="description"    content="BootstrapValidator, a jQuery plugin to validate form fields.">
-    <meta name="keywords"       content="Bootstrap, jQuery, plugin, validate, validator, form">
-    <meta name="author"         content="Nguyen Huu Phuoc">
-
-    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/asset/css/style.css">
-
-    <!--[if lt IE 9]>
-    <script src="/vendor/html5shiv/html5shiv.min.js"></script>
-    <script src="/vendor/respond/respond.min.js"></script>
-    <![endif]-->
-
-    <title>{{ page.title }}</title>
+    {% include head.html %}
 </head>
 <body>
-    <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">BootstrapValidator</a>
-            </div>
+    {% include header.html %}
 
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="#">Getting started</a></li>
-                    <li><a href="#">Validators</a></li>
-                    <li><a href="#">API</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <a href="https://github.com/nghuuphuoc/bootstrapvalidator/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
-
-    <div class="docs-container">
+    <div class="content">
         {{ content }}
     </div>
 
-    <div class="docs-footer">
-        <div class="container">
-            <div class="text-center">
-                <ul class="list-inline">
-                    <li><iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=nghuuphuoc&amp;repo=bootstrapvalidator&amp;type=watch&amp;count=true" width="100" height="20" title="Star on GitHub"></iframe></li>
-                    <li><iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=nghuuphuoc&amp;repo=bootstrapvalidator&amp;type=fork&amp;count=true" width="102" height="20" title="Fork on GitHub"></iframe></li>
-                    <li><a href="https://twitter.com/nghuuphuoc" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @nghuuphuoc</a></li>
-                    <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="https://github.com/nghuuphuoc/bootstrapvalidator/" data-count="horizontal" data-via="nghuuphuoc" data-related="nghuuphuoc:Creator of BootstrapValidator">Tweet</a></li>
-                </ul>
-
-                <p>
-                    Developed with <i class="fa fa-heart"></i> by <a href="http://twitter.com/nghuuphuoc">@nghuuphuoc</a> and contributors.<br/>
-                    Code licensed under <a href="http://opensource.org/licenses/mit-license.html">MIT</a>, documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
-                </p>
-
-                <ul class="list-inline">
-                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/">Github</a></li>
-                    <li>&middot;</li>
-                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Issues</a></li>
-                    <li>&middot;</li>
-                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/blob/master/CHANGELOG.md">Change Log</a></li>
-                    <li>&middot;</li>
-                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/releases">Releases</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-<script src="/vendor/jquery/jquery-1.10.2.min.js"></script>
-<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
-<script>
-window.twttr = (function (d,s,id) {
-    var t, js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return; js=d.createElement(s); js.id=id; js.async=1;
-    js.src="https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
-    return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
-}(document, "script", "twitter-wjs"));
-</script>
+    {% include footer.html %}
 </body>
 </html>

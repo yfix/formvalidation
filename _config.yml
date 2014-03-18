@@ -1,6 +1,7 @@
 name:         BootstrapValidator
 markdown:     redcarpet
 pygments:     true
+highlighter:  pygments
 
 destination:  _gh_pages
 exclude:      ['node_modules']
