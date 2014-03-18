@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: page
 title: API - BootstrapValidator
 permalink: /api/
 slug: api

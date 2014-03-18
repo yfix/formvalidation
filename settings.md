@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: page
 title: Settings - BootstrapValidator
 permalink: /settings/
 slug: settings

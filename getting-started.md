@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: page
 title: Getting started - BootstrapValidator
 permalink: /getting-started/
 slug: getting-started
