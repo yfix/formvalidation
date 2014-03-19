@@ -4,9 +4,8 @@ pygments:             true
 highlighter:          pygments
 relative_permalinks:  false
 
-destination:  _gh_pages
-exclude:      ['node_modules']
+destination:          _gh_pages
+exclude:              ['node_modules']
 
 redcarpet:
-  extensions:     ['tables']
-  with_toc_data:  1
+  extensions:         [tables]
