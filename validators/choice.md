@@ -24,7 +24,7 @@ _Try to click the checkbox_
 <form id="interviewForm" class="form-horizontal">
     <div class="form-group">
         <label class="col-lg-3 control-label">Programming Languages</label>
-        <div class="col-lg-5">
+        <div class="col-lg-3">
             <div class="checkbox">
                 <label>
                     <input type="checkbox" name="languages[]" value="net" /> .Net
@@ -75,7 +75,7 @@ Form markup:
 <form id="interviewForm" class="form-horizontal">
     <div class="form-group">
         <label class="col-lg-3 control-label">Programming Languages</label>
-        <div class="col-lg-5">
+        <div class="col-lg-3">
             <div class="checkbox">
                 <label>
                     <input type="checkbox" name="languages[]" value="net" /> .Net
@@ -147,3 +147,26 @@ $(document).ready(function() {
 ```
 
 <a href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages/validators/choice.md" class="btn btn-info">Improve this page</a>
+
+<script>
+$(document).ready(function() {
+    $('#interviewForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            'languages[]': {
+                validators: {
+                    choice: {
+                        min: 2,
+                        max: 4,
+                        message: 'Please choose 2 - 4 programming languages you are good at'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
