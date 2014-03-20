@@ -147,26 +147,3 @@ $(document).ready(function() {
 ```
 
 <a href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages/validators/choice.md" class="btn btn-info">Improve this page</a>
-
-<script>
-$(document).ready(function() {
-    $('#interviewForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            'languages[]': {
-                validators: {
-                    choice: {
-                        min: 2,
-                        max: 4,
-                        message: 'Please choose 2 - 4 programming languages you are good at'
-                    }
-                }
-            }
-        }
-    });
-});
-</script>
