@@ -1,6 +1,6 @@
 ---
 layout: validator
-title: uri validator - BootstrapValidator
+title: uri validator
 permalink: /validators/uri/
 slug: validators
 ---

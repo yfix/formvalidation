@@ -1,6 +1,6 @@
 ---
 layout: validator
-title: greaterThan validator - BootstrapValidator
+title: greaterThan validator
 permalink: /validators/greater-than/
 slug: validators
 ---

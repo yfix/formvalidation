@@ -1,6 +1,6 @@
 ---
 layout: validator
-title: lessThan validator - BootstrapValidator
+title: lessThan validator
 permalink: /validators/less-than/
 slug: validators
 ---

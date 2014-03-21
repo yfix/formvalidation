@@ -1,6 +1,6 @@
 ---
 layout: validator
-title: callback validator - BootstrapValidator
+title: callback validator
 permalink: /validators/callback/
 slug: validators
 ---

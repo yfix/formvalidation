@@ -1,6 +1,6 @@
 ---
 layout: validator
-title: zipCode validator - BootstrapValidator
+title: zipCode validator
 permalink: /validators/zip-code/
 slug: validators
 ---

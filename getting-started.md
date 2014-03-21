@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Getting started - BootstrapValidator
+title: Getting started
 permalink: /getting-started/
 slug: getting-started
 ---

@@ -1,6 +1,6 @@
 ---
 layout: validator
-title: between validator - BootstrapValidator
+title: between validator
 permalink: /validators/between/
 slug: validators
 ---

@@ -1,6 +1,6 @@
 ---
 layout: validator
-title: digits validator - BootstrapValidator
+title: digits validator
 permalink: /validators/digits/
 slug: validators
 ---

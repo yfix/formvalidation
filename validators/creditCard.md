@@ -1,6 +1,6 @@
 ---
 layout: validator
-title: creditCard validator - BootstrapValidator
+title: creditCard validator
 permalink: /validators/credit-card/
 slug: validators
 ---

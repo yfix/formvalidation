@@ -1,6 +1,6 @@
 ---
 layout: validator
-title: notEmpty validator - BootstrapValidator
+title: notEmpty validator
 permalink: /validators/not-empty/
 slug: validators
 ---

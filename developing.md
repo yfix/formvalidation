@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Developing - BootstrapValidator
+title: Developing
 permalink: /developing/
 slug: developing
 ---

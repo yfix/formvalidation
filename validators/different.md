@@ -1,6 +1,6 @@
 ---
 layout: validator
-title: different validator - BootstrapValidator
+title: different validator
 permalink: /validators/different/
 slug: validators
 ---

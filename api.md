@@ -1,6 +1,6 @@
 ---
 layout: page
-title: API - BootstrapValidator
+title: API
 permalink: /api/
 slug: api
 ---

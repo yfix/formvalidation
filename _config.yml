@@ -5,9 +5,15 @@ highlighter:          pygments
 relative_permalinks:  false
 
 destination:          _gh_pages
-exclude:              ['node_modules']
+exclude:
+  - node_modules
 
 redcarpet:
   extensions:         [tables]
 
+# Custom variables
+# not defined by Jekyll
+current_version:      0.3.2
+repo:                 https://github.com/nghuuphuoc/bootstrapvalidator
 ga_code:              UA-44786951-2
+download:             https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.3.2.zip

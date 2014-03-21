@@ -1,6 +1,6 @@
 ---
 layout: validator
-title: remote validator - BootstrapValidator
+title: remote validator
 permalink: /validators/remote/
 slug: validators
 ---

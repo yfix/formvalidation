@@ -1,6 +1,6 @@
 ---
 layout: validator
-title: emailAddress validator - BootstrapValidator
+title: emailAddress validator
 permalink: /validators/email-address/
 slug: validators
 ---

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Settings - BootstrapValidator
+title: Settings
 permalink: /settings/
 slug: settings
 ---

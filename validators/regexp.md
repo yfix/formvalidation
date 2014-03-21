@@ -1,6 +1,6 @@
 ---
 layout: validator
-title: regexp validator - BootstrapValidator
+title: regexp validator
 permalink: /validators/regexp/
 slug: validators
 ---

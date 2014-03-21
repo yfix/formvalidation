@@ -1,6 +1,6 @@
 ---
 layout: validator
-title: hexColor validator - BootstrapValidator
+title: hexColor validator
 permalink: /validators/hex-color/
 slug: validators
 ---
