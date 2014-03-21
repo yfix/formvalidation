@@ -68,6 +68,11 @@
   version: 0.3.2
   description: Validate an IP address. Support both IPv4 and IPv6
 
+- name: isbn
+  slug: isbn
+  version: 0.3.2
+  description: Validate an ISBN string. Support both ISBN 10 and ISBN 13
+
 - name: lessThan
   slug: less-than
   version: 0.1.0
