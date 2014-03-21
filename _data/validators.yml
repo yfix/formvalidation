@@ -88,6 +88,11 @@
   version: 0.1.0
   description: Check if the value is empty
 
+- name: phone
+  slug: phone
+  version: 0.3.2
+  description: Validate a phone number
+
 - name: regexp
   slug: regexp
   version: 0.1.0
@@ -97,6 +102,11 @@
   slug: remote
   version: 0.1.0
   description: Perform remote checking via Ajax request
+
+- name: step
+  slug: step
+  version: 0.3.2
+  description: Check if the value is valid step one
 
 - name: stringLength
   slug: string-length
