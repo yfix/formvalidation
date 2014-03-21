@@ -63,6 +63,11 @@
   version: 0.1.0
   description: Check if the value is the same as one of particular field
 
+- name: ip
+  slug: ip
+  version: 0.3.2
+  description: Validate an IP address. Support both IPv4 and IPv6
+
 - name: lessThan
   slug: less-than
   version: 0.1.0
