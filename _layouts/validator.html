@@ -23,7 +23,7 @@ layout: default
 
                         <a class="{{ c }}" href="/validators/{{ validator.slug }}/">
                             {{ validator.name }}
-                            {% if validator.new %}
+                            {% if validator.version == site.current_version %}
                             <label class="label label-success pull-right">new</label>
                             {% endif %}
                         </a>

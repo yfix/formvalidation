@@ -20,7 +20,7 @@ BootstrapValidator comes with various built-in validators listed in the alphabet
     <tbody>
     {% for validator in site.data.validators %}
         <tr>
-            <td><a href="/validators/{{ validator.slug }}/">{{ validator.name }}</a></td>
+            <td><a href="/validators/{{ validator.slug }}/">{{ validator.name }}</a>{% if validator.version == site.current_version %} <label class="label label-success pull-right">new</label>{% endif %}</td>
             <td>{{ validator.version }}</td>
             <td>{{ validator.description }}</td>
         </tr>
