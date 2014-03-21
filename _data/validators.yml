@@ -78,6 +78,11 @@
   version: 0.1.0
   description: Return true if the value is less than or equals to given number
 
+- name: mac
+  slug: mac
+  version: 0.3.2
+  description: Validate a MAC address
+
 - name: notEmpty
   slug: not-empty
   version: 0.1.0
