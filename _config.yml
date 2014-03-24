@@ -5,9 +5,7 @@ highlighter:          pygments
 relative_permalinks:  false
 
 destination:          _gh_pages
-exclude:
-  - node_modules
-  - *.scss
+exclude:              ['node_modules', '*.less']
 
 redcarpet:
   extensions:         [tables]
