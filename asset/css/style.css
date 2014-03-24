@@ -6,7 +6,6 @@ iframe {
   border: 0;
 }
 body {
-  font-family: 'Open Sans', sans-serif;
   margin-bottom: 250px;
 }
 footer {
@@ -32,6 +31,7 @@ pre {
 */
 .intro {
   /*border-bottom: 1px solid #c0c0c0;*/
+
   padding-top: 60px;
   padding-bottom: 60px;
   text-align: center;
