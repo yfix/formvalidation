@@ -1,0 +1,195 @@
+---
+layout: page
+title: API
+permalink: /api/
+slug: api
+---
+
+<h1>API</h1>
+
+<p>This page describes the public methods provided by the plugin.</p>
+
+<div class="row">
+    <div class="col-md-9">
+        <section>
+            <p>After initializing the form with the plugin using <code>$(form).bootstrapValidator(options)</code>, you can retrieve the BootstrapValidator instance by</p>
+            <pre><code data-lang="javascript">var bootstrapValidator = $(form).data('bootstrapValidator');</code></pre>
+        </section>
+
+        <section id="validate">
+            <h2>validate</h2>
+
+            <p><code>validate()</code> &mdash; Validate form manually. It is useful when you want to validate form by clicking a button or a link instead of a submit buttons.</p>
+
+            <pre><code data-lang="javascript">$(form).bootstrapValidator(options).bootstrapValidator('validate');
+
+// or
+$(form).bootstrapValidator(options);
+$(form).data('bootstrapValidator').validate();</code></pre>
+        </section>
+
+        <section id="is-valid">
+            <h2>isValid</h2>
+
+            <p><code>isValid()</code> &mdash; Returns <code>true</code> if all form fields are valid. Otherwise, returns <code>false</code>.</p>
+            <p>Ensure that the <code>validate</code> method is already called after calling this one.</p>
+        </section>
+
+        <section id="update-status">
+            <h2>updateStatus</h2>
+
+            <p><code>updateStatus(field, status, validatorName)</code> &mdash; Update validator result for given field</p>
+
+            <table class="table-striped">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>field</code></td>
+                        <td>String/jQuery</td>
+                        <td>The field name or field element</td>
+                    </tr>
+                    <tr>
+                        <td><code>status</code></td>
+                        <td>String</td>
+                        <td>Can be <code>NOT_VALIDATED</code>, <code>VALIDATING</code>, <code>INVALID</code> or <code>VALID</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>validatorName</code></td>
+                        <td>String</td>
+                        <td>The validator name. If <code>null</code>, the method updates validity result for all validators</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>This method is useful when you want to use BootstrapValidator with other plugins such as <a href="http://eternicode.github.io/bootstrap-datepicker/">Bootstrap Date Picker</a>,
+                <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Boostrap Datetime Picker</a>, <a href="http://ivaynberg.github.io/select2/">Select2</a>, etc.</p>
+
+            <p>By default, the plugin doesn't re-validate a field once it is already validated and marked as a valid one. When using with other plugins,
+                the field value is changed and therefore need to be re-validated.</p>
+
+            <p>The following example describes how to re-validate a field which uses with <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Boostrap Datetime Picker</a>:</p>
+
+            <p>The form markup:</p>
+            <pre><code data-lang="html">&lt;form id="defaultForm" method="post" class="form-horizontal">
+    ...
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">DateTime Picker&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;div class="input-group date" id="datetimePicker">
+                &lt;input type="text" class="form-control" name="datetimePicker" />
+                &lt;span class="input-group-addon">&lt;span class="glyphicon glyphicon-calendar">&lt;/span>&lt;/span>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+    ...
+&lt;/form></code></pre>
+
+            <p>Javascript:</p>
+            <pre><code data-lang="javascript">$(document).ready(function() {
+    $('#datetimePicker').datetimepicker();
+
+    $('#defaultForm').bootstrapValidator({
+        fields: {
+            ...
+            datetimePicker: {
+                validators: {
+                    notEmpty: {
+                        message: 'The date is required and cannot be empty'
+                    },
+                    date: {
+                        format: 'MM/DD/YYYY h:m A'
+                    }
+                }
+            }
+        }
+    });
+
+    $('#datetimePicker')
+        .on('dp.change dp.show', function(e) {
+            // Validate the date when user change it
+            $('#defaultForm')
+                // Get the bootstrapValidator instance
+                .data('bootstrapValidator')
+                // Mark the field as not validated, so it'll be re-validated when the user change date
+                .updateStatus('datetimePicker', 'NOT_VALIDATED', null)
+                // Validate the field
+                .validateField('datetimePicker');
+        });
+});</code></pre>
+        </section>
+
+        <section id="enable-field-validators">
+            <h2>enableFieldValidators</h2>
+
+            <p><code>enableFieldValidators(field, enabled)</code> &mdash; Enable/disable all validators to given field</p>
+
+            <table class="table-striped">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>field</code></td>
+                        <td>String</td>
+                        <td>The field name</td>
+                    </tr>
+                    <tr>
+                        <td><code>enabled</code></td>
+                        <td>Boolean</td>
+                        <td>If <code>true</code>, enable field validators. If <code>false</code>, disable field validators</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="reset-form">
+            <h2>resetForm</h2>
+
+            <p><code>resetForm(resetFormData)</code> &mdash; Reset form. It hides all error elements and feedback icons. All the fields are marked as not validated yet.</p>
+
+            <table class="table-striped">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>resetFormData</code></td>
+                        <td>Boolean</td>
+                        <td>If <code>true</code>, the method resets the fields which have validator rules.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <pre><code data-lang="javascript">$(form).bootstrapValidator(options);
+$(form).data('bootstrapValidator').resetForm();</code></pre>
+        </section>
+
+        <a href="{{ site.repository.docs_edit }}/api.html" class="btn btn-info">Improve this page</a>
+    </div>
+
+    <div class="col-md-3">
+        <div class="docs-sidebar" data-spy="affix" data-offset-top="120">
+            <ul class="nav">
+                <li><a href="#validate">validate</a></li>
+                <li><a href="#is-valid">isValid</a></li>
+                <li><a href="#update-status">updateStatus</a></li>
+                <li><a href="#enable-field-validators">enableFieldValidators</a></li>
+                <li><a href="#reset-form">resetForm</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
