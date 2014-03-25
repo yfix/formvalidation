@@ -1,0 +1,58 @@
+---
+layout: validator
+title: remote validator
+permalink: /validators/remote/
+slug: validators
+validator: remote
+---
+
+<section>
+    <p>Perform remote checking via Ajax request.</p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Option</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>message</code></td>
+                <td>String</td>
+                <td>The error message</td>
+            </tr>
+            <tr>
+                <td><code>url</code> (*)</td>
+                <td>String</td>
+                <td>The remote URL that responses an encoded JSON of array containing the <code>valid</code> key</td>
+            </tr>
+            <tr>
+                <td><code>data</code></td>
+                <td>Object</td>
+                <td>
+                    The data sent to remote URL.<br/>
+                    By default, it is set to <code>{ fieldName: fieldValue }</code> where <code>fieldName</code> and <code>fieldValue</code> are replaced with the field name and current value, respectively.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>It also supports dynamic data which is returned by a function:</p>
+
+    <pre><code data-lang="javascript">remote: {
+    url: 'remote.php',
+    data: function(validator) {
+        // validator is the plugin instance
+
+        // Returns an object which is used to send to remote URL
+        // For example, the sample code below posts the username to remote URL:
+        //  return {
+        //      username: validator.getFieldElements('username').val()
+        //  };
+    }
+}</code></pre>
+</section>
+
+<a href="{{ site.repository.docs_edit }}/validators/remote.html" class="btn btn-info">Improve this page</a>

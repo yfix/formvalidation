@@ -1,0 +1,60 @@
+---
+layout: validator
+title: zipCode validator
+permalink: /validators/zip-code/
+slug: validators
+validator: zipCode
+---
+
+<section>
+    <p>Validate a zip code by a country code.</p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Option</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>message</code></td>
+                <td>String</td>
+                <td>The error message</td>
+            </tr>
+            <tr>
+                <td><code>country</code></td>
+                <td>String</td>
+                <td>A ISO 3166 country code</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>Currently, the validator supports the following countries:</p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>US <label class="label label-info">default</label></td>
+                <td>United State</td>
+            </tr>
+            <tr>
+                <td>DK</td>
+                <td>Denmark</td>
+            </tr>
+            <tr>
+                <td>SE</td>
+                <td>Sweden</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<a href="{{ site.repository.docs_edit }}/validators/zipCode.html" class="btn btn-info">Improve this page</a>

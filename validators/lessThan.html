@@ -1,0 +1,44 @@
+---
+layout: validator
+title: lessThan validator
+permalink: /validators/less-than/
+slug: validators
+validator: lessThan
+---
+
+<section>
+    <p>Return true if the value is less than or equals to given number.</p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Option</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>message</code></td>
+                <td>String</td>
+                <td>The error message</td>
+            </tr>
+            <tr>
+                <td><code>value</code> (*)</td>
+                <td>Float</td>
+                <td>The number to make a comparison to</td>
+            </tr>
+            <tr>
+                <td><code>inclusive</code></td>
+                <td>Boolean</td>
+                <td>
+                    Can be <code>true</code> or <code>false</code>.<br />
+                    If <code>true</code>, the input value must be less than the comparison one.<br />
+                    If <code>false</code>, the input value must be less than or equal to the comparison one
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<a href="{{ site.repository.docs_edit }}/validators/lessThan.html" class="btn btn-info">Improve this page</a>
