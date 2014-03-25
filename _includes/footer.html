@@ -26,6 +26,7 @@
     </div>
 </footer>
 
+<script src="/vendor/highlight/highlight.pack.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="/vendor/bootstrapvalidator/js/bootstrapValidator.js"></script>
 <script>
@@ -38,6 +39,7 @@ window.twttr = (function (d,s,id) {
 </script>
 <script>
 $(document).ready(function() {
+    hljs.initHighlightingOnLoad();
     $('table').addClass('table table-striped');
     $('a[data-toggle="tab"]').click(function(e) {
         e.preventDefault();

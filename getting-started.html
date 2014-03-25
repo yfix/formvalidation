@@ -1,0 +1,304 @@
+---
+layout: page
+title: Getting started
+permalink: /getting-started/
+slug: getting-started
+---
+
+<h1>Getting started</h1>
+
+<div class="row">
+    <div class="col-md-9">
+        <section>
+            <h2 id="download">Download</h2>
+            <p>You can download the latest version from the <a href="{{ site.repo}}/releases">Releases</a> page or use <a href="http://bower.io">bower</a> to install BootstrapValidator:</p>
+            <pre><code data-lang="bash">$ bower install bootstrapValidator</code></pre>
+        </section>
+
+        <section>
+            <h2 id="whats-included">What's included?</h2>
+            <pre><code>bootstrapvalidator/
+├── dist
+│   ├── css
+│   │   ├── bootstrapValidator.css
+│   │   └── bootstrapValidator.min.css
+│   └── js
+│       ├── bootstrapValidator.js
+│       └── bootstrapValidator.min.js
+└── src
+    ├── css
+    │   ├── bootstrapValidator.css
+    │   └── bootstrapValidator.min.css
+    ├── js
+    ├── validator
+    │   ├── between.js
+    │   ├── callback.js
+    │   ├── choice.js
+    │   └── ...
+    └── bootstrapValidator.js</code></pre>
+
+            <p>The <code>src</code> directory consists of the original source files. <code>src/js/bootstrapValidator.js</code> is not compressed and doesn't include any validators.</p>
+
+            <p>The <code>dist</code> directory consists of files which is combined and compressed.
+            <code>dist/js/bootstrapValidator(.min).js</code> includes all validators. It should be used in the production site.</p>
+        </section>
+
+        <section>
+            <h2 id="usage">Usage</h2>
+            <p>It takes only 3 steps to use the plugin:</p>
+
+            <h3 id="including-library">Including library</h3>
+            <p>Since the BootstrapValidator plugin requires jQuery and Bootstrap 3, you have to include the required CSS and JS files to your page:</p>
+            <pre><code data-lang="html">&lt;link rel="stylesheet" href="/path/to/bootstrap/css/bootstrap.css"/>
+&lt;link rel="stylesheet" href="/path/to/dist/js/bootstrapValidator.min.css"/>
+
+&lt;script type="text/javascript" src="/path/to/jquery/jquery-1.10.2.min.js">&lt;/script>
+&lt;script type="text/javascript" src="/path/to/bootstrap/js/bootstrap.min.js">&lt;/script></code></pre>
+
+            <p>Next, requires the plugin javascript file:</p>
+            <pre><code data-lang="html">// Either use the compressed version (recommended in the production site)
+&lt;script type="text/javascript" src="/path/to/dist/js/bootstrapValidator.min.js">&lt;/script>
+
+// Or use the original one with all validators included
+&lt;script type="text/javascript" src="/path/to/dist/js/bootstrapValidator.js">&lt;/script>
+
+// Or use the plugin with required validators
+&lt;script type="text/javascript" src="/path/to/src/js/bootstrapValidator.js">&lt;/script>
+&lt;script type="text/javascript" src="/path/to/src/js/validator/...validator...">&lt;/script></code></pre>
+
+            <h3 id="writing-form">Writing form</h3>
+            <p>Since BootstrapValidator is designed to use with Bootstrap, your form must be structured using Bootstrap classes. The plugin supports all possible kind of Bootstrap form, including:</p>
+
+            <h4>Basic form</h4>
+            <div class="node-info">Try to type in the form fields</div>
+
+            <form class="registerForm">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" name="username" />
+                </div>
+                <div class="form-group">
+                    <label>Email address</label>
+                    <input type="text" class="form-control" name="email" />
+                </div>
+            </form>
+
+            <pre><code data-lang="html">&lt;form>
+    &lt;div class="form-group">
+        &lt;label>Username&lt;/label>
+        &lt;input type="text" class="form-control" name="username" />
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;label>Email address&lt;/label>
+        &lt;input type="text" class="form-control" name="email" />
+    &lt;/div>
+&lt;/form></code></pre>
+
+            <h4>Inline form</h4>
+            <form class="form-inline registerForm" style="margin-bottom: 20px;">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="username" placeholder="Username" />
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="email" placeholder="Email address" />
+                </div>
+            </form>
+
+            <pre><code data-lang="html">&lt;form class="form-inline">
+    &lt;div class="form-group">
+        &lt;input type="text" class="form-control" name="username" placeholder="Username" />
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;input type="text" class="form-control" name="email" placeholder="Email address" />
+    &lt;/div>
+&lt;/form></code></pre>
+        </section>
+
+        <h4>Horizontal form</h4>
+        <form class="form-horizontal registerForm">
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Username</label>
+                <div class="col-lg-6">
+                    <input type="text" class="form-control" name="username" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Email address</label>
+                <div class="col-lg-6">
+                    <input type="text" class="form-control" name="email" />
+                </div>
+            </div>
+        </form>
+        <pre><code data-lang="html">&lt;form class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Username&lt;/label>
+        &lt;div class="col-lg-9">
+            &lt;input type="text" class="form-control" name="username" />
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Email address&lt;/label>
+        &lt;div class="col-lg-9">
+            &lt;input type="text" class="form-control" name="email" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+
+        <p>It also supports multiple fields on the same row:</p>
+
+        <form class="form-horizontal registerForm">
+            <div class="form-group">
+                <label class="col-lg-2 control-label">Account</label>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control" name="username" placeholder="Username" />
+                </div>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control" name="email" placeholder="Email address" />
+                </div>
+            </div>
+        </form>
+        <pre><code data-lang="html">&lt;form class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-2 control-label">Account&lt;/label>
+        &lt;div class="col-lg-4">
+            &lt;input type="text" class="form-control" name="username" placeholder="Username" />
+        &lt;/div>
+        &lt;div class="col-lg-4">
+            &lt;input type="text" class="form-control" name="email" placeholder="Email address" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+
+        <h3 id="calling-plugin">Calling the plugin</h3>
+
+        <p>Call the plugin to validate the form as following:</p>
+        <pre><code data-lang="javascript">$(document).ready(function() {
+    $(formSelector).bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: ...,
+        submitButtons: 'button[type="submit"]',
+        submitHandler: null,
+        live: 'enabled',
+        fields: ...
+    });
+});</code></pre>
+
+        <p>For example, to validate the sample registration form above, the plugin might be called as:</p>
+
+        <pre><code data-lang="javascript">$(document).ready(function() {
+    $('#registerForm').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            username: {
+                message: 'The username is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The username is required and cannot be empty'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 30,
+                        message: 'The username must be more than 6 and less than 30 characters long'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: 'The username can only consist of alphabetical, number, dot and underscore'
+                    }
+                }
+            },
+            email: {
+                validators: {
+                    notEmpty: {
+                        message: 'The email is required and cannot be empty'
+                    },
+                    emailAddress: {
+                        message: 'The input is not a valid email address'
+                    }
+                }
+            }
+        }
+    });
+});
+</code></pre>
+
+        <p>Look at the <a href="/settings/">Settings</a> page to see the meaning of plugin options.</p>
+
+        <a href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages/getting-started.md" class="btn btn-info">Improve this page</a>
+    </div>
+
+    <div class="col-md-3">
+        <div class="docs-sidebar" data-spy="affix" data-offset-top="120">
+            <ul class="nav">
+                <li><a href="#download">Download</a></li>
+                <li><a href="#whats-included">What's included</a></li>
+                <li>
+                    <a href="#usage">Usage</a>
+                    <ul class="nav">
+                        <li><a href="#including-library">Including library</a></li>
+                        <li><a href="#writing-form">Writing form</a></li>
+                        <li><a href="#calling-plugin">Calling the plugin</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    $('.registerForm').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            username: {
+                message: 'The username is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The username is required and cannot be empty'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 30,
+                        message: 'The username must be more than 6 and less than 30 characters long'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: 'The username can only consist of alphabetical, number, dot and underscore'
+                    }
+                }
+            },
+            email: {
+                validators: {
+                    notEmpty: {
+                        message: 'The email is required and cannot be empty'
+                    },
+                    emailAddress: {
+                        message: 'The input is not a valid email address'
+                    }
+                }
+            }
+        }
+    });
+
+    $('body').scrollspy({ target: '.docs-sidebar' });
+    $(window).on('load', function() {
+        $('body').scrollspy('refresh');
+    });
+
+    setTimeout(function() {
+        $('.docs-sidebar').affix();
+    }, 100);
+});
+</script>
+
+
+

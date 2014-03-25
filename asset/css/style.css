@@ -24,6 +24,9 @@ header {
 aside {
   margin-top: 50px;
 }
+pre {
+  padding: 0;
+}
 /*
 pre {
   font-family: 'Source Sans Pro', sans-serif;
@@ -56,4 +59,40 @@ pre {
 }
 .demo .tab-pane {
   padding-top: 30px;
+}
+/** Sidebar */
+.docs-sidebar {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.docs-sidebar .nav > .active > a,
+.docs-sidebar .nav > .active:hover > a,
+.docs-sidebar .nav > .active:focus > a {
+  font-weight: bold;
+  background-color: transparent;
+  border-left: 2px solid #428bca;
+}
+.docs-sidebar .nav .nav > li > a {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 30px;
+  font-size: 90%;
+}
+@media (min-width: 992px) {
+  .docs-sidebar.affix,
+  .docs-sidebar.affix-bottom {
+    position: fixed;
+    top: 20px;
+  }
+}
+@media (min-width: 992px) {
+  .docs-sidebar.affix,
+  .docs-sidebar.affix-bottom {
+    width: 213px;
+  }
+}
+@media (min-width: 1200px) {
+  .docs-sidebar.affix {
+    width: 263px;
+  }
 }
