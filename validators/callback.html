@@ -6,55 +6,69 @@ slug: validators
 validator: callback
 ---
 
-Return the validity from a callback method
+<section>
+    <p>Return the validity from a callback method.</p>
 
-Option       | Type     | Description
--------------|----------|------------
-message      | String   | The error message
-callback (*) | Function | The callback method
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Option</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>message</code></td>
+                <td>String</td>
+                <td>The error message</td>
+            </tr>
+            <tr>
+                <td><code>callback</code> (*)</td>
+                <td>Function</td>
+                <td>The callback method</td>
+            </tr>
+        </tbody>
+    </table>
 
-The callback method must follow the format below:
-
-```javascript
-function(fieldValue, validator) {
+    <p>The callback method must follow the format below:</p>
+    <pre><code data-lang="javascript">function(fieldValue, validator) {
     // fieldValue is the value of field
     // validator is instance of BootstrapValidator
 
     // Check the field validity
     // return true or false
-}
-```
+}</code></pre>
+</section>
 
-## Live example
+<section id="example">
+    <h2>Live example</h2>
 
-In the following form, user is asked to enter a correct answer of simple operation which is generated randomly:
+    <p>In the following form, user is asked to enter a correct answer of simple operation which is generated randomly:</p>
 
-<form id="captchaForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label" id="captchaOperation"></label>
-        <div class="col-lg-2">
-            <input type="text" class="form-control" name="captcha" />
+    <form id="captchaForm" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-lg-3 control-label" id="captchaOperation"></label>
+            <div class="col-lg-2">
+                <input type="text" class="form-control" name="captcha" />
+            </div>
         </div>
-    </div>
-</form>
+    </form>
 
-Form markup:
+    <p>Form markup:</p>
 
-```html
-<form id="captchaForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label" id="captchaOperation"></label>
-        <div class="col-lg-2">
-            <input type="text" class="form-control" name="captcha" />
-        </div>
-    </div>
-</form>
-```
+    <pre><code data-lang="html">&lt;form id="captchaForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label" id="captchaOperation">&lt;/label>
+        &lt;div class="col-lg-2">
+            &lt;input type="text" class="form-control" name="captcha" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
 
-Javascript:
+    <p>Javascript:</p>
 
-```javascript
-$(document).ready(function() {
+    <pre><code data-lang="javascript">$(document).ready(function() {
     // Return a random number between min and max
     function randomNumber(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
@@ -86,18 +100,17 @@ $(document).ready(function() {
         }
     });
 });
-```
+</code></pre>
+</section>
 
-<a href="{{ site.repository.docs_edit }}/validators/callback.md" class="btn btn-info">Improve this page</a>
+<a href="{{ site.repository.docs_edit }}/validators/callback.html" class="btn btn-info">Improve this page</a>
 
 <script>
 $(document).ready(function() {
-    // Return a random number between min and max
     function randomNumber(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
     };
 
-    // Generate a sum of two random numbers
     $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
 
     $('#captchaForm').bootstrapValidator({

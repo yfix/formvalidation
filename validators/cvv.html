@@ -1,0 +1,130 @@
+---
+layout: validator
+title: cvv validator
+permalink: /validators/cvv/
+slug: validators
+validator: cvv
+---
+
+<section>
+    <p>Validate a CVV number.</p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Option</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>creditCardField</code></td>
+                <td>String</td>
+                <td>The credit card number field. It is <code>null</code> by default</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>If the <code>creditCardField</code> is set, the validator will check if the CVV number is suitable with the credit card number of not.</p>
+    <p>In the details, the American Express card only accepts 4 digits CVV number, while other cards only accept 3 digits CVV number.</p>
+</section>
+
+<section id="example">
+    <h2>Live example</h2>
+
+    <p>The following form also validates the CVV number based on the credit card number.</p>
+    <p>For testing purpose, you can copy and paste the fake credit card number from <a href="http://www.getcreditcardnumbers.com">http://www.getcreditcardnumbers.com</a>.</p>
+
+    <form id="paymentForm" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Credit card number</label>
+            <div class="col-lg-5">
+                <input type="text" class="form-control" name="ccNumber" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-3 control-label">CVV</label>
+            <div class="col-lg-2">
+                <input type="text" class="form-control" name="cvvNumber" />
+            </div>
+        </div>
+    </form>
+
+    <p>Form markup:</p>
+    <pre><code data-lang="html">&lt;form id="paymentForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Credit card number&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="ccNumber" />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">CVV&lt;/label>
+        &lt;div class="col-lg-2">
+            &lt;input type="text" class="form-control" name="cvvNumber" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+
+    <p>Javascript:</p>
+    <pre><code data-lang="javascript">$(document).ready(function() {
+    $('#paymentForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            ccNumber: {
+                validators: {
+                    creditCard: {
+                        message: 'The credit card number is not valid'
+                    }
+                }
+            },
+            cvvNumber: {
+                validators: {
+                    cvv: {
+                        creditCardField: 'ccNumber',
+                        message: 'The CVV number is not valid'
+                    }
+                }
+            }
+        }
+    });
+});</code></pre>
+</section>
+
+<a href="{{ site.repository.docs_edit }}/validators/cvv.html" class="btn btn-info">Improve this page</a>
+
+<script>
+$(document).ready(function() {
+    $('#paymentForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            ccNumber: {
+                validators: {
+                    creditCard: {
+                        message: 'The credit card number is not valid'
+                    }
+                }
+            },
+            cvvNumber: {
+                validators: {
+                    cvv: {
+                        creditCardField: 'ccNumber',
+                        message: 'The CVV number is not valid'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>

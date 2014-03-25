@@ -1,0 +1,362 @@
+---
+layout: validator
+title: date validator
+permalink: /validators/date/
+slug: validators
+validator: date
+---
+
+<section>
+    <p>Validate a date.</p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Option</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>message</code></td>
+                <td>String</td>
+                <td>The error message</td>
+            </tr>
+            <tr>
+                <td><code>format</code> (*)</td>
+                <td>String</td>
+                <td>The date format. It is <code>MM/DD/YYYY</code>, by default</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>The <code>format</code> can be one of the following values:</p>
+
+    <ul>
+        <li>YYYY/DD/MM</li>
+        <li>YYYY/DD/MM h:m A</li>
+        <li>YYYY/MM/DD</li>
+        <li>YYYY/MM/DD h:m A</li>
+        <li>YYYY-DD-MM</li>
+        <li>YYYY-DD-MM h:m A</li>
+        <li>YYYY-MM-DD</li>
+        <li>YYYY-MM-DD h:m A</li>
+        <li>MM/DD/YYYY</li>
+        <li>MM/DD/YYYY h:m A</li>
+        <li>DD/MM/YYYY</li>
+        <li>DD/MM/YYYY h:m A</li>
+        <li>MM-DD-YYYY</li>
+        <li>MM-DD-YYYY h:m A</li>
+        <li>DD-MM-YYYY</li>
+        <li>DD-MM-YYYY h:m A</li>
+    </ul>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Token</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>MM</td>
+                <td>Month number</td>
+            </tr>
+            <tr>
+                <td>DD</td>
+                <td>Day of month</td>
+            </tr>
+            <tr>
+                <td>YYYY</td>
+                <td>4 digit year</td>
+            </tr>
+            <tr>
+                <td>h</td>
+                <td>12 hour time</td>
+            </tr>
+            <tr>
+                <td>m</td>
+                <td>Minutes</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>AM/PM</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>These tokens are the same as one defined by <a href="http://momentjs.com/docs/#/displaying/format/">momentjs</a>.</p>
+    <p>It's possible to support other date format by using <a href="/validators/callback/">callback</a> validator as shown in the <a href="#custom-format-example">Custom format example</a>.</p>
+
+    <p>The date validator also checks the number of days in February of leap year. For example, 02/29/2000 is valid date, while 02/29/2001 is invalid one.</p>
+</section>
+
+<section id="example">
+    <h2>Live example 1</h2>
+
+    <p>The following form might be used in a profile setting page:</p>
+
+    <form id="profileForm" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Birthday</label>
+            <div class="col-lg-3">
+                <input type="text" class="form-control" name="birthday" />
+                <span class="help-block">YYYY/MM/DD</span>
+            </div>
+        </div>
+    </form>
+
+    <p>Form markup:</p>
+    <pre><code data-lang="html">&lt;form id="profileForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Birthday&lt;/label>
+        &lt;div class="col-lg-3">
+            &lt;input type="text" class="form-control" name="birthday" />
+            &lt;span class="help-block">YYYY/MM/DD&lt;/span>
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+
+    <p>Javascript:</p>
+    <pre><code data-lang="javascript">$(document).ready(function() {
+    $('#profileForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            birthday: {
+                validators: {
+                    date: {
+                        format: 'YYYY/DD/MM',
+                        message: 'The value is not a valid date'
+                    }
+                }
+            }
+        }
+    });
+});</code></pre>
+</section>
+
+<section id="date-picker-example">
+    <h2>Live example 2: Use with date time picker</h2>
+
+    <p>The form below is an example of using the date validator with <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Bootstrap Datetime Picker</a>:</p>
+
+    <link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <style type="text/css">
+        .form-horizontal .has-feedback .input-group .form-control-feedback {
+            top: 0;
+            right: -30px;
+        }
+    </style>
+    <form id="meetingForm" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Meeting time</label>
+            <div class="col-lg-4">
+                <div class="input-group date" id="datetimePicker">
+                    <input type="text" class="form-control" name="meeting" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+                <span class="help-block">MM/DD/YYYY h:m A</span>
+            </div>
+        </div>
+    </form>
+
+    <div class="docs-note-info">
+        <p>To use <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Bootstrap Datetime Picker</a>, you must insert required CSS, JS to your page:</p>
+
+        <pre><code data-lang="html">&lt;link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+&lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
+&lt;script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js">&lt;/script></code></pre>
+    </div>
+
+    <p>Form markup:</p>
+    <pre><code data-lang="html">&lt;form id="meetingForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Meeting time&lt;/label>
+        &lt;div class="col-lg-4">
+            &lt;div class="input-group date" id="datetimePicker">
+                &lt;input type="text" class="form-control" name="meeting" />
+                &lt;span class="input-group-addon">
+                    &lt;span class="glyphicon glyphicon-calendar">&lt;/span>
+                &lt;/span>
+            &lt;/div>
+            &lt;span class="help-block">MM/DD/YYYY h:m A&lt;/span>
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+
+    <p>Javascript:</p>
+    <pre><code data-lang="javascript">$(document).ready(function() {
+    $('#datetimePicker').datetimepicker();
+
+    $('#meetingForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            meeting: {
+                validators: {
+                    date: {
+                        format: 'MM/DD/YYYY h:m A',
+                        message: 'The value is not a valid date'
+                    }
+                }
+            }
+        }
+    });
+
+    $('#datetimePicker')
+        .on('dp.change dp.show', function(e) {
+            // Validate the date when user change it
+            $('#meetingForm')
+                // Get the bootstrapValidator instance
+                .data('bootstrapValidator')
+                // Mark the field as not validated, so it'll be re-validated when the user change date
+                .updateStatus('meeting', 'NOT_VALIDATED', null)
+                // Validate the field
+                .validateField('meeting');
+        });
+});</code></pre>
+</section>
+
+<section id="custom-format-example">
+    <h2>Live example 3: Custom format</h2>
+
+    <p>This example illustrates the ability of validating date in custom format by using the <a href="/validators/callback/">callback</a> validator and <a href="http://momentjs.com/">momentjs</a> to parse/validate.</p>
+
+    <form id="customFormatForm" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-lg-5 control-label">What's US independence day?</label>
+            <div class="col-lg-3">
+                <input type="text" class="form-control" name="independenceDay" />
+                <span class="help-block">MMM D (Sep 6, for example)</span>
+            </div>
+        </div>
+    </form>
+
+    <p>Form markup:</p>
+    <pre><code data-lang="html">&lt;!-- Include the momentjs library to use later -->
+&lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
+
+&lt;form id="customFormatForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-5 control-label">What's US independence day?&lt;/label>
+        &lt;div class="col-lg-3">
+            &lt;input type="text" class="form-control" name="independenceDay" />
+            &lt;span class="help-block">MMM D (Sep 6, for example)&lt;/span>
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+
+    <p>Javascript:</p>
+    <pre><code data-lang="javascript">$(document).ready(function() {
+    $('#customFormatForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            independenceDay: {
+                validators: {
+                    callback: {
+                        message: 'Wrong answer',
+                        callback: function(value, validator) {
+                            var m = new moment(value, 'MMMM D', true);
+                            // Check if the input value follows the MMMM D format
+                            if (!m.isValid()) {
+                                return false;
+                            }
+                            // US independence day is July 4
+                            return (m.months() == 6 && m.date() == 4);
+                        }
+                    }
+                }
+            }
+        }
+    });
+});</code></pre>
+</section>
+
+<a href="{{ site.repository.docs_edit }}/validators/date.html" class="btn btn-info">Improve this page</a>
+
+<script src="/vendor/momentjs/moment.min.js"></script>
+<script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#profileForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            birthday: {
+                validators: {
+                    date: {
+                        format: 'YYYY/DD/MM',
+                        message: 'The value is not a valid date'
+                    }
+                }
+            }
+        }
+    });
+
+    $('#datetimePicker').datetimepicker();
+
+    $('#meetingForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            meeting: {
+                validators: {
+                    date: {
+                        format: 'MM/DD/YYYY h:m A',
+                        message: 'The value is not a valid date'
+                    }
+                }
+            }
+        }
+    });
+
+    $('#datetimePicker').on('dp.change dp.show', function(e) {
+        $('#meetingForm')
+            .data('bootstrapValidator')
+            .updateStatus('meeting', 'NOT_VALIDATED', null)
+            .validateField('meeting');
+    });
+
+    $('#customFormatForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            independenceDay: {
+                validators: {
+                    callback: {
+                        message: 'Wrong answer',
+                        callback: function(value, validator) {
+                            var m = new moment(value, 'MMMM D', true);
+                            if (!m.isValid()) {
+                                return false;
+                            }
+                            return (m.months() == 6 && m.date() == 4);
+                        }
+                    }
+                }
+            }
+        }
+    });
+});
+</script>

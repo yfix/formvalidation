@@ -1,0 +1,48 @@
+---
+layout: validator
+title: creditCard validator
+permalink: /validators/credit-card/
+slug: validators
+validator: creditCard
+---
+
+<section>
+    <p>Validate a credit card number.</p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Option</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>message</code></td>
+                <td>String</td>
+                <td>The error message</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>From v0.3.2, in addition to using the <a href="http://en.wikipedia.org/wiki/Luhn">Luhn algorithm</a>, the validator also validate the IIN ranges and length of credit card number.</p>
+
+    <p>It supports validating the following cards:</p>
+
+    <ul>
+        <li>American Express</li>
+        <li>Diners Club</li>
+        <li>Diners Club (US)</li>
+        <li>Discover</li>
+        <li>JCB</li>
+        <li>Laser</li>
+        <li>Maestro</li>
+        <li>Mastercard</li>
+        <li>Solo</li>
+        <li>Unionpay</li>
+        <li>Visa</li>
+    </ul>
+</section>
+
+<a href="{{ site.repository.docs_edit }}/validators/creditCard.html" class="btn btn-info">Improve this page</a>

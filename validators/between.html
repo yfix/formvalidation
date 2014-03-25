@@ -1,0 +1,45 @@
+---
+layout: validator
+title: between validator
+permalink: /validators/between/
+slug: validators
+validator: between
+---
+
+<section>
+    <p>Check if the input value is between (strictly or not) two given numbers.</p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Option</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>message</code></td>
+                <td>String</td>
+                <td>The error message</td>
+            </tr>
+            <tr>
+                <td><code>min</code> (*)</td>
+                <td>Float</td>
+                <td>The lower value in the range</td>
+            </tr>
+            <tr>
+                <td><code>max</code> (*)</td>
+                <td>Float</td>
+                <td>The upper value in the range</td>
+            </tr>
+            <tr>
+                <td><code>inclusive</code></td>
+                <td>Boolean</td>
+                <td>Can be <code>true</code> or <code>false</code>. If <code>true</code>, the input value must be in the range strictly</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<a href="{{ site.repository.docs_edit }}/validators/between.html" class="btn btn-info">Improve this page</a>
