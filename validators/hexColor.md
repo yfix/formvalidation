@@ -3,9 +3,8 @@ layout: validator
 title: hexColor validator
 permalink: /validators/hex-color/
 slug: validators
+validator: hexColor
 ---
-
-# <a href="/validators/">Validators</a> / hexColor
 
 Validate a hex color
 

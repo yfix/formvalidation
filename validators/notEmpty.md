@@ -3,9 +3,8 @@ layout: validator
 title: notEmpty validator
 permalink: /validators/not-empty/
 slug: validators
+validator: notEmpty
 ---
-
-# <a href="/validators/">Validators</a> / notEmpty
 
 Check if the value is empty
 

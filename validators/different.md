@@ -3,9 +3,8 @@ layout: validator
 title: different validator
 permalink: /validators/different/
 slug: validators
+validator: different
 ---
-
-# <a href="/validators/">Validators</a> / different
 
 Return true if the input value is different with given field's value
 

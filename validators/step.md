@@ -3,9 +3,8 @@ layout: validator
 title: step validator
 permalink: /validators/step/
 slug: validators
+validator: step
 ---
-
-# <a href="/validators/">Validators</a> / step
 
 Check if the value is valid step one.
 

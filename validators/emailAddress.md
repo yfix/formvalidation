@@ -3,9 +3,8 @@ layout: validator
 title: emailAddress validator
 permalink: /validators/email-address/
 slug: validators
+validator: emailAddress
 ---
-
-# <a href="/validators/">Validators</a> / emailAddress
 
 Validate an email address
 

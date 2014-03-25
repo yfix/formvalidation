@@ -3,9 +3,8 @@ layout: validator
 title: choice validator
 permalink: /validators/choice/
 slug: validators
+validator: choice
 ---
-
-# <a href="/validators/">Validators</a> / choice
 
 Check if the number of checked boxes are less or more than a given number
 

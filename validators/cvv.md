@@ -3,9 +3,8 @@ layout: validator
 title: cvv validator
 permalink: /validators/cvv/
 slug: validators
+validator: cvv
 ---
-
-# <a href="/validators/">Validators</a> / cvv
 
 Validate a CVV number
 

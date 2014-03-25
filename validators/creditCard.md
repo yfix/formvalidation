@@ -3,9 +3,8 @@ layout: validator
 title: creditCard validator
 permalink: /validators/credit-card/
 slug: validators
+validator: creditCard
 ---
-
-# <a href="/validators/">Validators</a> / creditCard
 
 Validate a credit card number
 

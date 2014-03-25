@@ -3,9 +3,8 @@ layout: validator
 title: greaterThan validator
 permalink: /validators/greater-than/
 slug: validators
+validator: greaterThan
 ---
-
-# <a href="/validators/">Validators</a> / greaterThan
 
 Return true if the value is greater than or equals to given number
 

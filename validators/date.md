@@ -3,9 +3,8 @@ layout: validator
 title: date validator
 permalink: /validators/date/
 slug: validators
+validator: date
 ---
-
-# <a href="/validators/">Validators</a> / date
 
 Validate a date
 

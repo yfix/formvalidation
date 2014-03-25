@@ -3,9 +3,8 @@ layout: validator
 title: zipCode validator
 permalink: /validators/zip-code/
 slug: validators
+validator: zipCode
 ---
-
-# <a href="/validators/">Validators</a> / zipCode
 
 Validate a zip code by a country code
 

@@ -3,9 +3,8 @@ layout: validator
 title: lessThan validator
 permalink: /validators/less-than/
 slug: validators
+validator: lessThan
 ---
-
-# <a href="/validators/">Validators</a> / lessThan
 
 Return true if the value is less than or equals to given number
 

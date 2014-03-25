@@ -3,9 +3,8 @@ layout: validator
 title: isbn validator
 permalink: /validators/isbn/
 slug: validators
+validator: isbn
 ---
-
-# <a href="/validators/">Validators</a> / isbn
 
 Validate an ISBN string. Support both ISBN 10 and ISBN 13.
 

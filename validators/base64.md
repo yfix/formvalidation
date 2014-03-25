@@ -3,9 +3,8 @@ layout: validator
 title: base64 validator
 permalink: /validators/base64/
 slug: validators
+validator: base64
 ---
-
-# <a href="/validators/">Validators</a> / base64
 
 Validate a base64 encoded string
 

@@ -3,9 +3,8 @@ layout: validator
 title: phone validator
 permalink: /validators/phone/
 slug: validators
+validator: phone
 ---
-
-# <a href="/validators/">Validators</a> / phone
 
 Validate a phone number by a country code.
 

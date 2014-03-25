@@ -3,34 +3,34 @@ layout: default
 ---
 
 <div class="container">
+    <h1><a href="/validators/">Validators</a> {% if page.validator %}/ <a href="/validators/{{ page.validator }}/">{{ page.validator }}</a>{% endif %}</h1>
+
     <div class="row">
-        <div class="col-lg-9">
+        <div class="col-md-9">
             {{ content }}
         </div>
-        <div class="col-lg-3">
-            <aside>
-                <div class="panel panel-default">
-                    <div class="panel-heading">Validators</div>
-                    <div class="list-group">
-                        {% for validator in site.data.validators %}
 
-                        {% assign validatorUrl = validator.slug | prepend:'/validators/' | append:'/' %}
-                        {% if validatorUrl == page.permalink %}
-                            {% assign c = 'list-group-item active' %}
-                        {% else %}
-                            {% assign c = 'list-group-item' %}
-                        {% endif %}
+        <div class="col-md-3">
+            <div class="docs-sidebar">
+                <ul class="nav">
+                {% for validator in site.data.validators %}
+                    {% assign validatorUrl = validator.slug | prepend:'/validators/' | append:'/' %}
+                    {% if validatorUrl == page.permalink %}
+                        {% assign c = 'active' %}
+                    {% else %}
+                        {% assign c = '' %}
+                    {% endif %}
 
-                        <a class="{{ c }}" href="/validators/{{ validator.slug }}/">
-                            {{ validator.name }}
-                            {% if validator.version == site.current_version %}
+                    <li class="{{ c }}">
+                        <a href="/validators/{{ validator.slug }}/">{{ validator.name }}
+                        {% if validator.version == site.current_version %}
                             <label class="label label-success pull-right">new</label>
-                            {% endif %}
+                        {% endif %}
                         </a>
-                        {% endfor %}
-                    </div>
-                </div>
-            </aside>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
         </div>
     </div>
 </div>

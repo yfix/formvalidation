@@ -3,9 +3,8 @@ layout: validator
 title: digits validator
 permalink: /validators/digits/
 slug: validators
+validator: digits
 ---
-
-# <a href="/validators/">Validators</a> / digits
 
 Return true if the value contains only digits
 

@@ -3,9 +3,8 @@ layout: validator
 title: mac validator
 permalink: /validators/mac/
 slug: validators
+validator: mac
 ---
-
-# <a href="/validators/">Validators</a> / mac
 
 Validate a MAC address.
 

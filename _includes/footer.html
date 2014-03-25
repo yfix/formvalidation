@@ -47,7 +47,7 @@ $(document).ready(function() {
         $('body').scrollspy('refresh');
     });
     setTimeout(function() {
-        $('.docs-sidebar').affix();
+        $('.docs-sidebar[data-affix]').affix();
     }, 100);
 
     $('table').addClass('table table-striped');

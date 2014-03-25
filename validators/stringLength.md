@@ -3,9 +3,8 @@ layout: validator
 title: stringLength validator
 permalink: /validators/string-length/
 slug: validators
+validator: stringLength
 ---
-
-# <a href="/validators/">Validators</a> / stringLength
 
 Validate the length of a string
 

@@ -3,9 +3,8 @@ layout: validator
 title: between validator
 permalink: /validators/between/
 slug: validators
+validator: between
 ---
-
-# <a href="/validators/">Validators</a> / between
 
 Check if the input value is between (strictly or not) two given numbers
 

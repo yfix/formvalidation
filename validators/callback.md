@@ -3,9 +3,8 @@ layout: validator
 title: callback validator
 permalink: /validators/callback/
 slug: validators
+validator: callback
 ---
-
-# <a href="/validators/">Validators</a> / callback
 
 Return the validity from a callback method
 

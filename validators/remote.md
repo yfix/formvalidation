@@ -3,9 +3,8 @@ layout: validator
 title: remote validator
 permalink: /validators/remote/
 slug: validators
+validator: remote
 ---
-
-# <a href="/validators/">Validators</a> / remote
 
 Perform remote checking via Ajax request
 

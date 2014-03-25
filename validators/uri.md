@@ -3,9 +3,8 @@ layout: validator
 title: uri validator
 permalink: /validators/uri/
 slug: validators
+validator: uri
 ---
-
-# <a href="/validators/">Validators</a> / uri
 
 Validate an URL address
 

@@ -3,9 +3,8 @@ layout: validator
 title: ip validator
 permalink: /validators/ip/
 slug: validators
+validator: ip
 ---
-
-# <a href="/validators/">Validators</a> / ip
 
 Validate an IP address. Support both IPv4 and IPv6
 

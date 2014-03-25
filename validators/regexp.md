@@ -3,9 +3,8 @@ layout: validator
 title: regexp validator
 permalink: /validators/regexp/
 slug: validators
+validator: regexp
 ---
-
-# <a href="/validators/">Validators</a> / regexp
 
 Check if the value matches given Javascript regular expression
 

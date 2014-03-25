@@ -3,9 +3,8 @@ layout: validator
 title: identical validator
 permalink: /validators/identical/
 slug: validators
+validator: identical
 ---
-
-# <a href="/validators/">Validators</a> / identical
 
 Check if the value is the same as one of particular field
 
