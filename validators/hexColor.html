@@ -1,0 +1,179 @@
+---
+layout: validator
+title: hexColor validator
+permalink: /validators/hex-color/
+slug: validators
+validator: hexColor
+---
+
+<section>
+    <p>Validate a hex color.</p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Option</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>message</code></td>
+                <td>String</td>
+                <td>The error message</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="example">
+    <h2>Live example 1</h2>
+
+    <form id="colorForm" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Color</label>
+            <div class="col-lg-3">
+                <input type="text" class="form-control" name="color" />
+            </div>
+        </div>
+    </form>
+
+    <p>Form markup:</p>
+    <pre><code data-lang="html">&lt;form id="colorForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Color&lt;/label>
+        &lt;div class="col-lg-3">
+            &lt;input type="text" class="form-control" name="color" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+
+    <p>Javascript:</p>
+    <pre><code data-lang="javascript">$(document).ready(function() {
+    $('#colorForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            color: {
+                validators: {
+                    hexColor: {
+                        message: 'The color code is not valid'
+                    }
+                }
+            }
+        }
+    });
+});</code></pre>
+</section>
+
+<section id="color-picker-example">
+    <h2>Live example 2: Use with a color picker</h2>
+
+    <p>The following form uses a <a href="http://mjolnic.github.io/bootstrap-colorpicker/">Bootstrap Color Picker</a>:</p>
+
+    <p class="docs-note__info">Try to type an invalid color code and choose the picker. The picker automatically fixes or reset the color, and the error message is gone</p>
+
+    <link href="/vendor/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet" />
+    <form id="colorPickerForm" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Color</label>
+            <div class="col-lg-4">
+                <div class="input-group" id="colorPicker">
+                    <input type="text" class="form-control" name="color" />
+                    <span class="input-group-addon" style="color: #fff">Pick a color</span>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="docs-note__info">
+        <p>In order to use <a href="http://mjolnic.github.io/bootstrap-colorpicker/">Bootstrap Color Picker</a>, don't forget to add the required CSS, JS to your page:</p>
+
+        <pre><code data-lang="html">&lt;link href="/vendor/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet" />
+&lt;script src="/vendor/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js">&lt;/script></code></pre>
+    </div>
+
+    <p>Form markup:</p>
+    <pre><code data-lang="html">&lt;form id="colorPickerForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Color&lt;/label>
+        &lt;div class="col-lg-4">
+            &lt;div class="input-group" id="colorPicker">
+                &lt;input type="text" class="form-control" name="color" />
+                &lt;span class="input-group-addon" style="color: #fff">Pick a color&lt;/span>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+
+    <p>Javascript:</p>
+    <pre><code data-lang="javascript">$(document).ready(function() {
+    $('#colorPickerForm').bootstrapValidator({
+        fields: {
+            color: {
+                validators: {
+                    hexColor: {
+                        message: 'The color code is not valid'
+                    }
+                }
+            }
+        }
+    });
+
+    $('#colorPicker')
+        .colorpicker()
+        .on('showPicker changeColor', function(e) {
+            // Re-validate the color when user choose a color from the color picker
+            $('#colorPickerForm')
+                .data('bootstrapValidator')                     // Get BootstrapValidator instance
+                .updateStatus('color', 'NOT_VALIDATED', null)   // Set the color as not validated yet
+                .validateField('color');                        // and validate the color
+        });
+});</code></pre>
+</section>
+
+<a href="{{ site.repository.docs_edit }}/validators/hexColor.html" class="btn btn-info">Improve this page</a>
+
+<script src="/vendor/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#colorForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            color: {
+                validators: {
+                    hexColor: {
+                        message: 'The color code is not valid'
+                    }
+                }
+            }
+        }
+    });
+
+    $('#colorPickerForm').bootstrapValidator({
+        fields: {
+            color: {
+                validators: {
+                    hexColor: {
+                        message: 'The color code is not valid'
+                    }
+                }
+            }
+        }
+    });
+
+    $('#colorPicker')
+        .colorpicker()
+        .on('showPicker changeColor', function(e) {
+            $('#colorPickerForm').data('bootstrapValidator').updateStatus('color', 'NOT_VALIDATED', null).validateField('color');
+        });
+});
+</script>
