@@ -1,0 +1,98 @@
+---
+layout: page
+title: Developing
+permalink: /developing/
+slug: developing
+---
+
+<h1>Developing</h1>
+
+<p>This page helps you develop new validator as well as build the plugin.</p>
+
+<div class="row">
+    <div class="col-md-9">
+        <section id="writing-new-validator">
+            <h2>Writing new validator</h2>
+
+            <p>A validator has to follow the syntax:</p>
+
+            <pre><code data-lang="javascript">(function($) {
+    $.fn.bootstrapValidator.validators.&lt;validatorName> = {
+        /**
+         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {jQuery} $field The jQuery object represents the field element
+         * @param {Object} options The validator options
+         * @returns {boolean}
+         */
+        validate: function(validator, $field, options) {
+            // You can get the field value
+            // var value = $field.val();
+            //
+            // Perform validating
+            // ...
+            //
+            // return true if the field value is valid
+            // otherwise return false
+        }
+    };
+}(window.jQuery));</code></pre>
+
+            <p><code>&lt;validatorName></code> is the validator name. Since the validators are distinct by the names, <code>&lt;validatorName></code> has to be different with <a href="/validators/">built-in validators</a>.</p>
+
+            <p>To apply the validator to particular field:</p>
+
+            <pre><code data-lang="javascript">$(form).bootstrapValidator({
+    fields: {
+        &lt;fieldName>: {
+            // Replace &lt;validatorName> with the name of validator
+            // <&lt;alidatorOptions> will be passed as third parameter of the
+            // validate(validator, $field, options) method
+            &lt;validatorName>: &lt;validatorOptions>
+        }
+    }
+});</code></pre>
+
+            <p>For Rails, the input field is constructed from model name and field name. For example, user have email as field, when form helper render
+                view, the input field name will be <code>'user[email]'</code>. The syntax for these is somewhat different as shown below:</p>
+
+            <pre><code data-lang="javascript">$(form).bootstrapValidator({
+    fields: {
+        'user[email]': {
+            &lt;validatorName>: &lt;validatorOptions>
+        }
+    }
+});</code></pre>
+
+            <p>To see how built-in validators are developed, you can look at their sources located at the <a href="{{ site.repository.source }}/tree/master/src/js/validator">src/js/validator</a> directory.</p>
+        </section>
+
+        <section id="building">
+            <h2>Building</h2>
+
+            <p>BootstrapValidator uses <a href="http://gruntjs.com">grunt</a> to simplify building process.</p>
+
+            <p>From the BootstrapValidator root directory, install dependencies:</p>
+
+            <pre><code data-lang="bash">$ npm install</code></pre>
+
+            <p>Then, uses grunt to build:</p>
+            <pre><code data-lang="bash">$ grunt</code></pre>
+
+            <p>If you want grunt to generate scripts whenever the original scripts (located in <code>src</code>) change, use the following command:</p>
+            <pre><code data-lang="bash">$ grunt watch</code></pre>
+
+            <p>The generated scripts (including source and compressed versions) are placed inside the <code>dist</code> directory.</p>
+
+            <a href="{{ site.repository.docs_edit }}/developing.html" class="btn btn-info">Improve this page</a>
+        </section>
+    </div>
+
+    <div class="col-md-3">
+        <div class="docs-sidebar" data-spy="affix" data-offset-top="120">
+            <ul class="nav">
+                <li><a href="#writing-new-validator">Writing new validator</a></li>
+                <li><a href="#building">Building</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
