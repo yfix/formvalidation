@@ -1,0 +1,135 @@
+---
+layout: validator
+title: different validator
+permalink: /validators/different/
+slug: validators
+validator: different
+---
+
+<section>
+    <p>Return true if the input value is different with given field's value.</p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Option</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>message</code></td>
+                <td>String</td>
+                <td>The error message</td>
+            </tr>
+            <tr>
+                <td><code>field</code> (*)</td>
+                <td>String</td>
+                <td>The name of field that will be used to compare with current one</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<sectiom id="example">
+    <h2>Live example</h2>
+
+    <p>The registration form below doesn't allow the username and password to be the same:</p>
+
+    <p class="docs-note__info">Try to type same value in both the username and password fields</p>
+
+    <form id="registerForm" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Username</label>
+            <div class="col-lg-5">
+                <input type="text" class="form-control" name="username" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-3 control-label">Password</label>
+            <div class="col-lg-5">
+                <input type="password" class="form-control" name="password" />
+            </div>
+        </div>
+    </form>
+
+    <p>Form markup:</p>
+    <pre><code data-lang="html">&lt;form id="registerForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Username&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="username" />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Password&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="password" class="form-control" name="password" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+
+    <p>Javascript:</p>
+    <pre><code data-lang="javascript">$(document).ready(function() {
+    $('#registerForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            username: {
+                validators: {
+                    different: {
+                        field: 'password',
+                        message: 'The username and password cannot be the same as each other'
+                    }
+                }
+            },
+            password: {
+                validators: {
+                    different: {
+                        field: 'username',
+                        message: 'The password cannot be the same as username'
+                    }
+                }
+            }
+        }
+    });
+});</code></pre>
+</sectiom>
+
+<a href="{{ site.repository.docs_edit }}/validators/different.html" class="btn btn-info">Improve this page</a>
+
+<script>
+$(document).ready(function() {
+    $('#registerForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            username: {
+                validators: {
+                    different: {
+                        field: 'password',
+                        message: 'The username and password cannot be the same as each other'
+                    }
+                }
+            },
+            password: {
+                validators: {
+                    different: {
+                        field: 'username',
+                        message: 'The password cannot be the same as username'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
