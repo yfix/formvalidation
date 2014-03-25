@@ -15,4 +15,4 @@ message   | String | The error message
 baseValue | Float  | The base value, default to ```0```
 step      | Float  | The step, default to ```1```
 
-<a href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages/validators/step.md" class="btn btn-info">Improve this page</a>
+<a href="{{ site.repository.docs_edit }}/validators/step.md" class="btn btn-info">Improve this page</a>

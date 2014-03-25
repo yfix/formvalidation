@@ -32,4 +32,4 @@ remote: {
 }
 ```
 
-<a href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages/validators/remote.md" class="btn btn-info">Improve this page</a>
+<a href="{{ site.repository.docs_edit }}/validators/remote.md" class="btn btn-info">Improve this page</a>

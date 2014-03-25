@@ -29,4 +29,4 @@ It supports validating the following cards:
 * Unionpay
 * Visa
 
-<a href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages/validators/creditCard.md" class="btn btn-info">Improve this page</a>
+<a href="{{ site.repository.docs_edit }}/validators/creditCard.md" class="btn btn-info">Improve this page</a>

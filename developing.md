@@ -96,4 +96,4 @@ $ grunt watch
 
 The generated scripts (including source and compressed versions) are placed inside the ```dist``` directory.
 
-<a href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages/developing.md" class="btn btn-info">Improve this page</a>
+<a href="{{ site.repository.docs_edit }}/developing.md" class="btn btn-info">Improve this page</a>

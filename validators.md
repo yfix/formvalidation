@@ -28,4 +28,4 @@ BootstrapValidator comes with various built-in validators listed in the alphabet
     </tbody>
 </table>
 
-<a href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages/validators.md" class="btn btn-info">Improve this page</a>
+<a href="{{ site.repository.docs_edit }}/validators.md" class="btn btn-info">Improve this page</a>

@@ -131,4 +131,4 @@ $(form).bootstrapValidator(options);
 $(form).data('bootstrapValidator').resetForm();
 ```
 
-<a href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages/api.md" class="btn btn-info">Improve this page</a>
+<a href="{{ site.repository.docs_edit }}/api.md" class="btn btn-info">Improve this page</a>

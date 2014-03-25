@@ -228,7 +228,7 @@ slug: getting-started
 
         <p>Look at the <a href="/settings/">Settings</a> page to see the meaning of plugin options.</p>
 
-        <a href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages/getting-started.md" class="btn btn-info">Improve this page</a>
+        <a href="{{ site.repository.docs_edit }}/getting-started.html" class="btn btn-info">Improve this page</a>
     </div>
 
     <div class="col-md-3">
@@ -288,15 +288,6 @@ $(document).ready(function() {
             }
         }
     });
-
-    $('body').scrollspy({ target: '.docs-sidebar' });
-    $(window).on('load', function() {
-        $('body').scrollspy('refresh');
-    });
-
-    setTimeout(function() {
-        $('.docs-sidebar').affix();
-    }, 100);
 });
 </script>
 

@@ -1,0 +1,183 @@
+---
+layout: page
+title: Settings
+permalink: /settings/
+slug: settings
+---
+
+<h1>Settings</h1>
+
+<div class="row">
+    <div class="col-md-9">
+        <p>The BootstrapValidator plugin can be called with the full options as sample code below:</p>
+
+        <pre><code data-lang="javascript">$(formSelector).bootstrapValidator({
+    message: 'This value is not valid',
+    feedbackIcons: ...,
+    submitButtons: 'button[type="submit"]',
+    submitHandler: null,
+    live: 'enabled',
+    fields: ...
+});</code></pre>
+
+        <section id="message">
+            <h2>message</h2>
+            <p>The default error message for all fields. You can specify the error message for any fields</p>
+        </section>
+
+        <section id="feedback-icons">
+            <h2>feedbackIcons</h2>
+            <p>Indicate valid/invalid/validating icons based on the field validity.</p>
+            <p>This feature requires <a href="http://getbootstrap.com/css/#forms-control-validation">Bootstrap v3.1.0 or later</a>.
+            Since Bootstrap doesn't provide any methods to know its version, this option cannot be on/off automatically.
+            In other word, to use this feature you have to upgrade your Bootstrap to v3.1.0 or later.</p>
+
+            <p>It supports <a href="http://getbootstrap.com/components/#glyphicons">Glyphicons</a> (included in Bootstrap):</p>
+
+            <pre><code data-lang="javascript">feedbackIcons: {
+    valid: 'glyphicon glyphicon-ok',
+    invalid: 'glyphicon glyphicon-remove',
+    validating: 'glyphicon glyphicon-refresh'
+}</code></pre>
+
+            <p>and <a href="http://fontawesome.io/icons">FontAwesome</a> icons (don't forget to insert FontAwesome CSS in your <code>head</code>):</p>
+
+            <pre><code data-lang="javascript">feedbackIcons: {
+    valid: 'fa fa-check',
+    invalid: 'fa fa-times',
+    validating: 'fa fa-refresh'
+}</code></pre>
+
+            <p>By default, these icons are not set.</p>
+        </section>
+
+        <section id="submit-buttons">
+            <h2>submitButtons</h2>
+            <p>The submit buttons selector. These buttons will be disabled when the form input are invalid.</p>
+        </section>
+
+        <section id="submit-handler">
+            <h2>submitHandler</h2>
+            <p>Custom submit handler:</p>
+            <pre><code data-lang="javascript">submitHandler: function(validator, form, submitButton) {
+}</code></pre>
+
+            <table class="table-striped">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>validator</code></td>
+                        <td>BootstrapValidator</td>
+                        <td>The instance of BootstrapValidator</td>
+                    </tr>
+                    <tr>
+                        <td><code>form</code></td>
+                        <td>jQuery</td>
+                        <td>Representing the current form</td>
+                    </tr>
+                    <tr>
+                        <td><code>submitButton</code></td>
+                        <td>jQuery</td>
+                        <td>Representing the submit button which is clicked</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>This option is useful when you want to use Ajax to submit the form data:</p>
+
+            <pre><code data-lang="javascript">submitHandler: function(validator, form, submitButton) {
+    // Use Ajax to submit form data
+    $.post(form.attr('action'), form.serialize(), function(result) {
+        // ... process the result ...
+    }, 'json');
+}</code></pre>
+
+            <p>By default, <code>submitHandler</code> is <code>null</code>.</p>
+        </section>
+
+        <section id="live">
+            <h2>live</h2>
+
+            <p>Live validating mode. Can be one of 3 values:</p>
+
+            <ul>
+                <li><code>enabled</code>: The plugin validates fields as soon as they are changed</li>
+                <li><code>disabled</code>: Disable the live validating. The error messages are only shown after the form is submitted</li>
+                <li><code>submitted</code>: The live validating is enabled after the form is submitted</li>
+            </ul>
+        </section>
+
+        <section id="fields">
+            <h2>fields</h2>
+            <p>The fields which need to be validated.</p>
+
+            <pre><code data-lang="javascript">fields: {
+    ...
+    fieldName: {
+        message: '',
+        enabled: true,
+
+        // Array of validators
+        validators: {
+            ...
+            validatorName: validatorOptions
+            ...
+        }
+    }
+    ...
+}</code></pre>
+            <p>Replace the <code>fieldName</code> with the field name, which is the value of <code>name</code> attribute.</p>
+            <p>The validator options for each field include:</p>
+
+            <table class="table-striped">
+                <thead>
+                    <tr>
+                        <th>Option</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>message</code></td>
+                        <td>String</td>
+                        <td>The default error message for the field</td>
+                    </tr>
+                    <tr>
+                        <td><code>enabled</code></td>
+                        <td>Boolean</td>
+                        <td>Enable or disable the field validators. By default it is set as <code>true</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>validators</code></td>
+                        <td>Object</td>
+                        <td>Map the validator name <code>validatorName</code> with validator options <code>validatorOptions</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>The <code>validatorName</code> can be the name of the built-in validator which are described in the <a href="/validators/">Validators</a> page.</p>
+
+            <a href="{{ site.repository.docs_edit }}/settings.html" class="btn btn-info">Improve this page</a>
+        </section>
+    </div>
+
+    <div class="col-md-3">
+        <div class="docs-sidebar" data-spy="affix" data-offset-top="120">
+            <ul class="nav">
+                <li><a href="#message">message</a></li>
+                <li><a href="#feedback-icons">feedbackIcons</a></li>
+                <li><a href="#submit-buttons">submitButtons</a></li>
+                <li><a href="#submit-handler">submitHandler</a></li>
+                <li><a href="#live">live</a></li>
+                <li><a href="#fields">fields</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

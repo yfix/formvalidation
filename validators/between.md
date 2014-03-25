@@ -16,4 +16,4 @@ min (*)   | Float   | The lower value in the range
 max (*)   | Float   | The upper value in the range
 inclusive | Boolean | Can be ```true``` or ```false```. If ```true```, the input value must be in the range strictly
 
-<a href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages/validators/between.md" class="btn btn-info">Improve this page</a>
+<a href="{{ site.repository.docs_edit }}/validators/between.md" class="btn btn-info">Improve this page</a>

@@ -13,6 +13,9 @@ redcarpet:
 # Custom variables
 # not defined by Jekyll
 current_version:      0.3.2
-repo:                 https://github.com/nghuuphuoc/bootstrapvalidator
+repository:
+  source:             https://github.com/nghuuphuoc/bootstrapvalidator
+  docs:               https://github.com/nghuuphuoc/bootstrapvalidator/gh-pages
+  docs_edit:          https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages
 ga_code:              UA-44786951-2
 download:             https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.3.2.zip

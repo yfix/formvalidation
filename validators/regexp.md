@@ -14,4 +14,4 @@ Option     | Type   | Description
 message    | String | The error message
 regexp (*) | String | The Javascript regular expression
 
-<a href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages/validators/regexp.md" class="btn btn-info">Improve this page</a>
+<a href="{{ site.repository.docs_edit }}/validators/regexp.md" class="btn btn-info">Improve this page</a>

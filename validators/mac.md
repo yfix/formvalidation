@@ -13,4 +13,4 @@ Option  | Type   | Description
 --------|--------|------------
 message | String | The error message
 
-<a href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages/validators/mac.md" class="btn btn-info">Improve this page</a>
+<a href="{{ site.repository.docs_edit }}/validators/mac.md" class="btn btn-info">Improve this page</a>

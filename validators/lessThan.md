@@ -15,4 +15,4 @@ message   | String  | The error message
 value (*) | Float   | The number to make a comparison to
 inclusive | Boolean | Can be ```true``` or ```false```.<br />If ```true```, the input value must be less than the comparison one.<br />If ```false```, the input value must be less than or equal to the comparison one
 
-<a href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages/validators/lessThan.md" class="btn btn-info">Improve this page</a>
+<a href="{{ site.repository.docs_edit }}/validators/lessThan.md" class="btn btn-info">Improve this page</a>

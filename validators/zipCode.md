@@ -22,4 +22,4 @@ US <label class="label label-info">default</label> | United State
 DK   | Denmark
 SE   | Sweden
 
-<a href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages/validators/zipCode.md" class="btn btn-info">Improve this page</a>
+<a href="{{ site.repository.docs_edit }}/validators/zipCode.md" class="btn btn-info">Improve this page</a>
