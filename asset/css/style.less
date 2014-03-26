@@ -10,6 +10,7 @@ iframe {
 }
 body {
   margin-bottom: @footer-height;
+  border-top: 2px solid #26C281;
 }
 footer {
   position: absolute;
@@ -23,9 +24,6 @@ footer {
   }
 }
 
-header {
-  padding-top: 10px;
-}
 aside {
   margin-top: 50px;
 }
@@ -38,32 +36,64 @@ pre {
   font-family: 'Source Sans Pro', sans-serif;
 }
 */
-.intro {
-  /*border-bottom: 1px solid #c0c0c0;*/
-  padding-top: 60px;
-  padding-bottom: 60px;
-  text-align: center;
 
-  h1 {
-    font-size: 45px;
+.demo {
+  padding-bottom: 30px;
+  .tab-pane {
+    padding-top: 30px;
   }
 }
-.features {
+
+.docs-header {
+  background-color: #efeae1;
+
+  li {
+    padding: 0 15px;
+  }
+  li a {
+    color: #333;
+    display: block;
+    padding: 10px 0px;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  li.active a {
+    font-weight: bold;
+  }
+}
+.docs-header__logo {
+  font-size: 50px;
+  margin: 40px 0;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+/* Intro */
+.docs-intro {
+  margin: 40px 0;
+  text-align: center;
+}
+
+/* Features */
+.docs-features {
   text-align: center;
   .col-lg-4 {
     padding-bottom: 30px;
   }
   i.fa {
-    font-size: 6em;
+    color: #66CC99;
+    font-size: 3em;
   }
 }
-.content {
+
+/* Content */
+.docs-content {
   padding-bottom: 60px;
-}
-.demo {
-  padding-bottom: 30px;
-  .tab-pane {
-    padding-top: 30px;
+  h1 {
+    border-bottom: 1px solid #86E2D5;
+    padding-bottom: 15px;
   }
 }
 
@@ -80,10 +110,11 @@ pre {
   padding: 10px;
 }
 
-/** Sidebar */
+/* Sidebar */
 .docs-sidebar {
   border: 1px solid #ddd;
   border-radius: 4px;
+  margin-top: 20px;
   .nav > .active > a, .nav > .active:hover > a, .nav > .active:focus > a {
     font-weight: bold;
     background-color: transparent;
