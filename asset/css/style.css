@@ -34,6 +34,7 @@ pre {
 */
 .intro {
   /*border-bottom: 1px solid #c0c0c0;*/
+
   padding-top: 60px;
   padding-bottom: 60px;
   text-align: center;
@@ -58,6 +59,12 @@ pre {
 }
 .demo .tab-pane {
   padding-top: 30px;
+}
+/* Sample code */
+.docs-code__note {
+  border: 1px solid yellow;
+  border-radius: 4px;
+  padding: 2px;
 }
 /** Sidebar */
 .docs-sidebar {

@@ -120,8 +120,10 @@ slug: settings
             <pre><code data-lang="javascript">fields: {
     ...
     fieldName: {
-        message: '',
         enabled: true,
+        message: 'This value is not valid',
+        container: null,
+        selector: null,
 
         // Array of validators
         validators: {
@@ -132,7 +134,7 @@ slug: settings
     }
     ...
 }</code></pre>
-            <p>Replace the <code>fieldName</code> with the field name, which is the value of <code>name</code> attribute.</p>
+            <p>Replace the <code>fieldName</code> with the field name, which is the value of <code>name</code> attribute. If the field cannot be defined by the <code>name</code> attribute, you can use the <code>selector</code> option described below.</p>
             <p>The validator options for each field include:</p>
 
             <table class="table table-striped">
@@ -140,29 +142,209 @@ slug: settings
                     <tr>
                         <th>Option</th>
                         <th>Type</th>
+                        <th>Default</th>
                         <th>Description</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
+                        <td><code>enabled</code></td>
+                        <td>Boolean</td>
+                        <td><code>true</code></td>
+                        <td>Enable or disable the field validators</td>
+                    </tr>
+                    <tr>
                         <td><code>message</code></td>
                         <td>String</td>
+                        <td><code>This value is not valid</code></td>
                         <td>The default error message for the field</td>
                     </tr>
                     <tr>
-                        <td><code>enabled</code></td>
-                        <td>Boolean</td>
-                        <td>Enable or disable the field validators. By default it is set as <code>true</code></td>
+                        <td><code>container</code></td>
+                        <td>String</td>
+                        <td><code>null</code></td>
+                        <td>The CSS selector to indicate the element showing the error messages. Take a look at <a href="#container-example">container example</a> below.</td>
+                    </tr>
+                    <tr>
+                        <td><code>selector</code></td>
+                        <td>String</td>
+                        <td><code>null</code></td>
+                        <td>The CSS selector to indicate the field. It is used in case that it's not possible to use the <code>name</code> attribute for the field. Take a look at <a href="#selector-example">selector example</a> below.</td>
                     </tr>
                     <tr>
                         <td><code>validators</code></td>
                         <td>Object</td>
+                        <td>n/a</td>
                         <td>Map the validator name <code>validatorName</code> with validator options <code>validatorOptions</code></td>
                     </tr>
                 </tbody>
             </table>
 
             <p>The <code>validatorName</code> can be the name of the built-in validator which are described in the <a href="/validators/">Validators</a> page.</p>
+
+            <section id="container-example">
+                <h3>container example</h3>
+
+                <p>The following form illustrates an usage of the <code>container</code> option. The error messages are shown in the element defined by a CSS selector.</p>
+
+                <form id="containerForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Full name</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" name="firstName" placeholder="First name" />
+                            <span class="help-block" id="firstNameMessage"></span>
+                        </div>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" name="lastName" placeholder="Last name" />
+                            <span class="help-block lastNameMessage"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Username</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" name="username" />
+                        </div>
+                    </div>
+                </form>
+
+                <p>Form markup:</p>
+                <pre><code data-lang="html">
+&lt;form id="containerForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Full name&lt;/label>
+        &lt;div class="col-lg-4">
+            &lt;input type="text" class="form-control" name="firstName" placeholder="First name" />
+            <span class="docs-code__note">&lt;span class="help-block" id="firstNameMessage">&lt;/span></span>
+        &lt;/div>
+        &lt;div class="col-lg-4">
+            &lt;input type="text" class="form-control" name="lastName" placeholder="Last name" />
+            <span class="docs-code__note">&lt;span class="help-block lastNameMessage">&lt;/span></span>
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Username&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="username" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+
+                <p>Javascript:</p>
+                <pre><code data-lang="javascript">
+$('#containerForm').bootstrapValidator({
+    fields: {
+        firstName: {
+            <span class="docs-code__note">container: '#firstNameMessage'</span>,
+            validators: {
+                ...
+            }
+        },
+        lastName: {
+            <span class="docs-code__note">container: '.lastNameMessage'</span>,
+            validators: {
+                ...
+            }
+        },
+        username: {
+            validators: {
+                ...
+            }
+        }
+    }
+});</code></pre>
+            </section>
+
+            <section id="selector-example">
+                <h3>selector example</h3>
+
+                <p>Instead of using the <code>name</code> attribute, the following form uses the <code>selector</code> option to define the fields:</p>
+
+                <form id="paymentForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Credit card number</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" id="ccNumber" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Expiration</label>
+                        <div class="col-lg-2">
+                            <input type="text" class="form-control" placeholder="Month" data-stripe="exp-month" />
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="text" class="form-control" placeholder="Year" data-stripe="exp-year" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">CVV</label>
+                        <div class="col-lg-2">
+                            <input type="text" class="form-control cvvNumber" />
+                        </div>
+                    </div>
+                </form>
+
+                <p>Form markup:</p>
+                <pre><code data-lang="html">&lt;form id="paymentForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Credit card number&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" <span class="docs-code__note">id="ccNumber"</span> />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Expiration&lt;/label>
+        &lt;div class="col-lg-2">
+            &lt;input type="text" class="form-control" placeholder="Month" <span class="docs-code__note">data-stripe="exp-month"</span> />
+        &lt;/div>
+        &lt;div class="col-lg-2">
+            &lt;input type="text" class="form-control" placeholder="Year" <span class="docs-code__note">data-stripe="exp-year"</span> />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">CVV&lt;/label>
+        &lt;div class="col-lg-2">
+            &lt;input type="text" class="form-control <span class="docs-code__note">cvvNumber</span>" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+
+                <p>Javascript:</p>
+                <pre><code data-lang="javascript">$('#paymentForm').bootstrapValidator({
+    fields: {
+        ccNumber: {
+            <span class="docs-code__note">selector: '#ccNumber'</span>,
+            validators: {
+                ...
+            }
+        },
+        expMonth: {
+            <span class="docs-code__note">selector: '[data-stripe="exp-month"]'</span>,
+            validators: {
+                ...
+            }
+        },
+        expYear: {
+            <span class="docs-code__note">selector: '[data-stripe="exp-year"]'</span>,
+            validators: {
+                ...
+            }
+        },
+        cvvNumber: {
+            <span class="docs-code__note">selector: '.cvvNumber'</span>,
+            validators: {
+                ...
+            }
+        }
+    }
+});</code></pre>
+                <p>As you see, the field can be defined by a ID (<code>#ccNumber</code>), class (<code>.cvvNumber</code>) or attribute (<code>[data-stripe="exp-month"]</code>) selector.</p>
+            </section>
 
             <a href="{{ site.repository.docs_edit }}/settings.html" class="btn btn-info">Improve this page</a>
         </section>
@@ -176,8 +358,129 @@ slug: settings
                 <li><a href="#submit-buttons">submitButtons</a></li>
                 <li><a href="#submit-handler">submitHandler</a></li>
                 <li><a href="#live">live</a></li>
-                <li><a href="#fields">fields</a></li>
+                <li>
+                    <a href="#fields">fields</a>
+                    <ul class="nav">
+                        <li><a href="#container-example">container example</a></li>
+                        <li><a href="#selector-example">selector example</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
 </div>
+
+<script>
+$(document).ready(function() {
+    $('#containerForm').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            firstName: {
+                container: '#firstNameMessage',
+                validators: {
+                    notEmpty: {
+                        message: 'The first name is required and cannot be empty'
+                    }
+                }
+            },
+            lastName: {
+                container: '.lastNameMessage',
+                validators: {
+                    notEmpty: {
+                        message: 'The last name is required and cannot be empty'
+                    }
+                }
+            },
+            username: {
+                message: 'The username is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The username is required and cannot be empty'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 30,
+                        message: 'The username must be more than 6 and less than 30 characters long'
+                    }
+                }
+            }
+        }
+    });
+
+    $('#paymentForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            ccNumber: {
+                selector: '#ccNumber',
+                validators: {
+                    notEmpty: {
+                        message: 'The credit card number is required'
+                    },
+                    creditCard: {
+                        message: 'The credit card number is not valid'
+                    }
+                }
+            },
+            expMonth: {
+                selector: '[data-stripe="exp-month"]',
+                validators: {
+                    notEmpty: {
+                        message: 'The expiration month is required'
+                    },
+                    digits: {
+                        message: 'The expiration month can contain digits only'
+                    },
+                    callback: {
+                        message: 'Expired',
+                        callback: function(value, validator) {
+                            value = parseInt(value, 10);
+                            var currentMonth = new Date().getMonth() + 1;
+                            return (value <= 12 && value >= currentMonth);
+                        }
+                    }
+                }
+            },
+            expYear: {
+                selector: '[data-stripe="exp-year"]',
+                validators: {
+                    notEmpty: {
+                        message: 'The expiration year is required'
+                    },
+                    digits: {
+                        message: 'The expiration year can contain digits only'
+                    },
+                    callback: {
+                        message: 'Expired',
+                        callback: function(value, validator) {
+                            value = parseInt(value, 10);
+                            var currentYear = new Date().getFullYear();
+                            return (value >= currentYear && value <= currentYear + 100);
+                        }
+                    }
+                }
+            },
+            cvvNumber: {
+                selector: '.cvvNumber',
+                validators: {
+                    notEmpty: {
+                        message: 'The CVV number is required'
+                    },
+                    cvv: {
+                        message: 'The value is not a valid CVV',
+                        creditCardField: 'ccNumber'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
