@@ -45,7 +45,7 @@ slug: developing
     fields: {
         &lt;fieldName>: {
             // Replace &lt;validatorName> with the name of validator
-            // <&lt;alidatorOptions> will be passed as third parameter of the
+            // &lt;validatorOptions> will be passed as third parameter of the
             // validate(validator, $field, options) method
             &lt;validatorName>: &lt;validatorOptions>
         }
@@ -63,7 +63,7 @@ slug: developing
     }
 });</code></pre>
 
-            <p>To see how built-in validators are developed, you can look at their sources located at the <a href="{{ site.repository.source }}/tree/master/src/js/validator">src/js/validator</a> directory.</p>
+            <p class="docs-note__info">To see how built-in validators are developed, you can look at their sources located at the <a href="{{ site.repository.source }}/tree/master/src/js/validator">src/js/validator</a> directory.</p>
         </section>
 
         <section id="building">
@@ -82,9 +82,22 @@ slug: developing
             <pre><code data-lang="bash">$ grunt watch</code></pre>
 
             <p>The generated scripts (including source and compressed versions) are placed inside the <code>dist</code> directory.</p>
-
-            <a href="{{ site.repository.docs_edit }}/developing.html" class="btn btn-info">Improve this page</a>
         </section>
+
+        <section id="contributing">
+            <h2>Contributing</h2>
+
+            <p>If you develop new validator which might be useful for other one, please contribute it to the project.</p>
+            <p>It can be done via 3 steps:</p>
+            <ol>
+                <li><a href="{{ site.repository.source }}/fork">Fork</a> the project</li>
+                <li>Develop new validator, suggest new feature or fix a bug</li>
+                <li>Pull a new request</li>
+            </ol>
+            <p>All pull requests are welcome <i class="fa fa-heart"></i>.</p>
+        </section>
+
+        <a href="{{ site.repository.docs_edit }}/developing.html" class="btn btn-info">Improve this page</a>
     </div>
 
     <div class="col-md-3">
@@ -92,6 +105,7 @@ slug: developing
             <ul class="nav">
                 <li><a href="#writing-new-validator">Writing new validator</a></li>
                 <li><a href="#building">Building</a></li>
+                <li><a href="#contributing">Contributing</a></li>
             </ul>
         </div>
     </div>

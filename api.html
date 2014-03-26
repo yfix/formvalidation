@@ -75,15 +75,38 @@ $(form).data('bootstrapValidator').validate();</code></pre>
 
             <p>The following example describes how to re-validate a field which uses with <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Boostrap Datetime Picker</a>:</p>
 
-            <p>The form markup:</p>
-            <pre><code data-lang="html">&lt;form id="defaultForm" method="post" class="form-horizontal">
+            <link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+            <style type="text/css">
+            .form-horizontal .has-feedback .input-group .form-control-feedback {
+                top: 0;
+                right: -30px;
+            }
+            </style>
+            <form id="datetimeForm" class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">DateTime Picker</label>
+                    <div class="col-lg-5">
+                        <div class="input-group date" id="datetimePicker">
+                            <input type="text" class="form-control" name="datetimePicker" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <p>Form markup:</p>
+            <pre><code data-lang="html">&lt;form id="datetimeForm" method="post" class="form-horizontal">
     ...
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">DateTime Picker&lt;/label>
         &lt;div class="col-lg-5">
             &lt;div class="input-group date" id="datetimePicker">
                 &lt;input type="text" class="form-control" name="datetimePicker" />
-                &lt;span class="input-group-addon">&lt;span class="glyphicon glyphicon-calendar">&lt;/span>&lt;/span>
+                &lt;span class="input-group-addon">
+                    &lt;span class="glyphicon glyphicon-calendar">&lt;/span>
+                &lt;/span>
             &lt;/div>
         &lt;/div>
     &lt;/div>
@@ -94,7 +117,7 @@ $(form).data('bootstrapValidator').validate();</code></pre>
             <pre><code data-lang="javascript">$(document).ready(function() {
     $('#datetimePicker').datetimepicker();
 
-    $('#defaultForm').bootstrapValidator({
+    $('#datetimeForm').bootstrapValidator({
         fields: {
             ...
             datetimePicker: {
@@ -113,7 +136,7 @@ $(form).data('bootstrapValidator').validate();</code></pre>
     $('#datetimePicker')
         .on('dp.change dp.show', function(e) {
             // Validate the date when user change it
-            $('#defaultForm')
+            $('#datetimeForm')
                 // Get the bootstrapValidator instance
                 .data('bootstrapValidator')
                 // Mark the field as not validated, so it'll be re-validated when the user change date
@@ -193,3 +216,40 @@ $(form).data('bootstrapValidator').resetForm();</code></pre>
         </div>
     </div>
 </div>
+
+<script src="/vendor/momentjs/moment.min.js"></script>
+<script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#datetimePicker').datetimepicker();
+
+    $('#datetimeForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            datetimePicker: {
+                validators: {
+                    notEmpty: {
+                        message: 'The date is required and cannot be empty'
+                    },
+                    date: {
+                        format: 'MM/DD/YYYY h:m A'
+                    }
+                }
+            }
+        }
+    });
+
+    $('#datetimePicker')
+        .on('dp.change dp.show', function(e) {
+            // Validate the date when user change it
+            $('#datetimeForm')
+                .data('bootstrapValidator')
+                .updateStatus('datetimePicker', 'NOT_VALIDATED', null)
+                .validateField('datetimePicker');
+        });
+});
+</script>
