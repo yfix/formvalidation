@@ -108,7 +108,7 @@ validator: date
     </form>
 
     <p>Form markup:</p>
-    <pre><code data-lang="html">&lt;form id="profileForm" class="form-horizontal">
+    <pre><code class="xml">&lt;form id="profileForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Birthday&lt;/label>
         &lt;div class="col-lg-3">
@@ -119,7 +119,7 @@ validator: date
 &lt;/form></code></pre>
 
     <p>Javascript:</p>
-    <pre><code data-lang="javascript">$(document).ready(function() {
+    <pre><code class="javascript">$(document).ready(function() {
     $('#profileForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
@@ -168,13 +168,13 @@ validator: date
     <div class="docs-note-info">
         <p>To use <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Bootstrap Datetime Picker</a>, you must insert required CSS, JS to your page:</p>
 
-        <pre><code data-lang="html">&lt;link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+        <pre><code class="xml">&lt;link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 &lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
 &lt;script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js">&lt;/script></code></pre>
     </div>
 
     <p>Form markup:</p>
-    <pre><code data-lang="html">&lt;form id="meetingForm" class="form-horizontal">
+    <pre><code class="xml">&lt;form id="meetingForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Meeting time&lt;/label>
         &lt;div class="col-lg-4">
@@ -190,7 +190,7 @@ validator: date
 &lt;/form></code></pre>
 
     <p>Javascript:</p>
-    <pre><code data-lang="javascript">$(document).ready(function() {
+    <pre><code class="javascript">$(document).ready(function() {
     $('#datetimePicker').datetimepicker();
 
     $('#meetingForm').bootstrapValidator({
@@ -241,7 +241,7 @@ validator: date
     </form>
 
     <p>Form markup:</p>
-    <pre><code data-lang="html">&lt;!-- Include the momentjs library to use later -->
+    <pre><code class="xml">&lt;!-- Include the momentjs library to use later -->
 &lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
 
 &lt;form id="customFormatForm" class="form-horizontal">
@@ -255,7 +255,7 @@ validator: date
 &lt;/form></code></pre>
 
     <p>Javascript:</p>
-    <pre><code data-lang="javascript">$(document).ready(function() {
+    <pre><code class="javascript">$(document).ready(function() {
     $('#customFormatForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',

@@ -13,7 +13,7 @@ slug: api
 
         <section>
             <p>After initializing the form with the plugin using <code>$(form).bootstrapValidator(options)</code>, you can retrieve the BootstrapValidator instance by</p>
-            <pre><code data-lang="javascript">var bootstrapValidator = $(form).data('bootstrapValidator');</code></pre>
+            <pre><code class="javascript">var bootstrapValidator = $(form).data('bootstrapValidator');</code></pre>
         </section>
 
         <section id="validate">
@@ -21,7 +21,7 @@ slug: api
 
             <p><code>validate()</code> &mdash; Validate form manually. It is useful when you want to validate form by clicking a button or a link instead of a submit buttons.</p>
 
-            <pre><code data-lang="javascript">$(form).bootstrapValidator(options).bootstrapValidator('validate');
+            <pre><code class="javascript">$(form).bootstrapValidator(options).bootstrapValidator('validate');
 
 // or
 $(form).bootstrapValidator(options);
@@ -97,7 +97,7 @@ $(form).data('bootstrapValidator').validate();</code></pre>
             </form>
 
             <p>Form markup:</p>
-            <pre><code data-lang="html">&lt;form id="datetimeForm" method="post" class="form-horizontal">
+            <pre><code class="xml">&lt;form id="datetimeForm" method="post" class="form-horizontal">
     ...
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">DateTime Picker&lt;/label>
@@ -114,7 +114,7 @@ $(form).data('bootstrapValidator').validate();</code></pre>
 &lt;/form></code></pre>
 
             <p>Javascript:</p>
-            <pre><code data-lang="javascript">$(document).ready(function() {
+            <pre><code class="javascript">$(document).ready(function() {
     $('#datetimePicker').datetimepicker();
 
     $('#datetimeForm').bootstrapValidator({
@@ -197,7 +197,7 @@ $(form).data('bootstrapValidator').validate();</code></pre>
                 </tbody>
             </table>
 
-            <pre><code data-lang="javascript">$(form).bootstrapValidator(options);
+            <pre><code class="javascript">$(form).bootstrapValidator(options);
 $(form).data('bootstrapValidator').resetForm();</code></pre>
         </section>
 

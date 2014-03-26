@@ -32,7 +32,7 @@ validator: callback
     </table>
 
     <p>The callback method must follow the format below:</p>
-    <pre><code data-lang="javascript">function(fieldValue, validator) {
+    <pre><code class="javascript">function(fieldValue, validator) {
     // fieldValue is the value of field
     // validator is instance of BootstrapValidator
 
@@ -57,7 +57,7 @@ validator: callback
 
     <p>Form markup:</p>
 
-    <pre><code data-lang="html">&lt;form id="captchaForm" class="form-horizontal">
+    <pre><code class="xml">&lt;form id="captchaForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label" id="captchaOperation">&lt;/label>
         &lt;div class="col-lg-2">
@@ -68,7 +68,7 @@ validator: callback
 
     <p>Javascript:</p>
 
-    <pre><code data-lang="javascript">$(document).ready(function() {
+    <pre><code class="javascript">$(document).ready(function() {
     // Return a random number between min and max
     function randomNumber(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);

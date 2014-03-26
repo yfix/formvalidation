@@ -16,7 +16,7 @@ slug: developing
 
             <p>A validator has to follow the syntax:</p>
 
-            <pre><code data-lang="javascript">(function($) {
+            <pre><code class="javascript">(function($) {
     $.fn.bootstrapValidator.validators.&lt;validatorName> = {
         /**
          * @param {BootstrapValidator} validator The validator plugin instance
@@ -41,7 +41,7 @@ slug: developing
 
             <p>To apply the validator to particular field:</p>
 
-            <pre><code data-lang="javascript">$(form).bootstrapValidator({
+            <pre><code class="javascript">$(form).bootstrapValidator({
     fields: {
         &lt;fieldName>: {
             // Replace &lt;validatorName> with the name of validator
@@ -55,7 +55,7 @@ slug: developing
             <p>For Rails, the input field is constructed from model name and field name. For example, user have email as field, when form helper render
                 view, the input field name will be <code>'user[email]'</code>. The syntax for these is somewhat different as shown below:</p>
 
-            <pre><code data-lang="javascript">$(form).bootstrapValidator({
+            <pre><code class="javascript">$(form).bootstrapValidator({
     fields: {
         'user[email]': {
             &lt;validatorName>: &lt;validatorOptions>
@@ -73,13 +73,13 @@ slug: developing
 
             <p>From the BootstrapValidator root directory, install dependencies:</p>
 
-            <pre><code data-lang="bash">$ npm install</code></pre>
+            <pre><code class="bash">$ npm install</code></pre>
 
             <p>Then, uses grunt to build:</p>
-            <pre><code data-lang="bash">$ grunt</code></pre>
+            <pre><code class="bash">$ grunt</code></pre>
 
             <p>If you want grunt to generate scripts whenever the original scripts (located in <code>src</code>) change, use the following command:</p>
-            <pre><code data-lang="bash">$ grunt watch</code></pre>
+            <pre><code class="bash">$ grunt watch</code></pre>
 
             <p>The generated scripts (including source and compressed versions) are placed inside the <code>dist</code> directory.</p>
         </section>

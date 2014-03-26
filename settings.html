@@ -11,7 +11,7 @@ slug: settings
     <div class="col-md-9">
         <p>The BootstrapValidator plugin can be called with the full options as sample code below:</p>
 
-        <pre><code data-lang="javascript">$(formSelector).bootstrapValidator({
+        <pre><code class="javascript">$(formSelector).bootstrapValidator({
     message: 'This value is not valid',
     feedbackIcons: ...,
     submitButtons: 'button[type="submit"]',
@@ -34,7 +34,7 @@ slug: settings
 
             <p>It supports <a href="http://getbootstrap.com/components/#glyphicons">Glyphicons</a> (included in Bootstrap):</p>
 
-            <pre><code data-lang="javascript">feedbackIcons: {
+            <pre><code class="javascript">feedbackIcons: {
     valid: 'glyphicon glyphicon-ok',
     invalid: 'glyphicon glyphicon-remove',
     validating: 'glyphicon glyphicon-refresh'
@@ -42,7 +42,7 @@ slug: settings
 
             <p>and <a href="http://fontawesome.io/icons">FontAwesome</a> icons (don't forget to insert FontAwesome CSS in your <code>head</code>):</p>
 
-            <pre><code data-lang="javascript">feedbackIcons: {
+            <pre><code class="javascript">feedbackIcons: {
     valid: 'fa fa-check',
     invalid: 'fa fa-times',
     validating: 'fa fa-refresh'
@@ -59,7 +59,7 @@ slug: settings
         <section id="submit-handler">
             <h2>submitHandler</h2>
             <p>Custom submit handler:</p>
-            <pre><code data-lang="javascript">submitHandler: function(validator, form, submitButton) {
+            <pre><code class="javascript">submitHandler: function(validator, form, submitButton) {
 }</code></pre>
 
             <table class="table table-striped">
@@ -91,7 +91,7 @@ slug: settings
 
             <p>This option is useful when you want to use Ajax to submit the form data:</p>
 
-            <pre><code data-lang="javascript">submitHandler: function(validator, form, submitButton) {
+            <pre><code class="javascript">submitHandler: function(validator, form, submitButton) {
     // Use Ajax to submit form data
     $.post(form.attr('action'), form.serialize(), function(result) {
         // ... process the result ...
@@ -117,7 +117,7 @@ slug: settings
             <h2>fields</h2>
             <p>The fields which need to be validated.</p>
 
-            <pre><code data-lang="javascript">fields: {
+            <pre><code class="javascript">fields: {
     ...
     fieldName: {
         enabled: true,
@@ -209,7 +209,7 @@ slug: settings
                 </form>
 
                 <p>Form markup:</p>
-                <pre><code data-lang="html">&lt;form id="containerForm" class="form-horizontal">
+                <pre><code class="xml">&lt;form id="containerForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Full name&lt;/label>
         &lt;div class="col-lg-4">
@@ -231,7 +231,7 @@ slug: settings
 &lt;/form></code></pre>
 
                 <p>Javascript:</p>
-                <pre><code data-lang="javascript">$('#containerForm').bootstrapValidator({
+                <pre><code class="javascript">$('#containerForm').bootstrapValidator({
     fields: {
         firstName: {
             <span class="docs-code__note">container: '#firstNameMessage'</span>,
@@ -286,7 +286,7 @@ slug: settings
                 </form>
 
                 <p>Form markup:</p>
-                <pre><code data-lang="html">&lt;form id="paymentForm" class="form-horizontal">
+                <pre><code class="xml">&lt;form id="paymentForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Credit card number&lt;/label>
         &lt;div class="col-lg-5">
@@ -313,7 +313,7 @@ slug: settings
 &lt;/form></code></pre>
 
                 <p>Javascript:</p>
-                <pre><code data-lang="javascript">$('#paymentForm').bootstrapValidator({
+                <pre><code class="javascript">$('#paymentForm').bootstrapValidator({
     fields: {
         ccNumber: {
             <span class="docs-code__note">selector: '#ccNumber'</span>,
