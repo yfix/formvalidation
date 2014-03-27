@@ -3,7 +3,7 @@
  *
  * A jQuery plugin to validate form fields. Use with Bootstrap 3
  *
- * @version     v0.3.2
+ * @version     v0.3.3
  * @author      https://twitter.com/nghuuphuoc
  * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
  * @license     MIT
@@ -184,7 +184,7 @@
             // Whenever the user change the field value, mark it as not validated yet
             var that  = this,
                 type  = fields.attr('type'),
-                event = ('radio' == type || 'checkbox' == type || 'SELECT' == fields[0].tagName) ? 'change' : 'keyup';
+                event = ('radio' == type || 'checkbox' == type || 'file' == type || 'SELECT' == fields[0].tagName) ? 'change' : 'keyup';
             fields.on(event + '.bootstrapValidator', function() {
                 that.updateStatus($field, that.STATUS_NOT_VALIDATED, null);
             });
@@ -229,7 +229,7 @@
                         var fields = that.getFieldElements(f);
                         if (fields) {
                             var type  = fields.attr('type'),
-                                event = ('radio' == type || 'checkbox' == type || 'SELECT' == fields[0].tagName) ? 'change' : 'keyup';
+                                event = ('radio' == type || 'checkbox' == type || 'file' == type || 'SELECT' == fields[0].tagName) ? 'change' : 'keyup';
 
                             fields.on(event + '.bootstrapValidator', function() {
                                 that.validateField(f);
@@ -275,6 +275,8 @@
 
             // Call the custom submission if enabled
             if (this.options.submitHandler && 'function' == typeof this.options.submitHandler) {
+                // Turn off the submit handler, so user can call form.submit() inside their submitHandler method
+                this.$form.off('submit.bootstrapValidator');
                 this.options.submitHandler.call(this, this, this.$form, this.$submitButton);
             } else {
                 // Submit form
@@ -378,7 +380,7 @@
         isValid: function() {
             var field, validatorName;
             for (field in this.results) {
-                if (!this.options.fields[field]['enabled']) {
+                if (this.options.fields[field] == null || !this.options.fields[field]['enabled']) {
                     continue;
                 }
 
