@@ -6,12 +6,78 @@ title: A jQuery plugin to validate form fields. Using with Bootstrap 3
 <!-- intro -->
 <section class="docs-intro">
     <div class="container">
-        <p class="lead">A jQuery plugin to validate form fields.<br/>Designed to use with Bootstrap 3</p>
-        <a class="btn btn-lg btn-success" href="{{ site.repository.source }}/archive/v{{site.current_version}}.zip">Download v{{ site.current_version }}</a>
+        <div class="row">
+            <div class="col-lg-5 col-lg-push-1">
+                <p class="lead">The best jQuery plugin to validate form fields.<br/>Designed to use with <a href="http://getbootstrap.com">Bootstrap 3</a>.</p>
+                <a class="btn btn-lg btn-success" href="{{ site.repository.source }}/archive/v{{site.current_version}}.zip">Download v{{ site.current_version }}</a>
+            </div>
+
+            <div class="col-lg-5 col-lg-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Try it</div>
+                    <div class="panel-body">
+                        <form id="demoForm" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Full name</label>
+                                <div class="col-lg-4">
+                                    <input type="text" class="form-control" name="firstName" placeholder="First name" />
+                                </div>
+                                <div class="col-lg-4">
+                                    <input type="text" class="form-control" name="lastName" placeholder="Last name" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Email address</label>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" name="email" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Programming Languages</label>
+                                <div class="col-lg-4">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" name="programs[]" value="net" /> .Net</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" name="programs[]" value="java" /> Java</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" name="programs[]" value="c" /> C/C++</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" name="programs[]" value="php" /> PHP</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" name="programs[]" value="perl" /> Perl</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" name="programs[]" value="ruby" /> Ruby</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" name="programs[]" value="python" /> Python</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" name="programs[]" value="javascript" /> Javascript</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-offset-3 col-lg-8">
+                                    <button type="submit" class="btn btn-primary">Say hello</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
-
-<hr/>
 
 <!-- features -->
 <section class="docs-features">
@@ -57,8 +123,6 @@ title: A jQuery plugin to validate form fields. Using with Bootstrap 3
     </div>
 </section>
 
-<hr/>
-
 <section>
     <div class="container">
         <div class="text-center"><h2>What's news?</h2></div>
@@ -76,3 +140,74 @@ title: A jQuery plugin to validate form fields. Using with Bootstrap 3
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="helloModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Hello {{ guest }}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <p>Thanks for giving BootstrapValidator a try!</p>
+                    <ul class="list-inline list-unstyled">
+                        <li><a href="{{ site.repository.source }}"><i class="fa fa-github"></i></a></li>
+                        <li><a href="http://twitter.com/nghuuphuoc"><i class="fa fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    $('#demoForm').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            firstName: {
+                validators: {
+                    notEmpty: {
+                        message: 'The first name is required and cannot be empty'
+                    }
+                }
+            },
+            lastName: {
+                validators: {
+                    notEmpty: {
+                        message: 'The last name is required and cannot be empty'
+                    }
+                }
+            },
+            email: {
+                validators: {
+                    emailAddress: {
+                        message: 'The input is not a valid email address'
+                    }
+                }
+            },
+            'programs[]': {
+                validators: {
+                    choice: {
+                        min: 2,
+                        max: 4,
+                        message: 'Please choose 2 - 4 programming languages you are good at'
+                    }
+                }
+            }
+        },
+        submitHandler: function(validator, form, submitButton) {
+            var fullName = [validator.getFieldElements('firstName').val(), validator.getFieldElements('lastName').val()].join(' ');
+            $('#helloModal')
+                .find('.modal-title').html('Hello ' + fullName).end()
+                .modal();
+        }
+    });
+});
+</script>

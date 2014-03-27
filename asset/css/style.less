@@ -1,5 +1,5 @@
 // Footer height
-@footer-height: 250px;
+@footer-height: 200px;
 
 html {
   position: relative;
@@ -20,7 +20,7 @@ footer {
   height: @footer-height;
 
   .container {
-    margin-top: 40px;
+    margin-top: 30px;
   }
 }
 
@@ -44,18 +44,6 @@ pre {
 }
 .alert-info {
   border-left-color: #3498db;
-}
-/*
-pre {
-  font-family: 'Source Sans Pro', sans-serif;
-}
-*/
-
-.demo {
-  padding-bottom: 30px;
-  .tab-pane {
-    padding-top: 30px;
-  }
 }
 
 .docs-header {
@@ -86,12 +74,17 @@ pre {
 
 /* Intro */
 .docs-intro {
-  margin: 40px 0;
-  text-align: center;
+  border-bottom: 1px solid #ddd;
+  padding: 30px 0 20px 0;
+  .panel-heading {
+    color: #fff;
+    background-color: #3FC380;
+  }
 }
 
 /* Features */
 .docs-features {
+  border-bottom: 1px solid #ddd;
   text-align: center;
   .col-lg-4 {
     padding-bottom: 30px;
@@ -104,7 +97,7 @@ pre {
 
 /* Content */
 .docs-content {
-  padding-bottom: 60px;
+  padding-bottom: 30px;
   h1 {
     border-bottom: 1px solid #86E2D5;
     padding-bottom: 15px;
