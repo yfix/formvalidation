@@ -31,6 +31,20 @@ aside {
 pre {
   padding: 0;
 }
+
+/* Override Bootstrap */
+.alert {
+  border: none;
+  border-left-width: 5px;
+  border-left-style: solid;
+  border-radius: 0;
+}
+.alert-warning {
+  border-left-color: #EF4836;
+}
+.alert-info {
+  border-left-color: #3498db;
+}
 /*
 pre {
   font-family: 'Source Sans Pro', sans-serif;
@@ -102,12 +116,6 @@ pre {
   border: 1px solid yellow;
   border-radius: 4px;
   padding: 2px;
-}
-
-/* Note */
-.docs-note__info {
-  border-left: 2px solid #3498db;
-  padding: 10px;
 }
 
 /* Sidebar */

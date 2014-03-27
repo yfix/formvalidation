@@ -29,13 +29,13 @@ slug: getting-started
     ├── css
     │   ├── bootstrapValidator.css
     │   └── bootstrapValidator.min.css
-    ├── js
-    ├── validator
-    │   ├── between.js
-    │   ├── callback.js
-    │   ├── choice.js
-    │   └── ...
-    └── bootstrapValidator.js</code></pre>
+    └── js
+        ├── validator
+        │   ├── base64.js
+        │   ├── between.js
+        │   ├── callback.js
+        │   └── ...
+        └── bootstrapValidator.js</code></pre>
 
             <p>The <code>src</code> directory consists of the original source files. <code>src/js/bootstrapValidator.js</code> is not compressed and doesn't include any validators.</p>
 
@@ -67,7 +67,14 @@ slug: getting-started
 &lt;script type="text/javascript" src="/path/to/src/js/validator/...validator...">&lt;/script></code></pre>
 
             <h3 id="writing-form">Writing form</h3>
-            <p>Since BootstrapValidator is designed to use with Bootstrap, your form must be structured using Bootstrap classes. The plugin supports all possible kind of Bootstrap form, including:</p>
+            <p>Since BootstrapValidator is designed to use with Bootstrap, your form must be structured using Bootstrap classes.</p>
+
+            <p class="alert alert-warning">
+                If your form is NOT structured by Bootstrap classes (the element containing field and associated label does NOT have <code>form-group</code> class), you will see the following error in the Console:<br/>
+                <code>Uncaught RangeError: Maximum call stack size exceeded</code>
+            </p>
+
+            <p>The plugin supports all possible kind of Bootstrap form, including:</p>
 
             <h4>Basic form</h4>
             <div class="node-info">Try to type in the form fields</div>
