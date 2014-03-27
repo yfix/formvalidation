@@ -7,7 +7,7 @@ title: A jQuery plugin to validate form fields. Using with Bootstrap 3
 <section class="docs-intro">
     <div class="container">
         <p class="lead">A jQuery plugin to validate form fields.<br/>Designed to use with Bootstrap 3</p>
-        <a class="btn btn-lg btn-success" href="{{ site.download }}">Download v{{ site.current_version }}</a>
+        <a class="btn btn-lg btn-success" href="{{ site.repository.source }}/archive/v{{site.current_version}}.zip">Download v{{ site.current_version }}</a>
     </div>
 </section>
 
@@ -66,16 +66,11 @@ title: A jQuery plugin to validate form fields. Using with Bootstrap 3
         <div class="row">
             <div class="col-lg-6 col-lg-offset-3">
                 <ul>
-                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/56">#56</a>: Add <code>selector</code> option for each field. The field can be defined by CSS validator instead of the <code>name</code> attribute</li>
-                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/107">#107</a>: Add <code>container</code> option for each field to indicate where the error messages are shown</li>
-                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/5">#5</a>: Add <a href="/validators/ip/">ip</a> validator, support both IPv4 and IPv6</li>
-                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/6">#6</a>: Add <a href="/validators/isbn/">isbn</a> validator, support both ISBN 10 and ISBN 13</li>
-                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/7">#7</a>: Add <a href="/validators/step/">step</a> validator</li>
-                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/95">#95</a>: Add <a href="/validators/mac/">mac</a> address validator</li>
-                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/96">#96</a>: Add <a href="/validators/base64/">base64</a> validator</li>
-                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/97">#97</a>: Add <a href="/validators/cvv/">cvv</a> number validator</li>
-                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/100">#100</a>: Add <a href="/validators/phone/">phone</a> number validator, support US phone number only</li>
-                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/112">#112</a>: <a href="/validators/credit-card/">creditCard</a> validator now also validates both IIN ranges and length</li>
+                    <li><a href="{{ site.repository.source }}/issues/50">#50</a> &mdash; Don't validate disabled element</li>
+                    <li><a href="{{ site.repository.source }}/issues/34">#34</a>, <a href="{{ site.repository.source }}/issues/105">#105</a> &mdash; Cannot call <code>form.submit()</code> inside <code>submitHandler</code></li>
+                    <li><a href="{{ site.repository.source }}/issues/77">#77</a>, <a href="{{ site.repository.source }}/issues/117">#117</a> &mdash; <a href="/validators/not-empty/">notEmpty</a> validator doesn't work on file input</li>
+                    <li><a href="{{ site.repository.source }}/pull/120">#120</a> &mdash; Handle case where a field is removed after the bootstrap validation, thanks to <a href="https://github.com/patmoore">@patmoore</a></li>
+                    <li><a href="{{ site.repository.source }}/pull/124">#124</a> &mdash; Fixed bootstrapValidator.min.css path, thanks to <a href="https://github.com/synox">@synox</a></li>
                 </ul>
             </div>
         </div>
