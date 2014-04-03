@@ -46,18 +46,20 @@ validator: callback
 
     <p>In the following form, user is asked to enter a correct answer of simple operation which is generated randomly:</p>
 
-    <form id="captchaForm" class="form-horizontal">
-        <div class="form-group">
-            <label class="col-lg-3 control-label" id="captchaOperation"></label>
-            <div class="col-lg-2">
-                <input type="text" class="form-control" name="captcha" />
-            </div>
+    <div class="docs-example">
+        <div class="docs-example__form">
+            <form id="captchaForm" class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" id="captchaOperation"></label>
+                    <div class="col-lg-2">
+                        <input type="text" class="form-control" name="captcha" />
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
 
-    <p>Form markup:</p>
-
-    <pre><code class="xml">&lt;form id="captchaForm" class="form-horizontal">
+        <div class="docs-example__code">
+            <pre><code class="xml">&lt;form id="captchaForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label" id="captchaOperation">&lt;/label>
         &lt;div class="col-lg-2">
@@ -66,9 +68,8 @@ validator: callback
     &lt;/div>
 &lt;/form></code></pre>
 
-    <p>Javascript:</p>
-
-    <pre><code class="javascript">$(document).ready(function() {
+            <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
     // Return a random number between min and max
     function randomNumber(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
@@ -100,7 +101,9 @@ validator: callback
         }
     });
 });
-</code></pre>
+&lt;/script></code></pre>
+        </div>
+    </div>
 </section>
 
 <a href="{{ site.repository.docs_edit }}/validators/callback.html" class="btn btn-info">Improve this page</a>

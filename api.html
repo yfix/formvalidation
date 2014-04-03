@@ -82,22 +82,26 @@ $(form).data('bootstrapValidator').validate();</code></pre>
                 right: -30px;
             }
             </style>
-            <form id="datetimeForm" class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">DateTime Picker</label>
-                    <div class="col-lg-5">
-                        <div class="input-group date" id="datetimePicker">
-                            <input type="text" class="form-control" name="datetimePicker" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </form>
 
-            <p>Form markup:</p>
-            <pre><code class="xml">&lt;form id="datetimeForm" method="post" class="form-horizontal">
+            <div class="docs-example">
+                <div class="docs-example__form">
+                    <form id="datetimeForm" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">DateTime Picker</label>
+                            <div class="col-lg-5">
+                                <div class="input-group date" id="datetimePicker">
+                                    <input type="text" class="form-control" name="datetimePicker" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="docs-example__code">
+                    <pre><code class="html">&lt;form id="datetimeForm" method="post" class="form-horizontal">
     ...
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">DateTime Picker&lt;/label>
@@ -113,8 +117,8 @@ $(form).data('bootstrapValidator').validate();</code></pre>
     ...
 &lt;/form></code></pre>
 
-            <p>Javascript:</p>
-            <pre><code class="javascript">$(document).ready(function() {
+                    <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
     $('#datetimePicker').datetimepicker();
 
     $('#datetimeForm').bootstrapValidator({
@@ -144,7 +148,10 @@ $(form).data('bootstrapValidator').validate();</code></pre>
                 // Validate the field
                 .validateField('datetimePicker');
         });
-});</code></pre>
+});
+&lt;/script></code></pre>
+                </div>
+            </div>
         </section>
 
         <section id="enable-field-validators">

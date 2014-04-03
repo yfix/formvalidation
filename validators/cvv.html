@@ -36,24 +36,27 @@ validator: cvv
     <p>The following form also validates the CVV number based on the credit card number.</p>
     <p>For testing purpose, you can copy and paste the fake credit card number from <a href="http://www.getcreditcardnumbers.com">http://www.getcreditcardnumbers.com</a>.</p>
 
-    <form id="paymentForm" class="form-horizontal">
-        <div class="form-group">
-            <label class="col-lg-3 control-label">Credit card number</label>
-            <div class="col-lg-5">
-                <input type="text" class="form-control" name="ccNumber" />
-            </div>
+    <div class="docs-example">
+        <div class="docs-example__form">
+            <form id="paymentForm" class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Credit card number</label>
+                    <div class="col-lg-5">
+                        <input type="text" class="form-control" name="ccNumber" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">CVV</label>
+                    <div class="col-lg-2">
+                        <input type="text" class="form-control" name="cvvNumber" />
+                    </div>
+                </div>
+            </form>
         </div>
 
-        <div class="form-group">
-            <label class="col-lg-3 control-label">CVV</label>
-            <div class="col-lg-2">
-                <input type="text" class="form-control" name="cvvNumber" />
-            </div>
-        </div>
-    </form>
-
-    <p>Form markup:</p>
-    <pre><code class="xml">&lt;form id="paymentForm" class="form-horizontal">
+        <div class="docs-example__code">
+            <pre><code class="xml">&lt;form id="paymentForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Credit card number&lt;/label>
         &lt;div class="col-lg-5">
@@ -69,8 +72,8 @@ validator: cvv
     &lt;/div>
 &lt;/form></code></pre>
 
-    <p>Javascript:</p>
-    <pre><code class="javascript">$(document).ready(function() {
+            <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
     $('#paymentForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
@@ -95,7 +98,10 @@ validator: cvv
             }
         }
     });
-});</code></pre>
+});
+&lt;/script></code></pre>
+        </div>
+    </div>
 </section>
 
 <a href="{{ site.repository.docs_edit }}/validators/cvv.html" class="btn btn-info">Improve this page</a>

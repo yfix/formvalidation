@@ -97,18 +97,21 @@ validator: date
 
     <p>The following form might be used in a profile setting page:</p>
 
-    <form id="profileForm" class="form-horizontal">
-        <div class="form-group">
-            <label class="col-lg-3 control-label">Birthday</label>
-            <div class="col-lg-3">
-                <input type="text" class="form-control" name="birthday" />
-                <span class="help-block">YYYY/MM/DD</span>
-            </div>
+    <div class="docs-example">
+        <div class="docs-example__form">
+            <form id="profileForm" class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Birthday</label>
+                    <div class="col-lg-3">
+                        <input type="text" class="form-control" name="birthday" />
+                        <span class="help-block">YYYY/MM/DD</span>
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
 
-    <p>Form markup:</p>
-    <pre><code class="xml">&lt;form id="profileForm" class="form-horizontal">
+        <div class="docs-example__code">
+            <pre><code class="xml">&lt;form id="profileForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Birthday&lt;/label>
         &lt;div class="col-lg-3">
@@ -118,8 +121,8 @@ validator: date
     &lt;/div>
 &lt;/form></code></pre>
 
-    <p>Javascript:</p>
-    <pre><code class="javascript">$(document).ready(function() {
+            <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
     $('#profileForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
@@ -137,7 +140,10 @@ validator: date
             }
         }
     });
-});</code></pre>
+});
+&lt;/script></code></pre>
+        </div>
+    </div>
 </section>
 
 <section id="date-picker-example">
@@ -152,29 +158,28 @@ validator: date
         right: -30px;
     }
     </style>
-    <form id="meetingForm" class="form-horizontal">
-        <div class="form-group">
-            <label class="col-lg-3 control-label">Meeting time</label>
-            <div class="col-lg-4">
-                <div class="input-group date" id="datetimePicker">
-                    <input type="text" class="form-control" name="meeting" />
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+
+    <div class="docs-example">
+        <div class="docs-example__form">
+            <form id="meetingForm" class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Meeting time</label>
+                    <div class="col-lg-4">
+                        <div class="input-group date" id="datetimePicker">
+                            <input type="text" class="form-control" name="meeting" />
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                        <span class="help-block">MM/DD/YYYY h:m A</span>
+                    </div>
                 </div>
-                <span class="help-block">MM/DD/YYYY h:m A</span>
-            </div>
+            </form>
         </div>
-    </form>
 
-    <div class="docs-note-info">
-        <p>To use <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Bootstrap Datetime Picker</a>, you must insert required CSS, JS to your page:</p>
+        <div class="docs-example__code">
+            <pre><code class="xml">&lt;!-- Required CSS -->
+&lt;link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 
-        <pre><code class="xml">&lt;link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-&lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
-&lt;script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js">&lt;/script></code></pre>
-    </div>
-
-    <p>Form markup:</p>
-    <pre><code class="xml">&lt;form id="meetingForm" class="form-horizontal">
+&lt;form id="meetingForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Meeting time&lt;/label>
         &lt;div class="col-lg-4">
@@ -189,8 +194,12 @@ validator: date
     &lt;/div>
 &lt;/form></code></pre>
 
-    <p>Javascript:</p>
-    <pre><code class="javascript">$(document).ready(function() {
+            <pre><code class="xml javascript">&lt;!-- Required JS -->
+&lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
+&lt;script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js">&lt;/script>
+
+&lt;script>
+$(document).ready(function() {
     $('#datetimePicker').datetimepicker();
 
     $('#meetingForm').bootstrapValidator({
@@ -222,7 +231,10 @@ validator: date
                 // Validate the field
                 .validateField('meeting');
         });
-});</code></pre>
+});
+&lt;/script></code></pre>
+        </div>
+    </div>
 </section>
 
 <section id="custom-format-example">
@@ -230,21 +242,21 @@ validator: date
 
     <p>This example illustrates the ability of validating date in custom format by using the <a href="/validators/callback/">callback</a> validator and <a href="http://momentjs.com/">momentjs</a> to parse/validate.</p>
 
-    <form id="customFormatForm" class="form-horizontal">
-        <div class="form-group">
-            <label class="col-lg-5 control-label">What's US independence day?</label>
-            <div class="col-lg-3">
-                <input type="text" class="form-control" name="independenceDay" />
-                <span class="help-block">MMM D (Sep 6, for example)</span>
-            </div>
+    <div class="docs-example">
+        <div class="docs-example__form">
+            <form id="customFormatForm" class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-lg-5 control-label">What's US independence day?</label>
+                    <div class="col-lg-3">
+                        <input type="text" class="form-control" name="independenceDay" />
+                        <span class="help-block">MMM D (Sep 6, for example)</span>
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
 
-    <p>Form markup:</p>
-    <pre><code class="xml">&lt;!-- Include the momentjs library to use later -->
-&lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
-
-&lt;form id="customFormatForm" class="form-horizontal">
+        <div class="docs-example__code">
+            <pre><code class="xml">&lt;form id="customFormatForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-5 control-label">What's US independence day?&lt;/label>
         &lt;div class="col-lg-3">
@@ -254,8 +266,11 @@ validator: date
     &lt;/div>
 &lt;/form></code></pre>
 
-    <p>Javascript:</p>
-    <pre><code class="javascript">$(document).ready(function() {
+            <pre><code class="xml javascript">&lt;!-- Include the momentjs library to use later -->
+&lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
+
+&lt;script>
+$(document).ready(function() {
     $('#customFormatForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
@@ -281,7 +296,10 @@ validator: date
             }
         }
     });
-});</code></pre>
+});
+&lt;/script></code></pre>
+        </div>
+    </div>
 </section>
 
 <a href="{{ site.repository.docs_edit }}/validators/date.html" class="btn btn-info">Improve this page</a>

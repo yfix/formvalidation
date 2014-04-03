@@ -30,17 +30,20 @@ validator: hexColor
 <section id="example">
     <h2>Live example 1</h2>
 
-    <form id="colorForm" class="form-horizontal">
-        <div class="form-group">
-            <label class="col-lg-3 control-label">Color</label>
-            <div class="col-lg-3">
-                <input type="text" class="form-control" name="color" />
-            </div>
+    <div class="docs-example">
+        <div class="docs-example__form">
+            <form id="colorForm" class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Color</label>
+                    <div class="col-lg-3">
+                        <input type="text" class="form-control" name="color" />
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
 
-    <p>Form markup:</p>
-    <pre><code class="xml">&lt;form id="colorForm" class="form-horizontal">
+        <div class="docs-example__code">
+            <pre><code class="xml">&lt;form id="colorForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Color&lt;/label>
         &lt;div class="col-lg-3">
@@ -49,8 +52,8 @@ validator: hexColor
     &lt;/div>
 &lt;/form></code></pre>
 
-    <p>Javascript:</p>
-    <pre><code class="javascript">$(document).ready(function() {
+            <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
     $('#colorForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
@@ -67,7 +70,10 @@ validator: hexColor
             }
         }
     });
-});</code></pre>
+});
+&lt;/script></code></pre>
+        </div>
+    </div>
 </section>
 
 <section id="color-picker-example">
@@ -78,25 +84,27 @@ validator: hexColor
     <p class="alert alert-info">Try to type an invalid color code and choose the picker. The picker automatically fixes or reset the color, and the error message is gone</p>
 
     <link href="/vendor/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet" />
-    <form id="colorPickerForm" class="form-horizontal">
-        <div class="form-group">
-            <label class="col-lg-3 control-label">Color</label>
-            <div class="col-lg-4">
-                <div class="input-group" id="colorPicker">
-                    <input type="text" class="form-control" name="color" />
-                    <span class="input-group-addon" style="color: #fff">Pick a color</span>
+
+    <div class="docs-example">
+        <div class="docs-example__form">
+            <form id="colorPickerForm" class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Color</label>
+                    <div class="col-lg-4">
+                        <div class="input-group" id="colorPicker">
+                            <input type="text" class="form-control" name="color" />
+                            <span class="input-group-addon" style="color: #fff">Pick a color</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
-    </form>
 
-    <p>In order to use <a href="http://mjolnic.github.io/bootstrap-colorpicker/">Bootstrap Color Picker</a>, don't forget to add the required CSS, JS to your page:</p>
+        <div class="docs-example__code">
+            <pre><code class="xml">&lt!-- Required CSS -->
+&lt;link href="/vendor/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet" />
 
-    <pre><code class="xml">&lt;link href="/vendor/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet" />
-&lt;script src="/vendor/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js">&lt;/script></code></pre>
-
-    <p>Form markup:</p>
-    <pre><code class="xml">&lt;form id="colorPickerForm" class="form-horizontal">
+&lt;form id="colorPickerForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Color&lt;/label>
         &lt;div class="col-lg-4">
@@ -108,8 +116,11 @@ validator: hexColor
     &lt;/div>
 &lt;/form></code></pre>
 
-    <p>Javascript:</p>
-    <pre><code class="javascript">$(document).ready(function() {
+    <pre><code class="xml javascript">&lt!-- Required JS -->
+&lt;script src="/vendor/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js">&lt;/script>
+
+&lt;script>
+$(document).ready(function() {
     $('#colorPickerForm').bootstrapValidator({
         fields: {
             color: {
@@ -131,7 +142,10 @@ validator: hexColor
                 .updateStatus('color', 'NOT_VALIDATED', null)   // Set the color as not validated yet
                 .validateField('color');                        // and validate the color
         });
-});</code></pre>
+});
+&lt;/script></code></pre>
+        </div>
+    </div>
 </section>
 
 <a href="{{ site.repository.docs_edit }}/validators/hexColor.html" class="btn btn-info">Improve this page</a>

@@ -79,18 +79,22 @@ slug: getting-started
             <h4>Basic form</h4>
             <p class="alert alert-info">Try to type in the form fields</p>
 
-            <form class="registerForm">
-                <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" class="form-control" name="username" />
+            <div class="docs-example">
+                <div class="docs-example__form">
+                    <form class="registerForm">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" class="form-control" name="username" />
+                        </div>
+                        <div class="form-group">
+                            <label>Email address</label>
+                            <input type="text" class="form-control" name="email" />
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label>Email address</label>
-                    <input type="text" class="form-control" name="email" />
-                </div>
-            </form>
 
-            <pre><code class="html">&lt;form>
+                <div class="docs-example__code">
+                    <pre><code class="html">&lt;form>
     &lt;div class="form-group">
         &lt;label>Username&lt;/label>
         &lt;input type="text" class="form-control" name="username" />
@@ -100,18 +104,24 @@ slug: getting-started
         &lt;input type="text" class="form-control" name="email" />
     &lt;/div>
 &lt;/form></code></pre>
+                </div>
+            </div>
 
             <h4>Inline form</h4>
-            <form class="form-inline registerForm" style="margin-bottom: 20px;">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="username" placeholder="Username" />
+            <div class="docs-example">
+                <div class="docs-example__form">
+                    <form class="form-inline registerForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="username" placeholder="Username" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="email" placeholder="Email address" />
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="email" placeholder="Email address" />
-                </div>
-            </form>
 
-            <pre><code class="xml">&lt;form class="form-inline">
+                <div class="docs-example__code">
+                    <pre><code class="xml">&lt;form class="form-inline">
     &lt;div class="form-group">
         &lt;input type="text" class="form-control" name="username" placeholder="Username" />
     &lt;/div>
@@ -119,24 +129,30 @@ slug: getting-started
         &lt;input type="text" class="form-control" name="email" placeholder="Email address" />
     &lt;/div>
 &lt;/form></code></pre>
+                </div>
+            </div>
         </section>
 
         <h4>Horizontal form</h4>
-        <form class="form-horizontal registerForm">
-            <div class="form-group">
-                <label class="col-lg-3 control-label">Username</label>
-                <div class="col-lg-6">
-                    <input type="text" class="form-control" name="username" />
-                </div>
+        <div class="docs-example">
+            <div class="docs-example__form">
+                <form class="form-horizontal registerForm">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Username</label>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" name="username" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Email address</label>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" name="email" />
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label class="col-lg-3 control-label">Email address</label>
-                <div class="col-lg-6">
-                    <input type="text" class="form-control" name="email" />
-                </div>
-            </div>
-        </form>
-        <pre><code class="xml">&lt;form class="form-horizontal">
+            <div class="docs-example__code">
+                <pre><code class="xml">&lt;form class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Username&lt;/label>
         &lt;div class="col-lg-9">
@@ -150,21 +166,27 @@ slug: getting-started
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
+            </div>
+        </div>
 
         <p>It also supports multiple fields on the same row:</p>
 
-        <form class="form-horizontal registerForm">
-            <div class="form-group">
-                <label class="col-lg-2 control-label">Account</label>
-                <div class="col-lg-4">
-                    <input type="text" class="form-control" name="username" placeholder="Username" />
-                </div>
-                <div class="col-lg-4">
-                    <input type="text" class="form-control" name="email" placeholder="Email address" />
-                </div>
+        <div class="docs-example">
+            <div class="docs-example__form">
+                <form class="form-horizontal registerForm">
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">Account</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" name="username" placeholder="Username" />
+                        </div>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" name="email" placeholder="Email address" />
+                        </div>
+                    </div>
+                </form>
             </div>
-        </form>
-        <pre><code class="xml">&lt;form class="form-horizontal">
+            <div class="docs-example__code">
+                <pre><code class="xml">&lt;form class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-2 control-label">Account&lt;/label>
         &lt;div class="col-lg-4">
@@ -175,6 +197,8 @@ slug: getting-started
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
+            </div>
+        </div>
 
         <h3 id="calling-plugin">Calling the plugin</h3>
 

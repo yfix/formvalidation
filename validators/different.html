@@ -39,24 +39,27 @@ validator: different
 
     <p class="alert alert-info">Try to type same value in both the username and password fields</p>
 
-    <form id="registerForm" class="form-horizontal">
-        <div class="form-group">
-            <label class="col-lg-3 control-label">Username</label>
-            <div class="col-lg-5">
-                <input type="text" class="form-control" name="username" />
-            </div>
+    <div class="docs-example">
+        <div class="docs-example__form">
+            <form id="registerForm" class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Username</label>
+                    <div class="col-lg-5">
+                        <input type="text" class="form-control" name="username" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Password</label>
+                    <div class="col-lg-5">
+                        <input type="password" class="form-control" name="password" />
+                    </div>
+                </div>
+            </form>
         </div>
 
-        <div class="form-group">
-            <label class="col-lg-3 control-label">Password</label>
-            <div class="col-lg-5">
-                <input type="password" class="form-control" name="password" />
-            </div>
-        </div>
-    </form>
-
-    <p>Form markup:</p>
-    <pre><code class="xml">&lt;form id="registerForm" class="form-horizontal">
+        <div class="docs-example__code">
+            <pre><code class="xml">&lt;form id="registerForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Username&lt;/label>
         &lt;div class="col-lg-5">
@@ -72,8 +75,8 @@ validator: different
     &lt;/div>
 &lt;/form></code></pre>
 
-    <p>Javascript:</p>
-    <pre><code class="javascript">$(document).ready(function() {
+            <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
     $('#registerForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
@@ -99,7 +102,10 @@ validator: different
             }
         }
     });
-});</code></pre>
+});
+&lt;/script></code></pre>
+        </div>
+    </div>
 </sectiom>
 
 <a href="{{ site.repository.docs_edit }}/validators/different.html" class="btn btn-info">Improve this page</a>

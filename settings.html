@@ -187,29 +187,32 @@ slug: settings
 
                 <p>The following form illustrates an usage of the <code>container</code> option. The error messages are shown in the element defined by a CSS selector.</p>
 
-                <form id="containerForm" class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">Full name</label>
-                        <div class="col-lg-4">
-                            <input type="text" class="form-control" name="firstName" placeholder="First name" />
-                            <span class="help-block" id="firstNameMessage"></span>
-                        </div>
-                        <div class="col-lg-4">
-                            <input type="text" class="form-control" name="lastName" placeholder="Last name" />
-                            <span class="help-block lastNameMessage"></span>
-                        </div>
+                <div class="docs-example">
+                    <div class="docs-example__form">
+                        <form id="containerForm" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Full name</label>
+                                <div class="col-lg-4">
+                                    <input type="text" class="form-control" name="firstName" placeholder="First name" />
+                                    <span class="help-block" id="firstNameMessage"></span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <input type="text" class="form-control" name="lastName" placeholder="Last name" />
+                                    <span class="help-block lastNameMessage"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Username</label>
+                                <div class="col-lg-5">
+                                    <input type="text" class="form-control" name="username" />
+                                </div>
+                            </div>
+                        </form>
                     </div>
 
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">Username</label>
-                        <div class="col-lg-5">
-                            <input type="text" class="form-control" name="username" />
-                        </div>
-                    </div>
-                </form>
-
-                <p>Form markup:</p>
-                <pre><code class="xml">&lt;form id="containerForm" class="form-horizontal">
+                    <div class="docs-example__code">
+                        <pre><code class="xml">&lt;form id="containerForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Full name&lt;/label>
         &lt;div class="col-lg-4">
@@ -229,29 +232,33 @@ slug: settings
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-
-                <p>Javascript:</p>
-                <pre><code class="javascript">$('#containerForm').bootstrapValidator({
-    fields: {
-        firstName: {
-            <span class="docs-code__note">container: '#firstNameMessage'</span>,
-            validators: {
-                ...
-            }
-        },
-        lastName: {
-            <span class="docs-code__note">container: '.lastNameMessage'</span>,
-            validators: {
-                ...
-            }
-        },
-        username: {
-            validators: {
-                ...
+                        <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#containerForm').bootstrapValidator({
+        fields: {
+            firstName: {
+                <span class="docs-code__note">container: '#firstNameMessage'</span>,
+                validators: {
+                    ...
+                }
+            },
+            lastName: {
+                <span class="docs-code__note">container: '.lastNameMessage'</span>,
+                validators: {
+                    ...
+                }
+            },
+            username: {
+                validators: {
+                    ...
+                }
             }
         }
-    }
-});</code></pre>
+    });
+});
+&lt;/script></code></pre>
+                    </div>
+                </div>
             </section>
 
             <section id="selector-example">
@@ -259,34 +266,37 @@ slug: settings
 
                 <p>Instead of using the <code>name</code> attribute, the following form uses the <code>selector</code> option to define the fields:</p>
 
-                <form id="paymentForm" class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">Credit card number</label>
-                        <div class="col-lg-5">
-                            <input type="text" class="form-control" id="ccNumber" />
-                        </div>
+                <div class="docs-example">
+                    <div class="docs-example__form">
+                        <form id="paymentForm" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Credit card number</label>
+                                <div class="col-lg-5">
+                                    <input type="text" class="form-control" id="ccNumber" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Expiration</label>
+                                <div class="col-lg-2">
+                                    <input type="text" class="form-control" placeholder="Month" data-stripe="exp-month" />
+                                </div>
+                                <div class="col-lg-2">
+                                    <input type="text" class="form-control" placeholder="Year" data-stripe="exp-year" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">CVV</label>
+                                <div class="col-lg-2">
+                                    <input type="text" class="form-control cvvNumber" />
+                                </div>
+                            </div>
+                        </form>
                     </div>
 
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">Expiration</label>
-                        <div class="col-lg-2">
-                            <input type="text" class="form-control" placeholder="Month" data-stripe="exp-month" />
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="text" class="form-control" placeholder="Year" data-stripe="exp-year" />
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">CVV</label>
-                        <div class="col-lg-2">
-                            <input type="text" class="form-control cvvNumber" />
-                        </div>
-                    </div>
-                </form>
-
-                <p>Form markup:</p>
-                <pre><code class="xml">&lt;form id="paymentForm" class="form-horizontal">
+                    <div class="docs-example__code">
+                        <pre><code class="xml">&lt;form id="paymentForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Credit card number&lt;/label>
         &lt;div class="col-lg-5">
@@ -312,35 +322,41 @@ slug: settings
     &lt;/div>
 &lt;/form></code></pre>
 
-                <p>Javascript:</p>
-                <pre><code class="javascript">$('#paymentForm').bootstrapValidator({
-    fields: {
-        ccNumber: {
-            <span class="docs-code__note">selector: '#ccNumber'</span>,
-            validators: {
-                ...
-            }
-        },
-        expMonth: {
-            <span class="docs-code__note">selector: '[data-stripe="exp-month"]'</span>,
-            validators: {
-                ...
-            }
-        },
-        expYear: {
-            <span class="docs-code__note">selector: '[data-stripe="exp-year"]'</span>,
-            validators: {
-                ...
-            }
-        },
-        cvvNumber: {
-            <span class="docs-code__note">selector: '.cvvNumber'</span>,
-            validators: {
-                ...
+                        <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#paymentForm').bootstrapValidator({
+        fields: {
+            ccNumber: {
+                <span class="docs-code__note">selector: '#ccNumber'</span>,
+                validators: {
+                    ...
+                }
+            },
+            expMonth: {
+                <span class="docs-code__note">selector: '[data-stripe="exp-month"]'</span>,
+                validators: {
+                    ...
+                }
+            },
+            expYear: {
+                <span class="docs-code__note">selector: '[data-stripe="exp-year"]'</span>,
+                validators: {
+                    ...
+                }
+            },
+            cvvNumber: {
+                <span class="docs-code__note">selector: '.cvvNumber'</span>,
+                validators: {
+                    ...
+                }
             }
         }
-    }
-});</code></pre>
+    });
+});
+&lt;/script></code></pre>
+                    </div>
+                </div>
+
                 <p>As you see, the field can be defined by a ID (<code>#ccNumber</code>), class (<code>.cvvNumber</code>) or attribute (<code>[data-stripe="exp-month"]</code>) selector.</p>
             </section>
 
