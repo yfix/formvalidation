@@ -53,10 +53,20 @@
   version: 0.1.0
   description: Return true if the value is greater than or equals to given number
 
+- name: hex
+  slug: hex
+  version: 0.4.0
+  description: Validate a hexadecimal number
+
 - name: hexColor
   slug: hex-color
   version: 0.1.0
   description: Validate a hex color
+
+- name: iban
+  slug: iban
+  version: 0.4.0
+  description: Validate an International Bank Account Number (IBAN)
 
 - name: identical
   slug: identical
@@ -73,6 +83,11 @@
   version: 0.3.2
   description: Validate an ISBN string. Support both ISBN 10 and ISBN 13
 
+- name: integer
+  slug: integer
+  version: 0.4.0
+  description: Validate an integer number
+
 - name: lessThan
   slug: less-than
   version: 0.1.0
@@ -87,6 +102,11 @@
   slug: not-empty
   version: 0.1.0
   description: Check if the value is empty
+
+- name: numeric
+  slug: numeric
+  version: 0.4.0
+  description: Check if the value is numeric
 
 - name: phone
   slug: phone
@@ -108,6 +128,11 @@
   version: 0.3.2
   description: Check if the value is valid step one
 
+- name: stringCase
+  slug: string-case
+  version: 0.4.0
+  description: Check if a string is a lower or upper case one
+
 - name: stringLength
   slug: string-length
   version: 0.1.0
@@ -117,6 +142,11 @@
   slug: uri
   version: 0.1.0
   description: Validate an URL address
+
+- name: uuid
+  slug: uuid
+  version: 0.4.0
+  description: Validate an UUID, support v3, v4, v5
 
 - name: zipCode
   slug: zip-code
