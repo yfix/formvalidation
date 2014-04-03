@@ -1,6 +1,6 @@
 ---
-layout: default
-title: A jQuery plugin to validate form fields. Using with Bootstrap 3
+layout: home
+title: The best jQuery plugin to validate form fields. Designed to use with Bootstrap 3
 ---
 
 <!-- intro -->
@@ -77,65 +77,137 @@ title: A jQuery plugin to validate form fields. Using with Bootstrap 3
             </div>
         </div>
     </div>
+
+    <div class="container">
+        <div class="text-center">
+            <ul class="list-inline">
+                <li><iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=nghuuphuoc&amp;repo=bootstrapvalidator&amp;type=watch&amp;count=true" width="100" height="20" title="Star on GitHub"></iframe></li>
+                <li><iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=nghuuphuoc&amp;repo=bootstrapvalidator&amp;type=fork&amp;count=true" width="102" height="20" title="Fork on GitHub"></iframe></li>
+                <li><a href="https://twitter.com/nghuuphuoc" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @nghuuphuoc</a></li>
+                <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ site.repository.source }}" data-count="horizontal" data-via="nghuuphuoc" data-related="nghuuphuoc:Creator of BootstrapValidator">Tweet</a></li>
+            </ul>
+        </div>
+    </div>
 </section>
 
 <!-- features -->
 <section class="docs-features">
     <div class="container">
-        <div class="text-center"><h2>Features</h2></div>
-
         <div class="row">
-            <div class="col-lg-4">
-                <i class="fa fa-code"></i>
-                <h3>Code</h3>
-                <p>The source code is written from scratch.<br/> Very solid and clean</p>
-            </div>
-            <div class="col-lg-4">
-                <i class="fa fa-flask"></i>
-                <h3>Validator</h3>
-                <p>25 built-in validators and counting!<br/>Easy to write new validator</p>
-            </div>
-            <div class="col-lg-4">
-                <i class="fa fa-thumbs-o-up"></i>
-                <h3>Friendly</h3>
-                <p>Show feedback icons<br/> based on field validity</p>
-            </div>
-        </div>
+            <div class="col-lg-offset-1 col-lg-push-1">
+                <div class="text-center"><h2>Features</h2></div>
 
-        <div class="row">
-            <div class="col-lg-4">
-                <i class="fa fa-refresh"></i>
-                <h3>Ajax</h3>
-                <p>Support Ajax<br/> in both validator and form submission</p>
-            </div>
-            <div class="col-lg-4">
-                <i class="fa fa-magic"></i>
-                <h3>Flexible</h3>
-                <p>Field validators can be<br/> enabled/disabled on the fly</p>
-            </div>
-            <div class="col-lg-4">
-                <i class="fa fa-puzzle-piece"></i>
-                <h3>Compatibility</h3>
-                <p>Play nice with other plugins<br/> such as <a href="http://eternicode.github.io/bootstrap-datepicker/">Date Picker</a>, <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Datetime Picker</a>,
-                <a href="http://ivaynberg.github.io/select2/">Select2</a>, <a href="http://wbotelhos.com/raty">Raty</a>, etc.</p>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <i class="fa fa-code"></i>
+                        <h3>Code</h3>
+                        <ul>
+                            <li>Written from scratch</li>
+                            <li>Very solid and clean</li>
+                            <li>The core plugin and validators code are separated</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <i class="fa">B</i>
+                        <h3>Bootstrap</h3>
+                        <ul>
+                            <li>Designed to use with Bootstrap 3</li>
+                            <li>Support almost <a href="http://getbootstrap.com/css/#forms">Bootstrap forms</a></li>
+                            <li>Support Bootstrap form <a href="http://getbootstrap.com/css/#forms-control-validation">validation states</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <i class="fa fa-html5"></i>
+                        <h3>HTML 5</h3>
+                        <ul>
+                            <li>Support setting the plugin, validator options via HTML 5 attributes prefixed with <code>data-bv-</code></li>
+                            <li>Support HTML 5 attributes such as <code>min</code>, <code>max</code>, <code>pattern</code>, <code>required</code></li>
+                            <li>Support HTML 5 input types such as <code>color</code>, <code>email</code>, <code>range</code> and <code>url</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <i class="fa fa-flask"></i>
+                        <h3>Validator</h3>
+                        <ul>
+                            <li><a href="/validators/">25 built-in validators</a> and counting!</li>
+                            <li>Easy to <a href="/developing/">write a new validator</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <i class="fa fa-thumbs-o-up"></i>
+                        <h3>Friendly</h3>
+                        <p>Show feedback icons based on field validity. Support <a href="http://getbootstrap.com/components/#glyphicons">Glyphicons</a> and <a href="http://fontawesome.io/icons">FontAwesome</a> icons.</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <i class="fa fa-refresh"></i>
+                        <h3>Ajax</h3>
+                        <ul>
+                            <li>Support validating via Ajax</li>
+                            <li>Support using Ajax for form submission</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <i class="fa fa-magic"></i>
+                        <h3>Flexible</h3>
+                        <ul>
+                            <li>Support multiple elements with the same name</li>
+                            <li>Field validators can be enabled/disabled on the fly</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <i class="fa fa-puzzle-piece"></i>
+                        <h3>Compatibility</h3>
+                        <p>Play nice with other plugins such as <a href="http://mjolnic.github.io/bootstrap-colorpicker/">Color Picker</a>, <a href="http://eternicode.github.io/bootstrap-datepicker/">Date Picker</a>, <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Datetime Picker</a>,
+                        <a href="http://ivaynberg.github.io/select2/">Select2</a>, <a href="http://wbotelhos.com/raty">Raty</a>, etc.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<section>
+<section class="docs-changelog">
     <div class="container">
         <div class="text-center"><h2>What's news?</h2></div>
 
         <div class="row">
-            <div class="col-lg-6 col-lg-offset-3">
-                <ul>
-                    <li><a href="{{ site.repository.source }}/issues/50">#50</a> &mdash; Don't validate disabled element</li>
-                    <li><a href="{{ site.repository.source }}/issues/34">#34</a>, <a href="{{ site.repository.source }}/issues/105">#105</a> &mdash; Cannot call <code>form.submit()</code> inside <code>submitHandler</code></li>
-                    <li><a href="{{ site.repository.source }}/issues/77">#77</a>, <a href="{{ site.repository.source }}/issues/117">#117</a> &mdash; <a href="/validators/not-empty/">notEmpty</a> validator doesn't work on file input</li>
-                    <li><a href="{{ site.repository.source }}/pull/120">#120</a> &mdash; Handle case where a field is removed after the bootstrap validation, thanks to <a href="https://github.com/patmoore">@patmoore</a></li>
-                    <li><a href="{{ site.repository.source }}/pull/124">#124</a> &mdash; Fixed bootstrapValidator.min.css path, thanks to <a href="https://github.com/synox">@synox</a></li>
-                </ul>
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="docs-changelog__added">
+                    <ul>
+                        <li>Support HTML 5 input types</li>
+                        <li><a href="{{ site.repository.source }}/issues/14">#14</a>, <a href="{{ site.repository.source }}/issues/57">#57</a>: Set validator option by using HTML 5 attributes</li>
+                        <li><a href="{{ site.repository.source }}/issues/74">#74</a>, <a href="{{ site.repository.source }}/issues/103">#103</a>, <a href="{{ site.repository.source }}/issues/122">#122</a>: Set the custom trigger event</li>
+                        <li><a href="{{ site.repository.source }}/issues/136">#136</a>: Support multiple elements with the same name</li>
+                        <li><a href="{{ site.repository.source }}/issues/109">#109</a>: Add <code>setLiveMode()</code> method to turn on/off the live validating mode</li>
+                        <li><a href="{{ site.repository.source }}/issues/114">#114</a>: Add <code>iban</code> validator for validating IBAN (International Bank Account Number)</li>
+                        <li><a href="{{ site.repository.source }}/issues/116">#116</a>: Add <code>uuid</code> validator, support UUID v3, v4, v5</li>
+                        <li><a href="{{ site.repository.source }}/issues/128">#128</a>: Add <code>numeric</code> validator</li>
+                        <li><a href="{{ site.repository.source }}/issues/135">#135</a>: Add <code>integer</code> validator</li>
+                        <li><a href="{{ site.repository.source }}/issues/138">#138</a>: Add <code>hex</code> validator</li>
+                        <li><a href="{{ site.repository.source }}/issues/139">#139</a>: Add <code>stringCase</code> validator to check a string is lower or upper case</li>
+                        <li><a href="{{ site.repository.source }}/issues/137">#137</a>: Register the plugin with <a href="http://plugins.jquery.com/">jQuery plugins site</a></li>
+                    </ul>
+                </div>
+
+                <div class="docs-changelog__improved">
+                    <ul>
+                        <li><a href="{{ site.repository.source }}/issues/133">#133</a>: The <a href="http://bootstrapvalidator.com/validators/regexp/"><code>regexp</code> validator</a> allows to pass a string</li>
+                        <li><a href="{{ site.repository.source }}/pull/140">#140</a>: Do not validate hidden (<code>type="hidden"</code>) and invisible element, thanks to <a href="https://github.com/easonhan007">@easonhan007</a></li>
+                    </ul>
+                </div>
+
+                <div class="docs-changelog__fixed">
+                    <ul>
+                        <li><a href="{{ site.repository.source }}/issues/126">#126</a>: Submit button remains disabled after calling custom <code>submitHandler</code> and the form is valid</li>
+                        <li><a href="{{ site.repository.source }}/issues/132">#132</a>: The <code>fields.[fieldName].message</code> option is not used when showing the error message</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

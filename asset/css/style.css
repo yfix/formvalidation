@@ -79,9 +79,27 @@ pre {
 .docs-features .col-lg-4 {
   padding-bottom: 30px;
 }
+.docs-features ul,
+.docs-features p {
+  text-align: left;
+}
 .docs-features i.fa {
   color: #66CC99;
   font-size: 3em;
+}
+/* Changelog */
+.docs-changelog ul {
+  padding-left: 20px;
+  list-style: none;
+}
+.docs-changelog .docs-changelog__added {
+  border-left: 4px solid #5cb85c;
+}
+.docs-changelog .docs-changelog__improved {
+  border-left: 4px solid #428bca;
+}
+.docs-changelog .docs-changelog__fixed {
+  border-left: 4px solid #d9534f;
 }
 /* Example */
 .docs-example {
