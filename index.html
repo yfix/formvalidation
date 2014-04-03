@@ -3,13 +3,13 @@ layout: home
 title: The best jQuery plugin to validate form fields. Designed to use with Bootstrap 3
 ---
 
-<!-- intro -->
+<!-- Introduction -->
 <section class="docs-intro">
     <div class="container">
         <div class="row">
             <div class="col-lg-5 col-lg-push-1">
                 <p class="lead">The best jQuery plugin to validate form fields.<br/>Designed to use with <a href="http://getbootstrap.com">Bootstrap 3</a>.</p>
-                <a class="btn btn-lg btn-success" href="{{ site.repository.source }}/archive/v{{site.current_version}}.zip">Download v{{ site.current_version }}</a>
+                <p><a class="btn btn-lg btn-success" href="{{ site.repository.source }}/archive/v{{site.current_version}}.zip">Download v{{ site.current_version }}</a></p>
             </div>
 
             <div class="col-lg-5 col-lg-offset-1">
@@ -90,88 +90,85 @@ title: The best jQuery plugin to validate form fields. Designed to use with Boot
     </div>
 </section>
 
-<!-- features -->
+<!-- Features -->
 <section class="docs-features">
     <div class="container">
+        <div class="text-center"><h2>Features</h2></div>
+
         <div class="row">
-            <div class="col-lg-offset-1 col-lg-push-1">
-                <div class="text-center"><h2>Features</h2></div>
+            <div class="col-lg-4">
+                <i class="fa fa-code"></i>
+                <h3>Code</h3>
+                <ul>
+                    <li>Written from scratch</li>
+                    <li>Very solid and clean</li>
+                    <li>The core plugin and validators code are separated</li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <i class="fa">B</i>
+                <h3>Bootstrap</h3>
+                <ul>
+                    <li>Designed to use with Bootstrap 3</li>
+                    <li>Support almost <a href="http://getbootstrap.com/css/#forms">Bootstrap forms</a></li>
+                    <li>Support Bootstrap form <a href="http://getbootstrap.com/css/#forms-control-validation">validation states</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <i class="fa fa-html5"></i>
+                <h3>HTML 5</h3>
+                <ul>
+                    <li>Support setting the plugin, validator options via HTML 5 attributes prefixed with <code>data-bv-</code></li>
+                    <li>Support HTML 5 attributes such as <code>min</code>, <code>max</code>, <code>pattern</code>, <code>required</code></li>
+                    <li>Support HTML 5 input types such as <code>color</code>, <code>email</code>, <code>range</code> and <code>url</code></li>
+                </ul>
+            </div>
+        </div>
 
-                <div class="row">
-                    <div class="col-lg-4">
-                        <i class="fa fa-code"></i>
-                        <h3>Code</h3>
-                        <ul>
-                            <li>Written from scratch</li>
-                            <li>Very solid and clean</li>
-                            <li>The core plugin and validators code are separated</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-4">
-                        <i class="fa">B</i>
-                        <h3>Bootstrap</h3>
-                        <ul>
-                            <li>Designed to use with Bootstrap 3</li>
-                            <li>Support almost <a href="http://getbootstrap.com/css/#forms">Bootstrap forms</a></li>
-                            <li>Support Bootstrap form <a href="http://getbootstrap.com/css/#forms-control-validation">validation states</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-4">
-                        <i class="fa fa-html5"></i>
-                        <h3>HTML 5</h3>
-                        <ul>
-                            <li>Support setting the plugin, validator options via HTML 5 attributes prefixed with <code>data-bv-</code></li>
-                            <li>Support HTML 5 attributes such as <code>min</code>, <code>max</code>, <code>pattern</code>, <code>required</code></li>
-                            <li>Support HTML 5 input types such as <code>color</code>, <code>email</code>, <code>range</code> and <code>url</code></li>
-                        </ul>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <i class="fa fa-flask"></i>
+                <h3>Validator</h3>
+                <ul>
+                    <li><a href="/validators/">25 built-in validators</a> and counting!</li>
+                    <li>Easy to <a href="/developing/">write a new validator</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <i class="fa fa-thumbs-o-up"></i>
+                <h3>Friendly</h3>
+                <p>Show feedback icons based on field validity. Support <a href="http://getbootstrap.com/components/#glyphicons">Glyphicons</a> and <a href="http://fontawesome.io/icons">FontAwesome</a> icons.</p>
+            </div>
+            <div class="col-lg-4">
+                <i class="fa fa-refresh"></i>
+                <h3>Ajax</h3>
+                <ul>
+                    <li>Support validating via Ajax</li>
+                    <li>Support using Ajax for form submission</li>
+                </ul>
+            </div>
+        </div>
 
-                <div class="row">
-                    <div class="col-lg-4">
-                        <i class="fa fa-flask"></i>
-                        <h3>Validator</h3>
-                        <ul>
-                            <li><a href="/validators/">25 built-in validators</a> and counting!</li>
-                            <li>Easy to <a href="/developing/">write a new validator</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-4">
-                        <i class="fa fa-thumbs-o-up"></i>
-                        <h3>Friendly</h3>
-                        <p>Show feedback icons based on field validity. Support <a href="http://getbootstrap.com/components/#glyphicons">Glyphicons</a> and <a href="http://fontawesome.io/icons">FontAwesome</a> icons.</p>
-                    </div>
-                    <div class="col-lg-4">
-                        <i class="fa fa-refresh"></i>
-                        <h3>Ajax</h3>
-                        <ul>
-                            <li>Support validating via Ajax</li>
-                            <li>Support using Ajax for form submission</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-4">
-                        <i class="fa fa-magic"></i>
-                        <h3>Flexible</h3>
-                        <ul>
-                            <li>Support multiple elements with the same name</li>
-                            <li>Field validators can be enabled/disabled on the fly</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-4">
-                        <i class="fa fa-puzzle-piece"></i>
-                        <h3>Compatibility</h3>
-                        <p>Play nice with other plugins such as <a href="http://mjolnic.github.io/bootstrap-colorpicker/">Color Picker</a>, <a href="http://eternicode.github.io/bootstrap-datepicker/">Date Picker</a>, <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Datetime Picker</a>,
-                        <a href="http://ivaynberg.github.io/select2/">Select2</a>, <a href="http://wbotelhos.com/raty">Raty</a>, etc.</p>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <i class="fa fa-magic"></i>
+                <h3>Flexible</h3>
+                <ul>
+                    <li>Support multiple elements with the same name</li>
+                    <li>Field validators can be enabled/disabled on the fly</li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <i class="fa fa-puzzle-piece"></i>
+                <h3>Compatibility</h3>
+                <p>Play nice with other plugins such as <a href="http://mjolnic.github.io/bootstrap-colorpicker/">Color Picker</a>, <a href="http://eternicode.github.io/bootstrap-datepicker/">Date Picker</a>, <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Datetime Picker</a>,
+                    <a href="http://ivaynberg.github.io/select2/">Select2</a>, <a href="http://wbotelhos.com/raty">Raty</a>, etc.</p>
             </div>
         </div>
     </div>
 </section>
 
+<!-- What's news -->
 <section class="docs-changelog">
     <div class="container">
         <div class="text-center"><h2>What's news?</h2></div>

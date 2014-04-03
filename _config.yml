@@ -2,12 +2,13 @@ name:                 BootstrapValidator
 pygments:             false
 relative_permalinks:  false
 
+markdown:             redcarpet
 destination:          _gh_pages
 exclude:              ['node_modules', '*.less']
 
 # Custom variables
 # not defined by Jekyll
-current_version:      0.3.3
+current_version:      0.4.0
 repository:
   source:             https://github.com/nghuuphuoc/bootstrapvalidator
   docs:               https://github.com/nghuuphuoc/bootstrapvalidator/gh-pages
