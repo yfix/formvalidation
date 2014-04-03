@@ -16,31 +16,35 @@ slug: api
             <pre><code class="javascript">var bootstrapValidator = $(form).data('bootstrapValidator');</code></pre>
         </section>
 
-        <section id="validate">
-            <h2>validate</h2>
+        <section id="disable-submit-buttons">
+            <h2>disableSubmitButtons</h2>
 
-            <p><code>validate()</code> &mdash; Validate form manually. It is useful when you want to validate form by clicking a button or a link instead of a submit buttons.</p>
+            <p><code>disableSubmitButtons(disabled)</code> &mdash; Disable or enable the submit buttons</p>
 
-            <pre><code class="javascript">$(form).bootstrapValidator(options).bootstrapValidator('validate');
-
-// or
-$(form).bootstrapValidator(options);
-$(form).data('bootstrapValidator').validate();</code></pre>
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>disabled</code></td>
+                        <td>Boolean</td>
+                        <td>Can be <code>true</code> or <code>false</code></td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
 
-        <section id="is-valid">
-            <h2>isValid</h2>
+        <section id="enable-field-validators">
+            <h2>enableFieldValidators</h2>
 
-            <p><code>isValid()</code> &mdash; Returns <code>true</code> if all form fields are valid. Otherwise, returns <code>false</code>.</p>
-            <p>Ensure that the <code>validate</code> method is already called after calling this one.</p>
-        </section>
+            <p><code>enableFieldValidators(field, enabled)</code> &mdash; Enable/disable all validators to given field</p>
 
-        <section id="update-status">
-            <h2>updateStatus</h2>
-
-            <p><code>updateStatus(field, status, validatorName)</code> &mdash; Update validator result for given field</p>
-
-            <table class="table table-striped">
+            <table class="table table-condensed">
                 <thead>
                     <tr>
                         <th>Parameter</th>
@@ -51,8 +55,248 @@ $(form).data('bootstrapValidator').validate();</code></pre>
                 <tbody>
                     <tr>
                         <td><code>field</code></td>
-                        <td>String/jQuery</td>
-                        <td>The field name or field element</td>
+                        <td>String</td>
+                        <td>The field name</td>
+                    </tr>
+                    <tr>
+                        <td><code>enabled</code></td>
+                        <td>Boolean</td>
+                        <td>If <code>true</code>, enable field validators. If <code>false</code>, disable field validators</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="get-field-elements">
+            <h2>getFieldElements</h2>
+
+            <p>
+                <code>getFieldElements(field)</code> &mdash; Retrieve the field elements by given name.<br/>
+                Returns array of jQuery element representing the field, or <code>null</code> if the fields are not found.
+            </p>
+
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>field</code></td>
+                        <td>String</td>
+                        <td>The field name</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="is-valid">
+            <h2>isValid</h2>
+
+            <p><code>isValid()</code> &mdash; Returns <code>true</code> if all form fields are valid. Otherwise, returns <code>false</code>.</p>
+            <p>Ensure that the <a href="#validate">validate</a> method is already called after calling this one.</p>
+        </section>
+
+        <section id="reset-form">
+            <h2>resetForm</h2>
+
+            <p><code>resetForm(resetFormData)</code> &mdash; Reset form. It hides all error elements and feedback icons. All the fields are marked as not validated yet.</p>
+
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>resetFormData</code></td>
+                        <td>Boolean</td>
+                        <td>If <code>true</code>, the method resets the fields which have validator rules.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <pre><code class="javascript">$(form).bootstrapValidator(options);
+$(form).data('bootstrapValidator').resetForm();</code></pre>
+        </section>
+
+        <section id="set-live-mode">
+            <h2>setLiveMode</h2>
+
+            <p><code>setLiveMode(mode)</code> &mdash; Set live validating mode</p>
+
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>mode</code></td>
+                        <td>String</td>
+                        <td>Live validating mode. Can be <code>'enabled'</code>, <code>'disabled'</code>, <code>'submitted'</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="docs-example">
+                <div class="docs-example__form">
+                    <form id="liveModeForm" class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-lg-offset-3 col-lg-9">
+                                <button type="button" class="btn btn-success" data-mode="enabled">Set live="enabled"</button>
+                                <button type="button" class="btn btn-success" data-mode="disabled">Set live="disabled"</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Text editors</label>
+                            <div class="col-lg-5">
+                                <input class="form-control" type="text" name="editors[]" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-offset-3 col-lg-5">
+                                <input class="form-control" type="text" name="editors[]" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-offset-3 col-lg-5">
+                                <input class="form-control" type="text" name="editors[]" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-offset-3 col-lg-5">
+                                <input class="form-control" type="text" name="editors[]" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="docs-example__code">
+                    <pre><code class="xml">&lt;form id="liveModeForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;div class="col-lg-offset-3 col-lg-9">
+            &lt;button type="button" class="btn btn-success" data-mode="enabled">
+                Set live="enabled"
+            &lt;/button>
+            &lt;button type="button" class="btn btn-success" data-mode="disabled">
+                Set live="disabled"
+            &lt;/button>
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Text editors&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input class="form-control" type="text" name="editors[]" />
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;div class="col-lg-offset-3 col-lg-5">
+            &lt;input class="form-control" type="text" name="editors[]" />
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;div class="col-lg-offset-3 col-lg-5">
+            &lt;input class="form-control" type="text" name="editors[]" />
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;div class="col-lg-offset-3 col-lg-5">
+            &lt;input class="form-control" type="text" name="editors[]" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+
+                    <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#liveModeForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                'editors[]': {
+                    validators: {
+                        notEmpty: {
+                            message: 'The editor names are required'
+                        }
+                    }
+                }
+            }
+        })
+        .find('button[data-mode]').click(function() {
+            $('#liveModeForm').data('bootstrapValidator').setLiveMode($(this).attr('data-mode'));
+        });
+});
+&lt;/script></code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="update-element-status">
+            <h2>updateElementStatus</h2>
+
+            <p><code>updateElementStatus($field, status, validatorName)</code> &mdash; Update validating result of given element</p>
+
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>$field</code></td>
+                        <td>jQuery</td>
+                        <td>The field element</td>
+                    </tr>
+                    <tr>
+                        <td><code>status</code></td>
+                        <td>String</td>
+                        <td>Can be <code>NOT_VALIDATED</code>, <code>VALIDATING</code>, <code>INVALID</code> or <code>VALID</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>validatorName</code></td>
+                        <td>String</td>
+                        <td>The validator name. If <code>null</code>, the method updates validity result for all validators</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="update-status">
+            <h2>updateStatus</h2>
+
+            <p><code>updateStatus(field, status, validatorName)</code> &mdash; Update validator result for given field</p>
+
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>field</code></td>
+                        <td>String</td>
+                        <td>The field name</td>
                     </tr>
                     <tr>
                         <td><code>status</code></td>
@@ -154,58 +398,16 @@ $(document).ready(function() {
             </div>
         </section>
 
-        <section id="enable-field-validators">
-            <h2>enableFieldValidators</h2>
+        <section id="validate">
+            <h2>validate</h2>
 
-            <p><code>enableFieldValidators(field, enabled)</code> &mdash; Enable/disable all validators to given field</p>
+            <p><code>validate()</code> &mdash; Validate form manually. It is useful when you want to validate form by clicking a button or a link instead of a submit buttons.</p>
 
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>field</code></td>
-                        <td>String</td>
-                        <td>The field name</td>
-                    </tr>
-                    <tr>
-                        <td><code>enabled</code></td>
-                        <td>Boolean</td>
-                        <td>If <code>true</code>, enable field validators. If <code>false</code>, disable field validators</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+            <pre><code class="javascript">$(form).bootstrapValidator(options).bootstrapValidator('validate');
 
-        <section id="reset-form">
-            <h2>resetForm</h2>
-
-            <p><code>resetForm(resetFormData)</code> &mdash; Reset form. It hides all error elements and feedback icons. All the fields are marked as not validated yet.</p>
-
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>resetFormData</code></td>
-                        <td>Boolean</td>
-                        <td>If <code>true</code>, the method resets the fields which have validator rules.</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <pre><code class="javascript">$(form).bootstrapValidator(options);
-$(form).data('bootstrapValidator').resetForm();</code></pre>
+// or
+$(form).bootstrapValidator(options);
+$(form).data('bootstrapValidator').validate();</code></pre>
         </section>
 
         <a href="{{ site.repository.docs_edit }}/api.html" class="btn btn-info">Improve this page</a>
@@ -214,11 +416,15 @@ $(form).data('bootstrapValidator').resetForm();</code></pre>
     <div class="col-md-3">
         <div class="docs-sidebar" data-spy="affix" data-offset-top="120">
             <ul class="nav">
-                <li><a href="#validate">validate</a></li>
-                <li><a href="#is-valid">isValid</a></li>
-                <li><a href="#update-status">updateStatus</a></li>
+                <li><a href="#disable-submit-buttons">disableSubmitButtons</a></li>
                 <li><a href="#enable-field-validators">enableFieldValidators</a></li>
+                <li><a href="#get-field-elements">getFieldElements</a></li>
+                <li><a href="#is-valid">isValid</a></li>
                 <li><a href="#reset-form">resetForm</a></li>
+                <li><a href="#set-live-mode">setLiveMode</a></li>
+                <li><a href="#update-element-status">updateElementStatus</a></li>
+                <li><a href="#update-status">updateStatus</a></li>
+                <li><a href="#validate">validate</a></li>
             </ul>
         </div>
     </div>
@@ -228,6 +434,29 @@ $(form).data('bootstrapValidator').resetForm();</code></pre>
 <script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 <script>
 $(document).ready(function() {
+    // setLiveMode() example
+    $('#liveModeForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                'editors[]': {
+                    validators: {
+                        notEmpty: {
+                            message: 'The editor names are required'
+                        }
+                    }
+                }
+            }
+        })
+        .find('button[data-mode]').click(function() {
+            $('#liveModeForm').data('bootstrapValidator').setLiveMode($(this).attr('data-mode'));
+        });
+
+    // updateStatus() example
     $('#datetimePicker').datetimepicker();
 
     $('#datetimeForm').bootstrapValidator({
