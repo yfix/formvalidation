@@ -5,6 +5,7 @@ relative_permalinks:  false
 markdown:             redcarpet
 destination:          _gh_pages
 exclude:              ['node_modules', '*.less']
+url:                  http://bootstrapvalidator.com/
 
 # Custom variables
 # not defined by Jekyll
