@@ -13,12 +13,75 @@ slug: settings
 
         <pre><code class="javascript">$(formSelector).bootstrapValidator({
     message: 'This value is not valid',
-    feedbackIcons: ...,
+    feedbackIcons: {
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+    },
     submitButtons: 'button[type="submit"]',
     submitHandler: null,
     live: 'enabled',
     fields: ...
 });</code></pre>
+
+        <p>You can use HTML attributes for <code>form</code> to set the options:</p>
+
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Equivalent HTML attribute</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>message</code></td>
+                    <td><code>data-bv-message</code></td>
+                </tr>
+                <tr>
+                    <td><code>feedbackIcons</code></td>
+                    <td><code>data-bv-feedbackicons-valid</code>, <code>data-bv-feedbackicons-invalid</code>, <code>data-bv-feedbackicons-validating</code></td>
+                </tr>
+                <tr>
+                    <td><code>submitButtons</code></td>
+                    <td><code>data-bv-submitbuttons</code></td>
+                </tr>
+                <tr>
+                    <td><code>submitHandler</code></td>
+                    <td>n/a</td>
+                </tr>
+                <tr>
+                    <td><code>live</code></td>
+                    <td><code>data-bv-live</code></td>
+                </tr>
+                <tr>
+                    <td><code>fields</code></td>
+                    <td>n/a</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>So the Javascript code above is equivalent to the following usage:</p>
+
+        <pre><code class="xml javascript">&lt;form data-bv-message="This value is not valid"
+      data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+      data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+      data-bv-feedbackicons-validating="glyphicon glyphicon-refresh"
+      data-bv-submitbuttons='button[type="submit"]'
+      data-bv-live="enabled">
+    ...
+&lt;/form>
+
+&lt;script>
+$(document).ready(function() {
+    $(formSelector).bootstrapValidator({
+        submitHandler: null,
+        fields: ...
+    });
+});
+&lt;/script></code></pre>
+
+        <p>It's also possible to set validator options for each field using HTML attributes. Look at each validator documentation for more details.</p>
 
         <section id="message">
             <h2>message</h2>
@@ -62,7 +125,7 @@ slug: settings
             <pre><code class="javascript">submitHandler: function(validator, form, submitButton) {
 }</code></pre>
 
-            <table class="table table-striped">
+            <table class="table table-condensed">
                 <thead>
                     <tr>
                         <th>Parameter</th>
@@ -137,12 +200,12 @@ slug: settings
             <p>Replace the <code>fieldName</code> with the field name, which is the value of <code>name</code> attribute. If the field cannot be defined by the <code>name</code> attribute, you can use the <code>selector</code> option described below.</p>
             <p>The validator options for each field include:</p>
 
-            <table class="table table-striped">
+            <table class="table table-condensed">
                 <thead>
                     <tr>
                         <th>Option</th>
                         <th>Type</th>
-                        <th>Default</th>
+                        <th>Equivalent HTML attribute</th>
                         <th>Description</th>
                     </tr>
                 </thead>
@@ -150,25 +213,25 @@ slug: settings
                     <tr>
                         <td><code>enabled</code></td>
                         <td>Boolean</td>
-                        <td><code>true</code></td>
+                        <td>n/a</td>
                         <td>Enable or disable the field validators</td>
                     </tr>
                     <tr>
                         <td><code>message</code></td>
                         <td>String</td>
-                        <td><code>This value is not valid</code></td>
+                        <td><code>data-bv-message</code></td>
                         <td>The default error message for the field</td>
                     </tr>
                     <tr>
                         <td><code>container</code></td>
                         <td>String</td>
-                        <td><code>null</code></td>
+                        <td><code>data-bv-container</code></td>
                         <td>The CSS selector to indicate the element showing the error messages. Take a look at <a href="#container-example">container example</a> below.</td>
                     </tr>
                     <tr>
                         <td><code>selector</code></td>
                         <td>String</td>
-                        <td><code>null</code></td>
+                        <td><code>data-bv-selector</code></td>
                         <td>The CSS selector to indicate the field. It is used in case that it's not possible to use the <code>name</code> attribute for the field. Take a look at <a href="#selector-example">selector example</a> below.</td>
                     </tr>
                     <tr>
@@ -188,31 +251,38 @@ slug: settings
                 <p>The following form illustrates an usage of the <code>container</code> option. The error messages are shown in the element defined by a CSS selector.</p>
 
                 <div class="docs-example">
-                    <div class="docs-example__form">
-                        <form id="containerForm" class="form-horizontal">
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Full name</label>
-                                <div class="col-lg-4">
-                                    <input type="text" class="form-control" name="firstName" placeholder="First name" />
-                                    <span class="help-block" id="firstNameMessage"></span>
-                                </div>
-                                <div class="col-lg-4">
-                                    <input type="text" class="form-control" name="lastName" placeholder="Last name" />
-                                    <span class="help-block lastNameMessage"></span>
-                                </div>
-                            </div>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#container-form-tab" data-toggle="tab">Form</a></li>
+                        <li><a href="#container-html-tab" data-toggle="tab">HTML</a></li>
+                        <li><a href="#container-attr-tab" data-toggle="tab">Using HTML attributes</a></li>
+                    </ul>
 
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Username</label>
-                                <div class="col-lg-5">
-                                    <input type="text" class="form-control" name="username" />
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="container-form-tab">
+                            <form id="containerForm" class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">Full name</label>
+                                    <div class="col-lg-4">
+                                        <input type="text" class="form-control" name="firstName" placeholder="First name" />
+                                        <span class="help-block" id="firstNameMessage"></span>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <input type="text" class="form-control" name="lastName" placeholder="Last name" />
+                                        <span class="help-block lastNameMessage"></span>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
 
-                    <div class="docs-example__code">
-                        <pre><code class="xml">&lt;form id="containerForm" class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">Username</label>
+                                    <div class="col-lg-5">
+                                        <input type="text" class="form-control" name="username" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="tab-pane" id="container-html-tab">
+                            <pre><code class="xml">&lt;form id="containerForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Full name&lt;/label>
         &lt;div class="col-lg-4">
@@ -232,7 +302,7 @@ slug: settings
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-                        <pre><code class="xml javascript">&lt;script>
+                            <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#containerForm').bootstrapValidator({
         fields: {
@@ -257,6 +327,37 @@ $(document).ready(function() {
     });
 });
 &lt;/script></code></pre>
+                        </div>
+
+                        <div class="tab-pane" id="container-attr-tab">
+                            <pre><code class="xml">&lt;form id="containerForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Full name&lt;/label>
+        &lt;div class="col-lg-4">
+            &lt;input type="text" class="form-control" name="firstName" placeholder="First name"
+                <span class="docs-code__note">data-bv-container="#firstNameMessage"</span> />
+            <span class="docs-code__note">&lt;span class="help-block" id="firstNameMessage">&lt;/span></span>
+        &lt;/div>
+        &lt;div class="col-lg-4">
+            &lt;input type="text" class="form-control" name="lastName" placeholder="Last name"
+                <span class="docs-code__note">data-bv-container=".lastNameMessage"</span> />
+            <span class="docs-code__note">&lt;span class="help-block lastNameMessage">&lt;/span></span>
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Username&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="username" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+                            <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#containerForm').bootstrapValidator();
+});
+&lt;/script></code></pre>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -267,36 +368,43 @@ $(document).ready(function() {
                 <p>Instead of using the <code>name</code> attribute, the following form uses the <code>selector</code> option to define the fields:</p>
 
                 <div class="docs-example">
-                    <div class="docs-example__form">
-                        <form id="paymentForm" class="form-horizontal">
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Credit card number</label>
-                                <div class="col-lg-5">
-                                    <input type="text" class="form-control" id="ccNumber" />
-                                </div>
-                            </div>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#selector-form-tab" data-toggle="tab">Form</a></li>
+                        <li><a href="#selector-html-tab" data-toggle="tab">HTML</a></li>
+                        <li><a href="#selector-attr-tab" data-toggle="tab">Using HTML attributes</a></li>
+                    </ul>
 
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Expiration</label>
-                                <div class="col-lg-2">
-                                    <input type="text" class="form-control" placeholder="Month" data-stripe="exp-month" />
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="selector-form-tab">
+                            <form id="paymentForm" class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">Credit card number</label>
+                                    <div class="col-lg-5">
+                                        <input type="text" class="form-control" id="ccNumber" />
+                                    </div>
                                 </div>
-                                <div class="col-lg-2">
-                                    <input type="text" class="form-control" placeholder="Year" data-stripe="exp-year" />
-                                </div>
-                            </div>
 
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">CVV</label>
-                                <div class="col-lg-2">
-                                    <input type="text" class="form-control cvvNumber" />
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">Expiration</label>
+                                    <div class="col-lg-2">
+                                        <input type="text" class="form-control" placeholder="Month" data-stripe="exp-month" />
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <input type="text" class="form-control" placeholder="Year" data-stripe="exp-year" />
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
 
-                    <div class="docs-example__code">
-                        <pre><code class="xml">&lt;form id="paymentForm" class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">CVV</label>
+                                    <div class="col-lg-2">
+                                        <input type="text" class="form-control cvvNumber" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="tab-pane" id="selector-html-tab">
+                            <pre><code class="xml">&lt;form id="paymentForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Credit card number&lt;/label>
         &lt;div class="col-lg-5">
@@ -322,7 +430,7 @@ $(document).ready(function() {
     &lt;/div>
 &lt;/form></code></pre>
 
-                        <pre><code class="xml javascript">&lt;script>
+                            <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#paymentForm').bootstrapValidator({
         fields: {
@@ -354,6 +462,43 @@ $(document).ready(function() {
     });
 });
 &lt;/script></code></pre>
+                        </div>
+
+                        <div class="tab-pane" id="selector-attr-tab">
+                            <pre><code class="xml">&lt;form id="paymentForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Credit card number&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" <span class="docs-code__note">id="ccNumber" data-bv-selector="#ccNumber"</span> />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Expiration&lt;/label>
+        &lt;div class="col-lg-2">
+            &lt;input type="text" class="form-control" placeholder="Month"
+                <span class="docs-code__note">data-stripe="exp-month" data-bv-selector='[data-stripe="exp-month"]'</span> />
+        &lt;/div>
+        &lt;div class="col-lg-2">
+            &lt;input type="text" class="form-control" placeholder="Year"
+                <span class="docs-code__note">data-stripe="exp-year" data-bv-selector='[data-stripe="exp-year"]'</span> />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">CVV&lt;/label>
+        &lt;div class="col-lg-2">
+            &lt;input type="text" class="form-control <span class="docs-code__note">cvvNumber</span>" <span class="docs-code__note">data-bv-selector=".cvvNumber"</span> />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+
+                        <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#paymentForm').bootstrapValidator();
+});
+&lt;/script></code></pre>
+                        </div>
                     </div>
                 </div>
 

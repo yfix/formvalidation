@@ -9,10 +9,11 @@ validator: cvv
 <section>
     <p>Validate a CVV number.</p>
 
-    <table class="table table-striped">
+    <table class="table table-condensed">
         <thead>
             <tr>
                 <th>Option</th>
+                <th>HTML 5 attribute</th>
                 <th>Type</th>
                 <th>Description</th>
             </tr>
@@ -20,8 +21,15 @@ validator: cvv
         <tbody>
             <tr>
                 <td><code>creditCardField</code></td>
+                <td><code>bv-cvv-ccfield</code></td>
                 <td>String</td>
                 <td>The credit card number field. It is <code>null</code> by default</td>
+            </tr>
+            <tr>
+                <td><code>message</code></td>
+                <td><code>bv-cvv-message</code></td>
+                <td>String</td>
+                <td>The error message</td>
             </tr>
         </tbody>
     </table>
@@ -37,26 +45,33 @@ validator: cvv
     <p>For testing purpose, you can copy and paste the fake credit card number from <a href="http://www.getcreditcardnumbers.com">http://www.getcreditcardnumbers.com</a>.</p>
 
     <div class="docs-example">
-        <div class="docs-example__form">
-            <form id="paymentForm" class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Credit card number</label>
-                    <div class="col-lg-5">
-                        <input type="text" class="form-control" name="ccNumber" />
-                    </div>
-                </div>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#form-tab" data-toggle="tab">Form</a></li>
+            <li><a href="#html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#attr-tab" data-toggle="tab">Using HTML attributes</a></li>
+        </ul>
 
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">CVV</label>
-                    <div class="col-lg-2">
-                        <input type="text" class="form-control" name="cvvNumber" />
+        <div class="tab-content">
+            <div class="tab-pane active" id="form-tab">
+                <form id="paymentForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Credit card number</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" name="ccNumber" />
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
 
-        <div class="docs-example__code">
-            <pre><code class="xml">&lt;form id="paymentForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">CVV</label>
+                        <div class="col-lg-2">
+                            <input type="text" class="form-control" name="cvvNumber" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="html-tab">
+                <pre><code class="xml">&lt;form id="paymentForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Credit card number&lt;/label>
         &lt;div class="col-lg-5">
@@ -72,7 +87,7 @@ validator: cvv
     &lt;/div>
 &lt;/form></code></pre>
 
-            <pre><code class="xml javascript">&lt;script>
+                <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#paymentForm').bootstrapValidator({
         feedbackIcons: {
@@ -90,16 +105,49 @@ $(document).ready(function() {
             },
             cvvNumber: {
                 validators: {
-                    cvv: {
+                    <span class="docs-code__note">cvv: {
                         creditCardField: 'ccNumber',
                         message: 'The CVV number is not valid'
-                    }
+                    }</span>
                 }
             }
         }
     });
 });
 &lt;/script></code></pre>
+            </div>
+
+            <div class="tab-pane" id="attr-tab">
+                <pre><code class="xml">&lt;form id="paymentForm" class="form-horizontal"
+    data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+    data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+    data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Credit card number&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="ccNumber"
+                data-bv-creditcard="true"
+                data-bv-creditcard-message="The credit card number is not valid" />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">CVV&lt;/label>
+        &lt;div class="col-lg-2">
+            &lt;input type="text" class="form-control" name="cvvNumber"
+                <span class="docs-code__note">data-bv-cvv="true"
+                data-bv-cvv-ccfield="ccNumber"
+                data-bv-cvv-message="The CVV number is not valid"</span> />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+
+                <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#paymentForm').bootstrapValidator();
+});
+&lt;/script></code></pre>
+            </div>
         </div>
     </div>
 </section>
