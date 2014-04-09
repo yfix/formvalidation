@@ -9,10 +9,11 @@ validator: choice
 <section>
     <p>Check if the number of checked boxes are less or more than a given number.</p>
 
-    <table class="table table-striped">
+    <table class="table table-condensed">
         <thead>
             <tr>
                 <th>Option</th>
+                <th>Equivalent HTML attribute</th>
                 <th>Type</th>
                 <th>Description</th>
             </tr>
@@ -20,16 +21,19 @@ validator: choice
         <tbody>
             <tr>
                 <td><code>message</code></td>
+                <td><code>data-bv-choice-message</code></td>
                 <td>String</td>
                 <td>The error message</td>
             </tr>
             <tr>
                 <td><code>min</code></td>
+                <td><code>data-bv-choice-min</code></td>
                 <td>Number</td>
                 <td>The minimum number of check boxes required to be checked</td>
             </tr>
             <tr>
                 <td><code>max</code></td>
+                <td><code>data-bv-choice-max</code></td>
                 <td>Number</td>
                 <td>The maximum number of check boxes required to be checked. At least one of <code>min</code> and <code>max</code> is required</td>
             </tr>
@@ -42,61 +46,65 @@ validator: choice
 
     <p>The following form asks a developer to choose 2-4 programming languages which he/she is good at:</p>
 
-    <p class="alert alert-info">Try to click the checkbox</p>
-
     <div class="docs-example">
-        <div class="docs-example__form">
-            <form id="interviewForm" class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Programming Languages</label>
-                    <div class="col-lg-4">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="languages[]" value="net" /> .Net
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="languages[]" value="java" /> Java
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="languages[]" value="c" /> C/C++
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="languages[]" value="php" /> PHP
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="languages[]" value="perl" /> Perl
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="languages[]" value="ruby" /> Ruby
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="languages[]" value="python" /> Python
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="languages[]" value="javascript" /> Javascript
-                            </label>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#form-tab" data-toggle="tab">Form</a></li>
+            <li><a href="#html-tab" data-toggle="tab">HTML</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="form-tab">
+                <form id="interviewForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Programming Languages</label>
+                        <div class="col-lg-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="languages[]" value="net" /> .Net
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="languages[]" value="java" /> Java
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="languages[]" value="c" /> C/C++
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="languages[]" value="php" /> PHP
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="languages[]" value="perl" /> Perl
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="languages[]" value="ruby" /> Ruby
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="languages[]" value="python" /> Python
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="languages[]" value="javascript" /> Javascript
+                                </label>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
 
-        <div class="docs-example__code">
-            <pre><code class="xml">&lt;form id="interviewForm" class="form-horizontal">
+            <div class="tab-pane" id="html-tab">
+                <pre><code class="xml">&lt;form id="interviewForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Programming Languages&lt;/label>
         &lt;div class="col-lg-4">
@@ -144,7 +152,7 @@ validator: choice
     &lt;/div>
 &lt;/form></code></pre>
 
-            <pre><code class="xml javascript">&lt;script>
+                <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#interviewForm').bootstrapValidator({
         feedbackIcons: {
@@ -155,17 +163,18 @@ $(document).ready(function() {
         fields: {
             'languages[]': {
                 validators: {
-                    choice: {
+                    <span class="docs-code__note">choice: {
                         min: 2,
                         max: 4,
                         message: 'Please choose 2 - 4 programming languages you are good at'
-                    }
+                    }</span>
                 }
             }
         }
     });
 });
 &lt;/script></code></pre>
+            </div>
         </div>
     </div>
 </section>
