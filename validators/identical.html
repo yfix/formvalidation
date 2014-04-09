@@ -13,6 +13,7 @@ validator: identical
         <thead>
             <tr>
                 <th>Option</th>
+                <th>Equivalent HTML attribute</th>
                 <th>Type</th>
                 <th>Description</th>
             </tr>
@@ -20,11 +21,13 @@ validator: identical
         <tbody>
             <tr>
                 <td><code>message</code></td>
+                <td><code>data-bv-identical-message</code></td>
                 <td>String</td>
                 <td>The error message</td>
             </tr>
             <tr>
                 <td><code>field</code> (*)</td>
+                <td><code>data-bv-identical-field</code></td>
                 <td>String</td>
                 <td>The name of field that will be used to compare with current one</td>
             </tr>
@@ -36,29 +39,34 @@ validator: identical
    <h2>Live example</h2>
 
     <p>The following form requires the password and confirmation one to be the same using <code>identical</code> validator.</p>
-    <p class="alert alert-info">Try to type in the form fields</p>
 
     <div class="docs-example">
-        <div class="docs-example__form">
-            <form id="registerForm" class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Password</label>
-                    <div class="col-lg-5">
-                        <input type="password" class="form-control" name="password" />
-                    </div>
-                </div>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#example-form-tab" data-toggle="tab">Form</a></li>
+            <li><a href="#example-html-tab" data-toggle="tab">HTML</a></li>
+        </ul>
 
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Retype password</label>
-                    <div class="col-lg-5">
-                        <input type="password" class="form-control" name="confirmPassword" />
+        <div class="tab-content">
+            <div class="tab-pane active" id="example-form-tab">
+                <form id="registerForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Password</label>
+                        <div class="col-lg-5">
+                            <input type="password" class="form-control" name="password" />
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
 
-        <div class="docs-example__code">
-            <pre><code class="xml">&lt;form id="registerForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Retype password</label>
+                        <div class="col-lg-5">
+                            <input type="password" class="form-control" name="confirmPassword" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="example-html-tab">
+                <pre><code class="xml">&lt;form id="registerForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Password&lt;/label>
         &lt;div class="col-lg-5">
@@ -74,7 +82,7 @@ validator: identical
     &lt;/div>
 &lt;/form></code></pre>
 
-    <pre><code class="xml javascript">&lt;script>
+                <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#registerForm').bootstrapValidator({
         feedbackIcons: {
@@ -85,24 +93,25 @@ $(document).ready(function() {
         fields: {
             password: {
                 validators: {
-                    identical: {
+                    <span class="docs-code__note">identical: {
                         field: 'confirmPassword',
                         message: 'The password and its confirm are not the same'
-                    }
+                    }</span>
                 }
             },
             confirmPassword: {
                 validators: {
-                    identical: {
+                    <span class="docs-code__note">identical: {
                         field: 'password',
                         message: 'The password and its confirm are not the same'
-                    }
+                    }</span>
                 }
             }
         }
     });
 });
 &lt;/script></code></pre>
+            </div>
         </div>
     </div>
 </section>

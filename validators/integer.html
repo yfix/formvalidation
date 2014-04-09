@@ -13,6 +13,7 @@ validator: integer
         <thead>
             <tr>
                 <th>Option</th>
+                <th>Equivalent HTML attribute</th>
                 <th>Type</th>
                 <th>Description</th>
             </tr>
@@ -20,6 +21,7 @@ validator: integer
         <tbody>
             <tr>
                 <td><code>message</code></td>
+                <td><code>data-bv-integer-message</code></td>
                 <td>String</td>
                 <td>The error message</td>
             </tr>
@@ -31,19 +33,25 @@ validator: integer
     <h2>Example</h2>
 
     <div class="docs-example">
-        <div class="docs-example__form">
-            <form id="integerForm" class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Type a number</label>
-                    <div class="col-lg-3">
-                        <input type="text" class="form-control" name="number" />
-                    </div>
-                </div>
-            </form>
-        </div>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#example-form-tab" data-toggle="tab">Form</a></li>
+            <li><a href="#example-html-tab" data-toggle="tab">HTML</a></li>
+        </ul>
 
-        <div class="docs-example__code">
-            <pre><code class="xml">&lt;form id="integerForm" class="form-horizontal">
+        <div class="tab-content">
+            <div class="tab-pane active" id="example-form-tab">
+                <form id="integerForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Type a number</label>
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control" name="number" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="example-html-tab">
+                <pre><code class="xml">&lt;form id="integerForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Type a number&lt;/label>
         &lt;div class="col-lg-3">
@@ -52,7 +60,7 @@ validator: integer
     &lt;/div>
 &lt;/form></code></pre>
 
-            <pre><code class="xml javascript">&lt;script>
+                <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#integerForm').bootstrapValidator({
         feedbackIcons: {
@@ -63,15 +71,16 @@ $(document).ready(function() {
         fields: {
             number: {
                 validators: {
-                    integer: {
+                    <span class="docs-code__note">integer: {
                         message: 'The value is not an integer'
-                    }
+                    }</span>
                 }
             }
         }
     });
 });
 &lt;/script></code></pre>
+            </div>
         </div>
     </div>
 </section>
@@ -82,19 +91,25 @@ $(document).ready(function() {
     <p>You can use HTML 5 <code>type="number"</code> attribute to enable this validator for field.</p>
 
     <div class="docs-example">
-        <div class="docs-example__form">
-            <form id="integerHtml5Form" class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Type a number</label>
-                    <div class="col-lg-3">
-                        <input class="form-control" name="number" type="number" data-bv-integer-message="The value is not an integer" />
-                    </div>
-                </div>
-            </form>
-        </div>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#html5-form-tab" data-toggle="tab">Form</a></li>
+            <li><a href="#html5-html-tab" data-toggle="tab">HTML</a></li>
+        </ul>
 
-        <div class="docs-example__code">
-            <pre><code class="xml">&lt;form id="integerHtml5Form" class="form-horizontal">
+        <div class="tab-content">
+            <div class="tab-pane active" id="html5-form-tab">
+                <form id="integerHtml5Form" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Type a number</label>
+                        <div class="col-lg-3">
+                            <input class="form-control" name="number" type="number" data-bv-integer-message="The value is not an integer" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="html5-html-tab">
+                <pre><code class="xml">&lt;form id="integerHtml5Form" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Type a number&lt;/label>
         &lt;div class="col-lg-3">
@@ -104,7 +119,7 @@ $(document).ready(function() {
     &lt;/div>
 &lt;/form></code></pre>
 
-            <pre><code class="xml javascript">&lt;script>
+                <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#integerHtml5Form').bootstrapValidator({
         feedbackIcons: {
@@ -115,6 +130,7 @@ $(document).ready(function() {
     });
 });
 &lt;/script></code></pre>
+            </div>
         </div>
     </div>
 </section>

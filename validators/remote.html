@@ -13,6 +13,7 @@ validator: remote
         <thead>
             <tr>
                 <th>Option</th>
+                <th>Equivalent HTML attribute</th>
                 <th>Type</th>
                 <th>Description</th>
             </tr>
@@ -20,16 +21,19 @@ validator: remote
         <tbody>
             <tr>
                 <td><code>message</code></td>
+                <td><code>data-bv-remote-message</code></td>
                 <td>String</td>
                 <td>The error message</td>
             </tr>
             <tr>
                 <td><code>url</code> (*)</td>
+                <td><code>data-bv-remote-url</code></td>
                 <td>String</td>
                 <td>The remote URL that responses an encoded JSON of array containing the <code>valid</code> key</td>
             </tr>
             <tr>
                 <td><code>data</code></td>
+                <td>n/a</td>
                 <td>Object</td>
                 <td>
                     The data sent to remote URL.<br/>

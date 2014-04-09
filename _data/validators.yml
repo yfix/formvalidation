@@ -73,6 +73,11 @@
   version: 0.1.0
   description: Check if the value is the same as one of particular field
 
+- name: integer
+  slug: integer
+  version: 0.4.0
+  description: Validate an integer number
+
 - name: ip
   slug: ip
   version: 0.3.2
@@ -82,11 +87,6 @@
   slug: isbn
   version: 0.3.2
   description: Validate an ISBN string. Support both ISBN 10 and ISBN 13
-
-- name: integer
-  slug: integer
-  version: 0.4.0
-  description: Validate an integer number
 
 - name: lessThan
   slug: less-than

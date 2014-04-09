@@ -13,6 +13,7 @@ validator: lessThan
         <thead>
             <tr>
                 <th>Option</th>
+                <th>Equivalent HTML attribute</th>
                 <th>Type</th>
                 <th>Description</th>
             </tr>
@@ -20,16 +21,19 @@ validator: lessThan
         <tbody>
             <tr>
                 <td><code>message</code></td>
+                <td><code>data-bv-lessthan-message</code></td>
                 <td>String</td>
                 <td>The error message</td>
             </tr>
             <tr>
                 <td><code>value</code> (*)</td>
+                <td><code>data-bv-lessthan-value</code></td>
                 <td>Float</td>
                 <td>The number to make a comparison to</td>
             </tr>
             <tr>
                 <td><code>inclusive</code></td>
+                <td><code>data-bv-lessthan-inclusive</code></td>
                 <td>Boolean</td>
                 <td>
                     Can be <code>true</code> or <code>false</code>.<br />

@@ -13,6 +13,7 @@ validator: hexColor
         <thead>
             <tr>
                 <th>Option</th>
+                <th>Equivalent HTML attribute</th>
                 <th>Type</th>
                 <th>Description</th>
             </tr>
@@ -20,6 +21,7 @@ validator: hexColor
         <tbody>
             <tr>
                 <td><code>message</code></td>
+                <td><code>data-bv-hexcolor-message</code></td>
                 <td>String</td>
                 <td>The error message</td>
             </tr>
@@ -31,19 +33,25 @@ validator: hexColor
     <h2>Live example 1</h2>
 
     <div class="docs-example">
-        <div class="docs-example__form">
-            <form id="colorForm" class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Color</label>
-                    <div class="col-lg-3">
-                        <input type="text" class="form-control" name="color" />
-                    </div>
-                </div>
-            </form>
-        </div>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#example-form-tab" data-toggle="tab">Form</a></li>
+            <li><a href="#example-html-tab" data-toggle="tab">HTML</a></li>
+        </ul>
 
-        <div class="docs-example__code">
-            <pre><code class="xml">&lt;form id="colorForm" class="form-horizontal">
+        <div class="tab-content">
+            <div class="tab-pane active" id="example-form-tab">
+                <form id="colorForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Color</label>
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control" name="color" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="example-html-tab">
+                <pre><code class="xml">&lt;form id="colorForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Color&lt;/label>
         &lt;div class="col-lg-3">
@@ -52,7 +60,7 @@ validator: hexColor
     &lt;/div>
 &lt;/form></code></pre>
 
-            <pre><code class="xml javascript">&lt;script>
+                <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#colorForm').bootstrapValidator({
         feedbackIcons: {
@@ -63,15 +71,16 @@ $(document).ready(function() {
         fields: {
             color: {
                 validators: {
-                    hexColor: {
+                    <span class="docs-code__note">hexColor: {
                         message: 'The color code is not valid'
-                    }
+                    }</span>
                 }
             }
         }
     });
 });
 &lt;/script></code></pre>
+            </div>
         </div>
     </div>
 </section>
@@ -86,22 +95,28 @@ $(document).ready(function() {
     <link href="/vendor/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet" />
 
     <div class="docs-example">
-        <div class="docs-example__form">
-            <form id="colorPickerForm" class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Color</label>
-                    <div class="col-lg-4">
-                        <div class="input-group" id="colorPicker">
-                            <input type="text" class="form-control" name="color" />
-                            <span class="input-group-addon" style="color: #fff">Pick a color</span>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#colorpicker-form-tab" data-toggle="tab">Form</a></li>
+            <li><a href="#colorpicker-html-tab" data-toggle="tab">HTML</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="colorpicker-form-tab">
+                <form id="colorPickerForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Color</label>
+                        <div class="col-lg-4">
+                            <div class="input-group" id="colorPicker">
+                                <input type="text" class="form-control" name="color" />
+                                <span class="input-group-addon" style="color: #fff">Pick a color</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
 
-        <div class="docs-example__code">
-            <pre><code class="xml">&lt!-- Required CSS -->
+            <div class="tab-pane" id="colorpicker-html-tab">
+                <pre><code class="xml">&lt!-- Required CSS -->
 &lt;link href="/vendor/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet" />
 
 &lt;form id="colorPickerForm" class="form-horizontal">
@@ -116,7 +131,7 @@ $(document).ready(function() {
     &lt;/div>
 &lt;/form></code></pre>
 
-    <pre><code class="xml javascript">&lt!-- Required JS -->
+                <pre><code class="xml javascript">&lt!-- Required JS -->
 &lt;script src="/vendor/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js">&lt;/script>
 
 &lt;script>
@@ -125,9 +140,9 @@ $(document).ready(function() {
         fields: {
             color: {
                 validators: {
-                    hexColor: {
+                    <span class="docs-code__note">hexColor: {
                         message: 'The color code is not valid'
-                    }
+                    }</span>
                 }
             }
         }
@@ -139,11 +154,12 @@ $(document).ready(function() {
             // Re-validate the color when user choose a color from the color picker
             $('#colorPickerForm')
                 .data('bootstrapValidator')                     // Get BootstrapValidator instance
-                .updateStatus('color', 'NOT_VALIDATED', null)   // Set the color as not validated yet
-                .validateField('color');                        // and validate the color
+                <span class="docs-code__note">.updateStatus('color', 'NOT_VALIDATED', null)   // Set the color as not validated yet
+                .validateField('color');                        // and validate the color</span>
         });
 });
 &lt;/script></code></pre>
+            </div>
         </div>
     </div>
 </section>

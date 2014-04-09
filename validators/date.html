@@ -13,6 +13,7 @@ validator: date
         <thead>
             <tr>
                 <th>Option</th>
+                <th>Equivalent HTML attribute</th>
                 <th>Type</th>
                 <th>Description</th>
             </tr>
@@ -20,11 +21,13 @@ validator: date
         <tbody>
             <tr>
                 <td><code>message</code></td>
+                <td><code>data-bv-date-message</code></td>
                 <td>String</td>
                 <td>The error message</td>
             </tr>
             <tr>
                 <td><code>format</code> (*)</td>
+                <td><code>data-bv-date-format</code></td>
                 <td>String</td>
                 <td>The date format. It is <code>MM/DD/YYYY</code>, by default</td>
             </tr>
@@ -98,20 +101,26 @@ validator: date
     <p>The following form might be used in a profile setting page:</p>
 
     <div class="docs-example">
-        <div class="docs-example__form">
-            <form id="profileForm" class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Birthday</label>
-                    <div class="col-lg-3">
-                        <input type="text" class="form-control" name="birthday" />
-                        <span class="help-block">YYYY/MM/DD</span>
-                    </div>
-                </div>
-            </form>
-        </div>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#example-form-tab" data-toggle="tab">Form</a></li>
+            <li><a href="#example-html-tab" data-toggle="tab">HTML</a></li>
+        </ul>
 
-        <div class="docs-example__code">
-            <pre><code class="xml">&lt;form id="profileForm" class="form-horizontal">
+        <div class="tab-content">
+            <div class="tab-pane active" id="example-form-tab">
+                <form id="profileForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Birthday</label>
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control" name="birthday" />
+                            <span class="help-block">YYYY/MM/DD</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="example-html-tab">
+                <pre><code class="xml">&lt;form id="profileForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Birthday&lt;/label>
         &lt;div class="col-lg-3">
@@ -121,7 +130,7 @@ validator: date
     &lt;/div>
 &lt;/form></code></pre>
 
-            <pre><code class="xml javascript">&lt;script>
+                <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#profileForm').bootstrapValidator({
         feedbackIcons: {
@@ -132,16 +141,17 @@ $(document).ready(function() {
         fields: {
             birthday: {
                 validators: {
-                    date: {
+                    <span class="docs-code__note">date: {
                         format: 'YYYY/DD/MM',
                         message: 'The value is not a valid date'
-                    }
+                    }</span>
                 }
             }
         }
     });
 });
 &lt;/script></code></pre>
+            </div>
         </div>
     </div>
 </section>
@@ -160,23 +170,29 @@ $(document).ready(function() {
     </style>
 
     <div class="docs-example">
-        <div class="docs-example__form">
-            <form id="meetingForm" class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Meeting time</label>
-                    <div class="col-lg-4">
-                        <div class="input-group date" id="datetimePicker">
-                            <input type="text" class="form-control" name="meeting" />
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                        </div>
-                        <span class="help-block">MM/DD/YYYY h:m A</span>
-                    </div>
-                </div>
-            </form>
-        </div>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#datepicker-form-tab" data-toggle="tab">Form</a></li>
+            <li><a href="#datepicker-html-tab" data-toggle="tab">HTML</a></li>
+        </ul>
 
-        <div class="docs-example__code">
-            <pre><code class="xml">&lt;!-- Required CSS -->
+        <div class="tab-content">
+            <div class="tab-pane active" id="datepicker-form-tab">
+                <form id="meetingForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Meeting time</label>
+                        <div class="col-lg-4">
+                            <div class="input-group date" id="datetimePicker">
+                                <input type="text" class="form-control" name="meeting" />
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                            <span class="help-block">MM/DD/YYYY h:m A</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="datepicker-html-tab">
+                <pre><code class="xml">&lt;!-- Required CSS -->
 &lt;link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 
 &lt;form id="meetingForm" class="form-horizontal">
@@ -194,7 +210,7 @@ $(document).ready(function() {
     &lt;/div>
 &lt;/form></code></pre>
 
-            <pre><code class="xml javascript">&lt;!-- Required JS -->
+                <pre><code class="xml javascript">&lt;!-- Required JS -->
 &lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
 &lt;script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js">&lt;/script>
 
@@ -211,10 +227,10 @@ $(document).ready(function() {
         fields: {
             meeting: {
                 validators: {
-                    date: {
+                    <span class="docs-code__note">date: {
                         format: 'MM/DD/YYYY h:m A',
                         message: 'The value is not a valid date'
-                    }
+                    }</span>
                 }
             }
         }
@@ -227,12 +243,13 @@ $(document).ready(function() {
                 // Get the bootstrapValidator instance
                 .data('bootstrapValidator')
                 // Mark the field as not validated, so it'll be re-validated when the user change date
-                .updateStatus('meeting', 'NOT_VALIDATED', null)
+                <span class="docs-code__note">.updateStatus('meeting', 'NOT_VALIDATED', null)
                 // Validate the field
-                .validateField('meeting');
+                .validateField('meeting');</span>
         });
 });
 &lt;/script></code></pre>
+            </div>
         </div>
     </div>
 </section>
@@ -243,20 +260,26 @@ $(document).ready(function() {
     <p>This example illustrates the ability of validating date in custom format by using the <a href="/validators/callback/">callback</a> validator and <a href="http://momentjs.com/">momentjs</a> to parse/validate.</p>
 
     <div class="docs-example">
-        <div class="docs-example__form">
-            <form id="customFormatForm" class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-lg-5 control-label">What's US independence day?</label>
-                    <div class="col-lg-3">
-                        <input type="text" class="form-control" name="independenceDay" />
-                        <span class="help-block">MMM D (Sep 6, for example)</span>
-                    </div>
-                </div>
-            </form>
-        </div>
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#custom-form-tab" data-toggle="tab">Form</a></li>
+            <li><a href="#custom-html-tab" data-toggle="tab">HTML</a></li>
+        </ul>
 
-        <div class="docs-example__code">
-            <pre><code class="xml">&lt;form id="customFormatForm" class="form-horizontal">
+        <div class="tab-content">
+            <div class="tab-pane active" id="custom-form-tab">
+                <form id="customFormatForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-5 control-label">What's US independence day?</label>
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control" name="independenceDay" />
+                            <span class="help-block">MMM D (Sep 6, for example)</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="custom-html-tab">
+                <pre><code class="xml">&lt;form id="customFormatForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-5 control-label">What's US independence day?&lt;/label>
         &lt;div class="col-lg-3">
@@ -266,7 +289,7 @@ $(document).ready(function() {
     &lt;/div>
 &lt;/form></code></pre>
 
-            <pre><code class="xml javascript">&lt;!-- Include the momentjs library to use later -->
+                <pre><code class="xml javascript">&lt;!-- Include the momentjs library to use later -->
 &lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
 
 &lt;script>
@@ -280,7 +303,7 @@ $(document).ready(function() {
         fields: {
             independenceDay: {
                 validators: {
-                    callback: {
+                    <span class="docs-code__note">callback: {
                         message: 'Wrong answer',
                         callback: function(value, validator) {
                             var m = new moment(value, 'MMMM D', true);
@@ -291,13 +314,14 @@ $(document).ready(function() {
                             // US independence day is July 4
                             return (m.months() == 6 && m.date() == 4);
                         }
-                    }
+                    }</span>
                 }
             }
         }
     });
 });
 &lt;/script></code></pre>
+            </div>
         </div>
     </div>
 </section>

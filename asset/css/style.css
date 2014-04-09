@@ -39,7 +39,7 @@ pre {
   border-left-color: #3498db;
 }
 .docs-header {
-  background-color: #efeae1;
+  border-bottom: 1px solid #efeae1;
 }
 .docs-header ul {
   margin-bottom: 0;
