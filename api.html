@@ -149,41 +149,47 @@ $(form).data('bootstrapValidator').resetForm();</code></pre>
             </table>
 
             <div class="docs-example">
-                <div class="docs-example__form">
-                    <form id="liveModeForm" class="form-horizontal">
-                        <div class="form-group">
-                            <div class="col-lg-offset-3 col-lg-9">
-                                <button type="button" class="btn btn-success" data-mode="enabled">Set live="enabled"</button>
-                                <button type="button" class="btn btn-success" data-mode="disabled">Set live="disabled"</button>
-                            </div>
-                        </div>
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#livemode-form-tab" data-toggle="tab">Form</a></li>
+                    <li><a href="#livemode-html-tab" data-toggle="tab">HTML</a></li>
+                </ul>
 
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Text editors</label>
-                            <div class="col-lg-5">
-                                <input class="form-control" type="text" name="editors[]" />
+                <div class="tab-content">
+                    <div class="tab-pane active" id="livemode-form-tab">
+                        <form id="liveModeForm" class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-lg-offset-3 col-lg-9">
+                                    <button type="button" class="btn btn-success" data-mode="enabled">Set live="enabled"</button>
+                                    <button type="button" class="btn btn-success" data-mode="disabled">Set live="disabled"</button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-offset-3 col-lg-5">
-                                <input class="form-control" type="text" name="editors[]" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-offset-3 col-lg-5">
-                                <input class="form-control" type="text" name="editors[]" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-offset-3 col-lg-5">
-                                <input class="form-control" type="text" name="editors[]" />
-                            </div>
-                        </div>
-                    </form>
-                </div>
 
-                <div class="docs-example__code">
-                    <pre><code class="xml">&lt;form id="liveModeForm" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Text editors</label>
+                                <div class="col-lg-5">
+                                    <input class="form-control" type="text" name="editors[]" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-offset-3 col-lg-5">
+                                    <input class="form-control" type="text" name="editors[]" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-offset-3 col-lg-5">
+                                    <input class="form-control" type="text" name="editors[]" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-offset-3 col-lg-5">
+                                    <input class="form-control" type="text" name="editors[]" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane" id="livemode-html-tab">
+                        <pre><code class="xml">&lt;form id="liveModeForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;div class="col-lg-offset-3 col-lg-9">
             &lt;button type="button" class="btn btn-success" data-mode="enabled">
@@ -218,7 +224,7 @@ $(form).data('bootstrapValidator').resetForm();</code></pre>
     &lt;/div>
 &lt;/form></code></pre>
 
-                    <pre><code class="xml javascript">&lt;script>
+                        <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#liveModeForm')
         .bootstrapValidator({
@@ -238,10 +244,13 @@ $(document).ready(function() {
             }
         })
         .find('button[data-mode]').click(function() {
-            $('#liveModeForm').data('bootstrapValidator').setLiveMode($(this).attr('data-mode'));
+            $('#liveModeForm')
+                .data('bootstrapValidator')
+                <span class="docs-code__note">.setLiveMode($(this).attr('data-mode'))</span>;
         });
 });
 &lt;/script></code></pre>
+                    </div>
                 </div>
             </div>
         </section>
@@ -328,24 +337,32 @@ $(document).ready(function() {
             </style>
 
             <div class="docs-example">
-                <div class="docs-example__form">
-                    <form id="datetimeForm" class="form-horizontal">
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">DateTime Picker</label>
-                            <div class="col-lg-5">
-                                <div class="input-group date" id="datetimePicker">
-                                    <input type="text" class="form-control" name="datetimePicker" />
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#updatestatus-form-tab" data-toggle="tab">Form</a></li>
+                    <li><a href="#updatestatus-html-tab" data-toggle="tab">HTML</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="updatestatus-form-tab">
+                        <form id="datetimeForm" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">DateTime Picker</label>
+                                <div class="col-lg-5">
+                                    <div class="input-group date" id="datetimePicker">
+                                        <input type="text" class="form-control" name="datetimePicker" />
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
-                </div>
+                        </form>
+                    </div>
 
-                <div class="docs-example__code">
-                    <pre><code class="html">&lt;form id="datetimeForm" method="post" class="form-horizontal">
+                    <div class="tab-pane" id="updatestatus-html-tab">
+                        <pre><code class="html">&lt;link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+&lt;form id="datetimeForm" method="post" class="form-horizontal">
     ...
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">DateTime Picker&lt;/label>
@@ -361,7 +378,9 @@ $(document).ready(function() {
     ...
 &lt;/form></code></pre>
 
-                    <pre><code class="xml javascript">&lt;script>
+                        <pre><code class="xml javascript">&lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
+&lt;script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js">&lt;/script>
+&lt;script>
 $(document).ready(function() {
     $('#datetimePicker').datetimepicker();
 
@@ -388,12 +407,13 @@ $(document).ready(function() {
                 // Get the bootstrapValidator instance
                 .data('bootstrapValidator')
                 // Mark the field as not validated, so it'll be re-validated when the user change date
-                .updateStatus('datetimePicker', 'NOT_VALIDATED', null)
+                <span class="docs-code__note">.updateStatus('datetimePicker', 'NOT_VALIDATED', null)</span>
                 // Validate the field
                 .validateField('datetimePicker');
         });
 });
 &lt;/script></code></pre>
+                    </div>
                 </div>
             </div>
         </section>
@@ -408,6 +428,29 @@ $(document).ready(function() {
 // or
 $(form).bootstrapValidator(options);
 $(form).data('bootstrapValidator').validate();</code></pre>
+        </section>
+
+        <section id="validate-field">
+            <h2>validateField</h2>
+
+            <p><code>validateField(field)</code> &mdash; Validate field.</p>
+
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>field</code></td>
+                        <td>String</td>
+                        <td>The field name</td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
 
         <a href="{{ site.repository.docs_edit }}/api.html" class="btn btn-info">Improve this page</a>
@@ -425,6 +468,7 @@ $(form).data('bootstrapValidator').validate();</code></pre>
                 <li><a href="#update-element-status">updateElementStatus</a></li>
                 <li><a href="#update-status">updateStatus</a></li>
                 <li><a href="#validate">validate</a></li>
+                <li><a href="#validate-field">validateField</a></li>
             </ul>
         </div>
     </div>
