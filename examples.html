@@ -497,13 +497,13 @@ $(document).ready(function() {
 
             <p>BootstrapValidator does not validate the fields which:</p>
             <ul>
-                <li>is disabled</li>
-                <li>is hidden</li>
-                <li>is not visible</li>
+                <li>are disabled</li>
+                <li>are hidden</li>
+                <li>are not visible</li>
             </ul>
 
             <p>The following example shows an example of toggling field validator.</p>
-            <p>Try to click the <i>Add more info</i> or <i>Add more phone numbers</i> button to enable/disable the additional fields. Also, look at state of the <i>Save</i> button based on the validity of additional fields.</p>
+            <p>Try to click the <i>Add more info</i> or <i>Add more phone numbers</i> button to enable/disable the additional fields. Also, look at state of the <i>Validate</i> button based on the validity of additional fields.</p>
 
             <div class="docs-example">
                 <ul class="nav nav-tabs">
@@ -579,7 +579,7 @@ $(document).ready(function() {
 
                             <div class="form-group">
                                 <div class="col-lg-9 col-lg-offset-3">
-                                    <button type="button" class="btn btn-primary">Save</button>
+                                    <button type="button" class="btn btn-primary">Validate</button>
                                 </div>
                             </div>
                         </form>
@@ -658,7 +658,7 @@ $(document).ready(function() {
 
     &lt;div class="form-group">
         &lt;div class="col-lg-9 col-lg-offset-3">
-            &lt;button type="button" class="btn btn-primary">Save&lt;/button>
+            &lt;button type="button" class="btn btn-primary">Validate&lt;/button>
         &lt;/div>
     &lt;/div>
 &lt;/form>
@@ -668,7 +668,6 @@ $(document).ready(function() {
     $('#togglingForm')
         .bootstrapValidator({
             message: 'This value is not valid',
-            submitButtons: 'button.btn-primary',
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
@@ -738,6 +737,11 @@ $(document).ready(function() {
                 }</span>
             }
         })
+        .find('button.btn-primary')
+            .on('click', function() {
+                $('#togglingForm').data('bootstrapValidator').validate();
+            })
+            .end()
         .find('button[data-toggle]')
             .on('click', function() {
                 var $target = $($(this).attr('data-toggle'));
@@ -755,6 +759,240 @@ $(document).ready(function() {
                 </div>
             </div>
         </section>
+
+        <section id="fields-with-same-name">
+            <h2>Fields with same name</h2>
+
+            <p>It's possible to validate multiple fields with the same name. The fields can be radio buttons, checkboxes or text boxes, etc.</p>
+
+            <div class="docs-example">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#multiple-form-tab" data-toggle="tab">Form</a></li>
+                    <li><a href="#multiple-html-tab" data-toggle="tab">HTML</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="multiple-form-tab">
+                        <form id="multipleForm" method="post" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Gender</label>
+                                <div class="col-lg-5">
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="gender" value="male" /> Male
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="gender" value="female" /> Female
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="gender" value="other" /> Other
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Browser</label>
+                                <div class="col-lg-5">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="browsers[]" value="chrome" /> Google Chrome
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="browsers[]" value="firefox" /> Firefox
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="browsers[]" value="ie" /> IE
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="browsers[]" value="safari" /> Safari
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="browsers[]" value="opera" /> Opera
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="browsers[]" value="other" /> Other
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Editors</label>
+                                <div class="col-lg-5">
+                                    <input class="form-control" type="text" name="editors[]" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-offset-3 col-lg-5">
+                                    <input class="form-control" type="text" name="editors[]" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-offset-3 col-lg-5">
+                                    <input class="form-control" type="text" name="editors[]" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-offset-3 col-lg-5">
+                                    <input class="form-control" type="text" name="editors[]" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-9 col-lg-offset-3">
+                                    <button type="button" class="btn btn-primary">Validate</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane" id="multiple-html-tab">
+                        <pre><code class="xml">&lt;form id="multipleForm" method="post" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Gender&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;div class="radio">
+                &lt;label>
+                    &lt;input <span class="docs-code__note">type="radio" name="gender"</span> value="male" /> Male
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="radio">
+                &lt;label>
+                    &lt;input <span class="docs-code__note">type="radio" name="gender"</span> value="female" /> Female
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="radio">
+                &lt;label>
+                    &lt;input <span class="docs-code__note">type="radio" name="gender"</span> value="other" /> Other
+                &lt;/label>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Favourite browser&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input <span class="docs-code__note">type="checkbox" name="browsers[]"</span> value="chrome" /> Google Chrome
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input <span class="docs-code__note">type="checkbox" name="browsers[]"</span> value="firefox" /> Firefox
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input <span class="docs-code__note">type="checkbox" name="browsers[]"</span> value="ie" /> IE
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input <span class="docs-code__note">type="checkbox" name="browsers[]"</span> value="safari" /> Safari
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input <span class="docs-code__note">type="checkbox" name="browsers[]"</span> value="opera" /> Opera
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input <span class="docs-code__note">type="checkbox" name="browsers[]"</span> value="other" /> Other
+                &lt;/label>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Editors&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input class="form-control" <span class="docs-code__note">type="text" name="editors[]"</span> />
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;div class="col-lg-offset-3 col-lg-5">
+            &lt;input class="form-control" <span class="docs-code__note">type="text" name="editors[]"</span> />
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;div class="col-lg-offset-3 col-lg-5">
+            &lt;input class="form-control" <span class="docs-code__note">type="text" name="editors[]"</span> />
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;div class="col-lg-offset-3 col-lg-5">
+            &lt;input class="form-control" <span class="docs-code__note">type="text" name="editors[]"</span> />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;div class="col-lg-9 col-lg-offset-3">
+            &lt;button type="button" class="btn btn-primary">Validate&lt;/button>
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+
+                        <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#multipleForm')
+        .bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                <span class="docs-code__note">gender</span>: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The gender is required'
+                        }
+                    }
+                },
+                <span class="docs-code__note">'browsers[]'</span>: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please specify at least one browser you use daily for development'
+                        }
+                    }
+                },
+                <span class="docs-code__note">'editors[]'</span>: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The editor names are required'
+                        }
+                    }
+                }
+            }
+        })
+        .find('button.btn-primary')
+            .on('click', function() {
+                $('#multipleForm').data('bootstrapValidator').validate();
+            });
+});
+&lt;/script></code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <div class="col-md-3">
@@ -763,6 +1001,7 @@ $(document).ready(function() {
                 <li><a href="#attribute">Attribute</a></li>
                 <li><a href="#html5">HTML 5</a></li>
                 <li><a href="#toggling">Toggling</a></li>
+                <li><a href="#fields-with-same-name">Fields with same name</a></li>
             </ul>
         </div>
     </div>
@@ -776,7 +1015,6 @@ $(document).ready(function() {
     $('#togglingForm')
         .bootstrapValidator({
             message: 'This value is not valid',
-            submitButtons: 'button.btn-primary',
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
@@ -844,6 +1082,11 @@ $(document).ready(function() {
                 }
             }
         })
+        .find('button.btn-primary')
+            .on('click', function() {
+                $('#togglingForm').data('bootstrapValidator').validate();
+            })
+            .end()
         .find('button[data-toggle]')
             .on('click', function() {
                 var $target = $($(this).attr('data-toggle'));
@@ -852,6 +1095,43 @@ $(document).ready(function() {
                     // Enable the submit buttons in case additional fields are not valid
                     $('#togglingForm').data('bootstrapValidator').disableSubmitButtons(false);
                 }
+            });
+
+    $('#multipleForm')
+        .bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                gender: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The gender is required'
+                        }
+                    }
+                },
+                'browsers[]': {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please specify at least one browser you use daily for development'
+                        }
+                    }
+                },
+                'editors[]': {
+                    validators: {
+                        notEmpty: {
+                            message: 'The editor names are required'
+                        }
+                    }
+                }
+            }
+        })
+        .find('button.btn-primary')
+            .on('click', function() {
+                $('#multipleForm').data('bootstrapValidator').validate();
             });
 });
 </script>
