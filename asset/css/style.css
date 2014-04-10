@@ -151,6 +151,9 @@ pre {
   border-radius: 4px;
   margin-top: 20px;
 }
+.docs-sidebar .nav > li > a {
+  padding: 6px 15px;
+}
 .docs-sidebar .nav > .active > a,
 .docs-sidebar .nav > .active:hover > a,
 .docs-sidebar .nav > .active:focus > a {

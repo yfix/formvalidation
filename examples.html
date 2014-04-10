@@ -1,0 +1,511 @@
+---
+layout: page
+title: Examples
+permalink: /examples/
+slug: examples
+---
+
+<h1>Examples</h1>
+
+<div class="row">
+    <div class="col-md-9">
+        <section id="attribute">
+            <h2>Attribute</h2>
+
+            <p>This example illustrates the ability of setting validator options via HTML attributes.</p>
+
+            <p>In order to set a specific validator to given field, you have to declare additional attributes for the field. For example:</p>
+
+            <pre><code class="xml">&lt;input
+    data-bv-{validatorName}
+    data-bv-{validatorName}-{validatorOption}="..." /></code></pre>
+
+            <p>Here are some important points when setting the attributes for field:</p>
+
+            <ul>
+                <li><code>{validatorName}</code> and <code>{validatorOption}</code> must be lowercase.</li>
+                <li>Set <code>data-bv-{validatorName}</code> or <code>data-bv-{validatorName}="true"</code> to enable particular validator for field.<br/>Set <code>data-bv-{validatorName}="false"</code> to disable the validator.</li>
+                <li>There are some validators which not all options are configurable via HTML attribute. Refer to each validator documentation to see exactly the equivalent HTML attribute for each option.</li>
+            </ul>
+
+            <p>If there are multiple elements having the same name, you just need to set the HTML attribute to one of them. For example:</p>
+            <pre><code class="xml">&lt;div class="form-group">
+    &lt;label class="col-lg-3 control-label">Gender&lt;/label>
+    &lt;div class="col-lg-5">
+        &lt;div class="radio">
+            &lt;label>
+                &lt;input type="radio" name="gender" value="male"
+                    <span class="docs-code__note">data-bv-notempty data-bv-notempty-message="The gender is required"</span> /> Male
+            &lt;/label>
+        &lt;/div>
+        &lt;div class="radio">
+            &lt;label>
+                &lt;input type="radio" name="gender" value="female" /> Female
+            &lt;/label>
+        &lt;/div>
+        &lt;div class="radio">
+            &lt;label>
+                &lt;input type="radio" name="gender" value="other" /> Other
+            &lt;/label>
+        &lt;/div>
+    &lt;/div>
+&lt;/div></code></pre>
+
+            <div class="docs-example">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#attribute-form-tab" data-toggle="tab">Form</a></li>
+                    <li><a href="#attribute-html-tab" data-toggle="tab">HTML</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="attribute-form-tab">
+                        <form id="attributeForm" method="post" class="form-horizontal"
+                              data-bv-message="This value is not valid"
+                              data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+                              data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+                              data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Full name</label>
+                                <div class="col-lg-4">
+                                    <input type="text" class="form-control" name="firstName" placeholder="First name"
+                                           data-bv-notempty="true" data-bv-notempty-message="The first name is required and cannot be empty" />
+                                </div>
+                                <div class="col-lg-4">
+                                    <input type="text" class="form-control" name="lastName" placeholder="Last name"
+                                           data-bv-notempty="true" data-bv-notempty-message="The last name is required and cannot be empty" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Username</label>
+                                <div class="col-lg-5">
+                                    <input type="text" class="form-control" name="username"
+                                           data-bv-message="The username is not valid"
+                                           data-bv-notempty="true" data-bv-notempty-message="The username is required and cannot be empty"
+                                           data-bv-regexp="true" data-bv-regexp-regexp="[a-zA-Z0-9_\.]+" data-bv-regexp-message="The username can only consist of alphabetical, number, dot and underscore"
+                                           data-bv-stringlength="true" data-bv-stringlength-min="6" data-bv-stringlength-max="30" data-bv-stringlength-message="The username must be more than 6 and less than 30 characters long"
+                                           data-bv-different="true" data-bv-different-field="password" data-bv-different-message="The username and password cannot be the same as each other" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Email address</label>
+                                <div class="col-lg-5">
+                                    <input class="form-control" name="email" type="email"
+                                           data-bv-emailaddress="true" data-bv-emailaddress-message="The input is not a valid email address" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Password</label>
+                                <div class="col-lg-5">
+                                    <input type="password" class="form-control" name="password"
+                                           data-bv-notempty="true" data-bv-notempty-message="The password is required and cannot be empty"
+                                           data-bv-identical="true" data-bv-identical-field="confirmPassword" data-bv-identical-message="The password and its confirm are not the same"
+                                           data-bv-different="true" data-bv-different-field="username" data-bv-different-message="The password cannot be the same as username" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Retype password</label>
+                                <div class="col-lg-5">
+                                    <input type="password" class="form-control" name="confirmPassword"
+                                           data-bv-notempty="true" data-bv-notempty-message="The confirm password is required and cannot be empty"
+                                           data-bv-identical="true" data-bv-identical-field="password" data-bv-identical-message="The password and its confirm are not the same"
+                                           data-bv-different="true" data-bv-different-field="username" data-bv-different-message="The password cannot be the same as username" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Languages</label>
+                                <div class="col-lg-5">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="languages[]" value="english" data-bv-notempty="true" data-bv-message="Please specify at least one language you can speak" /> English
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="languages[]" value="french" /> French
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="languages[]" value="german" /> German
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="languages[]" value="russian" /> Russian
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="languages[]" value="other" /> Other
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane" id="attribute-html-tab">
+                        <pre><code lang="xml">&lt;form id="attributeForm" method="post" class="form-horizontal"
+    <span class="docs-code__note">data-bv-message="This value is not valid"
+    data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+    data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+    data-bv-feedbackicons-validating="glyphicon glyphicon-refresh"</span>>
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Full name&lt;/label>
+        &lt;div class="col-lg-4">
+            &lt;input type="text" class="form-control" name="firstName" placeholder="First name"
+                <span class="docs-code__note">data-bv-notempty="true"
+                data-bv-notempty-message="The first name is required and cannot be empty"</span> />
+        &lt;/div>
+        &lt;div class="col-lg-4">
+            &lt;input type="text" class="form-control" name="lastName" placeholder="Last name"
+                <span class="docs-code__note">data-bv-notempty="true"
+                data-bv-notempty-message="The last name is required and cannot be empty"</span> />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Username&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="username"
+                <span class="docs-code__note">data-bv-message="The username is not valid"</span>
+
+                <span class="docs-code__note">data-bv-notempty="true"
+                data-bv-notempty-message="The username is required and cannot be empty"</span>
+
+                <span class="docs-code__note">data-bv-regexp="true"
+                data-bv-regexp-regexp="[a-zA-Z0-9_\.]+"
+                data-bv-regexp-message="The username can only consist of alphabetical, number, dot and underscore"</span>
+
+                <span class="docs-code__note">data-bv-stringlength="true"
+                data-bv-stringlength-min="6"
+                data-bv-stringlength-max="30"
+                data-bv-stringlength-message="The username must be more than 6 and less than 30 characters long"</span>
+
+                <span class="docs-code__note">data-bv-different="true"
+                data-bv-different-field="password"
+                data-bv-different-message="The username and password cannot be the same as each other"</span> />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Email address&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input class="form-control" name="email" type="email"
+                <span class="docs-code__note">data-bv-emailaddress="true"
+                data-bv-emailaddress-message="The input is not a valid email address"</span> />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Password&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="password" class="form-control" name="password"
+                <span class="docs-code__note">data-bv-notempty="true"
+                data-bv-notempty-message="The password is required and cannot be empty"</span>
+
+                <span class="docs-code__note">data-bv-identical="true"
+                data-bv-identical-field="confirmPassword"
+                data-bv-identical-message="The password and its confirm are not the same"</span>
+
+                <span class="docs-code__note">data-bv-different="true"
+                data-bv-different-field="username"
+                data-bv-different-message="The password cannot be the same as username"</span> />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Retype password&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="password" class="form-control" name="confirmPassword"
+                <span class="docs-code__note">data-bv-notempty="true"
+                data-bv-notempty-message="The confirm password is required and cannot be empty"</span>
+
+                <span class="docs-code__note">data-bv-identical="true"
+                data-bv-identical-field="password"
+                data-bv-identical-message="The password and its confirm are not the same"</span>
+
+                <span class="docs-code__note">data-bv-different="true"
+                data-bv-different-field="username"
+                data-bv-different-message="The password cannot be the same as username"</span> />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Languages&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input type="checkbox" name="languages[]" value="english"
+                        <span class="docs-code__note">data-bv-message="Please specify at least one language you can speak"
+                        data-bv-notempty="true"</span> /> English
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input type="checkbox" name="languages[]" value="french" /> French
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input type="checkbox" name="languages[]" value="german" /> German
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input type="checkbox" name="languages[]" value="russian" /> Russian
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input type="checkbox" name="languages[]" value="other" /> Other
+                &lt;/label>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+                        <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#attributeForm').bootstrapValidator();
+});
+&lt;/script></code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="html5">
+            <h2>HTML 5</h2>
+
+            <p>BootstrapValidator supports a few of HTML 5 types, attributes listed as following:</p>
+
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>HTML 5 attribute</th>
+                        <th>Equivalent validator</th>
+                        <th>Equivalent HTML attribute</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>min="..."</code></td>
+                        <td><a href="/validators/greater-than/">greaterThan validator</a></td>
+                        <td>
+                            <pre><code class="xml">data-bv-greaterthan="true"
+data-bv-greaterthan-value="..."</code></pre></td>
+                    </tr>
+                    <tr>
+                        <td><code>max="..."</code></td>
+                        <td><a href="/validators/less-than/">lessThan validator</a></td>
+                        <td>
+                            <pre><code class="xml">data-bv-lessthan="true"
+data-bv-lessthan-value="..."</code></pre>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>maxlength="..."</code></td>
+                        <td><a href="/validators/string-length/">stringLength validator</a></td>
+                        <td>
+                            <pre><code class="xml">data-bv-stringlength="true"
+data-bv-stringlength-max="..."</code></pre>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>pattern="..."</code></td>
+                        <td><a href="/validators/regexp/">regexp validator</a></td>
+                        <td>
+                            <pre><code class="xml">data-bv-regexp="true"
+data-bv-regexp-regexp="..."</code></pre>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>required</code></td>
+                        <td><a href="/validators/not-empty/">notEmpty validator</a></td>
+                        <td><code>data-bv-notempty="true"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>type="color"</code></td>
+                        <td><a href="/validators/hex-color/">hexColor validator</a></td>
+                        <td><code>data-bv-hexcolor="true"</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>type="email"</code></td>
+                        <td><a href="/validators/email-address/">emailAddress validator</a></td>
+                        <td><code>data-bv-emailaddress="true"</code></td>
+                    </tr>
+                    <tr>
+                        <td><pre><code class="xml">type="range"
+min="..."
+max="..."</code></pre></td>
+                        <td><a href="/validators/between/">between validator</a></td>
+                        <td><pre><code class="xml">data-bv-between="true"
+data-bv-between-min="..."
+data-bv-between-max="..."</code></pre></td>
+                    </tr>
+                    <tr>
+                        <td><code>type="url"</code></td>
+                        <td><a href="/validators/uri/">uri validator</a></td>
+                        <td><code>data-bv-uri="true"</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="docs-example">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#html5-form-tab" data-toggle="tab">Form</a></li>
+                    <li><a href="#html5-html-tab" data-toggle="tab">HTML</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="html5-form-tab">
+                        <form id="html5Form" method="post" class="form-horizontal"
+                              data-bv-message="This value is not valid"
+                              data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+                              data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+                              data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Username</label>
+                                <div class="col-lg-5">
+                                    <input type="text" class="form-control" name="username"
+                                           data-bv-message="The username is not valid"
+                                           required data-bv-notempty-message="The username is required and cannot be empty"
+                                           pattern="[a-zA-Z0-9]+" data-bv-regexp-message="The username can only consist of alphabetical, number" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Email address</label>
+                                <div class="col-lg-5">
+                                    <input class="form-control" name="email" type="email" required data-bv-emailaddress-message="The input is not a valid email address" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Website</label>
+                                <div class="col-lg-5">
+                                    <input class="form-control" name="website" type="url" required data-bv-uri-message="The input is not a valid website address" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Fav color</label>
+                                <div class="col-lg-3">
+                                    <input class="form-control" name="color" type="color" required data-bv-hexcolor-message="The input is not a valid color code" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Age</label>
+                                <div class="col-lg-2">
+                                    <input type="text" class="form-control" name="age"
+                                           required
+                                           min="10" data-bv-greaterthan-inclusive="false" data-bv-greaterthan-message="The input must be greater than or equal to 10"
+                                           max="100" data-bv-lessthan-inclusive="true" data-bv-lessthan-message="The input must be less than 100" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane" id="html5-html-tab">
+                        <pre><code class="xml">
+&lt;form id="html5Form" method="post" class="form-horizontal"
+      data-bv-message="This value is not valid"
+      data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+      data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+      data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Username&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="username"
+                data-bv-message="The username is not valid"
+
+                <span class="docs-code__note">required
+                data-bv-notempty-message="The username is required and cannot be empty"</span>
+
+                <span class="docs-code__note">pattern="[a-zA-Z0-9]+"
+                data-bv-regexp-message="The username can only consist of alphabetical, number"</span> />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Email address&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input class="form-control" name="email"
+                required
+                <span class="docs-code__note">type="email" data-bv-emailaddress-message="The input is not a valid email address"</span> />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Website&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input class="form-control" name="website"
+                required
+                <span class="docs-code__note">type="url" data-bv-uri-message="The input is not a valid website address"</span> />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Fav color&lt;/label>
+        &lt;div class="col-lg-3">
+            &lt;input class="form-control" name="color"
+                required
+                <span class="docs-code__note">type="color" data-bv-hexcolor-message="The input is not a valid color code"</span> />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Age&lt;/label>
+        &lt;div class="col-lg-2">
+            &lt;input type="text" class="form-control" name="age"
+                required
+                <span class="docs-code__note">min="10"
+                data-bv-greaterthan-inclusive="false"
+                data-bv-greaterthan-message="The input must be greater than or equal to 10"</span>
+
+                <span class="docs-code__note">max="100"
+                data-bv-lessthan-inclusive="true"
+                data-bv-lessthan-message="The input must be less than 100"</span> />
+            &lt;!--&lt;input class="form-control" name="age"
+                required
+
+                <span class="docs-code__note">type="range"
+                min="10"
+                max="100"
+                data-bv-between-message="The input must be between 10 and 100"</span> />-->
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+                        <pre><code class="xml javascript">&lt;script type="text/javascript">
+$(document).ready(function() {
+    $('#html5Form').bootstrapValidator();
+});
+&lt;/script></code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="col-md-3">
+        <div class="docs-sidebar" data-spy="affix" data-offset-top="120">
+            <ul class="nav">
+                <li><a href="#attribute">Attribute</a></li>
+                <li><a href="#html5">HTML 5</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    $('#attributeForm').bootstrapValidator();
+    $('#html5Form').bootstrapValidator();
+});
+</script>
