@@ -12,15 +12,16 @@ slug: settings
         <p>The BootstrapValidator plugin can be called with the full options as sample code below:</p>
 
         <pre><code class="javascript">$(formSelector).bootstrapValidator({
-    message: 'This value is not valid',
     feedbackIcons: {
         valid: 'glyphicon glyphicon-ok',
         invalid: 'glyphicon glyphicon-remove',
         validating: 'glyphicon glyphicon-refresh'
     },
+    live: 'enabled',
+    message: 'This value is not valid',
     submitButtons: 'button[type="submit"]',
     submitHandler: null,
-    live: 'enabled',
+    trigger: null,
     fields: ...
 });</code></pre>
 
@@ -35,12 +36,16 @@ slug: settings
             </thead>
             <tbody>
                 <tr>
-                    <td><code>message</code></td>
-                    <td><code>data-bv-message</code></td>
-                </tr>
-                <tr>
                     <td><code>feedbackIcons</code></td>
                     <td><code>data-bv-feedbackicons-valid</code>, <code>data-bv-feedbackicons-invalid</code>, <code>data-bv-feedbackicons-validating</code></td>
+                </tr>
+                <tr>
+                    <td><code>live</code></td>
+                    <td><code>data-bv-live</code></td>
+                </tr>
+                <tr>
+                    <td><code>message</code></td>
+                    <td><code>data-bv-message</code></td>
                 </tr>
                 <tr>
                     <td><code>submitButtons</code></td>
@@ -51,8 +56,8 @@ slug: settings
                     <td>n/a</td>
                 </tr>
                 <tr>
-                    <td><code>live</code></td>
-                    <td><code>data-bv-live</code></td>
+                    <td><code>trigger</code></td>
+                    <td><code>data-bv-trigger</code></td>
                 </tr>
                 <tr>
                     <td><code>fields</code></td>
@@ -83,11 +88,6 @@ $(document).ready(function() {
 
         <p>It's also possible to set validator options for each field using HTML attributes. Look at each validator documentation for more details.</p>
 
-        <section id="message">
-            <h2>message</h2>
-            <p>The default error message for all fields. You can specify the error message for any fields</p>
-        </section>
-
         <section id="feedback-icons">
             <h2>feedbackIcons</h2>
             <p>Indicate valid/invalid/validating icons based on the field validity.</p>
@@ -112,6 +112,25 @@ $(document).ready(function() {
 }</code></pre>
 
             <p>By default, these icons are not set.</p>
+        </section>
+
+        <section id="live">
+            <h2>live</h2>
+
+            <p>Live validating mode. Can be one of 3 values:</p>
+
+            <ul>
+                <li><code>enabled</code>: The plugin validates fields as soon as they are changed</li>
+                <li><code>disabled</code>: Disable the live validating. The error messages are only shown after the form is submitted</li>
+                <li><code>submitted</code>: The live validating is enabled after the form is submitted</li>
+            </ul>
+
+            <p>You can set the live validating mode by using the <a href="/api/#set-live-mode">setLiveMode()</a> method.</p>
+        </section>
+
+        <section id="message">
+            <h2>message</h2>
+            <p>The default error message for all fields. You can specify the error message for any fields.</p>
         </section>
 
         <section id="submit-buttons">
@@ -164,16 +183,10 @@ $(document).ready(function() {
             <p>By default, <code>submitHandler</code> is <code>null</code>.</p>
         </section>
 
-        <section id="live">
-            <h2>live</h2>
-
-            <p>Live validating mode. Can be one of 3 values:</p>
-
-            <ul>
-                <li><code>enabled</code>: The plugin validates fields as soon as they are changed</li>
-                <li><code>disabled</code>: Disable the live validating. The error messages are only shown after the form is submitted</li>
-                <li><code>submitted</code>: The live validating is enabled after the form is submitted</li>
-            </ul>
+        <section id="trigger">
+            <h2>trigger</h2>
+            <p>The event which is fired to validating all fields when the live validating mode is enabled. If you need multiple events are fired, then separate them by a space.</p>
+            <p>It's also possible to set trigger option for each field. Look at the <a href="#fields">fields</a> section.</p>
         </section>
 
         <section id="fields">
@@ -182,22 +195,23 @@ $(document).ready(function() {
 
             <pre><code class="javascript">fields: {
     ...
-    fieldName: {
+    &lt;fieldName>: {
         enabled: true,
         message: 'This value is not valid',
         container: null,
         selector: null,
+        trigger: null,
 
         // Array of validators
         validators: {
             ...
-            validatorName: validatorOptions
+            &lt;validatorName>: &lt;validatorOptions>
             ...
         }
     }
     ...
 }</code></pre>
-            <p>Replace the <code>fieldName</code> with the field name, which is the value of <code>name</code> attribute. If the field cannot be defined by the <code>name</code> attribute, you can use the <code>selector</code> option described below.</p>
+            <p>Replace the <code>&lt;fieldName></code> with the field name, which is the value of <code>name</code> attribute. If the field cannot be defined by the <code>name</code> attribute, you can use the <code>selector</code> option described below.</p>
             <p>The validator options for each field include:</p>
 
             <table class="table table-condensed">
@@ -226,24 +240,33 @@ $(document).ready(function() {
                         <td><code>container</code></td>
                         <td><code>data-bv-container</code></td>
                         <td>String</td>
-                        <td>The CSS selector to indicate the element showing the error messages. Take a look at <a href="#container-example">container example</a> below.</td>
+                        <td>The CSS selector to indicate the element showing the error messages. Take a look at <a href="#container-example">container</a> example below.</td>
                     </tr>
                     <tr>
                         <td><code>selector</code></td>
                         <td><code>data-bv-selector</code></td>
                         <td>String</td>
-                        <td>The CSS selector to indicate the field. It is used in case that it's not possible to use the <code>name</code> attribute for the field. Take a look at <a href="#selector-example">selector example</a> below.</td>
+                        <td>The CSS selector to indicate the field. It is used in case that it's not possible to use the <code>name</code> attribute for the field. Take a look at <a href="#selector-example">selector</a> example below.</td>
+                    </tr>
+                    <tr>
+                        <td><code>trigger</code></td>
+                        <td><code>data-bv-trigger</code></td>
+                        <td>String</td>
+                        <td>
+                            <p>The field events (separated by a space) which are fired when the live validating mode is enabled.</p>
+                            <p>For example, <code>trigger="focus blur"</code> means that the field will be validated when user focus on or leave the focus off the field. See the <a href="#trigger-example">trigger</a> example.</p>
+                        </td>
                     </tr>
                     <tr>
                         <td><code>validators</code></td>
                         <td>n/a</td>
                         <td>Object</td>
-                        <td>Map the validator name <code>validatorName</code> with validator options <code>validatorOptions</code></td>
+                        <td>Map the validator name <code>&lt;validatorName></code> with validator options <code>&lt;validatorOptions></code></td>
                     </tr>
                 </tbody>
             </table>
 
-            <p>The <code>validatorName</code> can be the name of the built-in validator which are described in the <a href="/validators/">Validators</a> page.</p>
+            <p>The <code>&lt;validatorName></code> can be the name of the built-in validator which are described in the <a href="/validators/">Validators</a> page.</p>
 
             <section id="container-example">
                 <h3>container example</h3>
@@ -505,6 +528,109 @@ $(document).ready(function() {
                 <p>As you see, the field can be defined by a ID (<code>#ccNumber</code>), class (<code>.cvvNumber</code>) or attribute (<code>[data-stripe="exp-month"]</code>) selector.</p>
             </section>
 
+            <section id="trigger-example">
+                <h3>trigger example</h3>
+
+                <p>In the following form, the <i>Title</i> field will be validated while user type any character (<code>trigger="keyup"</code>). The <i>Summary</i> field will be validated when user lose the focus (<code>trigger="blur"</code>).</p>
+
+                <div class="docs-example">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#trigger-form-tab" data-toggle="tab">Form</a></li>
+                        <li><a href="#trigger-html-tab" data-toggle="tab">HTML</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="trigger-form-tab">
+                            <form id="triggerForm" method="post" class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">Title</label>
+                                    <div class="col-lg-5">
+                                        <input type="text" class="form-control" name="title" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">Summary</label>
+                                    <div class="col-lg-5">
+                                        <textarea rows="5" class="form-control" name="summary"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">Description</label>
+                                    <div class="col-lg-9">
+                                        <textarea rows="10" class="form-control" name="description"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="tab-pane" id="trigger-html-tab">
+                            <pre><code class="xml">&lt;form id="triggerForm" method="post" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Title&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="title" />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Summary&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;textarea rows="5" class="form-control" name="summary">&lt;/textarea>
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Description&lt;/label>
+        &lt;div class="col-lg-9">
+            &lt;textarea rows="10" class="form-control" name="description">&lt;/textarea>
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+
+                            <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#triggerForm').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            title: {
+                <span class="docs-code__note">trigger: 'keyup'</span>,
+                validators: {
+                    notEmpty: {
+                        message: 'The title is required'
+                    }
+                }
+            },
+            summary: {
+                <span class="docs-code__note">trigger: 'blur'</span>,
+                validators: {
+                    notEmpty: {
+                        message: 'The summary is required'
+                    }
+                }
+            },
+            description: {
+                validators: {
+                    notEmpty: {
+                        message: 'The description is required'
+                    }
+                }
+            }
+        }
+    });
+});
+&lt;/script></code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <a href="{{ site.repository.docs_edit }}/settings.html" class="btn btn-info">Improve this page</a>
         </section>
     </div>
@@ -512,16 +638,18 @@ $(document).ready(function() {
     <div class="col-md-3">
         <div class="docs-sidebar" data-spy="affix" data-offset-top="120">
             <ul class="nav">
-                <li><a href="#message">message</a></li>
                 <li><a href="#feedback-icons">feedbackIcons</a></li>
+                <li><a href="#live">live</a></li>
+                <li><a href="#message">message</a></li>
                 <li><a href="#submit-buttons">submitButtons</a></li>
                 <li><a href="#submit-handler">submitHandler</a></li>
-                <li><a href="#live">live</a></li>
+                <li><a href="#trigger">trigger</a></li>
                 <li>
                     <a href="#fields">fields</a>
                     <ul class="nav">
                         <li><a href="#container-example">container example</a></li>
                         <li><a href="#selector-example">selector example</a></li>
+                        <li><a href="#trigger-example">trigger example</a></li>
                     </ul>
                 </li>
             </ul>
@@ -636,6 +764,40 @@ $(document).ready(function() {
                     cvv: {
                         message: 'The value is not a valid CVV',
                         creditCardField: 'ccNumber'
+                    }
+                }
+            }
+        }
+    });
+
+    $('#triggerForm').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            title: {
+                trigger: 'keyup',
+                validators: {
+                    notEmpty: {
+                        message: 'The title is required'
+                    }
+                }
+            },
+            summary: {
+                trigger: 'blur',
+                validators: {
+                    notEmpty: {
+                        message: 'The summary is required'
+                    }
+                }
+            },
+            description: {
+                validators: {
+                    notEmpty: {
+                        message: 'The description is required'
                     }
                 }
             }

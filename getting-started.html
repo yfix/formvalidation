@@ -233,11 +233,12 @@ slug: getting-started
             <p>Call the plugin to validate the form as following:</p>
             <pre><code class="javascript">$(document).ready(function() {
     $(formSelector).bootstrapValidator({
-        message: 'This value is not valid',
         feedbackIcons: ...,
+        live: 'enabled',
+        message: 'This value is not valid',
         submitButtons: 'button[type="submit"]',
         submitHandler: null,
-        live: 'enabled',
+        trigger: null,
         fields: ...
     });
 });</code></pre>
