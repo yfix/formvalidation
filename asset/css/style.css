@@ -80,18 +80,31 @@ pre {
   padding-bottom: 20px;
   text-align: center;
 }
-.docs-features .col-lg-4 {
-  padding-bottom: 30px;
+.docs-features .col-md-4 {
+  padding-bottom: 20px;
 }
-.docs-features ul,
+.docs-features h3 {
+  margin-top: 5px;
+}
+.docs-features ul {
+  padding-left: 15px;
+  text-align: left;
+}
 .docs-features p {
   text-align: left;
 }
 .docs-features i.fa {
   color: #66CC99;
-  font-size: 3em;
+  font-size: 3.5em;
 }
 /* Changelog */
+.docs-changelog .row {
+  margin-bottom: 15px;
+}
+.docs-changelog h4 {
+  margin-bottom: 0px;
+  margin-top: 0;
+}
 .docs-changelog ul {
   padding-left: 20px;
   list-style: none;
@@ -134,7 +147,7 @@ pre {
 }
 /* Content */
 .docs-content {
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 }
 .docs-content h1 {
   border-bottom: 1px solid #86E2D5;
