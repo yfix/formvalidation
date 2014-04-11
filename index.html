@@ -342,6 +342,30 @@ $(document).ready(function() {
     </div>
 </section>
 
+<!-- Contributors -->
+<section class="docs-contributor">
+    <div class="container">
+        <h2>Contributors</h2>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <p>It is much better by the amazing developers</p>
+
+                <ul>
+                    {% for user in site.data.contributors %}
+                    <li>
+                        <a href="https://github.com/{{ user.username }}" title="{{ user.username }}"><img src="{{ user.avatar }}" /></a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="clearfix"></div>
+            <a href="{{ site.repository.source }}" class="btn btn-primary"><i class="fa fa-github"></i> Join us</a>
+        </div>
+    </div>
+</section>
+
 <div class="modal fade" id="helloModal">
     <div class="modal-dialog">
         <div class="modal-content">

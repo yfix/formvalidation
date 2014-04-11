@@ -93,6 +93,10 @@ pre {
   .col-md-4 {
     padding-bottom: 20px;
   }
+  h2 {
+    padding-bottom: 15px;
+    text-transform: uppercase;
+  }
   h3 {
     margin-top: 5px;
   }
@@ -111,8 +115,14 @@ pre {
 
 /* Changelog */
 .docs-changelog {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
   .row {
     margin-bottom: 15px;
+  }
+  h2 {
+    padding-bottom: 15px;
+    text-transform: uppercase;
   }
   h4 {
     margin-bottom: 0px;
@@ -130,6 +140,32 @@ pre {
   }
   .docs-changelog__fixed {
     border-left: 4px solid #d9534f;
+  }
+}
+
+/* Contributors */
+.docs-contributor {
+  text-align: center;
+  h2 {
+    padding-bottom: 15px;
+    text-transform: uppercase;
+  }
+  ul {
+    list-style-type: none;
+    margin: 0 auto;
+    width: 400px;
+    li {
+      display: inline;
+      float: left;
+      margin: 2px;
+      img {
+        height: 60px;
+        width: 60px;
+      }
+    }
+  }
+  .btn {
+    margin-top: 20px;
   }
 }
 

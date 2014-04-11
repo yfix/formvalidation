@@ -83,6 +83,10 @@ pre {
 .docs-features .col-md-4 {
   padding-bottom: 20px;
 }
+.docs-features h2 {
+  padding-bottom: 15px;
+  text-transform: uppercase;
+}
 .docs-features h3 {
   margin-top: 5px;
 }
@@ -98,8 +102,16 @@ pre {
   font-size: 3.5em;
 }
 /* Changelog */
+.docs-changelog {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+}
 .docs-changelog .row {
   margin-bottom: 15px;
+}
+.docs-changelog h2 {
+  padding-bottom: 15px;
+  text-transform: uppercase;
 }
 .docs-changelog h4 {
   margin-bottom: 0px;
@@ -117,6 +129,31 @@ pre {
 }
 .docs-changelog .docs-changelog__fixed {
   border-left: 4px solid #d9534f;
+}
+/* Contributors */
+.docs-contributor {
+  text-align: center;
+}
+.docs-contributor h2 {
+  padding-bottom: 15px;
+  text-transform: uppercase;
+}
+.docs-contributor ul {
+  list-style-type: none;
+  margin: 0 auto;
+  width: 400px;
+}
+.docs-contributor ul li {
+  display: inline;
+  float: left;
+  margin: 2px;
+}
+.docs-contributor ul li img {
+  height: 60px;
+  width: 60px;
+}
+.docs-contributor .btn {
+  margin-top: 20px;
 }
 .hljs {
   background-color: #fff;
