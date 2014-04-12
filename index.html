@@ -280,6 +280,33 @@ $(document).ready(function() {
 
         <div class="row">
             <div class="col-md-1 col-md-offset-1 text-right">
+                <h4>v0.4.1</h4>
+                <small>2014-04-12</small>
+            </div>
+
+            <div class="col-md-10">
+                <div class="docs-changelog__improved">
+                    <ul>
+                        <li><a href="{{ site.repository.source }}/issues/106">#106</a>: Prevent the <a href="/api/#validate"><code>validate()</code> method</a> from submit the form automatically. So we can call <code>validate()</code> to validate the form</li>
+                        <li><a href="{{ site.repository.source }}/issues/131">#131</a>: Doesn't trigger validation on the first focus</li>
+                        <li><a href="{{ site.repository.source }}/issues/145">#145</a>: The row state is now only marked as success if all fields on it are valid</li>
+                        <li><a href="{{ site.repository.source }}/issues/157">#157</a>: Added support for element outside of form using the <a href="/settings/#fields"><code>selector</code> option</a></li>
+                        <li><a href="{{ site.repository.source }}/issues/159">#159</a>, <a href="{{ site.repository.source }}/pull/163">#163</a>: User doesn't need to submit the form twice when remote validator complete, thanks to <a href="https://github.com/jswale">@jswale</a></li>
+                        <li><a href="{{ site.repository.source }}/issues/166">#166</a>, <a href="{{ site.repository.source }}/pull/167">#167</a>: The <a href="/validators/phone/"><code>phone</code> validator</a> now also checks the length of US phone number, thanks to <a href="https://github.com/gercheq">@gercheq</a></li>
+                    </ul>
+                </div>
+
+                <div class="docs-changelog__fixed">
+                    <ul>
+                        <li><a href="{{ site.repository.source }}/issues/144">#144</a>, <a href="{{ site.repository.source }}/issues/158">#158</a>: Fixed an issue that the <a href="/settings/#submit-handler">custom submit handler</a> is not fired from the second time</li>
+                        <li><a href="{{ site.repository.source }}/pull/162">#162</a>: Fix errors in IE 8, thanks to <a href="https://github.com/adgrafik">@adgrafik</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1 col-md-offset-1 text-right">
                 <h4>v0.4.0</h4>
                 <small>2014-04-03</small>
             </div>
@@ -304,7 +331,7 @@ $(document).ready(function() {
 
                 <div class="docs-changelog__improved">
                     <ul>
-                        <li><a href="{{ site.repository.source }}/issues/133">#133</a>: The <a href="http://bootstrapvalidator.com/validators/regexp/"><code>regexp</code> validator</a> allows to pass a string</li>
+                        <li><a href="{{ site.repository.source }}/issues/133">#133</a>: The <a href="/validators/regexp/"><code>regexp</code> validator</a> allows to pass a string</li>
                         <li><a href="{{ site.repository.source }}/pull/140">#140</a>: Do not validate hidden (<code>type="hidden"</code>) and invisible element, thanks to <a href="https://github.com/easonhan007">@easonhan007</a></li>
                     </ul>
                 </div>
@@ -313,24 +340,6 @@ $(document).ready(function() {
                     <ul>
                         <li><a href="{{ site.repository.source }}/issues/126">#126</a>: Submit button remains disabled after calling custom <code>submitHandler</code> and the form is valid</li>
                         <li><a href="{{ site.repository.source }}/issues/132">#132</a>: The <code>fields.[fieldName].message</code> option is not used when showing the error message</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-1 col-md-offset-1 text-right">
-                <h4>v0.3.3</h4>
-                <small>2014-03-27</small>
-            </div>
-
-            <div class="col-md-10">
-                <div class="docs-changelog__fixed">
-                    <ul>
-                        <li><a href="{{ site.repository.source }}/issues/50">#50</a>: Don't validate disabled element</li>
-                        <li><a href="{{ site.repository.source }}/issues/34">#34</a>, <a href="{{ site.repository.source }}/issues/105">#105</a>: Cannot call <code>form.submit()</code> inside <a href="/settings/#submit-handler"><code>submitHandler</code></a></li>
-                        <li><a href="{{ site.repository.source }}/issues/77">#77</a>, <a href="{{ site.repository.source }}/issues/117">#117</a>: The <a href="/validators/not-empty/"><code>notEmpty</code> validator</a> doesn't work on file input</li>
-                        <li><a href="{{ site.repository.source }}/pull/120">#120</a>: Handle case where a field is removed after the bootstrap validation, thanks to <a href="https://github.com/patmoore">@patmoore</a></li>
                     </ul>
                 </div>
             </div>

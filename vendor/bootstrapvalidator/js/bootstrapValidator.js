@@ -3,7 +3,7 @@
  *
  * A jQuery plugin to validate form fields. Use with Bootstrap 3
  *
- * @version     v0.4.0
+ * @version     v0.4.1
  * @author      https://twitter.com/nghuuphuoc
  * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
  * @license     MIT
@@ -22,6 +22,16 @@
         this.STATUS_VALIDATING    = 'VALIDATING';
         this.STATUS_INVALID       = 'INVALID';
         this.STATUS_VALID         = 'VALID';
+
+        // Determine the event that is fired when user change the field value
+        // Most modern browsers supports input event except IE 7, 8.
+        // IE 9 supports input event but the event is still not fired if I press the backspace key.
+        // In that case I will use the keydown event
+        var el = document.createElement('div');
+        this._changeEvent = ('oninput' in el) ? 'input' : 'keydown';
+
+        // The flag to indicate that the form is ready to submit when a remote/callback validator returns
+        this._submitIfValid = null;
 
         this._init();
     };
@@ -120,7 +130,9 @@
                     that.validate();
                 })
                 .on('click', this.options.submitButtons, function() {
-                    that.$submitButton = $(this);
+                    that.$submitButton  = $(this);
+					// The user just click the submit button
+					that._submitIfValid = true;
                 })
                 // Find all fields which have either "name" or "data-bv-field" attribute
                 .find('[name], [data-bv-field]').each(function() {
@@ -203,7 +215,7 @@
 
             var that      = this,
                 type      = fields.attr('type'),
-                event     = ('radio' == type || 'checkbox' == type || 'file' == type || 'SELECT' == fields[0].tagName) ? 'change' : 'keyup',
+                event     = ('radio' == type || 'checkbox' == type || 'file' == type || 'SELECT' == fields[0].tagName) ? 'change' : that._changeEvent,
                 total     = fields.length,
                 updateAll = (total == 1) || ('radio' == type) || ('checkbox' == type);
 
@@ -220,6 +232,8 @@
 
                 // Whenever the user change the field value, mark it as not validated yet
                 $field.on(event + '.update.bv', function() {
+                    // Reset the flag
+                    that._submitIfValid = false;
                     updateAll ? that.updateStatus(field, that.STATUS_NOT_VALIDATED, null)
                               : that.updateElementStatus($(this), that.STATUS_NOT_VALIDATED, null);
                 });
@@ -306,14 +320,10 @@
 
             // Call the custom submission if enabled
             if (this.options.submitHandler && 'function' == typeof this.options.submitHandler) {
-                // Turn off the submit handler, so user can call form.submit() inside their submitHandler method
-                this.$form.off('submit.bv');
+                // If you want to submit the form inside your submit handler, please call defaultSubmit() method
                 this.options.submitHandler.call(this, this, this.$form, this.$submitButton);
             } else {
-                this.disableSubmitButtons(true);
-
-                // Submit form
-                this.$form.off('submit.bv').submit();
+                this.disableSubmitButtons(true).defaultSubmit();
             }
         },
 
@@ -326,7 +336,7 @@
          * @returns {null|jQuery[]}
          */
         getFieldElements: function(field) {
-            var fields = this.$form.find(this.options.fields[field].selector || '[name="' + field + '"]');
+            var fields = this.options.fields[field].selector ? $(this.options.fields[field].selector) : this.$form.find('[name="' + field + '"]');
             return (fields.length == 0) ? null : fields;
         },
 
@@ -351,9 +361,9 @@
                             total     = fields.length,
                             updateAll = (total == 1) || ('radio' == type) || ('checkbox' == type),
                             trigger   = that.options.fields[field].trigger
-                                || that.options.trigger
-                                || (('radio' == type || 'checkbox' == type || 'file' == type || 'SELECT' == fields[0].tagName) ? 'change' : 'keyup'),
-                            events    = trigger.split(' ').map(function(item) {
+                                        || that.options.trigger
+                                        || (('radio' == type || 'checkbox' == type || 'file' == type || 'SELECT' == fields[0].tagName) ? 'change' : that._changeEvent),
+                            events    = $.map(trigger.split(' '), function(item) {
                                 return item + '.live.bv';
                             }).join(' ');
 
@@ -384,6 +394,7 @@
                 // Don't disable if the live validating mode is disabled
                 this.$form.find(this.options.submitButtons).attr('disabled', 'disabled');
             }
+
             return this;
         },
 
@@ -402,14 +413,18 @@
                 this.validateField(field);
             }
 
-            this._submit();
+            // Check if whether the submit button is clicked
+            if (this.$submitButton) {
+                this._submit();
+            }
+
             return this;
         },
 
         /**
          * Validate given field
          *
-         * @param {String} field The field element
+         * @param {String} field The field name
          * @returns {BootstrapValidator}
          */
         validateField: function(field) {
@@ -468,9 +483,10 @@
                         updateAll ? that.updateStatus($f.attr('data-bv-field'), isValid ? that.STATUS_VALID : that.STATUS_INVALID, v)
                                   : that.updateElementStatus($f, isValid ? that.STATUS_VALID : that.STATUS_INVALID, v);
 
-                        if (isValid && 'disabled' == that.options.live) {
-                            that._submit();
-                        }
+                        if (isValid && that._submitIfValid == true) {
+						    // If a remote validator returns true and the form is ready to submit, then do it
+							that._submit();
+						}
                     });
                 } else if ('boolean' == typeof validateResult) {
                     updateAll ? this.updateStatus(field, validateResult ? this.STATUS_VALID : this.STATUS_INVALID, validatorName)
@@ -485,9 +501,8 @@
          * Update all validating results of elements which have the same field name
          *
          * @param {String} field The field name
-         * @param {String} status The status
-         * Can be 'NOT_VALIDATED', 'VALIDATING', 'INVALID' or 'VALID'
-         * @param {String|null} validatorName The validator name. If null, the method updates validity result for all validators
+         * @param {String} status The status. Can be 'NOT_VALIDATED', 'VALIDATING', 'INVALID' or 'VALID'
+         * @param {String} [validatorName] The validator name. If null, the method updates validity result for all validators
          * @return {BootstrapValidator}
          */
         updateStatus: function(field, status, validatorName) {
@@ -505,19 +520,19 @@
         /**
          * Update validating result of given element
          *
-         * @param {String} field The field name
-         * @param {String} status The status
-         * Can be 'NOT_VALIDATED', 'VALIDATING', 'INVALID' or 'VALID'
-         * @param {String|null} validatorName The validator name. If null, the method updates validity result for all validators
+         * @param {jQuery} $field The field element
+         * @param {String} status The status. Can be 'NOT_VALIDATED', 'VALIDATING', 'INVALID' or 'VALID'
+         * @param {String} [validatorName] The validator name. If null, the method updates validity result for all validators
          * @return {BootstrapValidator}
          */
         updateElementStatus: function($field, status, validatorName) {
-            var that     = this,
-                field    = $field.attr('data-bv-field'),
-                $parent  = $field.parents('.form-group'),
-                $message = $field.data('bv.messages'),
-                $errors  = $message.find('.help-block[data-bv-validator]'),
-                $icon    = $parent.find('.form-control-feedback[data-bv-field="' + field + '"]');
+            var that       = this,
+                field      = $field.attr('data-bv-field'),
+                $parent    = $field.parents('.form-group'),
+                $message   = $field.data('bv.messages'),
+                $rowErrors = $parent.find('.help-block[data-bv-validator]'),
+                $errors    = $message.find('.help-block[data-bv-validator]'),
+                $icon      = $parent.find('.form-control-feedback[data-bv-field="' + field + '"]');
 
             // Update status
             if (validatorName) {
@@ -553,23 +568,24 @@
                     validatorName ? $errors.filter('[data-bv-validator="' + validatorName + '"]').hide() : $errors.hide();
 
                     // If the field is valid (passes all validators)
-                    if ($errors.filter(function() {
-                            var display = $(this).css('display'), v = $(this).attr('data-bv-validator');
-                            return ('block' == display) || ($field.data('bv.result.' + v) != that.STATUS_VALID);
-                        }).length == 0)
-                    {
-                        this.disableSubmitButtons(false);
-                        $parent.removeClass('has-error').addClass('has-success');
-                        if ($icon) {
-                            $icon.removeClass(this.options.feedbackIcons.invalid).removeClass(this.options.feedbackIcons.validating).addClass(this.options.feedbackIcons.valid).show();
-                        }
-                    } else {
-                        this.disableSubmitButtons(true);
-                        $parent.removeClass('has-success').addClass('has-error');
-                        if ($icon) {
-                            $icon.removeClass(this.options.feedbackIcons.valid).removeClass(this.options.feedbackIcons.validating).addClass(this.options.feedbackIcons.invalid).show();
-                        }
+                    var validField = ($errors.filter(function() {
+                                        var display = $(this).css('display'), v = $(this).attr('data-bv-validator');
+                                        return ('block' == display) || ($field.data('bv.result.' + v) != that.STATUS_VALID);
+                                    }).length == 0);
+                    this.disableSubmitButtons(validField ? false : true);
+                    if ($icon) {
+                        $icon
+                            .removeClass(this.options.feedbackIcons.invalid).removeClass(this.options.feedbackIcons.validating).removeClass(this.options.feedbackIcons.valid)
+                            .addClass(validField ? this.options.feedbackIcons.valid : this.options.feedbackIcons.invalid)
+                            .show();
                     }
+
+                    // Check if all fields in the same row are valid
+                    var validRow = ($rowErrors.filter(function() {
+                                        var display = $(this).css('display'), v = $(this).attr('data-bv-validator');
+                                        return ('block' == display) || ($field.data('bv.result.' + v) != that.STATUS_VALID);
+                                    }).length == 0);
+                    $parent.removeClass('has-error has-success').addClass(validRow ? 'has-success' : 'has-error');
                     break;
 
                 case this.STATUS_NOT_VALIDATED:
@@ -625,6 +641,16 @@
             }
 
             return true;
+        },
+
+        /**
+         * Submit the form using default submission.
+         * It also does not perform any validations when submitting the form
+         *
+         * It might be used when you want to submit the form right inside the submitHandler()
+         */
+        defaultSubmit: function() {
+            this.$form.off('submit.bv').submit();
         },
 
         // Useful APIs which aren't used internally
@@ -1768,12 +1794,13 @@
                 return true;
             }
 
-            options.country = options.country || 'US';
-            switch (options.country.toUpperCase()) {
+            var country = (options.country || 'US').toUpperCase();
+            switch (country) {
                 case 'US':
                 default:
+                    // Make sure US phone numbers have 10 digits
                     value = value.replace(/\(|\)|\s+/g, '');
-                    return (/^(?:1\-?)?(\d{3})[\-\.]?(\d{3})[\-\.]?(\d{4})$/).test(value);
+                    return (/^(?:1\-?)?(\d{3})[\-\.]?(\d{3})[\-\.]?(\d{4})$/).test(value) && (value.length == 10);
             }
         }
     }
@@ -1933,7 +1960,7 @@
     $.fn.bootstrapValidator.validators.stringCase = {
         html5Attributes: {
             message: 'message',
-            case: 'case'
+            'case': 'case'
         },
 
         /**
@@ -1952,7 +1979,7 @@
                 return true;
             }
 
-            var stringCase = (options.case || 'lower').toLowerCase();
+            var stringCase = (options['case'] || 'lower').toLowerCase();
             switch (stringCase) {
                 case 'upper':
                     return value === value.toUpperCase();
