@@ -17,14 +17,14 @@ slug: examples
             <p>In order to set a specific validator to given field, you have to declare additional attributes for the field. For example:</p>
 
             <pre><code class="xml">&lt;input
-    data-bv-{validatorName}
-    data-bv-{validatorName}-{validatorOption}="..." /></code></pre>
+    data-bv-{validatorname}
+    data-bv-{validatorname}-{validatoroption}="..." /></code></pre>
 
             <p>Here are some important points when setting the attributes for field:</p>
 
             <ul>
-                <li><code>{validatorName}</code> and <code>{validatorOption}</code> must be lowercase.</li>
-                <li>Set <code>data-bv-{validatorName}</code> or <code>data-bv-{validatorName}="true"</code> to enable particular validator for field.<br/>Set <code>data-bv-{validatorName}="false"</code> to disable the validator.</li>
+                <li><code>{validatorname}</code> and <code>{validatoroption}</code> must be lowercase.</li>
+                <li>Set <code>data-bv-{validatorname}</code> or <code>data-bv-{validatorname}="true"</code> to enable particular validator for field.<br/>Set <code>data-bv-{validatorname}="false"</code> to disable the validator.</li>
                 <li>There are some validators which not all options are configurable via HTML attribute. Refer to each validator documentation to see exactly the equivalent HTML attribute for each option.</li>
             </ul>
 
@@ -1135,3 +1135,6 @@ $(document).ready(function() {
             });
 });
 </script>
+
+
+<a href="{{ site.repository.docs_edit }}/examples.html" class="btn btn-info">Improve this page</a>
