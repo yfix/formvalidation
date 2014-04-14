@@ -16,6 +16,13 @@ slug: api
             <pre><code class="javascript">var bootstrapValidator = $(form).data('bootstrapValidator');</code></pre>
         </section>
 
+        <section id="default-submit">
+            <h2>defaultSubmit</h2>
+
+            <p><code>defaultSubmit()</code> &mdash; Submit the form using default submission.</p>
+            <p>It also does not perform any validations when submitting the form. It might be used when you want to submit the form right inside the <a href="/settings/#submit-handler">custom submit handler</a>.</p>
+        </section>
+
         <section id="disable-submit-buttons">
             <h2>disableSubmitButtons</h2>
 
@@ -459,6 +466,7 @@ $(form).data('bootstrapValidator').validate();</code></pre>
     <div class="col-md-3">
         <div class="docs-sidebar" data-spy="affix" data-offset-top="120">
             <ul class="nav">
+                <li><a href="#default-submit">defaultSubmit</a></li>
                 <li><a href="#disable-submit-buttons">disableSubmitButtons</a></li>
                 <li><a href="#enable-field-validators">enableFieldValidators</a></li>
                 <li><a href="#get-field-elements">getFieldElements</a></li>

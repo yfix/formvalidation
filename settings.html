@@ -181,6 +181,14 @@ $(document).ready(function() {
 }</code></pre>
 
             <p>By default, <code>submitHandler</code> is <code>null</code>.</p>
+
+            <p>If you want to submit the form inside your custom submit handler, use the <a href="/api/#default-submit"><code>defaultSubmit()</code></a> method:</p>
+            <pre><code class="javascript">submitHandler: function(validator, form, submitButton) {
+    // Do your task
+    // ...
+    // Submit the form
+    validator.defaultSubmit();
+}</code></pre>
         </section>
 
         <section id="trigger">
