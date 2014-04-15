@@ -27,6 +27,108 @@ validator: uri
             </tr>
         </tbody>
     </table>
+
+    <p>You can use <code>type="url"</code> attribute to enable this validator.</p>
+</section>
+
+<section id="example">
+    <h2>Example</h2>
+
+    <div class="docs-example">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#uri-form-tab" data-toggle="tab">Form</a></li>
+            <li><a href="#uri-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#uri-html5-tab" data-toggle="tab">HTML 5</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="uri-form-tab">
+                <form id="profileForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Your website</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" name="website" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="uri-html-tab">
+                <pre><code class="xml">&lt;form id="profileForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Your website&lt;/label>
+        &lt;div class="col-lg-4">
+            &lt;input type="text" class="form-control" name="website" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+                <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#profileForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            website: {
+                validators: {
+                    <span class="docs-code__note">uri: {
+                        message: 'The website address is not valid'
+                    }</span>
+                }
+            }
+        }
+    });
+});
+&lt;/script></code></pre>
+            </div>
+
+            <div class="tab-pane" id="uri-html5-tab">
+                <pre><code class="xml">&lt;form id="profileForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Your website&lt;/label>
+        &lt;div class="col-lg-4">
+            &lt;input class="form-control" name="website"
+                <span class="docs-code__note">type="url" data-bv-uri-message="The website address is not valid"</span> />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+                <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#profileForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        }
+    });
+});
+&lt;/script></code></pre>
+            </div>
+        </div>
+    </div>
 </section>
 
 <a href="{{ site.repository.docs_edit }}/validators/uri.html" class="btn btn-info">Improve this page</a>
+
+<script>
+$(document).ready(function() {
+    $('#profileForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            website: {
+                validators: {
+                    uri: {
+                        message: 'The website address is not valid'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
