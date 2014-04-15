@@ -38,4 +38,88 @@ validator: stringCase
     </table>
 </section>
 
+<section id="example">
+    <h2>Example</h2>
+
+    <p>The following form asks user to enter a credit card holder in uppercase:</p>
+
+    <div class="docs-example">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#cardholder-form-tab" data-toggle="tab">Form</a></li>
+            <li><a href="#cardholder-html-tab" data-toggle="tab">HTML</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="cardholder-form-tab">
+                <form id="cardHolderForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Credit card holder</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" name="name" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="cardholder-html-tab">
+                <pre><code class="xml">&lt;form id="cardHolderForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-4 control-label">Credit card holder&lt;/label>
+        &lt;div class="col-lg-4">
+            &lt;input type="text" class="form-control" name="name" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+
+                <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#cardHolderForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            name: {
+                validators: {
+                    // Since case is a Javascript keyword,
+                    // you should place it between quotes (like 'case' or "case")
+                    // to make it work in all browsers
+                    <span class="docs-code__note">stringCase: {
+                        message: 'The card holder must be in uppercase',
+                        'case': 'upper'
+                    }</span>
+                }
+            }
+        }
+    });
+});
+&lt;/script></code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
 <a href="{{ site.repository.docs_edit }}/validators/stringCase.html" class="btn btn-info">Improve this page</a>
+
+<script>
+$(document).ready(function() {
+    $('#cardHolderForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            name: {
+                validators: {
+                    stringCase: {
+                        message: 'The card holder must be in uppercase',
+                        'case': 'upper'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
