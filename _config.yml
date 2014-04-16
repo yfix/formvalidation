@@ -10,6 +10,9 @@ url:                  http://bootstrapvalidator.com/
 # Custom variables
 # not defined by Jekyll
 current_version:      0.4.1
+download:
+  dist:               https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.4.1/bootstrapvalidator-dist-0.4.1.zip
+  tag:                https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.4.1.zip
 repository:
   source:             https://github.com/nghuuphuoc/bootstrapvalidator
   docs:               https://github.com/nghuuphuoc/bootstrapvalidator/gh-pages

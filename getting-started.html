@@ -11,14 +11,26 @@ slug: getting-started
     <div class="col-md-9">
         <section>
             <h2 id="download">Download</h2>
-            <p>Click the button below to download the latest release or latest code:</p>
-            <p>
-                <a class="btn btn-lg btn-primary" href="{{ site.repository.source }}/archive/v{{site.current_version}}.zip" style="margin-right: 20px;">Download v{{ site.current_version }}</a>
-                <a class="btn btn-lg btn-primary" href="{{ site.repository.source }}/archive/master.zip">Download the latest code</a>
-            </p>
+            <p>Choose the package you want to download:</p>
 
-            <p>You might want to look at the <a href="{{ site.repository.source }}/releases">Releases</a> page for all versions.</p>
+            <div class="row" style="padding: 20px 0;">
+                <div class="col-sm-4">
+                    <h3>Release</h3>
+                    <p>Including the plugin, its validator source and minified versions.<br />It should be used in the production site.</p>
+                    <a class="btn btn-lg btn-primary" href="{{ site.download.dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download release']);">Download v{{ site.current_version }}</a>
+                </div>
+                <div class="col-sm-4">
+                    <h3>Source code</h3>
+                    <p>Including the source code, examples and building script. Download if you want to play with or develop new validators.</p>
+                    <a class="btn btn-lg btn-primary" href="{{ site.repository.source }}/archive/v{{site.current_version}}.zip" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download source</a>
+                </div>
+                <div class="col-sm-4">
+                    <h3>Older versions</h3>
+                    <p>For older versions, take a look at the <a href="{{ site.repository.source }}/releases">Releases</a> page.</p>
+                </div>
+            </div>
 
+            <h3>Installing with Bower</h3>
             <p>It's also possible to get the latest release from <a href="http://bower.io">bower</a>:</p>
             <pre><code class="bash">$ bower install bootstrapValidator</code></pre>
 
