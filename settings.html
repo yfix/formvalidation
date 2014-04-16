@@ -112,6 +112,192 @@ $(document).ready(function() {
 }</code></pre>
 
             <p>By default, these icons are not set.</p>
+            <p>There are two popular questions with the feedback icon usage:</p>
+
+            <section>
+                <p><strong>1. The feedback icons aren't shown when using custom Bootstrap theme from <a href="http://bootswatch.com/">BootsWatch</a></strong></p>
+
+                <p>Some BootsWatch themes override some CSS styles causing feedback icon invisible to your eyes. For instance, the <a href="http://bootswatch.com/flatly/">Flatly theme</a> set the feedback icon color to <code>#FFF</code>.</p>
+                <p>To fix this, you can simply add some CSS to your <code>head</code>, right before the BootsWatch theme CSS, to reset the feedback icons color:</p>
+                <pre><code class="xml">&lt;link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/flatly/bootstrap.min.css">
+&lt;style type="text/css">
+.has-error .form-control-feedback {
+    color: #E74C3C;
+}
+.has-success .form-control-feedback {
+    color: #18BCA0;
+}
+&lt;/style></code></pre>
+            </section>
+
+            <section>
+                <p><strong>2. The feedback icons aren't shown properly for some elements such as select box or when using with other element such as <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Bootstrap Datetime Picker</a>, <a href="http://mjolnic.github.io/bootstrap-colorpicker/">Bootstrap Color Picker</a>, etc.</strong></p>
+                <p>Bootstrap defines feedback icon position as following:</p>
+                <pre><code class="css">.form-horizontal .has-feedback .form-control-feedback {
+    top: 0;
+    right: 15px;
+}</code></pre>
+                <p>You can override this to adjust feedback icon position:</p>
+                <pre><code class="css">.form-horizontal .has-feedback .form-control-feedback {
+    top: 0;
+    right: -15px;
+}
+.form-horizontal .has-feedback .input-group .form-control-feedback {
+    top: 0;
+    right: -30px;
+}</code></pre>
+                <link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+                <style type="text/css">
+                #feedbackIconForm .has-feedback .form-control-feedback {
+                    top: 0;
+                    right: -15px;
+                }
+                #feedbackIconForm .has-feedback .input-group .form-control-feedback {
+                    top: 0;
+                    right: -30px;
+                }
+                </style>
+
+                <div class="docs-example">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#feedbackicon-form-tab" data-toggle="tab">Form</a></li>
+                        <li><a href="#feedbackicon-html-tab" data-toggle="tab">HTML</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="feedbackicon-form-tab">
+                            <form id="feedbackIconForm" class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">Full name</label>
+                                    <div class="col-lg-5">
+                                        <input type="text" class="form-control" name="fullName" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">Gender</label>
+                                    <div class="col-lg-5">
+                                        <select class="form-control" name="gender">
+                                            <option value="">Choose gender</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">Date of birth</label>
+                                    <div class="col-lg-5">
+                                        <div class="input-group date" id="dobPicker" data-date-format="YYYY/DD/MM">
+                                            <input type="text" class="form-control" name="dob" />
+                                            <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="tab-pane" id="feedbackicon-html-tab">
+                            <pre><code class="xml">&lt;!-- Include CSS required by Bootstrap Datetime Picker -->
+&lt;link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+<span class="docs-code__note">&lt;!-- Override feedback icon position -->
+&lt;style type="text/css">
+#feedbackIconForm .has-feedback .form-control-feedback {
+    top: 0;
+    right: -15px;
+}
+#feedbackIconForm .has-feedback .input-group .form-control-feedback {
+    top: 0;
+    right: -30px;
+}
+&lt;/style></span>
+&lt;form id="feedbackIconForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Full name&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="fullName" />
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Gender&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;select class="form-control" name="gender">
+                &lt;option value="">Choose gender&lt;/option>
+                &lt;option value="male">Male&lt;/option>
+                &lt;option value="female">Female&lt;/option>
+                &lt;option value="other">Other&lt;/option>
+            &lt;/select>
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Date of birth&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;div class="input-group date" id="dobPicker" data-date-format="YYYY/DD/MM">
+                &lt;input type="text" class="form-control" name="dob" />
+                &lt;span class="input-group-addon">
+                    &lt;span class="glyphicon-calendar glyphicon">&lt;/span>
+                &lt;/span>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+&lt;/form>
+                            </code></pre>
+                            <pre><code class="xml javascript">&lt;!-- Include JS required by Bootstrap Datetime Picker -->
+&lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
+&lt;script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js">&lt;/script>
+&lt;script>
+$(document).ready(function() {
+    $('#dobPicker')
+        .datetimepicker({
+            pickTime: false
+        })
+        .on('dp.change dp.show', function(e) {
+            $('#feedbackIconForm')
+                .data('bootstrapValidator')
+                .updateStatus('dob', 'NOT_VALIDATED', null)
+                .validateField('dob');
+        });
+    $('#feedbackIconForm').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            fullName: {
+                validators: {
+                    notEmpty: {
+                        message: 'The full name is required and cannot be empty'
+                    }
+                }
+            },
+            gender: {
+                validators: {
+                    notEmpty: {
+                        message: 'The gender is required and cannot be empty'
+                    }
+                }
+            },
+            dob: {
+                validators: {
+                    notEmpty: {
+                        message: 'The date of birth is required and cannot be empty'
+                    },
+                    date: {
+                        format: 'YYYY/DD/MM',
+                        message: 'The value is not a valid date'
+                    }
+                }
+            }
+        }
+    });
+});
+&lt;/script></code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </section>
 
         <section id="live">
@@ -665,8 +851,56 @@ $(document).ready(function() {
     </div>
 </div>
 
+<script src="/vendor/momentjs/moment.min.js"></script>
+<script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 <script>
 $(document).ready(function() {
+    $('#dobPicker')
+        .datetimepicker({
+            pickTime: false
+        })
+        .on('dp.change dp.show', function(e) {
+            $('#feedbackIconForm')
+                .data('bootstrapValidator')
+                .updateStatus('dob', 'NOT_VALIDATED', null)
+                .validateField('dob');
+        });
+    $('#feedbackIconForm').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            fullName: {
+                validators: {
+                    notEmpty: {
+                        message: 'The full name is required and cannot be empty'
+                    }
+                }
+            },
+            gender: {
+                validators: {
+                    notEmpty: {
+                        message: 'The gender is required and cannot be empty'
+                    }
+                }
+            },
+            dob: {
+                validators: {
+                    notEmpty: {
+                        message: 'The date of birth is required and cannot be empty'
+                    },
+                    date: {
+                        format: 'YYYY/DD/MM',
+                        message: 'The value is not a valid date'
+                    }
+                }
+            }
+        }
+    });
+
     $('#containerForm').bootstrapValidator({
         message: 'This value is not valid',
         feedbackIcons: {
