@@ -74,6 +74,10 @@ pre {
   color: #fff;
   background-color: #3FC380;
 }
+.docs-intro .docs-intro__download {
+  padding-bottom: 6px;
+  padding-top: 6px;
+}
 /* Features */
 .docs-features {
   border-bottom: 1px solid #ddd;
