@@ -994,6 +994,72 @@ $(document).ready(function() {
             </div>
         </section>
 
+        <section id="compatibility">
+            <h2>Compatibility</h2>
+
+            <p>These examples show how you can use BootstrapValidator with other Javascript plugins.</p>
+
+            <section id="mask">
+                <h2>Mask</h2>
+                <p>Use with <a href="http://igorescobar.github.io/jQuery-Mask-Plugin/">Mask plugin</a></p>
+
+                <div class="docs-example">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#mask-form-tab" data-toggle="tab">Form</a></li>
+                        <li><a href="#mask-html-tab" data-toggle="tab">HTML</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="mask-form-tab">
+                            <form id="maskForm" method="post" class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">IP address</label>
+                                    <div class="col-lg-5">
+                                        <input type="text" class="form-control" name="ipAddress" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="tab-pane" id="mask-html-tab">
+                            <pre><code class="xml">&lt;form id="maskForm" method="post" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">IP address&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="ipAddress" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+                            <pre><code class="xml javascript">&lt;!-- Include Mask plugin -->
+<span class="docs-code__note">&lt;script src="/vendor/mask/jquery.mask.min.js">&lt;/script></span>
+&lt;script>
+$(document).ready(function() {
+    $('#maskForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                ipAddress: {
+                    validators: {
+                        ip: {
+                            message: 'The IP address is not valid'
+                        }
+                    }
+                }
+            }
+        })
+        <span class="docs-code__note">.find('[name="ipAddress"]').mask('099.099.099.099')</span>;
+});
+&lt;/script></code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
         <a href="{{ site.repository.docs_edit }}/examples.html" class="btn btn-info">Improve this page</a>
     </div>
 
@@ -1004,11 +1070,18 @@ $(document).ready(function() {
                 <li><a href="#html5">HTML 5</a></li>
                 <li><a href="#toggling">Toggling</a></li>
                 <li><a href="#fields-with-same-name">Fields with same name</a></li>
+                <li>
+                    <a href="#compatibility">Compatibility</a>
+                    <ul class="nav">
+                        <li><a href="#mask">Mask</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
 </div>
 
+<script src="/vendor/mask/jquery.mask.min.js"></script>
 <script>
 $(document).ready(function() {
     $('#attributeForm').bootstrapValidator();
@@ -1135,5 +1208,25 @@ $(document).ready(function() {
             .on('click', function() {
                 $('#multipleForm').data('bootstrapValidator').validate();
             });
+
+    // Mask example
+    $('#maskForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                ipAddress: {
+                    validators: {
+                        ip: {
+                            message: 'The IP address is not valid'
+                        }
+                    }
+                }
+            }
+        })
+        .find('[name="ipAddress"]').mask('099.099.099.099');
 });
 </script>
