@@ -3,7 +3,7 @@
  *
  * A jQuery plugin to validate form fields. Use with Bootstrap 3
  *
- * @version     v0.4.1
+ * @version     v0.4.2-dev
  * @author      https://twitter.com/nghuuphuoc
  * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
  * @license     MIT
@@ -43,6 +43,14 @@
 
         // Default invalid message
         message: 'This value is not valid',
+
+        // By default, the plugin will not validate the following kind of fields:
+        // - disabled
+        // - hidden
+        // - invisible
+        excluded: [':disabled', ':hidden', function($field) {
+            return !$field.is(':visible');
+        }],
 
         // Shows ok/error/loading icons based on the field validity.
         // This feature requires Bootstrap v3.1.0 or later (http://getbootstrap.com/css/#forms-control-validation).
@@ -101,6 +109,7 @@
         _init: function() {
             var that    = this,
                 options = {
+                    excluded:       this.$form.attr('data-bv-excluded') || [],
                     trigger:        this.$form.attr('data-bv-trigger'),
                     message:        this.$form.attr('data-bv-message'),
                     submitButtons:  this.$form.attr('data-bv-submitbuttons'),
@@ -182,6 +191,12 @@
                 });
 
             this.options = $.extend(true, this.options, options);
+            if ('string' == typeof this.options.excluded) {
+                this.options.excluded = $.map(this.options.excluded.split(','), function(item) {
+                    // Trim the spaces
+                    return item.trim();
+                });
+            }
 
             for (var field in this.options.fields) {
                 this._initField(field);
@@ -327,6 +342,27 @@
             }
         },
 
+        /**
+         * Check if the field is excluded.
+         * Returning true means that the field will not be validated
+         *
+         * @param {jQuery} $field The field element
+         * @return {Boolean}
+         */
+        _isExcluded: function($field) {
+            if (this.options.excluded) {
+                for (var i in this.options.excluded) {
+                    if (('string' == typeof this.options.excluded[i] && $field.is(this.options.excluded[i]))
+                        || ('function' == typeof this.options.excluded[i] && this.options.excluded[i].call(this, $field, this) == true))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        },
+
         // --- Public methods ---
 
         /**
@@ -453,8 +489,7 @@
                 validatorName,
                 validateResult;
 
-            // We don't need to validate disabled, hidden field
-            if ($field.is(':disabled') || $field.is(':hidden') || !$field.is(':visible')) {
+            if (!this.options.fields[field]['enabled'] || this._isExcluded($field)) {
                 return this;
             }
 
@@ -622,7 +657,7 @@
 
                 for (i = 0; i < n; i++) {
                     $field = $(fields[i]);
-                    if ($field.is(':disabled') || $field.is(':hidden') || !$field.is(':visible')) {
+                    if (this._isExcluded($field)) {
                         continue;
                     }
 
@@ -1799,8 +1834,11 @@
                 case 'US':
                 default:
                     // Make sure US phone numbers have 10 digits
-                    value = value.replace(/\(|\)|\s+/g, '');
-                    return (/^(?:1\-?)?(\d{3})[\-\.]?(\d{3})[\-\.]?(\d{4})$/).test(value) && (value.length == 10);
+                    // May start with 1, +1, or 1-; should discard
+                    // Area code may be delimited with (), & sections may be delimited with . or -
+                    // Test: http://regexr.com/38mqi
+                    value = value.replace(/\D/g, '');
+                    return (/^(?:(1\-?)|(\+1 ?))?\(?(\d{3})[\)\-\.]?(\d{3})[\-\.]?(\d{4})$/).test(value) && (value.length == 10);
             }
         }
     }
@@ -1843,11 +1881,12 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+;(function ($) {
     $.fn.bootstrapValidator.validators.remote = {
         html5Attributes: {
             message: 'message',
-            url: 'url'
+            url: 'url',
+            name: 'name'
         },
 
         /**
@@ -1861,6 +1900,7 @@
          *  {
          *      <fieldName>: <fieldValue>
          *  }
+         * - name [optional]: Override the field name for the request.
          * - message: The invalid message
          * @returns {Boolean|Deferred}
          */
@@ -1878,7 +1918,7 @@
             if ('function' == typeof data) {
                 data = data.call(this, validator);
             }
-            data[name] = value;
+            data[options.name || name] = value;
 
             var dfd = new $.Deferred();
             var xhr = $.ajax({
@@ -1900,6 +1940,74 @@
     };
 }(window.jQuery));
 ;(function($) {
+	$.fn.bootstrapValidator.validators.siret = {
+		/**
+		 * Check if a string is a siren number
+		 *
+		 * @param {BootstrapValidator} validator The validator plugin instance
+		 * @param {jQuery} $field Field element
+		 * @param {Object} options Consist of key:
+         * - message: The invalid message
+		 * @returns {Boolean}
+		 */
+		validate: function(validator, $field, options) {
+			var value = $field.val();
+			if (value == '') {
+				return true;
+			}
+
+			var sum    = 0,
+                length = value.length,
+			    tmp;
+			for (var i = 0; i < length; i++) {
+				if ((i % 2) == 1) {
+					tmp = value.charAt(i) * 2;
+					if (tmp > 9) {
+						tmp -= 9;
+					}
+				} else {
+					tmp = value.charAt(i);
+				}
+				sum += parseInt(tmp);
+			}
+			return ((sum % 10) == 0);
+		}
+	};
+}(window.jQuery));;(function($) {
+	$.fn.bootstrapValidator.validators.siret = {
+        /**
+         * Check if a string is a siret number
+         *
+         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {jQuery} $field Field element
+         * @param {Object} options Consist of key:
+         * - message: The invalid message
+         * @returns {Boolean}
+         */
+		validate: function(validator, $field, options) {
+			var value = $field.val();
+			if (value == '') {
+				return true;
+			}
+
+			var sum    = 0,
+                length = value.length,
+                tmp;
+			for (var i = 0; i < length; i++) {
+				if ((i % 2) == 0) {
+					tmp = value.charAt(i) * 2;
+					if (tmp > 9) {
+						tmp -= 9;
+					}
+				} else {
+					tmp = value.charAt(i);
+				}
+				sum += parseInt(tmp);
+			}
+			return ((sum % 10) == 0);
+		}
+	};
+}(window.jQuery));;(function($) {
     $.fn.bootstrapValidator.validators.step = {
         html5Attributes: {
             message: 'message',
@@ -2170,6 +2278,114 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.validators.vat = {
+        html5Attributes: {
+            message: 'message',
+            country: 'country'
+        },
+
+        /**
+         * Validate an European VAT number
+         *
+         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {jQuery} $field Field element
+         * @param {Object} options Consist of key:
+         * - message: The invalid message
+         * - country: The ISO 3166-1 country code
+         * @returns {Boolean}
+         */
+        validate: function(validator, $field, options) {
+            var value = $field.val();
+            if (value == '' || !options.country) {
+                return true;
+            }
+
+            var vatRegex = {
+                'AT': 'ATU[0-9]{8}',                                // Austria
+                'BE': 'BE[0]{0,1}[0-9]{9}',                         // Belgium
+                'BG': 'BG[0-9]{9,10}',                              // Bulgaria
+                'CY': 'CY[0-9]{8}L',                                // Cyprus
+                'CZ': 'CZ[0-9]{8,10}',                              // Czech Republic
+                'DE': 'DE[0-9]{9}',                                 // Germany
+                'DK': 'DK[0-9]{8}',                                 // Denmark
+                'EE': 'EE[0-9]{9}',                                 // Estonia
+                'ES': 'ES[0-9A-Z][0-9]{7}[0-9A-Z]',                 // Spain
+                'FI': 'FI[0-9]{8}',                                 // Finland
+                'FR': 'FR[0-9A-Z]{2}[0-9]{9}',                      // France
+                'EL': 'EL[0-9]{9}',                                 // Greece (EL is traditionally prefix of Greek VAT numbers)
+                'GR': 'GR[0-9]{9}',                                 // Greece
+                'GB': 'GB([0-9]{9}([0-9]{3})?|[A-Z]{2}[0-9]{3})',   // United Kingdom
+                'HU': 'HU[0-9]{8}',                                 // Hungary
+                'IE': 'IE[0-9]S[0-9]{5}L',                          // Ireland
+                'IT': 'IT[0-9]{11}',                                // Italy
+                'LT': 'LT([0-9]{9}|[0-9]{12})',                     // Lithuania
+                'LU': 'LU[0-9]{8}',                                 // Luxembourg
+                'LV': 'LV[0-9]{11}',                                // Latvia
+                'MT': 'MT[0-9]{8}',                                 // Malta
+                'NL': 'NL[0-9]{9}B[0-9]{2}',                        // Netherlands
+                'PL': 'PL[0-9]{10}',                                // Poland
+                'PT': 'PT[0-9]{9}',                                 // Portugal
+                'RO': 'RO[0-9]{2,10}',                              // Romania
+                'SE': 'SE[0-9]{12}',                                // Sweden
+                'SI': 'SI[0-9]{8}',                                 // Slovenia
+                'SK': 'SK[0-9]{10}'                                 // Slovakia
+            };
+
+            value = value.replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
+            var country = options.country || value.substr(0, 2);
+            if (!vatRegex[country]) {
+                return false;
+            }
+            return (new RegExp('^' + vatRegex[country] + '$')).test(value);
+        }
+    };
+}(window.jQuery));
+;(function($) {
+    $.fn.bootstrapValidator.validators.vin = {
+        /**
+         * Validate an US VIN (Vehicle Identification Number)
+         *
+         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {jQuery} $field Field element
+         * @param {Object} options Consist of key:
+         * - message: The invalid message
+         * @returns {Boolean}
+         */
+        validate: function(validator, $field, options) {
+            var value = $field.val();
+            if (value == '' || !options.country) {
+                return true;
+            }
+
+            // Don't accept I, O, Q characters
+            if (!/^[a-hj-npr-z0-9]{8}[0-9xX][a-hj-npr-z0-9]{8}$/i.test(value)) {
+                return false;
+            }
+
+            value = value.toUpperCase();
+            var chars   = {
+                    A: 1,   B: 2,   C: 3,   D: 4,   E: 5,   F: 6,   G: 7,   H: 8,
+                    J: 1,   K: 2,   L: 3,   M: 4,   N: 5,           P: 7,           R: 9,
+                            S: 2,   T: 3,   U: 4,   V: 5,   W: 6,   X: 7,   Y: 8,   Z: 9,
+                    '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '0': 0
+                },
+                weights = [8, 7, 6, 5, 4, 3, 2, 10, 0, 9, 8, 7, 6, 5, 4, 3, 2],
+                sum     = 0,
+                length  = value.length;
+            for (var i = 0; i < length; i++) {
+                sum += chars[value[i] + ''] * weights[i];
+            }
+
+            var reminder = sum % 11;
+            if (reminder == 10) {
+                reminder = 'X';
+            }
+
+            return reminder == value[8];
+        }
+    };
+}(window.jQuery));
+;(function($) {
     $.fn.bootstrapValidator.validators.zipCode = {
         html5Attributes: {
             message: 'message',
@@ -2205,7 +2421,7 @@
                     return /^(S-)?\d{3}\s?\d{2}$/i.test(value);
                 case 'US':
                 default:
-                    return /^\d{5}([\-]\d{4})?$/.test(value);
+                    return /^\d{4,5}([\-]\d{4})?$/.test(value);
             }
         }
     };
