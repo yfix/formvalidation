@@ -135,7 +135,7 @@ $(document).ready(function() {
     // return true or false;
 }</code></pre>
                             <p>For example:</p>
-                            <pre><code class="javascript">[':disabled', ':hidden', function($field) {
+                            <pre><code class="javascript">[':disabled', ':hidden', function($field, validator) {
     // Do not validate invisible element
     return !$field.is(':visible');
 }]</code></pre>
