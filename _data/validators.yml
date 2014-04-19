@@ -123,6 +123,16 @@
   version: 0.1.0
   description: Perform remote checking via Ajax request
 
+- name: siren
+  slug: siren
+  version: 0.4.2
+  description: Validate a Siren number
+
+- name: siret
+  slug: siret
+  version: 0.4.2
+  description: Validate a Siret number
+
 - name: step
   slug: step
   version: 0.3.2
