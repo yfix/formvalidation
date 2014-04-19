@@ -1146,6 +1146,9 @@ $(document).ready(function() {
     });
     $('#ratyForm')
         .bootstrapValidator({
+            // The disabled elements are excluded
+            // Hidden elements (including the rating star) are included
+            <span class="docs-code__note">excluded: ':disabled'</span>,
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
