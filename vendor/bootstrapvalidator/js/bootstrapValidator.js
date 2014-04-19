@@ -44,13 +44,30 @@
         // Default invalid message
         message: 'This value is not valid',
 
+        // Indicate fields which won't be validated
         // By default, the plugin will not validate the following kind of fields:
         // - disabled
         // - hidden
         // - invisible
-        excluded: [':disabled', ':hidden', function($field) {
-            return !$field.is(':visible');
-        }],
+        //
+        // The setting consists of jQuery filters. Accept 3 formats:
+        // - A string. Use a comma to separate filter
+        // - An array. Each element is a filter
+        // - An array. Each element can be a callback function
+        //      function($field, validator) {
+        //          $field is jQuery object representing the field element
+        //          validator is the BootstrapValidator instance
+        //          return true or false;
+        //      }
+        //
+        // The 3 following settings are equivalent:
+        //
+        // 1) ':disabled, :hidden, :not(:visible)'
+        // 2) [':disabled', ':hidden', ':not(:visible)']
+        // 3) [':disabled', ':hidden', function($field) {
+        //        return !$field.is(':visible');
+        //    }]
+        excluded: [':disabled', ':hidden', ':not(:visible)'],
 
         // Shows ok/error/loading icons based on the field validity.
         // This feature requires Bootstrap v3.1.0 or later (http://getbootstrap.com/css/#forms-control-validation).
@@ -109,7 +126,7 @@
         _init: function() {
             var that    = this,
                 options = {
-                    excluded:       this.$form.attr('data-bv-excluded') || [],
+                    excluded:       this.$form.attr('data-bv-excluded'),
                     trigger:        this.$form.attr('data-bv-trigger'),
                     message:        this.$form.attr('data-bv-message'),
                     submitButtons:  this.$form.attr('data-bv-submitbuttons'),
@@ -1960,15 +1977,14 @@
                 length = value.length,
 			    tmp;
 			for (var i = 0; i < length; i++) {
+                tmp = parseInt(value.charAt(i));
 				if ((i % 2) == 1) {
-					tmp = value.charAt(i) * 2;
+					tmp = tmp * 2;
 					if (tmp > 9) {
 						tmp -= 9;
 					}
-				} else {
-					tmp = value.charAt(i);
 				}
-				sum += parseInt(tmp);
+				sum += tmp;
 			}
 			return ((sum % 10) == 0);
 		}
@@ -1994,15 +2010,14 @@
                 length = value.length,
                 tmp;
 			for (var i = 0; i < length; i++) {
+                tmp = parseInt(value.charAt(i));
 				if ((i % 2) == 0) {
-					tmp = value.charAt(i) * 2;
+					tmp = tmp * 2;
 					if (tmp > 9) {
 						tmp -= 9;
 					}
-				} else {
-					tmp = value.charAt(i);
 				}
-				sum += parseInt(tmp);
+				sum += tmp;
 			}
 			return ((sum % 10) == 0);
 		}
@@ -2353,7 +2368,7 @@
          */
         validate: function(validator, $field, options) {
             var value = $field.val();
-            if (value == '' || !options.country) {
+            if (value == '') {
                 return true;
             }
 
@@ -2373,7 +2388,7 @@
                 sum     = 0,
                 length  = value.length;
             for (var i = 0; i < length; i++) {
-                sum += chars[value[i] + ''] * weights[i];
+                sum += chars[value.charAt(i) + ''] * weights[i];
             }
 
             var reminder = sum % 11;
@@ -2381,7 +2396,7 @@
                 reminder = 'X';
             }
 
-            return reminder == value[8];
+            return reminder == value.charAt(8);
         }
     };
 }(window.jQuery));
