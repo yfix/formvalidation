@@ -282,6 +282,32 @@ $(document).ready(function() {
 
         <div class="row">
             <div class="col-md-1 col-md-offset-1 text-right">
+                <h4>v0.4.2</h4>
+                <small>2014-04-19</small>
+            </div>
+
+            <div class="col-md-10">
+                <div class="docs-changelog__added">
+                    <ul>
+                        <li><a href="{{ site.repository.source }}/pull/168">#168</a>: Add <a href="/validators/siren/">Siren</a> and <a href="/validators/siret/">Siret</a> validators, thanks to <a href="https://github.com/jswale">@jswale</a></li>
+                        <li><a href="{{ site.repository.source }}/issues/177">#177</a>: Add <a href="/validators/vin/">Vehicle Identification Number (VIN)</a> validator</li>
+                        <li><a href="{{ site.repository.source }}/issues/184">#184</a>: Add <code>excluded</code> option</li>
+                    </ul>
+                </div>
+
+                <div class="docs-changelog__improved">
+                    <ul>
+                        <li><a href="{{ site.repository.source }}/pull/171">#171</a>: The <a href="/validators/phone/"><code>phone</code> validator</a> now supports +1 country code and area code for US phone number, thanks to <a href="https://github.com/tomByrer">@tomByrer</a></li>
+                        <li><a href="{{ site.repository.source }}/pull/173">#173</a>: The <a href="/validators/remote/"><code>remote</code> validator</a> allows to override <code>name</code> option, thanks to <a href="https://github.com/jswale">@jswale</a></li>
+                        <li><a href="{{ site.repository.source }}/pull/178">#178</a>: Do not validate fields that <code>enabled</code> is set to <code>false</code>, thanks to <a href="https://github.com/henningda">@henningda</a></li>
+                        <li><a href="{{ site.repository.source }}/pull/182">#182</a>: Improve <a href="/validators/zip-code/"><code>zipCode</code> validator</a>, thanks to <a href="https://github.com/gercheq">@gercheq</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1 col-md-offset-1 text-right">
                 <h4>v0.4.1</h4>
                 <small>2014-04-12</small>
             </div>
@@ -302,46 +328,6 @@ $(document).ready(function() {
                     <ul>
                         <li><a href="{{ site.repository.source }}/issues/144">#144</a>, <a href="{{ site.repository.source }}/issues/158">#158</a>: Fixed an issue that the <a href="/settings/#submit-handler">custom submit handler</a> is not fired from the second time</li>
                         <li><a href="{{ site.repository.source }}/pull/162">#162</a>: Fix errors in IE 8, thanks to <a href="https://github.com/adgrafik">@adgrafik</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-1 col-md-offset-1 text-right">
-                <h4>v0.4.0</h4>
-                <small>2014-04-03</small>
-            </div>
-
-            <div class="col-md-10">
-                <div class="docs-changelog__added">
-                    <ul>
-                        <li>Support HTML 5 input types</li>
-                        <li><a href="{{ site.repository.source }}/issues/14">#14</a>, <a href="{{ site.repository.source }}/issues/57">#57</a>: Set validator option by using HTML 5 attributes</li>
-                        <li><a href="{{ site.repository.source }}/issues/74">#74</a>, <a href="{{ site.repository.source }}/issues/103">#103</a>, <a href="{{ site.repository.source }}/issues/122">#122</a>: Set the custom trigger event</li>
-                        <li><a href="{{ site.repository.source }}/issues/136">#136</a>: Support multiple elements with the same name</li>
-                        <li><a href="{{ site.repository.source }}/issues/109">#109</a>: Add <code>setLiveMode()</code> method to turn on/off the live validating mode</li>
-                        <li><a href="{{ site.repository.source }}/issues/114">#114</a>: Add <a href="/validators/iban/">iban</a> validator for validating IBAN (International Bank Account Number)</li>
-                        <li><a href="{{ site.repository.source }}/issues/116">#116</a>: Add <a href="/validators/uuid/">uuid</a> validator, support UUID v3, v4, v5</li>
-                        <li><a href="{{ site.repository.source }}/issues/128">#128</a>: Add <a href="/validators/numeric/">numeric</a> validator</li>
-                        <li><a href="{{ site.repository.source }}/issues/135">#135</a>: Add <a href="/validators/integer/">integer</a> validator</li>
-                        <li><a href="{{ site.repository.source }}/issues/138">#138</a>: Add <a href="/validators/hex/">hex</a> validator</li>
-                        <li><a href="{{ site.repository.source }}/issues/139">#139</a>: Add <a href="/validators/string-case/">stringCase</a> validator to check a string is lower or upper case</li>
-                        <li><a href="{{ site.repository.source }}/issues/137">#137</a>: Register the plugin with <a href="http://plugins.jquery.com/">jQuery plugins site</a></li>
-                    </ul>
-                </div>
-
-                <div class="docs-changelog__improved">
-                    <ul>
-                        <li><a href="{{ site.repository.source }}/issues/133">#133</a>: The <a href="/validators/regexp/"><code>regexp</code> validator</a> allows to pass a string</li>
-                        <li><a href="{{ site.repository.source }}/pull/140">#140</a>: Do not validate hidden (<code>type="hidden"</code>) and invisible element, thanks to <a href="https://github.com/easonhan007">@easonhan007</a></li>
-                    </ul>
-                </div>
-
-                <div class="docs-changelog__fixed">
-                    <ul>
-                        <li><a href="{{ site.repository.source }}/issues/126">#126</a>: Submit button remains disabled after calling custom <code>submitHandler</code> and the form is valid</li>
-                        <li><a href="{{ site.repository.source }}/issues/132">#132</a>: The <code>fields.[fieldName].message</code> option is not used when showing the error message</li>
                     </ul>
                 </div>
             </div>
