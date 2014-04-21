@@ -1260,7 +1260,7 @@ $(document).ready(function() {
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Browser&lt;/label>
         &lt;div class="col-lg-5">
-            &lt;select class="form-control" name="browsers" multiple>
+            &lt;select class="form-control" name="browsers" <span class="docs-code__note">multiple</span>>
                 &lt;option value="chrome">Google Chrome&lt;/option>
                 &lt;option value="firefox">Firefox&lt;/option>
                 &lt;option value="ie">IE&lt;/option>
@@ -1341,7 +1341,7 @@ $(document).ready(function() {
             <section id="chosen">
                 <h3>Chosen</h3>
                 <p>Use with <a href="http://harvesthq.github.io/chosen/">chosen</a> plugin.</p>
-                <p>The <i>Favorite color</i> option requires to choose 2-4 color you like.</p>
+                <p>The <i>Favorite color</i> option requires to choose 2-4 colors you like most.</p>
 
                 <link rel="stylesheet" href="/vendor/chosen/chosen.min.css" />
                 <div class="docs-example">
@@ -1382,7 +1382,8 @@ $(document).ready(function() {
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Favorite color&lt;/label>
         &lt;div class="col-lg-5">
-            &lt;select class="form-control chosen-select" name="colors" multiple data-placeholder="Choose 2-4 colors">
+            &lt;select class="form-control <span class="docs-code__note">chosen-select</span>" name="colors" <span class="docs-code__note">multiple</span>
+                <span class="docs-code__note">data-placeholder="Choose 2-4 colors"</span>>
                 &lt;option value="black">Black&lt;/option>
                 &lt;option value="blue">Blue&lt;/option>
                 &lt;option value="green">Green&lt;/option>
