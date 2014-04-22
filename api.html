@@ -333,96 +333,220 @@ $(document).ready(function() {
             <p>By default, the plugin doesn't re-validate a field once it is already validated and marked as a valid one. When using with other plugins,
                 the field value is changed and therefore need to be re-validated.</p>
 
-            <p>The following example describes how to re-validate a field which uses with <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Boostrap Datetime Picker</a>:</p>
+            <section id="datepicker-example">
+                <p>The following example describes how to re-validate a field which uses with <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Boostrap Datetime Picker</a>:</p>
 
-            <link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-            <style type="text/css">
-            .form-horizontal .has-feedback .input-group .form-control-feedback {
-                top: 0;
-                right: -30px;
-            }
-            </style>
+                <link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+                <style type="text/css">
+                .form-horizontal .has-feedback .input-group .form-control-feedback {
+                    top: 0;
+                    right: -30px;
+                }
+                </style>
 
-            <div class="docs-example">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#updatestatus-form-tab" data-toggle="tab">Form</a></li>
-                    <li><a href="#updatestatus-html-tab" data-toggle="tab">HTML</a></li>
-                </ul>
+                <div class="docs-example">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#updatestatus-form-tab" data-toggle="tab">Form</a></li>
+                        <li><a href="#updatestatus-html-tab" data-toggle="tab">HTML</a></li>
+                    </ul>
 
-                <div class="tab-content">
-                    <div class="tab-pane active" id="updatestatus-form-tab">
-                        <form id="datetimeForm" class="form-horizontal">
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">DateTime Picker</label>
-                                <div class="col-lg-5">
-                                    <div class="input-group date" id="datetimePicker">
-                                        <input type="text" class="form-control" name="datetimePicker" />
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="updatestatus-form-tab">
+                            <form id="datetimeForm" class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">DateTime Picker</label>
+                                    <div class="col-lg-5">
+                                        <div class="input-group date" id="datetimePicker">
+                                            <input type="text" class="form-control" name="datetimePicker" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
+                            </form>
+                        </div>
 
-                    <div class="tab-pane" id="updatestatus-html-tab">
-                        <pre><code class="html">&lt;link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+                        <div class="tab-pane" id="updatestatus-html-tab">
+                            <pre><code class="html">&lt;link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 
-&lt;form id="datetimeForm" method="post" class="form-horizontal">
-    ...
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">DateTime Picker&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;div class="input-group date" id="datetimePicker">
-                &lt;input type="text" class="form-control" name="datetimePicker" />
-                &lt;span class="input-group-addon">
-                    &lt;span class="glyphicon glyphicon-calendar">&lt;/span>
-                &lt;/span>
+    &lt;form id="datetimeForm" method="post" class="form-horizontal">
+        ...
+        &lt;div class="form-group">
+            &lt;label class="col-lg-3 control-label">DateTime Picker&lt;/label>
+            &lt;div class="col-lg-5">
+                &lt;div class="input-group date" id="datetimePicker">
+                    &lt;input type="text" class="form-control" name="datetimePicker" />
+                    &lt;span class="input-group-addon">
+                        &lt;span class="glyphicon glyphicon-calendar">&lt;/span>
+                    &lt;/span>
+                &lt;/div>
             &lt;/div>
         &lt;/div>
+        ...
+    &lt;/form></code></pre>
+
+                            <pre><code class="xml javascript">&lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
+    &lt;script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js">&lt;/script>
+    &lt;script>
+    $(document).ready(function() {
+        $('#datetimePicker').datetimepicker();
+
+        $('#datetimeForm').bootstrapValidator({
+            fields: {
+                ...
+                datetimePicker: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The date is required and cannot be empty'
+                        },
+                        date: {
+                            format: 'MM/DD/YYYY h:m A'
+                        }
+                    }
+                }
+            }
+        });
+
+        $('#datetimePicker')
+            .on('dp.change dp.show', function(e) {
+                // Validate the date when user change it
+                $('#datetimeForm')
+                    // Get the bootstrapValidator instance
+                    .data('bootstrapValidator')
+                    // Mark the field as not validated, so it'll be re-validated when the user change date
+                    <span class="docs-code__note">.updateStatus('datetimePicker', 'NOT_VALIDATED', null)</span>
+                    // Validate the field
+                    .validateField('datetimePicker');
+            });
+    });
+    &lt;/script></code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="cc-example">
+                <p>The <code>updateStatus</code> method might be used when a field validity is effected by other filed.</p>
+                <p>For example, the form below asks user for credit card expiration. The expiration is valid if it is in the range of next month and next 10 year.</p>
+                <div class="docs-example">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#cc-form-tab" data-toggle="tab">Form</a></li>
+                        <li><a href="#cc-html-tab" data-toggle="tab">HTML</a></li>
+                        <li><a href="#cc-js-tab" data-toggle="tab">JS</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="cc-form-tab">
+                            <form id="paymentForm" class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">Expiration</label>
+                                    <div class="col-lg-2">
+                                        <input type="text" class="form-control" placeholder="Month" name="expMonth" />
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <input type="text" class="form-control" placeholder="Year" name="expYear" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="tab-pane" id="cc-html-tab">
+                            <pre><code class="xml">&lt;form id="paymentForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Expiration&lt;/label>
+        &lt;div class="col-lg-2">
+            &lt;input type="text" class="form-control" placeholder="Month" name="expMonth" />
+        &lt;/div>
+        &lt;div class="col-lg-2">
+            &lt;input type="text" class="form-control" placeholder="Year" name="expYear" />
+        &lt;/div>
     &lt;/div>
-    ...
 &lt;/form></code></pre>
+                        </div>
 
-                        <pre><code class="xml javascript">&lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
-&lt;script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js">&lt;/script>
-&lt;script>
+                        <div class="tab-pane" id="cc-js-tab">
+                            <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
-    $('#datetimePicker').datetimepicker();
-
-    $('#datetimeForm').bootstrapValidator({
+    $('#paymentForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
         fields: {
-            ...
-            datetimePicker: {
+            expMonth: {
                 validators: {
                     notEmpty: {
-                        message: 'The date is required and cannot be empty'
+                        message: 'The expiration month is required'
                     },
-                    date: {
-                        format: 'MM/DD/YYYY h:m A'
+                    digits: {
+                        message: 'The expiration month can contain digits only'
+                    },
+                    callback: {
+                        message: 'Expired',
+                        callback: function(value, validator) {
+                            value = parseInt(value, 10);
+                            var year         = validator.getFieldElements('expYear').val(),
+                                currentMonth = new Date().getMonth() + 1,
+                                currentYear  = new Date().getFullYear();
+                            if (value < 0 || value > 12) {
+                                return false;
+                            }
+                            if (year == '') {
+                                return true;
+                            }
+                            year = parseInt(year, 10);
+                            if (year > currentYear || (year == currentYear && value > currentMonth)) {
+                                <span class="docs-code__note">validator.updateStatus('expYear', 'VALID');</span>
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            },
+            expYear: {
+                validators: {
+                    notEmpty: {
+                        message: 'The expiration year is required'
+                    },
+                    digits: {
+                        message: 'The expiration year can contain digits only'
+                    },
+                    callback: {
+                        message: 'Expired',
+                        callback: function(value, validator) {
+                            value = parseInt(value, 10);
+                            var month        = validator.getFieldElements('expMonth').val(),
+                                currentMonth = new Date().getMonth() + 1,
+                                currentYear  = new Date().getFullYear();
+                            if (value < currentYear || value > currentYear + 10) {
+                                return false;
+                            }
+                            if (month == '') {
+                                return false;
+                            }
+                            month = parseInt(month, 10);
+                            if (value > currentYear || (value == currentYear && month > currentMonth)) {
+                                <span class="docs-code__note">validator.updateStatus('expMonth', 'VALID');</span>
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        }
                     }
                 }
             }
         }
     });
-
-    $('#datetimePicker')
-        .on('dp.change dp.show', function(e) {
-            // Validate the date when user change it
-            $('#datetimeForm')
-                // Get the bootstrapValidator instance
-                .data('bootstrapValidator')
-                // Mark the field as not validated, so it'll be re-validated when the user change date
-                <span class="docs-code__note">.updateStatus('datetimePicker', 'NOT_VALIDATED', null)</span>
-                // Validate the field
-                .validateField('datetimePicker');
-        });
 });
 &lt;/script></code></pre>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </section>
 
         <section id="validate">
@@ -539,5 +663,79 @@ $(document).ready(function() {
                 .updateStatus('datetimePicker', 'NOT_VALIDATED', null)
                 .validateField('datetimePicker');
         });
+
+    $('#paymentForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            expMonth: {
+                validators: {
+                    notEmpty: {
+                        message: 'The expiration month is required'
+                    },
+                    digits: {
+                        message: 'The expiration month can contain digits only'
+                    },
+                    callback: {
+                        message: 'Expired',
+                        callback: function(value, validator) {
+                            value = parseInt(value, 10);
+                            var year         = validator.getFieldElements('expYear').val(),
+                                currentMonth = new Date().getMonth() + 1,
+                                currentYear  = new Date().getFullYear();
+                            if (value < 0 || value > 12) {
+                                return false;
+                            }
+                            if (year == '') {
+                                return true;
+                            }
+                            year = parseInt(year, 10);
+                            if (year > currentYear || (year == currentYear && value > currentMonth)) {
+                                validator.updateStatus('expYear', 'VALID');
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            },
+            expYear: {
+                validators: {
+                    notEmpty: {
+                        message: 'The expiration year is required'
+                    },
+                    digits: {
+                        message: 'The expiration year can contain digits only'
+                    },
+                    callback: {
+                        message: 'Expired',
+                        callback: function(value, validator) {
+                            value = parseInt(value, 10);
+                            var month        = validator.getFieldElements('expMonth').val(),
+                                currentMonth = new Date().getMonth() + 1,
+                                currentYear  = new Date().getFullYear();
+                            if (value < currentYear || value > currentYear + 10) {
+                                return false;
+                            }
+                            if (month == '') {
+                                return false;
+                            }
+                            month = parseInt(month, 10);
+                            if (value > currentYear || (value == currentYear && month > currentMonth)) {
+                                validator.updateStatus('expMonth', 'VALID');
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    });
 });
 </script>
