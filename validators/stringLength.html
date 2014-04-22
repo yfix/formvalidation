@@ -39,7 +39,119 @@ validator: stringLength
             </tr>
         </tbody>
     </table>
-    <p>At least one of <code>min</code> and <code>max</code> options is required</p>
+    <p>At least one of <code>min</code> and <code>max</code> options is required.</p>
+</section>
+
+<section id="example">
+    <h2>Example</h2>
+
+    <p>In the following form, the <i>Full name</i> and <i>Bio</i> fields must be less than 80 and 200 characters respectively.</p>
+
+    <div class="docs-example">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#stringlength-form-tab" data-toggle="tab">Try it</a></li>
+            <li><a href="#stringlength-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#stringlength-js-tab" data-toggle="tab">JS</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="stringlength-form-tab">
+                <form id="profileForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Full name</label>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" name="fullName" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Bio</label>
+                        <div class="col-lg-6">
+                            <textarea rows="5" class="form-control" name="bio"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="stringlength-html-tab">
+                <pre><code class="xml">&lt;form id="profileForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Full name&lt;/label>
+        &lt;div class="col-lg-6">
+            &lt;input type="text" class="form-control" name="fullName" />
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Bio&lt;/label>
+        &lt;div class="col-lg-6">
+            &lt;textarea rows="5" class="form-control" name="bio">&lt;/textarea>
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+            </div>
+
+            <div class="tab-pane" id="stringlength-js-tab">
+                <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#profileForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            fullName: {
+                validators: {
+                    <span class="docs-code__note">stringLength: {
+                        max: 50,
+                        message: 'The full name must be less than 50 characters'
+                    }</span>
+                }
+            },
+            bio: {
+                validators: {
+                    <span class="docs-code__note">stringLength: {
+                        max: 250,
+                        message: 'The bio must be less than 200 characters'
+                    }</span>
+                }
+            }
+        }
+    });
+});
+&lt;/script></code></pre>
+            </div>
+        </div>
+    </div>
 </section>
 
 <a href="{{ site.repository.docs_edit }}/validators/stringLength.html" class="btn btn-info">Improve this page</a>
+
+<script>
+$(document).ready(function() {
+    $('#profileForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            fullName: {
+                validators: {
+                    stringLength: {
+                        max: 50,
+                        message: 'The full name must be less than 50 characters'
+                    }
+                }
+            },
+            bio: {
+                validators: {
+                    stringLength: {
+                        max: 250,
+                        message: 'The bio must be less than 200 characters'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
