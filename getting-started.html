@@ -102,12 +102,12 @@ slug: getting-started
 
             <div class="docs-example">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#basicform-tab" data-toggle="tab">Form</a></li>
-                    <li><a href="#basicform-html-tab" data-toggle="tab">HTML</a></li>
+                    <li class="active"><a href="#basic-form-tab" data-toggle="tab">Try it</a></li>
+                    <li><a href="#basic-html-tab" data-toggle="tab">HTML</a></li>
                 </ul>
 
                 <div class="tab-content">
-                    <div class="tab-pane active" id="basicform-tab">
+                    <div class="tab-pane active" id="basic-form-tab">
                         <form class="registerForm">
                             <div class="form-group">
                                 <label>Username</label>
@@ -120,7 +120,7 @@ slug: getting-started
                         </form>
                     </div>
 
-                    <div class="tab-pane" id="basicform-html-tab">
+                    <div class="tab-pane" id="basic-html-tab">
                         <pre><code class="html">&lt;form>
     &lt;div class="form-group">
         &lt;label>Username&lt;/label>
@@ -138,12 +138,12 @@ slug: getting-started
             <h4>Inline form</h4>
             <div class="docs-example">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#inlineform-tab" data-toggle="tab">Form</a></li>
-                    <li><a href="#inlineform-html-tab" data-toggle="tab">HTML</a></li>
+                    <li class="active"><a href="#inline-form-tab" data-toggle="tab">Try it</a></li>
+                    <li><a href="#inline-html-tab" data-toggle="tab">HTML</a></li>
                 </ul>
 
                 <div class="tab-content">
-                    <div class="tab-pane active" id="inlineform-tab">
+                    <div class="tab-pane active" id="inline-form-tab">
                         <form class="form-inline registerForm">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="username" placeholder="Username" />
@@ -154,7 +154,7 @@ slug: getting-started
                         </form>
                     </div>
 
-                    <div class="tab-pane" id="inlineform-html-tab">
+                    <div class="tab-pane" id="inline-html-tab">
                         <pre><code class="xml">&lt;form class="form-inline">
     &lt;div class="form-group">
         &lt;input type="text" class="form-control" name="username" placeholder="Username" />
@@ -170,12 +170,12 @@ slug: getting-started
             <h4>Horizontal form</h4>
             <div class="docs-example">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#horform-tab" data-toggle="tab">Form</a></li>
-                    <li><a href="#horform-html-tab" data-toggle="tab">HTML</a></li>
+                    <li class="active"><a href="#horizontal-form-tab" data-toggle="tab">Try it</a></li>
+                    <li><a href="#horizontal-html-tab" data-toggle="tab">HTML</a></li>
                 </ul>
 
                 <div class="tab-content">
-                    <div class="tab-pane active" id="horform-tab">
+                    <div class="tab-pane active" id="horizontal-orm-tab">
                         <form class="form-horizontal registerForm">
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Username</label>
@@ -192,7 +192,7 @@ slug: getting-started
                         </form>
                     </div>
 
-                    <div class="tab-pane" id="horform-html-tab">
+                    <div class="tab-pane" id="horizontal-html-tab">
                         <pre><code class="xml">&lt;form class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Username&lt;/label>
@@ -215,12 +215,12 @@ slug: getting-started
 
             <div class="docs-example">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#rowform-tab" data-toggle="tab">Form</a></li>
-                    <li><a href="#rowform-html-tab" data-toggle="tab">HTML</a></li>
+                    <li class="active"><a href="#row-form-tab" data-toggle="tab">Try it</a></li>
+                    <li><a href="#row-html-tab" data-toggle="tab">HTML</a></li>
                 </ul>
 
                 <div class="tab-content">
-                    <div class="tab-pane active" id="rowform-tab">
+                    <div class="tab-pane active" id="row-form-tab">
                         <form class="form-horizontal registerForm">
                             <div class="form-group">
                                 <label class="col-lg-2 control-label">Account</label>
@@ -234,7 +234,7 @@ slug: getting-started
                         </form>
                     </div>
 
-                    <div class="tab-pane" id="rowform-html-tab">
+                    <div class="tab-pane" id="row-html-tab">
                         <pre><code class="xml">&lt;form class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-2 control-label">Account&lt;/label>
@@ -255,6 +255,7 @@ slug: getting-started
             <p>Call the plugin to validate the form as following:</p>
             <pre><code class="javascript">$(document).ready(function() {
     $(formSelector).bootstrapValidator({
+        excluded: ...,
         feedbackIcons: ...,
         live: 'enabled',
         message: 'This value is not valid',

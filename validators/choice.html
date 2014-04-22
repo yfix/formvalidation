@@ -48,12 +48,13 @@ validator: choice
 
     <div class="docs-example">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#form-tab" data-toggle="tab">Form</a></li>
-            <li><a href="#html-tab" data-toggle="tab">HTML</a></li>
+            <li class="active"><a href="#choice-form-tab" data-toggle="tab">Try it</a></li>
+            <li><a href="#choice-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#choice-js-tab" data-toggle="tab">JS</a></li>
         </ul>
 
         <div class="tab-content">
-            <div class="tab-pane active" id="form-tab">
+            <div class="tab-pane active" id="choice-form-tab">
                 <form id="interviewForm" class="form-horizontal">
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Programming Languages</label>
@@ -103,7 +104,7 @@ validator: choice
                 </form>
             </div>
 
-            <div class="tab-pane" id="html-tab">
+            <div class="tab-pane" id="choice-html-tab">
                 <pre><code class="xml">&lt;form id="interviewForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Programming Languages&lt;/label>
@@ -151,7 +152,9 @@ validator: choice
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
+            </div>
 
+            <div class="tab-pane" id="choice-js-tab">
                 <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#interviewForm').bootstrapValidator({

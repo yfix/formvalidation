@@ -36,20 +36,17 @@ validator: different
 </section>
 
 <sectiom id="example">
-    <h2>Live example</h2>
-
     <p>The registration form below doesn't allow the username and password to be the same:</p>
-
-    <p class="alert alert-info">Try to type same value in both the username and password fields</p>
 
     <div class="docs-example">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#example-form-tab" data-toggle="tab">Form</a></li>
-            <li><a href="#example-html-tab" data-toggle="tab">HTML</a></li>
+            <li class="active"><a href="#different-form-tab" data-toggle="tab">Try it</a></li>
+            <li><a href="#different-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#different-js-tab" data-toggle="tab">JS</a></li>
         </ul>
 
         <div class="tab-content">
-            <div class="tab-pane active" id="example-form-tab">
+            <div class="tab-pane active" id="different-form-tab">
                 <form id="registerForm" class="form-horizontal">
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Username</label>
@@ -67,7 +64,7 @@ validator: different
                 </form>
             </div>
 
-            <div class="tab-pane" id="example-html-tab">
+            <div class="tab-pane" id="different-html-tab">
                 <pre><code class="xml">&lt;form id="registerForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Username&lt;/label>
@@ -83,6 +80,9 @@ validator: different
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
+            </div>
+
+            <div class="tab-pane" id="different-js-tab">
                 <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#registerForm').bootstrapValidator({

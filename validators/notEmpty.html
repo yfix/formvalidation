@@ -32,19 +32,18 @@ validator: notEmpty
 </section>
 
 <section id="example">
-    <h2>Example</h2>
-
     <p>In the following form, user is asked to enter the full name which alphabetical characters and spaces only.</p>
 
     <div class="docs-example">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#regexp-form-tab" data-toggle="tab">Form</a></li>
-            <li><a href="#regexp-html-tab" data-toggle="tab">HTML</a></li>
-            <li><a href="#regexp-html5-tab" data-toggle="tab">HTML 5</a></li>
+            <li class="active"><a href="#notempty-form-tab" data-toggle="tab">Try it</a></li>
+            <li><a href="#notempty-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#notempty-js-tab" data-toggle="tab">JS</a></li>
+            <li><a href="#notempty-html5-tab" data-toggle="tab">HTML 5</a></li>
         </ul>
 
         <div class="tab-content">
-            <div class="tab-pane active" id="regexp-form-tab">
+            <div class="tab-pane active" id="notempty-form-tab">
                 <form id="profileForm" class="form-horizontal">
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Full name</label>
@@ -55,7 +54,7 @@ validator: notEmpty
                 </form>
             </div>
 
-            <div class="tab-pane" id="regexp-html-tab">
+            <div class="tab-pane" id="notempty-html-tab">
                 <pre><code class="xml">&lt;form id="profileForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Full name&lt;/label>
@@ -64,6 +63,9 @@ validator: notEmpty
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
+            </div>
+
+            <div class="tab-pane" id="notempty-js-tab">
                 <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#profileForm').bootstrapValidator({
@@ -86,7 +88,7 @@ $(document).ready(function() {
 &lt;/script></code></pre>
             </div>
 
-            <div class="tab-pane" id="regexp-html5-tab">
+            <div class="tab-pane" id="notempty-html5-tab">
                 <pre><code class="xml">&lt;form id="profileForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Full name&lt;/label>

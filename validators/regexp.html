@@ -36,14 +36,13 @@ validator: regexp
 </section>
 
 <section id="example">
-    <h2>Example</h2>
-
     <p>In the following form, user is asked to enter the full name which alphabetical characters and spaces only.</p>
 
     <div class="docs-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#regexp-form-tab" data-toggle="tab">Form</a></li>
             <li><a href="#regexp-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#regexp-js-tab" data-toggle="tab">JS</a></li>
             <li><a href="#regexp-html5-tab" data-toggle="tab">HTML 5</a></li>
         </ul>
 
@@ -68,6 +67,9 @@ validator: regexp
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
+            </div>
+
+            <div class="tab-pane" id="regexp-js-tab">
                 <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#profileForm').bootstrapValidator({

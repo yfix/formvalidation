@@ -46,13 +46,13 @@ validator: cvv
 
     <div class="docs-example">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#form-tab" data-toggle="tab">Form</a></li>
-            <li><a href="#html-tab" data-toggle="tab">HTML</a></li>
-            <li><a href="#attr-tab" data-toggle="tab">Using HTML attributes</a></li>
+            <li class="active"><a href="#cvv-form-tab" data-toggle="tab">Try it</a></li>
+            <li><a href="#cvv-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#cvv-js-tab" data-toggle="tab">JS</a></li>
         </ul>
 
         <div class="tab-content">
-            <div class="tab-pane active" id="form-tab">
+            <div class="tab-pane active" id="cvv-form-tab">
                 <form id="paymentForm" class="form-horizontal">
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Credit card number</label>
@@ -70,7 +70,7 @@ validator: cvv
                 </form>
             </div>
 
-            <div class="tab-pane" id="html-tab">
+            <div class="tab-pane" id="cvv-html-tab">
                 <pre><code class="xml">&lt;form id="paymentForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Credit card number&lt;/label>
@@ -86,7 +86,9 @@ validator: cvv
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
+            </div>
 
+            <div class="tab-pane" id="cvv-js-tab">
                 <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#paymentForm').bootstrapValidator({
@@ -113,38 +115,6 @@ $(document).ready(function() {
             }
         }
     });
-});
-&lt;/script></code></pre>
-            </div>
-
-            <div class="tab-pane" id="attr-tab">
-                <pre><code class="xml">&lt;form id="paymentForm" class="form-horizontal"
-    data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
-    data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
-    data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Credit card number&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="ccNumber"
-                data-bv-creditcard="true"
-                data-bv-creditcard-message="The credit card number is not valid" />
-        &lt;/div>
-    &lt;/div>
-
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">CVV&lt;/label>
-        &lt;div class="col-lg-2">
-            &lt;input type="text" class="form-control" name="cvvNumber"
-                <span class="docs-code__note">data-bv-cvv="true"
-                data-bv-cvv-ccfield="ccNumber"
-                data-bv-cvv-message="The CVV number is not valid"</span> />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
-
-                <pre><code class="xml javascript">&lt;script>
-$(document).ready(function() {
-    $('#paymentForm').bootstrapValidator();
 });
 &lt;/script></code></pre>
             </div>

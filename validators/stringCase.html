@@ -39,18 +39,17 @@ validator: stringCase
 </section>
 
 <section id="example">
-    <h2>Example</h2>
-
     <p>The following form asks user to enter a credit card holder in uppercase:</p>
 
     <div class="docs-example">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#cardholder-form-tab" data-toggle="tab">Form</a></li>
-            <li><a href="#cardholder-html-tab" data-toggle="tab">HTML</a></li>
+            <li class="active"><a href="#stringcase-form-tab" data-toggle="tab">Try it</a></li>
+            <li><a href="#stringcase-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#stringcase-js-tab" data-toggle="tab">JS</a></li>
         </ul>
 
         <div class="tab-content">
-            <div class="tab-pane active" id="cardholder-form-tab">
+            <div class="tab-pane active" id="stringcase-form-tab">
                 <form id="cardHolderForm" class="form-horizontal">
                     <div class="form-group">
                         <label class="col-lg-4 control-label">Credit card holder</label>
@@ -61,7 +60,7 @@ validator: stringCase
                 </form>
             </div>
 
-            <div class="tab-pane" id="cardholder-html-tab">
+            <div class="tab-pane" id="stringcase-html-tab">
                 <pre><code class="xml">&lt;form id="cardHolderForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-4 control-label">Credit card holder&lt;/label>
@@ -70,7 +69,9 @@ validator: stringCase
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
+            </div>
 
+            <div class="tab-pane" id="stringcase-js-tab">
                 <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#cardHolderForm').bootstrapValidator({

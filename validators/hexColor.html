@@ -30,12 +30,11 @@ validator: hexColor
 </section>
 
 <section id="example">
-    <h2>Live example 1</h2>
-
     <div class="docs-example">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#example-form-tab" data-toggle="tab">Form</a></li>
-            <li><a href="#example-html-tab" data-toggle="tab">HTML</a></li>
+            <li class="active"><a href="#hexcolor-form-tab" data-toggle="tab">Try it</a></li>
+            <li><a href="#hexcolor-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#hexcolor-js-tab" data-toggle="tab">JS</a></li>
         </ul>
 
         <div class="tab-content">
@@ -50,7 +49,7 @@ validator: hexColor
                 </form>
             </div>
 
-            <div class="tab-pane" id="example-html-tab">
+            <div class="tab-pane" id="hexcolor-html-tab">
                 <pre><code class="xml">&lt;form id="colorForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Color&lt;/label>
@@ -59,7 +58,9 @@ validator: hexColor
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
+            </div>
 
+            <div class="tab-pane" id="hexcolor-js-tab">
                 <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#colorForm').bootstrapValidator({
@@ -86,7 +87,7 @@ $(document).ready(function() {
 </section>
 
 <section id="color-picker-example">
-    <h2>Live example 2: Use with a color picker</h2>
+    <h2>Color picker example</h2>
 
     <p>The following form uses a <a href="http://mjolnic.github.io/bootstrap-colorpicker/">Bootstrap Color Picker</a>:</p>
 
@@ -96,8 +97,9 @@ $(document).ready(function() {
 
     <div class="docs-example">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#colorpicker-form-tab" data-toggle="tab">Form</a></li>
+            <li class="active"><a href="#colorpicker-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#colorpicker-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#colorpicker-js-tab" data-toggle="tab">JS</a></li>
         </ul>
 
         <div class="tab-content">
@@ -130,7 +132,9 @@ $(document).ready(function() {
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
+            </div>
 
+            <div class="tab-pane" id="colorpicker-js-tab">
                 <pre><code class="xml javascript">&lt!-- Required JS -->
 &lt;script src="/vendor/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js">&lt;/script>
 
@@ -152,10 +156,10 @@ $(document).ready(function() {
         .colorpicker()
         .on('showPicker changeColor', function(e) {
             // Re-validate the color when user choose a color from the color picker
-            $('#colorPickerForm')
-                .data('bootstrapValidator')                     // Get BootstrapValidator instance
-                <span class="docs-code__note">.updateStatus('color', 'NOT_VALIDATED', null)   // Set the color as not validated yet
-                .validateField('color');                        // and validate the color</span>
+            <span class="docs-code__note">$('#colorPickerForm')
+                .data('bootstrapValidator')                 // Get BootstrapValidator instance
+                .updateStatus('color', 'NOT_VALIDATED',)    // Set the color as not validated yet
+                .validateField('color');                    // and validate the color</span>
         });
 });
 &lt;/script></code></pre>

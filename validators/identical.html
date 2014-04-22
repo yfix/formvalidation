@@ -36,18 +36,17 @@ validator: identical
 </section>
 
 <section id="example">
-   <h2>Live example</h2>
-
     <p>The following form requires the password and confirmation one to be the same using <code>identical</code> validator.</p>
 
     <div class="docs-example">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#example-form-tab" data-toggle="tab">Form</a></li>
-            <li><a href="#example-html-tab" data-toggle="tab">HTML</a></li>
+            <li class="active"><a href="#identical-form-tab" data-toggle="tab">Try it</a></li>
+            <li><a href="#identical-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#identical-js-tab" data-toggle="tab">JS</a></li>
         </ul>
 
         <div class="tab-content">
-            <div class="tab-pane active" id="example-form-tab">
+            <div class="tab-pane active" id="identical-form-tab">
                 <form id="registerForm" class="form-horizontal">
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Password</label>
@@ -65,7 +64,7 @@ validator: identical
                 </form>
             </div>
 
-            <div class="tab-pane" id="example-html-tab">
+            <div class="tab-pane" id="identical-html-tab">
                 <pre><code class="xml">&lt;form id="registerForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Password&lt;/label>
@@ -81,7 +80,9 @@ validator: identical
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
+            </div>
 
+            <div class="tab-pane" id="identical-js-tab">
                 <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#registerForm').bootstrapValidator({

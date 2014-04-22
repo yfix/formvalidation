@@ -157,8 +157,9 @@ $(form).data('bootstrapValidator').resetForm();</code></pre>
 
             <div class="docs-example">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#livemode-form-tab" data-toggle="tab">Form</a></li>
+                    <li class="active"><a href="#livemode-form-tab" data-toggle="tab">Try it</a></li>
                     <li><a href="#livemode-html-tab" data-toggle="tab">HTML</a></li>
+                    <li><a href="#livemode-js-tab" data-toggle="tab">JS</a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -199,10 +200,10 @@ $(form).data('bootstrapValidator').resetForm();</code></pre>
                         <pre><code class="xml">&lt;form id="liveModeForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;div class="col-lg-offset-3 col-lg-9">
-            &lt;button type="button" class="btn btn-success" data-mode="enabled">
+            &lt;button type="button" class="btn btn-success" <span class="docs-code__note">data-mode="enabled"</span>>
                 Set live="enabled"
             &lt;/button>
-            &lt;button type="button" class="btn btn-success" data-mode="disabled">
+            &lt;button type="button" class="btn btn-success" <span class="docs-code__note">data-mode="disabled"</span>>
                 Set live="disabled"
             &lt;/button>
         &lt;/div>
@@ -230,7 +231,9 @@ $(form).data('bootstrapValidator').resetForm();</code></pre>
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
+                    </div>
 
+                    <div class="tab-pane" id="livemode-js-tab">
                         <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#liveModeForm')
@@ -346,12 +349,13 @@ $(document).ready(function() {
 
                 <div class="docs-example">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#updatestatus-form-tab" data-toggle="tab">Form</a></li>
-                        <li><a href="#updatestatus-html-tab" data-toggle="tab">HTML</a></li>
+                        <li class="active"><a href="#datepicker-form-tab" data-toggle="tab">Try it</a></li>
+                        <li><a href="#datepicker-html-tab" data-toggle="tab">HTML</a></li>
+                        <li><a href="#datepicker-js-tab" data-toggle="tab">JS</a></li>
                     </ul>
 
                     <div class="tab-content">
-                        <div class="tab-pane active" id="updatestatus-form-tab">
+                        <div class="tab-pane active" id="datepicker-form-tab">
                             <form id="datetimeForm" class="form-horizontal">
                                 <div class="form-group">
                                     <label class="col-lg-3 control-label">DateTime Picker</label>
@@ -367,60 +371,62 @@ $(document).ready(function() {
                             </form>
                         </div>
 
-                        <div class="tab-pane" id="updatestatus-html-tab">
+                        <div class="tab-pane" id="datepicker-html-tab">
                             <pre><code class="html">&lt;link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 
-    &lt;form id="datetimeForm" method="post" class="form-horizontal">
-        ...
-        &lt;div class="form-group">
-            &lt;label class="col-lg-3 control-label">DateTime Picker&lt;/label>
-            &lt;div class="col-lg-5">
-                &lt;div class="input-group date" id="datetimePicker">
-                    &lt;input type="text" class="form-control" name="datetimePicker" />
-                    &lt;span class="input-group-addon">
-                        &lt;span class="glyphicon glyphicon-calendar">&lt;/span>
-                    &lt;/span>
-                &lt;/div>
+&lt;form id="datetimeForm" method="post" class="form-horizontal">
+    ...
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">DateTime Picker&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;div class="input-group date" id="datetimePicker">
+                &lt;input type="text" class="form-control" name="datetimePicker" />
+                &lt;span class="input-group-addon">
+                    &lt;span class="glyphicon glyphicon-calendar">&lt;/span>
+                &lt;/span>
             &lt;/div>
         &lt;/div>
-        ...
-    &lt;/form></code></pre>
+    &lt;/div>
+    ...
+&lt;/form></code></pre>
+                        </div>
 
+                        <div class="tab-pane" id="datepicker-js-tab">
                             <pre><code class="xml javascript">&lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
-    &lt;script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js">&lt;/script>
-    &lt;script>
-    $(document).ready(function() {
-        $('#datetimePicker').datetimepicker();
+&lt;script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js">&lt;/script>
+&lt;script>
+$(document).ready(function() {
+    $('#datetimePicker').datetimepicker();
 
-        $('#datetimeForm').bootstrapValidator({
-            fields: {
-                ...
-                datetimePicker: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The date is required and cannot be empty'
-                        },
-                        date: {
-                            format: 'MM/DD/YYYY h:m A'
-                        }
+    $('#datetimeForm').bootstrapValidator({
+        fields: {
+            ...
+            datetimePicker: {
+                validators: {
+                    notEmpty: {
+                        message: 'The date is required and cannot be empty'
+                    },
+                    date: {
+                        format: 'MM/DD/YYYY h:m A'
                     }
                 }
             }
-        });
-
-        $('#datetimePicker')
-            .on('dp.change dp.show', function(e) {
-                // Validate the date when user change it
-                $('#datetimeForm')
-                    // Get the bootstrapValidator instance
-                    .data('bootstrapValidator')
-                    // Mark the field as not validated, so it'll be re-validated when the user change date
-                    <span class="docs-code__note">.updateStatus('datetimePicker', 'NOT_VALIDATED', null)</span>
-                    // Validate the field
-                    .validateField('datetimePicker');
-            });
+        }
     });
-    &lt;/script></code></pre>
+
+    $('#datetimePicker')
+        .on('dp.change dp.show', function(e) {
+            // Validate the date when user change it
+            $('#datetimeForm')
+                // Get the bootstrapValidator instance
+                .data('bootstrapValidator')
+                // Mark the field as not validated, so it'll be re-validated when the user change date
+                <span class="docs-code__note">.updateStatus('datetimePicker', 'NOT_VALIDATED', null)</span>
+                // Validate the field
+                .validateField('datetimePicker');
+        });
+});
+&lt;/script></code></pre>
                         </div>
                     </div>
                 </div>
@@ -431,7 +437,7 @@ $(document).ready(function() {
                 <p>For example, the form below asks user for credit card expiration. The expiration is valid if it is in the range of next month and next 10 year.</p>
                 <div class="docs-example">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#cc-form-tab" data-toggle="tab">Form</a></li>
+                        <li class="active"><a href="#cc-form-tab" data-toggle="tab">Try it</a></li>
                         <li><a href="#cc-html-tab" data-toggle="tab">HTML</a></li>
                         <li><a href="#cc-js-tab" data-toggle="tab">JS</a></li>
                     </ul>
