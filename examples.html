@@ -1344,6 +1344,17 @@ $(document).ready(function() {
                 <p>The <i>Favorite color</i> option requires to choose 2-4 colors you like most.</p>
 
                 <link rel="stylesheet" href="/vendor/chosen/chosen.min.css" />
+                <style type="text/css">
+                #chosenForm .chosen-choices {
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    min-height: 34px;
+                    padding: 6px 12px;
+                }
+                #chosenForm .form-control-feedback {
+                    z-index: 100;
+                }
+                </style>
                 <div class="docs-example">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#chosen-form-tab" data-toggle="tab">Form</a></li>
@@ -1378,6 +1389,18 @@ $(document).ready(function() {
                         <div class="tab-pane" id="chosen-html-tab">
                             <pre><code class="xml">&lt;!-- Include chosen CSS -->
 &lt;link rel="stylesheet" href="/vendor/chosen/chosen.min.css" />
+&lt;style type="text/css">
+#chosenForm .chosen-choices {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-height: 34px;
+    padding: 6px 12px;
+}
+<span class="docs-code__note">#chosenForm .form-control-feedback {
+    /* To make the feedback icon visible */
+    z-index: 100;
+}</span>
+&lt;/style>
 &lt;form id="chosenForm" method="post" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Favorite color&lt;/label>
