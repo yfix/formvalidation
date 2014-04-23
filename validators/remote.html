@@ -32,17 +32,71 @@ validator: remote
                 <td>The remote URL that responses an encoded JSON of array containing the <code>valid</code> key</td>
             </tr>
             <tr>
+                <td><code>name</code></td>
+                <td><code>data-bv-remote-name</code></td>
+                <td>String</td>
+                <td>The name of field which need to validate</td>
+            </tr>
+            <tr>
                 <td><code>data</code></td>
                 <td>n/a</td>
                 <td>Object</td>
-                <td>
-                    The data sent to remote URL.<br/>
-                    By default, it is set to <code>{ fieldName: fieldValue }</code> where <code>fieldName</code> and <code>fieldValue</code> are replaced with the field name and current value, respectively.
-                </td>
+                <td>The data sent to remote URL</td>
             </tr>
         </tbody>
     </table>
+</section>
 
+<section id="name-option">
+    <h3>name option</h3>
+    <p>By default, it will be set as the name of field.</p>
+    <p>You can override the <code>name</code> option by using the <code>data-bv-remove-name</code> attribute.</p>
+
+    <p>Here are two cases which you might need to use this attribute.</p>
+
+    <p><strong>1. Use different name for same field on different forms</strong>:</p>
+    <p>For example, the <i>Sign up</i> and <i>Profile</i> forms use the same back-end URL to validate the email address which is declared with different name:</p>
+    <pre><code class="xml">&lt;!-- Signup form -->
+&lt;form id="signupForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Email&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" <span class="docs-code__note">name="login" data-bv-remote-name="email"</span> />
+        &lt;/div>
+    &lt;/div>
+&lt;/form>
+
+&lt;!-- Edit profile form -->
+&lt;form id="profileForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Email&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" <span class="docs-code__note">name="email" data-bv-remote-name="email"</span> />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+
+    <p><strong>2. Multiple fields using the same back-end URL to validate</strong></p>
+    <pre><code class="xml">&lt;form id="profileForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Primary email&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control"
+                <span class="docs-code__note">name="primary_email" data-bv-remote-name="email"</span> />
+        &lt;/div>
+
+        &lt;label class="col-lg-3 control-label">Secondary email&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control"
+                <span class="docs-code__note">name="secondary_email" data-bv-remote-name="email"</span> />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+</section>
+
+<section id="data-option">
+    <h3>data option</h3>
+    <p>By default, it is set to <code>{ fieldName: fieldValue }</code> where <code>fieldName</code> and <code>fieldValue</code> are replaced with the field name and current value, respectively.</p>
     <p>It also supports dynamic data which is returned by a function:</p>
 
     <pre><code class="javascript">remote: {
