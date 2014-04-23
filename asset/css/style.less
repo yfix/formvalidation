@@ -222,9 +222,11 @@ pre {
 
 /* Sidebar */
 .docs-sidebar {
-  border: 1px solid #ddd;
-  border-radius: 4px;
   margin-top: 20px;
+  .nav:first-child {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
   .nav > li > a {
     padding: 6px 15px;
   }
@@ -251,9 +253,27 @@ pre {
   .docs-sidebar.affix, .docs-sidebar.affix-bottom {
     width: 213px;
   }
+  #carbonads-container {
+    display: none;
+  }
 }
 @media (min-width: 1200px) {
   .docs-sidebar.affix {
     width: 263px;
+  }
+  #carbonads-container {
+    display: block;
+    margin-top: 20px;
+    width: 263px;
+    .carbonad {
+      height: auto;
+      width: 263px;
+    }
+    .carbonad-text, .carbonad-tag {
+      width: 100px;
+    }
+    .carbonad-tag {
+      margin-bottom: 9px;
+    }
   }
 }

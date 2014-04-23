@@ -201,9 +201,11 @@ pre {
 }
 /* Sidebar */
 .docs-sidebar {
+  margin-top: 20px;
+}
+.docs-sidebar .nav:first-child {
   border: 1px solid #ddd;
   border-radius: 4px;
-  margin-top: 20px;
 }
 .docs-sidebar .nav > li > a {
   padding: 6px 15px;
@@ -233,9 +235,28 @@ pre {
   .docs-sidebar.affix-bottom {
     width: 213px;
   }
+  #carbonads-container {
+    display: none;
+  }
 }
 @media (min-width: 1200px) {
   .docs-sidebar.affix {
     width: 263px;
+  }
+  #carbonads-container {
+    display: block;
+    margin-top: 20px;
+    width: 263px;
+  }
+  #carbonads-container .carbonad {
+    height: auto;
+    width: 263px;
+  }
+  #carbonads-container .carbonad-text,
+  #carbonads-container .carbonad-tag {
+    width: 100px;
+  }
+  #carbonads-container .carbonad-tag {
+    margin-bottom: 9px;
   }
 }
