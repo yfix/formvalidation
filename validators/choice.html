@@ -101,6 +101,22 @@ validator: choice
                             </div>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Editors</label>
+                        <div class="col-lg-4">
+                            <select class="form-control" name="editors[]" multiple="multiple" style="height: 200px;">
+                                <option value="" disabled>Choose 2 - 3 editors</option>
+                                <option value="atom">Atom</option>
+                                <option value="eclipse">Eclipse</option>
+                                <option value="netbeen">NetBean</option>
+                                <option value="nodepadplusplus">Nodepad++</option>
+                                <option value="phpstorm">PHP Storm</option>
+                                <option value="sublime">Sublime</option>
+                                <option value="webstorm">Web Storm</option>
+                            </select>
+                        </div>
+                    </div>
                 </form>
             </div>
 
@@ -151,6 +167,22 @@ validator: choice
             &lt;/div>
         &lt;/div>
     &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Editors&lt;/label>
+        &lt;div class="col-lg-4">
+            &lt;select class="form-control" <span class="docs-code__note">name="editors[]" multiple="multiple"</span> style="height: 200px;">
+                &lt;option value="" disabled>Choose 2 - 3 editors&lt;/option>
+                &lt;option value="atom">Atom&lt;/option>
+                &lt;option value="eclipse">Eclipse&lt;/option>
+                &lt;option value="netbeen">NetBean&lt;/option>
+                &lt;option value="nodepadplusplus">Nodepad++&lt;/option>
+                &lt;option value="phpstorm">PHP Storm&lt;/option>
+                &lt;option value="sublime">Sublime&lt;/option>
+                &lt;option value="webstorm">Web Storm&lt;/option>
+            &lt;/select>
+        &lt;/div>
+    &lt;/div>
 &lt;/form></code></pre>
             </div>
 
@@ -170,6 +202,15 @@ $(document).ready(function() {
                         min: 2,
                         max: 4,
                         message: 'Please choose 2 - 4 programming languages you are good at'
+                    }</span>
+                }
+            },
+            'editors[]': {
+                validators: {
+                    <span class="docs-code__note">choice: {
+                        min: 2,
+                        max: 3,
+                        message: 'Please choose 2 - 3 editors you use most'
                     }</span>
                 }
             }
@@ -199,6 +240,15 @@ $(document).ready(function() {
                         min: 2,
                         max: 4,
                         message: 'Please choose 2 - 4 programming languages you are good at'
+                    }
+                }
+            },
+            'editors[]': {
+                validators: {
+                    choice: {
+                        min: 2,
+                        max: 3,
+                        message: 'Please choose 2 - 3 editors you use most'
                     }
                 }
             }
