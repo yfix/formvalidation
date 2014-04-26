@@ -2673,7 +2673,8 @@
 
             value = value.substr(2);
 
-            var sum = 0, i = 0;
+            var sum = 0,
+                i   = 0;
             if (value.length == 8) {
                 // Do not allow to start with '9'
                 if (value.charAt(0) + '' == '9') {
