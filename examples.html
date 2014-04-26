@@ -588,7 +588,7 @@ $(document).ready(function() {
 
                             <div class="form-group">
                                 <div class="col-lg-9 col-lg-offset-3">
-                                    <button type="button" class="btn btn-primary">Validate</button>
+                                    <button type="submit" class="btn btn-primary">Validate</button>
                                 </div>
                             </div>
                         </form>
@@ -667,7 +667,7 @@ $(document).ready(function() {
 
     &lt;div class="form-group">
         &lt;div class="col-lg-9 col-lg-offset-3">
-            &lt;button type="button" class="btn btn-primary">Validate&lt;/button>
+            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
@@ -683,6 +683,9 @@ $(document).ready(function() {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
+            },
+            submitHandler: function(validator, form, submitButton) {
+                // Do nothing
             },
             fields: {
                 firstName: {
@@ -748,11 +751,6 @@ $(document).ready(function() {
                 }</span>
             }
         })
-        .find('button.btn-primary')
-            .on('click', function() {
-                $('#togglingForm').data('bootstrapValidator').validate();
-            })
-            .end()
         .find('button[data-toggle]')
             .on('click', function() {
                 var $target = $($(this).attr('data-toggle'));
@@ -806,7 +804,7 @@ $(document).ready(function() {
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-5 col-lg-offset-3">
-                                    <button type="button" class="btn btn-primary">Validate</button>
+                                    <button type="submit" class="btn btn-primary">Validate</button>
                                 </div>
                             </div>
                         </div>
@@ -875,7 +873,7 @@ $(document).ready(function() {
             &lt;/div>
             &lt;div class="form-group">
                 &lt;div class="col-lg-5 col-lg-offset-3">
-                    &lt;button type="button" class="btn btn-primary">Validate&lt;/button>
+                    &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
                 &lt;/div>
             &lt;/div>
         &lt;/div>
@@ -926,6 +924,9 @@ $(document).ready(function() {
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
+            submitHandler: function(validator, form, submitButton) {
+                // Do nothing
+            },
             fields: {
                 fullName: {
                     validators: {
@@ -956,11 +957,7 @@ $(document).ready(function() {
                     }
                 }
             }
-        })
-        .find('button.btn-primary')
-            .on('click', function() {
-                $('#accountForm').data('bootstrapValidator').validate();
-            });
+        });
 });
 &lt;/script></code></pre>
                     </div>
@@ -1064,7 +1061,7 @@ $(document).ready(function() {
 
                             <div class="form-group">
                                 <div class="col-lg-9 col-lg-offset-3">
-                                    <button type="button" class="btn btn-primary">Validate</button>
+                                    <button type="submit" class="btn btn-primary">Validate</button>
                                 </div>
                             </div>
                         </form>
@@ -1153,7 +1150,7 @@ $(document).ready(function() {
 
     &lt;div class="form-group">
         &lt;div class="col-lg-9 col-lg-offset-3">
-            &lt;button type="button" class="btn btn-primary">Validate&lt;/button>
+            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
@@ -1169,6 +1166,9 @@ $(document).ready(function() {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
+            },
+            submitHandler: function(validator, form, submitButton) {
+                // Do nothing
             },
             fields: {
                 <span class="docs-code__note">gender</span>: {
@@ -1193,11 +1193,7 @@ $(document).ready(function() {
                     }
                 }
             }
-        })
-        .find('button.btn-primary')
-            .on('click', function() {
-                $('#multipleForm').data('bootstrapValidator').validate();
-            });
+        });
 });
 &lt;/script></code></pre>
                     </div>
@@ -1251,7 +1247,7 @@ $(document).ready(function() {
                                 </div>
                                 <div class="form-group">
                                     <div class="col-lg-5 col-lg-offset-3">
-                                        <button type="button" class="btn btn-primary validateButton">Validate</button>
+                                        <button type="submit" class="btn btn-primary">Validate</button>
                                     </div>
                                 </div>
                             </form>
@@ -1286,7 +1282,7 @@ $(document).ready(function() {
     &lt;/div>
     &lt;div class="form-group">
         &lt;div class="col-lg-5 col-lg-offset-3">
-            &lt;button type="button" class="btn btn-primary validateButton">Validate&lt;/button>
+            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
@@ -1321,6 +1317,9 @@ $(document).ready(function() {
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
+            submitHandler: function(validator, form, submitButton) {
+                // Do nothing
+            },
             fields: {
                 gender: {
                     validators: {
@@ -1342,11 +1341,7 @@ $(document).ready(function() {
                     }
                 }
             }
-        })
-        .find('button.validateButton[type="button"]')
-            .on('click', function() {
-                $('#multiselectForm').data('bootstrapValidator').validate();
-            });
+        });
 });
 &lt;/script></code></pre>
                         </div>
@@ -1397,7 +1392,7 @@ $(document).ready(function() {
                                 </div>
                                 <div class="form-group">
                                     <div class="col-lg-5 col-lg-offset-3">
-                                        <button type="button" class="btn btn-primary validateButton">Validate</button>
+                                        <button type="submit" class="btn btn-primary">Validate</button>
                                     </div>
                                 </div>
                             </form>
@@ -1436,7 +1431,7 @@ $(document).ready(function() {
     &lt;/div>
     &lt;div class="form-group">
         &lt;div class="col-lg-5 col-lg-offset-3">
-            &lt;button type="button" class="btn btn-primary validateButton">Validate&lt;/button>
+            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
@@ -1465,6 +1460,9 @@ $(document).ready(function() {
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
+            submitHandler: function(validator, form, submitButton) {
+                // Do nothing
+            },
             fields: {
                 colors: {
                     validators: {
@@ -1479,11 +1477,7 @@ $(document).ready(function() {
                     }
                 }
             }
-        })
-        .find('button.validateButton[type="button"]')
-            .on('click', function() {
-                $('#chosenForm').data('bootstrapValidator').validate();
-            });
+        });
 });
 &lt;/script></code></pre>
                         </div>
@@ -1591,7 +1585,7 @@ $(document).ready(function() {
                                 </div>
                                 <div class="form-group">
                                     <div class="col-lg-5 col-lg-offset-3">
-                                        <button type="button" class="btn btn-primary">Validate</button>
+                                        <button type="submit" class="btn btn-primary">Validate</button>
                                     </div>
                                 </div>
                             </form>
@@ -1619,7 +1613,7 @@ $(document).ready(function() {
     &lt;/div>
     &lt;div class="form-group">
         &lt;div class="col-lg-5 col-lg-offset-3">
-            &lt;button type="button" class="btn btn-primary">Validate&lt;/button>
+            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
@@ -1654,6 +1648,9 @@ $(document).ready(function() {
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
+            submitHandler: function(validator, form, submitButton) {
+                // Do nothing
+            },
             fields: {
                 <span class="docs-code__note">star</span>: {
                     validators: {
@@ -1681,11 +1678,7 @@ $(document).ready(function() {
                     }
                 }
             }
-        })
-        .find('button[type="button"]')
-            .on('click', function() {
-                $('#ratyForm').data('bootstrapValidator').validate();
-            });
+        });
 });
 &lt;/script></code></pre>
                         </div>
@@ -1737,6 +1730,9 @@ $(document).ready(function() {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
+            },
+            submitHandler: function(validator, form, submitButton) {
+                // Do nothing
             },
             fields: {
                 firstName: {
@@ -1800,11 +1796,6 @@ $(document).ready(function() {
                 }
             }
         })
-        .find('button.btn-primary')
-            .on('click', function() {
-                $('#togglingForm').data('bootstrapValidator').validate();
-            })
-            .end()
         .find('button[data-toggle]')
             .on('click', function() {
                 var $target = $($(this).attr('data-toggle'));
@@ -1823,6 +1814,9 @@ $(document).ready(function() {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
+            },
+            submitHandler: function(validator, form, submitButton) {
+                // Do nothing
             },
             fields: {
                 fullName: {
@@ -1854,11 +1848,7 @@ $(document).ready(function() {
                     }
                 }
             }
-        })
-        .find('button.btn-primary')
-            .on('click', function() {
-                $('#accountForm').data('bootstrapValidator').validate();
-            });
+        });
 
     $('#multipleForm')
         .bootstrapValidator({
@@ -1867,6 +1857,9 @@ $(document).ready(function() {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
+            },
+            submitHandler: function(validator, form, submitButton) {
+                // Do nothing
             },
             fields: {
                 gender: {
@@ -1891,11 +1884,7 @@ $(document).ready(function() {
                     }
                 }
             }
-        })
-        .find('button.btn-primary')
-            .on('click', function() {
-                $('#multipleForm').data('bootstrapValidator').validate();
-            });
+        });
 
     // Bootstrap Multiselect example
     $('#multiselectForm')
@@ -1915,6 +1904,9 @@ $(document).ready(function() {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
+            },
+            submitHandler: function(validator, form, submitButton) {
+                // Do nothing
             },
             fields: {
                 gender: {
@@ -1937,11 +1929,7 @@ $(document).ready(function() {
                     }
                 }
             }
-        })
-        .find('button.validateButton[type="button"]')
-            .on('click', function() {
-                $('#multiselectForm').data('bootstrapValidator').validate();
-            });
+        });
 
     // Chosen example
     $('#chosenForm')
@@ -1958,6 +1946,9 @@ $(document).ready(function() {
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
+            submitHandler: function(validator, form, submitButton) {
+                // Do nothing
+            },
             fields: {
                 colors: {
                     validators: {
@@ -1972,11 +1963,7 @@ $(document).ready(function() {
                     }
                 }
             }
-        })
-        .find('button.validateButton[type="button"]')
-            .on('click', function() {
-                $('#chosenForm').data('bootstrapValidator').validate();
-            });
+        });
 
     // Mask example
     $('#maskForm')
@@ -2018,6 +2005,9 @@ $(document).ready(function() {
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
+            submitHandler: function(validator, form, submitButton) {
+                // Do nothing
+            },
             fields: {
                 star: {
                     validators: {
@@ -2045,10 +2035,6 @@ $(document).ready(function() {
                     }
                 }
             }
-        })
-        .find('button[type="button"]')
-            .on('click', function() {
-                $('#ratyForm').data('bootstrapValidator').validate();
-            });
+        });
 });
 </script>
