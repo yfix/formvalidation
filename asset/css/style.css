@@ -163,10 +163,18 @@ pre {
   background-color: #fff;
 }
 /* Sample data */
-.docs-sample a {
-  color: #fff;
+.docs-sample {
+  margin: 0;
+  padding: 0;
 }
-.docs-sample a i {
+.docs-sample li {
+  list-style-type: none;
+}
+.docs-sample a {
+  display: inline-block;
+  width: 80%;
+}
+.docs-sample i {
   padding-left: 10px;
 }
 /* Example */
