@@ -41,22 +41,13 @@ validator: vin
             </tr>
         </thead>
         <tbody>
+            {% assign sample = '1FAHP26W49G252740, 2FTRX07W53C371582, WP0CA29863U153381, JTMKF4DV5B5309254' | split: ', ' %}
+            {% for vin in sample %}
             <tr>
-                <td><a href="#" class="vin-sample">1FAHP26W49G252740</a></td>
+                <td><a href="#" class="sample">{{ vin }}</a></td>
                 <td><i class="fa"></i></td>
             </tr>
-            <tr>
-                <td><a href="#" class="vin-sample">2FTRX07W53C371582</a></td>
-                <td><i class="fa"></i></td>
-            </tr>
-            <tr>
-                <td><a href="#" class="vin-sample">WP0CA29863U153381</a></td>
-                <td><i class="fa"></i></td>
-            </tr>
-            <tr>
-                <td><a href="#" class="vin-sample">JTMKF4DV5B5309254</a></td>
-                <td><i class="fa"></i></td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
     <p><a href="http://randomvin.com/">http://randomvin.com</a> helps you generate a random vin.</p>
@@ -121,7 +112,7 @@ $(document).ready(function() {
 
 <script>
 $(document).ready(function() {
-    $('.vin-sample').on('click', function() {
+    $('.sample').on('click', function() {
         $('#vinForm')
             .find('input[name="vin"]')
                 .val($(this).html())
@@ -130,7 +121,8 @@ $(document).ready(function() {
                 .updateStatus('vin', 'NOT_VALIDATED')
                 .validate();
         var isValid = $('#vinForm').data('bootstrapValidator').isValid();
-        $(this).parents('tr').find('i')
+        $(this)
+            .parents('tr').find('i')
             .removeClass('fa-check fa-times')
             .addClass(isValid ? 'fa-check' : 'fa-times');
     });

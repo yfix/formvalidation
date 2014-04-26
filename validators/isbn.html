@@ -29,4 +29,117 @@ validator: isbn
     </table>
 </section>
 
+<section id="example">
+    <h3>Example</h3>
+
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>ISBN</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% assign sample = '9971502100, 99921-58-10-7, 960 425 059 0, 99921-58-10-6, 9780306406157, 978-0-306-40615-7, 978 0 306 40615 7, 978-0-306-40615-6' | split: ', ' %}
+            {% for isbn in sample %}
+            <tr>
+                <td><a href="#" class="sample">{{ isbn }}</a></td>
+                <td><i class="fa"></i></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="docs-example">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#isbn-form-tab" data-toggle="tab">Try it</a></li>
+            <li><a href="#isbn-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#isbn-js-tab" data-toggle="tab">JS</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="isbn-form-tab">
+                <form id="isbnForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">ISBN</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" name="isbn" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="isbn-html-tab">
+                <pre><code class="xml">&lt;form id="isbnForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">ISBN&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="isbn" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+            </div>
+
+            <div class="tab-pane" id="isbn-js-tab">
+                <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#isbnForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            isbn: {
+                validators: {
+                    <span class="docs-code__note">isbn: {
+                        message: 'The value is not valid ISBN'
+                    }</span>
+                }
+            }
+        }
+    });
+});
+&lt;/script></code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
 <a href="{{ site.repository.docs_edit }}/validators/isbn.html" class="btn btn-info">Improve this page</a>
+
+<script>
+$(document).ready(function() {
+    $('.sample').on('click', function() {
+        $('#isbnForm')
+            .find('input[name="isbn"]')
+                .val($(this).html())
+                .end()
+            .data('bootstrapValidator')
+                .updateStatus('isbn', 'NOT_VALIDATED')
+                .validate();
+        var isValid = $('#isbnForm').data('bootstrapValidator').isValid();
+        $(this)
+            .parents('tr').find('i')
+            .removeClass('fa-check fa-times')
+            .addClass(isValid ? 'fa-check' : 'fa-times');
+    });
+
+    $('#isbnForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            isbn: {
+                validators: {
+                    isbn: {
+                        message: 'The value is not valid ISBN'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
