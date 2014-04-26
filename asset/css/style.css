@@ -162,6 +162,13 @@ pre {
 .hljs {
   background-color: #fff;
 }
+/* Sample data */
+.docs-sample a {
+  color: #fff;
+}
+.docs-sample a i {
+  padding-left: 10px;
+}
 /* Example */
 .docs-example {
   margin-bottom: 15px;
