@@ -40,6 +40,7 @@ validator: iban
     <table class="table table-condensed">
         <thead>
             <tr>
+                <th>No.</th>
                 <th>Country</th>
                 <th>Code</th>
                 <th>Sample IBAN</th>
@@ -50,6 +51,7 @@ validator: iban
             {% for item in site.data.iban %}
             {% assign data = item | split: '|' %}
             <tr>
+                <td>{{ forloop.index }}</td>
                 <td>{{ data[0] }}</td>
                 <td>{{ data[1] }}</td>
                 <td><a href="javascript: void(0);" class="sample">{{ data[2] }}</a></td>

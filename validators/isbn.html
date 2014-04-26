@@ -43,7 +43,7 @@ validator: isbn
             {% assign sample = '9971502100, 99921-58-10-7, 960 425 059 0, 99921-58-10-6, 9780306406157, 978-0-306-40615-7, 978 0 306 40615 7, 978-0-306-40615-6' | split: ', ' %}
             {% for isbn in sample %}
             <tr>
-                <td><a href="#" class="sample">{{ isbn }}</a></td>
+                <td><a href="javascript: void(0);" class="sample">{{ isbn }}</a></td>
                 <td><i class="fa"></i></td>
             </tr>
             {% endfor %}

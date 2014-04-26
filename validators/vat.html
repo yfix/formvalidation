@@ -7,7 +7,7 @@ validator: vat
 ---
 
 <section>
-    <p>Validate VAT number in 33 countries.</p>
+    <p>Validate VAT number in 32 countries.</p>
 
     <table class="table table-condensed">
         <thead>
@@ -39,6 +39,7 @@ validator: vat
     <table class="table table-condensed">
         <thead>
             <tr>
+                <th>No.</th>
                 <th>Country</th>
                 <th>Abbreviation VAT name</th>
                 <th>Country code</th>
@@ -46,368 +47,25 @@ validator: vat
             </tr>
         </thead>
         <tbody>
+            {% for item in site.data.vat %}
+            {% assign data = item | split: '|' %}
             <tr>
-                <td>Austria</td>
-                <td>UID</td>
-                <td>AT</td>
+                <td>{{ forloop.index }}</td>
+                <td>{{ data[0] }}</td>
+                <td>{{ data[1] }}</td>
+                <td>{{ data[2] }}</td>
                 <td>
+                    {% if data[3] %}
                     <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">ATU13585627</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">ATU13585626</a><i class="fa"></i></li>
+                        {% assign samples = data[3] | split: ',' %}
+                        {% for sample in samples %}
+                        <li><a href="javascript: void(0);" class="sample">{{ sample }}</a><i class="fa"></i></li>
+                        {% endfor %}
                     </ul>
+                    {% endif %}
                 </td>
             </tr>
-            <tr>
-                <td>Belgium</td>
-                <td>n° TVA / BTW-nr / Mwst-nr</td>
-                <td>BE</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">BE0428759497</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">BE431150351</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Bulgaria</td>
-                <td>ДДС номер</td>
-                <td>BG</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">BG175074752</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">BG7523169263</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">BG8032056031</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">BG7542011030</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">BG7111042925</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">BG175074753</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">BG7552A10004</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">BG7111042922</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Croatia</td>
-                <td>PDV-ID; OIB</td>
-                <td>HR</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">HR33392005961</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">HR33392005962</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Cyprus</td>
-                <td>ΦΠΑ</td>
-                <td>CY</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">CY10259033P</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">CY10259033Z</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Czech Republic</td>
-                <td>DIČ</td>
-                <td>CZ</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">CZ25123891</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">CZ7103192745</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">CZ991231123</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">CZ640903926</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">CZ25123890</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">CZ1103492745</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">CZ590312123</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Denmark</td>
-                <td>CVR</td>
-                <td>DK</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">DK13585628</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">DK13585627</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Estonia</td>
-                <td>KMKR</td>
-                <td>EE</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">EE100931558</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">EE100594102</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">EE100594103</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Finland</td>
-                <td>ALV nro</td>
-                <td>FI</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">FI20774740</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">FI20774741</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>France</td>
-                <td>n° TVA</td>
-                <td>FR</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">FR40303265045</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">FR23334175221</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">FRK7399859412</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">FR4Z123456782</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">FR84323140391</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Germany</td>
-                <td>USt-IdNr.</td>
-                <td>DE</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">DE136695976</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">DE136695978</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Greece</td>
-                <td>ΑΦΜ</td>
-                <td>GR / EL</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">GR023456780</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">EL094259216</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">EL123456781</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Hungary</td>
-                <td>ANUM</td>
-                <td>HU</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">HU12892312</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">HU12892313</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Ireland</td>
-                <td>VAT no</td>
-                <td>IE</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">IE6433435F</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">IE6433435OA</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">IE8D79739I</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">IE8D79738J</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Italy</td>
-                <td>P.IVA</td>
-                <td>IT</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">IT00743110157</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">IT00743110158</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Latvia</td>
-                <td>PVN</td>
-                <td>LV</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">LV40003521600</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">LV16117519997</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">LV40003521601</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">LV16137519997</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Lithuania</td>
-                <td>PVM kodas</td>
-                <td>LT</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">LT119511515</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">LT100001919017</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">LT100004801610</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">LT100001919018</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Luxembourg</td>
-                <td>No. TVA</td>
-                <td>LU</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">LU15027442</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">LU15027443</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Malta</td>
-                <td>Vat No.</td>
-                <td>MT</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">MT11679112</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">MT11679113</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Netherlands</td>
-                <td>Btw-nr.</td>
-                <td>NL</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">NL004495445B01</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">NL123456789B90</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Norway</td>
-                <td>Orgnr</td>
-                <td>NO</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Poland</td>
-                <td>NIP</td>
-                <td>PL</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">PL8567346215</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">PL8567346216</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Portugal</td>
-                <td>NIF / NIPC</td>
-                <td>PT</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">PT501964843</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">PT501964842</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Romania</td>
-                <td>CIF</td>
-                <td>RO</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">RO18547290</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">RO18547291</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Russia</td>
-                <td>ИНН</td>
-                <td>RU</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Serbia</td>
-                <td>PIB</td>
-                <td>RS</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Slovakia</td>
-                <td>IČ DPH</td>
-                <td>SK</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">SK2022749619</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">SK2022749618</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Slovenia</td>
-                <td>ID za DDV</td>
-                <td>SI</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">SI50223054</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">SI50223055</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Spain</td>
-                <td>NIF / CIF</td>
-                <td>ES</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">ES54362315K</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">ESX2482300W</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">ESX5253868R</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">ESM1234567L</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">ESJ99216582</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">ESB58378431</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">ESB64717838</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">ES54362315Z</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">ESX2482300A</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">ESJ99216583</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Sweden</td>
-                <td>Momsnr.</td>
-                <td>SE</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">SE123456789701</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">SE123456789101</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Switzerland</td>
-                <td>MWST / TVA / IVA</td>
-                <td>CH</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>United Kingdom</td>
-                <td>VAT Reg No</td>
-                <td>GB</td>
-                <td>
-                    <ul class="docs-sample">
-                        <li><a href="javascript: void(0);" class="sample">GB980780684</a><i class="fa"></i></li>
-                        <li><a href="javascript: void(0);" class="sample">GB802311781</a><i class="fa"></i></li>
-                    </ul>
-                </td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
 </section>
