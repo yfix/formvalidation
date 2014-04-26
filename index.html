@@ -227,7 +227,7 @@ $(document).ready(function() {
                 <i class="fa fa-flask"></i>
                 <h3>Validator</h3>
                 <ul>
-                    <li>Richest <a href="/validators/">built-in validators</a> (34) and counting!</li>
+                    <li>Richest <a href="/validators/">built-in validators</a> (36) and counting!</li>
                     <li>Easy to <a href="/developing/">write a new validator</a></li>
                 </ul>
             </div>
@@ -283,6 +283,39 @@ $(document).ready(function() {
 
         <div class="row">
             <div class="col-md-1 col-md-offset-1 text-right">
+                <h4>v0.4.3</h4>
+                <small>2014-04-26</small>
+            </div>
+
+            <div class="col-md-10">
+                <div class="docs-changelog__added">
+                    <ul>
+                        <li><a href="{{ site.repository.source }}/issues/77">#77</a>: Add <a href="/validators/file/"><code>file</code> validator</a></li>
+                        <li><a href="{{ site.repository.source }}/issues/179">#179</a>: Add <a href="/validators/vat/"><code>vat</code> validator</a>, support 32 countries</li>
+                        <li><a href="{{ site.repository.source }}/issues/205">#205</a>: Plugin method invocation</li>
+                    </ul>
+                </div>
+
+                <div class="docs-changelog__improved">
+                    <ul>
+                        <li><a href="{{ site.repository.source }}/pull/198">#198</a>: Add Canadian Postal Code support for the <a href="/validators/zip-code/"><code>zipCode</code> validator</a>, thanks to <a href="https://github.com/Francismori7">@Francismori7</a></li>
+                        <li><a href="{{ site.repository.source }}/issues/201">#201</a>: The <a href="/validators/choice/"><code>choice</code> validator</a> supports <code>select</code> element</li>
+                        <li><a href="{{ site.repository.source }}/issues/202">#202</a>: Activate tab containing the first invalid field</li>
+                    </ul>
+                </div>
+
+                <div class="docs-changelog__fixed">
+                    <ul>
+                        <li><a href="{{ site.repository.source }}/issues/207">#207</a>: IE8 error</li>
+                        <li><a href="{{ site.repository.source }}/issues/209">#209</a>: The <a href="/settings/#excluded"><code>excluded: ':disabled'</code> setting</a> does not work on IE 8, thanks to <a href="https://github.com/adgrafik">@adgrafik</a></li>
+                        <li><a href="{{ site.repository.source }}/issues/210">#210</a>: The <a href="/validators/isbn/"><code>isbn</code> validator</a> accepts letters and special characters</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1 col-md-offset-1 text-right">
                 <h4>v0.4.2</h4>
                 <small>2014-04-19</small>
             </div>
@@ -302,33 +335,6 @@ $(document).ready(function() {
                         <li><a href="{{ site.repository.source }}/pull/173">#173</a>: The <a href="/validators/remote/"><code>remote</code> validator</a> allows to override <code>name</code> option, thanks to <a href="https://github.com/jswale">@jswale</a></li>
                         <li><a href="{{ site.repository.source }}/pull/178">#178</a>: Do not validate fields that <code>enabled</code> is set to <code>false</code>, thanks to <a href="https://github.com/henningda">@henningda</a></li>
                         <li><a href="{{ site.repository.source }}/pull/182">#182</a>: Improve <a href="/validators/zip-code/"><code>zipCode</code> validator</a>, thanks to <a href="https://github.com/gercheq">@gercheq</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-1 col-md-offset-1 text-right">
-                <h4>v0.4.1</h4>
-                <small>2014-04-12</small>
-            </div>
-
-            <div class="col-md-10">
-                <div class="docs-changelog__improved">
-                    <ul>
-                        <li><a href="{{ site.repository.source }}/issues/106">#106</a>: Prevent the <a href="/api/#validate"><code>validate()</code> method</a> from submit the form automatically. So we can call <code>validate()</code> to validate the form</li>
-                        <li><a href="{{ site.repository.source }}/issues/131">#131</a>: Doesn't trigger validation on the first focus</li>
-                        <li><a href="{{ site.repository.source }}/issues/145">#145</a>: The row state is now only marked as success if all fields on it are valid</li>
-                        <li><a href="{{ site.repository.source }}/issues/157">#157</a>: Added support for element outside of form using the <a href="/settings/#fields"><code>selector</code> option</a></li>
-                        <li><a href="{{ site.repository.source }}/issues/159">#159</a>, <a href="{{ site.repository.source }}/pull/163">#163</a>: User doesn't need to submit the form twice when remote validator complete, thanks to <a href="https://github.com/jswale">@jswale</a></li>
-                        <li><a href="{{ site.repository.source }}/issues/166">#166</a>, <a href="{{ site.repository.source }}/pull/167">#167</a>: The <a href="/validators/phone/"><code>phone</code> validator</a> now also checks the length of US phone number, thanks to <a href="https://github.com/gercheq">@gercheq</a></li>
-                    </ul>
-                </div>
-
-                <div class="docs-changelog__fixed">
-                    <ul>
-                        <li><a href="{{ site.repository.source }}/issues/144">#144</a>, <a href="{{ site.repository.source }}/issues/158">#158</a>: Fixed an issue that the <a href="/settings/#submit-handler">custom submit handler</a> is not fired from the second time</li>
-                        <li><a href="{{ site.repository.source }}/pull/162">#162</a>: Fix errors in IE 8, thanks to <a href="https://github.com/adgrafik">@adgrafik</a></li>
                     </ul>
                 </div>
             </div>

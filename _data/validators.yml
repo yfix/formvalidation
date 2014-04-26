@@ -48,6 +48,11 @@
   version: 0.1.0
   description: Validate an email address
 
+- name: file
+  slug: file
+  version: 0.4.3
+  description: Validate file
+
 - name: greaterThan
   slug: greater-than
   version: 0.1.0
@@ -157,6 +162,11 @@
   slug: uuid
   version: 0.4.0
   description: Validate an UUID, support v3, v4, v5
+
+- name: vat
+  slug: vat
+  version: 0.4.3
+  description: Validate VAT number. Support 32 countries
 
 - name: vin
   slug: vin

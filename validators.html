@@ -10,6 +10,7 @@ slug: validators
 <table class="table table-condensed">
     <thead>
         <tr>
+            <th>No.</th>
             <th>Validator name</th>
             <th>Available from</th>
             <th>Description</th>
@@ -18,6 +19,7 @@ slug: validators
     <tbody>
     {% for validator in site.data.validators %}
         <tr>
+            <td>{{ forloop.index }}</td>
             <td><a href="/validators/{{ validator.slug }}/">{{ validator.name }}</a>{% if validator.version == site.current_version %} <label class="label label-success pull-right">new</label>{% endif %}</td>
             <td>{{ validator.version }}</td>
             <td>{{ validator.description }}</td>
