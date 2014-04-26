@@ -1,0 +1,149 @@
+---
+layout: validator
+title: Validate VAT number
+permalink: /validators/vat/
+slug: validators
+validator: vat
+---
+
+<section>
+    <p>Validate VAT number in 33 countries.</p>
+
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>Option</th>
+                <th>Equivalent HTML attribute</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>message</code></td>
+                <td><code>data-bv-vat-message</code></td>
+                <td>String</td>
+                <td>The error message</td>
+            </tr>
+            <tr>
+                <td><code>country</code></td>
+                <td><code>data-bv-vat-country</code></td>
+                <td>String</td>
+                <td>A ISO 3166 country code. If it is not defined, it will be parse from the VAT number.</td>
+            </tr>
+        </tbody>
+    </table>
+
+     <p>The validator supports the following countries:</p>
+
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>Country</th>
+                <th>Local name</th>
+                <th>Abbreviation</th>
+                <th>Country code</th>
+                <th>Example</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</section>
+
+<section id="example">
+    <h3>Example</h3>
+
+    <div class="docs-example">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#vat-form-tab" data-toggle="tab">Try it</a></li>
+            <li><a href="#vat-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#vat-js-tab" data-toggle="tab">JS</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="vat-form-tab">
+                <form id="vatForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">VAT number</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" name="vat" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="vat-html-tab">
+                <pre><code class="xml">&lt;form id="vatForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">VAT number&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="vat" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+            </div>
+
+            <div class="tab-pane" id="vat-js-tab">
+                <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#vatForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            vat: {
+                validators: {
+                    <span class="docs-code__note">vat: {
+                        message: 'The VAT number is not valid'
+                    }</span>
+                }
+            }
+        }
+    });
+});
+&lt;/script></code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<a href="{{ site.repository.docs_edit }}/validators/vin.html" class="btn btn-info">Improve this page</a>
+
+<script>
+$(document).ready(function() {
+    $('.sample').on('click', function() {
+        $('#vatForm')
+            .find('input[name="vat"]')
+                .val($(this).html())
+                .end()
+            .data('bootstrapValidator')
+                .updateStatus('vat', 'NOT_VALIDATED')
+                .validate();
+        var isValid = $('#vatForm').data('bootstrapValidator').isValid();
+        $(this)
+            .parents('tr').find('i')
+            .removeClass('fa-check fa-times')
+            .addClass(isValid ? 'fa-check' : 'fa-times');
+    });
+
+    $('#vatForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            vat: {
+                validators: {
+                    vat: {
+                        message: 'The VAT number is not valid'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
