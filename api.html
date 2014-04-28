@@ -12,8 +12,26 @@ slug: api
         <p>This page describes the public methods provided by the plugin.</p>
 
         <section>
-            <p>After initializing the form with the plugin using <code>$(form).bootstrapValidator(options)</code>, you can retrieve the BootstrapValidator instance by</p>
-            <pre><code class="javascript">var bootstrapValidator = $(form).data('bootstrapValidator');</code></pre>
+            <p>After initializing the form with the plugin using <code>$(form).bootstrapValidator(options)</code>, there are two ways to call the plugin method:</p>
+            <pre><code class="javascript">// Get plugin instance
+var bootstrapValidator = $(form).data('bootstrapValidator');
+// and then call method
+bootstrapValidator.methodName(parameters)
+</code></pre>
+            <p>or:</p>
+            <pre><code class="javascript">$(form).bootstrapValidator(methodName, parameters);</code></pre>
+            <p>The first way mostly returns the <code>BootstrapValidator</code> instance, meanwhile the second one always returns the jQuery object representing the form.</p>
+            <p>So, it's possible to chain methods as below:</p>
+            <pre><code class="javascript">// The first way
+$(form)
+    .data('bootstrapValidator')
+    .updateStatus('birthday', 'NOT_VALIDATED')
+    .validateField('birthday');
+
+// The second one
+$(form)
+    .bootstrapValidator('updateStatus', 'birthday', 'NOT_VALIDATED')
+    .bootstrapValidator('validateField', 'birthday');</code></pre>
         </section>
 
         <section id="default-submit">
