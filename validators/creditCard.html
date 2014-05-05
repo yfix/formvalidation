@@ -1,9 +1,12 @@
 ---
 layout: validator
 title: Validate a credit card number
-permalink: /validators/credit-card/
-slug: validators
+permalink: /validators/creditCard/
+categories: validators
 validator: creditCard
+related:
+    - cvv
+    - iban
 ---
 
 <section>
@@ -28,7 +31,7 @@ validator: creditCard
         </tbody>
     </table>
 
-    <p>From v0.3.2, in addition to using the <a href="http://en.wikipedia.org/wiki/Luhn">Luhn algorithm</a>, the validator also validate the IIN ranges and length of credit card number.</p>
+    <p>In addition to using the <a href="http://en.wikipedia.org/wiki/Luhn">Luhn algorithm</a>, the validator also validate the IIN ranges and length of credit card number.</p>
 
     <p>It supports validating the following cards:</p>
 
@@ -46,14 +49,3 @@ validator: creditCard
         <li>Visa</li>
     </ul>
 </section>
-
-<section id="related">
-    <h3>Related validators</h3>
-
-    <ul>
-        <li><a href="/validators/cvv/">cvv</a></li>
-        <li><a href="/validators/iban/">iban</a></li>
-    </ul>
-</section>
-
-<a href="{{ site.repository.docs_edit }}/validators/creditCard.html" class="btn btn-info">Improve this page</a>

@@ -3,18 +3,32 @@ layout: default
 ---
 
 <div class="container">
-    <h1><a href="/validators/">Validators</a> {% if page.validator %}/ <a href="/validators/{{ page.validator }}/">{{ page.validator }}</a>{% endif %}</h1>
+    <h1><a href="/validators/">Validators</a> {% if page.validator %}&rarr; <a href="/validators/{{ page.validator }}/">{{ page.validator }}</a>{% endif %}</h1>
 
     <div class="row">
         <div class="col-md-9">
             {{ content }}
+
+            {% if page.related %}
+            <section id="related">
+                <h3>Related validators</h3>
+
+                <ul>
+                    {% for v in page.related %}
+                    <li><a href="/validators/{{ v }}/">{{ v }}</a></li>
+                    {% endfor %}
+                </ul>
+            </section>
+            {% endif %}
+
+            <a href="{{ site.repository.docs_edit }}/validators/{{ page.validator }}.html" class="btn btn-success">Improve this page</a>
         </div>
 
         <div class="col-md-3">
             <div class="docs-sidebar">
                 <ul class="nav">
                 {% for validator in site.data.validators %}
-                    {% assign validatorUrl = validator.slug | prepend:'/validators/' | append:'/' %}
+                    {% assign validatorUrl = validator.name | prepend:'/validators/' | append:'/' %}
                     {% if validatorUrl == page.permalink %}
                         {% assign c = 'active' %}
                     {% else %}
@@ -22,7 +36,7 @@ layout: default
                     {% endif %}
 
                     <li class="{{ c }}">
-                        <a href="/validators/{{ validator.slug }}/">{{ validator.name }}
+                        <a href="/validators/{{ validator.name }}/">{{ validator.name }}
                         {% if validator.version == site.current_version %}
                             <label class="label label-success pull-right">new</label>
                         {% endif %}

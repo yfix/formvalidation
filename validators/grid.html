@@ -1,14 +1,16 @@
 ---
 layout: validator
-title: Validate an US VIN (Vehicle Identification Number)
-permalink: /validators/vin/
+title: Validate a GRId (Global Release Identifier)
+permalink: /validators/grid/
 categories: validators
-validator: vin
-examples: 1FAHP26W49G252740, 2FTRX07W53C371582, WP0CA29863U153381, JTMKF4DV5B5309254
+validator: grid
+examples: M230671187, 979-0-0601-1561-5, 979 0 3452 4680 5, 9790060115615, 9790060115614
+related:
+    - ismn
 ---
 
 <section>
-    <p>Validate an US VIN (Vehicle Identification Number)</p>
+    <p>Validate a GRId (Global Release Identifier).</p>
 
     <table class="table table-condensed">
         <thead>
@@ -22,7 +24,7 @@ examples: 1FAHP26W49G252740, 2FTRX07W53C371582, WP0CA29863U153381, JTMKF4DV5B530
         <tbody>
             <tr>
                 <td><code>message</code></td>
-                <td><code>data-bv-vin-message</code></td>
+                <td><code>data-bv-grid-message</code></td>
                 <td>String</td>
                 <td>The error message</td>
             </tr>
@@ -36,66 +38,65 @@ examples: 1FAHP26W49G252740, 2FTRX07W53C371582, WP0CA29863U153381, JTMKF4DV5B530
     <table class="table table-condensed">
         <thead>
             <tr>
-                <th>VIN</th>
+                <th>GRId</th>
                 <th>Result</th>
             </tr>
         </thead>
         <tbody>
             {% assign examples = page.examples | split: ', ' %}
-            {% for vin in examples %}
+            {% for grid in examples %}
             <tr>
-                <td><a href="javascript: void(0);" class="sample">{{ vin }}</a></td>
+                <td><a href="javascript: void(0);" class="sample">{{ grid }}</a></td>
                 <td><i class="fa"></i></td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    <p><a href="http://randomvin.com/">http://randomvin.com</a> helps you generate a random vin.</p>
 
     <div class="docs-example">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#vin-form-tab" data-toggle="tab">Try it</a></li>
-            <li><a href="#vin-html-tab" data-toggle="tab">HTML</a></li>
-            <li><a href="#vin-js-tab" data-toggle="tab">JS</a></li>
+            <li class="active"><a href="#grid-form-tab" data-toggle="tab">Try it</a></li>
+            <li><a href="#grid-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#grid-js-tab" data-toggle="tab">JS</a></li>
         </ul>
 
         <div class="tab-content">
-            <div class="tab-pane active" id="vin-form-tab">
-                <form id="vinForm" class="form-horizontal">
+            <div class="tab-pane active" id="grid-form-tab">
+                <form id="gridForm" class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-lg-3 control-label">VIN</label>
+                        <label class="col-lg-3 control-label">GRId</label>
                         <div class="col-lg-5">
-                            <input type="text" class="form-control" name="vin" />
+                            <input type="text" class="form-control" name="grid" />
                         </div>
                     </div>
                 </form>
             </div>
 
-            <div class="tab-pane" id="vin-html-tab">
-                <pre><code class="xml">&lt;form id="vinForm" class="form-horizontal">
+            <div class="tab-pane" id="grid-html-tab">
+                <pre><code class="xml">&lt;form id="gridForm" class="form-horizontal">
     &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">VIN&lt;/label>
+        &lt;label class="col-lg-3 control-label">GRId&lt;/label>
         &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="vin" />
+            &lt;input type="text" class="form-control" name="grid" />
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
             </div>
 
-            <div class="tab-pane" id="vin-js-tab">
+            <div class="tab-pane" id="grid-js-tab">
                 <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
-    $('#vinForm').bootstrapValidator({
+    $('#gridForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            vin: {
+            grid: {
                 validators: {
-                    <span class="docs-code__note">vin: {
-                        message: 'The VIN number is not valid'
+                    <span class="docs-code__note">grid: {
+                        message: 'The value is not valid GRId'
                     }</span>
                 }
             }
@@ -111,31 +112,31 @@ $(document).ready(function() {
 <script>
 $(document).ready(function() {
     $('.sample').on('click', function() {
-        $('#vinForm')
-            .find('input[name="vin"]')
+        $('#gridForm')
+            .find('input[name="grid"]')
                 .val($(this).html())
                 .end()
             .data('bootstrapValidator')
-                .updateStatus('vin', 'NOT_VALIDATED')
+                .updateStatus('grid', 'NOT_VALIDATED')
                 .validate();
-        var isValid = $('#vinForm').data('bootstrapValidator').isValid();
+        var isValid = $('#gridForm').data('bootstrapValidator').isValid();
         $(this)
             .parents('tr').find('i')
             .removeClass('fa-check fa-times')
             .addClass(isValid ? 'fa-check' : 'fa-times');
     });
 
-    $('#vinForm').bootstrapValidator({
+    $('#gridForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            vin: {
+            grid: {
                 validators: {
-                    vin: {
-                        message: 'The VIN number is not valid'
+                    grid: {
+                        message: 'The value is not valid GRId'
                     }
                 }
             }

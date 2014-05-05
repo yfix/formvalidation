@@ -4,11 +4,11 @@
             <a href="/" class="docs-header__logo">BootstrapValidator</a>
 
             <ul class="list-inline">
-                <li{% if page.slug == null %} class="active"{% endif %}><a href="/">Overview</a></li>
+                <li{% if page.slug == '/' %} class="active"{% endif %}><a href="/">Overview</a></li>
                 <li{% if page.slug == "getting-started" %} class="active"{% endif %}><a href="/getting-started/">Getting started</a></li>
                 <li{% if page.slug == "examples" %} class="active"{% endif %}><a href="/examples/">Examples</a></li>
                 <li{% if page.slug == "settings" %} class="active"{% endif %}><a href="/settings/">Settings</a></li>
-                <li{% if page.slug == "validators" %} class="active"{% endif %}><a href="/validators/">Validators</a></li>
+                <li{% if page.categories == "validators" %} class="active"{% endif %}><a href="/validators/">Validators</a></li>
                 <li{% if page.slug == "developing" %} class="active"{% endif %}><a href="/developing/">Developing</a></li>
                 <li{% if page.slug == "api" %} class="active"{% endif %}><a href="/api/">API</a></li>
                 <li><a href="#" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Need a jQuery / JS / AngularJS / NodeJS / PHP / ZF developer for your projects?<br/>Drop me an email: phuoc@huuphuoc.me"><span class="label label-success">HIRE ME</span></a></li>

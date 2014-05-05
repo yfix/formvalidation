@@ -1,194 +1,159 @@
-- name: base64
-  slug: base64
-  version: 0.3.2
-  description: Validate a base64 encoded string
+- name:         base64
+  version:      0.3.2
+  description:  Validate a base64 encoded string
 
-- name: between
-  slug: between
-  version: 0.1.0
-  description: Check if the input value is between (strictly or not) two given numbers
+- name:         between
+  version:      0.1.0
+  description:  Check if the input value is between (strictly or not) two given numbers
 
-- name: callback
-  slug: callback
-  version: 0.2.0
-  description: Return the validity from a callback method
+- name:         callback
+  version:      0.2.0
+  description:  Return the validity from a callback method
 
-- name: choice
-  slug: choice
-  version: 0.3.0
-  description: Check if the number of checked boxes are less or more than a given number
+- name:         choice
+  version:      0.3.0
+  description:  Check if the number of checked boxes are less or more than a given number
 
-- name: creditCard
-  slug: credit-card
-  version: 0.2.0
-  description: Validate a credit card number
+- name:         creditCard
+  version:      0.2.0
+  description:  Validate a credit card number
 
-- name: cvv
-  slug: cvv
-  version: 0.3.2
-  description: Validate a CVV number
+- name:         cvv
+  version:      0.3.2
+  description:  Validate a CVV number
 
-- name: date
-  slug: date
-  version: 0.3.1
-  description: Validate date
+- name:         date
+  version:      0.3.1
+  description:  Validate date
 
-- name: different
-  slug: different
-  version: 0.2.0
-  description: Return true if the input value is different with given field's value
+- name:         different
+  version:      0.2.0
+  description:  Return true if the input value is different with given field's value
 
-- name: digits
-  slug: digits
-  version: 0.1.0
-  description: Return true if the value contains only digits
+- name:         digits
+  version:      0.1.0
+  description:  Return true if the value contains only digits
 
-- name: emailAddress
-  slug: email-address
-  version: 0.1.0
-  description: Validate an email address
+- name:         emailAddress
+  version:      0.1.0
+  description:  Validate an email address
 
-- name: file
-  slug: file
-  version: 0.4.3
-  description: Validate file
+- name:         file
+  version:      0.4.3
+  description:  Validate file
 
-- name: greaterThan
-  slug: greater-than
-  version: 0.1.0
-  description: Return true if the value is greater than or equals to given number
+- name:         greaterThan
+  version:      0.1.0
+  description:  Return true if the value is greater than or equals to given number
 
-- name: hex
-  slug: hex
-  version: 0.4.0
-  description: Validate a hexadecimal number
+- name:         grid
+  version:      0.4.4
+  description:  Validate a GRId (Global Release Identifier)
 
-- name: hexColor
-  slug: hex-color
-  version: 0.1.0
-  description: Validate a hex color
+- name:         hex
+  version:      0.4.0
+  description:  Validate a hexadecimal number
 
-- name: iban
-  slug: iban
-  version: 0.4.0
-  description: Validate an International Bank Account Number (IBAN)
+- name:         hexColor
+  version:      0.1.0
+  description:  Validate a hex color
 
-- name: identical
-  slug: identical
-  version: 0.1.0
-  description: Check if the value is the same as one of particular field
+- name:         iban
+  version:      0.4.0
+  description:  Validate an International Bank Account Number (IBAN)
 
-- name: imei
-  slug: imei
-  version: 0.4.4
-  description: Validate an IMEI (International Mobile Station Equipment Identity)
+- name:         identical
+  version:      0.1.0
+  description:  Check if the value is the same as one of particular field
 
-- name: integer
-  slug: integer
-  version: 0.4.0
-  description: Validate an integer number
+- name:         imei
+  version:      0.4.4
+  description:  Validate an IMEI (International Mobile Station Equipment Identity)
 
-- name: ip
-  slug: ip
-  version: 0.3.2
-  description: Validate an IP address. Support both IPv4 and IPv6
+- name:         integer
+  version:      0.4.0
+  description:  Validate an integer number
 
-- name: isbn
-  slug: isbn
-  version: 0.3.2
-  description: Validate an ISBN (International Standard Book Number). Support both ISBN 10 and ISBN 13
+- name:         ip
+  version:      0.3.2
+  description:  Validate an IP address. Support both IPv4 and IPv6
 
-- name: ismn
-  slug: ismn
-  version: 0.4.4
-  description: Validate an ISMN (International Standard Music Number)
+- name:         isbn
+  version:      0.3.2
+  description:  Validate an ISBN (International Standard Book Number). Support both ISBN 10 and ISBN 13
 
-- name: issn
-  slug: issn
-  version: 0.4.4
-  description: Validate an ISSN (International Standard Serial Number)
+- name:         ismn
+  version:      0.4.4
+  description:  Validate an ISMN (International Standard Music Number)
 
-- name: lessThan
-  slug: less-than
-  version: 0.1.0
-  description: Return true if the value is less than or equals to given number
+- name:         issn
+  version:      0.4.4
+  description:  Validate an ISSN (International Standard Serial Number)
 
-- name: mac
-  slug: mac
-  version: 0.3.2
-  description: Validate a MAC address
+- name:         lessThan
+  version:      0.1.0
+  description:  Return true if the value is less than or equals to given number
 
-- name: notEmpty
-  slug: not-empty
-  version: 0.1.0
-  description: Check if the value is empty
+- name:         mac
+  version:      0.3.2
+  description:  Validate a MAC address
 
-- name: numeric
-  slug: numeric
-  version: 0.4.0
-  description: Check if the value is numeric
+- name:         notEmpty
+  version:      0.1.0
+  description:  Check if the value is empty
 
-- name: phone
-  slug: phone
-  version: 0.3.2
-  description: Validate a phone number
+- name:         numeric
+  version:      0.4.0
+  description:  Check if the value is numeric
 
-- name: regexp
-  slug: regexp
-  version: 0.1.0
-  description: Check if the value matches given Javascript regular expression
+- name:         phone
+  version:      0.3.2
+  description:  Validate a phone number
 
-- name: remote
-  slug: remote
-  version: 0.1.0
-  description: Perform remote checking via Ajax request
+- name:         regexp
+  version:      0.1.0
+  description:  Check if the value matches given Javascript regular expression
 
-- name: siren
-  slug: siren
-  version: 0.4.2
-  description: Validate a Siren number
+- name:         remote
+  version:      0.1.0
+  description:  Perform remote checking via Ajax request
 
-- name: siret
-  slug: siret
-  version: 0.4.2
-  description: Validate a Siret number
+- name:         siren
+  version:      0.4.2
+  description:  Validate a Siren number
 
-- name: step
-  slug: step
-  version: 0.3.2
-  description: Check if the value is valid step one
+- name:         siret
+  version:      0.4.2
+  description:  Validate a Siret number
 
-- name: stringCase
-  slug: string-case
-  version: 0.4.0
-  description: Check if a string is a lower or upper case one
+- name:         step
+  version:      0.3.2
+  description:  Check if the value is valid step one
 
-- name: stringLength
-  slug: string-length
-  version: 0.1.0
-  description: Validate the length of a string
+- name:         stringCase
+  version:      0.4.0
+  description:  Check if a string is a lower or upper case one
 
-- name: uri
-  slug: uri
-  version: 0.1.0
-  description: Validate an URL address
+- name:         stringLength
+  version:      0.1.0
+  description:  Validate the length of a string
 
-- name: uuid
-  slug: uuid
-  version: 0.4.0
-  description: Validate an UUID, support v3, v4, v5
+- name:         uri
+  version:      0.1.0
+  description:  Validate an URL address
 
-- name: vat
-  slug: vat
-  version: 0.4.3
-  description: Validate VAT number. Support 32 countries
+- name:         uuid
+  version:      0.4.0
+  description:  Validate an UUID, support v3, v4, v5
 
-- name: vin
-  slug: vin
-  version: 0.4.2
-  description: Validate an US VIN (Vehicle Identification Number)
+- name:         vat
+  version:      0.4.3
+  description:  Validate VAT number. Support 32 countries
 
-- name: zipCode
-  slug: zip-code
-  version: 0.1.0
-  description: Validate a zip code
+- name:         vin
+  version:      0.4.2
+  description:  Validate an US VIN (Vehicle Identification Number)
+
+- name:         zipCode
+  version:      0.1.0
+  description:  Validate a zip code
