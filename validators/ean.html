@@ -1,17 +1,17 @@
 ---
 layout: validator
-title: Validate an ISSN (International Standard Serial Number)
-permalink: /validators/issn/
+title: Validate an EAN (International Article Number)
+permalink: /validators/ean/
 categories: validators
-validator: issn
-examples: 0378-5955, 0024-9319, 0032-1478, 0032-147X
+validator: ean
+examples: 73513537, 9780471117094, 4006381333931, 73513536
 related:
-    - ean
     - isbn
+    - issn
 ---
 
 <section>
-    <p>Validate an ISSN (International Standard Serial Number).</p>
+    <p>Validate an EAN (International Article Number).</p>
 
     <table class="table table-condensed">
         <thead>
@@ -25,7 +25,7 @@ related:
         <tbody>
             <tr>
                 <td><code>message</code></td>
-                <td><code>data-bv-issn-message</code></td>
+                <td><code>data-bv-ean-message</code></td>
                 <td>String</td>
                 <td>The error message</td>
             </tr>
@@ -39,15 +39,15 @@ related:
     <table class="table table-condensed">
         <thead>
             <tr>
-                <th>ISSN</th>
+                <th>EAN</th>
                 <th>Result</th>
             </tr>
         </thead>
         <tbody>
             {% assign examples = page.examples | split: ', ' %}
-            {% for issn in examples %}
+            {% for ean in examples %}
             <tr>
-                <td><a href="javascript: void(0);" class="sample">{{ issn }}</a></td>
+                <td><a href="javascript: void(0);" class="sample">{{ ean }}</a></td>
                 <td><i class="fa"></i></td>
             </tr>
             {% endfor %}
@@ -56,48 +56,48 @@ related:
 
     <div class="docs-example">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#issn-form-tab" data-toggle="tab">Try it</a></li>
-            <li><a href="#issn-html-tab" data-toggle="tab">HTML</a></li>
-            <li><a href="#issn-js-tab" data-toggle="tab">JS</a></li>
+            <li class="active"><a href="#ean-form-tab" data-toggle="tab">Try it</a></li>
+            <li><a href="#ean-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#ean-js-tab" data-toggle="tab">JS</a></li>
         </ul>
 
         <div class="tab-content">
-            <div class="tab-pane active" id="issn-form-tab">
-                <form id="issnForm" class="form-horizontal">
+            <div class="tab-pane active" id="ean-form-tab">
+                <form id="eanForm" class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-lg-3 control-label">ISSN</label>
+                        <label class="col-lg-3 control-label">EAN</label>
                         <div class="col-lg-5">
-                            <input type="text" class="form-control" name="issn" />
+                            <input type="text" class="form-control" name="ean" />
                         </div>
                     </div>
                 </form>
             </div>
 
-            <div class="tab-pane" id="issn-html-tab">
-                <pre><code class="xml">&lt;form id="issnForm" class="form-horizontal">
+            <div class="tab-pane" id="ean-html-tab">
+                <pre><code class="xml">&lt;form id="eanForm" class="form-horizontal">
     &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">ISSN&lt;/label>
+        &lt;label class="col-lg-3 control-label">EAN&lt;/label>
         &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="issn" />
+            &lt;input type="text" class="form-control" name="ean" />
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
             </div>
 
-            <div class="tab-pane" id="issn-js-tab">
+            <div class="tab-pane" id="ean-js-tab">
                 <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
-    $('#issnForm').bootstrapValidator({
+    $('#eanForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            issn: {
+            ean: {
                 validators: {
-                    <span class="docs-code__note">issn: {
-                        message: 'The value is not valid ISSN'
+                    <span class="docs-code__note">ean: {
+                        message: 'The value is not valid EAN'
                     }</span>
                 }
             }
@@ -113,31 +113,31 @@ $(document).ready(function() {
 <script>
 $(document).ready(function() {
     $('.sample').on('click', function() {
-        $('#issnForm')
-            .find('input[name="issn"]')
+        $('#eanForm')
+            .find('input[name="ean"]')
                 .val($(this).html())
                 .end()
             .data('bootstrapValidator')
-                .updateStatus('issn', 'NOT_VALIDATED')
+                .updateStatus('ean', 'NOT_VALIDATED')
                 .validate();
-        var isValid = $('#issnForm').data('bootstrapValidator').isValid();
+        var isValid = $('#eanForm').data('bootstrapValidator').isValid();
         $(this)
             .parents('tr').find('i')
             .removeClass('fa-check fa-times')
             .addClass(isValid ? 'fa-check' : 'fa-times');
     });
 
-    $('#issnForm').bootstrapValidator({
+    $('#eanForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            issn: {
+            ean: {
                 validators: {
-                    issn: {
-                        message: 'The value is not valid ISSN'
+                    ean: {
+                        message: 'The value is not valid EAN'
                     }
                 }
             }
