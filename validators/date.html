@@ -34,27 +34,36 @@ validator: date
         </tbody>
     </table>
 
-    <p>The <code>format</code> can be one of the following values:</p>
+    <p>The <code>format</code> can combine date, time, and AM/PM indicator sections:</p>
 
-    <ul>
-        <li>YYYY/DD/MM</li>
-        <li>YYYY/DD/MM h:m A</li>
-        <li>YYYY/MM/DD</li>
-        <li>YYYY/MM/DD h:m A</li>
-        <li>YYYY-DD-MM</li>
-        <li>YYYY-DD-MM h:m A</li>
-        <li>YYYY-MM-DD</li>
-        <li>YYYY-MM-DD h:m A</li>
-        <li>MM/DD/YYYY</li>
-        <li>MM/DD/YYYY h:m A</li>
-        <li>DD/MM/YYYY</li>
-        <li>DD/MM/YYYY h:m A</li>
-        <li>MM-DD-YYYY</li>
-        <li>MM-DD-YYYY h:m A</li>
-        <li>DD-MM-YYYY</li>
-        <li>DD-MM-YYYY h:m A</li>
-    </ul>
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>Section</th>
+                <th>Token</th>
+                <th>Separator</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Date</td>
+                <td>DD, MM, YYYY</td>
+                <td>a slash (/) or hyphen (-)</td>
+            </tr>
+            <tr>
+                <td>Time</td>
+                <td>h, m, s</td>
+                <td>a colon (:)</td>
+            </tr>
+            <tr>
+                <td>AM/PM</td>
+                <td>A</td>
+                <td>n/a</td>
+            </tr>
+        </tbody>
+    </table>
 
+    <p>The following table describes the token meanings, defined by <a href="http://momentjs.com/docs/#/displaying/format/">momentjs</a>, one of most popular Javascript datetime library:</p>
     <table class="table table-condensed">
         <thead>
             <tr>
@@ -84,12 +93,35 @@ validator: date
                 <td>Minutes</td>
             </tr>
             <tr>
+                <td>s</td>
+                <td>Seconds</td>
+            </tr>
+            <tr>
                 <td>A</td>
                 <td>AM/PM</td>
             </tr>
         </tbody>
     </table>
-    <p>These tokens are the same as one defined by <a href="http://momentjs.com/docs/#/displaying/format/">momentjs</a>.</p>
+
+    <p>Below are some example of possible formats:</p>
+    <ul>
+        <li>YYYY/DD/MM</li>
+        <li>YYYY/DD/MM h</li>
+        <li>YYYY/DD/MM h A</li>
+        <li>YYYY/DD/MM h:m</li>
+        <li>YYYY/DD/MM h:m A</li>
+        <li>YYYY/DD/MM h:m:s</li>
+        <li>YYYY/DD/MM h:m:s A</li>
+        <li>YYYY-MM-DD</li>
+        <li>YYYY-MM-DD h:m A</li>
+        <li>DD/MM/YYYY</li>
+        <li>DD/MM/YYYY h:m A</li>
+        <li>MM-DD-YYYY</li>
+        <li>MM-DD-YYYY h:m A</li>
+        <li>DD-MM-YYYY</li>
+        <li>DD-MM-YYYY h:m A</li>
+    </ul>
+
     <p>It's possible to support other date format by using <a href="/validators/callback/">callback</a> validator as shown in the <a href="#custom-format-example">Custom format example</a>.</p>
 
     <p>The date validator also checks the number of days in February of leap year. For example, 02/29/2000 is valid date, while 02/29/2001 is invalid one.</p>
