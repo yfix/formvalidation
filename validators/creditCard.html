@@ -35,17 +35,165 @@ related:
 
     <p>It supports validating the following cards:</p>
 
-    <ul>
-        <li>American Express</li>
-        <li>Diners Club</li>
-        <li>Diners Club (US)</li>
-        <li>Discover</li>
-        <li>JCB</li>
-        <li>Laser</li>
-        <li>Maestro</li>
-        <li>Mastercard</li>
-        <li>Solo</li>
-        <li>Unionpay</li>
-        <li>Visa</li>
-    </ul>
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Example</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>American Express</td>
+                <td><a href="javascript: void(0);" class="sample">340653705597107</a></td>
+                <td><i class="fa"></i></td>
+            </tr>
+            <tr>
+                <td>Diners Club</td>
+                <td><a href="javascript: void(0);" class="sample">30130708434187</a></td>
+                <td><i class="fa"></i></td>
+            </tr>
+            <tr>
+                <td>Diners Club (US)</td>
+                <td><a href="javascript: void(0);" class="sample">5517479515603901</a></td>
+                <td><i class="fa"></i></td>
+            </tr>
+            <tr>
+                <td>Discover</td>
+                <td><a href="javascript: void(0);" class="sample">6011734674929094</a></td>
+                <td><i class="fa"></i></td>
+            </tr>
+            <tr>
+                <td>JCB</td>
+                <td><a href="javascript: void(0);" class="sample">3566002020360505</a></td>
+                <td><i class="fa"></i></td>
+            </tr>
+            <tr>
+                <td>Laser</td>
+                <td><a href="javascript: void(0);" class="sample">6304 9000 1774 0292 441</a></td>
+                <td><i class="fa"></i></td>
+            </tr>
+            <tr>
+                <td>Maestro</td>
+                <td><a href="javascript: void(0);" class="sample">6762835098779303</a></td>
+                <td><i class="fa"></i></td>
+            </tr>
+            <tr>
+                <td>Mastercard</td>
+                <td><a href="javascript: void(0);" class="sample">5303765013600904</a></td>
+                <td><i class="fa"></i></td>
+            </tr>
+            <tr>
+                <td>Solo</td>
+                <td><a href="javascript: void(0);" class="sample">6334580500000000</a></td>
+                <td><i class="fa"></i></td>
+            </tr>
+            <tr>
+                <td>Unionpay</td>
+                <td><a href="javascript: void(0);" class="sample"></a></td>
+                <td><i class="fa"></i></td>
+            </tr>
+            <tr>
+                <td>Visa</td>
+                <td><a href="javascript: void(0);" class="sample">4929248980295542</a></td>
+                <td><i class="fa"></i></td>
+            </tr>
+        </tbody>
+    </table>
 </section>
+
+<section id="example">
+    <h3>Example</h3>
+
+    <div class="docs-example">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#cc-form-tab" data-toggle="tab">Try it</a></li>
+            <li><a href="#cc-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#cc-js-tab" data-toggle="tab">JS</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="cc-form-tab">
+                <form id="ccForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Credit card number</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" name="cc" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="cc-html-tab">
+                <pre><code class="xml">&lt;form id="ccForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Credit card number&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="cc" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+            </div>
+
+            <div class="tab-pane" id="cc-js-tab">
+                <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#ccForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            cc: {
+                validators: {
+                    <span class="docs-code__note">creditCard: {
+                        message: 'The credit card number is not valid'
+                    }</span>
+                }
+            }
+        }
+    });
+});
+&lt;/script></code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+$(document).ready(function() {
+    $('.sample').on('click', function() {
+        $('#ccForm')
+            .find('input[name="cc"]')
+                .val($(this).html())
+                .end()
+            .data('bootstrapValidator')
+                .updateStatus('cc', 'NOT_VALIDATED')
+                .validate();
+        var isValid = $('#ccForm').data('bootstrapValidator').isValid();
+        $(this)
+            .parents('tr').find('i')
+            .removeClass('fa-check fa-times')
+            .addClass(isValid ? 'fa-check' : 'fa-times');
+    });
+
+    $('#ccForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            cc: {
+                validators: {
+                    creditCard: {
+                        message: 'The credit card number is not valid'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
