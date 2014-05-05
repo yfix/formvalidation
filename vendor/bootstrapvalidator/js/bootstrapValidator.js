@@ -3,7 +3,7 @@
  *
  * A jQuery plugin to validate form fields. Use with Bootstrap 3
  *
- * @version     v0.4.4-dev
+ * @version     v0.4.4
  * @author      https://twitter.com/nghuuphuoc
  * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
  * @license     MIT
@@ -1063,7 +1063,7 @@
                 },
                 LASER: {
                     length: [16, 17, 18, 19],
-                    prefix: ['3528', '3529', '353', '354', '355', '356', '357', '358']
+                    prefix: ['6304', '6706', '6771', '6709']
                 },
                 MAESTRO: {
                     length: [12, 13, 14, 15, 16, 17, 18, 19],
@@ -1171,7 +1171,7 @@
                 },
                 LASER: {
                     length: [16, 17, 18, 19],
-                    prefix: ['3528', '3529', '353', '354', '355', '356', '357', '358']
+                    prefix: ['6304', '6706', '6771', '6709']
                 },
                 MAESTRO: {
                     length: [12, 13, 14, 15, 16, 17, 18, 19],
