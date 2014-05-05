@@ -91,12 +91,17 @@
 - name: isbn
   slug: isbn
   version: 0.3.2
-  description: Validate an ISBN string. Support both ISBN 10 and ISBN 13
+  description: Validate an ISBN (International Standard Book Number). Support both ISBN 10 and ISBN 13
+
+- name: ismn
+  slug: ismn
+  version: 0.4.4
+  description: Validate an ISMN (International Standard Music Number)
 
 - name: issn
   slug: issn
   version: 0.4.4
-  description: Validate ISSN (International Standard Serial Number)
+  description: Validate an ISSN (International Standard Serial Number)
 
 - name: lessThan
   slug: less-than
