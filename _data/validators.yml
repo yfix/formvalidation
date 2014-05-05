@@ -93,6 +93,11 @@
   version: 0.3.2
   description: Validate an ISBN string. Support both ISBN 10 and ISBN 13
 
+- name: issn
+  slug: issn
+  version: 0.4.4
+  description: Validate ISSN (International Standard Serial Number)
+
 - name: lessThan
   slug: less-than
   version: 0.1.0

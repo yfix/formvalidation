@@ -1,13 +1,13 @@
 ---
 layout: validator
-title: Validate an ISBN
-permalink: /validators/isbn/
+title: Validate an ISSN (International Standard Serial Number)
+permalink: /validators/issn/
 slug: validators
-validator: isbn
+validator: issn
 ---
 
 <section>
-    <p>Validate an ISBN. Support both ISBN 10 and ISBN 13.</p>
+    <p>Validate an ISSN (International Standard Serial Number).</p>
 
     <table class="table table-condensed">
         <thead>
@@ -21,7 +21,7 @@ validator: isbn
         <tbody>
             <tr>
                 <td><code>message</code></td>
-                <td><code>data-bv-isbn-message</code></td>
+                <td><code>data-bv-issn-message</code></td>
                 <td>String</td>
                 <td>The error message</td>
             </tr>
@@ -35,15 +35,15 @@ validator: isbn
     <table class="table table-condensed">
         <thead>
             <tr>
-                <th>ISBN</th>
+                <th>ISSN</th>
                 <th>Result</th>
             </tr>
         </thead>
         <tbody>
-            {% assign sample = '9971502100, 99921-58-10-7, 960 425 059 0, 99921-58-10-6, 9780306406157, 978-0-306-40615-7, 978 0 306 40615 7, 978-0-306-40615-6' | split: ', ' %}
-            {% for isbn in sample %}
+            {% assign sample = '0378-5955, 0024-9319, 0032-1478, 0032-147X' | split: ', ' %}
+            {% for issn in sample %}
             <tr>
-                <td><a href="javascript: void(0);" class="sample">{{ isbn }}</a></td>
+                <td><a href="javascript: void(0);" class="sample">{{ issn }}</a></td>
                 <td><i class="fa"></i></td>
             </tr>
             {% endfor %}
@@ -52,48 +52,48 @@ validator: isbn
 
     <div class="docs-example">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#isbn-form-tab" data-toggle="tab">Try it</a></li>
-            <li><a href="#isbn-html-tab" data-toggle="tab">HTML</a></li>
-            <li><a href="#isbn-js-tab" data-toggle="tab">JS</a></li>
+            <li class="active"><a href="#issn-form-tab" data-toggle="tab">Try it</a></li>
+            <li><a href="#issn-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#issn-js-tab" data-toggle="tab">JS</a></li>
         </ul>
 
         <div class="tab-content">
-            <div class="tab-pane active" id="isbn-form-tab">
-                <form id="isbnForm" class="form-horizontal">
+            <div class="tab-pane active" id="issn-form-tab">
+                <form id="issnForm" class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-lg-3 control-label">ISBN</label>
+                        <label class="col-lg-3 control-label">ISSN</label>
                         <div class="col-lg-5">
-                            <input type="text" class="form-control" name="isbn" />
+                            <input type="text" class="form-control" name="issn" />
                         </div>
                     </div>
                 </form>
             </div>
 
-            <div class="tab-pane" id="isbn-html-tab">
-                <pre><code class="xml">&lt;form id="isbnForm" class="form-horizontal">
+            <div class="tab-pane" id="issn-html-tab">
+                <pre><code class="xml">&lt;form id="issnForm" class="form-horizontal">
     &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">ISBN&lt;/label>
+        &lt;label class="col-lg-3 control-label">ISSN&lt;/label>
         &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="isbn" />
+            &lt;input type="text" class="form-control" name="issn" />
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
             </div>
 
-            <div class="tab-pane" id="isbn-js-tab">
+            <div class="tab-pane" id="issn-js-tab">
                 <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
-    $('#isbnForm').bootstrapValidator({
+    $('#issnForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            isbn: {
+            issn: {
                 validators: {
-                    <span class="docs-code__note">isbn: {
-                        message: 'The value is not valid ISBN'
+                    <span class="docs-code__note">issn: {
+                        message: 'The value is not valid ISSN'
                     }</span>
                 }
             }
@@ -110,40 +110,40 @@ $(document).ready(function() {
     <h3>Related validators</h3>
 
     <ul>
-        <li><a href="/validators/issn/">issn</a></li>
+        <li><a href="/validators/isbn/">isbn</a></li>
     </ul>
 </section>
 
-<a href="{{ site.repository.docs_edit }}/validators/isbn.html" class="btn btn-info">Improve this page</a>
+<a href="{{ site.repository.docs_edit }}/validators/issn.html" class="btn btn-info">Improve this page</a>
 
 <script>
 $(document).ready(function() {
     $('.sample').on('click', function() {
-        $('#isbnForm')
-            .find('input[name="isbn"]')
+        $('#issnForm')
+            .find('input[name="issn"]')
                 .val($(this).html())
                 .end()
             .data('bootstrapValidator')
-                .updateStatus('isbn', 'NOT_VALIDATED')
+                .updateStatus('issn', 'NOT_VALIDATED')
                 .validate();
-        var isValid = $('#isbnForm').data('bootstrapValidator').isValid();
+        var isValid = $('#issnForm').data('bootstrapValidator').isValid();
         $(this)
             .parents('tr').find('i')
             .removeClass('fa-check fa-times')
             .addClass(isValid ? 'fa-check' : 'fa-times');
     });
 
-    $('#isbnForm').bootstrapValidator({
+    $('#issnForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            isbn: {
+            issn: {
                 validators: {
-                    isbn: {
-                        message: 'The value is not valid ISBN'
+                    issn: {
+                        message: 'The value is not valid ISSN'
                     }
                 }
             }
