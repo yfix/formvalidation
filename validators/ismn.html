@@ -4,6 +4,7 @@ title: Validate an ISMN (International Standard Music Number)
 permalink: /validators/ismn/
 slug: validators
 validator: ismn
+examples: M230671187, 979-0-0601-1561-5, 979 0 3452 4680 5, 9790060115615, 9790060115614
 ---
 
 <section>
@@ -40,8 +41,8 @@ validator: ismn
             </tr>
         </thead>
         <tbody>
-            {% assign sample = 'M230671187, 979-0-0601-1561-5, 979 0 3452 4680 5, 9790060115615, 9790060115614' | split: ', ' %}
-            {% for ismn in sample %}
+            {% assign examples = page.examples | split: ', ' %}
+            {% for ismn in examples %}
             <tr>
                 <td><a href="javascript: void(0);" class="sample">{{ ismn }}</a></td>
                 <td><i class="fa"></i></td>

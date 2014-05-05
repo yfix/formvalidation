@@ -4,6 +4,7 @@ title: Validate an ISBN (International Standard Book Number)
 permalink: /validators/isbn/
 slug: validators
 validator: isbn
+examples: 9971502100, 99921-58-10-7, 960 425 059 0, 99921-58-10-6, 9780306406157, 978-0-306-40615-7, 978 0 306 40615 7, 978-0-306-40615-6
 ---
 
 <section>
@@ -40,8 +41,8 @@ validator: isbn
             </tr>
         </thead>
         <tbody>
-            {% assign sample = '9971502100, 99921-58-10-7, 960 425 059 0, 99921-58-10-6, 9780306406157, 978-0-306-40615-7, 978 0 306 40615 7, 978-0-306-40615-6' | split: ', ' %}
-            {% for isbn in sample %}
+            {% assign examples = page.examples | split: ', ' %}
+            {% for isbn in examples %}
             <tr>
                 <td><a href="javascript: void(0);" class="sample">{{ isbn }}</a></td>
                 <td><i class="fa"></i></td>

@@ -4,6 +4,7 @@ title: Validate an US VIN (Vehicle Identification Number)
 permalink: /validators/vin/
 slug: validators
 validator: vin
+examples: 1FAHP26W49G252740, 2FTRX07W53C371582, WP0CA29863U153381, JTMKF4DV5B5309254
 ---
 
 <section>
@@ -32,7 +33,6 @@ validator: vin
 <section id="example">
     <h3>Example</h3>
 
-    <p>Click following fake valid, invalid VIM numbers to test:</p>
     <table class="table table-condensed">
         <thead>
             <tr>
@@ -41,8 +41,8 @@ validator: vin
             </tr>
         </thead>
         <tbody>
-            {% assign sample = '1FAHP26W49G252740, 2FTRX07W53C371582, WP0CA29863U153381, JTMKF4DV5B5309254' | split: ', ' %}
-            {% for vin in sample %}
+            {% assign examples = page.examples | split: ', ' %}
+            {% for vin in examples %}
             <tr>
                 <td><a href="javascript: void(0);" class="sample">{{ vin }}</a></td>
                 <td><i class="fa"></i></td>
