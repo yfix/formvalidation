@@ -78,6 +78,11 @@
   version: 0.1.0
   description: Check if the value is the same as one of particular field
 
+- name: imei
+  slug: imei
+  version: 0.4.4
+  description: Validate an IMEI (International Mobile Station Equipment Identity)
+
 - name: integer
   slug: integer
   version: 0.4.0

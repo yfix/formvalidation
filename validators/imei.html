@@ -1,0 +1,146 @@
+---
+layout: validator
+title: Validate an IMEI (International Mobile Station Equipment Identity)
+permalink: /validators/imei/
+slug: validators
+validator: imei
+examples: 35-209900-176148-1, 35-209900-176148-23, 3568680000414120, 490154203237518, 490154203237517
+---
+
+<section>
+    <p>Validate an IMEI (International Mobile Station Equipment Identity).</p>
+
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>Option</th>
+                <th>Equivalent HTML attribute</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>message</code></td>
+                <td><code>data-bv-imei-message</code></td>
+                <td>String</td>
+                <td>The error message</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="example">
+    <h3>Example</h3>
+
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>IMEI</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% assign examples = page.examples | split: ', ' %}
+            {% for imei in examples %}
+            <tr>
+                <td><a href="javascript: void(0);" class="sample">{{ imei }}</a></td>
+                <td><i class="fa"></i></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="docs-example">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#imei-form-tab" data-toggle="tab">Try it</a></li>
+            <li><a href="#imei-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#imei-js-tab" data-toggle="tab">JS</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="imei-form-tab">
+                <form id="imeiForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">IMEI</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" name="imei" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="imei-html-tab">
+                <pre><code class="xml">&lt;form id="imeiForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">IMEI&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="imei" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+            </div>
+
+            <div class="tab-pane" id="imei-js-tab">
+                <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#imeiForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            imei: {
+                validators: {
+                    <span class="docs-code__note">imei: {
+                        message: 'The value is not valid IMEI'
+                    }</span>
+                }
+            }
+        }
+    });
+});
+&lt;/script></code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<a href="{{ site.repository.docs_edit }}/validators/imei.html" class="btn btn-info">Improve this page</a>
+
+<script>
+$(document).ready(function() {
+    $('.sample').on('click', function() {
+        $('#imeiForm')
+            .find('input[name="imei"]')
+                .val($(this).html())
+                .end()
+            .data('bootstrapValidator')
+                .updateStatus('imei', 'NOT_VALIDATED')
+                .validate();
+        var isValid = $('#imeiForm').data('bootstrapValidator').isValid();
+        $(this)
+            .parents('tr').find('i')
+            .removeClass('fa-check fa-times')
+            .addClass(isValid ? 'fa-check' : 'fa-times');
+    });
+
+    $('#imeiForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            imei: {
+                validators: {
+                    imei: {
+                        message: 'The value is not valid IMEI'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
