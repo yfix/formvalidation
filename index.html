@@ -228,7 +228,7 @@ $(document).ready(function() {
                 <i class="fa fa-flask"></i>
                 <h3>Validator</h3>
                 <ul>
-                    <li>Richest <a href="/validators/">built-in validators</a> (36) and counting!</li>
+                    <li>Richest <a href="/validators/">built-in validators</a> (41) and counting!</li>
                     <li>Easy to <a href="/developing/">write a new validator</a></li>
                 </ul>
             </div>
@@ -284,6 +284,36 @@ $(document).ready(function() {
 
         <div class="row">
             <div class="col-md-1 col-md-offset-1 text-right">
+                <h4>v0.4.4</h4>
+                <small>2014-05-05</small>
+            </div>
+
+            <div class="col-md-10">
+                <div class="docs-changelog__added">
+                    <ul>
+                        <li>Add <code>$.fn.bootstrapValidator.helpers.mod_11_10</code> method that implements modulus 11, 10 (ISO 7064) algorithm. The helper is then reused in validating <a href="/validators/vat/">German and Croatian VAT</a> numbers</li>
+                        <li>Add <code>$.fn.bootstrapValidator.helpers.mod_37_36</code> method that implements modulus 37, 36 (ISO 7064) algorithm, used in <a href="/validators/grid/">GRid validator</a></li>
+                        <li><a href="{{ site.repository.source }}/issues/213">#213</a>: Add <a href="/validators/ean/">EAN (International Article Number) validator</a></li>
+                        <li><a href="{{ site.repository.source }}/issues/214">#214</a>: Add <a href="/validators/grid/">GRId (Global Release Identifier) validator</a></li>
+                        <li><a href="{{ site.repository.source }}/issues/215">#215</a>: Add <a href="/validators/imei/">IMEI (International Mobile Station Equipment Identity) validator</a></li>
+                        <li><a href="{{ site.repository.source }}/issues/216">#216</a>: Add <a href="/validators/ismn/">ISMN (International Standard Music Number) validator</a></li>
+                        <li><a href="{{ site.repository.source }}/issues/217">#217</a>: Add <a href="/validators/issn/">ISSN (International Standard Serial Number) validator</a></li>
+                    </ul>
+                </div>
+
+                <div class="docs-changelog__improved">
+                    <ul>
+                        <li><a href="{{ site.repository.source }}/issues/191">#191</a>, <a href="{{ site.repository.source }}/issues/223">#223</a>: Support using both the <code>name</code> attribute and <code>selector</code> option for field</li>
+                        <li><a href="{{ site.repository.source }}/issues/206">#206</a>: Indicate success/error tab</li>
+                        <li><a href="{{ site.repository.source }}/issues/220">#220</a>: Add UK postcode support for the <a href="/validators/zipCode/"><code>zipCode</code> validator</a></li>
+                        <li><a href="{{ site.repository.source }}/issues/229">#229</a>: The <a href="/validators/date/"><code>date</code> validator</a> supports seconds</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1 col-md-offset-1 text-right">
                 <h4>v0.4.3</h4>
                 <small>2014-04-26</small>
             </div>
@@ -299,7 +329,7 @@ $(document).ready(function() {
 
                 <div class="docs-changelog__improved">
                     <ul>
-                        <li><a href="{{ site.repository.source }}/pull/198">#198</a>: Add Canadian Postal Code support for the <a href="/validators/zip-code/"><code>zipCode</code> validator</a>, thanks to <a href="https://github.com/Francismori7">@Francismori7</a></li>
+                        <li><a href="{{ site.repository.source }}/pull/198">#198</a>: Add Canadian Postal Code support for the <a href="/validators/zipCode/"><code>zipCode</code> validator</a>, thanks to <a href="https://github.com/Francismori7">@Francismori7</a></li>
                         <li><a href="{{ site.repository.source }}/issues/201">#201</a>: The <a href="/validators/choice/"><code>choice</code> validator</a> supports <code>select</code> element</li>
                         <li><a href="{{ site.repository.source }}/issues/202">#202</a>: Activate tab containing the first invalid field</li>
                     </ul>
@@ -310,32 +340,6 @@ $(document).ready(function() {
                         <li><a href="{{ site.repository.source }}/issues/207">#207</a>: IE8 error</li>
                         <li><a href="{{ site.repository.source }}/issues/209">#209</a>: The <a href="/settings/#excluded"><code>excluded: ':disabled'</code> setting</a> does not work on IE 8, thanks to <a href="https://github.com/adgrafik">@adgrafik</a></li>
                         <li><a href="{{ site.repository.source }}/issues/210">#210</a>: The <a href="/validators/isbn/"><code>isbn</code> validator</a> accepts letters and special characters</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-1 col-md-offset-1 text-right">
-                <h4>v0.4.2</h4>
-                <small>2014-04-19</small>
-            </div>
-
-            <div class="col-md-10">
-                <div class="docs-changelog__added">
-                    <ul>
-                        <li><a href="{{ site.repository.source }}/pull/168">#168</a>: Add <a href="/validators/siren/">Siren</a> and <a href="/validators/siret/">Siret</a> validators, thanks to <a href="https://github.com/jswale">@jswale</a></li>
-                        <li><a href="{{ site.repository.source }}/issues/177">#177</a>: Add <a href="/validators/vin/">Vehicle Identification Number (VIN) validator</a></li>
-                        <li><a href="{{ site.repository.source }}/issues/184">#184</a>: Add <a href="/settings/#excluded"><code>excluded</code> option</a></li>
-                    </ul>
-                </div>
-
-                <div class="docs-changelog__improved">
-                    <ul>
-                        <li><a href="{{ site.repository.source }}/pull/171">#171</a>: The <a href="/validators/phone/"><code>phone</code> validator</a> now supports +1 country code and area code for US phone number, thanks to <a href="https://github.com/tomByrer">@tomByrer</a></li>
-                        <li><a href="{{ site.repository.source }}/pull/173">#173</a>: The <a href="/validators/remote/"><code>remote</code> validator</a> allows to override <code>name</code> option, thanks to <a href="https://github.com/jswale">@jswale</a></li>
-                        <li><a href="{{ site.repository.source }}/pull/178">#178</a>: Do not validate fields that <code>enabled</code> is set to <code>false</code>, thanks to <a href="https://github.com/henningda">@henningda</a></li>
-                        <li><a href="{{ site.repository.source }}/pull/182">#182</a>: Improve <a href="/validators/zip-code/"><code>zipCode</code> validator</a>, thanks to <a href="https://github.com/gercheq">@gercheq</a></li>
                     </ul>
                 </div>
             </div>
