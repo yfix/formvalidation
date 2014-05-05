@@ -4,6 +4,7 @@ title: Validate a zip code
 permalink: /validators/zipCode/
 categories: validators
 validator: zipCode
+examples: EC1A 1BB, W1A 1HQ, M1 1AA, B33 8TH, CR2 6XH, DN55 1PT, AI-2640, ASCN 1ZZ, GIR 0AA
 related:
     - phone
 ---
@@ -62,6 +63,125 @@ related:
                 <td>Sweden</td>
                 <td>SE</td>
             </tr>
+            <tr>
+                <td>United Kingdom</td>
+                <td>GB</td>
+            </tr>
         </tbody>
     </table>
 </section>
+
+<section id="example">
+    <h3>Example</h3>
+
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>UK Postcode</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% assign examples = page.examples | split: ', ' %}
+            {% for postCode in examples %}
+            <tr>
+                <td><a href="javascript: void(0);" class="sample">{{ postCode }}</a></td>
+                <td><i class="fa"></i></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="docs-example">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#postcode-form-tab" data-toggle="tab">Try it</a></li>
+            <li><a href="#postcode-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#postcode-js-tab" data-toggle="tab">JS</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="postcode-form-tab">
+                <form id="postcodeForm" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">UK postcode</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" name="postcode" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="postcode-html-tab">
+                <pre><code class="xml">&lt;form id="postcodeForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">UK postcode&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="postcode" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+            </div>
+
+            <div class="tab-pane" id="postcode-js-tab">
+                <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#postcodeForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            postcode: {
+                validators: {
+                    <span class="docs-code__note">zipCode: {
+                        country: 'GB',
+                        message: 'The value is not valid UK postcode'
+                    }</span>
+                }
+            }
+        }
+    });
+});
+&lt;/script></code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+$(document).ready(function() {
+    $('.sample').on('click', function() {
+        $('#postcodeForm')
+            .find('input[name="postcode"]')
+                .val($(this).html())
+                .end()
+            .data('bootstrapValidator')
+                .updateStatus('postcode', 'NOT_VALIDATED')
+                .validate();
+        var isValid = $('#postcodeForm').data('bootstrapValidator').isValid();
+        $(this)
+            .parents('tr').find('i')
+            .removeClass('fa-check fa-times')
+            .addClass(isValid ? 'fa-check' : 'fa-times');
+    });
+
+    $('#postcodeForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            postcode: {
+                validators: {
+                    zipCode: {
+                        country: 'GB',
+                        message: 'The value is not valid UK postcode'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
