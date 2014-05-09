@@ -41,12 +41,39 @@ validator: file
                 <td><code>type</code></td>
                 <td><code>data-bv-file-type</code></td>
                 <td>String</td>
-                <td>The allowed MIME type, separated by a comma.<br/>For example: Setting <code>image/jpeg,image/png,application/pdf</code> only allows to upload JPEG, PNG image and PDF document.</td>
+                <td>
+                    <p>The allowed MIME type, separated by a comma.</p>
+                    <p>For example: Setting <code>image/jpeg,image/png,application/pdf</code> only allows to upload JPEG, PNG image and PDF document.</p>
+                    <p>See <a href="#mime-types">popular MIME types</a> listed below.</p>
+                </td>
             </tr>
         </tbody>
     </table>
 
-    <p>The <code>maxSize</code> and <code>type</code> are used if the browser supports HTML 5 File API.</p>
+    <p>The <code>maxSize</code> and <code>type</code> are only used if the browser supports HTML 5 File API.</p>
+</section>
+
+<section id="mime-types">
+    <h3>Popular MIME types</h3>
+    <p>The following table shows popular MIME types. For other MIME type, you can refer to the <a href="https://www.sitepoint.com/web-foundations/mime-types-complete-list/">complete list</a>.</p>
+
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>MIME type</th>
+                <th>File extensions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in site.data.mime %}
+            {% assign data = item | split: '|' %}
+            <tr>
+                <td>{{ data[0] }}</td>
+                <td>{{ data[1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </section>
 
 <section id="example">
