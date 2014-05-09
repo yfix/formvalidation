@@ -41,7 +41,7 @@ validator: remote
                 <td><code>data</code></td>
                 <td>n/a</td>
                 <td>Object</td>
-                <td>The data sent to remote URL</td>
+                <td>The data sent to remote URL.<br />You don't need to use this option if there is only field, defined as field name, sent to the remote URL.</td>
             </tr>
         </tbody>
     </table>
@@ -97,18 +97,76 @@ validator: remote
 <section id="data-option">
     <h3>data option</h3>
     <p>By default, it is set to <code>{ fieldName: fieldValue }</code> where <code>fieldName</code> and <code>fieldValue</code> are replaced with the field name and current value, respectively.</p>
-    <p>It also supports dynamic data which is returned by a function:</p>
+    <p>In some cases, you might want to send more fields with dynamic values to the back-end. For instance, the registration form need to validate both the username and emails.</p>
 
-    <pre><code class="javascript">remote: {
-    url: 'remote.php',
-    data: function(validator) {
-        // validator is the plugin instance
+    <p>The following sample code uses the <code>data</code> option showing how to do this:</p>
+    <div class="docs-example">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#data-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#data-js-tab" data-toggle="tab">JS</a></li>
+        </ul>
 
-        // Returns an object which is used to send to remote URL
-        // For example, the sample code below posts the username to remote URL:
-        //  return {
-        //      username: validator.getFieldElements('username').val()
-        //  };
-    }
-}</code></pre>
+        <div class="tab-content">
+            <div class="tab-pane active" id="data-html-tab">
+                <pre><code class="xml">&lt;form id="registrationForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Username&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="username" />
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Email&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="email" />
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Password&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="password" class="form-control" name="password" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+            </div>
+
+            <div class="tab-pane" id="data-js-tab">
+                <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#registrationForm').bootstrapValidator({
+        fields: {
+            username: {
+                message: 'The username is not valid',
+                validators: {
+                    remote: {
+                        url: '/path/to/backend/',
+                        <span class="docs-code__note">data: function(validator) {
+                            return {
+                                email: validator.getFieldElements('email').val()
+                            };
+                        },</span>
+                        message: 'The username is not available'
+                    }
+                }
+            },
+            email: {
+                validators: {
+                    remote: {
+                        url: '/path/to/backend/',
+                        <span class="docs-code__note">data: function(validator) {
+                            return {
+                                username: validator.getFieldElements('username').val()
+                            };
+                        },</span>
+                        message: 'The email is not available'
+                    }
+                }
+            }
+        }
+    });
+});
+&lt;/script></code></pre>
+            </div>
+        </div>
+    </div>
 </section>
