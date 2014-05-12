@@ -21,7 +21,9 @@ layout: default
             </section>
             {% endif %}
 
-            <a href="{{ site.repository.docs_edit }}/validators/{{ page.validator }}.html" class="btn btn-success">Improve this page</a>
+            <p><a href="{{ site.repository.docs_edit }}/validators/{{ page.validator }}.html" class="btn btn-success">Improve this page</a></p>
+
+            {% include disqus.html %}
         </div>
 
         <div class="col-md-3">
