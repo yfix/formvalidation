@@ -1,17 +1,14 @@
 ---
 layout: validator
-title: Validate an EAN (International Article Number)
-permalink: /validators/ean/
+title: Validate a RTN (Routing transit number)
+permalink: /validators/rtn/
 categories: validators
-validator: ean
-examples: 73513537, 9780471117094, 4006381333931, 73513536
-related:
-    - isbn
-    - issn
+validator: rtn
+examples: 011103093, 067014822, 211274450, 211370545, 054001725, 011400071, 031201360, 026013673, 021302567, 053902197, 036001808, 011600033
 ---
 
 <section>
-    <p>Validate an EAN (International Article Number).</p>
+    <p>Validate a RTN (Routing transit number).</p>
 
     <table class="table table-condensed">
         <thead>
@@ -25,7 +22,7 @@ related:
         <tbody>
             <tr>
                 <td><code>message</code></td>
-                <td><code>data-bv-ean-message</code></td>
+                <td><code>data-bv-rtn-message</code></td>
                 <td>String</td>
                 <td>The error message</td>
             </tr>
@@ -39,7 +36,7 @@ related:
     <table class="table table-condensed">
         <thead>
             <tr>
-                <th>EAN</th>
+                <th>RTN</th>
                 <th>Result</th>
             </tr>
         </thead>
@@ -56,48 +53,48 @@ related:
 
     <div class="docs-example">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#ean-form-tab" data-toggle="tab">Try it</a></li>
-            <li><a href="#ean-html-tab" data-toggle="tab">HTML</a></li>
-            <li><a href="#ean-js-tab" data-toggle="tab">JS</a></li>
+            <li class="active"><a href="#rtn-form-tab" data-toggle="tab">Try it</a></li>
+            <li><a href="#rtn-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#rtn-js-tab" data-toggle="tab">JS</a></li>
         </ul>
 
         <div class="tab-content">
-            <div class="tab-pane active" id="ean-form-tab">
-                <form id="eanForm" class="form-horizontal">
+            <div class="tab-pane active" id="rtn-form-tab">
+                <form id="rtnForm" class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-lg-3 control-label">EAN</label>
+                        <label class="col-lg-3 control-label">RTN</label>
                         <div class="col-lg-5">
-                            <input type="text" class="form-control" name="ean" />
+                            <input type="text" class="form-control" name="rtn" />
                         </div>
                     </div>
                 </form>
             </div>
 
-            <div class="tab-pane" id="ean-html-tab">
-                <pre><code class="xml">&lt;form id="eanForm" class="form-horizontal">
+            <div class="tab-pane" id="rtn-html-tab">
+                <pre><code class="xml">&lt;form id="rtnForm" class="form-horizontal">
     &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">EAN&lt;/label>
+        &lt;label class="col-lg-3 control-label">RTN&lt;/label>
         &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="ean" />
+            &lt;input type="text" class="form-control" name="rtn" />
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
             </div>
 
-            <div class="tab-pane" id="ean-js-tab">
+            <div class="tab-pane" id="rtn-js-tab">
                 <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
-    $('#eanForm').bootstrapValidator({
+    $('#rtnForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            ean: {
+            rtn: {
                 validators: {
-                    <span class="docs-code__note">ean: {
-                        message: 'The value is not valid EAN'
+                    <span class="docs-code__note">rtn: {
+                        message: 'The value is not valid RTN'
                     }</span>
                 }
             }
@@ -113,31 +110,31 @@ $(document).ready(function() {
 <script>
 $(document).ready(function() {
     $('.sample').on('click', function() {
-        $('#eanForm')
-            .find('input[name="ean"]')
+        $('#rtnForm')
+            .find('input[name="rtn"]')
                 .val($(this).html())
                 .end()
             .data('bootstrapValidator')
-                .updateStatus('ean', 'NOT_VALIDATED')
+                .updateStatus('rtn', 'NOT_VALIDATED')
                 .validate();
-        var isValid = $('#eanForm').data('bootstrapValidator').isValid();
+        var isValid = $('#rtnForm').data('bootstrapValidator').isValid();
         $(this)
             .parents('tr').find('i')
             .removeClass('fa-check fa-times')
             .addClass(isValid ? 'fa-check' : 'fa-times');
     });
 
-    $('#eanForm').bootstrapValidator({
+    $('#rtnForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            ean: {
+            rtn: {
                 validators: {
-                    ean: {
-                        message: 'The value is not valid EAN'
+                    rtn: {
+                        message: 'The value is not valid RTN'
                     }
                 }
             }
