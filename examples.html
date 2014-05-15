@@ -1752,7 +1752,7 @@ $(document).ready(function() {
 
                         <div class="tab-pane" id="icheck-html-tab">
                             <pre><code class="xml">&lt;!-- Include iCheck skin -->
-&lt;link rel="stylesheet" href="/vendor/icheck/skins/square/red.css" />
+<span class="docs-code__note">&lt;link rel="stylesheet" href="/vendor/icheck/skins/square/red.css" /></span>
 &lt;!-- Set the radio/checkbox positon properly -->
 &lt;style type="text/css">
 #icheckForm .radio, #icheckForm .checkbox {
@@ -1878,12 +1878,12 @@ $(document).ready(function() {
             }
         })
         .find('input[name="job"], input[name="languages[]"]')
-            // Init iCheck element
+            // Init iCheck elements
             <span class="docs-code__note">.iCheck({
                 checkboxClass: 'icheckbox_square-red',
                 radioClass: 'iradio_square-red'
             })</span>
-            // Called when the radio/checkbox is changed
+            // Called when the radios/checkboxes are changed
             .on('ifChanged', function(e) {
                 // Get the field name
                 var field = $(this).attr('name');
