@@ -1208,6 +1208,173 @@ $(document).ready(function() {
 
             <p>These examples show how you can use BootstrapValidator with other Javascript plugins.</p>
 
+            <!-- Use with Bootstrap Button -->
+            <section id="bootstrap-button">
+                <h3>Bootstrap Button</h3>
+
+                <p>Use with <a href="http://getbootstrap.com/javascript/#buttons">Bootstrap Button</a> component.</p>
+                <style type="text/css">
+                #buttonGroupForm.form-horizontal .has-feedback .form-control-feedback {
+                    top: 0;
+                    right: -30px;
+                }
+                </style>
+
+                <div class="docs-example">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#button-form-tab" data-toggle="tab">Try it</a></li>
+                        <li><a href="#button-html-tab" data-toggle="tab">HTML</a></li>
+                        <li><a href="#button-js-tab" data-toggle="tab">JS</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="button-form-tab">
+                            <form id="buttonGroupForm" method="post" class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">Gender</label>
+                                    <div class="col-lg-9">
+                                        <div class="btn-group" data-toggle="buttons">
+                                            <label class="btn btn-default">
+                                                <input type="radio" name="gender" value="male" /> Male
+                                            </label>
+                                            <label class="btn btn-default">
+                                                <input type="radio" name="gender" value="female" /> Female
+                                            </label>
+                                            <label class="btn btn-default">
+                                                <input type="radio" name="gender" value="other" /> Other
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">Languages</label>
+                                    <div class="col-lg-9">
+                                        <div class="btn-group" data-toggle="buttons">
+                                            <label class="btn btn-default">
+                                                <input type="checkbox" name="languages[]" value="english" /> English
+                                            </label>
+                                            <label class="btn btn-default">
+                                                <input type="checkbox" name="languages[]" value="german" /> German
+                                            </label>
+                                            <label class="btn btn-default">
+                                                <input type="checkbox" name="languages[]" value="french" /> French
+                                            </label>
+                                            <label class="btn btn-default">
+                                                <input type="checkbox" name="languages[]" value="russian" /> Russian
+                                            </label>
+                                            <label class="btn btn-default">
+                                                <input type="checkbox" name="languages[]" value="italian"> Italian
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-9 col-lg-offset-3">
+                                        <button type="submit" class="btn btn-primary">Validate</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="tab-pane" id="button-html-tab">
+                            <pre><code class="xml">&lt;!-- Override the feedback icons position -->
+&lt;style type="text/css">
+#buttonGroupForm.form-horizontal .has-feedback .form-control-feedback {
+    top: 0;
+    right: -30px;
+}
+&lt;/style>
+
+&lt;form id="buttonGroupForm" method="post" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Gender&lt;/label>
+        &lt;div class="col-lg-9">
+            <span class="docs-code__note">&lt;div class="btn-group" data-toggle="buttons"></span>
+                &lt;label class="btn btn-default">
+                    &lt;input type="radio" name="gender" value="male" /> Male
+                &lt;/label>
+                &lt;label class="btn btn-default">
+                    &lt;input type="radio" name="gender" value="female" /> Female
+                &lt;/label>
+                &lt;label class="btn btn-default">
+                    &lt;input type="radio" name="gender" value="other" /> Other
+                &lt;/label>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Languages&lt;/label>
+        &lt;div class="col-lg-9">
+            <span class="docs-code__note">&lt;div class="btn-group" data-toggle="buttons"></span>
+                &lt;label class="btn btn-default">
+                    &lt;input type="checkbox" name="languages[]" value="english" /> English
+                &lt;/label>
+                &lt;label class="btn btn-default">
+                    &lt;input type="checkbox" name="languages[]" value="german" /> German
+                &lt;/label>
+                &lt;label class="btn btn-default">
+                    &lt;input type="checkbox" name="languages[]" value="french" /> French
+                &lt;/label>
+                &lt;label class="btn btn-default">
+                    &lt;input type="checkbox" name="languages[]" value="russian" /> Russian
+                &lt;/label>
+                &lt;label class="btn btn-default">
+                    &lt;input type="checkbox" name="languages[]" value="italian"> Italian
+                &lt;/label>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;div class="col-lg-9 col-lg-offset-3">
+            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+                        </div>
+
+                        <div class="tab-pane" id="button-js-tab">
+                            <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#buttonGroupForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        // Since the Bootstrap Button hides the radio and checkbox
+        // We exclude the disabled elements only
+        <span class="docs-code__note">excluded: ':disabled',</span>
+        fields: {
+            'gender': {
+                validators: {
+                    notEmpty: {
+                        message: 'The gender is required'
+                    }
+                }
+            },
+            'languages[]': {
+                validators: {
+                    choice: {
+                        min: 1,
+                        max: 2,
+                        message: 'Please choose 1 - 2 languages you can speak'
+                    }
+                }
+            }
+        }
+    });
+});
+&lt;/script></code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Use with Bootstrap Multiselect -->
             <section id="bootstrap-multiselect">
                 <h3>Bootstrap Multiselect</h3>
                 <p>Use with <a href="http://davidstutz.github.io/bootstrap-multiselect/">Bootstrap Multiselect</a> plugin.</p>
@@ -1319,9 +1486,6 @@ $(document).ready(function() {
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
-            submitHandler: function(validator, form, submitButton) {
-                // Do nothing
-            },
             fields: {
                 gender: {
                     validators: {
@@ -1351,6 +1515,7 @@ $(document).ready(function() {
                 </div>
             </section>
 
+            <!-- Use with Chosen -->
             <section id="chosen">
                 <h3>Chosen</h3>
                 <p>Use with <a href="http://harvesthq.github.io/chosen/">chosen</a> plugin.</p>
@@ -1462,9 +1627,6 @@ $(document).ready(function() {
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
-            submitHandler: function(validator, form, submitButton) {
-                // Do nothing
-            },
             fields: {
                 colors: {
                     validators: {
@@ -1488,6 +1650,7 @@ $(document).ready(function() {
 
             </section>
 
+            <!-- Use with Mask -->
             <section id="mask">
                 <h3>Mask</h3>
                 <p>Use with <a href="http://igorescobar.github.io/jQuery-Mask-Plugin/">Mask</a> plugin.</p>
@@ -1552,6 +1715,7 @@ $(document).ready(function() {
                 </div>
             </section>
 
+            <!-- Use with Raty -->
             <section id="raty">
                 <h3>Raty</h3>
                 <p>Use with <a href="http://wbotelhos.com/raty">Raty</a>. At first, try to click the <i>Validate</i> button to validate the form. Then click the <i>Rating</i>, fill in other fields, and click the <i>Validate</i> button again to
@@ -1650,9 +1814,6 @@ $(document).ready(function() {
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
-            submitHandler: function(validator, form, submitButton) {
-                // Do nothing
-            },
             fields: {
                 <span class="docs-code__note">star</span>: {
                     validators: {
@@ -1705,6 +1866,7 @@ $(document).ready(function() {
                 <li>
                     <a href="#compatibility">Compatibility</a>
                     <ul class="nav">
+                        <li><a href="#bootstrap-button">Bootstrap Button</a></li>
                         <li><a href="#bootstrap-multiselect">Bootstrap Multiselect</a></li>
                         <li><a href="#chosen">Chosen</a></li>
                         <li><a href="#mask">Mask</a></li>
@@ -1889,6 +2051,37 @@ $(document).ready(function() {
                 }
             }
         });
+
+    // Bootstrap Button example
+    $('#buttonGroupForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        excluded: ':disabled',
+        submitHandler: function(validator, form, submitButton) {
+            // Do nothing
+        },
+        fields: {
+            'gender': {
+                validators: {
+                    notEmpty: {
+                        message: 'The gender is required'
+                    }
+                }
+            },
+            'languages[]': {
+                validators: {
+                    choice: {
+                        min: 1,
+                        max: 2,
+                        message: 'Please choose 1 - 2 languages you can speak'
+                    }
+                }
+            }
+        }
+    });
 
     // Bootstrap Multiselect example
     $('#multiselectForm')
