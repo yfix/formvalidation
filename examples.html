@@ -5,6 +5,28 @@ permalink: /examples/
 slug: examples
 ---
 
+<link rel="stylesheet" href="/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css" />
+<link rel="stylesheet" href="/vendor/chosen/chosen.min.css" />
+<link rel="stylesheet" href="/vendor/icheck/skins/square/red.css" />
+<style type="text/css">
+#chosenForm .chosen-choices {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-height: 34px;
+    padding: 6px 12px;
+}
+#chosenForm .form-control-feedback {
+    z-index: 100;
+}
+#buttonGroupForm.form-horizontal .has-feedback .form-control-feedback {
+    top: 0;
+    right: -30px;
+}
+#icheckForm .radio, #icheckForm .checkbox {
+    padding-left: 0;
+}
+</style>
+
 <h1>Examples</h1>
 
 <div class="row">
@@ -1211,14 +1233,7 @@ $(document).ready(function() {
             <!-- Use with Bootstrap Button -->
             <section id="bootstrap-button">
                 <h3>Bootstrap Button</h3>
-
-                <p>Use with <a href="http://getbootstrap.com/javascript/#buttons">Bootstrap Button</a> component.</p>
-                <style type="text/css">
-                #buttonGroupForm.form-horizontal .has-feedback .form-control-feedback {
-                    top: 0;
-                    right: -30px;
-                }
-                </style>
+                <p>Use with the <a href="http://getbootstrap.com/javascript/#buttons">Bootstrap Button</a> component.</p>
 
                 <div class="docs-example">
                     <ul class="nav nav-tabs">
@@ -1349,7 +1364,7 @@ $(document).ready(function() {
         // We exclude the disabled elements only
         <span class="docs-code__note">excluded: ':disabled',</span>
         fields: {
-            'gender': {
+            gender: {
                 validators: {
                     notEmpty: {
                         message: 'The gender is required'
@@ -1377,10 +1392,9 @@ $(document).ready(function() {
             <!-- Use with Bootstrap Multiselect -->
             <section id="bootstrap-multiselect">
                 <h3>Bootstrap Multiselect</h3>
-                <p>Use with <a href="http://davidstutz.github.io/bootstrap-multiselect/">Bootstrap Multiselect</a> plugin.</p>
+                <p>Use with the <a href="http://davidstutz.github.io/bootstrap-multiselect/">Bootstrap Multiselect</a> plugin.</p>
                 <p>The <i>Browser</i> option requires to choose 2-3 browsers.</p>
 
-                <link rel="stylesheet" href="/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css" />
                 <div class="docs-example">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#multiselect-form-tab" data-toggle="tab">Try it</a></li>
@@ -1518,21 +1532,9 @@ $(document).ready(function() {
             <!-- Use with Chosen -->
             <section id="chosen">
                 <h3>Chosen</h3>
-                <p>Use with <a href="http://harvesthq.github.io/chosen/">chosen</a> plugin.</p>
+                <p>Use with the <a href="http://harvesthq.github.io/chosen/">Chosen</a> plugin.</p>
                 <p>The <i>Favorite color</i> option requires to choose 2-4 colors you like most.</p>
 
-                <link rel="stylesheet" href="/vendor/chosen/chosen.min.css" />
-                <style type="text/css">
-                #chosenForm .chosen-choices {
-                    border: 1px solid #ccc;
-                    border-radius: 4px;
-                    min-height: 34px;
-                    padding: 6px 12px;
-                }
-                #chosenForm .form-control-feedback {
-                    z-index: 100;
-                }
-                </style>
                 <div class="docs-example">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#chosen-form-tab" data-toggle="tab">Try it</a></li>
@@ -1650,10 +1652,256 @@ $(document).ready(function() {
 
             </section>
 
+            <!-- Use with iCheck -->
+            <section id="icheck">
+                <h3>iCheck</h3>
+                <p>Use with the <a href="http://fronteed.com/iCheck/">iCheck</a> plugin.</p>
+
+                <div class="docs-example">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#icheck-form-tab" data-toggle="tab">Try it</a></li>
+                        <li><a href="#icheck-html-tab" data-toggle="tab">HTML</a></li>
+                        <li><a href="#icheck-html-tab" data-toggle="tab">HTML</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="icheck-form-tab">
+                            <form id="icheckForm" method="post" class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">Job position</label>
+                                    <div class="col-lg-5">
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="job" value="designer" /> Designer
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="job" value="frontend" /> Front-end Developer
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="job" value="backend" /> Back-end Developer
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="job" value="dba" /> Database Administrator
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="job" value="sys" /> System Engineer
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">Programming Languages</label>
+                                    <div class="col-lg-5">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" name="languages[]" value="net" /> .Net
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" name="languages[]" value="java" /> Java
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" name="languages[]" value="c" /> C/C++
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" name="languages[]" value="php" /> PHP
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" name="languages[]" value="perl" /> Perl
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" name="languages[]" value="ruby" /> Ruby
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" name="languages[]" value="python" /> Python
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" name="languages[]" value="javascript" /> Javascript
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-5 col-lg-offset-3">
+                                        <button type="submit" class="btn btn-primary">Validate</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="tab-pane" id="icheck-html-tab">
+                            <pre><code class="xml">&lt;!-- Include iCheck skin -->
+&lt;link rel="stylesheet" href="/vendor/icheck/skins/square/red.css" />
+&lt;!-- Set the radio/checkbox positon properly -->
+&lt;style type="text/css">
+#icheckForm .radio, #icheckForm .checkbox {
+    padding-left: 0;
+}
+&lt;/style>
+
+&lt;form id="icheckForm" method="post" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Job position&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;div class="radio">
+                &lt;label>
+                    &lt;input type="radio" name="job" value="designer" /> Designer
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="radio">
+                &lt;label>
+                    &lt;input type="radio" name="job" value="frontend" /> Front-end Developer
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="radio">
+                &lt;label>
+                    &lt;input type="radio" name="job" value="backend" /> Back-end Developer
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="radio">
+                &lt;label>
+                    &lt;input type="radio" name="job" value="dba" /> Database Administrator
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="radio">
+                &lt;label>
+                    &lt;input type="radio" name="job" value="sys" /> System Engineer
+                &lt;/label>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Programming Languages&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input type="checkbox" name="languages[]" value="net" /> .Net
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input type="checkbox" name="languages[]" value="java" /> Java
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input type="checkbox" name="languages[]" value="c" /> C/C++
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input type="checkbox" name="languages[]" value="php" /> PHP
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input type="checkbox" name="languages[]" value="perl" /> Perl
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input type="checkbox" name="languages[]" value="ruby" /> Ruby
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input type="checkbox" name="languages[]" value="python" /> Python
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input type="checkbox" name="languages[]" value="javascript" /> Javascript
+                &lt;/label>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;div class="col-lg-5 col-lg-offset-3">
+            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+                        </div>
+
+                        <div class="tab-pane" id="icheck-js-tab">
+                            <pre><code class="xml javascript">&lt;!-- Include iCheck plugin -->
+<span class="docs-code__note">&lt;script src="/vendor/icheck/icheck.min.js">&lt;/script></span>
+&lt;script>
+$(document).ready(function() {
+    $('#icheckForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                job: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The job position is required'
+                        }
+                    }
+                },
+                'languages[]': {
+                    validators: {
+                        choice: {
+                            min: 2,
+                            max: 4,
+                            message: 'Please choose 2 - 4 programming languages you are good at'
+                        }
+                    }
+                }
+            }
+        })
+        .find('input[name="job"], input[name="languages[]"]')
+            // Init iCheck element
+            <span class="docs-code__note">.iCheck({
+                checkboxClass: 'icheckbox_square-red',
+                radioClass: 'iradio_square-red'
+            })</span>
+            // Called when the radio/checkbox is changed
+            .on('ifChanged', function(e) {
+                // Get the field name
+                var field = $(this).attr('name');
+                <span class="docs-code__note">$('#icheckForm')
+                    // Mark the field as not validated
+                    .bootstrapValidator('updateStatus', field, 'NOT_VALIDATED')
+                    // Validate field
+                    .bootstrapValidator('validateField', field);</span>
+            });
+});
+&lt;/script></code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- Use with Mask -->
             <section id="mask">
                 <h3>Mask</h3>
-                <p>Use with <a href="http://igorescobar.github.io/jQuery-Mask-Plugin/">Mask</a> plugin.</p>
+                <p>Use with the <a href="http://igorescobar.github.io/jQuery-Mask-Plugin/">Mask</a> plugin.</p>
 
                 <div class="docs-example">
                     <ul class="nav nav-tabs">
@@ -1718,7 +1966,7 @@ $(document).ready(function() {
             <!-- Use with Raty -->
             <section id="raty">
                 <h3>Raty</h3>
-                <p>Use with <a href="http://wbotelhos.com/raty">Raty</a>. At first, try to click the <i>Validate</i> button to validate the form. Then click the <i>Rating</i>, fill in other fields, and click the <i>Validate</i> button again to
+                <p>Use with the <a href="http://wbotelhos.com/raty">Raty</a> plugin. At first, try to click the <i>Validate</i> button to validate the form. Then click the <i>Rating</i>, fill in other fields, and click the <i>Validate</i> button again to
                 see that the <i>Rating</i> is validated.</p>
 
                 <div class="docs-example">
@@ -1869,6 +2117,7 @@ $(document).ready(function() {
                         <li><a href="#bootstrap-button">Bootstrap Button</a></li>
                         <li><a href="#bootstrap-multiselect">Bootstrap Multiselect</a></li>
                         <li><a href="#chosen">Chosen</a></li>
+                        <li><a href="#icheck">iCheck</a></li>
                         <li><a href="#mask">Mask</a></li>
                         <li><a href="#raty">Raty</a></li>
                     </ul>
@@ -1881,6 +2130,7 @@ $(document).ready(function() {
 
 <script src="/vendor/bootstrap-multiselect/js/bootstrap-multiselect.js"></script>
 <script src="/vendor/chosen/chosen.jquery.min.js"></script>
+<script src="/vendor/icheck/icheck.min.js"></script>
 <script src="/vendor/mask/jquery.mask.min.js"></script>
 <script src="/vendor/raty/jquery.raty.min.js"></script>
 <script>
@@ -2064,7 +2314,7 @@ $(document).ready(function() {
             // Do nothing
         },
         fields: {
-            'gender': {
+            gender: {
                 validators: {
                     notEmpty: {
                         message: 'The gender is required'
@@ -2161,6 +2411,47 @@ $(document).ready(function() {
                 }
             }
         });
+
+    // iCheck example
+    $('#icheckForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            submitHandler: function(validator, form, submitButton) {
+                // Do nothing
+            },
+            fields: {
+                job: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The job position is required'
+                        }
+                    }
+                },
+                'languages[]': {
+                    validators: {
+                        choice: {
+                            min: 2,
+                            max: 4,
+                            message: 'Please choose 2 - 4 programming languages you are good at'
+                        }
+                    }
+                }
+            }
+        })
+        .find('input[name="job"], input[name="languages[]"]')
+            .iCheck({
+                checkboxClass: 'icheckbox_square-red',
+                radioClass: 'iradio_square-red'
+            })
+            .on('ifChanged', function(e) {
+                var field = $(this).attr('name');
+                $('#icheckForm').bootstrapValidator('updateStatus', field, 'NOT_VALIDATED')
+                                .bootstrapValidator('validateField', field);
+            });
 
     // Mask example
     $('#maskForm')
