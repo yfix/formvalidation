@@ -21,7 +21,11 @@ layout: default
             </section>
             {% endif %}
 
-            <p><a href="{{ site.repository.docs_edit }}/validators/{{ page.validator }}.html" class="btn btn-success">Improve this page</a></p>
+            {% assign path = 'validators' %}
+            {% if page.validator %}
+                {% assign path = page.validator | prepend:'validators/' %}
+            {% endif %}
+            <p><a href="{{ site.repository.docs_edit }}/{{ path }}.html" class="btn btn-success">Improve this page</a></p>
 
             {% include disqus.html %}
         </div>
