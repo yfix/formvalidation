@@ -229,7 +229,7 @@ $(document).ready(function() {
                 <i class="fa fa-flask"></i>
                 <h3>Validator</h3>
                 <ul>
-                    <li>Richest <a href="/validators/">built-in validators</a> (41) and counting!</li>
+                    <li>Richest <a href="/validators/">built-in validators</a> (46) and counting!</li>
                     <li>Easy to <a href="/developing/">write a new validator</a></li>
                 </ul>
             </div>
@@ -285,62 +285,40 @@ $(document).ready(function() {
 
         <div class="row">
             <div class="col-md-1 col-md-offset-1 text-right">
-                <h4>v0.4.4</h4>
-                <small>2014-05-05</small>
+                <h4>v0.4.5</h4>
+                <small>2014-05-15</small>
             </div>
 
             <div class="col-md-10">
                 <div class="docs-changelog__added">
                     <ul>
-                        <li>Add <code>$.fn.bootstrapValidator.helpers.mod_11_10</code> method that implements modulus 11, 10 (ISO 7064) algorithm. The helper is then reused in validating <a href="/validators/vat/">German and Croatian VAT</a> numbers</li>
-                        <li>Add <code>$.fn.bootstrapValidator.helpers.mod_37_36</code> method that implements modulus 37, 36 (ISO 7064) algorithm, used in <a href="/validators/grid/"><code>grid</code></a> validator</li>
-                        <li><a href="{{ site.repository.source }}/issues/213">#213</a>: Add <a href="/validators/ean/"><code>ean</code> (International Article Number)</a> validator</li>
-                        <li><a href="{{ site.repository.source }}/issues/214">#214</a>: Add <a href="/validators/grid/"><code>grid</code> (Global Release Identifier)</a> validator</li>
-                        <li><a href="{{ site.repository.source }}/issues/215">#215</a>: Add <a href="/validators/imei/"><code>imei</code> (International Mobile Station Equipment Identity)</a> validator</li>
-                        <li><a href="{{ site.repository.source }}/issues/216">#216</a>: Add <a href="/validators/ismn/"><code>ismn</code> (International Standard Music Number)</a> validator</li>
-                        <li><a href="{{ site.repository.source }}/issues/217">#217</a>: Add <a href="/validators/issn/"><code>issn</code> (International Standard Serial Number)</a> validator</li>
+                        <li>Add <code>$.fn.bootstrapValidator.helpers.date</code> for validating a date, re-used in <a href="/validators/date/"><code>date</code></a>, <a href="/validators/id/"><code>id</code></a>, <a href="/validators/vat/"><code>vat</code></a> validators</li>
+                        <li><a href="{{ site.repository.source }}/issues/233">#233</a>: Add <a href="/settings/#threshold"><code>threshold</code> option</a></li>
+                        <li><a href="{{ site.repository.source }}/issues/232">#232</a>: Add <a href="/validators/id/"><code>id</code> validator</a></li>
+                        <li><a href="{{ site.repository.source }}/issues/242">#242</a>: Add <code>separator</code> option to the <a href="/validators/numeric/"><code>numeric</code> validator</a></li>
+                        <li><a href="{{ site.repository.source }}/issues/248">#248</a>: Add <a href="/validators/issn/"><code>isin</code> (International Securities Identification Number) validator</a></li>
+                        <li><a href="{{ site.repository.source }}/issues/250">#250</a>: Add <a href="/validators/rtn/"><code>rtn</code> (Routing transit number) validator</a></li>
+                        <li><a href="{{ site.repository.source }}/issues/251">#251</a>: Add <a href="/validators/cusip/"><code>cusip</code> (North American Securities) validator</a></li>
+                        <li><a href="{{ site.repository.source }}/issues/252">#252</a>: Add <a href="/validators/sedol/"><code>sedol</code> (Stock Exchange Daily Official List) validator</a></li>
+                        <li>The <a href="/validators/zipCode/"><code>zipCode</code> validator</a> adds support for Italian, Dutch postcodes</li>
                     </ul>
                 </div>
 
                 <div class="docs-changelog__improved">
                     <ul>
-                        <li><a href="{{ site.repository.source }}/issues/191">#191</a>, <a href="{{ site.repository.source }}/issues/223">#223</a>: Support using both the <code>name</code> attribute and <code>selector</code> option for field</li>
-                        <li><a href="{{ site.repository.source }}/issues/206">#206</a>: Indicate success/error tab, see <a href="/examples/#tab">example</a></li>
-                        <li><a href="{{ site.repository.source }}/issues/220">#220</a>: Add UK postcode support for the <a href="/validators/zipCode/"><code>zipCode</code></a> validator</li>
-                        <li><a href="{{ site.repository.source }}/issues/229">#229</a>: The <a href="/validators/date/"><code>date</code></a> validator supports seconds</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-1 col-md-offset-1 text-right">
-                <h4>v0.4.3</h4>
-                <small>2014-04-26</small>
-            </div>
-
-            <div class="col-md-10">
-                <div class="docs-changelog__added">
-                    <ul>
-                        <li><a href="{{ site.repository.source }}/issues/77">#77</a>: Add <a href="/validators/file/"><code>file</code></a> validator</li>
-                        <li><a href="{{ site.repository.source }}/issues/179">#179</a>: Add <a href="/validators/vat/"><code>vat</code></a> validator, support 32 countries</li>
-                        <li><a href="{{ site.repository.source }}/issues/205">#205</a>: <a href="/api/">Plugin method</a> invocation</li>
-                    </ul>
-                </div>
-
-                <div class="docs-changelog__improved">
-                    <ul>
-                        <li><a href="{{ site.repository.source }}/pull/198">#198</a>: Add Canadian Postal Code support for the <a href="/validators/zipCode/"><code>zipCode</code></a> validator, thanks to <a href="https://github.com/Francismori7">@Francismori7</a></li>
-                        <li><a href="{{ site.repository.source }}/issues/201">#201</a>: The <a href="/validators/choice/"><code>choice</code></a> validator supports <code>select</code> element</li>
-                        <li><a href="{{ site.repository.source }}/issues/202">#202</a>: Activate tab containing the first invalid field</li>
+                        <li><a href="{{ site.repository.source }}/pull/245">#245</a>: The <a href="/validators/cvv/"><code>cvv</code> validator</a> should support spaces in credit card, thanks to <a href="https://github.com/evilchili">@evilchili</a></li>
+                        <li>Change default <code>submitButtons</code> to <code>[type="submit"]</code> to support <code>input type="submit"</code></li>
                     </ul>
                 </div>
 
                 <div class="docs-changelog__fixed">
                     <ul>
-                        <li><a href="{{ site.repository.source }}/issues/207">#207</a>: IE8 error</li>
-                        <li><a href="{{ site.repository.source }}/issues/209">#209</a>: The <a href="/settings/#excluded"><code>excluded: ':disabled'</code></a> setting does not work on IE 8, thanks to <a href="https://github.com/adgrafik">@adgrafik</a></li>
-                        <li><a href="{{ site.repository.source }}/issues/210">#210</a>: The <a href="/validators/isbn/"><code>isbn</code></a> validator accepts letters and special characters</li>
+                        <li><a href="{{ site.repository.source }}/issues/226">#226</a>: Fix the conflict issue with MooTools</li>
+                        <li><a href="{{ site.repository.source }}/issues/238">#238</a>: The submit buttons are not sent</li>
+                        <li><a href="{{ site.repository.source }}/issues/253">#253</a>: The <a href="/validators/iban/"><code>iban</code> validator</a> does not work on IE8</li>
+                        <li><a href="{{ site.repository.source }}/issues/257">#257</a>: Plugin method invocation don't work</li>
+                        <li>Fix the issue that the hidden fields generated by other plugins might not be validated</li>
+                        <li>When parsing options from HTML attributes, don't add the field which hasn't validators. It improves fixes for <a href="{{ site.repository.source }}/issues/191">#191</a>, <a href="{{ site.repository.source }}/issues/223">#223</a></li>
                     </ul>
                 </div>
             </div>

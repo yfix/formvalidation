@@ -18,6 +18,10 @@
   version:      0.2.0
   description:  Validate a credit card number
 
+- name:         cusip
+  version:      0.4.5
+  description:  Validate a CUSIP
+
 - name:         cvv
   version:      0.3.2
   description:  Validate a CVV number
@@ -66,6 +70,10 @@
   version:      0.4.0
   description:  Validate an International Bank Account Number (IBAN)
 
+- name:         id
+  version:      0.4.5
+  description:  Validate identification number. Support 25 countries
+
 - name:         identical
   version:      0.1.0
   description:  Check if the value is the same as one of particular field
@@ -85,6 +93,10 @@
 - name:         isbn
   version:      0.3.2
   description:  Validate an ISBN (International Standard Book Number). Support both ISBN 10 and ISBN 13
+
+- name:         isin
+  version:      0.4.5
+  description:  Validate an ISIN (International Securities Identification Number)
 
 - name:         ismn
   version:      0.4.4
@@ -121,6 +133,14 @@
 - name:         remote
   version:      0.1.0
   description:  Perform remote checking via Ajax request
+
+- name:         rtn
+  version:      0.4.5
+  description:  Validate a RTN (Routing transit number)
+
+- name:         sedol
+  version:      0.4.5
+  description:  Validate a SEDOL (Stock Exchange Daily Official List)
 
 - name:         siren
   version:      0.4.2
