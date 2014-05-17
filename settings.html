@@ -185,7 +185,7 @@ $(document).ready(function() {
                 <p><strong>1. The feedback icons aren't shown when using custom Bootstrap theme from <a href="http://bootswatch.com/">BootsWatch</a></strong></p>
 
                 <p>Some BootsWatch themes override some CSS styles causing feedback icon invisible to your eyes. For instance, the <a href="http://bootswatch.com/flatly/">Flatly theme</a> set the feedback icon color to <code>#FFF</code>.</p>
-                <p>To fix this, you can simply add some CSS to your <code>head</code>, right before the BootsWatch theme CSS, to reset the feedback icons color:</p>
+                <p>To fix this, you can simply add some CSS to your <code>head</code>, right after the BootsWatch theme CSS, to reset the feedback icons color:</p>
                 <pre><code class="xml">&lt;link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/flatly/bootstrap.min.css">
 &lt;style type="text/css">
 .has-error .form-control-feedback {
