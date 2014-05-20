@@ -127,42 +127,42 @@ validator: choice
         &lt;div class="col-lg-4">
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="net" /> .Net
+                    &lt;input type="checkbox" name="languages" value="net" /> .Net
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="java" /> Java
+                    &lt;input type="checkbox" name="languages" value="java" /> Java
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="c" /> C/C++
+                    &lt;input type="checkbox" name="languages" value="c" /> C/C++
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="php" /> PHP
+                    &lt;input type="checkbox" name="languages" value="php" /> PHP
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="perl" /> Perl
+                    &lt;input type="checkbox" name="languages" value="perl" /> Perl
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="ruby" /> Ruby
+                    &lt;input type="checkbox" name="languages" value="ruby" /> Ruby
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="python" /> Python
+                    &lt;input type="checkbox" name="languages" value="python" /> Python
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="javascript" /> Javascript
+                    &lt;input type="checkbox" name="languages" value="javascript" /> Javascript
                 &lt;/label>
             &lt;/div>
         &lt;/div>
@@ -171,7 +171,7 @@ validator: choice
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Editors&lt;/label>
         &lt;div class="col-lg-4">
-            &lt;select class="form-control" <span class="docs-code__note">name="editors[]" multiple="multiple"</span> style="height: 200px;">
+            &lt;select class="form-control" <span class="docs-code__note">name="editors" multiple="multiple"</span> style="height: 200px;">
                 &lt;option value="" disabled>Choose 2 - 3 editors&lt;/option>
                 &lt;option value="atom">Atom&lt;/option>
                 &lt;option value="eclipse">Eclipse&lt;/option>
@@ -196,7 +196,7 @@ $(document).ready(function() {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            'languages[]': {
+            languages: {
                 validators: {
                     <span class="docs-code__note">choice: {
                         min: 2,
@@ -205,7 +205,7 @@ $(document).ready(function() {
                     }</span>
                 }
             },
-            'editors[]': {
+            editors: {
                 validators: {
                     <span class="docs-code__note">choice: {
                         min: 2,
