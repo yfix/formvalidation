@@ -6,10 +6,6 @@
   permalink: /getting-started/
   category: started
 
-- title: Examples
-  permalink: /examples/
-  category: examples
-
 - title: Settings
   permalink: /settings/
   category: settings
@@ -18,10 +14,14 @@
   permalink: /validators/
   category: validators
 
-- title: Developing
-  permalink: /developing/
-  category: developing
+- title: Examples
+  permalink: /examples/
+  category: examples
 
 - title: API
   permalink: /api/
   category: api
+
+- title: Developing
+  permalink: /developing/
+  category: developing
