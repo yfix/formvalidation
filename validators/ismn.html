@@ -1,15 +1,18 @@
 ---
 layout:     default
 title:      Validate an ISMN (International Standard Music Number)
-headline:   ismn validator
 permalink:  /validators/ismn/
-path:       validators/ismn.html
 category:   validators
 comments:   true
 examples:   M230671187, 979-0-0601-1561-5, 979 0 3452 4680 5, 9790060115615, 9790060115614
 related:
     - grid
 ---
+
+<section class="doc-heading">
+    <h1><a href="/validators/">Validators</a> / ismn</h1>
+    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/validators/ismn.html"><i class="fa fa-github"></i> Edit on Github</a>
+</section>
 
 <section>
     <p>Validate an ISMN (International Standard Music Number).</p>
@@ -35,7 +38,7 @@ related:
 </section>
 
 <section id="example">
-    <h3>Example</h3>
+    <h2>Example</h2>
 
     <table class="table table-condensed">
         <thead>
@@ -110,6 +113,8 @@ $(document).ready(function() {
         </div>
     </div>
 </section>
+
+{% include related.html %}
 
 <script>
 $(document).ready(function() {

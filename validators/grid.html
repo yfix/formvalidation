@@ -1,15 +1,18 @@
 ---
 layout:     default
 title:      Validate a GRId (Global Release Identifier)
-headline:   grid validator
 permalink:  /validators/grid/
-path:       validators/grid.html
 category:   validators
 comments:   true
 examples:   A12425GABC1234002M, A1-2425G-ABC1234002-M, A1 2425G ABC1234002 M, Grid:A1-2425G-ABC1234002-M, A1-2425G-ABC1234002-Q
 related:
     - ismn
 ---
+
+<section class="doc-heading">
+    <h1><a href="/validators/">Validators</a> / grid</h1>
+    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/validators/grid.html"><i class="fa fa-github"></i> Edit on Github</a>
+</section>
 
 <section>
     <p>Validate a GRId (Global Release Identifier).</p>
@@ -35,7 +38,7 @@ related:
 </section>
 
 <section id="example">
-    <h3>Example</h3>
+    <h2>Example</h2>
 
     <table class="table table-condensed">
         <thead>
@@ -110,6 +113,8 @@ $(document).ready(function() {
         </div>
     </div>
 </section>
+
+{% include related.html %}
 
 <script>
 $(document).ready(function() {

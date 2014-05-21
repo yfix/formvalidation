@@ -1,9 +1,7 @@
 ---
 layout:     default
 title:      Validate a RTN (Routing transit number)
-headline:   rtn validator
 permalink:  /validators/rtn/
-path:       validators/rtn.html
 category:   validators
 comments:   true
 examples:   011103093, 067014822, 211274450, 211370545, 054001725, 011400071, 031201360, 026013673, 021302567, 053902197, 036001808, 011600033
@@ -12,6 +10,11 @@ related:
     - cvv
     - iban
 ---
+
+<section class="doc-heading">
+    <h1><a href="/validators/">Validators</a> / rtn</h1>
+    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/validators/rtn.html"><i class="fa fa-github"></i> Edit on Github</a>
+</section>
 
 <section>
     <p>Validate a RTN (Routing transit number).</p>
@@ -37,7 +40,7 @@ related:
 </section>
 
 <section id="example">
-    <h3>Example</h3>
+    <h2>Example</h2>
 
     <table class="table table-condensed">
         <thead>
@@ -112,6 +115,8 @@ $(document).ready(function() {
         </div>
     </div>
 </section>
+
+{% include related.html %}
 
 <script>
 $(document).ready(function() {

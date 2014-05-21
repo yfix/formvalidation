@@ -1,9 +1,7 @@
 ---
 layout:     default
 title:      Examples
-headline:   Examples
 permalink:  /examples/
-path:       examples.html
 category:   examples
 comments:   true
 sections:
@@ -42,6 +40,11 @@ sections:
     padding-left: 0;
 }
 </style>
+
+<section class="doc-heading">
+    <h1>Examples</h1>
+    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/examples.html"><i class="fa fa-github"></i> Edit on Github</a>
+</section>
 
 <!-- Attribute -->
 <section id="attribute">
@@ -334,14 +337,14 @@ $(document).ready(function() {
         <tbody>
             <tr>
                 <td><code>min="..."</code></td>
-                <td><a href="/validators/greater-than/">greaterThan validator</a></td>
+                <td><a href="/validators/greaterThan/">greaterThan validator</a></td>
                 <td>
                     <pre><code class="xml">data-bv-greaterthan="true"
 data-bv-greaterthan-value="..."</code></pre></td>
             </tr>
             <tr>
                 <td><code>max="..."</code></td>
-                <td><a href="/validators/less-than/">lessThan validator</a></td>
+                <td><a href="/validators/lessThan/">lessThan validator</a></td>
                 <td>
                     <pre><code class="xml">data-bv-lessthan="true"
 data-bv-lessthan-value="..."</code></pre>
@@ -349,7 +352,7 @@ data-bv-lessthan-value="..."</code></pre>
             </tr>
             <tr>
                 <td><code>maxlength="..."</code></td>
-                <td><a href="/validators/string-length/">stringLength validator</a></td>
+                <td><a href="/validators/stringLength/">stringLength validator</a></td>
                 <td>
                     <pre><code class="xml">data-bv-stringlength="true"
 data-bv-stringlength-max="..."</code></pre>
@@ -365,17 +368,17 @@ data-bv-regexp-regexp="..."</code></pre>
             </tr>
             <tr>
                 <td><code>required</code></td>
-                <td><a href="/validators/not-empty/">notEmpty validator</a></td>
+                <td><a href="/validators/notEmpty/">notEmpty validator</a></td>
                 <td><code>data-bv-notempty="true"</code></td>
             </tr>
             <tr>
                 <td><code>type="color"</code></td>
-                <td><a href="/validators/hex-color/">hexColor validator</a></td>
+                <td><a href="/validators/hexColor/">hexColor validator</a></td>
                 <td><code>data-bv-hexcolor="true"</code></td>
             </tr>
             <tr>
                 <td><code>type="email"</code></td>
-                <td><a href="/validators/email-address/">emailAddress validator</a></td>
+                <td><a href="/validators/emailAddress/">emailAddress validator</a></td>
                 <td><code>data-bv-emailaddress="true"</code></td>
             </tr>
             <tr>
@@ -540,9 +543,9 @@ $(document).ready(function() {
 
     <p>BootstrapValidator does not validate the fields which:</p>
     <ul>
-        <li>are disabled</li>
-        <li>are hidden</li>
-        <li>are not visible</li>
+        <li>- are disabled</li>
+        <li>- are hidden</li>
+        <li>- are not visible</li>
     </ul>
 
     <p>The following example shows an example of toggling field validator.</p>

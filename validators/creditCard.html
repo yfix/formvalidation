@@ -1,12 +1,19 @@
 ---
 layout:     default
 title:      Validate a credit card number
-headline:   creditCard validator
 permalink:  /validators/creditCard/
-path:       validators/creditCard.html
 category:   validators
 comments:   true
+related:
+    - cvv
+    - iban
+    - rtn
 ---
+
+<section class="doc-heading">
+    <h1><a href="/validators/">Validators</a> / creditCard</h1>
+    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/validators/creditCard.html"><i class="fa fa-github"></i> Edit on Github</a>
+</section>
 
 <section>
     <p>Validate a credit card number.</p>
@@ -103,7 +110,7 @@ comments:   true
 </section>
 
 <section id="example">
-    <h3>Example</h3>
+    <h2>Example</h2>
 
     <div class="doc-example">
         <ul class="nav nav-tabs">
@@ -160,6 +167,8 @@ $(document).ready(function() {
         </div>
     </div>
 </section>
+
+{% include related.html %}
 
 <script>
 $(document).ready(function() {

@@ -1,12 +1,15 @@
 ---
 layout:     default
 title:      Validate a date
-headline:   date validator
 permalink:  /validators/date/
-path:       validators/date.html
 category:   validators
 comments:   true
 ---
+
+<section class="doc-heading">
+    <h1><a href="/validators/">Validators</a> / date</h1>
+    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/validators/date.html"><i class="fa fa-github"></i> Edit on Github</a>
+</section>
 
 <section>
     <p>Validate a date.</p>
@@ -107,21 +110,21 @@ comments:   true
 
     <p>Below are some example of possible formats:</p>
     <ul>
-        <li>YYYY/DD/MM</li>
-        <li>YYYY/DD/MM h</li>
-        <li>YYYY/DD/MM h A</li>
-        <li>YYYY/DD/MM h:m</li>
-        <li>YYYY/DD/MM h:m A</li>
-        <li>YYYY/DD/MM h:m:s</li>
-        <li>YYYY/DD/MM h:m:s A</li>
-        <li>YYYY-MM-DD</li>
-        <li>YYYY-MM-DD h:m A</li>
-        <li>DD/MM/YYYY</li>
-        <li>DD/MM/YYYY h:m A</li>
-        <li>MM-DD-YYYY</li>
-        <li>MM-DD-YYYY h:m A</li>
-        <li>DD-MM-YYYY</li>
-        <li>DD-MM-YYYY h:m A</li>
+        <li>&mdash; YYYY/DD/MM</li>
+        <li>&mdash; YYYY/DD/MM h</li>
+        <li>&mdash; YYYY/DD/MM h A</li>
+        <li>&mdash; YYYY/DD/MM h:m</li>
+        <li>&mdash; YYYY/DD/MM h:m A</li>
+        <li>&mdash; YYYY/DD/MM h:m:s</li>
+        <li>&mdash; YYYY/DD/MM h:m:s A</li>
+        <li>&mdash; YYYY-MM-DD</li>
+        <li>&mdash; YYYY-MM-DD h:m A</li>
+        <li>&mdash; DD/MM/YYYY</li>
+        <li>&mdash; DD/MM/YYYY h:m A</li>
+        <li>&mdash; MM-DD-YYYY</li>
+        <li>&mdash; MM-DD-YYYY h:m A</li>
+        <li>&mdash; DD-MM-YYYY</li>
+        <li>&mdash; DD-MM-YYYY h:m A</li>
     </ul>
 
     <p>It's possible to support other date format by using <a href="/validators/callback/">callback</a> validator as shown in the <a href="#custom-format-example">Custom format example</a>.</p>
@@ -130,7 +133,7 @@ comments:   true
 </section>
 
 <section id="example">
-    <h3>Example</h3>
+    <h2>Example</h2>
     <p>The following form might be used in a profile setting page:</p>
 
     <div class="doc-example">
@@ -193,7 +196,7 @@ $(document).ready(function() {
 </section>
 
 <section id="date-picker-example">
-    <h3>Datetime Picker example</h3>
+    <h2>Datetime Picker example</h2>
 
     <p>The form below is an example of using the date validator with <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Bootstrap Datetime Picker</a>:</p>
 
@@ -300,7 +303,7 @@ $(document).ready(function() {
 </section>
 
 <section id="custom-format-example">
-    <h3>Custom format example</h3>
+    <h2>Custom format example</h2>
 
     <p>This example illustrates the ability of validating date in custom format by using the <a href="/validators/callback/">callback</a> validator and <a href="http://momentjs.com/">momentjs</a> to parse/validate.</p>
 
@@ -372,6 +375,8 @@ $(document).ready(function() {
         </div>
     </div>
 </section>
+
+{% include related.html %}
 
 <script src="/vendor/momentjs/moment.min.js"></script>
 <script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>

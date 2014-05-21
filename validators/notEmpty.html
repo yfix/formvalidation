@@ -1,14 +1,17 @@
 ---
 layout:     default
 title:      notEmpty validator
-headline:   notEmpty validator
 permalink:  /validators/notEmpty/
-path:       validators/notEmpty.html
 category:   validators
 comments:   true
 related:
     - stringLength
 ---
+
+<section class="doc-heading">
+    <h1><a href="/validators/">Validators</a> / notEmpty</h1>
+    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/validators/notEmpty.html"><i class="fa fa-github"></i> Edit on Github</a>
+</section>
 
 <section>
     <p>Check if the value is empty.</p>
@@ -36,7 +39,7 @@ related:
 </section>
 
 <section id="example">
-    <h3>Example</h3>
+    <h2>Example</h2>
     <p>In the following form, user is asked to enter the full name which alphabetical characters and spaces only.</p>
 
     <div class="doc-example">
@@ -118,6 +121,8 @@ $(document).ready(function() {
         </div>
     </div>
 </section>
+
+{% include related.html %}
 
 <script>
 $(document).ready(function() {

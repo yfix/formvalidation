@@ -32,11 +32,11 @@ li {
   padding: 0 10px;
 }
 .doc-box-info {
-  border-left: 5px solid #d9edf7;
+  border-left: 5px solid #3498db;
   padding-left: 10px;
 }
 .doc-box-warning {
-  border-left: 5px solid #fcf8e3;
+  border-left: 5px solid #c7254e;
   padding-left: 10px;
 }
 .doc-body {
@@ -149,6 +149,7 @@ li {
 .doc-heading {
   border-bottom: 1px solid #ccc;
   position: relative;
+  margin-bottom: 20px;
 }
 .doc-heading .doc-edit-button {
   font-size: 18px;

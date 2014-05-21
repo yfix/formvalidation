@@ -1,9 +1,7 @@
 ---
 layout:     default
 title:      Validate an ISBN (International Standard Book Number)
-headline:   isbn validator
 permalink:  /validators/isbn/
-path:       validators/isbn.html
 category:   validators
 comments:   true
 examples:   9971502100, 99921-58-10-7, 960 425 059 0, 99921-58-10-6, 9780306406157, 978-0-306-40615-7, 978 0 306 40615 7, 978-0-306-40615-6
@@ -11,6 +9,11 @@ related:
     - ean
     - issn
 ---
+
+<section class="doc-heading">
+    <h1><a href="/validators/">Validators</a> / isbn</h1>
+    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/validators/isbn.html"><i class="fa fa-github"></i> Edit on Github</a>
+</section>
 
 <section>
     <p>Validate an ISBN (International Standard Book Number). Support both ISBN 10 and ISBN 13.</p>
@@ -36,7 +39,7 @@ related:
 </section>
 
 <section id="example">
-    <h3>Example</h3>
+    <h2>Example</h2>
 
     <table class="table table-condensed">
         <thead>
@@ -111,6 +114,8 @@ $(document).ready(function() {
         </div>
     </div>
 </section>
+
+{% include related.html %}
 
 <script>
 $(document).ready(function() {

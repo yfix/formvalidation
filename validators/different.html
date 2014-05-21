@@ -1,14 +1,17 @@
 ---
 layout:     default
 title:      different validator
-headline:   different validator
 permalink:  /validators/different/
-path:       validators/different.html
 category:   validators
 comments:   true
 related:
     - identical
 ---
+
+<section class="doc-heading">
+    <h1><a href="/validators/">Validators</a> / different</h1>
+    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/validators/different.html"><i class="fa fa-github"></i> Edit on Github</a>
+</section>
 
 <section>
     <p>Return true if the input value is different with given field's value.</p>
@@ -40,7 +43,7 @@ related:
 </section>
 
 <sectiom id="example">
-    <h3>Example</h3>
+    <h2>Example</h2>
     <p>The registration form below doesn't allow the username and password to be the same:</p>
 
     <div class="doc-example">
@@ -121,6 +124,8 @@ $(document).ready(function() {
         </div>
     </div>
 </sectiom>
+
+{% include related.html %}
 
 <script>
 $(document).ready(function() {

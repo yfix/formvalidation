@@ -1,13 +1,16 @@
 ---
 layout:     default
 title:      Validate an US VIN (Vehicle Identification Number)
-headline:   vin validator
 permalink:  /validators/vin/
-path:       validators/vin.html
 category:   validators
 comments:   true
 examples:   1FAHP26W49G252740, 2FTRX07W53C371582, WP0CA29863U153381, JTMKF4DV5B5309254
 ---
+
+<section class="doc-heading">
+    <h1><a href="/validators/">Validators</a> / vin</h1>
+    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/validators/vin.html"><i class="fa fa-github"></i> Edit on Github</a>
+</section>
 
 <section>
     <p>Validate an US VIN (Vehicle Identification Number)</p>
@@ -33,7 +36,7 @@ examples:   1FAHP26W49G252740, 2FTRX07W53C371582, WP0CA29863U153381, JTMKF4DV5B5
 </section>
 
 <section id="example">
-    <h3>Example</h3>
+    <h2>Example</h2>
 
     <table class="table table-condensed">
         <thead>
@@ -52,7 +55,8 @@ examples:   1FAHP26W49G252740, 2FTRX07W53C371582, WP0CA29863U153381, JTMKF4DV5B5
             {% endfor %}
         </tbody>
     </table>
-    <p><a href="http://randomvin.com/">http://randomvin.com</a> helps you generate a random vin.</p>
+
+    <p class="doc-box-info"><a href="http://randomvin.com/">http://randomvin.com</a> helps you generate a random vin.</p>
 
     <div class="doc-example">
         <ul class="nav nav-tabs">
@@ -109,6 +113,8 @@ $(document).ready(function() {
         </div>
     </div>
 </section>
+
+{% include related.html %}
 
 <script>
 $(document).ready(function() {

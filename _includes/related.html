@@ -1,0 +1,12 @@
+{% if page.related %}
+<section id="related">
+    <h2>Related Validators</h2>
+
+    <p>The following validators might be useful to you:</p>
+    <ul>
+        {% for v in page.related %}
+        <li>&mdash; <a href="/validators/{{ v }}/">{{ v }}</a></li>
+        {% endfor %}
+    </ul>
+</section>
+{% endif %}

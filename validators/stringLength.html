@@ -1,14 +1,17 @@
 ---
 layout:     default
 title:      Validate length of a string
-headline:   stringLength validator
 permalink:  /validators/stringLength/
-path:       validators/stringLength.html
 category:   validators
 comments:   true
 related:
     - notEmpty
 ---
+
+<section class="doc-heading">
+    <h1><a href="/validators/">Validators</a> / stringLength</h1>
+    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/validators/stringLength.html"><i class="fa fa-github"></i> Edit on Github</a>
+</section>
 
 <section>
     <p>Validate the length of a string.</p>
@@ -47,7 +50,7 @@ related:
 </section>
 
 <section id="example">
-    <h3>Example</h3>
+    <h2>Example</h2>
 
     <p>In the following form, the <i>Full name</i> and <i>Bio</i> fields must be less than 80 and 200 characters respectively.</p>
 
@@ -127,6 +130,8 @@ $(document).ready(function() {
         </div>
     </div>
 </section>
+
+{% include related.html %}
 
 <script>
 $(document).ready(function() {

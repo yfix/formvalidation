@@ -1,9 +1,7 @@
 ---
 layout:     default
 title:      Validate a CVV number
-headline:   cvv validator
 permalink:  /validators/cvv/
-path:       validators/cvv.html
 category:   validators
 comments:   true
 related:
@@ -11,6 +9,11 @@ related:
     - iban
     - rtn
 ---
+
+<section class="doc-heading">
+    <h1><a href="/validators/">Validators</a> / cvv</h1>
+    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/validators/cvv.html"><i class="fa fa-github"></i> Edit on Github</a>
+</section>
 
 <section>
     <p>Validate a CVV number.</p>
@@ -45,7 +48,7 @@ related:
 </section>
 
 <section id="example">
-    <h3>Example</h3>
+    <h2>Example</h2>
 
     <p>The following form also validates the CVV number based on the credit card number.</p>
     <p>For testing purpose, you can copy and paste the fake credit card number from <a href="http://www.getcreditcardnumbers.com">http://www.getcreditcardnumbers.com</a>.</p>
@@ -127,6 +130,8 @@ $(document).ready(function() {
         </div>
     </div>
 </section>
+
+{% include related.html %}
 
 <script>
 $(document).ready(function() {

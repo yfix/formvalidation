@@ -1,12 +1,17 @@
 ---
 layout:     default
 title:      Validate a hex color
-headline:   hexColor validator
 permalink:  /validators/hexColor/
-path:       validators/hexColor.html
 category:   validators
 comments:   true
+related:
+    - regexp
 ---
+
+<section class="doc-heading">
+    <h1><a href="/validators/">Validators</a> / hexColor</h1>
+    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/validators/hexColor.html"><i class="fa fa-github"></i> Edit on Github</a>
+</section>
 
 <section>
     <p>Validate a hex color.</p>
@@ -32,7 +37,7 @@ comments:   true
 </section>
 
 <section id="example">
-    <h3>Example</h3>
+    <h2>Example</h2>
     <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#hexcolor-form-tab" data-toggle="tab">Try it</a></li>
@@ -90,7 +95,7 @@ $(document).ready(function() {
 </section>
 
 <section id="color-picker-example">
-    <h3>Color Picker example</h3>
+    <h2>Color Picker example</h2>
 
     <p>The following form uses a <a href="http://mjolnic.github.io/bootstrap-colorpicker/">Bootstrap Color Picker</a>.</p>
 
@@ -170,6 +175,8 @@ $(document).ready(function() {
         </div>
     </div>
 </section>
+
+{% include related.html %}
 
 <script src="/vendor/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 <script>

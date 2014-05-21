@@ -1,15 +1,13 @@
 ---
 layout:     default
-title:      Getting started
-headline:   Getting started
+title:      Getting Started
 permalink:  /getting-started/
-path:       getting-started.html
 category:   started
 comments:   true
 sections:
     - title:    Download
       anchor:   download
-    - title:    What's Included
+    - title:    What's Included?
       anchor:   whats-included
     - title:    Usage
       anchor:   usage
@@ -21,6 +19,11 @@ sections:
       anchor:   calling-plugin
 ---
 
+<section class="doc-heading">
+    <h1>Getting Started</h1>
+    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/getting-started.html"><i class="fa fa-github"></i> Edit on Github</a>
+</section>
+
 <!-- Download -->
 <section id="download">
     <h2>Download</h2>
@@ -30,12 +33,13 @@ sections:
         <div class="col-sm-4">
             <h3>Release</h3>
             <p>Including the plugin, its validator source and minified versions.<br />It should be used in the production site.</p>
-            <a class="btn btn-lg btn-primary" href="{{ site.download.dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download release']);">Download v{{ site.current_version }}</a>
+            <p><a class="btn btn-lg btn-primary" href="{{ site.download.dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download release']);"><i class="fa fa-download"></i> Download v{{ site.current_version }}</a></p>
+            <p><i>Released on {{ site.released_date }}</i></p>
         </div>
         <div class="col-sm-4">
             <h3>Source code</h3>
             <p>Including the source code, examples and building script. Download if you want to play with or develop new validators.</p>
-            <a class="btn btn-lg btn-primary" href="{{ site.download.tag }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download source</a>
+            <a class="btn btn-lg btn-primary" href="{{ site.download.tag }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);"><i class="fa fa-code"></i> Download source</a>
         </div>
         <div class="col-sm-4">
             <h3>Older versions</h3>

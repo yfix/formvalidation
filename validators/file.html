@@ -1,12 +1,15 @@
 ---
 layout:     default
 title:      Validate file
-headline:   file validator
 permalink:  /validators/file/
-path:       validators/file.html
 category:   validators
 comments:   true
 ---
+
+<section class="doc-heading">
+    <h1><a href="/validators/">Validators</a> / file</h1>
+    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/validators/file.html"><i class="fa fa-github"></i> Edit on Github</a>
+</section>
 
 <section>
     <p>Validate file.</p>
@@ -56,7 +59,7 @@ comments:   true
 </section>
 
 <section id="mime-types">
-    <h3>Popular MIME types</h3>
+    <h2>Popular MIME types</h2>
     <p>The following table shows popular MIME types. For other MIME type, you can refer to the <a href="https://www.sitepoint.com/web-foundations/mime-types-complete-list/">complete list</a>.</p>
 
     <table class="table table-condensed">
@@ -79,7 +82,7 @@ comments:   true
 </section>
 
 <section id="example">
-    <h3>Example</h3>
+    <h2>Example</h2>
 
     <p>The following form allows to upload JPEG, PNG image which is smaller than 2 MB in size.</p>
 
@@ -141,6 +144,8 @@ $(document).ready(function() {
         </div>
     </div>
 </section>
+
+{% include related.html %}
 
 <script>
 $(document).ready(function() {

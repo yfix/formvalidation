@@ -1,9 +1,7 @@
 ---
 layout:     default
 title:      Validate an International Bank Account Number (IBAN)
-headline:   iban validator
 permalink:  /validators/iban/
-path:       validators/iban.html
 category:   validators
 comments:   true
 related:
@@ -11,6 +9,11 @@ related:
     - cvv
     - rtn
 ---
+
+<section class="doc-heading">
+    <h1><a href="/validators/">Validators</a> / iban</h1>
+    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/validators/iban.html"><i class="fa fa-github"></i> Edit on Github</a>
+</section>
 
 <section>
     <p>Validate an International Bank Account Number (IBAN).</p>
@@ -69,7 +72,7 @@ related:
 </section>
 
 <section id="example">
-    <h3>Example</h3>
+    <h2>Example</h2>
 
     <div class="doc-example">
         <ul class="nav nav-tabs">
@@ -126,6 +129,8 @@ $(document).ready(function() {
         </div>
     </div>
 </section>
+
+{% include related.html %}
 
 <script>
 $(document).ready(function() {

@@ -1,14 +1,17 @@
 ---
 layout:     default
 title:      identical validator
-headline:   identical validator
 permalink:  /validators/identical/
-path:       validators/identical.html
 category:   validators
 comments:   true
 related:
     - different
 ---
+
+<section class="doc-heading">
+    <h1><a href="/validators/">Validators</a> / identical</h1>
+    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/validators/identical.html"><i class="fa fa-github"></i> Edit on Github</a>
+</section>
 
 <section>
     <p>Check if the value is the same as one of particular field.</p>
@@ -40,7 +43,7 @@ related:
 </section>
 
 <section id="example">
-    <h3>Example</h3>
+    <h2>Example</h2>
     <p>The following form requires the password and confirmation one to be the same using <code>identical</code> validator.</p>
 
     <div class="doc-example">
@@ -121,6 +124,8 @@ $(document).ready(function() {
         </div>
     </div>
 </section>
+
+{% include related.html %}
 
 <script>
 $(document).ready(function() {

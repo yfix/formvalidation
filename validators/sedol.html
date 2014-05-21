@@ -1,9 +1,7 @@
 ---
 layout:     default
 title:      Validate a SEDOL (Stock Exchange Daily Official List)
-headline:   sedol validator
 permalink:  /validators/sedol/
-path:       validators/sedol.html
 category:   validators
 comments:   true
 examples:   0263494, B0WNLY7
@@ -11,6 +9,11 @@ related:
     - cusip
     - isin
 ---
+
+<section class="doc-heading">
+    <h1><a href="/validators/">Validators</a> / sedol</h1>
+    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/validators/sedol.html"><i class="fa fa-github"></i> Edit on Github</a>
+</section>
 
 <section>
     <p>Validate a SEDOL (Stock Exchange Daily Official List).</p>
@@ -36,7 +39,7 @@ related:
 </section>
 
 <section id="example">
-    <h3>Example</h3>
+    <h2>Example</h2>
 
     <table class="table table-condensed">
         <thead>
@@ -111,6 +114,8 @@ $(document).ready(function() {
         </div>
     </div>
 </section>
+
+{% include related.html %}
 
 <script>
 $(document).ready(function() {

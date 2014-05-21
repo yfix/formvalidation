@@ -1,9 +1,7 @@
 ---
 layout:     default
 title:      Validate an ISSN (International Standard Serial Number)
-headline:   issn validator
 permalink:  /validators/issn/
-path:       validators/issn.html
 category:   validators
 comments:   true
 examples:   0378-5955, 0024-9319, 0032-1478, 0032-147X
@@ -11,6 +9,11 @@ related:
     - ean
     - isbn
 ---
+
+<section class="doc-heading">
+    <h1><a href="/validators/">Validators</a> / issn</h1>
+    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/validators/issn.html"><i class="fa fa-github"></i> Edit on Github</a>
+</section>
 
 <section>
     <p>Validate an ISSN (International Standard Serial Number).</p>
@@ -36,7 +39,7 @@ related:
 </section>
 
 <section id="example">
-    <h3>Example</h3>
+    <h2>Example</h2>
 
     <table class="table table-condensed">
         <thead>
@@ -111,6 +114,8 @@ $(document).ready(function() {
         </div>
     </div>
 </section>
+
+{% include related.html %}
 
 <script>
 $(document).ready(function() {

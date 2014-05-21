@@ -1,9 +1,7 @@
 ---
 layout:     default
 title:      Validate an EAN (International Article Number)
-headline:   ean validator
 permalink:  /validators/ean/
-path:       validators/ean.html
 category:   validators
 comments:   true
 examples:   73513537, 9780471117094, 4006381333931, 73513536
@@ -11,6 +9,11 @@ related:
     - isbn
     - issn
 ---
+
+<section class="doc-heading">
+    <h1><a href="/validators/">Validators</a> / ean</h1>
+    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/validators/ean.html"><i class="fa fa-github"></i> Edit on Github</a>
+</section>
 
 <section>
     <p>Validate an EAN (International Article Number).</p>
@@ -36,7 +39,7 @@ related:
 </section>
 
 <section id="example">
-    <h3>Example</h3>
+    <h2>Example</h2>
 
     <table class="table table-condensed">
         <thead>
@@ -111,6 +114,8 @@ $(document).ready(function() {
         </div>
     </div>
 </section>
+
+{% include related.html %}
 
 <script>
 $(document).ready(function() {
