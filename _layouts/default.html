@@ -186,14 +186,8 @@ $(document).ready(function() {
         dataType: 'jsonp',
         url: 'https://api.github.com/repos/nghuuphuoc/bootstrapvalidator',
         success: function(response) {
-            if (response) {
-                if (response.data.watchers_count) {
-                    $('#ghStars').html(parseInt(response.data.watchers_count));
-                }
-                if (response.data.forks_count) {
-                    $('#ghForks').html(parseInt(response.data.forks_count));
-                }
-            }
+            $('#ghStars').html(response && response.data.watchers_count ? parseInt(response.data.watchers_count) : '{{ site.github_watchers }}');
+            $('#ghForks').html(response && response.data.forks_count    ? parseInt(response.data.forks_count)    : '{{ site.github_forks }}');
         }
     });
 
@@ -202,9 +196,7 @@ $(document).ready(function() {
         dataType: 'jsonp',
         url: 'https://cdn.api.twitter.com/1/users/show.json?screen_name=bsvalidator',
         success: function(response) {
-            if (response && response.followers_count) {
-                $('#twFollowers').html(parseInt(response.followers_count));
-            }
+            $('#twFollowers').html(response && response.followers_count ? parseInt(response.followers_count) : '{{ site.twitter_followers }}');
         }
     });
 });
