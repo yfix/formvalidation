@@ -126,6 +126,32 @@ li {
 .doc-logo li a:hover {
   background: none;
 }
+.doc-hire-me {
+  border-top: 1px solid #16a085;
+  color: #1abc9c;
+  margin: 30px 40px;
+  padding-top: 10px;
+  position: relative;
+}
+.doc-hire-me img {
+  border-radius: 25px;
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: 50px;
+  height: 50px;
+}
+.doc-hire-me ul {
+  padding-left: 50px;
+  margin-bottom: 10px;
+}
+.doc-hire-me a {
+  color: #ecf0f1;
+}
+.doc-hire-me li a,
+.doc-hire-me li a:hover {
+  background: none;
+}
 .doc-wrapper {
   background: #f9f9f9;
   margin-left: 300px;
