@@ -1,10 +1,12 @@
 ---
-layout: validator
-title: Validate a GRId (Global Release Identifier)
-permalink: /validators/grid/
-categories: validators
-validator: grid
-examples: A12425GABC1234002M, A1-2425G-ABC1234002-M, A1 2425G ABC1234002 M, Grid:A1-2425G-ABC1234002-M, A1-2425G-ABC1234002-Q
+layout:     default
+title:      Validate a GRId (Global Release Identifier)
+headline:   grid validator
+permalink:  /validators/grid/
+path:       validators/grid.html
+category:   validators
+comments:   true
+examples:   A12425GABC1234002M, A1-2425G-ABC1234002-M, A1 2425G ABC1234002 M, Grid:A1-2425G-ABC1234002-M, A1-2425G-ABC1234002-Q
 related:
     - ismn
 ---
@@ -53,7 +55,7 @@ related:
         </tbody>
     </table>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#grid-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#grid-html-tab" data-toggle="tab">HTML</a></li>
@@ -95,7 +97,7 @@ $(document).ready(function() {
         fields: {
             grid: {
                 validators: {
-                    <span class="docs-code__note">grid: {
+                    <span class="doc-example-note">grid: {
                         message: 'The value is not valid GRId'
                     }</span>
                 }

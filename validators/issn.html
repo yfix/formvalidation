@@ -1,10 +1,12 @@
 ---
-layout: validator
-title: Validate an ISSN (International Standard Serial Number)
-permalink: /validators/issn/
-categories: validators
-validator: issn
-examples: 0378-5955, 0024-9319, 0032-1478, 0032-147X
+layout:     default
+title:      Validate an ISSN (International Standard Serial Number)
+headline:   issn validator
+permalink:  /validators/issn/
+path:       validators/issn.html
+category:   validators
+comments:   true
+examples:   0378-5955, 0024-9319, 0032-1478, 0032-147X
 related:
     - ean
     - isbn
@@ -54,7 +56,7 @@ related:
         </tbody>
     </table>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#issn-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#issn-html-tab" data-toggle="tab">HTML</a></li>
@@ -96,7 +98,7 @@ $(document).ready(function() {
         fields: {
             issn: {
                 validators: {
-                    <span class="docs-code__note">issn: {
+                    <span class="doc-example-note">issn: {
                         message: 'The value is not valid ISSN'
                     }</span>
                 }

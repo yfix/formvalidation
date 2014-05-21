@@ -1,9 +1,11 @@
 ---
-layout: validator
-title: different validator
-permalink: /validators/different/
-categories: validators
-validator: different
+layout:     default
+title:      different validator
+headline:   different validator
+permalink:  /validators/different/
+path:       validators/different.html
+category:   validators
+comments:   true
 related:
     - identical
 ---
@@ -41,7 +43,7 @@ related:
     <h3>Example</h3>
     <p>The registration form below doesn't allow the username and password to be the same:</p>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#different-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#different-html-tab" data-toggle="tab">HTML</a></li>
@@ -97,7 +99,7 @@ $(document).ready(function() {
         fields: {
             username: {
                 validators: {
-                    <span class="docs-code__note">different: {
+                    <span class="doc-example-note">different: {
                         field: 'password',
                         message: 'The username and password cannot be the same as each other'
                     }</span>
@@ -105,7 +107,7 @@ $(document).ready(function() {
             },
             password: {
                 validators: {
-                    <span class="docs-code__note">different: {
+                    <span class="doc-example-note">different: {
                         field: 'username',
                         message: 'The password cannot be the same as username'
                     }</span>

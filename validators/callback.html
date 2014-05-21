@@ -1,9 +1,11 @@
 ---
-layout: validator
-title: callback validator
-permalink: /validators/callback/
-categories: validators
-validator: callback
+layout:     default
+title:      callback validator
+headline:   callback validator
+permalink:  /validators/callback/
+path:       validators/callback.html
+category:   validators
+comments:   true
 ---
 
 <section>
@@ -49,7 +51,7 @@ validator: callback
 
     <p>In the following form, user is asked to enter a correct answer of simple operation which is generated randomly:</p>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#callback-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#callback-html-tab" data-toggle="tab">HTML</a></li>
@@ -99,7 +101,7 @@ $(document).ready(function() {
         fields: {
             captcha: {
                 validators: {
-                    <span class="docs-code__note">callback: {
+                    <span class="doc-example-note">callback: {
                         message: 'Wrong answer',
                         callback: function(value, validator) {
                             // Determine the numbers which are generated in captchaOperation

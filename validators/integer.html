@@ -1,9 +1,11 @@
 ---
-layout: validator
-title: Validate an integer number
-permalink: /validators/integer/
-categories: validators
-validator: integer
+layout:     default
+title:      Validate an integer number
+headline:   integer validator
+permalink:  /validators/integer/
+path:       validators/integer.html
+category:   validators
+comments:   true
 related:
     - digits
     - numeric
@@ -37,7 +39,7 @@ related:
 <section id="example">
     <h3>Example</h3>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#integer-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#integer-html-tab" data-toggle="tab">HTML</a></li>
@@ -80,7 +82,7 @@ $(document).ready(function() {
         fields: {
             number: {
                 validators: {
-                    <span class="docs-code__note">integer: {
+                    <span class="doc-example-note">integer: {
                         message: 'The value is not an integer'
                     }</span>
                 }
@@ -97,7 +99,7 @@ $(document).ready(function() {
         &lt;label class="col-lg-4 control-label">Type an integer number&lt;/label>
         &lt;div class="col-lg-3">
             &lt;input class="form-control" name="number"
-                <span class="docs-code__note">type="number" data-bv-integer-message="The value is not an integer"</span> />
+                <span class="doc-example-note">type="number" data-bv-integer-message="The value is not an integer"</span> />
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>

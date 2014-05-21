@@ -1,9 +1,11 @@
 ---
-layout: validator
-title: Validate a date
-permalink: /validators/date/
-categories: validators
-validator: date
+layout:     default
+title:      Validate a date
+headline:   date validator
+permalink:  /validators/date/
+path:       validators/date.html
+category:   validators
+comments:   true
 ---
 
 <section>
@@ -131,7 +133,7 @@ validator: date
     <h3>Example</h3>
     <p>The following form might be used in a profile setting page:</p>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#example-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#example-html-tab" data-toggle="tab">HTML</a></li>
@@ -175,7 +177,7 @@ $(document).ready(function() {
         fields: {
             birthday: {
                 validators: {
-                    <span class="docs-code__note">date: {
+                    <span class="doc-example-note">date: {
                         format: 'YYYY/DD/MM',
                         message: 'The value is not a valid date'
                     }</span>
@@ -203,7 +205,7 @@ $(document).ready(function() {
     }
     </style>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#datepicker-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#datepicker-html-tab" data-toggle="tab">HTML</a></li>
@@ -230,7 +232,7 @@ $(document).ready(function() {
                 <pre><code class="xml">&lt;!-- Required CSS -->
 &lt;link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 &lt;style type="text/css">
-<span class="docs-code__note">/* Override feedback icon position */
+<span class="doc-example-note">/* Override feedback icon position */
 .form-horizontal .has-feedback .input-group .form-control-feedback {
     top: 0;
     right: -30px;
@@ -270,7 +272,7 @@ $(document).ready(function() {
         fields: {
             meeting: {
                 validators: {
-                    <span class="docs-code__note">date: {
+                    <span class="doc-example-note">date: {
                         format: 'MM/DD/YYYY h:m A',
                         message: 'The value is not a valid date'
                     }</span>
@@ -286,7 +288,7 @@ $(document).ready(function() {
                 // Get the bootstrapValidator instance
                 .data('bootstrapValidator')
                 // Mark the field as not validated, so it'll be re-validated when the user change date
-                <span class="docs-code__note">.updateStatus('meeting', 'NOT_VALIDATED', null)
+                <span class="doc-example-note">.updateStatus('meeting', 'NOT_VALIDATED', null)
                 // Validate the field
                 .validateField('meeting');</span>
         });
@@ -302,7 +304,7 @@ $(document).ready(function() {
 
     <p>This example illustrates the ability of validating date in custom format by using the <a href="/validators/callback/">callback</a> validator and <a href="http://momentjs.com/">momentjs</a> to parse/validate.</p>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#custom-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#custom-html-tab" data-toggle="tab">HTML</a></li>
@@ -348,7 +350,7 @@ $(document).ready(function() {
         fields: {
             independenceDay: {
                 validators: {
-                    <span class="docs-code__note">callback: {
+                    <span class="doc-example-note">callback: {
                         message: 'Wrong answer',
                         callback: function(value, validator) {
                             var m = new moment(value, 'MMMM D', true);

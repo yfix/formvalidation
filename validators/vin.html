@@ -1,10 +1,12 @@
 ---
-layout: validator
-title: Validate an US VIN (Vehicle Identification Number)
-permalink: /validators/vin/
-categories: validators
-validator: vin
-examples: 1FAHP26W49G252740, 2FTRX07W53C371582, WP0CA29863U153381, JTMKF4DV5B5309254
+layout:     default
+title:      Validate an US VIN (Vehicle Identification Number)
+headline:   vin validator
+permalink:  /validators/vin/
+path:       validators/vin.html
+category:   validators
+comments:   true
+examples:   1FAHP26W49G252740, 2FTRX07W53C371582, WP0CA29863U153381, JTMKF4DV5B5309254
 ---
 
 <section>
@@ -52,7 +54,7 @@ examples: 1FAHP26W49G252740, 2FTRX07W53C371582, WP0CA29863U153381, JTMKF4DV5B530
     </table>
     <p><a href="http://randomvin.com/">http://randomvin.com</a> helps you generate a random vin.</p>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#vin-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#vin-html-tab" data-toggle="tab">HTML</a></li>
@@ -94,7 +96,7 @@ $(document).ready(function() {
         fields: {
             vin: {
                 validators: {
-                    <span class="docs-code__note">vin: {
+                    <span class="doc-example-note">vin: {
                         message: 'The VIN number is not valid'
                     }</span>
                 }

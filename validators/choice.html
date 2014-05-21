@@ -1,9 +1,11 @@
 ---
-layout: validator
-title: choice validator
-permalink: /validators/choice/
-categories: validators
-validator: choice
+layout:     default
+title:      choice validator
+headline:   choice validator
+permalink:  /validators/choice/
+path:       validators/choice.html
+category:   validators
+comments:   true
 ---
 
 <section>
@@ -46,7 +48,7 @@ validator: choice
 
     <p>The following form asks a developer to choose 2-4 programming languages which he/she is good at:</p>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#choice-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#choice-html-tab" data-toggle="tab">HTML</a></li>
@@ -171,7 +173,7 @@ validator: choice
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Editors&lt;/label>
         &lt;div class="col-lg-4">
-            &lt;select class="form-control" <span class="docs-code__note">name="editors[]" multiple="multiple"</span> style="height: 200px;">
+            &lt;select class="form-control" <span class="doc-example-note">name="editors[]" multiple="multiple"</span> style="height: 200px;">
                 &lt;option value="" disabled>Choose 2 - 3 editors&lt;/option>
                 &lt;option value="atom">Atom&lt;/option>
                 &lt;option value="eclipse">Eclipse&lt;/option>
@@ -198,7 +200,7 @@ $(document).ready(function() {
         fields: {
             'languages[]': {
                 validators: {
-                    <span class="docs-code__note">choice: {
+                    <span class="doc-example-note">choice: {
                         min: 2,
                         max: 4,
                         message: 'Please choose 2 - 4 programming languages you are good at'
@@ -207,7 +209,7 @@ $(document).ready(function() {
             },
             'editors[]': {
                 validators: {
-                    <span class="docs-code__note">choice: {
+                    <span class="doc-example-note">choice: {
                         min: 2,
                         max: 3,
                         message: 'Please choose 2 - 3 editors you use most'

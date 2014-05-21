@@ -1,9 +1,11 @@
 ---
-layout: validator
-title: Validate a hex color
-permalink: /validators/hexColor/
-categories: validators
-validator: hexColor
+layout:     default
+title:      Validate a hex color
+headline:   hexColor validator
+permalink:  /validators/hexColor/
+path:       validators/hexColor.html
+category:   validators
+comments:   true
 ---
 
 <section>
@@ -31,7 +33,7 @@ validator: hexColor
 
 <section id="example">
     <h3>Example</h3>
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#hexcolor-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#hexcolor-html-tab" data-toggle="tab">HTML</a></li>
@@ -73,7 +75,7 @@ $(document).ready(function() {
         fields: {
             color: {
                 validators: {
-                    <span class="docs-code__note">hexColor: {
+                    <span class="doc-example-note">hexColor: {
                         message: 'The color code is not valid'
                     }</span>
                 }
@@ -96,7 +98,7 @@ $(document).ready(function() {
 
     <link href="/vendor/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet" />
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#colorpicker-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#colorpicker-html-tab" data-toggle="tab">HTML</a></li>
@@ -145,7 +147,7 @@ $(document).ready(function() {
         fields: {
             color: {
                 validators: {
-                    <span class="docs-code__note">hexColor: {
+                    <span class="doc-example-note">hexColor: {
                         message: 'The color code is not valid'
                     }</span>
                 }
@@ -157,7 +159,7 @@ $(document).ready(function() {
         .colorpicker()
         .on('showPicker changeColor', function(e) {
             // Re-validate the color when user choose a color from the color picker
-            <span class="docs-code__note">$('#colorPickerForm')
+            <span class="doc-example-note">$('#colorPickerForm')
                 .data('bootstrapValidator')                 // Get BootstrapValidator instance
                 .updateStatus('color', 'NOT_VALIDATED',)    // Set the color as not validated yet
                 .validateField('color');                    // and validate the color</span>

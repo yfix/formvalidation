@@ -1,15 +1,202 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {% include head.html %}
-</head>
-<body>
-    {% include header.html %}
+    <meta charset="utf-8">
+    <title>{{ page.title }} - {{ site.name }}</title>
 
-    <div class="docs-content">
-        {{ content }}
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="BootstrapValidator, a jQuery plugin to validate form fields">
+    <meta name="keywords" content="Bootstrap, jQuery, validate, plugin, validator, form">
+    <meta name="author" content="Nguyen Huu Phuoc">
+    <meta name="google-site-verification" content="uzi08FxE8yqb9q-PlBzFxZeuUGalNFp3gX2haopVWBc" />
+
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrapvalidator/css/bootstrapValidator.min.css">
+    <link rel="stylesheet" href="/vendor/highlight/styles/github.css">
+    <link rel="stylesheet" href="/asset/css/style.css">
+
+    <!--[if lt IE 9]>
+    <script src="/vendor/html5shiv/html5shiv.min.js"></script>
+    <script src="/vendor/respond/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/vendor/jquery/jquery-1.10.2.min.js"></script>
+    {% if site.ga_code %}
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', '{{ site.ga_code }}']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+    {% endif %}
+</head>
+<body class="doc-body">
+    <div class="doc-container">
+        <nav class="doc-nav">
+            <div class="doc-logo">
+                <a href="/">BootstrapValidator</a>
+                <ul>
+                    <li><a href="{{ site.repository.source }}"><i class="fa fa-2x fa-github"></i> <span id="ghStars"></span></a></li>
+                    <li><a href="{{ site.repository.source }}"><i class="fa fa-2x fa-code-fork"></i> <span id="ghForks"></span></a></li>
+                    <li><a href="https://twitter.com/bsvalidator"><i class="fa fa-2x fa-twitter"></i> <span id="twFollowers"></span></a></li>
+                </ul>
+            </div>
+
+            <ul>
+                {% for nav in site.data.nav %}
+                    {% if page.category == nav.category %}
+                        {% assign c = "doc-nav-active" %}
+                    {% else %}
+                        {% assign c = "" %}
+                    {% endif %}
+                    <li class="{{ c }}">
+                        <a href="{{ nav.permalink }}">{{ nav.title }}</a>
+                        {% if c == "doc-nav-active" %}
+                            {% assign sections = include.sections %}
+                            <ul>
+                            {% for section in page.sections %}
+                                <li><a href="#{{ section.anchor }}">{{ section.title }}</a></li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+
+        <section class="doc-wrapper">
+            <div class="doc-content">
+                <div class="doc-heading">
+                    <h1>{{ page.headline }}</h1>
+                    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/{{ page.path }}"><i class="fa fa-github"></i> Edit on Github</a>
+                </div>
+
+                {{ content }}
+
+                <!-- Disqus comment -->
+                {% if page.comments %}
+                <section id="comments">
+                    <div class="doc-comments">
+                        <h2>Comments</h2>
+                        <p>If you want to report a bug, please <a href="{{ site.repository.source }}/issues?state=open">Submit Issue</a>. For a general question or feedback, use the form below.</p>
+
+                        <div id="disqus_thread"></div>
+                        <script type="text/javascript">
+                        var disqus_shortname = '{{ site.disqus }}';
+                        (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                        </script>
+                    </div>
+                </section>
+                {% endif %}
+
+                <!-- Footer -->
+                <footer class="doc-footer">
+                    <ul>
+                        <li><iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=nghuuphuoc&amp;repo=bootstrapvalidator&amp;type=watch&amp;count=true" width="100" height="20" title="Star on GitHub"></iframe></li>
+                        <li><iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=nghuuphuoc&amp;repo=bootstrapvalidator&amp;type=fork&amp;count=true" width="102" height="20" title="Fork on GitHub"></iframe></li>
+                    </ul>
+
+                    <ul>
+                        <li><a href="https://twitter.com/nghuuphuoc" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @nghuuphuoc</a></li>
+                        <li><a href="https://twitter.com/bsvalidator" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @bsvalidator</a></li>
+                        <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ site.url }}" data-count="horizontal" data-via="bsvalidator" data-related="nghuuphuoc:Creator of BootstrapValidator">Tweet</a></li>
+                    </ul>
+
+                    <p>
+                        Developed with <i class="fa fa-heart"></i> by <a href="http://twitter.com/nghuuphuoc">@nghuuphuoc</a> and contributors.<br/>
+                        Code licensed under <a href="http://opensource.org/licenses/mit-license.html">MIT</a>, documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.<br/>
+                        This site is powered by <a href="http://jekyllrb.com">Jekyll</a>, and proudly hosted by <a href="https://github.com/">Github</a>.
+                    </p>
+
+                    <ul>
+                        <li><a href="{{ site.repository.source }}">Github</a></li>
+                        <li>&middot;</li>
+                        <li><a href="{{ site.repository.source }}/issues?state=open">Issues</a></li>
+                        <li>&middot;</li>
+                        <li><a href="{{ site.repository.source }}/blob/master/CHANGELOG.md">Change Log</a></li>
+                        <li>&middot;</li>
+                        <li><a href="{{ site.repository.source }}/releases">Releases</a></li>
+                        <li>&middot;</li>
+                        <li><a href="{{ site.jquery_plugin_url }}">jQuery Plugin Page</a></li>
+                    </ul>
+                </footer>
+            </div>
+
+            <!-- Ads -->
+            <div class="doc-ads">
+                <div id="carbonads-container">
+                    <div class="carbonad">
+                        <div id="azcarbon"></div>
+                        <script type="text/javascript">
+                        var z = document.createElement("script");
+                        z.type = "text/javascript";
+                        z.async = true;
+                        z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";
+                        var s = document.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(z, s);
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+        </section>
     </div>
 
-    {% include footer.html %}
+<script src="/vendor/highlight/highlight.pack.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/vendor/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
+<script>
+window.twttr = (function(d,s,id) {
+    var t, js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return; js=d.createElement(s); js.id=id; js.async=1;
+    js.src='https://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs);
+    return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+}(document, 'script', 'twitter-wjs'));
+
+$(document).ready(function() {
+    // Highlight sample code
+    hljs.initHighlightingOnLoad();
+
+    // Show the number of Github stars/forks
+    $.ajax({
+        dataType: 'jsonp',
+        url: 'https://api.github.com/repos/nghuuphuoc/bootstrapvalidator',
+        success: function(response) {
+            if (response) {
+                if (response.data.watchers_count) {
+                    $('#ghStars').html(parseInt(response.data.watchers_count));
+                }
+                if (response.data.forks_count) {
+                    $('#ghForks').html(parseInt(response.data.forks_count));
+                }
+            }
+        }
+    });
+
+    // Show the number of Twitter followers
+    $.ajax({
+        dataType: 'jsonp',
+        url: 'https://cdn.api.twitter.com/1/users/show.json?screen_name=bsvalidator',
+        success: function(response) {
+            if (response && response.followers_count) {
+                $('#twFollowers').html(parseInt(response.followers_count));
+            }
+        }
+    });
+});
+</script>
 </body>
 </html>

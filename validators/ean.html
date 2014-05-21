@@ -1,10 +1,12 @@
 ---
-layout: validator
-title: Validate an EAN (International Article Number)
-permalink: /validators/ean/
-categories: validators
-validator: ean
-examples: 73513537, 9780471117094, 4006381333931, 73513536
+layout:     default
+title:      Validate an EAN (International Article Number)
+headline:   ean validator
+permalink:  /validators/ean/
+path:       validators/ean.html
+category:   validators
+comments:   true
+examples:   73513537, 9780471117094, 4006381333931, 73513536
 related:
     - isbn
     - issn
@@ -54,7 +56,7 @@ related:
         </tbody>
     </table>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#ean-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#ean-html-tab" data-toggle="tab">HTML</a></li>
@@ -96,7 +98,7 @@ $(document).ready(function() {
         fields: {
             ean: {
                 validators: {
-                    <span class="docs-code__note">ean: {
+                    <span class="doc-example-note">ean: {
                         message: 'The value is not valid EAN'
                     }</span>
                 }

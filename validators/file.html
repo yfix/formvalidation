@@ -1,9 +1,11 @@
 ---
-layout: validator
-title: Validate file
-permalink: /validators/file/
-categories: validators
-validator: file
+layout:     default
+title:      Validate file
+headline:   file validator
+permalink:  /validators/file/
+path:       validators/file.html
+category:   validators
+comments:   true
 ---
 
 <section>
@@ -81,7 +83,7 @@ validator: file
 
     <p>The following form allows to upload JPEG, PNG image which is smaller than 2 MB in size.</p>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#file-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#file-html-tab" data-toggle="tab">HTML</a></li>
@@ -101,7 +103,7 @@ validator: file
             </div>
 
             <div class="tab-pane" id="file-html-tab">
-                <pre><code class="xml">&lt;form id="uploadForm" class="form-horizontal" <span class="docs-code__note">enctype="multipart/form-data"</span>>
+                <pre><code class="xml">&lt;form id="uploadForm" class="form-horizontal" <span class="doc-example-note">enctype="multipart/form-data"</span>>
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Avatar&lt;/label>
         &lt;div class="col-lg-4">
@@ -123,7 +125,7 @@ $(document).ready(function() {
         fields: {
             avatar: {
                 validators: {
-                    <span class="docs-code__note">file: {
+                    <span class="doc-example-note">file: {
                         extension: 'jpeg,png',
                         type: 'image/jpeg,image/png',
                         maxSize: 2048 * 1024,   // 2 MB

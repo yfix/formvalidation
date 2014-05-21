@@ -1,9 +1,11 @@
 ---
-layout: validator
-title: regexp validator
-permalink: /validators/regexp/
-categories: validators
-validator: regexp
+layout:     default
+title:      regexp validator
+headline:   regexp validator
+permalink:  /validators/regexp/
+path:       validators/regexp.html
+category:   validators
+comments:   true
 ---
 
 <section>
@@ -39,7 +41,7 @@ validator: regexp
     <h3>Example</h3>
     <p>In the following form, user is asked to enter the full name which alphabetical characters and spaces only.</p>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#regexp-form-tab" data-toggle="tab">Form</a></li>
             <li><a href="#regexp-html-tab" data-toggle="tab">HTML</a></li>
@@ -82,7 +84,7 @@ $(document).ready(function() {
         fields: {
             fullName: {
                 validators: {
-                    <span class="docs-code__note">regexp: {
+                    <span class="doc-example-note">regexp: {
                         regexp: /^[a-z\s]+$/i,
                         message: 'The full name can consist of alphabetical characters and spaces only'
                     }</span>
@@ -100,7 +102,7 @@ $(document).ready(function() {
         &lt;label class="col-lg-3 control-label">Full name&lt;/label>
         &lt;div class="col-lg-4">
             &lt;input type="text" class="form-control" name="fullName"
-                <span class="docs-code__note">pattern="^[a-z\s]+$"
+                <span class="doc-example-note">pattern="^[a-z\s]+$"
                 data-bv-regexp-message="The full name can consist of alphabetical characters and spaces only"</span> />
         &lt;/div>
     &lt;/div>

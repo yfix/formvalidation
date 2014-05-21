@@ -1,9 +1,11 @@
 ---
-layout: validator
-title: notEmpty validator
-permalink: /validators/notEmpty/
-categories: validators
-validator: notEmpty
+layout:     default
+title:      notEmpty validator
+headline:   notEmpty validator
+permalink:  /validators/notEmpty/
+path:       validators/notEmpty.html
+category:   validators
+comments:   true
 related:
     - stringLength
 ---
@@ -37,7 +39,7 @@ related:
     <h3>Example</h3>
     <p>In the following form, user is asked to enter the full name which alphabetical characters and spaces only.</p>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#notempty-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#notempty-html-tab" data-toggle="tab">HTML</a></li>
@@ -80,7 +82,7 @@ $(document).ready(function() {
         fields: {
             fullName: {
                 validators: {
-                    <span class="docs-code__note">notEmpty: {
+                    <span class="doc-example-note">notEmpty: {
                         message: 'The full name is required'
                     }</span>
                 }
@@ -97,7 +99,7 @@ $(document).ready(function() {
         &lt;label class="col-lg-3 control-label">Full name&lt;/label>
         &lt;div class="col-lg-4">
             &lt;input type="text" class="form-control" name="fullName"
-                <span class="docs-code__note">required data-bv-notempty-message="The full name is required"</span> />
+                <span class="doc-example-note">required data-bv-notempty-message="The full name is required"</span> />
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>

@@ -1,13 +1,11 @@
 ---
-layout: validator
-title: Validate a credit card number
-permalink: /validators/creditCard/
-categories: validators
-validator: creditCard
-related:
-    - cvv
-    - iban
-    - rtn
+layout:     default
+title:      Validate a credit card number
+headline:   creditCard validator
+permalink:  /validators/creditCard/
+path:       validators/creditCard.html
+category:   validators
+comments:   true
 ---
 
 <section>
@@ -107,7 +105,7 @@ related:
 <section id="example">
     <h3>Example</h3>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#cc-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#cc-html-tab" data-toggle="tab">HTML</a></li>
@@ -149,7 +147,7 @@ $(document).ready(function() {
         fields: {
             cc: {
                 validators: {
-                    <span class="docs-code__note">creditCard: {
+                    <span class="doc-example-note">creditCard: {
                         message: 'The credit card number is not valid'
                     }</span>
                 }

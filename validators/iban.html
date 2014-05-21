@@ -1,9 +1,11 @@
 ---
-layout: validator
-title: Validate an International Bank Account Number (IBAN)
-permalink: /validators/iban/
-categories: validators
-validator: iban
+layout:     default
+title:      Validate an International Bank Account Number (IBAN)
+headline:   iban validator
+permalink:  /validators/iban/
+path:       validators/iban.html
+category:   validators
+comments:   true
 related:
     - creditCard
     - cvv
@@ -69,7 +71,7 @@ related:
 <section id="example">
     <h3>Example</h3>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#iban-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#iban-html-tab" data-toggle="tab">HTML</a></li>
@@ -111,7 +113,7 @@ $(document).ready(function() {
         fields: {
             iban: {
                 validators: {
-                    <span class="docs-code__note">iban: {
+                    <span class="doc-example-note">iban: {
                         message: 'The value is not valid IBAN'
                     }</span>
                 }

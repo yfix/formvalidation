@@ -1,9 +1,11 @@
 ---
-layout: validator
-title: Validate identification number
-permalink: /validators/id/
-categories: validators
-validator: id
+layout:     default
+title:      Validate identification number
+headline:   id validator
+permalink:  /validators/id/
+path:       validators/id.html
+category:   validators
+comments:   true
 related:
     - vat
 ---
@@ -75,7 +77,7 @@ related:
 <section id="example">
     <h3>Example</h3>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#id-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#id-html-tab" data-toggle="tab">HTML</a></li>
@@ -131,7 +133,7 @@ $(document).ready(function() {
     $('#idForm')
         .on('change', 'select[name="country"]', function() {
             // Set the country option
-            <span class="docs-code__note">var validator = $('#idForm').data('bootstrapValidator');
+            <span class="doc-example-note">var validator = $('#idForm').data('bootstrapValidator');
             validator.options.fields['id'].validators.id.country = $(this).val();
             validator.updateStatus('id', 'NOT_VALIDATED');</span>
         })
@@ -144,7 +146,7 @@ $(document).ready(function() {
             fields: {
                 id: {
                     validators: {
-                        <span class="docs-code__note">id: {
+                        <span class="doc-example-note">id: {
                             country: '{{ data[2] }}',
                             message: 'The ID is not valid'
                         }</span>

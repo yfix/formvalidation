@@ -1,10 +1,12 @@
 ---
-layout: validator
-title: Validate a RTN (Routing transit number)
-permalink: /validators/rtn/
-categories: validators
-validator: rtn
-examples: 011103093, 067014822, 211274450, 211370545, 054001725, 011400071, 031201360, 026013673, 021302567, 053902197, 036001808, 011600033
+layout:     default
+title:      Validate a RTN (Routing transit number)
+headline:   rtn validator
+permalink:  /validators/rtn/
+path:       validators/rtn.html
+category:   validators
+comments:   true
+examples:   011103093, 067014822, 211274450, 211370545, 054001725, 011400071, 031201360, 026013673, 021302567, 053902197, 036001808, 011600033
 related:
     - creditCard
     - cvv
@@ -55,7 +57,7 @@ related:
         </tbody>
     </table>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#rtn-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#rtn-html-tab" data-toggle="tab">HTML</a></li>
@@ -97,7 +99,7 @@ $(document).ready(function() {
         fields: {
             rtn: {
                 validators: {
-                    <span class="docs-code__note">rtn: {
+                    <span class="doc-example-note">rtn: {
                         message: 'The value is not valid RTN'
                     }</span>
                 }

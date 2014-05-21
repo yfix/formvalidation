@@ -1,9 +1,11 @@
 ---
-layout: validator
-title: remote validator
-permalink: /validators/remote/
-categories: validators
-validator: remote
+layout:     default
+title:      remote validator
+headline:   remote validator
+permalink:  /validators/remote/
+path:       validators/remote.html
+category:   validators
+comments:   true
 ---
 
 <section>
@@ -61,7 +63,7 @@ validator: remote
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Email&lt;/label>
         &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" <span class="docs-code__note">name="login" data-bv-remote-name="email"</span> />
+            &lt;input type="text" class="form-control" <span class="doc-example-note">name="login" data-bv-remote-name="email"</span> />
         &lt;/div>
     &lt;/div>
 &lt;/form>
@@ -71,7 +73,7 @@ validator: remote
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Email&lt;/label>
         &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" <span class="docs-code__note">name="email" data-bv-remote-name="email"</span> />
+            &lt;input type="text" class="form-control" <span class="doc-example-note">name="email" data-bv-remote-name="email"</span> />
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
@@ -82,13 +84,13 @@ validator: remote
         &lt;label class="col-lg-3 control-label">Primary email&lt;/label>
         &lt;div class="col-lg-5">
             &lt;input type="text" class="form-control"
-                <span class="docs-code__note">name="primary_email" data-bv-remote-name="email"</span> />
+                <span class="doc-example-note">name="primary_email" data-bv-remote-name="email"</span> />
         &lt;/div>
 
         &lt;label class="col-lg-3 control-label">Secondary email&lt;/label>
         &lt;div class="col-lg-5">
             &lt;input type="text" class="form-control"
-                <span class="docs-code__note">name="secondary_email" data-bv-remote-name="email"</span> />
+                <span class="doc-example-note">name="secondary_email" data-bv-remote-name="email"</span> />
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
@@ -100,7 +102,7 @@ validator: remote
     <p>In some cases, you might want to send more fields with dynamic values to the back-end. For instance, the registration form need to validate both the username and emails.</p>
 
     <p>The following sample code uses the <code>data</code> option showing how to do this:</p>
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#data-html-tab" data-toggle="tab">HTML</a></li>
             <li><a href="#data-js-tab" data-toggle="tab">JS</a></li>
@@ -140,7 +142,7 @@ $(document).ready(function() {
                 validators: {
                     remote: {
                         url: '/path/to/backend/',
-                        <span class="docs-code__note">data: function(validator) {
+                        <span class="doc-example-note">data: function(validator) {
                             return {
                                 email: validator.getFieldElements('email').val()
                             };
@@ -153,7 +155,7 @@ $(document).ready(function() {
                 validators: {
                     remote: {
                         url: '/path/to/backend/',
-                        <span class="docs-code__note">data: function(validator) {
+                        <span class="doc-example-note">data: function(validator) {
                             return {
                                 username: validator.getFieldElements('username').val()
                             };

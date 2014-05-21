@@ -1,10 +1,12 @@
 ---
-layout: validator
-title: Validate an IMEI (International Mobile Station Equipment Identity)
-permalink: /validators/imei/
-categories: validators
-validator: imei
-examples: 35-209900-176148-1, 35-209900-176148-23, 3568680000414120, 490154203237518, 490154203237517
+layout:     default
+title:      Validate an IMEI (International Mobile Station Equipment Identity)
+headline:   imei validator
+permalink:  /validators/imei/
+path:       validators/imei.html
+category:   validators
+comments:   true
+examples:   35-209900-176148-1, 35-209900-176148-23, 3568680000414120, 490154203237518, 490154203237517
 ---
 
 <section>
@@ -51,7 +53,7 @@ examples: 35-209900-176148-1, 35-209900-176148-23, 3568680000414120, 49015420323
         </tbody>
     </table>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#imei-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#imei-html-tab" data-toggle="tab">HTML</a></li>
@@ -93,7 +95,7 @@ $(document).ready(function() {
         fields: {
             imei: {
                 validators: {
-                    <span class="docs-code__note">imei: {
+                    <span class="doc-example-note">imei: {
                         message: 'The value is not valid IMEI'
                     }</span>
                 }

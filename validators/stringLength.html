@@ -1,9 +1,11 @@
 ---
-layout: validator
-title: Validate length of a string
-permalink: /validators/stringLength/
-categories: validators
-validator: stringLength
+layout:     default
+title:      Validate length of a string
+headline:   stringLength validator
+permalink:  /validators/stringLength/
+path:       validators/stringLength.html
+category:   validators
+comments:   true
 related:
     - notEmpty
 ---
@@ -49,7 +51,7 @@ related:
 
     <p>In the following form, the <i>Full name</i> and <i>Bio</i> fields must be less than 80 and 200 characters respectively.</p>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#stringlength-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#stringlength-html-tab" data-toggle="tab">HTML</a></li>
@@ -103,7 +105,7 @@ $(document).ready(function() {
         fields: {
             fullName: {
                 validators: {
-                    <span class="docs-code__note">stringLength: {
+                    <span class="doc-example-note">stringLength: {
                         max: 50,
                         message: 'The full name must be less than 50 characters'
                     }</span>
@@ -111,7 +113,7 @@ $(document).ready(function() {
             },
             bio: {
                 validators: {
-                    <span class="docs-code__note">stringLength: {
+                    <span class="doc-example-note">stringLength: {
                         max: 250,
                         message: 'The bio must be less than 200 characters'
                     }</span>

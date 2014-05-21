@@ -1,10 +1,12 @@
 ---
-layout: validator
-title: Validate an ISMN (International Standard Music Number)
-permalink: /validators/ismn/
-categories: validators
-validator: ismn
-examples: M230671187, 979-0-0601-1561-5, 979 0 3452 4680 5, 9790060115615, 9790060115614
+layout:     default
+title:      Validate an ISMN (International Standard Music Number)
+headline:   ismn validator
+permalink:  /validators/ismn/
+path:       validators/ismn.html
+category:   validators
+comments:   true
+examples:   M230671187, 979-0-0601-1561-5, 979 0 3452 4680 5, 9790060115615, 9790060115614
 related:
     - grid
 ---
@@ -53,7 +55,7 @@ related:
         </tbody>
     </table>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#ismn-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#ismn-html-tab" data-toggle="tab">HTML</a></li>
@@ -95,7 +97,7 @@ $(document).ready(function() {
         fields: {
             ismn: {
                 validators: {
-                    <span class="docs-code__note">ismn: {
+                    <span class="doc-example-note">ismn: {
                         message: 'The value is not valid ISMN'
                     }</span>
                 }

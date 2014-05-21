@@ -1,9 +1,11 @@
 ---
-layout: validator
-title: Validate a CVV number
-permalink: /validators/cvv/
-categories: validators
-validator: cvv
+layout:     default
+title:      Validate a CVV number
+headline:   cvv validator
+permalink:  /validators/cvv/
+path:       validators/cvv.html
+category:   validators
+comments:   true
 related:
     - creditCard
     - iban
@@ -48,7 +50,7 @@ related:
     <p>The following form also validates the CVV number based on the credit card number.</p>
     <p>For testing purpose, you can copy and paste the fake credit card number from <a href="http://www.getcreditcardnumbers.com">http://www.getcreditcardnumbers.com</a>.</p>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#cvv-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#cvv-html-tab" data-toggle="tab">HTML</a></li>
@@ -111,7 +113,7 @@ $(document).ready(function() {
             },
             cvvNumber: {
                 validators: {
-                    <span class="docs-code__note">cvv: {
+                    <span class="doc-example-note">cvv: {
                         creditCardField: 'ccNumber',
                         message: 'The CVV number is not valid'
                     }</span>

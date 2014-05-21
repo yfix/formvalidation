@@ -1,9 +1,11 @@
 ---
-layout: validator
-title: stringCase validator
-permalink: /validators/stringCase/
-categories: validators
-validator: stringCase
+layout:     default
+title:      stringCase validator
+headline:   stringCase validator
+permalink:  /validators/stringCase/
+path:       validators/stringCase.html
+category:   validators
+comments:   true
 ---
 
 <section>
@@ -42,7 +44,7 @@ validator: stringCase
     <h3>Example</h3>
     <p>The following form asks user to enter a credit card holder in uppercase:</p>
 
-    <div class="docs-example">
+    <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#stringcase-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#stringcase-html-tab" data-toggle="tab">HTML</a></li>
@@ -87,7 +89,7 @@ $(document).ready(function() {
                     // Since case is a Javascript keyword,
                     // you should place it between quotes (like 'case' or "case")
                     // to make it work in all browsers
-                    <span class="docs-code__note">stringCase: {
+                    <span class="doc-example-note">stringCase: {
                         message: 'The card holder must be in uppercase',
                         'case': 'upper'
                     }</span>

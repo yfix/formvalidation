@@ -1,8 +1,24 @@
 ---
-layout: page
-title: Examples
-permalink: /examples/
-slug: examples
+layout:     default
+title:      Examples
+headline:   Examples
+permalink:  /examples/
+path:       examples.html
+category:   examples
+comments:   true
+sections:
+    - title:    Attribute
+      anchor:   attribute
+    - title:    HTML 5
+      anchor:   html5
+    - title:    Toggling
+      anchor:   toggling
+    - title:    Tabs
+      anchor:   tab
+    - title:    Fields with Same Name
+      anchor:   fields-with-same-name
+    - title:    Compatibility
+      anchor:   compatibility
 ---
 
 <link rel="stylesheet" href="/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css" />
@@ -27,37 +43,34 @@ slug: examples
 }
 </style>
 
-<h1>Examples</h1>
+<!-- Attribute -->
+<section id="attribute">
+    <h2>Attribute</h2>
 
-<div class="row">
-    <div class="col-md-9">
-        <section id="attribute">
-            <h2>Attribute</h2>
+    <p>This example illustrates the ability of setting validator options via HTML attributes.</p>
 
-            <p>This example illustrates the ability of setting validator options via HTML attributes.</p>
+    <p>In order to set a specific validator to given field, you have to declare additional attributes for the field. For example:</p>
 
-            <p>In order to set a specific validator to given field, you have to declare additional attributes for the field. For example:</p>
+    <pre><code class="xml">&lt;input
+data-bv-{validatorname}
+data-bv-{validatorname}-{validatoroption}="..." /></code></pre>
 
-            <pre><code class="xml">&lt;input
-    data-bv-{validatorname}
-    data-bv-{validatorname}-{validatoroption}="..." /></code></pre>
+    <p>Here are some important points when setting the attributes for field:</p>
 
-            <p>Here are some important points when setting the attributes for field:</p>
+    <ul>
+        <li><code>{validatorname}</code> and <code>{validatoroption}</code> must be lowercase.</li>
+        <li>Set <code>data-bv-{validatorname}</code> or <code>data-bv-{validatorname}="true"</code> to enable particular validator for field.<br/>Set <code>data-bv-{validatorname}="false"</code> to disable the validator.</li>
+        <li>There are some validators which not all options are configurable via HTML attribute. Refer to each validator documentation to see exactly the equivalent HTML attribute for each option.</li>
+    </ul>
 
-            <ul>
-                <li><code>{validatorname}</code> and <code>{validatoroption}</code> must be lowercase.</li>
-                <li>Set <code>data-bv-{validatorname}</code> or <code>data-bv-{validatorname}="true"</code> to enable particular validator for field.<br/>Set <code>data-bv-{validatorname}="false"</code> to disable the validator.</li>
-                <li>There are some validators which not all options are configurable via HTML attribute. Refer to each validator documentation to see exactly the equivalent HTML attribute for each option.</li>
-            </ul>
-
-            <p>If there are multiple elements having the same name, you just need to set the HTML attribute to one of them. For example:</p>
-            <pre><code class="xml">&lt;div class="form-group">
+    <p>If there are multiple elements having the same name, you just need to set the HTML attribute to one of them. For example:</p>
+    <pre><code class="xml">&lt;div class="form-group">
     &lt;label class="col-lg-3 control-label">Gender&lt;/label>
     &lt;div class="col-lg-5">
         &lt;div class="radio">
             &lt;label>
                 &lt;input type="radio" name="gender" value="male"
-                    <span class="docs-code__note">data-bv-notempty data-bv-notempty-message="The gender is required"</span> /> Male
+                    <span class="doc-example-note">data-bv-notempty data-bv-notempty-message="The gender is required"</span> /> Male
             &lt;/label>
         &lt;/div>
         &lt;div class="radio">
@@ -73,108 +86,108 @@ slug: examples
     &lt;/div>
 &lt;/div></code></pre>
 
-            <div class="docs-example">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#attribute-form-tab" data-toggle="tab">Try it</a></li>
-                    <li><a href="#attribute-html-tab" data-toggle="tab">HTML</a></li>
-                    <li><a href="#attribute-js-tab" data-toggle="tab">JS</a></li>
-                </ul>
+    <div class="doc-example">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#attribute-form-tab" data-toggle="tab">Try it</a></li>
+            <li><a href="#attribute-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#attribute-js-tab" data-toggle="tab">JS</a></li>
+        </ul>
 
-                <div class="tab-content">
-                    <div class="tab-pane active" id="attribute-form-tab">
-                        <form id="attributeForm" method="post" class="form-horizontal"
-                              data-bv-message="This value is not valid"
-                              data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
-                              data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
-                              data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Full name</label>
-                                <div class="col-lg-4">
-                                    <input type="text" class="form-control" name="firstName" placeholder="First name"
-                                           data-bv-notempty="true" data-bv-notempty-message="The first name is required and cannot be empty" />
-                                </div>
-                                <div class="col-lg-4">
-                                    <input type="text" class="form-control" name="lastName" placeholder="Last name"
-                                           data-bv-notempty="true" data-bv-notempty-message="The last name is required and cannot be empty" />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Username</label>
-                                <div class="col-lg-5">
-                                    <input type="text" class="form-control" name="username"
-                                           data-bv-message="The username is not valid"
-                                           data-bv-notempty="true" data-bv-notempty-message="The username is required and cannot be empty"
-                                           data-bv-regexp="true" data-bv-regexp-regexp="[a-zA-Z0-9_\.]+" data-bv-regexp-message="The username can only consist of alphabetical, number, dot and underscore"
-                                           data-bv-stringlength="true" data-bv-stringlength-min="6" data-bv-stringlength-max="30" data-bv-stringlength-message="The username must be more than 6 and less than 30 characters long"
-                                           data-bv-different="true" data-bv-different-field="password" data-bv-different-message="The username and password cannot be the same as each other" />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Email address</label>
-                                <div class="col-lg-5">
-                                    <input class="form-control" name="email" type="email"
-                                           data-bv-emailaddress="true" data-bv-emailaddress-message="The input is not a valid email address" />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Password</label>
-                                <div class="col-lg-5">
-                                    <input type="password" class="form-control" name="password"
-                                           data-bv-notempty="true" data-bv-notempty-message="The password is required and cannot be empty"
-                                           data-bv-identical="true" data-bv-identical-field="confirmPassword" data-bv-identical-message="The password and its confirm are not the same"
-                                           data-bv-different="true" data-bv-different-field="username" data-bv-different-message="The password cannot be the same as username" />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Retype password</label>
-                                <div class="col-lg-5">
-                                    <input type="password" class="form-control" name="confirmPassword"
-                                           data-bv-notempty="true" data-bv-notempty-message="The confirm password is required and cannot be empty"
-                                           data-bv-identical="true" data-bv-identical-field="password" data-bv-identical-message="The password and its confirm are not the same"
-                                           data-bv-different="true" data-bv-different-field="username" data-bv-different-message="The password cannot be the same as username" />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Languages</label>
-                                <div class="col-lg-5">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="languages[]" value="english" data-bv-notempty="true" data-bv-message="Please specify at least one language you can speak" /> English
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="languages[]" value="french" /> French
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="languages[]" value="german" /> German
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="languages[]" value="russian" /> Russian
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="languages[]" value="other" /> Other
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+        <div class="tab-content">
+            <div class="tab-pane active" id="attribute-form-tab">
+                <form id="attributeForm" method="post" class="form-horizontal"
+                      data-bv-message="This value is not valid"
+                      data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+                      data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+                      data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Full name</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" name="firstName" placeholder="First name"
+                                   data-bv-notempty="true" data-bv-notempty-message="The first name is required and cannot be empty" />
+                        </div>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" name="lastName" placeholder="Last name"
+                                   data-bv-notempty="true" data-bv-notempty-message="The last name is required and cannot be empty" />
+                        </div>
                     </div>
 
-                    <div class="tab-pane" id="attribute-html-tab">
-                        <pre><code lang="xml">&lt;form id="attributeForm" method="post" class="form-horizontal"
-    <span class="docs-code__note">data-bv-message="This value is not valid"
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Username</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" name="username"
+                                   data-bv-message="The username is not valid"
+                                   data-bv-notempty="true" data-bv-notempty-message="The username is required and cannot be empty"
+                                   data-bv-regexp="true" data-bv-regexp-regexp="[a-zA-Z0-9_\.]+" data-bv-regexp-message="The username can only consist of alphabetical, number, dot and underscore"
+                                   data-bv-stringlength="true" data-bv-stringlength-min="6" data-bv-stringlength-max="30" data-bv-stringlength-message="The username must be more than 6 and less than 30 characters long"
+                                   data-bv-different="true" data-bv-different-field="password" data-bv-different-message="The username and password cannot be the same as each other" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Email address</label>
+                        <div class="col-lg-5">
+                            <input class="form-control" name="email" type="email"
+                                   data-bv-emailaddress="true" data-bv-emailaddress-message="The input is not a valid email address" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Password</label>
+                        <div class="col-lg-5">
+                            <input type="password" class="form-control" name="password"
+                                   data-bv-notempty="true" data-bv-notempty-message="The password is required and cannot be empty"
+                                   data-bv-identical="true" data-bv-identical-field="confirmPassword" data-bv-identical-message="The password and its confirm are not the same"
+                                   data-bv-different="true" data-bv-different-field="username" data-bv-different-message="The password cannot be the same as username" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Retype password</label>
+                        <div class="col-lg-5">
+                            <input type="password" class="form-control" name="confirmPassword"
+                                   data-bv-notempty="true" data-bv-notempty-message="The confirm password is required and cannot be empty"
+                                   data-bv-identical="true" data-bv-identical-field="password" data-bv-identical-message="The password and its confirm are not the same"
+                                   data-bv-different="true" data-bv-different-field="username" data-bv-different-message="The password cannot be the same as username" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Languages</label>
+                        <div class="col-lg-5">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="languages[]" value="english" data-bv-notempty="true" data-bv-message="Please specify at least one language you can speak" /> English
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="languages[]" value="french" /> French
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="languages[]" value="german" /> German
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="languages[]" value="russian" /> Russian
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="languages[]" value="other" /> Other
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="attribute-html-tab">
+                <pre><code lang="xml">&lt;form id="attributeForm" method="post" class="form-horizontal"
+    <span class="doc-example-note">data-bv-message="This value is not valid"
     data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
     data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
     data-bv-feedbackicons-validating="glyphicon glyphicon-refresh"</span>>
@@ -182,12 +195,12 @@ slug: examples
         &lt;label class="col-lg-3 control-label">Full name&lt;/label>
         &lt;div class="col-lg-4">
             &lt;input type="text" class="form-control" name="firstName" placeholder="First name"
-                <span class="docs-code__note">data-bv-notempty="true"
+                <span class="doc-example-note">data-bv-notempty="true"
                 data-bv-notempty-message="The first name is required and cannot be empty"</span> />
         &lt;/div>
         &lt;div class="col-lg-4">
             &lt;input type="text" class="form-control" name="lastName" placeholder="Last name"
-                <span class="docs-code__note">data-bv-notempty="true"
+                <span class="doc-example-note">data-bv-notempty="true"
                 data-bv-notempty-message="The last name is required and cannot be empty"</span> />
         &lt;/div>
     &lt;/div>
@@ -196,21 +209,21 @@ slug: examples
         &lt;label class="col-lg-3 control-label">Username&lt;/label>
         &lt;div class="col-lg-5">
             &lt;input type="text" class="form-control" name="username"
-                <span class="docs-code__note">data-bv-message="The username is not valid"</span>
+                <span class="doc-example-note">data-bv-message="The username is not valid"</span>
 
-                <span class="docs-code__note">data-bv-notempty="true"
+                <span class="doc-example-note">data-bv-notempty="true"
                 data-bv-notempty-message="The username is required and cannot be empty"</span>
 
-                <span class="docs-code__note">data-bv-regexp="true"
+                <span class="doc-example-note">data-bv-regexp="true"
                 data-bv-regexp-regexp="[a-zA-Z0-9_\.]+"
                 data-bv-regexp-message="The username can only consist of alphabetical, number, dot and underscore"</span>
 
-                <span class="docs-code__note">data-bv-stringlength="true"
+                <span class="doc-example-note">data-bv-stringlength="true"
                 data-bv-stringlength-min="6"
                 data-bv-stringlength-max="30"
                 data-bv-stringlength-message="The username must be more than 6 and less than 30 characters long"</span>
 
-                <span class="docs-code__note">data-bv-different="true"
+                <span class="doc-example-note">data-bv-different="true"
                 data-bv-different-field="password"
                 data-bv-different-message="The username and password cannot be the same as each other"</span> />
         &lt;/div>
@@ -220,7 +233,7 @@ slug: examples
         &lt;label class="col-lg-3 control-label">Email address&lt;/label>
         &lt;div class="col-lg-5">
             &lt;input class="form-control" name="email" type="email"
-                <span class="docs-code__note">data-bv-emailaddress="true"
+                <span class="doc-example-note">data-bv-emailaddress="true"
                 data-bv-emailaddress-message="The input is not a valid email address"</span> />
         &lt;/div>
     &lt;/div>
@@ -229,14 +242,14 @@ slug: examples
         &lt;label class="col-lg-3 control-label">Password&lt;/label>
         &lt;div class="col-lg-5">
             &lt;input type="password" class="form-control" name="password"
-                <span class="docs-code__note">data-bv-notempty="true"
+                <span class="doc-example-note">data-bv-notempty="true"
                 data-bv-notempty-message="The password is required and cannot be empty"</span>
 
-                <span class="docs-code__note">data-bv-identical="true"
+                <span class="doc-example-note">data-bv-identical="true"
                 data-bv-identical-field="confirmPassword"
                 data-bv-identical-message="The password and its confirm are not the same"</span>
 
-                <span class="docs-code__note">data-bv-different="true"
+                <span class="doc-example-note">data-bv-different="true"
                 data-bv-different-field="username"
                 data-bv-different-message="The password cannot be the same as username"</span> />
         &lt;/div>
@@ -246,14 +259,14 @@ slug: examples
         &lt;label class="col-lg-3 control-label">Retype password&lt;/label>
         &lt;div class="col-lg-5">
             &lt;input type="password" class="form-control" name="confirmPassword"
-                <span class="docs-code__note">data-bv-notempty="true"
+                <span class="doc-example-note">data-bv-notempty="true"
                 data-bv-notempty-message="The confirm password is required and cannot be empty"</span>
 
-                <span class="docs-code__note">data-bv-identical="true"
+                <span class="doc-example-note">data-bv-identical="true"
                 data-bv-identical-field="password"
                 data-bv-identical-message="The password and its confirm are not the same"</span>
 
-                <span class="docs-code__note">data-bv-different="true"
+                <span class="doc-example-note">data-bv-different="true"
                 data-bv-different-field="username"
                 data-bv-different-message="The password cannot be the same as username"</span> />
         &lt;/div>
@@ -265,7 +278,7 @@ slug: examples
             &lt;div class="checkbox">
                 &lt;label>
                     &lt;input type="checkbox" name="languages[]" value="english"
-                        <span class="docs-code__note">data-bv-message="Please specify at least one language you can speak"
+                        <span class="doc-example-note">data-bv-message="Please specify at least one language you can speak"
                         data-bv-notempty="true"</span> /> English
                 &lt;/label>
             &lt;/div>
@@ -292,155 +305,155 @@ slug: examples
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-                    </div>
+            </div>
 
-                    <div class="tab-pane" id="attribute-js-tab">
-                        <pre><code class="xml javascript">&lt;script>
+            <div class="tab-pane" id="attribute-js-tab">
+                <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#attributeForm').bootstrapValidator();
 });
 &lt;/script></code></pre>
-                    </div>
-                </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
-        <section id="html5">
-            <h2>HTML 5</h2>
+<section id="html5">
+    <h2>HTML 5</h2>
 
-            <p>BootstrapValidator supports a few of HTML 5 types, attributes listed as following:</p>
+    <p>BootstrapValidator supports a few of HTML 5 types, attributes listed as following:</p>
 
-            <table class="table table-condensed">
-                <thead>
-                    <tr>
-                        <th>HTML 5 attribute</th>
-                        <th>Equivalent validator</th>
-                        <th>Equivalent HTML attribute</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>min="..."</code></td>
-                        <td><a href="/validators/greater-than/">greaterThan validator</a></td>
-                        <td>
-                            <pre><code class="xml">data-bv-greaterthan="true"
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>HTML 5 attribute</th>
+                <th>Equivalent validator</th>
+                <th>Equivalent HTML attribute</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>min="..."</code></td>
+                <td><a href="/validators/greater-than/">greaterThan validator</a></td>
+                <td>
+                    <pre><code class="xml">data-bv-greaterthan="true"
 data-bv-greaterthan-value="..."</code></pre></td>
-                    </tr>
-                    <tr>
-                        <td><code>max="..."</code></td>
-                        <td><a href="/validators/less-than/">lessThan validator</a></td>
-                        <td>
-                            <pre><code class="xml">data-bv-lessthan="true"
+            </tr>
+            <tr>
+                <td><code>max="..."</code></td>
+                <td><a href="/validators/less-than/">lessThan validator</a></td>
+                <td>
+                    <pre><code class="xml">data-bv-lessthan="true"
 data-bv-lessthan-value="..."</code></pre>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>maxlength="..."</code></td>
-                        <td><a href="/validators/string-length/">stringLength validator</a></td>
-                        <td>
-                            <pre><code class="xml">data-bv-stringlength="true"
+                </td>
+            </tr>
+            <tr>
+                <td><code>maxlength="..."</code></td>
+                <td><a href="/validators/string-length/">stringLength validator</a></td>
+                <td>
+                    <pre><code class="xml">data-bv-stringlength="true"
 data-bv-stringlength-max="..."</code></pre>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>pattern="..."</code></td>
-                        <td><a href="/validators/regexp/">regexp validator</a></td>
-                        <td>
-                            <pre><code class="xml">data-bv-regexp="true"
+                </td>
+            </tr>
+            <tr>
+                <td><code>pattern="..."</code></td>
+                <td><a href="/validators/regexp/">regexp validator</a></td>
+                <td>
+                    <pre><code class="xml">data-bv-regexp="true"
 data-bv-regexp-regexp="..."</code></pre>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>required</code></td>
-                        <td><a href="/validators/not-empty/">notEmpty validator</a></td>
-                        <td><code>data-bv-notempty="true"</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>type="color"</code></td>
-                        <td><a href="/validators/hex-color/">hexColor validator</a></td>
-                        <td><code>data-bv-hexcolor="true"</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>type="email"</code></td>
-                        <td><a href="/validators/email-address/">emailAddress validator</a></td>
-                        <td><code>data-bv-emailaddress="true"</code></td>
-                    </tr>
-                    <tr>
-                        <td><pre><code class="xml">type="range"
+                </td>
+            </tr>
+            <tr>
+                <td><code>required</code></td>
+                <td><a href="/validators/not-empty/">notEmpty validator</a></td>
+                <td><code>data-bv-notempty="true"</code></td>
+            </tr>
+            <tr>
+                <td><code>type="color"</code></td>
+                <td><a href="/validators/hex-color/">hexColor validator</a></td>
+                <td><code>data-bv-hexcolor="true"</code></td>
+            </tr>
+            <tr>
+                <td><code>type="email"</code></td>
+                <td><a href="/validators/email-address/">emailAddress validator</a></td>
+                <td><code>data-bv-emailaddress="true"</code></td>
+            </tr>
+            <tr>
+                <td><pre><code class="xml">type="range"
 min="..."
 max="..."</code></pre></td>
-                        <td><a href="/validators/between/">between validator</a></td>
-                        <td><pre><code class="xml">data-bv-between="true"
+                <td><a href="/validators/between/">between validator</a></td>
+                <td><pre><code class="xml">data-bv-between="true"
 data-bv-between-min="..."
 data-bv-between-max="..."</code></pre></td>
-                    </tr>
-                    <tr>
-                        <td><code>type="url"</code></td>
-                        <td><a href="/validators/uri/">uri validator</a></td>
-                        <td><code>data-bv-uri="true"</code></td>
-                    </tr>
-                </tbody>
-            </table>
+            </tr>
+            <tr>
+                <td><code>type="url"</code></td>
+                <td><a href="/validators/uri/">uri validator</a></td>
+                <td><code>data-bv-uri="true"</code></td>
+            </tr>
+        </tbody>
+    </table>
 
-            <div class="docs-example">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#html5-form-tab" data-toggle="tab">Try it</a></li>
-                    <li><a href="#html5-html-tab" data-toggle="tab">HTML</a></li>
-                    <li><a href="#html5-js-tab" data-toggle="tab">JS</a></li>
-                </ul>
+    <div class="doc-example">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#html5-form-tab" data-toggle="tab">Try it</a></li>
+            <li><a href="#html5-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#html5-js-tab" data-toggle="tab">JS</a></li>
+        </ul>
 
-                <div class="tab-content">
-                    <div class="tab-pane active" id="html5-form-tab">
-                        <form id="html5Form" method="post" class="form-horizontal"
-                              data-bv-message="This value is not valid"
-                              data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
-                              data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
-                              data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Username</label>
-                                <div class="col-lg-5">
-                                    <input type="text" class="form-control" name="username"
-                                           data-bv-message="The username is not valid"
-                                           required data-bv-notempty-message="The username is required and cannot be empty"
-                                           pattern="[a-zA-Z0-9]+" data-bv-regexp-message="The username can only consist of alphabetical, number" />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Email address</label>
-                                <div class="col-lg-5">
-                                    <input class="form-control" name="email" type="email" required data-bv-emailaddress-message="The input is not a valid email address" />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Website</label>
-                                <div class="col-lg-5">
-                                    <input class="form-control" name="website" type="url" required data-bv-uri-message="The input is not a valid website address" />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Fav color</label>
-                                <div class="col-lg-3">
-                                    <input class="form-control" name="color" type="color" required data-bv-hexcolor-message="The input is not a valid color code" />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Age</label>
-                                <div class="col-lg-2">
-                                    <input type="text" class="form-control" name="age"
-                                           required
-                                           min="10" data-bv-greaterthan-inclusive="false" data-bv-greaterthan-message="The input must be greater than or equal to 10"
-                                           max="100" data-bv-lessthan-inclusive="true" data-bv-lessthan-message="The input must be less than 100" />
-                                </div>
-                            </div>
-                        </form>
+        <div class="tab-content">
+            <div class="tab-pane active" id="html5-form-tab">
+                <form id="html5Form" method="post" class="form-horizontal"
+                      data-bv-message="This value is not valid"
+                      data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+                      data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+                      data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Username</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" name="username"
+                                   data-bv-message="The username is not valid"
+                                   required data-bv-notempty-message="The username is required and cannot be empty"
+                                   pattern="[a-zA-Z0-9]+" data-bv-regexp-message="The username can only consist of alphabetical, number" />
+                        </div>
                     </div>
 
-                    <div class="tab-pane" id="html5-html-tab">
-                        <pre><code class="xml">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Email address</label>
+                        <div class="col-lg-5">
+                            <input class="form-control" name="email" type="email" required data-bv-emailaddress-message="The input is not a valid email address" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Website</label>
+                        <div class="col-lg-5">
+                            <input class="form-control" name="website" type="url" required data-bv-uri-message="The input is not a valid website address" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Fav color</label>
+                        <div class="col-lg-3">
+                            <input class="form-control" name="color" type="color" required data-bv-hexcolor-message="The input is not a valid color code" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Age</label>
+                        <div class="col-lg-2">
+                            <input type="text" class="form-control" name="age"
+                                   required
+                                   min="10" data-bv-greaterthan-inclusive="false" data-bv-greaterthan-message="The input must be greater than or equal to 10"
+                                   max="100" data-bv-lessthan-inclusive="true" data-bv-lessthan-message="The input must be less than 100" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="html5-html-tab">
+                <pre><code class="xml">
 &lt;form id="html5Form" method="post" class="form-horizontal"
       data-bv-message="This value is not valid"
       data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
@@ -452,10 +465,10 @@ data-bv-between-max="..."</code></pre></td>
             &lt;input type="text" class="form-control" name="username"
                 data-bv-message="The username is not valid"
 
-                <span class="docs-code__note">required
+                <span class="doc-example-note">required
                 data-bv-notempty-message="The username is required and cannot be empty"</span>
 
-                <span class="docs-code__note">pattern="[a-zA-Z0-9]+"
+                <span class="doc-example-note">pattern="[a-zA-Z0-9]+"
                 data-bv-regexp-message="The username can only consist of alphabetical, number"</span> />
         &lt;/div>
     &lt;/div>
@@ -465,7 +478,7 @@ data-bv-between-max="..."</code></pre></td>
         &lt;div class="col-lg-5">
             &lt;input class="form-control" name="email"
                 required
-                <span class="docs-code__note">type="email" data-bv-emailaddress-message="The input is not a valid email address"</span> />
+                <span class="doc-example-note">type="email" data-bv-emailaddress-message="The input is not a valid email address"</span> />
         &lt;/div>
     &lt;/div>
 
@@ -474,7 +487,7 @@ data-bv-between-max="..."</code></pre></td>
         &lt;div class="col-lg-5">
             &lt;input class="form-control" name="website"
                 required
-                <span class="docs-code__note">type="url" data-bv-uri-message="The input is not a valid website address"</span> />
+                <span class="doc-example-note">type="url" data-bv-uri-message="The input is not a valid website address"</span> />
         &lt;/div>
     &lt;/div>
 
@@ -483,7 +496,7 @@ data-bv-between-max="..."</code></pre></td>
         &lt;div class="col-lg-3">
             &lt;input class="form-control" name="color"
                 required
-                <span class="docs-code__note">type="color" data-bv-hexcolor-message="The input is not a valid color code"</span> />
+                <span class="doc-example-note">type="color" data-bv-hexcolor-message="The input is not a valid color code"</span> />
         &lt;/div>
     &lt;/div>
 
@@ -492,132 +505,132 @@ data-bv-between-max="..."</code></pre></td>
         &lt;div class="col-lg-2">
             &lt;input type="text" class="form-control" name="age"
                 required
-                <span class="docs-code__note">min="10"
+                <span class="doc-example-note">min="10"
                 data-bv-greaterthan-inclusive="false"
                 data-bv-greaterthan-message="The input must be greater than or equal to 10"</span>
 
-                <span class="docs-code__note">max="100"
+                <span class="doc-example-note">max="100"
                 data-bv-lessthan-inclusive="true"
                 data-bv-lessthan-message="The input must be less than 100"</span> />
             &lt;!--&lt;input class="form-control" name="age"
                 required
 
-                <span class="docs-code__note">type="range"
+                <span class="doc-example-note">type="range"
                 min="10"
                 max="100"
                 data-bv-between-message="The input must be between 10 and 100"</span> />-->
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-                    </div>
+            </div>
 
-                    <div class="tab-pane" id="html5-js-tab">
-                        <pre><code class="xml javascript">&lt;script type="text/javascript">
+            <div class="tab-pane" id="html5-js-tab">
+                <pre><code class="xml javascript">&lt;script type="text/javascript">
 $(document).ready(function() {
     $('#html5Form').bootstrapValidator();
 });
 &lt;/script></code></pre>
-                    </div>
-                </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
-        <section id="toggling">
-            <h2>Toggling</h2>
+<section id="toggling">
+    <h2>Toggling</h2>
 
-            <p>BootstrapValidator does not validate the fields which:</p>
-            <ul>
-                <li>are disabled</li>
-                <li>are hidden</li>
-                <li>are not visible</li>
-            </ul>
+    <p>BootstrapValidator does not validate the fields which:</p>
+    <ul>
+        <li>are disabled</li>
+        <li>are hidden</li>
+        <li>are not visible</li>
+    </ul>
 
-            <p>The following example shows an example of toggling field validator.</p>
-            <p>Try to click the <i>Add more info</i> or <i>Add more phone numbers</i> button to enable/disable the additional fields. Also, look at state of the <i>Validate</i> button based on the validity of additional fields.</p>
+    <p>The following example shows an example of toggling field validator.</p>
+    <p>Try to click the <i>Add more info</i> or <i>Add more phone numbers</i> button to enable/disable the additional fields. Also, look at state of the <i>Validate</i> button based on the validity of additional fields.</p>
 
-            <div class="docs-example">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#toggling-form-tab" data-toggle="tab">Try it</a></li>
-                    <li><a href="#toggling-html-tab" data-toggle="tab">HTML</a></li>
-                    <li><a href="#toggling-js-tab" data-toggle="tab">JS</a></li>
-                </ul>
+    <div class="doc-example">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#toggling-form-tab" data-toggle="tab">Try it</a></li>
+            <li><a href="#toggling-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#toggling-js-tab" data-toggle="tab">JS</a></li>
+        </ul>
 
-                <div class="tab-content">
-                    <div class="tab-pane active" id="toggling-form-tab">
-                        <form id="togglingForm" method="post" class="form-horizontal">
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Full name <sup>*</sup></label>
-                                <div class="col-lg-4">
-                                    <input type="text" class="form-control" name="firstName" placeholder="First name" />
-                                </div>
-                                <div class="col-lg-4">
-                                    <input type="text" class="form-control" name="lastName" placeholder="Last name" />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Company <sup>*</sup></label>
-                                <div class="col-lg-5">
-                                    <input type="text" class="form-control" name="company"
-                                           required data-bv-notempty-message="The company name is required" />
-                                </div>
-                                <div class="col-lg-2">
-                                    <button type="button" class="btn btn-info btn-sm" data-toggle="#jobInfo">Add more info</button>
-                                </div>
-                            </div>
-
-                            <div id="jobInfo" style="display: none;">
-                                <div class="form-group">
-                                    <label class="col-lg-3 control-label">Job title <sup>*</sup></label>
-                                    <div class="col-lg-5">
-                                        <input type="text" class="form-control" name="job" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-lg-3 control-label">Department <sup>*</sup></label>
-                                    <div class="col-lg-5">
-                                        <input type="text" class="form-control" name="department" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Mobile phone <sup>*</sup></label>
-                                <div class="col-lg-5">
-                                    <input type="text" class="form-control" name="mobilePhone" />
-                                </div>
-                                <div class="col-lg-2">
-                                    <button type="button" class="btn btn-info btn-sm" data-toggle="#phoneInfo">Add more phone numbers</button>
-                                </div>
-                            </div>
-
-                            <div id="phoneInfo" style="display: none;">
-                                <div class="form-group">
-                                    <label class="col-lg-3 control-label">Home phone</label>
-                                    <div class="col-lg-5">
-                                        <input type="text" class="form-control" name="homePhone" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-lg-3 control-label">Office phone</label>
-                                    <div class="col-lg-5">
-                                        <input type="text" class="form-control" name="officePhone" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-lg-9 col-lg-offset-3">
-                                    <button type="submit" class="btn btn-primary">Validate</button>
-                                </div>
-                            </div>
-                        </form>
+        <div class="tab-content">
+            <div class="tab-pane active" id="toggling-form-tab">
+                <form id="togglingForm" method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Full name <sup>*</sup></label>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" name="firstName" placeholder="First name" />
+                        </div>
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" name="lastName" placeholder="Last name" />
+                        </div>
                     </div>
 
-                    <div class="tab-pane" id="toggling-html-tab">
-                        <pre><code class="xml">&lt;form id="togglingForm" method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Company <sup>*</sup></label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" name="company"
+                                   required data-bv-notempty-message="The company name is required" />
+                        </div>
+                        <div class="col-lg-2">
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="#jobInfo">Add more info</button>
+                        </div>
+                    </div>
+
+                    <div id="jobInfo" style="display: none;">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Job title <sup>*</sup></label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" name="job" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Department <sup>*</sup></label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" name="department" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Mobile phone <sup>*</sup></label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" name="mobilePhone" />
+                        </div>
+                        <div class="col-lg-2">
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="#phoneInfo">Add more phone numbers</button>
+                        </div>
+                    </div>
+
+                    <div id="phoneInfo" style="display: none;">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Home phone</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" name="homePhone" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Office phone</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" name="officePhone" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-9 col-lg-offset-3">
+                            <button type="submit" class="btn btn-primary">Validate</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="toggling-html-tab">
+                <pre><code class="xml">&lt;form id="togglingForm" method="post" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Full name &lt;sup>*&lt;/sup>&lt;/label>
         &lt;div class="col-lg-4">
@@ -642,7 +655,7 @@ $(document).ready(function() {
     &lt;/div>
 
     &lt;!-- These fields will not be validated as long as they are not visible -->
-    &lt;div id="jobInfo" <span class="docs-code__note">style="display: none;"</span>>
+    &lt;div id="jobInfo" <span class="doc-example-note">style="display: none;"</span>>
         &lt;div class="form-group">
             &lt;label class="col-lg-3 control-label">Job title &lt;sup>*&lt;/sup>&lt;/label>
             &lt;div class="col-lg-5">
@@ -671,7 +684,7 @@ $(document).ready(function() {
     &lt;/div>
 
     &lt;!-- These fields will not be validated as long as they are not visible -->
-    &lt;div id="phoneInfo" <span class="docs-code__note">style="display: none;"</span>>
+    &lt;div id="phoneInfo" <span class="doc-example-note">style="display: none;"</span>>
         &lt;div class="form-group">
             &lt;label class="col-lg-3 control-label">Home phone&lt;/label>
             &lt;div class="col-lg-5">
@@ -693,10 +706,10 @@ $(document).ready(function() {
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-                    </div>
+            </div>
 
-                    <div class="tab-pane" id="toggling-js-tab">
-                        <pre><code class="xml javascript">&lt;script>
+            <div class="tab-pane" id="toggling-js-tab">
+                <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#togglingForm')
         .bootstrapValidator({
@@ -732,7 +745,7 @@ $(document).ready(function() {
                     }
                 },
                 // These fields will be validated when being visible
-                <span class="docs-code__note">job: {
+                <span class="doc-example-note">job: {
                     validators: {
                         notEmpty: {
                             message: 'The job title is required'
@@ -757,7 +770,7 @@ $(document).ready(function() {
                     }
                 },
                 // These fields will be validated when being visible
-                <span class="docs-code__note">homePhone: {
+                <span class="doc-example-note">homePhone: {
                     validators: {
                         digits: {
                             message: 'The home phone number is not valid'
@@ -776,7 +789,7 @@ $(document).ready(function() {
         .find('button[data-toggle]')
             .on('click', function() {
                 var $target = $($(this).attr('data-toggle'));
-                <span class="docs-code__note">// Show or hide the additional fields
+                <span class="doc-example-note">// Show or hide the additional fields
                 // They will or will not be validated based on their visibilities
                 $target.toggle();</span>
                 if (!$target.is(':visible')) {
@@ -786,93 +799,93 @@ $(document).ready(function() {
             });
 });
 &lt;/script></code></pre>
-                    </div>
-                </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
-        <section id="tab">
-            <h2>Tabs</h2>
-            <p>The following example shows that the plugin works perfectly with tabs.</p>
-            <p>By default, the fields in inactive tabs will not be validated because they are not visible. In order to validate them, we need to use the <a href="/settings/#excluded">excluded</a> option:</p>
-            <pre><code class="javascript">excluded: [':disabled']</code></pre>
+<section id="tab">
+    <h2>Tabs</h2>
+    <p>The following example shows that the plugin works perfectly with tabs.</p>
+    <p>By default, the fields in inactive tabs will not be validated because they are not visible. In order to validate them, we need to use the <a href="/settings/#excluded">excluded</a> option:</p>
+    <pre><code class="javascript">excluded: [':disabled']</code></pre>
 
-            <div class="docs-example">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#info-tab" data-toggle="tab">Information</a></li>
-                    <li><a href="#address-tab" data-toggle="tab">Address</a></li>
-                </ul>
+    <div class="doc-example">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#info-tab" data-toggle="tab">Information</a></li>
+            <li><a href="#address-tab" data-toggle="tab">Address</a></li>
+        </ul>
 
-                <form id="accountForm" method="post" class="form-horizontal">
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="info-tab">
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Full name</label>
-                                <div class="col-lg-5">
-                                    <input type="text" class="form-control" name="fullName" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Company</label>
-                                <div class="col-lg-5">
-                                    <input type="text" class="form-control" name="company" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Job title</label>
-                                <div class="col-lg-5">
-                                    <input type="text" class="form-control" name="jobTitle" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="address-tab">
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Address</label>
-                                <div class="col-lg-5">
-                                    <input type="text" class="form-control" name="address" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">City</label>
-                                <div class="col-lg-5">
-                                    <input type="text" class="form-control" name="city" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Country</label>
-                                <div class="col-lg-5">
-                                    <select class="form-control" name="country">
-                                        <option value="">Select a country</option>
-                                        <option value="FR">France</option>
-                                        <option value="DE">Germany</option>
-                                        <option value="IT">Italy</option>
-                                        <option value="JP">Japan</option>
-                                        <option value="RU">Russian</option>
-                                        <option value="US">United State</option>
-                                        <option value="GB">United Kingdom</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-                            </div>
+        <form id="accountForm" method="post" class="form-horizontal">
+            <div class="tab-content">
+                <div class="tab-pane active" id="info-tab">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Full name</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" name="fullName" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-lg-5 col-lg-offset-3">
-                            <button type="submit" class="btn btn-primary">Validate</button>
+                        <label class="col-lg-3 control-label">Company</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" name="company" />
                         </div>
                     </div>
-                </form>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Job title</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" name="jobTitle" />
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="address-tab">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Address</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" name="address" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">City</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" name="city" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Country</label>
+                        <div class="col-lg-5">
+                            <select class="form-control" name="country">
+                                <option value="">Select a country</option>
+                                <option value="FR">France</option>
+                                <option value="DE">Germany</option>
+                                <option value="IT">Italy</option>
+                                <option value="JP">Japan</option>
+                                <option value="RU">Russian</option>
+                                <option value="US">United State</option>
+                                <option value="GB">United Kingdom</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="form-group">
+                <div class="col-lg-5 col-lg-offset-3">
+                    <button type="submit" class="btn btn-primary">Validate</button>
+                </div>
+            </div>
+        </form>
+    </div>
 
-            <div class="docs-example">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#tabs-html-tab" data-toggle="tab">HTML</a></li>
-                    <li><a href="#tabs-js-tab" data-toggle="tab">JS</a></li>
-                </ul>
+    <div class="doc-example">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tabs-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#tabs-js-tab" data-toggle="tab">JS</a></li>
+        </ul>
 
-                <div class="tab-content">
-                    <div class="tab-pane active" id="tabs-html-tab">
-                        <pre><code class="xml">&lt;form id="accountForm" method="post" class="form-horizontal">
+        <div class="tab-content">
+            <div class="tab-pane active" id="tabs-html-tab">
+                <pre><code class="xml">&lt;form id="accountForm" method="post" class="form-horizontal">
     &lt;div class="tab-content">
         &lt;div class="tab-pane active" id="info-tab">
             &lt;div class="form-group">
@@ -933,16 +946,16 @@ $(document).ready(function() {
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-                    </div>
+            </div>
 
-                    <div class="tab-pane" id="tabs-js-tab">
-                        <pre><code class="xml">&lt;script>
+            <div class="tab-pane" id="tabs-js-tab">
+                <pre><code class="xml">&lt;script>
 $(document).ready(function() {
     $('#accountForm')
         .bootstrapValidator({
             // Only disabled elements are excluded
             // The invisible elements belonging to inactive tabs must be validated
-            <span class="docs-code__note">excluded: [':disabled']</span>,
+            <span class="doc-example-note">excluded: [':disabled']</span>,
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
@@ -981,131 +994,131 @@ $(document).ready(function() {
         });
 });
 &lt;/script></code></pre>
-                    </div>
-                </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
-        <section id="fields-with-same-name">
-            <h2>Fields with same name</h2>
+<section id="fields-with-same-name">
+    <h2>Fields with same name</h2>
 
-            <p>It's possible to validate multiple fields with the same name. The fields can be radio buttons, checkboxes or text boxes, etc.</p>
+    <p>It's possible to validate multiple fields with the same name. The fields can be radio buttons, checkboxes or text boxes, etc.</p>
 
-            <div class="docs-example">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#multiple-form-tab" data-toggle="tab">Try it</a></li>
-                    <li><a href="#multiple-html-tab" data-toggle="tab">HTML</a></li>
-                    <li><a href="#multiple-js-tab" data-toggle="tab">JS</a></li>
-                </ul>
+    <div class="doc-example">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#multiple-form-tab" data-toggle="tab">Try it</a></li>
+            <li><a href="#multiple-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#multiple-js-tab" data-toggle="tab">JS</a></li>
+        </ul>
 
-                <div class="tab-content">
-                    <div class="tab-pane active" id="multiple-form-tab">
-                        <form id="multipleForm" method="post" class="form-horizontal">
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Gender</label>
-                                <div class="col-lg-5">
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="gender" value="male" /> Male
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="gender" value="female" /> Female
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="gender" value="other" /> Other
-                                        </label>
-                                    </div>
-                                </div>
+        <div class="tab-content">
+            <div class="tab-pane active" id="multiple-form-tab">
+                <form id="multipleForm" method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Gender</label>
+                        <div class="col-lg-5">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="gender" value="male" /> Male
+                                </label>
                             </div>
-
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Browser</label>
-                                <div class="col-lg-5">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="browsers[]" value="chrome" /> Google Chrome
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="browsers[]" value="firefox" /> Firefox
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="browsers[]" value="ie" /> IE
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="browsers[]" value="safari" /> Safari
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="browsers[]" value="opera" /> Opera
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="browsers[]" value="other" /> Other
-                                        </label>
-                                    </div>
-                                </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="gender" value="female" /> Female
+                                </label>
                             </div>
-
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Editors</label>
-                                <div class="col-lg-5">
-                                    <input class="form-control" type="text" name="editors[]" />
-                                </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="gender" value="other" /> Other
+                                </label>
                             </div>
-                            <div class="form-group">
-                                <div class="col-lg-offset-3 col-lg-5">
-                                    <input class="form-control" type="text" name="editors[]" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-lg-offset-3 col-lg-5">
-                                    <input class="form-control" type="text" name="editors[]" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-lg-offset-3 col-lg-5">
-                                    <input class="form-control" type="text" name="editors[]" />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-lg-9 col-lg-offset-3">
-                                    <button type="submit" class="btn btn-primary">Validate</button>
-                                </div>
-                            </div>
-                        </form>
+                        </div>
                     </div>
 
-                    <div class="tab-pane" id="multiple-html-tab">
-                        <pre><code class="xml">&lt;form id="multipleForm" method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Browser</label>
+                        <div class="col-lg-5">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="browsers[]" value="chrome" /> Google Chrome
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="browsers[]" value="firefox" /> Firefox
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="browsers[]" value="ie" /> IE
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="browsers[]" value="safari" /> Safari
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="browsers[]" value="opera" /> Opera
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="browsers[]" value="other" /> Other
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Editors</label>
+                        <div class="col-lg-5">
+                            <input class="form-control" type="text" name="editors[]" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-3 col-lg-5">
+                            <input class="form-control" type="text" name="editors[]" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-3 col-lg-5">
+                            <input class="form-control" type="text" name="editors[]" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-3 col-lg-5">
+                            <input class="form-control" type="text" name="editors[]" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-9 col-lg-offset-3">
+                            <button type="submit" class="btn btn-primary">Validate</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="multiple-html-tab">
+                <pre><code class="xml">&lt;form id="multipleForm" method="post" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Gender&lt;/label>
         &lt;div class="col-lg-5">
             &lt;div class="radio">
                 &lt;label>
-                    &lt;input <span class="docs-code__note">type="radio" name="gender"</span> value="male" /> Male
+                    &lt;input <span class="doc-example-note">type="radio" name="gender"</span> value="male" /> Male
                 &lt;/label>
             &lt;/div>
             &lt;div class="radio">
                 &lt;label>
-                    &lt;input <span class="docs-code__note">type="radio" name="gender"</span> value="female" /> Female
+                    &lt;input <span class="doc-example-note">type="radio" name="gender"</span> value="female" /> Female
                 &lt;/label>
             &lt;/div>
             &lt;div class="radio">
                 &lt;label>
-                    &lt;input <span class="docs-code__note">type="radio" name="gender"</span> value="other" /> Other
+                    &lt;input <span class="doc-example-note">type="radio" name="gender"</span> value="other" /> Other
                 &lt;/label>
             &lt;/div>
         &lt;/div>
@@ -1116,32 +1129,32 @@ $(document).ready(function() {
         &lt;div class="col-lg-5">
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input <span class="docs-code__note">type="checkbox" name="browsers[]"</span> value="chrome" /> Google Chrome
+                    &lt;input <span class="doc-example-note">type="checkbox" name="browsers[]"</span> value="chrome" /> Google Chrome
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input <span class="docs-code__note">type="checkbox" name="browsers[]"</span> value="firefox" /> Firefox
+                    &lt;input <span class="doc-example-note">type="checkbox" name="browsers[]"</span> value="firefox" /> Firefox
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input <span class="docs-code__note">type="checkbox" name="browsers[]"</span> value="ie" /> IE
+                    &lt;input <span class="doc-example-note">type="checkbox" name="browsers[]"</span> value="ie" /> IE
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input <span class="docs-code__note">type="checkbox" name="browsers[]"</span> value="safari" /> Safari
+                    &lt;input <span class="doc-example-note">type="checkbox" name="browsers[]"</span> value="safari" /> Safari
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input <span class="docs-code__note">type="checkbox" name="browsers[]"</span> value="opera" /> Opera
+                    &lt;input <span class="doc-example-note">type="checkbox" name="browsers[]"</span> value="opera" /> Opera
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input <span class="docs-code__note">type="checkbox" name="browsers[]"</span> value="other" /> Other
+                    &lt;input <span class="doc-example-note">type="checkbox" name="browsers[]"</span> value="other" /> Other
                 &lt;/label>
             &lt;/div>
         &lt;/div>
@@ -1150,22 +1163,22 @@ $(document).ready(function() {
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Editors&lt;/label>
         &lt;div class="col-lg-5">
-            &lt;input class="form-control" <span class="docs-code__note">type="text" name="editors[]"</span> />
+            &lt;input class="form-control" <span class="doc-example-note">type="text" name="editors[]"</span> />
         &lt;/div>
     &lt;/div>
     &lt;div class="form-group">
         &lt;div class="col-lg-offset-3 col-lg-5">
-            &lt;input class="form-control" <span class="docs-code__note">type="text" name="editors[]"</span> />
+            &lt;input class="form-control" <span class="doc-example-note">type="text" name="editors[]"</span> />
         &lt;/div>
     &lt;/div>
     &lt;div class="form-group">
         &lt;div class="col-lg-offset-3 col-lg-5">
-            &lt;input class="form-control" <span class="docs-code__note">type="text" name="editors[]"</span> />
+            &lt;input class="form-control" <span class="doc-example-note">type="text" name="editors[]"</span> />
         &lt;/div>
     &lt;/div>
     &lt;div class="form-group">
         &lt;div class="col-lg-offset-3 col-lg-5">
-            &lt;input class="form-control" <span class="docs-code__note">type="text" name="editors[]"</span> />
+            &lt;input class="form-control" <span class="doc-example-note">type="text" name="editors[]"</span> />
         &lt;/div>
     &lt;/div>
 
@@ -1175,10 +1188,10 @@ $(document).ready(function() {
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-                    </div>
+            </div>
 
-                    <div class="tab-pane" id="multiple-js-tab">
-                        <pre><code class="xml javascript">&lt;script>
+            <div class="tab-pane" id="multiple-js-tab">
+                <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#multipleForm')
         .bootstrapValidator({
@@ -1192,21 +1205,21 @@ $(document).ready(function() {
                 // Do nothing
             },
             fields: {
-                <span class="docs-code__note">gender</span>: {
+                <span class="doc-example-note">gender</span>: {
                     validators: {
                         notEmpty: {
                             message: 'The gender is required'
                         }
                     }
                 },
-                <span class="docs-code__note">'browsers[]'</span>: {
+                <span class="doc-example-note">'browsers[]'</span>: {
                     validators: {
                         notEmpty: {
                             message: 'Please specify at least one browser you use daily for development'
                         }
                     }
                 },
-                <span class="docs-code__note">'editors[]'</span>: {
+                <span class="doc-example-note">'editors[]'</span>: {
                     validators: {
                         notEmpty: {
                             message: 'The editor names are required'
@@ -1217,81 +1230,81 @@ $(document).ready(function() {
         });
 });
 &lt;/script></code></pre>
-                    </div>
-                </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
-        <section id="compatibility">
-            <h2>Compatibility</h2>
+<section id="compatibility">
+    <h2>Compatibility</h2>
 
-            <p>These examples show how you can use BootstrapValidator with other Javascript plugins.</p>
+    <p>These examples show how you can use BootstrapValidator with other Javascript plugins.</p>
 
-            <!-- Use with Bootstrap Button -->
-            <section id="bootstrap-button">
-                <h3>Bootstrap Button</h3>
-                <p>Use with the <a href="http://getbootstrap.com/javascript/#buttons">Bootstrap Button</a> component.</p>
+    <!-- Use with Bootstrap Button -->
+    <section id="bootstrap-button">
+        <h3>Bootstrap Button</h3>
+        <p>Use with the <a href="http://getbootstrap.com/javascript/#buttons">Bootstrap Button</a> component.</p>
 
-                <div class="docs-example">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#button-form-tab" data-toggle="tab">Try it</a></li>
-                        <li><a href="#button-html-tab" data-toggle="tab">HTML</a></li>
-                        <li><a href="#button-js-tab" data-toggle="tab">JS</a></li>
-                    </ul>
+        <div class="doc-example">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#button-form-tab" data-toggle="tab">Try it</a></li>
+                <li><a href="#button-html-tab" data-toggle="tab">HTML</a></li>
+                <li><a href="#button-js-tab" data-toggle="tab">JS</a></li>
+            </ul>
 
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="button-form-tab">
-                            <form id="buttonGroupForm" method="post" class="form-horizontal">
-                                <div class="form-group">
-                                    <label class="col-lg-3 control-label">Gender</label>
-                                    <div class="col-lg-9">
-                                        <div class="btn-group" data-toggle="buttons">
-                                            <label class="btn btn-default">
-                                                <input type="radio" name="gender" value="male" /> Male
-                                            </label>
-                                            <label class="btn btn-default">
-                                                <input type="radio" name="gender" value="female" /> Female
-                                            </label>
-                                            <label class="btn btn-default">
-                                                <input type="radio" name="gender" value="other" /> Other
-                                            </label>
-                                        </div>
-                                    </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="button-form-tab">
+                    <form id="buttonGroupForm" method="post" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Gender</label>
+                            <div class="col-lg-9">
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="gender" value="male" /> Male
+                                    </label>
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="gender" value="female" /> Female
+                                    </label>
+                                    <label class="btn btn-default">
+                                        <input type="radio" name="gender" value="other" /> Other
+                                    </label>
                                 </div>
-
-                                <div class="form-group">
-                                    <label class="col-lg-3 control-label">Languages</label>
-                                    <div class="col-lg-9">
-                                        <div class="btn-group" data-toggle="buttons">
-                                            <label class="btn btn-default">
-                                                <input type="checkbox" name="languages[]" value="english" /> English
-                                            </label>
-                                            <label class="btn btn-default">
-                                                <input type="checkbox" name="languages[]" value="german" /> German
-                                            </label>
-                                            <label class="btn btn-default">
-                                                <input type="checkbox" name="languages[]" value="french" /> French
-                                            </label>
-                                            <label class="btn btn-default">
-                                                <input type="checkbox" name="languages[]" value="russian" /> Russian
-                                            </label>
-                                            <label class="btn btn-default">
-                                                <input type="checkbox" name="languages[]" value="italian"> Italian
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-lg-9 col-lg-offset-3">
-                                        <button type="submit" class="btn btn-primary">Validate</button>
-                                    </div>
-                                </div>
-                            </form>
+                            </div>
                         </div>
 
-                        <div class="tab-pane" id="button-html-tab">
-                            <pre><code class="xml">&lt;!-- Override the feedback icons position -->
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Languages</label>
+                            <div class="col-lg-9">
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-default">
+                                        <input type="checkbox" name="languages[]" value="english" /> English
+                                    </label>
+                                    <label class="btn btn-default">
+                                        <input type="checkbox" name="languages[]" value="german" /> German
+                                    </label>
+                                    <label class="btn btn-default">
+                                        <input type="checkbox" name="languages[]" value="french" /> French
+                                    </label>
+                                    <label class="btn btn-default">
+                                        <input type="checkbox" name="languages[]" value="russian" /> Russian
+                                    </label>
+                                    <label class="btn btn-default">
+                                        <input type="checkbox" name="languages[]" value="italian"> Italian
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-9 col-lg-offset-3">
+                                <button type="submit" class="btn btn-primary">Validate</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane" id="button-html-tab">
+                    <pre><code class="xml">&lt;!-- Override the feedback icons position -->
 &lt;style type="text/css">
 #buttonGroupForm.form-horizontal .has-feedback .form-control-feedback {
     top: 0;
@@ -1303,7 +1316,7 @@ $(document).ready(function() {
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Gender&lt;/label>
         &lt;div class="col-lg-9">
-            <span class="docs-code__note">&lt;div class="btn-group" data-toggle="buttons"></span>
+            <span class="doc-example-note">&lt;div class="btn-group" data-toggle="buttons"></span>
                 &lt;label class="btn btn-default">
                     &lt;input type="radio" name="gender" value="male" /> Male
                 &lt;/label>
@@ -1320,7 +1333,7 @@ $(document).ready(function() {
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Languages&lt;/label>
         &lt;div class="col-lg-9">
-            <span class="docs-code__note">&lt;div class="btn-group" data-toggle="buttons"></span>
+            <span class="doc-example-note">&lt;div class="btn-group" data-toggle="buttons"></span>
                 &lt;label class="btn btn-default">
                     &lt;input type="checkbox" name="languages[]" value="english" /> English
                 &lt;/label>
@@ -1346,10 +1359,10 @@ $(document).ready(function() {
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-                        </div>
+                </div>
 
-                        <div class="tab-pane" id="button-js-tab">
-                            <pre><code class="xml javascript">&lt;script>
+                <div class="tab-pane" id="button-js-tab">
+                    <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#buttonGroupForm').bootstrapValidator({
         feedbackIcons: {
@@ -1359,7 +1372,7 @@ $(document).ready(function() {
         },
         // Since the Bootstrap Button hides the radio and checkbox
         // We exclude the disabled elements only
-        <span class="docs-code__note">excluded: ':disabled',</span>
+        <span class="doc-example-note">excluded: ':disabled',</span>
         fields: {
             gender: {
                 validators: {
@@ -1381,60 +1394,60 @@ $(document).ready(function() {
     });
 });
 &lt;/script></code></pre>
-                        </div>
-                    </div>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
 
-            <!-- Use with Bootstrap Multiselect -->
-            <section id="bootstrap-multiselect">
-                <h3>Bootstrap Multiselect</h3>
-                <p>Use with the <a href="http://davidstutz.github.io/bootstrap-multiselect/">Bootstrap Multiselect</a> plugin.</p>
-                <p>The <i>Browser</i> option requires to choose 2-3 browsers.</p>
+    <!-- Use with Bootstrap Multiselect -->
+    <section id="bootstrap-multiselect">
+        <h3>Bootstrap Multiselect</h3>
+        <p>Use with the <a href="http://davidstutz.github.io/bootstrap-multiselect/">Bootstrap Multiselect</a> plugin.</p>
+        <p>The <i>Browser</i> option requires to choose 2-3 browsers.</p>
 
-                <div class="docs-example">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#multiselect-form-tab" data-toggle="tab">Try it</a></li>
-                        <li><a href="#multiselect-html-tab" data-toggle="tab">HTML</a></li>
-                        <li><a href="#multiselect-js-tab" data-toggle="tab">JS</a></li>
-                    </ul>
+        <div class="doc-example">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#multiselect-form-tab" data-toggle="tab">Try it</a></li>
+                <li><a href="#multiselect-html-tab" data-toggle="tab">HTML</a></li>
+                <li><a href="#multiselect-js-tab" data-toggle="tab">JS</a></li>
+            </ul>
 
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="multiselect-form-tab">
-                            <form id="multiselectForm" method="post" class="form-horizontal">
-                                <div class="form-group">
-                                    <label class="col-lg-3 control-label">Gender</label>
-                                    <div class="col-lg-5">
-                                        <select class="form-control" name="gender">
-                                            <option value="male">Male</option>
-                                            <option value="female">Female</option>
-                                            <option value="other">Other</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-lg-3 control-label">Browser</label>
-                                    <div class="col-lg-5">
-                                        <select class="form-control" name="browsers" multiple>
-                                            <option value="chrome">Google Chrome</option>
-                                            <option value="firefox">Firefox</option>
-                                            <option value="ie">IE</option>
-                                            <option value="safari">Safari</option>
-                                            <option value="opera">Opera</option>
-                                            <option value="other">Other</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-lg-5 col-lg-offset-3">
-                                        <button type="submit" class="btn btn-primary">Validate</button>
-                                    </div>
-                                </div>
-                            </form>
+            <div class="tab-content">
+                <div class="tab-pane active" id="multiselect-form-tab">
+                    <form id="multiselectForm" method="post" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Gender</label>
+                            <div class="col-lg-5">
+                                <select class="form-control" name="gender">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Browser</label>
+                            <div class="col-lg-5">
+                                <select class="form-control" name="browsers" multiple>
+                                    <option value="chrome">Google Chrome</option>
+                                    <option value="firefox">Firefox</option>
+                                    <option value="ie">IE</option>
+                                    <option value="safari">Safari</option>
+                                    <option value="opera">Opera</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-5 col-lg-offset-3">
+                                <button type="submit" class="btn btn-primary">Validate</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
 
-                        <div class="tab-pane" id="multiselect-html-tab">
-                            <pre><code class="xml">&lt;!-- Include Bootstrap Multiselect CSS -->
+                <div class="tab-pane" id="multiselect-html-tab">
+                    <pre><code class="xml">&lt;!-- Include Bootstrap Multiselect CSS -->
 &lt;link rel="stylesheet" href="/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css" />
 &lt;form id="multiselectForm" method="post" class="form-horizontal">
     &lt;div class="form-group">
@@ -1450,7 +1463,7 @@ $(document).ready(function() {
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Browser&lt;/label>
         &lt;div class="col-lg-5">
-            &lt;select class="form-control" name="browsers" <span class="docs-code__note">multiple</span>>
+            &lt;select class="form-control" name="browsers" <span class="doc-example-note">multiple</span>>
                 &lt;option value="chrome">Google Chrome&lt;/option>
                 &lt;option value="firefox">Firefox&lt;/option>
                 &lt;option value="ie">IE&lt;/option>
@@ -1466,10 +1479,10 @@ $(document).ready(function() {
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-                        </div>
+                </div>
 
-                        <div class="tab-pane" id="multiselect-js-tab">
-                            <pre><code class="xml javascript">&lt;!-- Include Bootstrap Multiselect JS -->
+                <div class="tab-pane" id="multiselect-js-tab">
+                    <pre><code class="xml javascript">&lt;!-- Include Bootstrap Multiselect JS -->
 &lt;script src="/vendor/bootstrap-multiselect/js/bootstrap-multiselect.js">&lt;/script>
 &lt;script>
 $(document).ready(function() {
@@ -1480,7 +1493,7 @@ $(document).ready(function() {
         .find('[name="browsers"]')
             .multiselect({
                 // Re-validate the multiselect field when it is changed
-                <span class="docs-code__note">onChange: function(element, checked) {
+                <span class="doc-example-note">onChange: function(element, checked) {
                     $('#multiselectForm')
                         .data('bootstrapValidator')                 // Get plugin instance
                         .updateStatus('browsers', 'NOT_VALIDATED')  // Update field status
@@ -1491,7 +1504,7 @@ $(document).ready(function() {
         .bootstrapValidator({
             // Exclude only disabled fields
             // The invisible fields set by Bootstrap Multiselect must be validated
-            <span class="docs-code__note">excluded: ':disabled',</span>
+            <span class="doc-example-note">excluded: ':disabled',</span>
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
@@ -1509,7 +1522,7 @@ $(document).ready(function() {
                     validators: {
                         callback: {
                             message: 'Please choose 2-3 browsers you use for developing',
-                            <span class="docs-code__note">callback: function(value, validator) {
+                            <span class="doc-example-note">callback: function(value, validator) {
                                 // Get the selected options
                                 var options = validator.getFieldElements('browsers').val();
                                 return (options && options.length >= 2 && options.length <= 3);
@@ -1521,51 +1534,51 @@ $(document).ready(function() {
         });
 });
 &lt;/script></code></pre>
-                        </div>
-                    </div>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
 
-            <!-- Use with Chosen -->
-            <section id="chosen">
-                <h3>Chosen</h3>
-                <p>Use with the <a href="http://harvesthq.github.io/chosen/">Chosen</a> plugin.</p>
-                <p>The <i>Favorite color</i> option requires to choose 2-4 colors you like most.</p>
+    <!-- Use with Chosen -->
+    <section id="chosen">
+        <h3>Chosen</h3>
+        <p>Use with the <a href="http://harvesthq.github.io/chosen/">Chosen</a> plugin.</p>
+        <p>The <i>Favorite color</i> option requires to choose 2-4 colors you like most.</p>
 
-                <div class="docs-example">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#chosen-form-tab" data-toggle="tab">Try it</a></li>
-                        <li><a href="#chosen-html-tab" data-toggle="tab">HTML</a></li>
-                        <li><a href="#chosen-js-tab" data-toggle="tab">JS</a></li>
-                    </ul>
+        <div class="doc-example">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#chosen-form-tab" data-toggle="tab">Try it</a></li>
+                <li><a href="#chosen-html-tab" data-toggle="tab">HTML</a></li>
+                <li><a href="#chosen-js-tab" data-toggle="tab">JS</a></li>
+            </ul>
 
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="chosen-form-tab">
-                            <form id="chosenForm" method="post" class="form-horizontal">
-                                <div class="form-group">
-                                    <label class="col-lg-3 control-label">Favorite color</label>
-                                    <div class="col-lg-5">
-                                        <select class="form-control chosen-select" name="colors" multiple data-placeholder="Choose 2-4 colors">
-                                            <option value="black">Black</option>
-                                            <option value="blue">Blue</option>
-                                            <option value="green">Green</option>
-                                            <option value="orange">Orange</option>
-                                            <option value="red">Red</option>
-                                            <option value="yellow">Yellow</option>
-                                            <option value="white">White</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-lg-5 col-lg-offset-3">
-                                        <button type="submit" class="btn btn-primary">Validate</button>
-                                    </div>
-                                </div>
-                            </form>
+            <div class="tab-content">
+                <div class="tab-pane active" id="chosen-form-tab">
+                    <form id="chosenForm" method="post" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Favorite color</label>
+                            <div class="col-lg-5">
+                                <select class="form-control chosen-select" name="colors" multiple data-placeholder="Choose 2-4 colors">
+                                    <option value="black">Black</option>
+                                    <option value="blue">Blue</option>
+                                    <option value="green">Green</option>
+                                    <option value="orange">Orange</option>
+                                    <option value="red">Red</option>
+                                    <option value="yellow">Yellow</option>
+                                    <option value="white">White</option>
+                                </select>
+                            </div>
                         </div>
+                        <div class="form-group">
+                            <div class="col-lg-5 col-lg-offset-3">
+                                <button type="submit" class="btn btn-primary">Validate</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
 
-                        <div class="tab-pane" id="chosen-html-tab">
-                            <pre><code class="xml">&lt;!-- Include chosen CSS -->
+                <div class="tab-pane" id="chosen-html-tab">
+                    <pre><code class="xml">&lt;!-- Include chosen CSS -->
 &lt;link rel="stylesheet" href="/vendor/chosen/chosen.min.css" />
 &lt;style type="text/css">
 #chosenForm .chosen-choices {
@@ -1574,7 +1587,7 @@ $(document).ready(function() {
     min-height: 34px;
     padding: 6px 12px;
 }
-<span class="docs-code__note">#chosenForm .form-control-feedback {
+<span class="doc-example-note">#chosenForm .form-control-feedback {
     /* To make the feedback icon visible */
     z-index: 100;
 }</span>
@@ -1583,8 +1596,8 @@ $(document).ready(function() {
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Favorite color&lt;/label>
         &lt;div class="col-lg-5">
-            &lt;select name="colors" class="form-control <span class="docs-code__note">chosen-select</span>"
-                <span class="docs-code__note">multiple data-placeholder="Choose 2-4 colors"</span>>
+            &lt;select name="colors" class="form-control <span class="doc-example-note">chosen-select</span>"
+                <span class="doc-example-note">multiple data-placeholder="Choose 2-4 colors"</span>>
                 &lt;option value="black">Black&lt;/option>
                 &lt;option value="blue">Blue&lt;/option>
                 &lt;option value="green">Green&lt;/option>
@@ -1601,10 +1614,10 @@ $(document).ready(function() {
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-                        </div>
+                </div>
 
-                        <div class="tab-pane" id="chosen-js-tab">
-                            <pre><code class="xml javascript">&lt;!-- Include choosen JS -->
+                <div class="tab-pane" id="chosen-js-tab">
+                    <pre><code class="xml javascript">&lt;!-- Include choosen JS -->
 &lt;script src="/vendor/chosen/chosen.jquery.min.js">&lt;/script>
 &lt;script>
 $(document).ready(function() {
@@ -1612,7 +1625,7 @@ $(document).ready(function() {
         .find('[name="colors"]')
             .chosen()
             // Re-validate the color when it is changed
-            <span class="docs-code__note">.change(function(e) {
+            <span class="doc-example-note">.change(function(e) {
                 $('#chosenForm')
                     .data('bootstrapValidator')
                     .updateStatus('colors', 'NOT_VALIDATED')
@@ -1620,7 +1633,7 @@ $(document).ready(function() {
             })</span>
             .end()
         .bootstrapValidator({
-            <span class="docs-code__note">excluded: ':disabled'</span>,
+            <span class="doc-example-note">excluded: ':disabled'</span>,
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
@@ -1643,113 +1656,113 @@ $(document).ready(function() {
         });
 });
 &lt;/script></code></pre>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Use with iCheck -->
+    <section id="icheck">
+        <h3>iCheck</h3>
+        <p>Use with the <a href="http://fronteed.com/iCheck/">iCheck</a> plugin.</p>
+
+        <div class="doc-example">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#icheck-form-tab" data-toggle="tab">Try it</a></li>
+                <li><a href="#icheck-html-tab" data-toggle="tab">HTML</a></li>
+                <li><a href="#icheck-js-tab" data-toggle="tab">JS</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="icheck-form-tab">
+                    <form id="icheckForm" method="post" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Job position</label>
+                            <div class="col-lg-5">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="job" value="designer" /> Designer
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="job" value="frontend" /> Front-end Developer
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="job" value="backend" /> Back-end Developer
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="job" value="dba" /> Database Administrator
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="job" value="sys" /> System Engineer
+                                    </label>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Programming Languages</label>
+                            <div class="col-lg-5">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="languages[]" value="net" /> .Net
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="languages[]" value="java" /> Java
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="languages[]" value="c" /> C/C++
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="languages[]" value="php" /> PHP
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="languages[]" value="perl" /> Perl
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="languages[]" value="ruby" /> Ruby
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="languages[]" value="python" /> Python
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="languages[]" value="javascript" /> Javascript
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-5 col-lg-offset-3">
+                                <button type="submit" class="btn btn-primary">Validate</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
 
-            </section>
-
-            <!-- Use with iCheck -->
-            <section id="icheck">
-                <h3>iCheck</h3>
-                <p>Use with the <a href="http://fronteed.com/iCheck/">iCheck</a> plugin.</p>
-
-                <div class="docs-example">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#icheck-form-tab" data-toggle="tab">Try it</a></li>
-                        <li><a href="#icheck-html-tab" data-toggle="tab">HTML</a></li>
-                        <li><a href="#icheck-js-tab" data-toggle="tab">JS</a></li>
-                    </ul>
-
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="icheck-form-tab">
-                            <form id="icheckForm" method="post" class="form-horizontal">
-                                <div class="form-group">
-                                    <label class="col-lg-3 control-label">Job position</label>
-                                    <div class="col-lg-5">
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="job" value="designer" /> Designer
-                                            </label>
-                                        </div>
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="job" value="frontend" /> Front-end Developer
-                                            </label>
-                                        </div>
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="job" value="backend" /> Back-end Developer
-                                            </label>
-                                        </div>
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="job" value="dba" /> Database Administrator
-                                            </label>
-                                        </div>
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="job" value="sys" /> System Engineer
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-lg-3 control-label">Programming Languages</label>
-                                    <div class="col-lg-5">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="languages[]" value="net" /> .Net
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="languages[]" value="java" /> Java
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="languages[]" value="c" /> C/C++
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="languages[]" value="php" /> PHP
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="languages[]" value="perl" /> Perl
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="languages[]" value="ruby" /> Ruby
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="languages[]" value="python" /> Python
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="languages[]" value="javascript" /> Javascript
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-lg-5 col-lg-offset-3">
-                                        <button type="submit" class="btn btn-primary">Validate</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="tab-pane" id="icheck-html-tab">
-                            <pre><code class="xml">&lt;!-- Include iCheck skin -->
-<span class="docs-code__note">&lt;link rel="stylesheet" href="/vendor/icheck/skins/square/red.css" /></span>
+                <div class="tab-pane" id="icheck-html-tab">
+                    <pre><code class="xml">&lt;!-- Include iCheck skin -->
+<span class="doc-example-note">&lt;link rel="stylesheet" href="/vendor/icheck/skins/square/red.css" /></span>
 &lt;!-- Set the radio/checkbox positon properly -->
 &lt;style type="text/css">
 #icheckForm .radio, #icheckForm .checkbox {
@@ -1841,11 +1854,11 @@ $(document).ready(function() {
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-                        </div>
+                </div>
 
-                        <div class="tab-pane" id="icheck-js-tab">
-                            <pre><code class="xml javascript">&lt;!-- Include iCheck plugin -->
-<span class="docs-code__note">&lt;script src="/vendor/icheck/icheck.min.js">&lt;/script></span>
+                <div class="tab-pane" id="icheck-js-tab">
+                    <pre><code class="xml javascript">&lt;!-- Include iCheck plugin -->
+<span class="doc-example-note">&lt;script src="/vendor/icheck/icheck.min.js">&lt;/script></span>
 &lt;script>
 $(document).ready(function() {
     $('#icheckForm')
@@ -1876,7 +1889,7 @@ $(document).ready(function() {
         })
         .find('input[name="job"], input[name="languages[]"]')
             // Init iCheck elements
-            <span class="docs-code__note">.iCheck({
+            <span class="doc-example-note">.iCheck({
                 checkboxClass: 'icheckbox_square-red',
                 radioClass: 'iradio_square-red'
             })</span>
@@ -1884,7 +1897,7 @@ $(document).ready(function() {
             .on('ifChanged', function(e) {
                 // Get the field name
                 var field = $(this).attr('name');
-                <span class="docs-code__note">$('#icheckForm')
+                <span class="doc-example-note">$('#icheckForm')
                     // Mark the field as not validated
                     .bootstrapValidator('updateStatus', field, 'NOT_VALIDATED')
                     // Validate field
@@ -1892,37 +1905,37 @@ $(document).ready(function() {
             });
 });
 &lt;/script></code></pre>
-                        </div>
-                    </div>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
 
-            <!-- Use with Mask -->
-            <section id="mask">
-                <h3>Mask</h3>
-                <p>Use with the <a href="http://igorescobar.github.io/jQuery-Mask-Plugin/">Mask</a> plugin.</p>
+    <!-- Use with Mask -->
+    <section id="mask">
+        <h3>Mask</h3>
+        <p>Use with the <a href="http://igorescobar.github.io/jQuery-Mask-Plugin/">Mask</a> plugin.</p>
 
-                <div class="docs-example">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#mask-form-tab" data-toggle="tab">Try it</a></li>
-                        <li><a href="#mask-html-tab" data-toggle="tab">HTML</a></li>
-                        <li><a href="#mask-js-tab" data-toggle="tab">JS</a></li>
-                    </ul>
+        <div class="doc-example">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#mask-form-tab" data-toggle="tab">Try it</a></li>
+                <li><a href="#mask-html-tab" data-toggle="tab">HTML</a></li>
+                <li><a href="#mask-js-tab" data-toggle="tab">JS</a></li>
+            </ul>
 
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="mask-form-tab">
-                            <form id="maskForm" method="post" class="form-horizontal">
-                                <div class="form-group">
-                                    <label class="col-lg-3 control-label">IP address</label>
-                                    <div class="col-lg-5">
-                                        <input type="text" class="form-control" name="ipAddress" />
-                                    </div>
-                                </div>
-                            </form>
+            <div class="tab-content">
+                <div class="tab-pane active" id="mask-form-tab">
+                    <form id="maskForm" method="post" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">IP address</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" name="ipAddress" />
+                            </div>
                         </div>
+                    </form>
+                </div>
 
-                        <div class="tab-pane" id="mask-html-tab">
-                            <pre><code class="xml">&lt;form id="maskForm" method="post" class="form-horizontal">
+                <div class="tab-pane" id="mask-html-tab">
+                    <pre><code class="xml">&lt;form id="maskForm" method="post" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">IP address&lt;/label>
         &lt;div class="col-lg-5">
@@ -1930,11 +1943,11 @@ $(document).ready(function() {
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-                        </div>
+                </div>
 
-                        <div class="tab-pane" id="mask-js-tab">
-                            <pre><code class="xml javascript">&lt;!-- Include Mask plugin -->
-<span class="docs-code__note">&lt;script src="/vendor/mask/jquery.mask.min.js">&lt;/script></span>
+                <div class="tab-pane" id="mask-js-tab">
+                    <pre><code class="xml javascript">&lt;!-- Include Mask plugin -->
+<span class="doc-example-note">&lt;script src="/vendor/mask/jquery.mask.min.js">&lt;/script></span>
 &lt;script>
 $(document).ready(function() {
     $('#maskForm')
@@ -1954,62 +1967,62 @@ $(document).ready(function() {
                 }
             }
         })
-        <span class="docs-code__note">.find('[name="ipAddress"]').mask('099.099.099.099')</span>;
+        <span class="doc-example-note">.find('[name="ipAddress"]').mask('099.099.099.099')</span>;
 });
 &lt;/script></code></pre>
-                        </div>
-                    </div>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
 
-            <!-- Use with Raty -->
-            <section id="raty">
-                <h3>Raty</h3>
-                <p>Use with the <a href="http://wbotelhos.com/raty">Raty</a> plugin. At first, try to click the <i>Validate</i> button to validate the form. Then click the <i>Rating</i>, fill in other fields, and click the <i>Validate</i> button again to
-                see that the <i>Rating</i> is validated.</p>
+    <!-- Use with Raty -->
+    <section id="raty">
+        <h3>Raty</h3>
+        <p>Use with the <a href="http://wbotelhos.com/raty">Raty</a> plugin. At first, try to click the <i>Validate</i> button to validate the form. Then click the <i>Rating</i>, fill in other fields, and click the <i>Validate</i> button again to
+        see that the <i>Rating</i> is validated.</p>
 
-                <div class="docs-example">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#raty-form-tab" data-toggle="tab">Try it</a></li>
-                        <li><a href="#raty-html-tab" data-toggle="tab">HTML</a></li>
-                        <li><a href="#raty-js-tab" data-toggle="tab">JS</a></li>
-                    </ul>
+        <div class="doc-example">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#raty-form-tab" data-toggle="tab">Try it</a></li>
+                <li><a href="#raty-html-tab" data-toggle="tab">HTML</a></li>
+                <li><a href="#raty-js-tab" data-toggle="tab">JS</a></li>
+            </ul>
 
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="raty-form-tab">
-                            <form id="ratyForm" method="post" class="form-horizontal">
-                                <div class="form-group">
-                                    <label class="col-lg-3 control-label">Rating</label>
-                                    <div class="col-lg-5">
-                                        <div id="ratyRating"></div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-lg-3 control-label">Review title</label>
-                                    <div class="col-lg-5">
-                                        <input type="text" class="form-control" name="title" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-lg-3 control-label">Your review</label>
-                                    <div class="col-lg-5">
-                                        <textarea rows="5" class="form-control" name="content"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-lg-5 col-lg-offset-3">
-                                        <button type="submit" class="btn btn-primary">Validate</button>
-                                    </div>
-                                </div>
-                            </form>
+            <div class="tab-content">
+                <div class="tab-pane active" id="raty-form-tab">
+                    <form id="ratyForm" method="post" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Rating</label>
+                            <div class="col-lg-5">
+                                <div id="ratyRating"></div>
+                            </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Review title</label>
+                            <div class="col-lg-5">
+                                <input type="text" class="form-control" name="title" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Your review</label>
+                            <div class="col-lg-5">
+                                <textarea rows="5" class="form-control" name="content"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-5 col-lg-offset-3">
+                                <button type="submit" class="btn btn-primary">Validate</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
 
-                        <div class="tab-pane" id="raty-html-tab">
-                            <pre><code class="xml">&lt;form id="ratyForm" method="post" class="form-horizontal">
+                <div class="tab-pane" id="raty-html-tab">
+                    <pre><code class="xml">&lt;form id="ratyForm" method="post" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Rating&lt;/label>
         &lt;div class="col-lg-5">
-            <span class="docs-code__note">&lt;div id="ratyRating">&lt;/div></span>
+            <span class="doc-example-note">&lt;div id="ratyRating">&lt;/div></span>
         &lt;/div>
     &lt;/div>
     &lt;div class="form-group">
@@ -2030,10 +2043,10 @@ $(document).ready(function() {
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-                        </div>
+                </div>
 
-                        <div class="tab-pane" id="raty-js-tab">
-                            <pre><code class="xml javascript">&lt;!-- Include Raty JS file -->
+                <div class="tab-pane" id="raty-js-tab">
+                    <pre><code class="xml javascript">&lt;!-- Include Raty JS file -->
 &lt;script src="/vendor/raty/jquery.raty.min.js">&lt;/script>
 &lt;script>
 $(document).ready(function() {
@@ -2042,9 +2055,9 @@ $(document).ready(function() {
         path: '/vendor/raty/img',
         size: 24,
         // The name of hidden field generated by Raty
-        <span class="docs-code__note">scoreName: 'star'</span>,
+        <span class="doc-example-note">scoreName: 'star'</span>,
         // Re-validate the star rating whenever user change it
-        <span class="docs-code__note">click: function (score, evt) {
+        <span class="doc-example-note">click: function (score, evt) {
             $('#ratyForm')
                 .data('bootstrapValidator')             // Return the bootstrapValidator instance
                 .updateStatus('star', 'NOT_VALIDATED')  // Mark the star field as not validated yet
@@ -2055,14 +2068,14 @@ $(document).ready(function() {
         .bootstrapValidator({
             // The disabled elements are excluded
             // Hidden elements (including the rating star) are included
-            <span class="docs-code__note">excluded: ':disabled'</span>,
+            <span class="doc-example-note">excluded: ':disabled'</span>,
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
             fields: {
-                <span class="docs-code__note">star</span>: {
+                <span class="doc-example-note">star</span>: {
                     validators: {
                         notEmpty: {
                             message: 'The rating is required'
@@ -2091,41 +2104,11 @@ $(document).ready(function() {
         });
 });
 &lt;/script></code></pre>
-                        </div>
-                    </div>
                 </div>
-            </section>
-        </section>
-
-        <p><a href="{{ site.repository.docs_edit }}/examples.html" class="btn btn-success">Improve this page</a></p>
-
-        {% include disqus.html %}
-    </div>
-
-    <div class="col-md-3">
-        <div class="docs-sidebar" data-spy="affix" data-offset-top="120">
-            <ul class="nav">
-                <li><a href="#attribute">Attribute</a></li>
-                <li><a href="#html5">HTML 5</a></li>
-                <li><a href="#toggling">Toggling</a></li>
-                <li><a href="#tab">Tab</a></li>
-                <li><a href="#fields-with-same-name">Fields with same name</a></li>
-                <li>
-                    <a href="#compatibility">Compatibility</a>
-                    <ul class="nav">
-                        <li><a href="#bootstrap-button">Bootstrap Button</a></li>
-                        <li><a href="#bootstrap-multiselect">Bootstrap Multiselect</a></li>
-                        <li><a href="#chosen">Chosen</a></li>
-                        <li><a href="#icheck">iCheck</a></li>
-                        <li><a href="#mask">Mask</a></li>
-                        <li><a href="#raty">Raty</a></li>
-                    </ul>
-                </li>
-            </ul>
-            {% include ad.html %}
+            </div>
         </div>
-    </div>
-</div>
+    </section>
+</section>
 
 <script src="/vendor/bootstrap-multiselect/js/bootstrap-multiselect.js"></script>
 <script src="/vendor/chosen/chosen.jquery.min.js"></script>
