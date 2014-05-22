@@ -184,7 +184,12 @@ li {
   font-family: 'source-code-pro', sans-serif;
 }
 .doc-content pre {
+  overflow: auto;
   padding: 0;
+  word-wrap: normal;
+}
+.doc-content pre code {
+  white-space: pre;
 }
 .doc-heading {
   border-bottom: 1px solid #ccc;
