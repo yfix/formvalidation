@@ -14,7 +14,7 @@ comments:   true
 </section>
 
 <section>
-    <p>Check if the number of checked boxes are less or more than a given number.</p>
+    <p>Check if the number of checked boxes are less or more than a given number. It also supports the <code>select</code> element if the <code>multiple="multiple"</code> attribute is set.</p>
 
     <table class="table table-condensed">
         <thead>
@@ -46,6 +46,35 @@ comments:   true
             </tr>
         </tbody>
     </table>
+
+    <div class="doc-box-info">
+        <p>In order to get the correct submit data in the server side, you should pay attention on setting the <code>name</code> attribute of checkbox/select elements.</p>
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>Server side</th>
+                    <th>name attribute</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PHP</td>
+                    <td><code>name[]</code></td>
+                    <td>
+                        <pre><code class="xml">&lt;input type="checkbox" name="languages[]" />
+&lt;select name="editors[]" multiple="multiple">&lt;/select></code></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>Spring MVC</code></td>
+                    <td><code>name</code></td>
+                    <td><pre><code class="xml">&lt;input type="checkbox" name="languages" />
+&lt;select name="editors" multiple="multiple">&lt;/select></code></pre></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </section>
 
 <section id="example">
@@ -134,37 +163,37 @@ comments:   true
         &lt;div class="col-lg-4">
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input type="checkbox" name="languages" value="net" /> .Net
+                    &lt;input type="checkbox" name="languages[]" value="net" /> .Net
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input type="checkbox" name="languages" value="java" /> Java
+                    &lt;input type="checkbox" name="languages[]" value="java" /> Java
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input type="checkbox" name="languages" value="c" /> C/C++
+                    &lt;input type="checkbox" name="languages[]" value="c" /> C/C++
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input type="checkbox" name="languages" value="php" /> PHP
+                    &lt;input type="checkbox" name="languages[]" value="php" /> PHP
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input type="checkbox" name="languages" value="perl" /> Perl
+                    &lt;input type="checkbox" name="languages[]" value="perl" /> Perl
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input type="checkbox" name="languages" value="ruby" /> Ruby
+                    &lt;input type="checkbox" name="languages[]" value="ruby" /> Ruby
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input type="checkbox" name="languages" value="python" /> Python
+                    &lt;input type="checkbox" name="languages[]" value="python" /> Python
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
@@ -178,7 +207,7 @@ comments:   true
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Editors&lt;/label>
         &lt;div class="col-lg-4">
-            &lt;select class="form-control" <span class="doc-example-note">name="editors" multiple="multiple"</span> style="height: 200px;">
+            &lt;select class="form-control" <span class="doc-example-note">name="editors[]" multiple="multiple"</span> style="height: 200px;">
                 &lt;option value="" disabled>Choose 2 - 3 editors&lt;/option>
                 &lt;option value="atom">Atom&lt;/option>
                 &lt;option value="eclipse">Eclipse&lt;/option>
@@ -203,7 +232,7 @@ $(document).ready(function() {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            languages: {
+            'languages[]': {
                 validators: {
                     <span class="docs-code__note">choice: {
                         min: 2,
@@ -212,7 +241,7 @@ $(document).ready(function() {
                     }</span>
                 }
             },
-            editors: {
+            'editors[]': {
                 validators: {
                     <span class="docs-code__note">choice: {
                         min: 2,
