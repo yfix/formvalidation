@@ -13,7 +13,7 @@ permalink:            /news/:year/:month/:day/:title/
 # not defined by Jekyll
 current_version:      0.4.5
 released_date:        2014-05-15
-github_watchers:      314
+github_watchers:      315
 github_forks:         106
 twitter_followers:    18
 download:

@@ -35,18 +35,19 @@ sections:
             <h3>Release</h3>
             <p>Including the plugin, its validator source and minified versions.<br />It should be used in the production site.</p>
             <p><a class="btn btn-lg btn-primary" href="{{ site.download.dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download release']);"><i class="fa fa-download"></i> Download v{{ site.current_version }}</a></p>
-            <p><i>Released on {{ site.released_date }}</i></p>
         </div>
         <div class="col-sm-4">
             <h3>Source code</h3>
             <p>Including the source code, examples and building script. Download if you want to play with or develop new validators.</p>
-            <a class="btn btn-lg btn-primary" href="{{ site.download.tag }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);"><i class="fa fa-code"></i> Download source</a>
+            <a class="btn btn-lg btn-primary" href="{{ site.download.tag }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);"><i class="fa fa-code"></i> Download Source</a>
         </div>
         <div class="col-sm-4">
             <h3>Older versions</h3>
-            <p>For older versions, take a look at the <a href="{{ site.repository.source }}/releases">Releases</a> page.</p>
+            <p>For older versions, take a look at the <a href="/news/releases/">Releases</a> page.</p>
         </div>
     </div>
+
+    <p>See <a href="{% post_url 2014-05-15-v0.4.5-released %}">what's news</a> in v{{ site.current_version }}, released on {{ site.released_date }}</p>
 
     <h3>Installing with Bower</h3>
     <p>It's also possible to get the latest release from <a href="http://bower.io">bower</a>:</p>

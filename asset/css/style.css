@@ -288,6 +288,6 @@ li {
   border-bottom: 1px solid #ccc;
   margin-bottom: 20px;
 }
-.doc-post-content ul li:before {
+.doc-post-content ul.doc-post-list li:before {
   content: '\2014\a0';
 }

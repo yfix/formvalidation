@@ -11,5 +11,12 @@ layout: default
 
     <div class="doc-post-content">
         {{ content }}
+
+        <section class="doc-prev-next">
+            <ul class="pager">
+                {% if page.previous.url %}<li class="previous"><a href="{{ page.previous.url }}"><i class="fa fa-long-arrow-left"></i> PREVIOUS</a></li>{% endif %}
+                {% if page.next.url %}<li class="next"><a href="{{ page.next.url }}">NEXT <i class="fa fa-long-arrow-right"></i></a></li>{% endif %}
+            </ul>
+        </section>
     </div>
 </article>

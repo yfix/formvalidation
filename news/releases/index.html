@@ -1,0 +1,14 @@
+---
+layout:    default
+title:     Releases
+permalink: /news/releases/
+comment:   false
+---
+
+<section class="doc-heading">
+    <h1><a href="/news/">News</a> / <a href="{{ page.url }}">Releases</a></h1>
+</section>
+
+{% for post in site.categories.releases %}
+    {% include post-item.html %}
+{% endfor %}
