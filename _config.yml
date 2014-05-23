@@ -6,7 +6,7 @@ markdown:             redcarpet
 destination:          _gh_pages
 exclude:              ['node_modules', '*.less']
 url:                  http://bootstrapvalidator.com/
-paginate:             5
+#paginate:             5
 permalink:            /news/:year/:month/:day/:title/
 
 # Custom variables
