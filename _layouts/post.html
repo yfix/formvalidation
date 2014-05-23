@@ -3,10 +3,18 @@ layout: default
 ---
 
 <article>
-    <h1 class="doc-post-title"><a href="/news/">News</a> / <a href="{{ page.url }}">{{ page.title }}</a></h1>
+    <h1 class="doc-post-title">
+        <div><a href="{{ page.url }}">{{ page.title }}</a></div>
+    </h1>
 
     <div class="doc-post-meta">
+        <span class="doc-post-author"><i class="fa fa-user"></i> <a href="https://github.com/{{ page.author }}">{{ page.author }}</a></span>
         <span class="doc-post-date"><i class="fa fa-clock-o"></i> {{ page.date | date_to_string }}</span>
+        <span class="doc-post-category"><i class="fa fa-tags"></i>
+            {% for category in page.categories %}
+            <a href="/news/{{ category }}/">{{ category }}</a>
+            {% endfor %}
+        </span>
     </div>
 
     <div class="doc-post-content">
