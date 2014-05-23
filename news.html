@@ -1,0 +1,15 @@
+---
+layout:     default
+title:      News
+permalink:  /news/
+category:   news
+comment:    false
+---
+
+<section class="doc-heading">
+    <h1>News</h1>
+</section>
+
+{% for post in site.posts %}
+    {% include post-item.html %}
+{% endfor %}

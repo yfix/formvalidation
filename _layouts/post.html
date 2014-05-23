@@ -1,0 +1,15 @@
+---
+layout: default
+---
+
+<article>
+    <h1 class="doc-post-title"><a href="{{ page.url }}">{{ page.title }}</a></h1>
+
+    <div class="doc-post-meta">
+        <span class="doc-post-date"><i class="fa fa-clock-o"></i> {{ page.date | date_to_string }}</span>
+    </div>
+
+    <div class="doc-post-content">
+        {{ page.content }}
+    </div>
+</article>

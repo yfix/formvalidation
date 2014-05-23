@@ -1,27 +1,14 @@
-- title: Overview
+- title:     Overview
   permalink: /
-  category:
-
-- title: Getting started
+- title:     Getting started
   permalink: /getting-started/
-  category: started
-
-- title: Settings
+- title:     Settings
   permalink: /settings/
-  category: settings
-
-- title: Validators
+- title:     Validators
   permalink: /validators/
-  category: validators
-
-- title: Examples
+- title:     Examples
   permalink: /examples/
-  category: examples
-
-- title: API
+- title:     API
   permalink: /api/
-  category: api
-
-- title: Developing
+- title:     Developing
   permalink: /developing/
-  category: developing

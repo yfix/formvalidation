@@ -52,7 +52,9 @@
 
             <ul>
                 {% for nav in site.data.nav %}
-                    {% if page.category == nav.category %}
+                    {% if nav.permalink == '/' and page.permalink == '/' %}
+                        {% assign c = "doc-nav-active" %}
+                    {% elsif nav.permalink != '/' and page.url contains nav.permalink %}
                         {% assign c = "doc-nav-active" %}
                     {% else %}
                         {% assign c = "" %}
@@ -60,7 +62,6 @@
                     <li class="{{ c }}">
                         <a href="{{ nav.permalink }}">{{ nav.title }}</a>
                         {% if c == "doc-nav-active" %}
-                            {% assign sections = include.sections %}
                             <ul>
                             {% for section in page.sections %}
                                 <li><a href="#{{ section.anchor }}">{{ section.title }}</a></li>

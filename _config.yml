@@ -6,13 +6,15 @@ markdown:             redcarpet
 destination:          _gh_pages
 exclude:              ['node_modules', '*.less']
 url:                  http://bootstrapvalidator.com/
+paginate:             5
+permalink:            /news/:year/:month/:day/:title/
 
 # Custom variables
 # not defined by Jekyll
 current_version:      0.4.5
 released_date:        2014-05-15
-github_watchers:      307
-github_forks:         104
+github_watchers:      314
+github_forks:         106
 twitter_followers:    18
 download:
   dist:               https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.4.5/bootstrapvalidator-dist-0.4.5.zip
