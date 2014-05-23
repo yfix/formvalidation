@@ -8,6 +8,7 @@ exclude:              ['node_modules', '*.less']
 url:                  http://bootstrapvalidator.com/
 #paginate:             5
 permalink:            /news/:year/:month/:day/:title/
+timezone:             Asia/Ho_Chi_Minh
 
 # Custom variables
 # not defined by Jekyll
