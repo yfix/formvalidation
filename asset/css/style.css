@@ -191,6 +191,9 @@ li {
 .doc-content pre code {
   white-space: pre;
 }
+ul.doc-list li:before {
+  content: '\2014\a0';
+}
 .doc-heading {
   border-bottom: 1px solid #ccc;
   position: relative;
