@@ -810,9 +810,19 @@ $(document).ready(function() {
 
 <section id="tab">
     <h2>Tabs</h2>
-    <p>The following example shows that the plugin works perfectly with tabs.</p>
+    <p>The following example shows that the plugin works perfectly with <a href="http://getbootstrap.com/javascript/#tabs">Bootstrap Tabs</a>.</p>
     <p>By default, the fields in inactive tabs will not be validated because they are not visible. In order to validate them, we need to use the <a href="/settings/#excluded">excluded</a> option:</p>
     <pre><code class="javascript">excluded: [':disabled']</code></pre>
+
+    <div class="doc-box-info">
+        <h4>Customizing the Tab</h4>
+        <p>If all fields in tab are valid, then the tab element will has <code>bv-tab-error</code> class. Otherwise, if the tab contains at least one invalid field, then it will has <code>bv-tab-success</code> class.</p>
+        <pre><code class="xml">&lt;ul class="nav nav-tabs">
+    &lt;li class="bv-tab-error">&lt;/li>    &lt;!-- error tab -->
+    &lt;li class="bv-tab-success">&lt;/li>  &lt;!-- success tab -->
+&lt;/ul></code></pre>
+        <p>It's possible to change the look and feel of tabs by customizing these <code>bv-tab-error</code>, <code>bv-tab-success</code> classes.</p>
+    </div>
 
     <div class="doc-example">
         <ul class="nav nav-tabs">
