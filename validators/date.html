@@ -9,7 +9,7 @@ comments:         true
 
 <section class="doc-heading">
     <h1><a href="/validators/">Validators</a> / date</h1>
-    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/validators/date.html"><i class="fa fa-github"></i> Edit on Github</a>
+    {% include edit-button.html %}
 </section>
 
 <section>
@@ -110,27 +110,27 @@ comments:         true
     </table>
 
     <p>Below are some example of possible formats:</p>
-    <ul>
-        <li>&mdash; YYYY/DD/MM</li>
-        <li>&mdash; YYYY/DD/MM h</li>
-        <li>&mdash; YYYY/DD/MM h A</li>
-        <li>&mdash; YYYY/DD/MM h:m</li>
-        <li>&mdash; YYYY/DD/MM h:m A</li>
-        <li>&mdash; YYYY/DD/MM h:m:s</li>
-        <li>&mdash; YYYY/DD/MM h:m:s A</li>
-        <li>&mdash; YYYY-MM-DD</li>
-        <li>&mdash; YYYY-MM-DD h:m A</li>
-        <li>&mdash; DD/MM/YYYY</li>
-        <li>&mdash; DD/MM/YYYY h:m A</li>
-        <li>&mdash; MM-DD-YYYY</li>
-        <li>&mdash; MM-DD-YYYY h:m A</li>
-        <li>&mdash; DD-MM-YYYY</li>
-        <li>&mdash; DD-MM-YYYY h:m A</li>
+    <ul class="doc-list">
+        <li>YYYY/DD/MM</li>
+        <li>YYYY/DD/MM h</li>
+        <li>YYYY/DD/MM h A</li>
+        <li>YYYY/DD/MM h:m</li>
+        <li>YYYY/DD/MM h:m A</li>
+        <li>YYYY/DD/MM h:m:s</li>
+        <li>YYYY/DD/MM h:m:s A</li>
+        <li>YYYY-MM-DD</li>
+        <li>YYYY-MM-DD h:m A</li>
+        <li>DD/MM/YYYY</li>
+        <li>DD/MM/YYYY h:m A</li>
+        <li>MM-DD-YYYY</li>
+        <li>MM-DD-YYYY h:m A</li>
+        <li>DD-MM-YYYY</li>
+        <li>DD-MM-YYYY h:m A</li>
     </ul>
 
     <p>It's possible to support other date format by using <a href="/validators/callback/">callback</a> validator as shown in the <a href="#custom-format-example">Custom format example</a>.</p>
 
-    <p>The date validator also checks the number of days in February of leap year. For example, 02/29/2000 is valid date, while 02/29/2001 is invalid one.</p>
+    <p class="doc-box-info">The date validator also checks the number of days in February of leap year. For example, 02/29/2000 is valid date, while 02/29/2001 is invalid one.</p>
 </section>
 
 <section id="example">
