@@ -629,6 +629,23 @@ $(document).ready(function() {
         </div>
     </div>
 
+    <h4>Setting Options via HTML Attributes</h4>
+    <p>If you use <a href="#attribute">HTML attributes</a> to set the validator options, or <a href="#html5">HTML5 input</a> elements, you must set <code>excluded: [':disabled']</code>.</p>
+    <div class="doc-box-info">
+        <p>By default, the plugin will not initialize the fields which are disabled, hidden, or not visible. Since the form is placed inside a model which is not visible after loading page, the fields/validators initialized with HTML attributes might be ignored.</p>
+        <p>That's the reason why we need to set <code>excluded: [':disabled']</code>. Take a look at the <a href="/settings/#excluded"><code>excluded</code> setting</a> for more information.</p>
+    </div>
+    <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#loginForm').bootstrapValidator({
+        message: 'This value is not valid',
+        <span class="doc-example-note">excluded: [':disabled'],</span>
+        ...
+    });
+});
+&lt;/script></code></pre>
+
+    <h4>Using Ajax to Submit Form</h4>
     <p>In the case you want to use Ajax to submit the form and perform additional tasks after that, you can use <a href="/settings/#submit-handler"><code>submitHandler</code> option</a>.</p>
     <p>Regard to our modal example, the following code shows how to:</p>
     <ul class="doc-list">
