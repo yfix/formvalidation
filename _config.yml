@@ -14,9 +14,9 @@ timezone:             Asia/Ho_Chi_Minh
 # not defined by Jekyll
 current_version:      0.4.5
 released_date:        2014-05-15
-github_watchers:      344
-github_forks:         116
-twitter_followers:    22
+github_watchers:      346
+github_forks:         120
+twitter_followers:    27
 download:
   dist:               https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.4.5/bootstrapvalidator-dist-0.4.5.zip
   tag:                https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.4.5.zip
