@@ -1751,7 +1751,7 @@ $(document).ready(function() {
                             <span class="doc-example-note">callback: function(value, validator) {
                                 // Get the selected options
                                 var options = validator.getFieldElements('browsers').val();
-                                return (options && options.length >= 2 && options.length <= 3);
+                                return (options != null && options.length >= 2 && options.length <= 3);
                             }</span>
                         }
                     }
@@ -1873,7 +1873,7 @@ $(document).ready(function() {
                             callback: function(value, validator) {
                                 // Get the selected options
                                 var options = validator.getFieldElements('colors').val();
-                                return (options && options.length >= 2 && options.length <= 4);
+                                return (options != null && options.length >= 2 && options.length <= 4);
                             }
                         }
                     }
@@ -2618,10 +2618,7 @@ $(document).ready(function() {
                             callback: function(value, validator) {
                                 // Get the selected options
                                 var options = validator.getFieldElements('browsers').val();
-                                if (!options) {
-                                    return false;
-                                }
-                                return (options.length >= 2 && options.length <= 3);
+                                return (options != null && options.length >= 2 && options.length <= 3);
                             }
                         }
                     }
@@ -2655,7 +2652,7 @@ $(document).ready(function() {
                             callback: function(value, validator) {
                                 // Get the selected options
                                 var options = validator.getFieldElements('colors').val();
-                                return (options && options.length >= 2 && options.length <= 4);
+                                return (options != null && options.length >= 2 && options.length <= 4);
                             }
                         }
                     }
