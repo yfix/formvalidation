@@ -2618,7 +2618,10 @@ $(document).ready(function() {
                             callback: function(value, validator) {
                                 // Get the selected options
                                 var options = validator.getFieldElements('browsers').val();
-                                return (options && options.length >= 2 && options.length <= 3);
+                                if (!options) {
+                                    return false;
+                                }
+                                return (options.length >= 2 && options.length <= 3);
                             }
                         }
                     }
