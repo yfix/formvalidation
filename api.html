@@ -18,8 +18,6 @@ sections:
       anchor: is-valid
     - title:  resetForm
       anchor: reset-form
-    - title:  setLiveMode
-      anchor: set-live-mode
     - title:  updateElementStatus
       anchor: update-element-status
     - title:  updateStatus
@@ -175,138 +173,6 @@ $(form)
 
     <pre><code class="javascript">$(form).bootstrapValidator(options);
 $(form).data('bootstrapValidator').resetForm();</code></pre>
-</section>
-
-<section id="set-live-mode">
-    <h2>setLiveMode</h2>
-
-    <p><code>setLiveMode(mode)</code> &mdash; Set live validating mode</p>
-
-    <table class="table table-condensed">
-        <thead>
-            <tr>
-                <th>Parameter</th>
-                <th>Type</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>mode</code></td>
-                <td>String</td>
-                <td>Live validating mode. Can be <code>'enabled'</code>, <code>'disabled'</code>, <code>'submitted'</code></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="doc-example">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#livemode-form-tab" data-toggle="tab">Try it</a></li>
-            <li><a href="#livemode-html-tab" data-toggle="tab">HTML</a></li>
-            <li><a href="#livemode-js-tab" data-toggle="tab">JS</a></li>
-        </ul>
-
-        <div class="tab-content">
-            <div class="tab-pane active" id="livemode-form-tab">
-                <form id="liveModeForm" class="form-horizontal">
-                    <div class="form-group">
-                        <div class="col-lg-offset-3 col-lg-9">
-                            <button type="button" class="btn btn-success" data-mode="enabled">Set live="enabled"</button>
-                            <button type="button" class="btn btn-success" data-mode="disabled">Set live="disabled"</button>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">Text editors</label>
-                        <div class="col-lg-5">
-                            <input class="form-control" type="text" name="editors[]" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-lg-offset-3 col-lg-5">
-                            <input class="form-control" type="text" name="editors[]" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-lg-offset-3 col-lg-5">
-                            <input class="form-control" type="text" name="editors[]" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-lg-offset-3 col-lg-5">
-                            <input class="form-control" type="text" name="editors[]" />
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-            <div class="tab-pane" id="livemode-html-tab">
-                <pre><code class="xml">&lt;form id="liveModeForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;div class="col-lg-offset-3 col-lg-9">
-            &lt;button type="button" class="btn btn-success" <span class="doc-example-note">data-mode="enabled"</span>>
-                Set live="enabled"
-            &lt;/button>
-            &lt;button type="button" class="btn btn-success" <span class="doc-example-note">data-mode="disabled"</span>>
-                Set live="disabled"
-            &lt;/button>
-        &lt;/div>
-    &lt;/div>
-
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Text editors&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input class="form-control" type="text" name="editors[]" />
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;div class="col-lg-offset-3 col-lg-5">
-            &lt;input class="form-control" type="text" name="editors[]" />
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;div class="col-lg-offset-3 col-lg-5">
-            &lt;input class="form-control" type="text" name="editors[]" />
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;div class="col-lg-offset-3 col-lg-5">
-            &lt;input class="form-control" type="text" name="editors[]" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
-            </div>
-
-            <div class="tab-pane" id="livemode-js-tab">
-                <pre><code class="xml javascript">&lt;script>
-$(document).ready(function() {
-    $('#liveModeForm')
-        .bootstrapValidator({
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                'editors[]': {
-                    validators: {
-                        notEmpty: {
-                            message: 'The editor names are required'
-                        }
-                    }
-                }
-            }
-        })
-        .find('button[data-mode]').click(function() {
-            $('#liveModeForm')
-                .data('bootstrapValidator')
-                <span class="doc-example-note">.setLiveMode($(this).attr('data-mode'))</span>;
-        });
-});
-&lt;/script></code></pre>
-            </div>
-        </div>
-    </div>
 </section>
 
 <section id="update-element-status">
@@ -638,28 +504,6 @@ $(form).data('bootstrapValidator').validate();</code></pre>
 <script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 <script>
 $(document).ready(function() {
-    // setLiveMode() example
-    $('#liveModeForm')
-        .bootstrapValidator({
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                'editors[]': {
-                    validators: {
-                        notEmpty: {
-                            message: 'The editor names are required'
-                        }
-                    }
-                }
-            }
-        })
-        .find('button[data-mode]').click(function() {
-            $('#liveModeForm').data('bootstrapValidator').setLiveMode($(this).attr('data-mode'));
-        });
-
     // updateStatus() example
     $('#datetimePicker').datetimepicker();
 
