@@ -53,6 +53,77 @@ comments:         true
     </table>
 </section>
 
+<section id="example">
+    <h2>Example</h2>
+
+    <p>The following example shows how to use a remote back-end to check if a given username is already taken or not.</p>
+    <div class="doc-example">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#example-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#example-js-tab" data-toggle="tab">JS</a></li>
+            <li><a href="#example-php-tab" data-toggle="tab">Back-end</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="example-html-tab">
+                <pre><code class="xml">&lt;form id="registrationForm" class="form-horizontal">
+    &lt;! -- Other fields -->
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Username&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="username" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+            </div>
+
+            <div class="tab-pane" id="example-js-tab">
+                <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#registrationForm').bootstrapValidator({
+        fields: {
+            username: {
+                message: 'The username is not valid',
+                validators: {
+                    // The validator will create an Ajax request
+                    // sending { username: 'its value' } to the back-end
+                    <span class="doc-example-note">remote: {
+                        message: 'The username is not available',
+                        url: '/path/to/backend/'
+                    }</span>
+                }
+            }
+        }
+    });
+});
+&lt;/script></code></pre>
+            </div>
+
+            <div class="tab-pane" id="example-php-tab">
+                <pre><code class="xml">&lt;?php
+// The back-end then will determine if the username is available or not,
+// and finally returns a JSON <span class="doc-example-note">{ "valid": true }</span> or <span class="doc-example-note">{ "valid": false }</span>
+// The code bellow demonstrates a simple back-end written in PHP
+
+// Get the username from request
+$username = $_POST['username'];
+
+// Check its existence (for example, execute a query from the database) ...
+$isAvailable = true; // or false
+
+// Finally, return a JSON
+echo json_encode(array(
+    'valid' => $isAvailable,
+));
+</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <p>If you want to send more data to the back-end, see the <a href="#data-option">data option</a> section.</p>
+</section>
+
 <section id="name-option">
     <h2>name option</h2>
     <p>By default, it will be set as the name of field.</p>
@@ -102,10 +173,108 @@ comments:         true
 
 <section id="data-option">
     <h2>data option</h2>
-    <p>By default, it is set to <code>{ fieldName: fieldValue }</code> where <code>fieldName</code> and <code>fieldValue</code> are replaced with the field name and current value, respectively.</p>
-    <p>In some cases, you might want to send more fields with dynamic values to the back-end. For instance, the registration form need to validate both the username and emails.</p>
+    <p>As you see in the <a href="#example">example</a> at the top of page, the validator will send <code>{ fieldName: fieldValue }</code> to the back-end, where <code>fieldName</code> and <code>fieldValue</code> are replaced with the field name and current value, respectively.</p>
+    <p>In fact, you might want to send more data to the back-end.</p>
 
-    <p>The following sample code uses the <code>data</code> option showing how to do this:</p>
+    <p class="doc-box-info">All additional data are static:</p>
+    <p>For example, there is same back-end for validating both username and email address. The back-end uses additional parameter named <code>type</code> to determine which field is going to be validated.</p>
+    <div class="doc-example">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#staticdata-html-tab" data-toggle="tab">HTML</a></li>
+            <li><a href="#staticdata-js-tab" data-toggle="tab">JS</a></li>
+            <li><a href="#staticdata-php-tab" data-toggle="tab">Back-end</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="staticdata-html-tab">
+                <pre><code class="xml">&lt;form id="registrationForm" class="form-horizontal">
+    &lt;! -- Other fields -->
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Username&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="username" />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Email&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="email" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+            </div>
+
+            <div class="tab-pane" id="staticdata-js-tab">
+                <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#registrationForm').bootstrapValidator({
+        fields: {
+            username: {
+                message: 'The username is not valid',
+                validators: {
+                    // Send { username: 'its value', type: 'username' } to the back-end
+                    <span class="doc-example-note">remote: {
+                        message: 'The username is not available',
+                        url: '/path/to/backend/',
+                        data: {
+                            type: 'username'
+                        }
+                    }</span>
+                }
+            },
+            email: {
+                message: 'The email address is not valid',
+                validators: {
+                    // Send { email: 'its value', type: 'email' } to the back-end
+                    <span class="doc-example-note">remote: {
+                        message: 'The email is not available',
+                        url: '/path/to/backend/',
+                        data: {
+                            type: 'email'
+                        }
+                    }</span>
+                }
+            }
+        }
+    });
+});
+&lt;/script></code></pre>
+            </div>
+
+            <div class="tab-pane" id="staticdata-php-tab">
+                <pre><code class="xml">&lt;?php
+// The code bellow demonstrates a simple back-end written in PHP
+
+// Determine which field you want to check its existence
+$isAvailable = true;
+switch ($_POST['type']) {
+    case 'email':
+        $email = $_POST['email'];
+        // Check the email existence ...
+        $isAvailable = true; // or false
+        break;
+
+    case 'username':
+    default:
+        $username = $_POST['username'];
+        // Check the username existence ...
+        $isAvailable = true; // or false
+        break;
+}
+
+// Finally, return a JSON
+echo json_encode(array(
+    'valid' => $isAvailable,
+));
+</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <p class="doc-box-info">Send more fields with dynamic values to the back-end:</p>
+    <p>For instance, the registration form need to validate both the username and emails.</p>
     <div class="doc-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#data-html-tab" data-toggle="tab">HTML</a></li>
@@ -146,6 +315,7 @@ $(document).ready(function() {
                 validators: {
                     remote: {
                         url: '/path/to/backend/',
+                        // Send { username: 'its value', email: 'its value' } to the back-end
                         <span class="doc-example-note">data: function(validator) {
                             return {
                                 email: validator.getFieldElements('email').val()
@@ -159,6 +329,7 @@ $(document).ready(function() {
                 validators: {
                     remote: {
                         url: '/path/to/backend/',
+                        // Send { email: 'its value', username: 'its value' } to the back-end
                         <span class="doc-example-note">data: function(validator) {
                             return {
                                 username: validator.getFieldElements('username').val()
