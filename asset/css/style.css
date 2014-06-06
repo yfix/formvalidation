@@ -209,7 +209,7 @@ ul.doc-list li:before {
   margin-bottom: 15px;
 }
 .doc-example .tab-pane {
-  padding: 5px;
+  padding: 10px 15px;
 }
 .doc-example .tab-content > .active {
   border: 1px solid #ddd;
