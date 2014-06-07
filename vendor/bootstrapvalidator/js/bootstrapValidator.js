@@ -123,10 +123,9 @@
         // The custom submit handler
         // It will prevent the form from the default submission
         //
-        //  submitHandler: function(validator, form, submitButton) {
+        //  submitHandler: function(validator, form) {
         //      - validator is the BootstrapValidator instance
         //      - form is the jQuery object presenting the current form
-        //      - submitButton is the jQuery object presenting the clicked button
         //  }
         submitHandler: null,
 
@@ -346,6 +345,7 @@
                             .addClass('help-block')
                             .attr('data-bv-validator', validatorName)
                             .attr('data-bv-for', field)
+                            .attr('data-bv-result', this.STATUS_NOT_VALIDATED)
                             .html(this.options.fields[field].validators[validatorName].message || this.options.fields[field].message || this.options.message)
                             .appendTo($message);
                     }
@@ -531,8 +531,17 @@
                 }
             }
 
-            // Focus to the first invalid field
-            this.$invalidFields.eq(0).focus();
+            var $invalidField = this.$invalidFields.eq(0);
+            if ($invalidField) {
+                // Activate the tab containing the invalid field if exists
+                var $tabPane = $invalidField.parents('.tab-pane'), tabId;
+                if ($tabPane && (tabId = $tabPane.attr('id'))) {
+                    $('a[href="#' + tabId + '"][data-toggle="tab"]').tab('show');
+                }
+
+                // Focus to the first invalid field
+                $invalidField.focus();
+            }
         },
 
         /**
@@ -549,7 +558,7 @@
             // Call the custom submission if enabled
             if (this.options.submitHandler && 'function' == typeof this.options.submitHandler) {
                 // If you want to submit the form inside your submit handler, please call defaultSubmit() method
-                this.options.submitHandler.call(this, this, this.$form, this.$submitButton);
+                this.options.submitHandler.call(this, this, this.$form);
             } else {
                 this.disableSubmitButtons(true).defaultSubmit();
             }
@@ -806,6 +815,14 @@
 
                 // Show/hide error elements and feedback icons
                 $errors.attr('data-bv-result', status);
+
+                // Determine the tab containing the element
+                var $tabPane = $field.parents('.tab-pane'),
+                    tabId, $tab;
+                if ($tabPane && (tabId = $tabPane.attr('id'))) {
+                    $tab = $('a[href="#' + tabId + '"][data-toggle="tab"]').parent();
+                }
+
                 switch (status) {
                     case this.STATUS_VALIDATING:
                         isValidField = null;
@@ -813,6 +830,9 @@
                         $parent.removeClass('has-success').removeClass('has-error');
                         if ($icon) {
                             $icon.removeClass(this.options.feedbackIcons.valid).removeClass(this.options.feedbackIcons.invalid).addClass(this.options.feedbackIcons.validating).show();
+                        }
+                        if ($tab) {
+                            $tab.removeClass('bv-tab-success').removeClass('bv-tab-error');
                         }
                         break;
 
@@ -823,23 +843,30 @@
                         if ($icon) {
                             $icon.removeClass(this.options.feedbackIcons.valid).removeClass(this.options.feedbackIcons.validating).addClass(this.options.feedbackIcons.invalid).show();
                         }
+                        if ($tab) {
+                            $tab.removeClass('bv-tab-success').addClass('bv-tab-error');
+                        }
                         break;
 
                     case this.STATUS_VALID:
                         // If the field is valid (passes all validators)
-                        isValidField = $allErrors.filter(function() {
-                                            var v = $(this).attr('data-bv-validator');
-                                            return $field.data('bv.result.' + v) != that.STATUS_VALID;
-                                        }).length == 0;
-                        this.disableSubmitButtons(this.$submitButton ? !this.isValid() : !isValidField);
-                        if ($icon) {
-                            $icon
-                                .removeClass(this.options.feedbackIcons.invalid).removeClass(this.options.feedbackIcons.validating).removeClass(this.options.feedbackIcons.valid)
-                                .addClass(isValidField ? this.options.feedbackIcons.valid : this.options.feedbackIcons.invalid)
-                                .show();
+                        isValidField = ($allErrors.filter('[data-bv-result="' + this.STATUS_NOT_VALIDATED +'"]').length == 0)
+                                     ? ($allErrors.filter('[data-bv-result="' + this.STATUS_VALID +'"]').length == $allErrors.length)   // All validators are completed
+                                     : null;                                                                                            // There are some validators that have not done
+                        if (isValidField != null) {
+                            this.disableSubmitButtons(this.$submitButton ? !this.isValid() : !isValidField);
+                            if ($icon) {
+                                $icon
+                                    .removeClass(this.options.feedbackIcons.invalid).removeClass(this.options.feedbackIcons.validating).removeClass(this.options.feedbackIcons.valid)
+                                    .addClass(isValidField ? this.options.feedbackIcons.valid : this.options.feedbackIcons.invalid)
+                                    .show();
+                            }
                         }
 
                         $parent.removeClass('has-error has-success').addClass(this.isValidContainer($parent) ? 'has-success' : 'has-error');
+                        if ($tab) {
+                            $tab.removeClass('bv-tab-success').removeClass('bv-tab-error').addClass(this.isValidContainer($tabPane) ? 'bv-tab-success' : 'bv-tab-error');
+                        }
                         break;
 
                     case this.STATUS_NOT_VALIDATED:
@@ -849,6 +876,9 @@
                         $parent.removeClass('has-success').removeClass('has-error');
                         if ($icon) {
                             $icon.removeClass(this.options.feedbackIcons.valid).removeClass(this.options.feedbackIcons.invalid).removeClass(this.options.feedbackIcons.validating).hide();
+                        }
+                        if ($tab) {
+                            $tab.removeClass('bv-tab-success').removeClass('bv-tab-error');
                         }
                         break;
                 }
@@ -1013,6 +1043,15 @@
          */
         getInvalidFields: function() {
             return this.$invalidFields;
+        },
+
+        /**
+         * Returns the clicked submit button
+         *
+         * @returns {jQuery}
+         */
+        getSubmitButton: function() {
+            return this.$submitButton;
         },
 
         /**
@@ -1477,9 +1516,10 @@
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following keys:
          * - callback: The callback method that passes 2 parameters:
-         *      callback: function(fieldValue, validator) {
+         *      callback: function(fieldValue, validator, $field) {
          *          // fieldValue is the value of field
          *          // validator is instance of BootstrapValidator
+         *          // $field is the field element
          *      }
          * - message: The invalid message
          * @returns {Boolean|Deferred}
@@ -1488,7 +1528,7 @@
             var value = $field.val();
             if (options.callback && 'function' == typeof options.callback) {
                 var dfd      = new $.Deferred(),
-                    response = options.callback.call(this, value, validator);
+                    response = options.callback.call(this, value, validator, $field);
                 dfd.resolve($field, 'callback', 'boolean' == typeof response ? response : response.valid, 'object' == typeof response && response.message ? response.message : null);
                 return dfd;
             }
@@ -3597,14 +3637,15 @@
         },
 
         /**
-         * Return true if the input value contains a valid US phone number only
+         * Return true if the input value contains a valid phone number for the country
+         * selected in the options
          *
          * @param {BootstrapValidator} validator Validate plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Consist of key:
          * - message: The invalid message
          * - country: The ISO 3166 country code
-         * Currently it only supports United State (US) country
+         * Currently it only supports United State (US) or United Kingdom (GB) countries
          * @returns {Boolean}
          */
         validate: function(validator, $field, options) {
@@ -3615,6 +3656,11 @@
 
             var country = (options.country || 'US').toUpperCase();
             switch (country) {
+            	case 'GB':
+            		// http://aa-asterisk.org.uk/index.php/Regular_Expressions_for_Validating_and_Formatting_GB_Telephone_Numbers#Match_GB_telephone_number_in_any_format
+            		// Test: http://regexr.com/38uhv
+            		value = $.trim(value);
+            		return (/^\(?(?:(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?\(?(?:0\)?[\s-]?\(?)?|0)(?:\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}|\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4}|\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3})|\d{5}\)?[\s-]?\d{4,5}|8(?:00[\s-]?11[\s-]?11|45[\s-]?46[\s-]?4\d))(?:(?:[\s-]?(?:x|ext\.?\s?|\#)\d+)?)$/).test(value);
                 case 'US':
                 default:
                     // Make sure US phone numbers have 10 digits
@@ -4054,10 +4100,8 @@
                 "(?:" +
                 // IP address exclusion
                 // private & local networks
-                "(?!10(?:\\.\\d{1,3}){3})" +
-                "(?!127(?:\\.\\d{1,3}){3})" +
-                "(?!169\\.254(?:\\.\\d{1,3}){2})" +
-                "(?!192\\.168(?:\\.\\d{1,3}){2})" +
+                "(?!(?:10|127)(?:\\.\\d{1,3}){3})" +
+                "(?!(?:169\\.254|192\\.168)(?:\\.\\d{1,3}){2})" +
                 "(?!172\\.(?:1[6-9]|2\\d|3[0-1])(?:\\.\\d{1,3}){2})" +
                 // IP address dotted notation octets
                 // excludes loopback network 0.0.0.0
