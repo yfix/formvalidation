@@ -287,9 +287,10 @@ ul.doc-list li:before {
   padding: 5px 5px 5px 0;
 }
 .doc-contributors li img {
+  border: 1px solid #eee;
+  border-radius: 25px;
   width: 50px;
   height: 50px;
-  border-radius: 25px;
 }
 /* Post */
 .doc-post-title {
