@@ -12,7 +12,7 @@
 (function($) {
     var BootstrapValidator = function(form, options) {
         this.$form   = $(form);
-        this.options = $.extend({}, BootstrapValidator.DEFAULT_OPTIONS, options);
+        this.options = $.extend({}, $.fn.bootstrapValidator.DEFAULT_OPTIONS, options);
 
         this.$invalidFields = $([]);    // Array of invalid fields
         this.$submitButton  = null;     // The submit button which is clicked to submit form
@@ -44,105 +44,6 @@
         this._cacheFields = {};
 
         this._init();
-    };
-
-    // The default options
-    BootstrapValidator.DEFAULT_OPTIONS = {
-        // The form CSS class
-        elementClass: 'bv-form',
-
-        // Default invalid message
-        message: 'This value is not valid',
-
-        // The CSS selector for indicating the element consists the field
-        // By default, each field is placed inside the <div class="form-group"></div>
-        // You should adjust this option if your form group consists of many fields which not all of them need to be validated
-        group: '.form-group',
-
-        // The error messages container
-        // It can be:
-        // * 'tooltip' if you want to use Bootstrap tooltip to show error messages
-        // * 'popover' if you want to use Bootstrap popover to show error messages
-        // * a CSS selector indicating the container
-        //
-        // In the first two cases, since the tooltip/popover should be small enough, the plugin only shows only one error message
-        // You also can define the message container for particular field
-        container: null,
-
-        // The field will not be live validated if its length is less than this number of characters
-        threshold: null,
-
-        // Indicate fields which won't be validated
-        // By default, the plugin will not validate the following kind of fields:
-        // - disabled
-        // - hidden
-        // - invisible
-        //
-        // The setting consists of jQuery filters. Accept 3 formats:
-        // - A string. Use a comma to separate filter
-        // - An array. Each element is a filter
-        // - An array. Each element can be a callback function
-        //      function($field, validator) {
-        //          $field is jQuery object representing the field element
-        //          validator is the BootstrapValidator instance
-        //          return true or false;
-        //      }
-        //
-        // The 3 following settings are equivalent:
-        //
-        // 1) ':disabled, :hidden, :not(:visible)'
-        // 2) [':disabled', ':hidden', ':not(:visible)']
-        // 3) [':disabled', ':hidden', function($field) {
-        //        return !$field.is(':visible');
-        //    }]
-        excluded: [':disabled', ':hidden', ':not(:visible)'],
-
-        // Shows ok/error/loading icons based on the field validity.
-        // This feature requires Bootstrap v3.1.0 or later (http://getbootstrap.com/css/#forms-control-validation).
-        // Since Bootstrap doesn't provide any methods to know its version, this option cannot be on/off automatically.
-        // In other word, to use this feature you have to upgrade your Bootstrap to v3.1.0 or later.
-        //
-        // Examples:
-        // - Use Glyphicons icons:
-        //  feedbackIcons: {
-        //      valid: 'glyphicon glyphicon-ok',
-        //      invalid: 'glyphicon glyphicon-remove',
-        //      validating: 'glyphicon glyphicon-refresh'
-        //  }
-        // - Use FontAwesome icons:
-        //  feedbackIcons: {
-        //      valid: 'fa fa-check',
-        //      invalid: 'fa fa-times',
-        //      validating: 'fa fa-refresh'
-        //  }
-        feedbackIcons: {
-            valid:      null,
-            invalid:    null,
-            validating: null
-        },
-
-        // The submit buttons selector
-        // These buttons will be disabled to prevent the valid form from multiple submissions
-        submitButtons: '[type="submit"]',
-
-        // The custom submit handler
-        // It will prevent the form from the default submission
-        //
-        //  submitHandler: function(validator, form) {
-        //      - validator is the BootstrapValidator instance
-        //      - form is the jQuery object presenting the current form
-        //  }
-        submitHandler: null,
-
-        // Live validating option
-        // Can be one of 3 values:
-        // - enabled: The plugin validates fields as soon as they are changed
-        // - disabled: Disable the live validating. The error messages are only shown after the form is submitted
-        // - submitted: The live validating is enabled after the form is submitted
-        live: 'enabled',
-
-        // Map the field name with validator rules
-        fields: null
     };
 
     BootstrapValidator.prototype = {
@@ -354,7 +255,7 @@
                             .attr('data-bv-validator', validatorName)
                             .attr('data-bv-for', field)
                             .attr('data-bv-result', this.STATUS_NOT_VALIDATED)
-                            .html(this.options.fields[field].validators[validatorName].message || this.options.fields[field].message || this.options.message)
+                            .html(this._getMessage(field, validatorName))
                             .appendTo($message);
                     }
                 }
@@ -415,6 +316,35 @@
                 field: field,
                 element: fields
             });
+        },
+
+        /**
+         * Get the error message for given field and validator
+         *
+         * @param {String} field The field name
+         * @param {String} validatorName The validator name
+         * @returns {String}
+         */
+        _getMessage: function(field, validatorName) {
+            if (!this.options.fields[field] || !$.fn.bootstrapValidator.validators[validatorName]
+                || !this.options.fields[field].validators || !this.options.fields[field].validators[validatorName])
+            {
+                return '';
+            }
+
+            var options = this.options.fields[field].validators[validatorName];
+            switch (true) {
+                case (!!options.message):
+                    return options.message;
+                case (!!$.fn.bootstrapValidator.i18n[validatorName]):
+                    return ('function' == typeof $.fn.bootstrapValidator.i18n[validatorName].getMessage)
+                            ? $.fn.bootstrapValidator.i18n[validatorName].getMessage(options)
+                            : $.fn.bootstrapValidator.i18n[validatorName]['default'];
+                case (!!this.options.fields[field].message):
+                    return this.options.fields[field].message;
+                default:
+                    return this.options.message;
+            }
         },
 
         /**
@@ -1260,6 +1190,20 @@
         },
 
         /**
+         * Revalidate given field
+         * It's used when you need to revalidate the field which its value is updated by other plugin
+         *
+         * @param {String|jQuery} field The field name of field element
+         * @returns {BootstrapValidator}
+         */
+        revalidateField: function(field) {
+            this.updateStatus(field, this.STATUS_NOT_VALIDATED)
+                .validateField(field);
+
+            return this;
+        },
+
+        /**
          * Enable/Disable all validators to given field
          *
          * @param {String} field The field name
@@ -1354,13 +1298,134 @@
         });
     };
 
+    // The default options
+    $.fn.bootstrapValidator.DEFAULT_OPTIONS = {
+        // The form CSS class
+        elementClass: 'bv-form',
+
+        // Default invalid message
+        message: 'This value is not valid',
+
+        // The CSS selector for indicating the element consists the field
+        // By default, each field is placed inside the <div class="form-group"></div>
+        // You should adjust this option if your form group consists of many fields which not all of them need to be validated
+        group: '.form-group',
+
+        //The error messages container. It can be:
+        // - 'tooltip' if you want to use Bootstrap tooltip to show error messages
+        // - 'popover' if you want to use Bootstrap popover to show error messages
+        // - a CSS selector indicating the container
+        // In the first two cases, since the tooltip/popover should be small enough, the plugin only shows only one error message
+        // You also can define the message container for particular field
+        container: null,
+
+        // The field will not be live validated if its length is less than this number of characters
+        threshold: null,
+
+        // Indicate fields which won't be validated
+        // By default, the plugin will not validate the following kind of fields:
+        // - disabled
+        // - hidden
+        // - invisible
+        //
+        // The setting consists of jQuery filters. Accept 3 formats:
+        // - A string. Use a comma to separate filter
+        // - An array. Each element is a filter
+        // - An array. Each element can be a callback function
+        //      function($field, validator) {
+        //          $field is jQuery object representing the field element
+        //          validator is the BootstrapValidator instance
+        //          return true or false;
+        //      }
+        //
+        // The 3 following settings are equivalent:
+        //
+        // 1) ':disabled, :hidden, :not(:visible)'
+        // 2) [':disabled', ':hidden', ':not(:visible)']
+        // 3) [':disabled', ':hidden', function($field) {
+        //        return !$field.is(':visible');
+        //    }]
+        excluded: [':disabled', ':hidden', ':not(:visible)'],
+
+        // Shows ok/error/loading icons based on the field validity.
+        // This feature requires Bootstrap v3.1.0 or later (http://getbootstrap.com/css/#forms-control-validation).
+        // Since Bootstrap doesn't provide any methods to know its version, this option cannot be on/off automatically.
+        // In other word, to use this feature you have to upgrade your Bootstrap to v3.1.0 or later.
+        //
+        // Examples:
+        // - Use Glyphicons icons:
+        //  feedbackIcons: {
+        //      valid: 'glyphicon glyphicon-ok',
+        //      invalid: 'glyphicon glyphicon-remove',
+        //      validating: 'glyphicon glyphicon-refresh'
+        //  }
+        // - Use FontAwesome icons:
+        //  feedbackIcons: {
+        //      valid: 'fa fa-check',
+        //      invalid: 'fa fa-times',
+        //      validating: 'fa fa-refresh'
+        //  }
+        feedbackIcons: {
+            valid:      null,
+            invalid:    null,
+            validating: null
+        },
+
+        // The submit buttons selector
+        // These buttons will be disabled to prevent the valid form from multiple submissions
+        submitButtons: '[type="submit"]',
+
+        // The custom submit handler
+        // It will prevent the form from the default submission
+        //
+        //  submitHandler: function(validator, form) {
+        //      - validator is the BootstrapValidator instance
+        //      - form is the jQuery object presenting the current form
+        //  }
+        submitHandler: null,
+
+        // Live validating option
+        // Can be one of 3 values:
+        // - enabled: The plugin validates fields as soon as they are changed
+        // - disabled: Disable the live validating. The error messages are only shown after the form is submitted
+        // - submitted: The live validating is enabled after the form is submitted
+        live: 'enabled',
+
+        // Map the field name with validator rules
+        fields: null
+    };
+
     // Available validators
     $.fn.bootstrapValidator.validators = {};
+
+    // i18n
+    $.fn.bootstrapValidator.i18n       = {};
 
     $.fn.bootstrapValidator.Constructor = BootstrapValidator;
 
     // Helper methods, which can be used in validator class
     $.fn.bootstrapValidator.helpers = {
+        /**
+         * Format a string
+         * It's used to format the error message
+         * format('The field must between %s and %s', [10, 20]) = 'The field must between 10 and 20'
+         *
+         * @param {String} message
+         * @param {Array} parameters
+         * @returns {String}
+         */
+        format: function(message, parameters) {
+            if (!$.isArray(parameters)) {
+                parameters = [parameters];
+            }
+
+            for (var i in parameters) {
+                message = message.replace('%s', parameters[i]);
+            }
+
+            return message;
+        },
+
         /**
          * Validate a date
          *
@@ -1462,6 +1527,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.base64 = $.extend($.fn.bootstrapValidator.i18n.base64 || {}, {
+        'default': 'Please enter a valid base 64 encoded'
+    });
+
     $.fn.bootstrapValidator.validators.base64 = {
         /**
          * Return true if the input value is a base 64 encoded string.
@@ -1483,6 +1552,17 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.between = $.extend($.fn.bootstrapValidator.i18n.between || {}, {
+        'default': 'Please enter a value between %s and %s',
+        notInclusive: 'Please enter a value between %s and %s strictly',
+
+        getMessage: function(options) {
+            return (options.inclusive === true || options.inclusive == undefined)
+                    ? $.fn.bootstrapValidator.helpers.format(this['default'], [options.min, options.max])
+                    : $.fn.bootstrapValidator.helpers.format(this.notInclusive, [options.min, options.max]);
+        }
+    });
+
     $.fn.bootstrapValidator.validators.between = {
         html5Attributes: {
             message: 'message',
@@ -1528,6 +1608,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.callback = $.extend($.fn.bootstrapValidator.i18n.callback || {}, {
+        'default': 'Please enter a valid value'
+    });
+
     $.fn.bootstrapValidator.validators.callback = {
         /**
          * Return result from the callback method
@@ -1557,6 +1641,27 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.choice = $.extend($.fn.bootstrapValidator.i18n.choice || {}, {
+        'default': 'Please enter a valid value',
+        less: 'Please choose %s options at minimum',
+        more: 'Please choose %s options at maximum',
+        between: 'Please choose %s - %s options',
+
+        getMessage: function(options) {
+            switch (true) {
+                case (!!options.min && !!options.max):
+                    return $.fn.bootstrapValidator.helpers.format(this.between, [options.min, options.max]);
+                    break;
+                case (!!options.min):
+                    return $.fn.bootstrapValidator.helpers.format(this.less, [options.min]);
+                case (!!options.max):
+                    return $.fn.bootstrapValidator.helpers.format(this.more, [options.max]);
+                default:
+                    return this['default'];
+            }
+        }
+    });
+
     $.fn.bootstrapValidator.validators.choice = {
         html5Attributes: {
             message: 'message',
@@ -1589,6 +1694,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.creditCard = $.extend($.fn.bootstrapValidator.i18n.creditCard || {}, {
+        'default': 'Please enter a valid credit card number'
+    });
+
     $.fn.bootstrapValidator.validators.creditCard = {
         /**
          * Return true if the input value is valid credit card number
@@ -1688,6 +1797,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.cusip = $.extend($.fn.bootstrapValidator.i18n.cusip || {}, {
+        'default': 'Please enter a valid CUSIP number'
+    });
+
     $.fn.bootstrapValidator.validators.cusip = {
         /**
          * Validate a CUSIP
@@ -1739,6 +1852,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.cvv = $.extend($.fn.bootstrapValidator.i18n.cvv || {}, {
+        'default': 'Please enter a valid CVV number'
+    });
+
     $.fn.bootstrapValidator.validators.cvv = {
         html5Attributes: {
             message: 'message',
@@ -1851,6 +1968,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.date = $.extend($.fn.bootstrapValidator.i18n.date || {}, {
+        'default': 'Please enter a valid date'
+    });
+
     $.fn.bootstrapValidator.validators.date = {
         html5Attributes: {
             message: 'message',
@@ -1961,6 +2082,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.different = $.extend($.fn.bootstrapValidator.i18n.different || {}, {
+        'default': 'Please enter a different value'
+    });
+
     $.fn.bootstrapValidator.validators.different = {
         html5Attributes: {
             message: 'message',
@@ -1998,6 +2123,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.digits = $.extend($.fn.bootstrapValidator.i18n.digits || {}, {
+        'default': 'Please enter only digits'
+    });
+
     $.fn.bootstrapValidator.validators.digits = {
         /**
          * Return true if the input value contains digits only
@@ -2018,6 +2147,10 @@
     }
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.ean = $.extend($.fn.bootstrapValidator.i18n.ean || {}, {
+        'default': 'Please enter a valid EAN number'
+    });
+
     $.fn.bootstrapValidator.validators.ean = {
         /**
          * Validate EAN (International Article Number)
@@ -2054,6 +2187,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.emailAddress = $.extend($.fn.bootstrapValidator.i18n.emailAddress || {}, {
+        'default': 'Please enter a valid email address'
+    });
+
     $.fn.bootstrapValidator.validators.emailAddress = {
         enableByHtml5: function($field) {
             return ('email' == $field.attr('type'));
@@ -2081,6 +2218,10 @@
     }
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.file = $.extend($.fn.bootstrapValidator.i18n.file || {}, {
+        'default': 'Please choose a valid file'
+    });
+
     $.fn.bootstrapValidator.validators.file = {
         html5Attributes: {
             extension: 'extension',
@@ -2146,6 +2287,17 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.greaterThan = $.extend($.fn.bootstrapValidator.i18n.greaterThan || {}, {
+        'default': 'Please enter a value greater than or equal to %s',
+        notInclusive: 'Please enter a value greater than %s',
+
+        getMessage: function(options) {
+            return (options.inclusive === true || options.inclusive == undefined)
+                    ? $.fn.bootstrapValidator.helpers.format(this['default'], options.value)
+                    : $.fn.bootstrapValidator.helpers.format(this.notInclusive, options.value);
+        }
+    });
+
     $.fn.bootstrapValidator.validators.greaterThan = {
         html5Attributes: {
             message: 'message',
@@ -2186,6 +2338,10 @@
     }
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.grid = $.extend($.fn.bootstrapValidator.i18n.grid || {}, {
+        'default': 'Please enter a valid GRId number'
+    });
+
     $.fn.bootstrapValidator.validators.grid = {
         /**
          * Validate GRId (Global Release Identifier)
@@ -2219,6 +2375,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.hex = $.extend($.fn.bootstrapValidator.i18n.hex || {}, {
+        'default': 'Please enter a valid hexadecimal number'
+    });
+
     $.fn.bootstrapValidator.validators.hex = {
         /**
          * Return true if and only if the input value is a valid hexadecimal number
@@ -2240,6 +2400,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.hexColor = $.extend($.fn.bootstrapValidator.i18n.hexColor || {}, {
+        'default': 'Please enter a valid hex color'
+    });
+
     $.fn.bootstrapValidator.validators.hexColor = {
         enableByHtml5: function($field) {
             return ('color' == $field.attr('type'));
@@ -2264,10 +2428,196 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.iban = $.extend($.fn.bootstrapValidator.i18n.iban || {}, {
+        'default': 'Please enter a valid IBAN number',
+        countryNotSupported: 'The country code %s is not supported',
+        country: 'Please enter a valid IBAN number in %s',
+        countries: {
+            AD: 'Andorra',
+            AE: 'United Arab Emirates',
+            AL: 'Albania',
+            AO: 'Angola',
+            AT: 'Austria',
+            AZ: 'Azerbaijan',
+            BA: 'Bosnia and Herzegovina',
+            BE: 'Belgium',
+            BF: 'Burkina Faso',
+            BG: 'Bulgaria',
+            BH: 'Bahrain',
+            BI: 'Burundi',
+            BJ: 'Benin',
+            BR: 'Brazil',
+            CH: 'Switzerland',
+            CI: 'Ivory Coast',
+            CM: 'Cameroon',
+            CR: 'Costa Rica',
+            CV: 'Cape Verde',
+            CY: 'Cyprus',
+            CZ: 'Czech Republic',
+            DE: 'Germany',
+            DK: 'Denmark',
+            DO: 'Dominican Republic',
+            DZ: 'Algeria',
+            EE: 'Estonia',
+            ES: 'Spain',
+            FI: 'Finland',
+            FO: 'Faroe Islands',
+            FR: 'France',
+            GB: 'United Kingdom',
+            GE: 'Georgia',
+            GI: 'Gibraltar',
+            GL: 'Greenland',
+            GR: 'Greece',
+            GT: 'Guatemala',
+            HR: 'Croatia',
+            HU: 'Hungary',
+            IE: 'Ireland',
+            IL: 'Israel',
+            IR: 'Iran',
+            IS: 'Iceland',
+            IT: 'Italy',
+            JO: 'Jordan',
+            KW: 'Kuwait',
+            KZ: 'Kazakhstan',
+            LB: 'Lebanon',
+            LI: 'Liechtenstein',
+            LT: 'Lithuania',
+            LU: 'Luxembourg',
+            LV: 'Latvia',
+            MC: 'Monaco',
+            MD: 'Moldova',
+            ME: 'Montenegro',
+            MG: 'Madagascar',
+            MK: 'Macedonia',
+            ML: 'Mali',
+            MR: 'Mauritania',
+            MT: 'Malta',
+            MU: 'Mauritius',
+            MZ: 'Mozambique',
+            NL: 'Netherlands',
+            NO: 'Norway',
+            PK: 'Pakistan',
+            PL: 'Poland',
+            PS: 'Palestinian',
+            PT: 'Portugal',
+            QA: 'Qatar',
+            RO: 'Romania',
+            RS: 'Serbia',
+            SA: 'Saudi Arabia',
+            SE: 'Sweden',
+            SI: 'Slovenia',
+            SK: 'Slovakia',
+            SM: 'San Marino',
+            SN: 'Senegal',
+            TN: 'Tunisia',
+            TR: 'Turkey',
+            VG: 'Virgin Islands, British'
+        },
+
+        getMessage: function(options) {
+            if (options.country) {
+                var country = options.country.toUpperCase();
+                if (!$.fn.bootstrapValidator.validators.iban.REGEX[country]) {
+                    return $.fn.bootstrapValidator.helpers.format(this.countryNotSupported, options.country);
+                }
+
+                if (this.countries[country]) {
+                    return $.fn.bootstrapValidator.helpers.format(this.country, this.countries[country]);
+                }
+            }
+
+            return this['default'];
+        }
+    });
+
     $.fn.bootstrapValidator.validators.iban = {
         html5Attributes: {
             message: 'message',
             country: 'country'
+        },
+
+        // http://www.swift.com/dsp/resources/documents/IBAN_Registry.pdf
+        // http://en.wikipedia.org/wiki/International_Bank_Account_Number#IBAN_formats_by_country
+        REGEX: {
+            'AD': 'AD[0-9]{2}[0-9]{4}[0-9]{4}[A-Z0-9]{12}',                     // Andorra
+            'AE': 'AE[0-9]{2}[0-9]{3}[0-9]{16}',                                // United Arab Emirates
+            'AL': 'AL[0-9]{2}[0-9]{8}[A-Z0-9]{16}',                             // Albania
+            'AO': 'AO[0-9]{2}[0-9]{21}',                                        // Angola
+            'AT': 'AT[0-9]{2}[0-9]{5}[0-9]{11}',                                // Austria
+            'AZ': 'AZ[0-9]{2}[A-Z]{4}[A-Z0-9]{20}',                             // Azerbaijan
+            'BA': 'BA[0-9]{2}[0-9]{3}[0-9]{3}[0-9]{8}[0-9]{2}',                 // Bosnia and Herzegovina
+            'BE': 'BE[0-9]{2}[0-9]{3}[0-9]{7}[0-9]{2}',                         // Belgium
+            'BF': 'BF[0-9]{2}[0-9]{23}',                                        // Burkina Faso
+            'BG': 'BG[0-9]{2}[A-Z]{4}[0-9]{4}[0-9]{2}[A-Z0-9]{8}',              // Bulgaria
+            'BH': 'BH[0-9]{2}[A-Z]{4}[A-Z0-9]{14}',                             // Bahrain
+            'BI': 'BI[0-9]{2}[0-9]{12}',                                        // Burundi
+            'BJ': 'BJ[0-9]{2}[A-Z]{1}[0-9]{23}',                                // Benin
+            'BR': 'BR[0-9]{2}[0-9]{8}[0-9]{5}[0-9]{10}[A-Z][A-Z0-9]',           // Brazil
+            'CH': 'CH[0-9]{2}[0-9]{5}[A-Z0-9]{12}',                             // Switzerland
+            'CI': 'CI[0-9]{2}[A-Z]{1}[0-9]{23}',                                // Ivory Coast
+            'CM': 'CM[0-9]{2}[0-9]{23}',                                        // Cameroon
+            'CR': 'CR[0-9]{2}[0-9]{3}[0-9]{14}',                                // Costa Rica
+            'CV': 'CV[0-9]{2}[0-9]{21}',                                        // Cape Verde
+            'CY': 'CY[0-9]{2}[0-9]{3}[0-9]{5}[A-Z0-9]{16}',                     // Cyprus
+            'CZ': 'CZ[0-9]{2}[0-9]{20}',                                        // Czech Republic
+            'DE': 'DE[0-9]{2}[0-9]{8}[0-9]{10}',                                // Germany
+            'DK': 'DK[0-9]{2}[0-9]{14}',                                        // Denmark
+            'DO': 'DO[0-9]{2}[A-Z0-9]{4}[0-9]{20}',                             // Dominican Republic
+            'DZ': 'DZ[0-9]{2}[0-9]{20}',                                        // Algeria
+            'EE': 'EE[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{11}[0-9]{1}',                // Estonia
+            'ES': 'ES[0-9]{2}[0-9]{4}[0-9]{4}[0-9]{1}[0-9]{1}[0-9]{10}',        // Spain
+            'FI': 'FI[0-9]{2}[0-9]{6}[0-9]{7}[0-9]{1}',                         // Finland
+            'FO': 'FO[0-9]{2}[0-9]{4}[0-9]{9}[0-9]{1}',                         // Faroe Islands
+            'FR': 'FR[0-9]{2}[0-9]{5}[0-9]{5}[A-Z0-9]{11}[0-9]{2}',             // France
+            'GB': 'GB[0-9]{2}[A-Z]{4}[0-9]{6}[0-9]{8}',                         // United Kingdom
+            'GE': 'GE[0-9]{2}[A-Z]{2}[0-9]{16}',                                // Georgia
+            'GI': 'GI[0-9]{2}[A-Z]{4}[A-Z0-9]{15}',                             // Gibraltar
+            'GL': 'GL[0-9]{2}[0-9]{4}[0-9]{9}[0-9]{1}',                         // Greenland[
+            'GR': 'GR[0-9]{2}[0-9]{3}[0-9]{4}[A-Z0-9]{16}',                     // Greece
+            'GT': 'GT[0-9]{2}[A-Z0-9]{4}[A-Z0-9]{20}',                          // Guatemala
+            'HR': 'HR[0-9]{2}[0-9]{7}[0-9]{10}',                                // Croatia
+            'HU': 'HU[0-9]{2}[0-9]{3}[0-9]{4}[0-9]{1}[0-9]{15}[0-9]{1}',        // Hungary
+            'IE': 'IE[0-9]{2}[A-Z]{4}[0-9]{6}[0-9]{8}',                         // Ireland
+            'IL': 'IL[0-9]{2}[0-9]{3}[0-9]{3}[0-9]{13}',                        // Israel
+            'IR': 'IR[0-9]{2}[0-9]{22}',                                        // Iran
+            'IS': 'IS[0-9]{2}[0-9]{4}[0-9]{2}[0-9]{6}[0-9]{10}',                // Iceland
+            'IT': 'IT[0-9]{2}[A-Z]{1}[0-9]{5}[0-9]{5}[A-Z0-9]{12}',             // Italy
+            'JO': 'JO[0-9]{2}[A-Z]{4}[0-9]{4}[0]{8}[A-Z0-9]{10}',               // Jordan
+            'KW': 'KW[0-9]{2}[A-Z]{4}[0-9]{22}',                                // Kuwait
+            'KZ': 'KZ[0-9]{2}[0-9]{3}[A-Z0-9]{13}',                             // Kazakhstan
+            'LB': 'LB[0-9]{2}[0-9]{4}[A-Z0-9]{20}',                             // Lebanon
+            'LI': 'LI[0-9]{2}[0-9]{5}[A-Z0-9]{12}',                             // Liechtenstein
+            'LT': 'LT[0-9]{2}[0-9]{5}[0-9]{11}',                                // Lithuania
+            'LU': 'LU[0-9]{2}[0-9]{3}[A-Z0-9]{13}',                             // Luxembourg
+            'LV': 'LV[0-9]{2}[A-Z]{4}[A-Z0-9]{13}',                             // Latvia
+            'MC': 'MC[0-9]{2}[0-9]{5}[0-9]{5}[A-Z0-9]{11}[0-9]{2}',             // Monaco
+            'MD': 'MD[0-9]{2}[A-Z0-9]{20}',                                     // Moldova
+            'ME': 'ME[0-9]{2}[0-9]{3}[0-9]{13}[0-9]{2}',                        // Montenegro
+            'MG': 'MG[0-9]{2}[0-9]{23}',                                        // Madagascar
+            'MK': 'MK[0-9]{2}[0-9]{3}[A-Z0-9]{10}[0-9]{2}',                     // Macedonia
+            'ML': 'ML[0-9]{2}[A-Z]{1}[0-9]{23}',                                // Mali
+            'MR': 'MR13[0-9]{5}[0-9]{5}[0-9]{11}[0-9]{2}',                      // Mauritania
+            'MT': 'MT[0-9]{2}[A-Z]{4}[0-9]{5}[A-Z0-9]{18}',                     // Malta
+            'MU': 'MU[0-9]{2}[A-Z]{4}[0-9]{2}[0-9]{2}[0-9]{12}[0-9]{3}[A-Z]{3}',// Mauritius
+            'MZ': 'MZ[0-9]{2}[0-9]{21}',                                        // Mozambique
+            'NL': 'NL[0-9]{2}[A-Z]{4}[0-9]{10}',                                // Netherlands
+            'NO': 'NO[0-9]{2}[0-9]{4}[0-9]{6}[0-9]{1}',                         // Norway
+            'PK': 'PK[0-9]{2}[A-Z]{4}[A-Z0-9]{16}',                             // Pakistan
+            'PL': 'PL[0-9]{2}[0-9]{8}[0-9]{16}',                                // Poland
+            'PS': 'PS[0-9]{2}[A-Z]{4}[A-Z0-9]{21}',                             // Palestinian
+            'PT': 'PT[0-9]{2}[0-9]{4}[0-9]{4}[0-9]{11}[0-9]{2}',                // Portugal
+            'QA': 'QA[0-9]{2}[A-Z]{4}[A-Z0-9]{21}',                             // Qatar
+            'RO': 'RO[0-9]{2}[A-Z]{4}[A-Z0-9]{16}',                             // Romania
+            'RS': 'RS[0-9]{2}[0-9]{3}[0-9]{13}[0-9]{2}',                        // Serbia
+            'SA': 'SA[0-9]{2}[0-9]{2}[A-Z0-9]{18}',                             // Saudi Arabia
+            'SE': 'SE[0-9]{2}[0-9]{3}[0-9]{16}[0-9]{1}',                        // Sweden
+            'SI': 'SI[0-9]{2}[0-9]{5}[0-9]{8}[0-9]{2}',                         // Slovenia
+            'SK': 'SK[0-9]{2}[0-9]{4}[0-9]{6}[0-9]{10}',                        // Slovakia
+            'SM': 'SM[0-9]{2}[A-Z]{1}[0-9]{5}[0-9]{5}[A-Z0-9]{12}',             // San Marino
+            'SN': 'SN[0-9]{2}[A-Z]{1}[0-9]{23}',                                // Senegal
+            'TN': 'TN59[0-9]{2}[0-9]{3}[0-9]{13}[0-9]{2}',                      // Tunisia
+            'TR': 'TR[0-9]{2}[0-9]{5}[A-Z0-9]{1}[A-Z0-9]{16}',                  // Turkey
+            'VG': 'VG[0-9]{2}[A-Z]{4}[0-9]{16}'                                 // Virgin Islands, British
         },
 
         /**
@@ -2288,96 +2638,12 @@
                 return true;
             }
 
-            // See
-            // http://www.swift.com/dsp/resources/documents/IBAN_Registry.pdf
-            // http://en.wikipedia.org/wiki/International_Bank_Account_Number#IBAN_formats_by_country
-            var ibanRegex = {
-                'AD': 'AD[0-9]{2}[0-9]{4}[0-9]{4}[A-Z0-9]{12}',                     // Andorra
-                'AE': 'AE[0-9]{2}[0-9]{3}[0-9]{16}',                                // United Arab Emirates
-                'AL': 'AL[0-9]{2}[0-9]{8}[A-Z0-9]{16}',                             // Albania
-                'AO': 'AO[0-9]{2}[0-9]{21}',                                        // Angola
-                'AT': 'AT[0-9]{2}[0-9]{5}[0-9]{11}',                                // Austria
-                'AZ': 'AZ[0-9]{2}[A-Z]{4}[A-Z0-9]{20}',                             // Azerbaijan
-                'BA': 'BA[0-9]{2}[0-9]{3}[0-9]{3}[0-9]{8}[0-9]{2}',                 // Bosnia and Herzegovina
-                'BE': 'BE[0-9]{2}[0-9]{3}[0-9]{7}[0-9]{2}',                         // Belgium
-                'BF': 'BF[0-9]{2}[0-9]{23}',                                        // Burkina Faso
-                'BG': 'BG[0-9]{2}[A-Z]{4}[0-9]{4}[0-9]{2}[A-Z0-9]{8}',              // Bulgaria
-                'BH': 'BH[0-9]{2}[A-Z]{4}[A-Z0-9]{14}',                             // Bahrain
-                'BI': 'BI[0-9]{2}[0-9]{12}',                                        // Burundi
-                'BJ': 'BJ[0-9]{2}[A-Z]{1}[0-9]{23}',                                // Benin
-                'BR': 'BR[0-9]{2}[0-9]{8}[0-9]{5}[0-9]{10}[A-Z][A-Z0-9]',           // Brazil
-                'CH': 'CH[0-9]{2}[0-9]{5}[A-Z0-9]{12}',                             // Switzerland
-                'CI': 'CI[0-9]{2}[A-Z]{1}[0-9]{23}',                                // Ivory Coast
-                'CM': 'CM[0-9]{2}[0-9]{23}',                                        // Cameroon
-                'CR': 'CR[0-9]{2}[0-9]{3}[0-9]{14}',                                // Costa Rica
-                'CV': 'CV[0-9]{2}[0-9]{21}',                                        // Cape Verde
-                'CY': 'CY[0-9]{2}[0-9]{3}[0-9]{5}[A-Z0-9]{16}',                     // Cyprus
-                'CZ': 'CZ[0-9]{2}[0-9]{20}',                                        // Czech Republic
-                'DE': 'DE[0-9]{2}[0-9]{8}[0-9]{10}',                                // Germany
-                'DK': 'DK[0-9]{2}[0-9]{14}',                                        // Denmark
-                'DO': 'DO[0-9]{2}[A-Z0-9]{4}[0-9]{20}',                             // Dominican Republic
-                'DZ': 'DZ[0-9]{2}[0-9]{20}',                                        // Algeria
-                'EE': 'EE[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{11}[0-9]{1}',                // Estonia
-                'ES': 'ES[0-9]{2}[0-9]{4}[0-9]{4}[0-9]{1}[0-9]{1}[0-9]{10}',        // Spain
-                'FI': 'FI[0-9]{2}[0-9]{6}[0-9]{7}[0-9]{1}',                         // Finland
-                'FO': 'FO[0-9]{2}[0-9]{4}[0-9]{9}[0-9]{1}',                         // Faroe Islands
-                'FR': 'FR[0-9]{2}[0-9]{5}[0-9]{5}[A-Z0-9]{11}[0-9]{2}',             // France
-                'GB': 'GB[0-9]{2}[A-Z]{4}[0-9]{6}[0-9]{8}',                         // United Kingdom
-                'GE': 'GE[0-9]{2}[A-Z]{2}[0-9]{16}',                                // Georgia
-                'GI': 'GI[0-9]{2}[A-Z]{4}[A-Z0-9]{15}',                             // Gibraltar
-                'GL': 'GL[0-9]{2}[0-9]{4}[0-9]{9}[0-9]{1}',                         // Greenland[
-                'GR': 'GR[0-9]{2}[0-9]{3}[0-9]{4}[A-Z0-9]{16}',                     // Greece
-                'GT': 'GT[0-9]{2}[A-Z0-9]{4}[A-Z0-9]{20}',                          // Guatemala
-                'HR': 'HR[0-9]{2}[0-9]{7}[0-9]{10}',                                // Croatia
-                'HU': 'HU[0-9]{2}[0-9]{3}[0-9]{4}[0-9]{1}[0-9]{15}[0-9]{1}',        // Hungary
-                'IE': 'IE[0-9]{2}[A-Z]{4}[0-9]{6}[0-9]{8}',                         // Ireland
-                'IL': 'IL[0-9]{2}[0-9]{3}[0-9]{3}[0-9]{13}',                        // Israel
-                'IR': 'IR[0-9]{2}[0-9]{22}',                                        // Iran
-                'IS': 'IS[0-9]{2}[0-9]{4}[0-9]{2}[0-9]{6}[0-9]{10}',                // Iceland
-                'IT': 'IT[0-9]{2}[A-Z]{1}[0-9]{5}[0-9]{5}[A-Z0-9]{12}',             // Italy
-                'JO': 'JO[0-9]{2}[A-Z]{4}[0-9]{4}[0]{8}[A-Z0-9]{10}',               // Jordan
-                'KW': 'KW[0-9]{2}[A-Z]{4}[0-9]{22}',                                // Kuwait
-                'KZ': 'KZ[0-9]{2}[0-9]{3}[A-Z0-9]{13}',                             // Kazakhstan
-                'LB': 'LB[0-9]{2}[0-9]{4}[A-Z0-9]{20}',                             // Lebanon
-                'LI': 'LI[0-9]{2}[0-9]{5}[A-Z0-9]{12}',                             // Liechtenstein
-                'LT': 'LT[0-9]{2}[0-9]{5}[0-9]{11}',                                // Lithuania
-                'LU': 'LU[0-9]{2}[0-9]{3}[A-Z0-9]{13}',                             // Luxembourg
-                'LV': 'LV[0-9]{2}[A-Z]{4}[A-Z0-9]{13}',                             // Latvia
-                'MC': 'MC[0-9]{2}[0-9]{5}[0-9]{5}[A-Z0-9]{11}[0-9]{2}',             // Monaco
-                'MD': 'MD[0-9]{2}[A-Z0-9]{20}',                                     // Moldova
-                'ME': 'ME[0-9]{2}[0-9]{3}[0-9]{13}[0-9]{2}',                        // Montenegro
-                'MG': 'MG[0-9]{2}[0-9]{23}',                                        // Madagascar
-                'MK': 'MK[0-9]{2}[0-9]{3}[A-Z0-9]{10}[0-9]{2}',                     // Macedonia
-                'ML': 'ML[0-9]{2}[A-Z]{1}[0-9]{23}',                                // Mali
-                'MR': 'MR13[0-9]{5}[0-9]{5}[0-9]{11}[0-9]{2}',                      // Mauritania
-                'MT': 'MT[0-9]{2}[A-Z]{4}[0-9]{5}[A-Z0-9]{18}',                     // Malta
-                'MU': 'MU[0-9]{2}[A-Z]{4}[0-9]{2}[0-9]{2}[0-9]{12}[0-9]{3}[A-Z]{3}',// Mauritius
-                'MZ': 'MZ[0-9]{2}[0-9]{21}',                                        // Mozambique
-                'NL': 'NL[0-9]{2}[A-Z]{4}[0-9]{10}',                                // Netherlands
-                'NO': 'NO[0-9]{2}[0-9]{4}[0-9]{6}[0-9]{1}',                         // Norway
-                'PK': 'PK[0-9]{2}[A-Z]{4}[A-Z0-9]{16}',                             // Pakistan
-                'PL': 'PL[0-9]{2}[0-9]{8}[0-9]{16}',                                // Poland
-                'PS': 'PS[0-9]{2}[A-Z]{4}[A-Z0-9]{21}',                             // Palestinian
-                'PT': 'PT[0-9]{2}[0-9]{4}[0-9]{4}[0-9]{11}[0-9]{2}',                // Portugal
-                'QA': 'QA[0-9]{2}[A-Z]{4}[A-Z0-9]{21}',                             // Qatar
-                'RO': 'RO[0-9]{2}[A-Z]{4}[A-Z0-9]{16}',                             // Romania
-                'RS': 'RS[0-9]{2}[0-9]{3}[0-9]{13}[0-9]{2}',                        // Serbia
-                'SA': 'SA[0-9]{2}[0-9]{2}[A-Z0-9]{18}',                             // Saudi Arabia
-                'SE': 'SE[0-9]{2}[0-9]{3}[0-9]{16}[0-9]{1}',                        // Sweden
-                'SI': 'SI[0-9]{2}[0-9]{5}[0-9]{8}[0-9]{2}',                         // Slovenia
-                'SK': 'SK[0-9]{2}[0-9]{4}[0-9]{6}[0-9]{10}',                        // Slovakia
-                'SM': 'SM[0-9]{2}[A-Z]{1}[0-9]{5}[0-9]{5}[A-Z0-9]{12}',             // San Marino
-                'SN': 'SN[0-9]{2}[A-Z]{1}[0-9]{23}',                                // Senegal
-                'TN': 'TN59[0-9]{2}[0-9]{3}[0-9]{13}[0-9]{2}',                      // Tunisia
-                'TR': 'TR[0-9]{2}[0-9]{5}[A-Z0-9]{1}[A-Z0-9]{16}',                  // Turkey
-                'VG': 'VG[0-9]{2}[A-Z]{4}[0-9]{16}'                                 // Virgin Islands, British
-            };
             value = value.replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
             var country = options.country || value.substr(0, 2);
-            if (!ibanRegex[country]) {
+            if (!this.REGEX[country]) {
                 return false;
             }
-            if (!(new RegExp('^' + ibanRegex[country] + '$')).test(value)) {
+            if (!(new RegExp('^' + this.REGEX[country] + '$')).test(value)) {
                 return false;
             }
 
@@ -2401,6 +2667,56 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.id = $.extend($.fn.bootstrapValidator.i18n.id || {}, {
+        'default': 'Please enter a valid identification number',
+        countryNotSupported: 'The country code %s is not supported',
+        country: 'Please enter a valid %s identification number',
+        countries: {
+            BA: 'Bosnia and Herzegovina',
+            BG: 'Bulgarian',
+            BR: 'Brazilian',
+            CH: 'Swiss',
+            CL: 'Chilean',
+            CZ: 'Czech',
+            DK: 'Danish',
+            EE: 'Estonian',
+            ES: 'Spanish',
+            FI: 'Finnish',
+            HR: 'Croatian',
+            IE: 'Irish',
+            IS: 'Iceland',
+            LT: 'Lithuanian',
+            LV: 'Latvian',
+            ME: 'Montenegro',
+            MK: 'Macedonian',
+            NL: 'Dutch',
+            RO: 'Romanian',
+            RS: 'Serbian',
+            SE: 'Swedish',
+            SI: 'Slovenian',
+            SK: 'Slovak',
+            SM: 'San Marino',
+            ZA: 'South African'
+        },
+
+        getMessage: function(options) {
+            if (options.country) {
+                var country = options.country.toLowerCase(),
+                    method  = ['_', country].join('');
+                if ($.fn.bootstrapValidator.validators.id[method] == undefined) {
+                    return $.fn.bootstrapValidator.helpers.format(this.countryNotSupported, country);
+                }
+
+                country = country.toUpperCase();
+                if (this.countries[country]) {
+                    return $.fn.bootstrapValidator.helpers.format(this.country, this.countries[country]);
+                }
+            }
+
+            return this['default'];
+        }
+    });
+
     $.fn.bootstrapValidator.validators.id = {
         html5Attributes: {
             message: 'message',
@@ -3161,6 +3477,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.identical = $.extend($.fn.bootstrapValidator.i18n.identical || {}, {
+        'default': 'Please enter the same value'
+    });
+
     $.fn.bootstrapValidator.validators.identical = {
         html5Attributes: {
             message: 'message',
@@ -3197,6 +3517,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.imei = $.extend($.fn.bootstrapValidator.i18n.imei || {}, {
+        'default': 'Please enter a valid IMEI number'
+    });
+
     $.fn.bootstrapValidator.validators.imei = {
         /**
          * Validate IMEI (International Mobile Station Equipment Identity)
@@ -3238,6 +3562,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.integer = $.extend($.fn.bootstrapValidator.i18n.integer || {}, {
+        'default': 'Please enter a valid number'
+    });
+
     $.fn.bootstrapValidator.validators.integer = {
         enableByHtml5: function($field) {
             return ('number' == $field.attr('type'));
@@ -3262,6 +3590,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.ip = $.extend($.fn.bootstrapValidator.i18n.ip || {}, {
+        'default': 'Please enter a valid IP address'
+    });
+
     $.fn.bootstrapValidator.validators.ip = {
         html5Attributes: {
             message: 'message',
@@ -3297,6 +3629,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.isbn = $.extend($.fn.bootstrapValidator.i18n.isbn || {}, {
+        'default': 'Please enter a valid ISBN number'
+    });
+
     $.fn.bootstrapValidator.validators.isbn = {
         /**
          * Return true if the input value is a valid ISBN 10 or ISBN 13 number
@@ -3378,6 +3714,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.isin = $.extend($.fn.bootstrapValidator.i18n.isin || {}, {
+        'default': 'Please enter a valid ISIN number'
+    });
+
     $.fn.bootstrapValidator.validators.isin = {
         // Available country codes
         // See http://isin.net/country-codes/
@@ -3433,6 +3773,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.ismn = $.extend($.fn.bootstrapValidator.i18n.ismn || {}, {
+        'default': 'Please enter a valid ISMN number'
+    });
+
     $.fn.bootstrapValidator.validators.ismn = {
         /**
          * Validate ISMN (International Standard Music Number)
@@ -3488,6 +3832,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.issn = $.extend($.fn.bootstrapValidator.i18n.issn || {}, {
+        'default': 'Please enter a valid ISSN number'
+    });
+
     $.fn.bootstrapValidator.validators.issn = {
         /**
          * Validate ISSN (International Standard Serial Number)
@@ -3530,6 +3878,17 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.lessThan = $.extend($.fn.bootstrapValidator.i18n.lessThan || {}, {
+        'default': 'Please enter a value less than or equal to %s',
+        notInclusive: 'Please enter a value less than %s',
+
+        getMessage: function(options) {
+            return (options.inclusive === true || options.inclusive == undefined)
+                    ? $.fn.bootstrapValidator.helpers.format(this['default'], options.value)
+                    : $.fn.bootstrapValidator.helpers.format(this.notInclusive, options.value);
+        }
+    });
+
     $.fn.bootstrapValidator.validators.lessThan = {
         html5Attributes: {
             message: 'message',
@@ -3570,6 +3929,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.mac = $.extend($.fn.bootstrapValidator.i18n.mac || {}, {
+        'default': 'Please enter a valid MAC address'
+    });
+
     $.fn.bootstrapValidator.validators.mac = {
         /**
          * Return true if the input value is a MAC address.
@@ -3591,6 +3954,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.notEmpty = $.extend($.fn.bootstrapValidator.i18n.notEmpty || {}, {
+        'default': 'Please enter a value'
+    });
+
     $.fn.bootstrapValidator.validators.notEmpty = {
         enableByHtml5: function($field) {
             var required = $field.attr('required') + '';
@@ -3619,6 +3986,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.numeric = $.extend($.fn.bootstrapValidator.i18n.numeric || {}, {
+        'default': 'Please enter a valid float number'
+    });
+
     $.fn.bootstrapValidator.validators.numeric = {
         html5Attributes: {
             message: 'message',
@@ -3650,11 +4021,37 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.phone = $.extend($.fn.bootstrapValidator.i18n.phone || {}, {
+        'default': 'Please enter a valid phone number',
+        countryNotSupported: 'The country code %s is not supported',
+        country: 'Please enter a valid phone number in %s',
+        countries: {
+            GB: 'United Kingdom',
+            US: 'USA'
+        },
+
+        getMessage: function(options) {
+            var country = (options.country || 'US').toUpperCase();
+            if ($.inArray(country, $.fn.bootstrapValidator.validators.phone.COUNTRIES) == -1) {
+                return $.fn.bootstrapValidator.helpers.format(this.countryNotSupported, country);
+            }
+
+            if (this.countries[country]) {
+                return $.fn.bootstrapValidator.helpers.format(this.country, this.countries[country]);
+            }
+
+            return this['default'];
+        }
+    });
+
     $.fn.bootstrapValidator.validators.phone = {
         html5Attributes: {
             message: 'message',
             country: 'country'
         },
+
+        // The supported countries
+        COUNTRIES: ['GB', 'US'],
 
         /**
          * Return true if the input value contains a valid phone number for the country
@@ -3675,6 +4072,10 @@
             }
 
             var country = (options.country || 'US').toUpperCase();
+            if ($.inArray(country, this.COUNTRIES) == -1) {
+                return false;
+            }
+
             switch (country) {
             	case 'GB':
             		// http://aa-asterisk.org.uk/index.php/Regular_Expressions_for_Validating_and_Formatting_GB_Telephone_Numbers#Match_GB_telephone_number_in_any_format
@@ -3694,6 +4095,10 @@
     }
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.regexp = $.extend($.fn.bootstrapValidator.i18n.regexp || {}, {
+        'default': 'Please enter a value matching the pattern'
+    });
+
     $.fn.bootstrapValidator.validators.regexp = {
         html5Attributes: {
             message: 'message',
@@ -3732,6 +4137,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.remote = $.extend($.fn.bootstrapValidator.i18n.remote || {}, {
+        'default': 'Please enter a valid value'
+    });
+
     $.fn.bootstrapValidator.validators.remote = {
         html5Attributes: {
             message: 'message',
@@ -3745,12 +4154,13 @@
          * @param {BootstrapValidator} validator Plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following keys:
-         * - url
-         * - data [optional]: By default, it will take the value
+         * - url {String|Function}
+         * - type {String} [optional] Can be GET or POST (default)
+         * - data {Object|Function} [optional]: By default, it will take the value
          *  {
          *      <fieldName>: <fieldValue>
          *  }
-         * - name [optional]: Override the field name for the request.
+         * - name {String} [optional]: Override the field name for the request.
          * - message: The invalid message
          * @returns {Boolean|Deferred}
          */
@@ -3760,20 +4170,27 @@
                 return true;
             }
 
-            var name = $field.attr('data-bv-field'), data = options.data;
-            if (data == null) {
-                data = {};
-            }
+            var name = $field.attr('data-bv-field'),
+                data = options.data || {},
+                url  = options.url,
+                type = options.type || 'POST';
+
             // Support dynamic data
             if ('function' == typeof data) {
                 data = data.call(this, validator);
             }
+
+            // Support dynamic url
+            if ('function' == typeof url) {
+                url = url.call(this, validator);
+            }
+
             data[options.name || name] = value;
 
             var dfd = new $.Deferred();
             var xhr = $.ajax({
-                type: 'POST',
-                url: options.url,
+                type: type,
+                url: url,
                 dataType: 'json',
                 data: data
             });
@@ -3790,6 +4207,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.rtn = $.extend($.fn.bootstrapValidator.i18n.rtn || {}, {
+        'default': 'Please enter a valid RTN number'
+    });
+
     $.fn.bootstrapValidator.validators.rtn = {
         /**
          * Validate a RTN (Routing transit number)
@@ -3824,6 +4245,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.sedol = $.extend($.fn.bootstrapValidator.i18n.sedol || {}, {
+        'default': 'Please enter a valid SEDOL number'
+    });
+
     $.fn.bootstrapValidator.validators.sedol = {
         /**
          * Validate a SEDOL (Stock Exchange Daily Official List)
@@ -3860,6 +4285,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.siren = $.extend($.fn.bootstrapValidator.i18n.siren || {}, {
+        'default': 'Please enter a valid SIREN number'
+    });
+
 	$.fn.bootstrapValidator.validators.siren = {
 		/**
 		 * Check if a string is a siren number
@@ -3884,6 +4313,10 @@
 	};
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.siret = $.extend($.fn.bootstrapValidator.i18n.siret || {}, {
+        'default': 'Please enter a valid SIRET number'
+    });
+
 	$.fn.bootstrapValidator.validators.siret = {
         /**
          * Check if a string is a siret number
@@ -3918,6 +4351,14 @@
 	};
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.step = $.extend($.fn.bootstrapValidator.i18n.step || {}, {
+        'default': 'Please enter a valid step of %s',
+
+        getMessage: function(options) {
+            return $.fn.bootstrapValidator.helpers.format(this['default'], [options.step]);
+        }
+    });
+
     $.fn.bootstrapValidator.validators.step = {
         html5Attributes: {
             message: 'message',
@@ -3975,6 +4416,22 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.stringCase = $.extend($.fn.bootstrapValidator.i18n.stringCase || {}, {
+        'default': 'Please enter only lowercase characters',
+        upper: 'Please enter only uppercase characters',
+
+        getMessage: function(options) {
+            var stringCase = (options['case'] || 'lower').toLowerCase();
+            switch (stringCase) {
+                case 'upper':
+                    return this.upper;
+                case 'lower':
+                default:
+                    return this['default'];
+            }
+        }
+    });
+
     $.fn.bootstrapValidator.validators.stringCase = {
         html5Attributes: {
             message: 'message',
@@ -4009,6 +4466,27 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.stringLength = $.extend($.fn.bootstrapValidator.i18n.stringLength || {}, {
+        'default': 'Please enter a value with valid length',
+        less: 'Please enter less than %s characters',
+        more: 'Please enter more than %s characters',
+        between: 'Please enter value between %s and %s characters long',
+
+        getMessage: function(options) {
+            switch (true) {
+                case (!!options.min && !!options.max):
+                    return $.fn.bootstrapValidator.helpers.format(this.between, [options.min, options.max]);
+                    break;
+                case (!!options.min):
+                    return $.fn.bootstrapValidator.helpers.format(this.more, options.min);
+                case (!!options.max):
+                    return $.fn.bootstrapValidator.helpers.format(this.less, options.max);
+                default:
+                    return this['default'];
+            }
+        }
+    });
+
     $.fn.bootstrapValidator.validators.stringLength = {
         html5Attributes: {
             message: 'message',
@@ -4045,7 +4523,7 @@
                 return true;
             }
 
-            var length = $.trim(value).length;
+            var length = value.length;
             if ((options.min && length < options.min) || (options.max && length > options.max)) {
                 return false;
             }
@@ -4055,6 +4533,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.uri = $.extend($.fn.bootstrapValidator.i18n.uri || {}, {
+        'default': 'Please enter a valid URI'
+    });
+
     $.fn.bootstrapValidator.validators.uri = {
         html5Attributes: {
             message: 'message',
@@ -4152,6 +4634,17 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.uuid = $.extend($.fn.bootstrapValidator.i18n.uuid || {}, {
+        'default': 'Please enter a valid UUID number',
+        version: 'Please enter a valid UUID version %s number',
+
+        getMessage: function(options) {
+            return (options.version)
+                    ? $.fn.bootstrapValidator.helpers.format(this.version, [options.version])
+                    : this['default'];
+        }
+    });
+
     $.fn.bootstrapValidator.validators.uuid = {
         html5Attributes: {
             message: 'message',
@@ -4188,6 +4681,64 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.vat = $.extend($.fn.bootstrapValidator.i18n.vat || {}, {
+        'default': 'Please enter a valid VAT number',
+        countryNotSupported: 'The country code %s is not supported',
+        country: 'Please enter a valid %s VAT number',
+        countries: {
+            AT: 'Austrian',
+            BE: 'Belgian',
+            BG: 'Bulgarian',
+            CH: 'Swiss',
+            CY: 'Cypriot',
+            CZ: 'Czech',
+            DE: 'German',
+            DK: 'Danish',
+            EE: 'Estonian',
+            ES: 'Spanish',
+            FI: 'Finnish',
+            FR: 'French',
+            GB: 'United Kingdom',
+            GR: 'Greek',
+            EL: 'Greek',
+            HU: 'Hungarian',
+            HR: 'Croatian',
+            IE: 'Irish',
+            IT: 'Italian',
+            LT: 'Lithuanian',
+            LU: 'Luxembourg',
+            LV: 'Latvian',
+            MT: 'Maltese',
+            NL: 'Dutch',
+            NO: 'Norwegian',
+            PL: 'Polish',
+            PT: 'Portuguese',
+            RO: 'Romanian',
+            RU: 'Russian',
+            RS: 'Serbian',
+            SE: 'Swedish',
+            SI: 'Slovenian',
+            SK: 'Slovak'
+        },
+
+        getMessage: function(options) {
+            if (options.country) {
+                var country = options.country,
+                    method  = ['_', country.toLowerCase()].join('');
+                if ($.fn.bootstrapValidator.validators.vat[method] == undefined) {
+                    return $.fn.bootstrapValidator.helpers.format(this.countryNotSupported, options.country);
+                }
+
+                country = country.toUpperCase();
+                if (this.countries[country]) {
+                    return $.fn.bootstrapValidator.helpers.format(this.country, this.countries[country]);
+                }
+            }
+
+            return this['default'];
+        }
+    });
+
     $.fn.bootstrapValidator.validators.vat = {
         html5Attributes: {
             message: 'message',
@@ -5344,6 +5895,10 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.vin = $.extend($.fn.bootstrapValidator.i18n.vin || {}, {
+        'default': 'Please enter a valid VIN number'
+    });
+
     $.fn.bootstrapValidator.validators.vin = {
         /**
          * Validate an US VIN (Vehicle Identification Number)
@@ -5389,11 +5944,42 @@
     };
 }(window.jQuery));
 ;(function($) {
+    $.fn.bootstrapValidator.i18n.zipCode = $.extend($.fn.bootstrapValidator.i18n.zipCode || {}, {
+        'default': 'Please enter a valid zip code',
+        countryNotSupported: 'The country code %s is not supported',
+        country: 'Please enter a valid %s',
+        countries: {
+            'CA': 'Canadian postal code',
+            'DK': 'Danish postal code',
+            'GB': 'United Kingdom postal code',
+            'IT': 'Italian postal code',
+            'NL': 'Dutch postal code',
+            'SE': 'Swiss postal code',
+            'SG': 'Singapore postal code',
+            'US': 'US zip code'
+        },
+
+        getMessage: function(options) {
+            var country = (options.country || 'US').toUpperCase();
+            if ($.inArray(country, $.fn.bootstrapValidator.validators.zipCode.COUNTRIES) == -1) {
+                return $.fn.bootstrapValidator.helpers.format(this.countryNotSupported, country);
+            }
+
+            if (this.countries[country]) {
+                return $.fn.bootstrapValidator.helpers.format(this.country, this.countries[country]);
+            }
+
+            return this['default'];
+        }
+    });
+
     $.fn.bootstrapValidator.validators.zipCode = {
         html5Attributes: {
             message: 'message',
             country: 'country'
         },
+
+        COUNTRIES: ['CA', 'DK', 'GB', 'IT', 'NL', 'SE', 'SG', 'US'],
 
         /**
          * Return true if and only if the input value is a valid country zip code
@@ -5422,6 +6008,10 @@
             }
 
             var country = (options.country || 'US').toUpperCase();
+            if ($.inArray(country, this.COUNTRIES) == -1) {
+                return false;
+            }
+
             switch (country) {
                 case 'CA': return /^(?:A|B|C|E|G|H|J|K|L|M|N|P|R|S|T|V|X|Y){1}[0-9]{1}(?:A|B|C|E|G|H|J|K|L|M|N|P|R|S|T|V|X|Y){1}\s?[0-9]{1}(?:A|B|C|E|G|H|J|K|L|M|N|P|R|S|T|V|X|Y){1}[0-9]{1}$/i.test(value);
                 case 'DK': return /^(DK(-|\s)?)?\d{4}$/i.test(value);
