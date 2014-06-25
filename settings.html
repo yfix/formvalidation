@@ -54,44 +54,54 @@ sections:
         <tr>
             <th>Option</th>
             <th>Equivalent HTML attribute</th>
+            <th>Default</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>excluded</code></td>
             <td><code>data-bv-excluded</code></td>
+            <td><code>[':disabled', ':hidden', ':not(:visible)']</code></td>
         </tr>
         <tr>
             <td><code>feedbackIcons</code></td>
             <td><code>data-bv-feedbackicons-valid</code>, <code>data-bv-feedbackicons-invalid</code>, <code>data-bv-feedbackicons-validating</code></td>
+            <td><code>{ valid: null, invalid: null, validating: null }</code></td>
         </tr>
         <tr>
             <td><code>live</code></td>
             <td><code>data-bv-live</code></td>
+            <td><code>'enabled'</code></td>
         </tr>
         <tr>
             <td><code>message</code></td>
             <td><code>data-bv-message</code></td>
+            <td><code>'This value is not valid'</code></td>
         </tr>
         <tr>
             <td><code>submitButtons</code></td>
             <td><code>data-bv-submitbuttons</code></td>
+            <td><code>'[type="submit"]'</code></td>
         </tr>
         <tr>
             <td><code>submitHandler</code></td>
             <td>n/a</td>
+            <td><code>null</code></td>
         </tr>
         <tr>
             <td><code>threshold</code></td>
             <td><code>data-bv-threshold</code></td>
+            <td><code>null</code></td>
         </tr>
         <tr>
             <td><code>trigger</code></td>
             <td><code>data-bv-trigger</code></td>
+            <td><code>null</code></td>
         </tr>
         <tr>
             <td><code>fields</code></td>
             <td>n/a</td>
+            <td><code>null</code></td>
         </tr>
     </tbody>
 </table>
