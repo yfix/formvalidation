@@ -1,401 +1,195 @@
 ---
-layout:    default
+layout:    base
 title:     The best jQuery plugin to validate form fields. Designed to use with Bootstrap 3
 permalink: /
 comments:  false
-sections:
-    - title:  Introduction
-      anchor: introduction
-    - title:  Features
-      anchor: features
-    - title:  What's News?
-      anchor: whats-news
-    - title:  Contributors
-      anchor: contributors
 ---
 
-<section class="doc-heading">
-    <h1>BootstrapValidator</h1>
-    <a class="doc-edit-button" href="{{ site.repository.docs_edit }}/index.html"><i class="fa fa-github"></i> Edit on Github</a>
-</section>
+<div class="bv-index-heading">
+    <div class="container">
+        <h1>the best <a href="http://plugins.jquery.com/bootstrapValidator">jQuery plugin</a> to validate form fields</h1>
+        <h2>designed to use with <a href="http://getbootstrap.com">Bootstrap 3</a></h2>
 
-<!-- Introduction -->
-<section id="introduction">
-    <h2>Introduction</h2>
-    <p class="lead text-center">
-        BootstrapValidator is the best <a href="http://plugins.jquery.com/bootstrapValidator">jQuery plugin</a> to validate form fields, designed to use with <a href="http://getbootstrap.com">Bootstrap 3</a>.
-        It's developed with love by <a href="http://twitter.com/nghuuphuoc">@nghuuphuoc</a>.
-    </p>
+        <p>
+            <a class="btn btn-lg" href="">Download</a>
+            <a class="btn btn-lg" href="">Donation</a>
+        </p>
 
-    <div class="row text-center" style="margin-bottom: 10px;">
-        <div class="col-md-6 text-right">
-            <a class="btn btn-lg btn-primary" href="/getting-started/#download"><i class="fa fa-download"></i> Download</a>
-        </div>
-        <div class="col-md-6 text-left">
-            <a class="btn btn-lg btn-success" href="https://pledgie.com/campaigns/24885" alt="Click here to lend your support to: BootstrapValidator and make a donation at pledgie.com!"><i class="fa fa-dollar"></i> Donation</a>
-            <!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                <input type="hidden" name="cmd" value="_s-xclick">
-                <input type="hidden" name="hosted_button_id" value="D9K5AMXE87UXJ">
-                <button type="submit" class="btn btn-lg btn-success">Paypal Donation</button>
-                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-            </form> -->
+        <div class="bv-ad">
+        {% include ad.html %}
         </div>
     </div>
-    <p class="text-center">The latest version, <a href="/news/2014/05/15/v0.4.5-released/">v{{ site.current_version }}</a>, is released on {{ site.released_date }}</p>
+</div>
 
-    <div class="row" style="margin: 20px 0;">
-    <div class="doc-example">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#tryit-form-tab" data-toggle="tab">Try it</a></li>
-            <li><a href="#tryit-html-tab" data-toggle="tab">HTML</a></li>
-            <li><a href="#tryit-js-tab" data-toggle="tab">JS</a></li>
+<!-- followers -->
+<div class="bv-follower">
+    <div class="container">
+        <ul>
+            <li><a href="{{ site.repository.source }}"><i class="fa fa-github"></i> <span id="ghStars"></span></a></li>
+            <li><a href="{{ site.repository.source }}/network/members"><i class="fa fa-code-fork"></i> <span id="ghForks"></span></a></li>
+            <li><a href="https://twitter.com/bsvalidator"><i class="fa fa-twitter"></i> <span id="twFollowers"></span></a></li>
         </ul>
+    </div>
+</div>
 
-        <div class="tab-content">
-            <div class="tab-pane active" id="tryit-form-tab">
-                <form id="tryitForm" class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Full name</label>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" name="firstName" placeholder="First name" />
-                        </div>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" name="lastName" placeholder="Last name" />
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Email address</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="email" />
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Gender</label>
-                        <div class="col-md-6">
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="gender" value="male" /> Male
-                                </label>
-                            </div>
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="gender" value="female" /> Female
-                                </label>
-                            </div>
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="gender" value="other" /> Other
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-offset-3 col-md-8">
-                            <button type="submit" class="btn btn-primary">Say hello</button>
-                        </div>
-                    </div>
-                </form>
+<!-- features -->
+<div class="bv-features">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <i class="fa fa-code"></i>
+                <h4>Code</h4>
+                <ul>
+                    <li>Written from scratch</li>
+                    <li>Very solid and clean</li>
+                    <li>Core and validators code are separated</li>
+                    <li>JSHint free <span class="bv-upcoming"></span></li>
+                </ul>
+                <p>  </p>
             </div>
-
-            <div class="tab-pane" id="tryit-html-tab">
-                <pre><code class="xml">&lt;form id="tryitForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-md-3 control-label">Full name&lt;/label>
-        &lt;div class="col-md-4">
-            &lt;input type="text" class="form-control" name="firstName" />
-        &lt;/div>
-        &lt;div class="col-md-4">
-            &lt;input type="text" class="form-control" name="lastName" />
-        &lt;/div>
-    &lt;/div>
-
-    &lt;div class="form-group">
-        &lt;label class="col-md-3 control-label">Email address&lt;/label>
-        &lt;div class="col-md-6">
-            &lt;input type="text" class="form-control" name="email" />
-        &lt;/div>
-    &lt;/div>
-
-    &lt;div class="form-group">
-        &lt;label class="col-md-3 control-label">Gender&lt;/label>
-        &lt;div class="col-md-6">
-            &lt;div class="radio">
-                &lt;label>&lt;input type="radio" name="gender" value="male" /> Male&lt;/label>
-            &lt;/div>
-            &lt;div class="radio">
-                &lt;label>&lt;input type="radio" name="gender" value="female" /> Female&lt;/label>
-            &lt;/div>
-            &lt;div class="radio">
-                &lt;label>&lt;input type="radio" name="gender" value="other" /> Other&lt;/label>
-            &lt;/div>
-        &lt;/div>
-    &lt;/div>
-
-    &lt;div class="form-group">
-        &lt;div class="col-md-offset-3 col-md-8">
-            &lt;button type="submit" class="btn btn-primary">Say hello&lt;/button>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+            <div class="col-md-4">
+                <i class="fa fa-html5"></i>
+                <h4>HTML 5</h4>
+                <ul>
+                    <li>Fully support declarative settings</li>
+                    <li>Support HTML 5 attributes</li>
+                    <li>Support HTML 5 input types</li>
+                </ul>
             </div>
-
-            <div class="tab-pane" id="tryit-js-tab">
-                <pre><code class="xml javascript">&lt;script>
-$(document).ready(function() {
-    $('#tryitForm').bootstrapValidator({
-        fields: {
-            firstName: {
-                validators: {
-                    notEmpty: {
-                        message: 'The first name is required and cannot be empty'
-                    }
-                }
-            },
-            lastName: {
-                validators: {
-                    notEmpty: {
-                        message: 'The last name is required and cannot be empty'
-                    }
-                }
-            },
-            email: {
-                validators: {
-                    notEmpty: {
-                        message: 'The email address is required'
-                    },
-                    emailAddress: {
-                        message: 'The input is not a valid email address'
-                    }
-                }
-            },
-            gender: {
-                validators: {
-                    notEmpty: {
-                        message: 'The gender is required'
-                    }
-                }
-            }
-        },
-        submitHandler: function(validator, form, submitButton) {
-            var fullName = [validator.getFieldElements('firstName').val(),
-                            validator.getFieldElements('lastName').val()].join(' ');
-            $('#helloModal')
-                .find('.modal-title').html('Hello ' + fullName).end()
-                .modal();
-        }
-    });
-});
-&lt;/script></code></pre>
+            <div class="col-md-4">
+                <i class="fa fa-flask"></i>
+                <h4>Validators</h4>
+                <ul>
+                    <li>Provide 46 built-in validators and counting!</li>
+                    <li>Easy to write a new validator</li>
+                    <li>Internationalization <span class="bv-upcoming"></span></li>
+                </ul>
             </div>
         </div>
-    </div>
-    </div>
-</section>
 
-<!-- Features -->
-<section id="features" class="doc-features">
-    <h2 class="doc-hor-line"><span>Features</span></h2>
-
-    <div class="row">
-        <div class="col-md-6">
-            <h3>Code</h3>
-            <ul>
-                <li><i class="fa fa-check"></i> Written from scratch</li>
-                <li><i class="fa fa-check"></i> Very solid and clean</li>
-                <li><i class="fa fa-check"></i> The core plugin and validators code are separated</li>
-            </ul>
-        </div>
-        <div class="col-md-6">
-            <h3>Bootstrap</h3>
-            <ul>
-                <li><i class="fa fa-check"></i> Designed to use with Bootstrap 3</li>
-                <li><i class="fa fa-check"></i> Support almost all <a href="http://getbootstrap.com/css/#forms">Bootstrap forms</a></li>
-                <li><i class="fa fa-check"></i> Support Bootstrap form <a href="http://getbootstrap.com/css/#forms-control-validation">validation states</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-6">
-            <h3>HTML 5</h3>
-            <ul>
-                <li><i class="fa fa-check"></i> Support setting the options via <a href="/examples#attribute">HTML 5 attributes</a> prefixed with <code>data-bv-</code></li>
-                <li><i class="fa fa-check"></i> Support HTML 5 attributes such as <code>min</code>, <code>max</code>, <code>pattern</code>, <code>required</code></li>
-                <li><i class="fa fa-check"></i> Support <a href="/examples#html5">HTML 5 input types</a> such as <code>color</code>, <code>email</code>, <code>range</code> and <code>url</code></li>
-            </ul>
-        </div>
-        <div class="col-md-6">
-            <h3>Flexible</h3>
-            <ul>
-                <li><i class="fa fa-check"></i> The elements can be defined by either <code>name</code> or <a href="/settings/#selector-example">CSS selector</a></li>
-                <li><i class="fa fa-check"></i> Support multiple elements with the <a href="/examples/#fields-with-same-name">same name</a></li>
-                <li><i class="fa fa-check"></i> Possible to indicate <a href="/settings/#excluded">excluded</a> fields</li>
-                <li><i class="fa fa-check"></i> Field validators can be enabled/disabled on the fly</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-6">
-            <h3>Richest Validators</h3>
-            <ul>
-                <li><i class="fa fa-check"></i> Provide 46 <a href="/validators/">built-in validators</a> and counting!</li>
-                <li><i class="fa fa-check"></i> Easy to <a href="/developing/">write a new validator</a></li>
-            </ul>
-        </div>
-        <div class="col-md-6">
-            <h3>Ajax</h3>
-            <ul>
-                <li><i class="fa fa-check"></i> Support <a href="/validators/remote/">validating via Ajax</a></li>
-                <li><i class="fa fa-check"></i> Support using Ajax for form submission</li>
-            </ul>
-        </div>
-
-    </div>
-
-    <div class="row">
-        <div class="col-md-6">
-            <h3>Friendly</h3>
-            <ul>
-                <li><i class="fa fa-check"></i> Show <a href="/settings/#feedback-icons">feedback icons</a> based on field validity</li>
-                <li><i class="fa fa-check"></i> Support <a href="http://getbootstrap.com/components/#glyphicons">Glyphicons</a> and <a href="http://fontawesome.io/icons">FontAwesome</a> icons</li>
-                <li><i class="fa fa-check"></i> Focus on the first invalid field</li>
-            </ul>
-        </div>
-        <div class="col-md-6">
-            <h3>Compatibility</h3>
-            <ul>
-                <li><i class="fa fa-check"></i> <a href="http://mjolnic.github.io/bootstrap-colorpicker/">Color Picker</a></li>
-                <li><i class="fa fa-check"></i> <a href="http://eternicode.github.io/bootstrap-datepicker/">Date Picker</a>, <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Datetime Picker</a></li>
-                <li><i class="fa fa-check"></i> <a href="http://ivaynberg.github.io/select2/">Select2</a></li>
-                <li><i class="fa fa-check"></i> <a href="http://wbotelhos.com/raty">Raty</a>, etc.</li>
-            </ul>
-            <p>We <a href="/examples/#compatibility">play nice</a> with all of them!</p>
-        </div>
-    </div>
-</section>
-
-<!-- What's news -->
-<section id="whats-news" class="doc-news">
-    <h2 class="doc-hor-line"><span>What's News?</span></h2>
-    <p>The latest v0.4.5 version comes with following new features and fixes:</p>
-
-    <ul class="doc-news-added">
-        <li>Add <code>$.fn.bootstrapValidator.helpers.date</code> for validating a date, re-used in <a href="/validators/date/"><code>date</code></a>, <a href="/validators/id/"><code>id</code></a>, <a href="/validators/vat/"><code>vat</code></a> validators</li>
-        <li><a href="{{ site.repository.source }}/issues/233">#233</a>: Add <a href="/settings/#threshold"><code>threshold</code> option</a></li>
-        <li><a href="{{ site.repository.source }}/issues/232">#232</a>: Add <a href="/validators/id/"><code>id</code> validator</a></li>
-        <li><a href="{{ site.repository.source }}/issues/242">#242</a>: Add <code>separator</code> option to the <a href="/validators/numeric/"><code>numeric</code> validator</a></li>
-        <li><a href="{{ site.repository.source }}/issues/248">#248</a>: Add <a href="/validators/isin/"><code>isin</code> (International Securities Identification Number) validator</a></li>
-        <li><a href="{{ site.repository.source }}/issues/250">#250</a>: Add <a href="/validators/rtn/"><code>rtn</code> (Routing transit number) validator</a></li>
-        <li><a href="{{ site.repository.source }}/issues/251">#251</a>: Add <a href="/validators/cusip/"><code>cusip</code> (North American Securities) validator</a></li>
-        <li><a href="{{ site.repository.source }}/issues/252">#252</a>: Add <a href="/validators/sedol/"><code>sedol</code> (Stock Exchange Daily Official List) validator</a></li>
-        <li>The <a href="/validators/zipCode/"><code>zipCode</code> validator</a> adds support for Italian, Dutch postcodes</li>
-    </ul>
-    <ul class="doc-news-improved">
-        <li><a href="{{ site.repository.source }}/pull/245">#245</a>: The <a href="/validators/cvv/"><code>cvv</code> validator</a> should support spaces in credit card, thanks to <a href="https://github.com/evilchili">@evilchili</a></li>
-        <li>Change default <code>submitButtons</code> to <code>[type="submit"]</code> to support <code>input type="submit"</code></li>
-    </ul>
-    <ul class="doc-news-fixed">
-        <li><a href="{{ site.repository.source }}/issues/226">#226</a>: Fix the conflict issue with MooTools</li>
-        <li><a href="{{ site.repository.source }}/issues/238">#238</a>: The submit buttons are not sent</li>
-        <li><a href="{{ site.repository.source }}/issues/253">#253</a>: The <a href="/validators/iban/"><code>iban</code> validator</a> does not work on IE8</li>
-        <li><a href="{{ site.repository.source }}/issues/257">#257</a>: Plugin method invocation don't work</li>
-        <li>Fix the issue that the hidden fields generated by other plugins might not be validated</li>
-        <li>When parsing options from HTML attributes, don't add the field which hasn't validators. It improves fixes for <a href="{{ site.repository.source }}/issues/191">#191</a>, <a href="{{ site.repository.source }}/issues/223">#223</a></li>
-    </ul>
-
-    <div class="text-center">
-        <a class="btn btn-success" href="{{ site.repository.source }}/blob/master/CHANGELOG.md">See the Changelog</a>
-    </div>
-</section>
-
-<!-- Contributors -->
-<section id="contributors" class="doc-contributors">
-    <h2 class="doc-hor-line"><span>Contributors</span></h2>
-    <p>It is much better by the amazing developers</p>
-    <ul>
-        {% for user in site.data.contributors %}
-        <li>
-            <a href="https://github.com/{{ user.username }}" title="{{ user.username }}"><img src="{{ user.avatar }}?s=50" /></a>
-        </li>
-        {% endfor %}
-    </ul>
-
-    <div class="text-center">
-        <a href="{{ site.repository.source }}" class="btn btn-success"><i class="fa fa-github"></i> Join Us</a>
-    </div>
-</section>
-
-<div class="modal fade" id="helloModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Hello {{ guest }}</h4>
+        <div class="row">
+            <div class="col-md-4">
+                <i class="fa fa-heart"></i>
+                <h4>Friendly</h4>
+                <ul>
+                    <li>Show feedback icons based on field validity</li>
+                    <li>Focus on the first invalid field</li>
+                    <li>Don't validate until given length</li>
+                    <li>Possible to show errors as tooltip/popover <span class="bv-upcoming"></span></li>
+                </ul>
             </div>
-            <div class="modal-body">
-                <div class="text-center">
-                    <p>Thanks for giving BootstrapValidator a try!</p>
-                    <ul class="list-inline list-unstyled">
-                        <li><a href="{{ site.repository.source }}"><i class="fa fa-github fa-3x"></i></a></li>
-                        <li><a href="http://twitter.com/nghuuphuoc"><i class="fa fa-twitter fa-3x"></i></a></li>
-                    </ul>
-                </div>
+            <div class="col-md-4">
+                <i class="fa fa-magic"></i>
+                <h4>Flexible</h4>
+                <ul>
+                    <li>Define field by name or CSS selector</li>
+                    <li>Possible to indicate excluded fields</li>
+                    <li>Enable/disable validators on the fly</li>
+                    <li>Support dynamic fields <span class="bv-upcoming"></span></li>
+                    <li>Support dynamic messages <span class="bv-upcoming"></span></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <i class="fa fa-puzzle-piece"></i>
+                <h4>Compatibility</h4>
+                <ul>
+                    <li>Bootstrap Multiselect</li>
+                    <li>Chosen</li>
+                    <li>Color Picker, Date Picker</li>
+                    <li>iCheck</li>
+                    <li>Select2</li>
+                    <li>... we play nice with all of them</li>
+                </ul>
             </div>
         </div>
     </div>
 </div>
 
+<!-- contributors -->
+<div class="bv-contributor">
+    <div class="container">
+        <h2 id="contributors">Contributors</h2>
+
+        <ul>
+            {% for user in site.data.contributors %}
+            <li>
+                <a href="https://github.com/{{ user.username }}" title="{{ user.username }}"><img src="{{ user.avatar }}?s=60" /></a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <div class="text-center">
+            <a href="{{ site.repository.source }}/network/members" class="btn btn-default btn-lg">JOIN US</a>
+        </div>
+    </div>
+</div>
+
+<!-- downloads -->
+<div class="bv-downloads">
+    <div class="container">
+        <p><span id="ghDownloads"></span> downloads</p>
+        <a href="" class="btn btn-lg">DOWNLOAD</a>
+    </div>
+</div>
+
+<!-- tweets -->
+<div class="bv-tweet">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <blockquote class="twitter-tweet" lang="en"><p>Thanks again to <a href="https://twitter.com/bsvalidator">@bsvalidator</a> for the quick reply. Be sure to check out Bootstrap Validator. It’s the best I’ve found. <a href="http://t.co/ibkSHfEeEu">http://t.co/ibkSHfEeEu</a></p>&mdash; CurtStaubach (@CurtStaubach) <a href="https://twitter.com/CurtStaubach/statuses/466937857652064256">May 15, 2014</a></blockquote>
+                <blockquote class="twitter-tweet" data-conversation="none" lang="en"><p><a href="https://twitter.com/bsvalidator">@bsvalidator</a> haha thanks for the plugin you rock.</p>&mdash; Ramon Roche  (@mrpollo) <a href="https://twitter.com/mrpollo/statuses/472018708076838912">May 29, 2014</a></blockquote>
+            </div>
+            <div class="col-md-3">
+                <blockquote class="twitter-tweet" lang="en"><p>You saved my day <a href="https://twitter.com/bsvalidator">@bsvalidator</a></p>&mdash; Soner Çökmen (@scokmen) <a href="https://twitter.com/scokmen/statuses/475145281412288512">June 7, 2014</a></blockquote>
+                <blockquote class="twitter-tweet" lang="en"><p>i love <a href="https://twitter.com/bsvalidator">@bsvalidator</a> … the jquery plugin… not the guy behind the code ;-)</p>&mdash; Marc Logemann (@logemann) <a href="https://twitter.com/logemann/statuses/484266215050080256">July 2, 2014</a></blockquote>
+            </div>
+            <div class="col-md-3">
+                <blockquote class="twitter-tweet" lang="en"><p><a href="https://twitter.com/bsvalidator">@bsvalidator</a> Nice validator</p>&mdash; Imran Khalid (@imrankhalidpk) <a href="https://twitter.com/imrankhalidpk/statuses/480344868330283008">June 21, 2014</a></blockquote>
+            </div>
+            <div class="col-md-3">
+                <blockquote class="twitter-tweet" lang="en"><p><a href="https://twitter.com/bsvalidator">@bsvalidator</a> Thank you, Thank you, Thank you for this amazing script!!!!!</p>&mdash; Arelowo (@Arelowo) <a href="https://twitter.com/Arelowo/statuses/483417620993941505">June 30, 2014</a></blockquote>
+            </div>
+        </div>
+    </div>
+</div>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 <script>
 $(document).ready(function() {
-    $('#tryitForm').bootstrapValidator({
-        message: 'This value is not valid',
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            firstName: {
-                validators: {
-                    notEmpty: {
-                        message: 'The first name is required and cannot be empty'
-                    }
-                }
-            },
-            lastName: {
-                validators: {
-                    notEmpty: {
-                        message: 'The last name is required and cannot be empty'
-                    }
-                }
-            },
-            email: {
-                validators: {
-                    notEmpty: {
-                        message: 'The email address is required'
-                    },
-                    emailAddress: {
-                        message: 'The input is not a valid email address'
-                    }
-                }
-            },
-            gender: {
-                validators: {
-                    notEmpty: {
-                        message: 'The gender is required'
+    // Show the number of Github stars/forks
+    $.ajax({
+        dataType: 'jsonp',
+        url: 'https://api.github.com/repos/nghuuphuoc/bootstrapvalidator',
+        success: function(response) {
+            $('#ghStars').html(response && response.data.watchers_count ? parseInt(response.data.watchers_count) : '{{ site.github_watchers }}');
+            $('#ghForks').html(response && response.data.forks_count    ? parseInt(response.data.forks_count)    : '{{ site.github_forks }}');
+        }
+    });
+
+    // Show the number of Twitter followers
+    $.ajax({
+        dataType: 'jsonp',
+        url: 'https://cdn.api.twitter.com/1/users/show.json?screen_name=bsvalidator',
+        success: function(response) {
+            $('#twFollowers').html(response && response.followers_count ? parseInt(response.followers_count) : '{{ site.twitter_followers }}');
+        }
+    });
+
+    // Show the total of downloads
+    $.ajax({
+        dataType: 'jsonp',
+        url: 'https://api.github.com/repos/nghuuphuoc/bootstrapvalidator/releases',
+        success: function(response) {
+            var total = 0;
+            if (response.data) {
+                for (var i in response.data) {
+                    for (var j in response.data[i].assets) {
+                        total += (response.data[i].assets[j].download_count || 0);
                     }
                 }
             }
-        },
-        submitHandler: function(validator, form, submitButton) {
-            var fullName = [validator.getFieldElements('firstName').val(), validator.getFieldElements('lastName').val()].join(' ');
-            $('#helloModal')
-                .find('.modal-title').html('Hello ' + fullName).end()
-                .modal();
+            $('#ghDownloads').html((total || '{{ site.github_downloads }}').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
         }
     });
 });
