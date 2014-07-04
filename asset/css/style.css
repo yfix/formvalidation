@@ -316,3 +316,7 @@ footer p {
 .bv-comments {
   padding-bottom: 50px;
 }
+.bv-post-content h2,
+.bv-post-content h3 {
+  border-bottom: none;
+}

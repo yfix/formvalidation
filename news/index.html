@@ -5,10 +5,36 @@ permalink: /news/
 comment:   false
 ---
 
-<section class="doc-heading">
-    <h1>News</h1>
-</section>
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>News</h1>
+                <p>The latest news about BootstrapValidator</p>
+            </div>
 
-{% for post in site.posts %}
-    {% include post-item.html %}
-{% endfor %}
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="bv-content">
+                {% for post in site.posts %}
+                {% include post-item.html %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
