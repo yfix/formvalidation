@@ -1,0 +1,42 @@
+---
+layout: default
+---
+
+{{ content }}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 col-md-offset-3">
+            <section class="bv-pager">
+                <ul class="pager">
+                    {% if page.previous_section %}<li class="previous"><a href="{{ page.previous_section }}">PREVIOUS</a></li>{% endif %}
+                    {% if page.next_section %}<li class="next"><a href="{{ page.next_section }}">NEXT</a></li>{% endif %}
+                </ul>
+            </section>
+
+            <!-- Disqus comment -->
+            {% if page.comments %}
+            <section>
+                <div class="bv-comments">
+                    <h2 id="comments" class="bv-separator"><span>Comments</span></h2>
+
+                    <div class="bv-box bv-box-warning">
+                        If you want to report a bug, please submit the issue on <a href="{{ site.repository.source }}/issues?state=open">Github</a>. Do NOT post the issue here.<br/>
+                        For a general question or feedback, use the form below.
+                    </div>
+
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                    var disqus_shortname = '{{ site.disqus }}';
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                    </script>
+                </div>
+            </section>
+            {% endif %}
+        </div>
+    </div>
+</div>

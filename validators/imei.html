@@ -1,5 +1,5 @@
 ---
-layout:           default
+layout:           doc
 title:            Validate an IMEI (International Mobile Station Equipment Identity)
 permalink:        /validators/imei/
 previous_section: /validators/identical/
@@ -8,76 +8,100 @@ comments:         true
 examples:         35-209900-176148-1, 35-209900-176148-23, 3568680000414120, 490154203237518, 490154203237517
 ---
 
-<section class="doc-heading">
-    <h1><a href="/validators/">Validators</a> / imei</h1>
-    {% include edit-button.html %}
-</section>
-
-<section>
-    <p>Validate an IMEI (International Mobile Station Equipment Identity).</p>
-
-    <table class="table table-condensed">
-        <thead>
-            <tr>
-                <th>Option</th>
-                <th>Equivalent HTML attribute</th>
-                <th>Type</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>message</code></td>
-                <td><code>data-bv-imei-message</code></td>
-                <td>String</td>
-                <td>The error message</td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-
-<section id="example">
-    <h2>Example</h2>
-
-    <table class="table table-condensed">
-        <thead>
-            <tr>
-                <th>IMEI</th>
-                <th>Result</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% assign examples = page.examples | split: ', ' %}
-            {% for imei in examples %}
-            <tr>
-                <td><a href="javascript: void(0);" class="sample">{{ imei }}</a></td>
-                <td><i class="fa"></i></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-    <div class="doc-example">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#imei-form-tab" data-toggle="tab">Try it</a></li>
-            <li><a href="#imei-html-tab" data-toggle="tab">HTML</a></li>
-            <li><a href="#imei-js-tab" data-toggle="tab">JS</a></li>
-        </ul>
-
-        <div class="tab-content">
-            <div class="tab-pane active" id="imei-form-tab">
-                <form id="imeiForm" class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">IMEI</label>
-                        <div class="col-lg-5">
-                            <input type="text" class="form-control" name="imei" />
-                        </div>
-                    </div>
-                </form>
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/validators/">Validators</a> / imei</h1>
+                <p>Validate an IMEI (International Mobile Station Equipment Identity).</p>
             </div>
 
-            <div class="tab-pane" id="imei-html-tab">
-                <pre><code class="xml">&lt;form id="imeiForm" class="form-horizontal">
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                <ul>
+                    <li><a href="#options">Options</a></li>
+                    <li><a href="#example">Example</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2 id="options">Options</h2>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Option</th>
+                                <th>Equivalent HTML attribute</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>message</code></td>
+                                <td><code>data-bv-imei-message</code></td>
+                                <td>String</td>
+                                <td>The error message</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section>
+                    <h2 id="example">Example</h2>
+
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>IMEI</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% assign examples = page.examples | split: ', ' %}
+                            {% for imei in examples %}
+                            <tr>
+                                <td><a href="javascript: void(0);" class="sample">{{ imei }}</a></td>
+                                <td><i class="fa"></i></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <div class="bv-example">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#imei-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#imei-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#imei-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="imei-form-tab">
+                                <form id="imeiForm" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">IMEI</label>
+                                        <div class="col-lg-5">
+                                            <input type="text" class="form-control" name="imei" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane" id="imei-html-tab">
+                                <pre><code class="xml">&lt;form id="imeiForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">IMEI&lt;/label>
         &lt;div class="col-lg-5">
@@ -85,10 +109,10 @@ examples:         35-209900-176148-1, 35-209900-176148-23, 3568680000414120, 490
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-            </div>
+                            </div>
 
-            <div class="tab-pane" id="imei-js-tab">
-                <pre><code class="xml javascript">&lt;script>
+                            <div class="tab-pane" id="imei-js-tab">
+                                <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#imeiForm').bootstrapValidator({
         feedbackIcons: {
@@ -99,7 +123,7 @@ $(document).ready(function() {
         fields: {
             imei: {
                 validators: {
-                    <span class="doc-example-note">imei: {
+                    <span class="bv-note">imei: {
                         message: 'The value is not valid IMEI'
                     }</span>
                 }
@@ -108,12 +132,16 @@ $(document).ready(function() {
     });
 });
 &lt;/script></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {% include related.html %}
             </div>
         </div>
     </div>
-</section>
-
-{% include related.html %}
+</div>
 
 <script>
 $(document).ready(function() {

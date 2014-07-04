@@ -1,5 +1,5 @@
 ---
-layout:           default
+layout:           doc
 title:            Validate a credit card number
 permalink:        /validators/creditCard/
 previous_section: /validators/choice/
@@ -11,129 +11,154 @@ related:
     - rtn
 ---
 
-<section class="doc-heading">
-    <h1><a href="/validators/">Validators</a> / creditCard</h1>
-    {% include edit-button.html %}
-</section>
-
-<section>
-    <p>Validate a credit card number.</p>
-
-    <table class="table table-condensed">
-        <thead>
-            <tr>
-                <th>Option</th>
-                <th>Equivalent HTML attribute</th>
-                <th>Type</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>message</code></td>
-                <td><code>data-bv-creditcard-message</code></td>
-                <td>String</td>
-                <td>The error message</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <p>In addition to using the <a href="http://en.wikipedia.org/wiki/Luhn">Luhn algorithm</a>, the validator also validate the IIN ranges and length of credit card number.</p>
-
-    <p>It supports validating the following cards:</p>
-
-    <table class="table table-condensed">
-        <thead>
-            <tr>
-                <th>Type</th>
-                <th>Example</th>
-                <th>Result</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>American Express</td>
-                <td><a href="javascript: void(0);" class="sample">340653705597107</a></td>
-                <td><i class="fa"></i></td>
-            </tr>
-            <tr>
-                <td>Diners Club</td>
-                <td><a href="javascript: void(0);" class="sample">30130708434187</a></td>
-                <td><i class="fa"></i></td>
-            </tr>
-            <tr>
-                <td>Diners Club (US)</td>
-                <td><a href="javascript: void(0);" class="sample">5517479515603901</a></td>
-                <td><i class="fa"></i></td>
-            </tr>
-            <tr>
-                <td>Discover</td>
-                <td><a href="javascript: void(0);" class="sample">6011734674929094</a></td>
-                <td><i class="fa"></i></td>
-            </tr>
-            <tr>
-                <td>JCB</td>
-                <td><a href="javascript: void(0);" class="sample">3566002020360505</a></td>
-                <td><i class="fa"></i></td>
-            </tr>
-            <tr>
-                <td>Laser</td>
-                <td><a href="javascript: void(0);" class="sample">6304 9000 1774 0292 441</a></td>
-                <td><i class="fa"></i></td>
-            </tr>
-            <tr>
-                <td>Maestro</td>
-                <td><a href="javascript: void(0);" class="sample">6762835098779303</a></td>
-                <td><i class="fa"></i></td>
-            </tr>
-            <tr>
-                <td>Mastercard</td>
-                <td><a href="javascript: void(0);" class="sample">5303765013600904</a></td>
-                <td><i class="fa"></i></td>
-            </tr>
-            <tr>
-                <td>Solo</td>
-                <td><a href="javascript: void(0);" class="sample">6334580500000000</a></td>
-                <td><i class="fa"></i></td>
-            </tr>
-            <tr>
-                <td>Unionpay</td>
-                <td><a href="javascript: void(0);" class="sample"></a></td>
-                <td><i class="fa"></i></td>
-            </tr>
-            <tr>
-                <td>Visa</td>
-                <td><a href="javascript: void(0);" class="sample">4929248980295542</a></td>
-                <td><i class="fa"></i></td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-
-<section id="example">
-    <h2>Example</h2>
-
-    <div class="doc-example">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#cc-form-tab" data-toggle="tab">Try it</a></li>
-            <li><a href="#cc-html-tab" data-toggle="tab">HTML</a></li>
-            <li><a href="#cc-js-tab" data-toggle="tab">JS</a></li>
-        </ul>
-
-        <div class="tab-content">
-            <div class="tab-pane active" id="cc-form-tab">
-                <form id="ccForm" class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">Credit card number</label>
-                        <div class="col-lg-5">
-                            <input type="text" class="form-control" name="cc" />
-                        </div>
-                    </div>
-                </form>
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/validators/">Validators</a> / creditCard</h1>
+                <p>Validate a credit card number.</p>
             </div>
 
-            <div class="tab-pane" id="cc-html-tab">
-                <pre><code class="xml">&lt;form id="ccForm" class="form-horizontal">
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                <ul>
+                    <li><a href="#options">Options</a></li>
+                    <li><a href="#example">Example</a></li>
+                    <li><a href="#related-validators">Related validators</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2 id="options">Options</h2>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Option</th>
+                                <th>Equivalent HTML attribute</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>message</code></td>
+                                <td><code>data-bv-creditcard-message</code></td>
+                                <td>String</td>
+                                <td>The error message</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>In addition to using the <a href="http://en.wikipedia.org/wiki/Luhn">Luhn algorithm</a>, the validator also validate the IIN ranges and length of credit card number.</p>
+
+                    <p>It supports validating the following cards:</p>
+
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Example</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>American Express</td>
+                                <td><a href="javascript: void(0);" class="sample">340653705597107</a></td>
+                                <td><i class="fa"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Diners Club</td>
+                                <td><a href="javascript: void(0);" class="sample">30130708434187</a></td>
+                                <td><i class="fa"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Diners Club (US)</td>
+                                <td><a href="javascript: void(0);" class="sample">5517479515603901</a></td>
+                                <td><i class="fa"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Discover</td>
+                                <td><a href="javascript: void(0);" class="sample">6011734674929094</a></td>
+                                <td><i class="fa"></i></td>
+                            </tr>
+                            <tr>
+                                <td>JCB</td>
+                                <td><a href="javascript: void(0);" class="sample">3566002020360505</a></td>
+                                <td><i class="fa"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Laser</td>
+                                <td><a href="javascript: void(0);" class="sample">6304 9000 1774 0292 441</a></td>
+                                <td><i class="fa"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Maestro</td>
+                                <td><a href="javascript: void(0);" class="sample">6762835098779303</a></td>
+                                <td><i class="fa"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Mastercard</td>
+                                <td><a href="javascript: void(0);" class="sample">5303765013600904</a></td>
+                                <td><i class="fa"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Solo</td>
+                                <td><a href="javascript: void(0);" class="sample">6334580500000000</a></td>
+                                <td><i class="fa"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Unionpay</td>
+                                <td><a href="javascript: void(0);" class="sample"></a></td>
+                                <td><i class="fa"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Visa</td>
+                                <td><a href="javascript: void(0);" class="sample">4929248980295542</a></td>
+                                <td><i class="fa"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section>
+                    <h2 id="example">Example</h2>
+
+                    <div class="bv-example">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#cc-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#cc-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#cc-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="cc-form-tab">
+                                <form id="ccForm" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Credit card number</label>
+                                        <div class="col-lg-5">
+                                            <input type="text" class="form-control" name="cc" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane" id="cc-html-tab">
+                                <pre><code class="xml">&lt;form id="ccForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Credit card number&lt;/label>
         &lt;div class="col-lg-5">
@@ -141,10 +166,10 @@ related:
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-            </div>
+                            </div>
 
-            <div class="tab-pane" id="cc-js-tab">
-                <pre><code class="xml javascript">&lt;script>
+                            <div class="tab-pane" id="cc-js-tab">
+                                <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#ccForm').bootstrapValidator({
         feedbackIcons: {
@@ -155,7 +180,7 @@ $(document).ready(function() {
         fields: {
             cc: {
                 validators: {
-                    <span class="doc-example-note">creditCard: {
+                    <span class="bv-note">creditCard: {
                         message: 'The credit card number is not valid'
                     }</span>
                 }
@@ -164,12 +189,16 @@ $(document).ready(function() {
     });
 });
 &lt;/script></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {% include related.html %}
             </div>
         </div>
     </div>
-</section>
-
-{% include related.html %}
+</div>
 
 <script>
 $(document).ready(function() {

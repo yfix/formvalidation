@@ -1,0 +1,281 @@
+---
+layout:           doc
+title:            Play with Bootstrap Tabs
+permalink:        /examples/bootstrap-tab/
+previous_section:
+next_section:
+comments:         true
+---
+
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/examples/">Examples</a> / Compatibility</h1>
+                <p>Play with Bootstrap Tabs</p>
+            </div>
+
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                {% include example-compatibility.html %}
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2 id="tab">Tabs</h2>
+                    <p>The following example shows that the plugin works perfectly with <a href="http://getbootstrap.com/javascript/#tabs">Bootstrap Tabs</a>.</p>
+                    <p>By default, the fields in inactive tabs will not be validated because they are not visible. In order to validate them, we need to use the <a href="/settings/#excluded">excluded</a> option:</p>
+                    <pre><code class="javascript">excluded: [':disabled']</code></pre>
+
+                    <div class="bv-example">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#info-tab" data-toggle="tab">Information</a></li>
+                            <li><a href="#address-tab" data-toggle="tab">Address</a></li>
+                        </ul>
+
+                        <form id="accountForm" method="post" class="form-horizontal">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="info-tab">
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Full name</label>
+                                        <div class="col-lg-5">
+                                            <input type="text" class="form-control" name="fullName" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Company</label>
+                                        <div class="col-lg-5">
+                                            <input type="text" class="form-control" name="company" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Job title</label>
+                                        <div class="col-lg-5">
+                                            <input type="text" class="form-control" name="jobTitle" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="address-tab">
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Address</label>
+                                        <div class="col-lg-5">
+                                            <input type="text" class="form-control" name="address" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">City</label>
+                                        <div class="col-lg-5">
+                                            <input type="text" class="form-control" name="city" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Country</label>
+                                        <div class="col-lg-5">
+                                            <select class="form-control" name="country">
+                                                <option value="">Select a country</option>
+                                                <option value="FR">France</option>
+                                                <option value="DE">Germany</option>
+                                                <option value="IT">Italy</option>
+                                                <option value="JP">Japan</option>
+                                                <option value="RU">Russian</option>
+                                                <option value="US">United State</option>
+                                                <option value="GB">United Kingdom</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-5 col-lg-offset-3">
+                                    <button type="submit" class="btn btn-primary">Validate</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="bv-example">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tabs-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#tabs-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-html-tab">
+                                <pre><code class="xml">&lt;form id="accountForm" method="post" class="form-horizontal">
+    &lt;div class="tab-content">
+        &lt;div class="tab-pane active" id="info-tab">
+            &lt;div class="form-group">
+                &lt;label class="col-lg-3 control-label">Full name&lt;/label>
+                &lt;div class="col-lg-5">
+                    &lt;input type="text" class="form-control" name="fullName" />
+                &lt;/div>
+            &lt;/div>
+            &lt;div class="form-group">
+                &lt;label class="col-lg-3 control-label">Company&lt;/label>
+                &lt;div class="col-lg-5">
+                    &lt;input type="text" class="form-control" name="company" />
+                &lt;/div>
+            &lt;/div>
+            &lt;div class="form-group">
+                &lt;label class="col-lg-3 control-label">Job title&lt;/label>
+                &lt;div class="col-lg-5">
+                    &lt;input type="text" class="form-control" name="jobTitle" />
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+
+        &lt;div class="tab-pane" id="address-tab">
+            &lt;div class="form-group">
+                &lt;label class="col-lg-3 control-label">Address&lt;/label>
+                &lt;div class="col-lg-5">
+                    &lt;input type="text" class="form-control" name="address" />
+                &lt;/div>
+            &lt;/div>
+            &lt;div class="form-group">
+                &lt;label class="col-lg-3 control-label">City&lt;/label>
+                &lt;div class="col-lg-5">
+                    &lt;input type="text" class="form-control" name="city" />
+                &lt;/div>
+            &lt;/div>
+            &lt;div class="form-group">
+                &lt;label class="col-lg-3 control-label">Country&lt;/label>
+                &lt;div class="col-lg-5">
+                    &lt;select class="form-control" name="country">
+                        &lt;option value="">Select a country&lt;/option>
+                        &lt;option value="FR">France&lt;/option>
+                        &lt;option value="DE">Germany&lt;/option>
+                        &lt;option value="IT">Italy&lt;/option>
+                        &lt;option value="JP">Japan&lt;/option>
+                        &lt;option value="RU">Russian&lt;/option>
+                        &lt;option value="US">United State&lt;/option>
+                        &lt;option value="GB">United Kingdom&lt;/option>
+                        &lt;option value="other">Other&lt;/option>
+                    &lt;/select>
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;div class="col-lg-5 col-lg-offset-3">
+            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="tabs-js-tab">
+                                <pre><code class="xml">&lt;script>
+$(document).ready(function() {
+    $('#accountForm')
+        .bootstrapValidator({
+            // Only disabled elements are excluded
+            // The invisible elements belonging to inactive tabs must be validated
+            <span class="bv-note">excluded: [':disabled']</span>,
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                fullName: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The full name is required'
+                        }
+                    }
+                },
+                company: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The company name is required'
+                        }
+                    }
+                },
+                address: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The address is required'
+                        }
+                    }
+                },
+                city: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The city is required'
+                        }
+                    }
+                }
+            }
+        });
+});
+&lt;/script></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    $('#accountForm')
+        .bootstrapValidator({
+            excluded: [':disabled'],
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            submitHandler: function(validator, form, submitButton) {
+                // Do nothing
+            },
+            fields: {
+                fullName: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The full name is required'
+                        }
+                    }
+                },
+                company: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The company name is required'
+                        }
+                    }
+                },
+                address: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The address is required'
+                        }
+                    }
+                },
+                city: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The city is required'
+                        }
+                    }
+                }
+            }
+        });
+});
+</script>

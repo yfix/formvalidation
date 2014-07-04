@@ -5,15 +5,22 @@ permalink: /
 comments:  false
 ---
 
-<div class="bv-index-heading">
-    <div class="container">
+<div class="bv-heading">
+    <div class="container text-center">
         <h1>the best <a href="http://plugins.jquery.com/bootstrapValidator">jQuery plugin</a> to validate form fields</h1>
         <h2>designed to use with <a href="http://getbootstrap.com">Bootstrap 3</a></h2>
 
         <p>
-            <a class="btn btn-lg" href="">Download</a>
-            <a class="btn btn-lg" href="">Donation</a>
+            <a class="btn btn-lg" href="/getting-started/#download">Download</a>
+            <a class="btn btn-lg" href="https://pledgie.com/campaigns/24885" alt="Click here to lend your support to: BootstrapValidator and make a donation at pledgie.com!">Donation</a>
+            <!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="D9K5AMXE87UXJ">
+                <button type="submit" class="btn btn-lg btn-success">Paypal Donation</button>
+                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+            </form> -->
         </p>
+        <p>v{{ site.current_version }} &mdash; MIT license</p>
 
         <div class="bv-ad">
         {% include ad.html %}
@@ -62,6 +69,7 @@ comments:  false
                 <ul>
                     <li>Provide 46 built-in validators and counting!</li>
                     <li>Easy to write a new validator</li>
+                    <li>Internationalization <span class="bv-upcoming"></span></li>
                 </ul>
             </div>
         </div>
@@ -74,6 +82,7 @@ comments:  false
                     <li>Show feedback icons based on field validity</li>
                     <li>Focus on the first invalid field</li>
                     <li>Don't validate until given length</li>
+                    <li>Possible to show errors as tooltip/popover <span class="bv-upcoming"></span></li>
                 </ul>
             </div>
             <div class="col-md-4">
@@ -83,6 +92,8 @@ comments:  false
                     <li>Define field by name or CSS selector</li>
                     <li>Possible to indicate excluded fields</li>
                     <li>Enable/disable validators on the fly</li>
+                    <li>Support dynamic fields <span class="bv-upcoming"></span></li>
+                    <li>Support dynamic messages <span class="bv-upcoming"></span></li>
                 </ul>
             </div>
             <div class="col-md-4">
@@ -94,7 +105,7 @@ comments:  false
                     <li>Color Picker, Date Picker</li>
                     <li>iCheck</li>
                     <li>Select2</li>
-                    <li>... we play nice with all of them</li>
+                    <li> ... we play nice with all of them</li>
                 </ul>
             </div>
         </div>
@@ -104,7 +115,7 @@ comments:  false
 <!-- contributors -->
 <div class="bv-contributor">
     <div class="container">
-        <h2 id="contributors">Contributors</h2>
+        <h2 id="contributors">{{ site.data.contributors.size }} contributors</h2>
 
         <ul>
             {% for user in site.data.contributors %}
@@ -123,8 +134,8 @@ comments:  false
 <!-- downloads -->
 <div class="bv-downloads">
     <div class="container">
-        <p><span id="ghDownloads"></span> downloads</p>
-        <a href="" class="btn btn-lg">DOWNLOAD</a>
+        <h3><span id="ghDownloads"></span> downloads so far</h3>
+        <a class="btn btn-lg" href="/getting-started/#download">DOWNLOAD</a>
     </div>
 </div>
 

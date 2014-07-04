@@ -1,4 +1,4 @@
-@footer-height: 80px;
+@footer-height: 400px;
 @navbar-height: 40px;
 
 // Reset
@@ -12,6 +12,9 @@ ul {
 li {
   list-style-type: none;
 }
+pre, .hljs {
+  background: transparent;
+}
 
 // Font
 body {
@@ -19,6 +22,9 @@ body {
   font-size: 18px;
   line-height: 1.78;
   font-weight: 300;
+}
+h1, h2, h3, h4 {
+  font-family: 'Merriweather', serif;
 }
 
 // Sticky footer
@@ -39,19 +45,73 @@ html, body {
   height: @footer-height;
 }
 footer {
+  background-color: #384452;
+  color: #bfc9d3;
   border-top: 1px solid #d5d5d5;
   height: @footer-height;
-  padding-top: 10px;
+  padding-top: 30px;
+  .row {
+    padding-bottom: 20px;
+  }
+  h4 {
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    padding-bottom: 10px;
+  }
+  img {
+    border-radius: 30px;
+    width: 60px;
+    height: 60px;
+    margin-top: 10px;
+    position: absolute;
+  }
+  .col-md-4 {
+    div {
+      margin-left: 80px;
+    }
+  }
+  a {
+    &:hover {
+      color: #fff;
+    }
+  }
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
 }
 
 // Helpers
 .bv-upcoming {
   background-color: #f1c40f;
   border-radius: 4px;
-  padding: 5px;
+  padding: 3px 5px;
   &:before {
     content: 'upcoming v0.5.0'
   }
+}
+.bv-separator {
+  border-bottom: 1px solid #eee;
+  line-height: 0.1em;
+  margin: 30px 0;
+  text-align: center;
+  width: 100%;
+  span {
+    background: #fff;
+    padding: 0 10px;
+  }
+}
+.bv-box {
+  margin: 30px 0;
+  padding: 15px;
+  border: 1px solid #2ecc71;
+  border-left-width: 5px;
+}
+.bv-box-info {
+  border-left-color: #3498db;
+}
+.bv-box-warning {
+  border-left-color: #c0392b;
 }
 
 // Header
@@ -85,12 +145,11 @@ footer {
   }
 }
 
-// Homepage
-.bv-index-heading {
+// Heading
+.bv-heading {
   background-color: #00b3fe;
   color: #fff;
-  padding-top: 100px;
-  text-align: center;
+  padding-top: 80px;
   a, a:hover {
     color: #fff;
   }
@@ -147,7 +206,7 @@ footer {
     padding: 15px;
   }
   h4 {
-    font-size: 25px;
+    font-size: 35px;
   }
   p {
     margin-bottom: 30px;
@@ -163,19 +222,6 @@ footer {
   }
 }
 
-// Downloads
-.bv-downloads {
-  font-family: 'Merriweather', serif;
-  font-size: 50px;
-  padding: 40px 0;
-  text-align: center;
-  .btn {
-    background: #fff;
-    border: 1px solid #00b3fe;
-    color: #00b3fe;
-  }
-}
-
 // Contributor
 .bv-contributor {
   background-color: #2ecc71;
@@ -183,6 +229,7 @@ footer {
   text-align: center;
   h2 {
     color: #fff;
+    font-size: 40px;
     margin-bottom: 30px;
   }
   ul {
@@ -205,7 +252,124 @@ footer {
   }
 }
 
+// Downloads
+.bv-downloads {
+  padding: 40px 0;
+  text-align: center;
+  h3 {
+    font-size: 50px;
+    padding-bottom: 30px;
+  }
+  .btn {
+    background: #fff;
+    border: 1px solid #00b3fe;
+    color: #00b3fe;
+  }
+}
+
 // Tweets
 .bv-tweet {
   padding: 0 0 40px 0;
+}
+
+// Sidebar
+.bv-sidebar {
+  padding-top: 100px;
+  h2 {
+    border-bottom: 1px solid #ddd;
+    font-size: 25px;
+    padding-bottom: 10px;
+    padding-top: 40px;
+    &:first-child {
+      padding-top: 0;
+    }
+  }
+  li {
+    ul {
+      padding-left: 30px;
+      font-size: 16px;
+    }
+  }
+}
+
+// Main content
+.bv-content {
+  section {
+    h2 {
+      border-bottom: 1px solid #ccc;
+      padding: 80px 0 20px 0;
+    }
+  }
+  h3 {
+    border-bottom: 1px solid #ddd;
+    padding: 25px 0 10px 0;
+  }
+  h4 {
+    padding: 20px 0 10px 0;
+  }
+  code {
+    background: transparent;
+    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+    font-size: 13px;
+    font-weight: 300;
+    padding: 0;
+  }
+  li {
+    &:before {
+      content: '\b7\a0';
+    }
+  }
+  li.list-group-item:before {
+    content: '';
+  }
+}
+
+// Example
+.bv-example {
+  margin-bottom: 15px;
+  .tab-pane {
+    padding: 10px 15px;
+  }
+  .tab-content>.active {
+    border: 1px solid #ddd;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top: none;
+  }
+  pre {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    &:before {
+      content: '';
+    }
+  }
+}
+.bv-note {
+  background: #f1c40f;
+  padding: 2px;
+}
+
+// Pager
+.bv-pager {
+  .previous, .next {
+    a:hover {
+      background-color: #00b3fe;
+      color: #fff;
+    }
+  }
+}
+
+// Comments
+.bv-comments {
+  padding-bottom: 50px;
+}
+
+// Blog post content
+.bv-post-content {
+  h2, h3 {
+    border-bottom: none;
+  }
 }

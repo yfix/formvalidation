@@ -1,17 +1,17 @@
-<article>
-    <h2 class="doc-post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+<section>
+    <h2 class="bv-post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
 
-    <div class="doc-post-meta">
-        <span class="doc-post-author"><i class="fa fa-user"></i> <a href="https://github.com/{{ post.author }}">{{ post.author }}</a></span>
-        <span class="doc-post-date"><i class="fa fa-clock-o"></i> {{ post.date | date_to_string }}</span>
-        <span class="doc-post-category"><i class="fa fa-tags"></i>
+    <div class="bv-post-meta">
+        <span class="bv-post-author"><i class="fa fa-user"></i> <a href="https://github.com/{{ post.author }}">{{ post.author }}</a></span>
+        <span class="bv-post-date"><i class="fa fa-clock-o"></i> {{ post.date | date_to_string }}</span>
+        <span class="bv-post-category"><i class="fa fa-tags"></i>
             {% for category in post.categories %}
             <a href="/news/{{ category }}/">{{ category }}</a>
             {% endfor %}
         </span>
     </div>
 
-    <div class="doc-post-content">
+    <div class="bv-post-content">
         {{ post.content }}
     </div>
-</article>
+<section>

@@ -1,31 +1,53 @@
 ---
-layout:           default
+layout:           doc
 title:            Developing
 permalink:        /developing/
 previous_section: /api/
 comments:         true
 sections:
-    - title:  Writing new validator
-      anchor: writing-new-validator
-    - title:  Building
-      anchor: building
-    - title:  Contributing
-      anchor: contributing
+    - title:
+      anchor:
+    - title:
+      anchor:
+    - title:
+      anchor:
 ---
 
-<section class="doc-heading">
-    <h1>Developing</h1>
-    {% include edit-button.html %}
-</section>
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>Developing</h1>
+                <p>Help you develop new validator</p>
+            </div>
 
-<p>This page helps you develop new validator as well as build the plugin.</p>
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<section id="writing-new-validator">
-    <h2></h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                <ul>
+                    <li><a href="#writing-new-validator">Writing New Validator</a></li>
+                    <li><a href="#building">Building</a></li>
+                    <li><a href="#contributing">Contributing</a></li>
+                </ul>
+            </div>
+        </div>
 
-    <p>A validator has to follow the syntax:</p>
-
-    <pre><code class="javascript">(function($) {
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2 id="writing-new-validator">Writing New Validator</h2>
+                    <p>A validator has to follow the syntax:</p>
+                    <pre><code class="javascript">(function($) {
     $.fn.bootstrapValidator.validators.&lt;validatorName> = {
         /**
          * @param {BootstrapValidator} validator The validator plugin instance
@@ -46,11 +68,11 @@ sections:
     };
 }(window.jQuery));</code></pre>
 
-    <p><code>&lt;validatorName></code> is the validator name. Since the validators are distinct by the names, <code>&lt;validatorName></code> has to be different with <a href="/validators/">built-in validators</a>.</p>
+                    <p><code>&lt;validatorName></code> is the validator name. Since the validators are distinct by the names, <code>&lt;validatorName></code> has to be different with <a href="/validators/">built-in validators</a>.</p>
 
-    <p>To apply the validator to particular field:</p>
+                    <p>To apply the validator to particular field:</p>
 
-    <pre><code class="javascript">$(form).bootstrapValidator({
+                    <pre><code class="javascript">$(form).bootstrapValidator({
     fields: {
         &lt;fieldName>: {
             // Replace &lt;validatorName> with the name of validator
@@ -61,10 +83,10 @@ sections:
     }
 });</code></pre>
 
-    <p>For Rails, the input field is constructed from model name and field name. For example, user have email as field, when form helper render
-        view, the input field name will be <code>'user[email]'</code>. The syntax for these is somewhat different as shown below:</p>
+                    <p>For Rails, the input field is constructed from model name and field name. For example, user have email as field, when form helper render
+                        view, the input field name will be <code>'user[email]'</code>. The syntax for these is somewhat different as shown below:</p>
 
-    <pre><code class="javascript">$(form).bootstrapValidator({
+                    <pre><code class="javascript">$(form).bootstrapValidator({
     fields: {
         'user[email]': {
             &lt;validatorName>: &lt;validatorOptions>
@@ -72,38 +94,42 @@ sections:
     }
 });</code></pre>
 
-    <p class="doc-box-info">To see how built-in validators are developed, you can look at their sources located at the <a href="{{ site.repository.source }}/tree/master/src/js/validator">src/js/validator</a> directory.</p>
-</section>
+                    <p class="bv-box bv-box-info">To see how built-in validators are developed, you can look at their sources located at the <a href="{{ site.repository.source }}/tree/master/src/js/validator">src/js/validator</a> directory.</p>
+                </section>
 
-<section id="building">
-    <h2>Building</h2>
+                <section>
+                    <h2 id="building">Building</h2>
 
-    <p>BootstrapValidator uses <a href="http://gruntjs.com">grunt</a> to simplify building process.</p>
+                    <p>BootstrapValidator uses <a href="http://gruntjs.com">grunt</a> to simplify building process.</p>
 
-    <p>From the BootstrapValidator root directory, install dependencies:</p>
+                    <p>From the BootstrapValidator root directory, install dependencies:</p>
 
-    <pre><code class="bash">$ npm install</code></pre>
+                    <pre><code class="bash">$ npm install</code></pre>
 
-    <p>Then, uses grunt to build:</p>
-    <pre><code class="bash">$ grunt</code></pre>
+                    <p>Then, uses grunt to build:</p>
+                    <pre><code class="bash">$ grunt</code></pre>
 
-    <p>If you want grunt to generate scripts whenever the original scripts (located in <code>src</code>) change, use the following command:</p>
-    <pre><code class="bash">$ grunt watch</code></pre>
+                    <p>If you want grunt to generate scripts whenever the original scripts (located in <code>src</code>) change, use the following command:</p>
+                    <pre><code class="bash">$ grunt watch</code></pre>
 
-    <p>The generated scripts (including source and compressed versions) are placed inside the <code>dist</code> directory.</p>
-</section>
+                    <p>The generated scripts (including source and compressed versions) are placed inside the <code>dist</code> directory.</p>
+                </section>
 
-<section id="contributing">
-    <h2>Contributing</h2>
+                <section>
+                    <h2 id="contributing">Contributing</h2>
 
-    <p>If you develop new validator which might be useful for other one, please contribute it to the project.</p>
-    <p>It can be done via 3 steps:</p>
+                    <p>If you develop new validator which might be useful for other one, please contribute it to the project.</p>
+                    <p>It can be done via 3 steps:</p>
 
-    <ul>
-        <li>1 &mdash; <a href="{{ site.repository.source }}/fork">Fork</a> the project</li>
-        <li>2 &mdash; Develop new validator, suggest new feature or fix a bug</li>
-        <li>3 &mdash; Pull a new request</li>
-    </ul>
+                    <ul>
+                        <li><a href="{{ site.repository.source }}/fork">Fork</a> the project</li>
+                        <li>Develop new validator, suggest new feature or fix a bug</li>
+                        <li>Pull a new request</li>
+                    </ul>
 
-    <p>All pull requests are welcome <i class="fa fa-heart"></i>.</p>
-</section>
+                    <p>All pull requests are welcome <i class="fa fa-heart"></i>.</p>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

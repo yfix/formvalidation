@@ -1,5 +1,5 @@
 ---
-layout:           default
+layout:           doc
 title:            callback validator
 permalink:        /validators/callback/
 previous_section: /validators/between/
@@ -7,75 +7,99 @@ next_section:     /validators/choice/
 comments:         true
 ---
 
-<section class="doc-heading">
-    <h1><a href="/validators/">Validators</a> / callback</h1>
-    {% include edit-button.html %}
-</section>
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/validators/">Validators</a> / callback</h1>
+                <p>Return the validity from a callback method.</p>
+            </div>
 
-<section>
-    <p>Return the validity from a callback method.</p>
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <table class="table table-condensed">
-        <thead>
-            <tr>
-                <th>Option</th>
-                <th>Equivalent HTML attribute</th>
-                <th>Type</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>message</code></td>
-                <td><code>data-bv-callback-message</code></td>
-                <td>String</td>
-                <td>The error message</td>
-            </tr>
-            <tr>
-                <td><code>callback</code> (*)</td>
-                <td>n/a</td>
-                <td>Function</td>
-                <td>The callback method</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                <ul>
+                    <li><a href="#options">Options</a></li>
+                    <li><a href="#example">Example</a></li>
+                </ul>
+            </div>
+        </div>
 
-    <p>The callback method must follow the format below:</p>
-    <pre><code class="javascript">function(fieldValue, validator) {
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2 id="options">Options</h2>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Option</th>
+                                <th>Equivalent HTML attribute</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>message</code></td>
+                                <td><code>data-bv-callback-message</code></td>
+                                <td>String</td>
+                                <td>The error message</td>
+                            </tr>
+                            <tr>
+                                <td><code>callback</code> (*)</td>
+                                <td>n/a</td>
+                                <td>Function</td>
+                                <td>The callback method</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>The callback method must follow the format below:</p>
+                    <pre><code class="javascript">function(fieldValue, validator) {
     // fieldValue is the value of field
     // validator is instance of BootstrapValidator
 
     // Check the field validity
     // return true or false
 }</code></pre>
-</section>
+                </section>
 
-<section id="example">
-    <h2>Example</h2>
+                <section>
+                    <h2 id="example">Example</h2>
 
-    <p>In the following form, user is asked to enter a correct answer of simple operation which is generated randomly:</p>
+                    <p>In the following form, user is asked to enter a correct answer of simple operation which is generated randomly:</p>
 
-    <div class="doc-example">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#callback-form-tab" data-toggle="tab">Try it</a></li>
-            <li><a href="#callback-html-tab" data-toggle="tab">HTML</a></li>
-            <li><a href="#callback-js-tab" data-toggle="tab">JS</a></li>
-        </ul>
+                    <div class="bv-example">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#callback-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#callback-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#callback-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
 
-        <div class="tab-content">
-            <div class="tab-pane active" id="callback-form-tab">
-                <form id="captchaForm" class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label" id="captchaOperation"></label>
-                        <div class="col-lg-2">
-                            <input type="text" class="form-control" name="captcha" />
-                        </div>
-                    </div>
-                </form>
-            </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="callback-form-tab">
+                                <form id="captchaForm" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label" id="captchaOperation"></label>
+                                        <div class="col-lg-2">
+                                            <input type="text" class="form-control" name="captcha" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
 
-            <div class="tab-pane" id="callback-html-tab">
-                <pre><code class="xml">&lt;form id="captchaForm" class="form-horizontal">
+                            <div class="tab-pane" id="callback-html-tab">
+                                <pre><code class="xml">&lt;form id="captchaForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label" id="captchaOperation">&lt;/label>
         &lt;div class="col-lg-2">
@@ -83,10 +107,10 @@ comments:         true
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-            </div>
+                            </div>
 
-            <div class="tab-pane" id="callback-js-tab">
-                <pre><code class="xml javascript">&lt;script>
+                            <div class="tab-pane" id="callback-js-tab">
+                                <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     // Return a random number between min and max
     function randomNumber(min, max) {
@@ -105,7 +129,7 @@ $(document).ready(function() {
         fields: {
             captcha: {
                 validators: {
-                    <span class="doc-example-note">callback: {
+                    <span class="bv-note">callback: {
                         message: 'Wrong answer',
                         callback: function(value, validator) {
                             // Determine the numbers which are generated in captchaOperation
@@ -120,12 +144,16 @@ $(document).ready(function() {
     });
 });
 &lt;/script></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {% include related.html %}
             </div>
         </div>
     </div>
-</section>
-
-{% include related.html %}
+</div>
 
 <script>
 $(document).ready(function() {
