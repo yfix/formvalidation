@@ -1,0 +1,395 @@
+---
+layout:           doc
+title:            Toggle field validator
+permalink:        /examples/toggle/
+previous_section:
+next_section:
+comments:         true
+---
+
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/examples/">Examples</a> / Basic</h1>
+                <p>Toggle field validator</p>
+            </div>
+
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                {% include example-basic.html %}
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2 id="toggling">Toggling</h2>
+
+                    <p>BootstrapValidator does not validate the fields which:</p>
+                    <ul class="doc-list">
+                        <li>are disabled</li>
+                        <li>are hidden</li>
+                        <li>are not visible</li>
+                    </ul>
+
+                    <p>The following example shows an example of toggling field validator.</p>
+                    <p>Try to click the <i>Add more info</i> or <i>Add more phone numbers</i> button to enable/disable the additional fields. Also, look at state of the <i>Validate</i> button based on the validity of additional fields.</p>
+
+                    <div class="bv-example">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#toggling-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#toggling-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#toggling-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="toggling-form-tab">
+                                <form id="togglingForm" method="post" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Full name <sup>*</sup></label>
+                                        <div class="col-lg-4">
+                                            <input type="text" class="form-control" name="firstName" placeholder="First name" />
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input type="text" class="form-control" name="lastName" placeholder="Last name" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Company <sup>*</sup></label>
+                                        <div class="col-lg-5">
+                                            <input type="text" class="form-control" name="company"
+                                                   required data-bv-notempty-message="The company name is required" />
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="#jobInfo">Add more info</button>
+                                        </div>
+                                    </div>
+
+                                    <div id="jobInfo" style="display: none;">
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Job title <sup>*</sup></label>
+                                            <div class="col-lg-5">
+                                                <input type="text" class="form-control" name="job" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Department <sup>*</sup></label>
+                                            <div class="col-lg-5">
+                                                <input type="text" class="form-control" name="department" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Mobile phone <sup>*</sup></label>
+                                        <div class="col-lg-5">
+                                            <input type="text" class="form-control" name="mobilePhone" />
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="#phoneInfo">Add more phone numbers</button>
+                                        </div>
+                                    </div>
+
+                                    <div id="phoneInfo" style="display: none;">
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Home phone</label>
+                                            <div class="col-lg-5">
+                                                <input type="text" class="form-control" name="homePhone" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Office phone</label>
+                                            <div class="col-lg-5">
+                                                <input type="text" class="form-control" name="officePhone" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-lg-9 col-lg-offset-3">
+                                            <button type="submit" class="btn btn-primary">Validate</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane" id="toggling-html-tab">
+                                <pre><code class="xml">&lt;form id="togglingForm" method="post" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Full name &lt;sup>*&lt;/sup>&lt;/label>
+        &lt;div class="col-lg-4">
+            &lt;input type="text" class="form-control" name="firstName" placeholder="First name" />
+        &lt;/div>
+        &lt;div class="col-lg-4">
+            &lt;input type="text" class="form-control" name="lastName" placeholder="Last name" />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Company &lt;sup>*&lt;/sup>&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="company"
+                   required data-bv-notempty-message="The company name is required" />
+        &lt;/div>
+        &lt;div class="col-lg-2">
+            &lt;button type="button" class="btn btn-info btn-sm" data-toggle="#jobInfo">
+                Add more info
+            &lt;/button>
+        &lt;/div>
+    &lt;/div>
+
+    &lt;!-- These fields will not be validated as long as they are not visible -->
+    &lt;div id="jobInfo" <span class="bv-note">style="display: none;"</span>>
+        &lt;div class="form-group">
+            &lt;label class="col-lg-3 control-label">Job title &lt;sup>*&lt;/sup>&lt;/label>
+            &lt;div class="col-lg-5">
+                &lt;input type="text" class="form-control" name="job" />
+            &lt;/div>
+        &lt;/div>
+
+        &lt;div class="form-group">
+            &lt;label class="col-lg-3 control-label">Department &lt;sup>*&lt;/sup>&lt;/label>
+            &lt;div class="col-lg-5">
+                &lt;input type="text" class="form-control" name="department" />
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Mobile phone &lt;sup>*&lt;/sup>&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="mobilePhone" />
+        &lt;/div>
+        &lt;div class="col-lg-2">
+            &lt;button type="button" class="btn btn-info btn-sm" data-toggle="#phoneInfo">
+                Add more phone numbers
+            &lt;/button>
+        &lt;/div>
+    &lt;/div>
+
+    &lt;!-- These fields will not be validated as long as they are not visible -->
+    &lt;div id="phoneInfo" <span class="bv-note">style="display: none;"</span>>
+        &lt;div class="form-group">
+            &lt;label class="col-lg-3 control-label">Home phone&lt;/label>
+            &lt;div class="col-lg-5">
+                &lt;input type="text" class="form-control" name="homePhone" />
+            &lt;/div>
+        &lt;/div>
+
+        &lt;div class="form-group">
+            &lt;label class="col-lg-3 control-label">Office phone&lt;/label>
+            &lt;div class="col-lg-5">
+                &lt;input type="text" class="form-control" name="officePhone" />
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;div class="col-lg-9 col-lg-offset-3">
+            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="toggling-js-tab">
+                                <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#togglingForm')
+        .bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            submitHandler: function(validator, form, submitButton) {
+                // Do nothing
+            },
+            fields: {
+                firstName: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The first name is required'
+                        }
+                    }
+                },
+                lastName: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The last name is required'
+                        }
+                    }
+                },
+                company: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The company name is required'
+                        }
+                    }
+                },
+                // These fields will be validated when being visible
+                <span class="bv-note">job: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The job title is required'
+                        }
+                    }
+                },
+                department: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The department name is required'
+                        }
+                    }
+                },</span>
+                mobilePhone: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The mobile phone number is required'
+                        },
+                        digits: {
+                            message: 'The mobile phone number is not valid'
+                        }
+                    }
+                },
+                // These fields will be validated when being visible
+                <span class="bv-note">homePhone: {
+                    validators: {
+                        digits: {
+                            message: 'The home phone number is not valid'
+                        }
+                    }
+                },
+                officePhone: {
+                    validators: {
+                        digits: {
+                            message: 'The office phone number is not valid'
+                        }
+                    }
+                }</span>
+            }
+        })
+        .find('button[data-toggle]')
+            .on('click', function() {
+                var $target = $($(this).attr('data-toggle'));
+                <span class="bv-note">// Show or hide the additional fields
+                // They will or will not be validated based on their visibilities
+                $target.toggle();</span>
+                if (!$target.is(':visible')) {
+                    // Enable the submit buttons in case additional fields are not valid
+                    $('#togglingForm').data('bootstrapValidator').disableSubmitButtons(false);
+                }
+            });
+});
+&lt;/script></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    $('#togglingForm')
+        .bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            submitHandler: function(validator, form, submitButton) {
+                // Do nothing
+            },
+            fields: {
+                firstName: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The first name is required'
+                        }
+                    }
+                },
+                lastName: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The last name is required'
+                        }
+                    }
+                },
+                company: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The company name is required'
+                        }
+                    }
+                },
+                job: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The job title is required'
+                        }
+                    }
+                },
+                department: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The department name is required'
+                        }
+                    }
+                },
+                mobilePhone: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The mobile phone number is required'
+                        },
+                        digits: {
+                            message: 'The mobile phone number is not valid'
+                        }
+                    }
+                },
+                homePhone: {
+                    validators: {
+                        digits: {
+                            message: 'The home phone number is not valid'
+                        }
+                    }
+                },
+                officePhone: {
+                    validators: {
+                        digits: {
+                            message: 'The office phone number is not valid'
+                        }
+                    }
+                }
+            }
+        })
+        .find('button[data-toggle]')
+            .on('click', function() {
+                var $target = $($(this).attr('data-toggle'));
+                $target.toggle();
+                if (!$target.is(':visible')) {
+                    // Enable the submit buttons in case additional fields are not valid
+                    $('#togglingForm').data('bootstrapValidator').disableSubmitButtons(false);
+                }
+            });
+});
+</script>
