@@ -1,5 +1,5 @@
 ---
-layout:           default
+layout:           doc
 title:            remote validator
 permalink:        /validators/remote/
 previous_section: /validators/regexp/
@@ -7,138 +7,97 @@ next_section:     /validators/rtn/
 comments:         true
 ---
 
-<section class="doc-heading">
-    <h1><a href="/validators/">Validators</a> / remote</h1>
-    {% include edit-button.html %}
-</section>
-
-<section>
-    <p>Perform remote checking via Ajax request.</p>
-
-    <table class="table table-condensed">
-        <thead>
-            <tr>
-                <th>Option</th>
-                <th>Equivalent HTML attribute</th>
-                <th>Type</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>message</code></td>
-                <td><code>data-bv-remote-message</code></td>
-                <td>String</td>
-                <td>The error message</td>
-            </tr>
-            <tr>
-                <td><code>url</code> (*)</td>
-                <td><code>data-bv-remote-url</code></td>
-                <td>String</td>
-                <td>The remote URL that responses an encoded JSON of array containing the <code>valid</code> key</td>
-            </tr>
-            <tr>
-                <td><code>name</code></td>
-                <td><code>data-bv-remote-name</code></td>
-                <td>String</td>
-                <td>The name of field which need to validate</td>
-            </tr>
-            <tr>
-                <td><code>data</code></td>
-                <td>n/a</td>
-                <td>Object</td>
-                <td>The data sent to remote URL.<br />You don't need to use this option if there is only field, defined as field name, sent to the remote URL.</td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-
-<section id="example">
-    <h2>Example</h2>
-
-    <p>The following example shows how to use a remote back-end to check if a given username is already taken or not.</p>
-    <div class="doc-example">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#example-html-tab" data-toggle="tab">HTML</a></li>
-            <li><a href="#example-js-tab" data-toggle="tab">JS</a></li>
-            <li><a href="#example-php-tab" data-toggle="tab">Back-end</a></li>
-        </ul>
-
-        <div class="tab-content">
-            <div class="tab-pane active" id="example-html-tab">
-                <pre><code class="xml">&lt;form id="registrationForm" class="form-horizontal">
-    &lt;! -- Other fields -->
-
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Username&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="username" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/validators/">Validators</a> / remote</h1>
+                <p>Perform remote checking via Ajax request.</p>
             </div>
 
-            <div class="tab-pane" id="example-js-tab">
-                <pre><code class="xml javascript">&lt;script>
-$(document).ready(function() {
-    $('#registrationForm').bootstrapValidator({
-        fields: {
-            username: {
-                message: 'The username is not valid',
-                validators: {
-                    // The validator will create an Ajax request
-                    // sending { username: 'its value' } to the back-end
-                    <span class="doc-example-note">remote: {
-                        message: 'The username is not available',
-                        url: '/path/to/backend/'
-                    }</span>
-                }
-            }
-        }
-    });
-});
-&lt;/script></code></pre>
-            </div>
-
-            <div class="tab-pane" id="example-php-tab">
-                <pre><code class="xml">&lt;?php
-// The back-end then will determine if the username is available or not,
-// and finally returns a JSON <span class="doc-example-note">{ "valid": true }</span> or <span class="doc-example-note">{ "valid": false }</span>
-// The code bellow demonstrates a simple back-end written in PHP
-
-// Get the username from request
-$username = $_POST['username'];
-
-// Check its existence (for example, execute a query from the database) ...
-$isAvailable = true; // or false
-
-// Finally, return a JSON
-echo json_encode(array(
-    'valid' => $isAvailable,
-));
-</code></pre>
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
             </div>
         </div>
     </div>
+</div>
 
-    <p>If you want to send more data to the back-end, see the <a href="#data-option">data option</a> section.</p>
-</section>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                <ul>
+                    <li>
+                        <a href="#options">Options</a>
+                        <ul>
+                            <li><a href="#name-option">name option</a></li>
+                            <li><a href="#data-option">date option</a></li>
+                            <li></li>
+                        </ul>
+                    </li>
+                    <li><a href="#example">Example</a></li>
+                </ul>
+            </div>
+        </div>
 
-<section id="name-option">
-    <h2>name option</h2>
-    <p>By default, it will be set as the name of field.</p>
-    <p>You can override the <code>name</code> option by using the <code>data-bv-remote-name</code> attribute.</p>
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2 id="options">Options</h2>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Option</th>
+                                <th>Equivalent HTML attribute</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>message</code></td>
+                                <td><code>data-bv-remote-message</code></td>
+                                <td>String</td>
+                                <td>The error message</td>
+                            </tr>
+                            <tr>
+                                <td><code>url</code> (*)</td>
+                                <td><code>data-bv-remote-url</code></td>
+                                <td>String</td>
+                                <td>The remote URL that responses an encoded JSON of array containing the <code>valid</code> key</td>
+                            </tr>
+                            <tr>
+                                <td><code>name</code></td>
+                                <td><code>data-bv-remote-name</code></td>
+                                <td>String</td>
+                                <td>The name of field which need to validate</td>
+                            </tr>
+                            <tr>
+                                <td><code>data</code></td>
+                                <td>n/a</td>
+                                <td>Object</td>
+                                <td>The data sent to remote URL.<br />You don't need to use this option if there is only field, defined as field name, sent to the remote URL.</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-    <p>Here are two cases which you might need to use this attribute.</p>
+                    <section>
+                        <h3 id="name-option">name option</h3>
+                        <p>By default, it will be set as the name of field.</p>
+                        <p>You can override the <code>name</code> option by using the <code>data-bv-remote-name</code> attribute.</p>
 
-    <p class="doc-box-info">Use different name for same field on different forms:</p>
-    <p>For example, the <i>Sign up</i> and <i>Profile</i> forms use the same back-end URL to validate the email address which is declared with different name:</p>
-    <pre><code class="xml">&lt;!-- Signup form -->
+                        <p>Here are two cases which you might need to use this attribute.</p>
+
+                        <p class="bv-box bv-box-info">Use different name for same field on different forms:</p>
+                        <p>For example, the <i>Sign up</i> and <i>Profile</i> forms use the same back-end URL to validate the email address which is declared with different name:</p>
+                        <pre><code class="xml">&lt;!-- Signup form -->
 &lt;form id="signupForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Email&lt;/label>
         &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" <span class="doc-example-note">name="login" data-bv-remote-name="email"</span> />
+            &lt;input type="text" class="form-control" <span class="bv-note">name="login" data-bv-remote-name="email"</span> />
         &lt;/div>
     &lt;/div>
 &lt;/form>
@@ -148,46 +107,46 @@ echo json_encode(array(
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Email&lt;/label>
         &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" <span class="doc-example-note">name="email" data-bv-remote-name="email"</span> />
+            &lt;input type="text" class="form-control" <span class="bv-note">name="email" data-bv-remote-name="email"</span> />
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
 
-    <p class="doc-box-info">Multiple fields using the same back-end URL to validate</p>
-    <pre><code class="xml">&lt;form id="profileForm" class="form-horizontal">
+                        <p class="bv-box bv-box-info">Multiple fields using the same back-end URL to validate</p>
+                        <pre><code class="xml">&lt;form id="profileForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Primary email&lt;/label>
         &lt;div class="col-lg-5">
             &lt;input type="text" class="form-control"
-                <span class="doc-example-note">name="primary_email" data-bv-remote-name="email"</span> />
+                <span class="bv-note">name="primary_email" data-bv-remote-name="email"</span> />
         &lt;/div>
 
         &lt;label class="col-lg-3 control-label">Secondary email&lt;/label>
         &lt;div class="col-lg-5">
             &lt;input type="text" class="form-control"
-                <span class="doc-example-note">name="secondary_email" data-bv-remote-name="email"</span> />
+                <span class="bv-note">name="secondary_email" data-bv-remote-name="email"</span> />
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-</section>
+                    </section>
 
-<section id="data-option">
-    <h2>data option</h2>
-    <p>As you see in the <a href="#example">example</a> at the top of page, the validator will send <code>{ fieldName: fieldValue }</code> to the back-end, where <code>fieldName</code> and <code>fieldValue</code> are replaced with the field name and current value, respectively.</p>
-    <p>In fact, you might want to send more data to the back-end.</p>
+                    <section>
+                        <h3 id="data-option">data option</h3>
+                        <p>As you see in the <a href="#example">example</a> at the top of page, the validator will send <code>{ fieldName: fieldValue }</code> to the back-end, where <code>fieldName</code> and <code>fieldValue</code> are replaced with the field name and current value, respectively.</p>
+                        <p>In fact, you might want to send more data to the back-end.</p>
 
-    <p class="doc-box-info">All additional data are static:</p>
-    <p>For example, there is same back-end for validating both username and email address. The back-end uses additional parameter named <code>type</code> to determine which field is going to be validated.</p>
-    <div class="doc-example">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#staticdata-html-tab" data-toggle="tab">HTML</a></li>
-            <li><a href="#staticdata-js-tab" data-toggle="tab">JS</a></li>
-            <li><a href="#staticdata-php-tab" data-toggle="tab">Back-end</a></li>
-        </ul>
+                        <p class="bv-box bv-box-info">All additional data are static:</p>
+                        <p>For example, there is same back-end for validating both username and email address. The back-end uses additional parameter named <code>type</code> to determine which field is going to be validated.</p>
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#staticdata-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#staticdata-js-tab" data-toggle="tab">JS</a></li>
+                                <li><a href="#staticdata-php-tab" data-toggle="tab">Back-end</a></li>
+                            </ul>
 
-        <div class="tab-content">
-            <div class="tab-pane active" id="staticdata-html-tab">
-                <pre><code class="xml">&lt;form id="registrationForm" class="form-horizontal">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="staticdata-html-tab">
+                                    <pre><code class="xml">&lt;form id="registrationForm" class="form-horizontal">
     &lt;! -- Other fields -->
 
     &lt;div class="form-group">
@@ -204,10 +163,10 @@ echo json_encode(array(
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-            </div>
+                                </div>
 
-            <div class="tab-pane" id="staticdata-js-tab">
-                <pre><code class="xml javascript">&lt;script>
+                                <div class="tab-pane" id="staticdata-js-tab">
+                                    <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#registrationForm').bootstrapValidator({
         fields: {
@@ -215,7 +174,7 @@ $(document).ready(function() {
                 message: 'The username is not valid',
                 validators: {
                     // Send { username: 'its value', type: 'username' } to the back-end
-                    <span class="doc-example-note">remote: {
+                    <span class="bv-note">remote: {
                         message: 'The username is not available',
                         url: '/path/to/backend/',
                         data: {
@@ -228,7 +187,7 @@ $(document).ready(function() {
                 message: 'The email address is not valid',
                 validators: {
                     // Send { email: 'its value', type: 'email' } to the back-end
-                    <span class="doc-example-note">remote: {
+                    <span class="bv-note">remote: {
                         message: 'The email is not available',
                         url: '/path/to/backend/',
                         data: {
@@ -241,10 +200,10 @@ $(document).ready(function() {
     });
 });
 &lt;/script></code></pre>
-            </div>
+                                </div>
 
-            <div class="tab-pane" id="staticdata-php-tab">
-                <pre><code class="xml">&lt;?php
+                                <div class="tab-pane" id="staticdata-php-tab">
+                                    <pre><code class="xml">&lt;?php
 // The code bellow demonstrates a simple back-end written in PHP
 
 // Determine which field you want to check its existence
@@ -269,21 +228,21 @@ echo json_encode(array(
     'valid' => $isAvailable,
 ));
 </code></pre>
-            </div>
-        </div>
-    </div>
+                                </div>
+                            </div>
+                        </div>
 
-    <p class="doc-box-info">Send more fields with dynamic values to the back-end:</p>
-    <p>For instance, the registration form need to validate both the username and emails.</p>
-    <div class="doc-example">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#data-html-tab" data-toggle="tab">HTML</a></li>
-            <li><a href="#data-js-tab" data-toggle="tab">JS</a></li>
-        </ul>
+                        <p class="bv-box bv-box-info">Send more fields with dynamic values to the back-end:</p>
+                        <p>For instance, the registration form need to validate both the username and emails.</p>
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#data-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#data-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
 
-        <div class="tab-content">
-            <div class="tab-pane active" id="data-html-tab">
-                <pre><code class="xml">&lt;form id="registrationForm" class="form-horizontal">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="data-html-tab">
+                                    <pre><code class="xml">&lt;form id="registrationForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Username&lt;/label>
         &lt;div class="col-lg-5">
@@ -303,10 +262,10 @@ echo json_encode(array(
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-            </div>
+                                </div>
 
-            <div class="tab-pane" id="data-js-tab">
-                <pre><code class="xml javascript">&lt;script>
+                                <div class="tab-pane" id="data-js-tab">
+                                    <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#registrationForm').bootstrapValidator({
         fields: {
@@ -316,7 +275,7 @@ $(document).ready(function() {
                     remote: {
                         url: '/path/to/backend/',
                         // Send { username: 'its value', email: 'its value' } to the back-end
-                        <span class="doc-example-note">data: function(validator) {
+                        <span class="bv-note">data: function(validator) {
                             return {
                                 email: validator.getFieldElements('email').val()
                             };
@@ -330,7 +289,7 @@ $(document).ready(function() {
                     remote: {
                         url: '/path/to/backend/',
                         // Send { email: 'its value', username: 'its value' } to the back-end
-                        <span class="doc-example-note">data: function(validator) {
+                        <span class="bv-note">data: function(validator) {
                             return {
                                 username: validator.getFieldElements('username').val()
                             };
@@ -343,9 +302,85 @@ $(document).ready(function() {
     });
 });
 &lt;/script></code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+
+                <section>
+                    <h2 id="example">Example</h2>
+
+                    <p>The following example shows how to use a remote back-end to check if a given username is already taken or not.</p>
+                    <div class="bv-example">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#example-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#example-js-tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#example-php-tab" data-toggle="tab">Back-end</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="example-html-tab">
+                                <pre><code class="xml">&lt;form id="registrationForm" class="form-horizontal">
+    &lt;! -- Other fields -->
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Username&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="username" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="example-js-tab">
+                                <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#registrationForm').bootstrapValidator({
+        fields: {
+            username: {
+                message: 'The username is not valid',
+                validators: {
+                    // The validator will create an Ajax request
+                    // sending { username: 'its value' } to the back-end
+                    <span class="bv-note">remote: {
+                        message: 'The username is not available',
+                        url: '/path/to/backend/'
+                    }</span>
+                }
+            }
+        }
+    });
+});
+&lt;/script></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="example-php-tab">
+                                <pre><code class="xml">&lt;?php
+// The back-end then will determine if the username is available or not,
+// and finally returns a JSON <span class="bv-note">{ "valid": true }</span> or <span class="bv-note">{ "valid": false }</span>
+// The code bellow demonstrates a simple back-end written in PHP
+
+// Get the username from request
+$username = $_POST['username'];
+
+// Check its existence (for example, execute a query from the database) ...
+$isAvailable = true; // or false
+
+// Finally, return a JSON
+echo json_encode(array(
+    'valid' => $isAvailable,
+));
+</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>If you want to send more data to the back-end, see the <a href="#data-option">data option</a> section.</p>
+                </section>
+
+                {% include related.html %}
             </div>
         </div>
     </div>
-</section>
-
-{% include related.html %}
+</div>

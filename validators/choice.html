@@ -1,5 +1,5 @@
 ---
-layout:           default
+layout:           doc
 title:            choice validator
 permalink:        /validators/choice/
 previous_section: /validators/callback/
@@ -7,156 +7,180 @@ next_section:     /validators/creditCard/
 comments:         true
 ---
 
-<section class="doc-heading">
-    <h1><a href="/validators/">Validators</a> / choice</h1>
-    {% include edit-button.html %}
-</section>
-
-<section>
-    <p>Check if the number of checked boxes are less or more than a given number. It also supports the <code>select</code> element if the <code>multiple="multiple"</code> attribute is set.</p>
-
-    <table class="table table-condensed">
-        <thead>
-            <tr>
-                <th>Option</th>
-                <th>Equivalent HTML attribute</th>
-                <th>Type</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>message</code></td>
-                <td><code>data-bv-choice-message</code></td>
-                <td>String</td>
-                <td>The error message</td>
-            </tr>
-            <tr>
-                <td><code>min</code></td>
-                <td><code>data-bv-choice-min</code></td>
-                <td>Number</td>
-                <td>The minimum number of check boxes required to be checked</td>
-            </tr>
-            <tr>
-                <td><code>max</code></td>
-                <td><code>data-bv-choice-max</code></td>
-                <td>Number</td>
-                <td>The maximum number of check boxes required to be checked. At least one of <code>min</code> and <code>max</code> is required</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="doc-box-info">
-        <p>In order to get the correct submit data in the server side, you should pay attention on setting the <code>name</code> attribute of checkbox/select elements.</p>
-        <table class="table table-condensed">
-            <thead>
-                <tr>
-                    <th>Server side</th>
-                    <th>name attribute</th>
-                    <th>Example</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>PHP</td>
-                    <td><code>name[]</code></td>
-                    <td>
-                        <pre><code class="xml">&lt;input type="checkbox" name="languages[]" />
-&lt;select name="editors[]" multiple="multiple">&lt;/select></code></pre>
-                    </td>
-                </tr>
-                <tr>
-                    <td><a href="http://projects.spring.io/spring-framework/">Spring framework</a></td>
-                    <td><code>name</code></td>
-                    <td><pre><code class="xml">&lt;input type="checkbox" name="languages" />
-&lt;select name="editors" multiple="multiple">&lt;/select></code></pre></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</section>
-
-<section id="example">
-    <h2>Example</h2>
-
-    <p>The following form asks a developer to choose 2-4 programming languages which he/she is good at:</p>
-
-    <div class="doc-example">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#choice-form-tab" data-toggle="tab">Try it</a></li>
-            <li><a href="#choice-html-tab" data-toggle="tab">HTML</a></li>
-            <li><a href="#choice-js-tab" data-toggle="tab">JS</a></li>
-        </ul>
-
-        <div class="tab-content">
-            <div class="tab-pane active" id="choice-form-tab">
-                <form id="interviewForm" class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">Programming Languages</label>
-                        <div class="col-lg-4">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="languages[]" value="net" /> .Net
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="languages[]" value="java" /> Java
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="languages[]" value="c" /> C/C++
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="languages[]" value="php" /> PHP
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="languages[]" value="perl" /> Perl
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="languages[]" value="ruby" /> Ruby
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="languages[]" value="python" /> Python
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="languages[]" value="javascript" /> Javascript
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">Editors</label>
-                        <div class="col-lg-4">
-                            <select class="form-control" name="editors[]" multiple="multiple" style="height: 200px;">
-                                <option value="" disabled>Choose 2 - 3 editors</option>
-                                <option value="atom">Atom</option>
-                                <option value="eclipse">Eclipse</option>
-                                <option value="netbeen">NetBean</option>
-                                <option value="nodepadplusplus">Nodepad++</option>
-                                <option value="phpstorm">PHP Storm</option>
-                                <option value="sublime">Sublime</option>
-                                <option value="webstorm">Web Storm</option>
-                            </select>
-                        </div>
-                    </div>
-                </form>
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/validators/">Validators</a> / choice</h1>
+                <p>Check if the number of checked boxes are less or more than a given number.</p>
             </div>
 
-            <div class="tab-pane" id="choice-html-tab">
-                <pre><code class="xml">&lt;form id="interviewForm" class="form-horizontal">
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                <ul>
+                    <li><a href="#options">Options</a></li>
+                    <li><a href="#example">Example</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2 id="options">Options</h2>
+                    <p>The validator also supports the <code>select</code> element if the <code>multiple="multiple"</code> attribute is set.</p>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Option</th>
+                                <th>Equivalent HTML attribute</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>message</code></td>
+                                <td><code>data-bv-choice-message</code></td>
+                                <td>String</td>
+                                <td>The error message</td>
+                            </tr>
+                            <tr>
+                                <td><code>min</code></td>
+                                <td><code>data-bv-choice-min</code></td>
+                                <td>Number</td>
+                                <td>The minimum number of check boxes required to be checked</td>
+                            </tr>
+                            <tr>
+                                <td><code>max</code></td>
+                                <td><code>data-bv-choice-max</code></td>
+                                <td>Number</td>
+                                <td>The maximum number of check boxes required to be checked. At least one of <code>min</code> and <code>max</code> is required</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="bv-box bv-box-info">
+                        <p>In order to get the correct submit data in the server side, you should pay attention on setting the <code>name</code> attribute of checkbox/select elements.</p>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Server side</th>
+                                    <th>name attribute</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>PHP</td>
+                                    <td><code>name[]</code></td>
+                                    <td><pre><code class="xml">&lt;input type="checkbox" name="languages[]" />
+&lt;select name="editors[]" multiple="multiple">&lt;/select></code></pre>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="http://projects.spring.io/spring-framework/">Spring framework</a></td>
+                                    <td><code>name</code></td>
+                                    <td><pre><code class="xml">&lt;input type="checkbox" name="languages" />
+&lt;select name="editors" multiple="multiple">&lt;/select></code></pre></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 id="example">Example</h2>
+
+                    <p>The following form asks a developer to choose 2-4 programming languages which he/she is good at:</p>
+
+                    <div class="bv-example">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#choice-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#choice-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#choice-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="choice-form-tab">
+                                <form id="interviewForm" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Programming Languages</label>
+                                        <div class="col-lg-4">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="languages[]" value="net" /> .Net
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="languages[]" value="java" /> Java
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="languages[]" value="c" /> C/C++
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="languages[]" value="php" /> PHP
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="languages[]" value="perl" /> Perl
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="languages[]" value="ruby" /> Ruby
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="languages[]" value="python" /> Python
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="languages[]" value="javascript" /> Javascript
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Editors</label>
+                                        <div class="col-lg-4">
+                                            <select class="form-control" name="editors[]" multiple="multiple" style="height: 200px;">
+                                                <option value="" disabled>Choose 2 - 3 editors</option>
+                                                <option value="atom">Atom</option>
+                                                <option value="eclipse">Eclipse</option>
+                                                <option value="netbeen">NetBean</option>
+                                                <option value="nodepadplusplus">Nodepad++</option>
+                                                <option value="phpstorm">PHP Storm</option>
+                                                <option value="sublime">Sublime</option>
+                                                <option value="webstorm">Web Storm</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane" id="choice-html-tab">
+                                <pre><code class="xml">&lt;form id="interviewForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Programming Languages&lt;/label>
         &lt;div class="col-lg-4">
@@ -206,7 +230,7 @@ comments:         true
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Editors&lt;/label>
         &lt;div class="col-lg-4">
-            &lt;select class="form-control" <span class="doc-example-note">name="editors[]" multiple="multiple"</span> style="height: 200px;">
+            &lt;select class="form-control" <span class="bv-note">name="editors[]" multiple="multiple"</span> style="height: 200px;">
                 &lt;option value="" disabled>Choose 2 - 3 editors&lt;/option>
                 &lt;option value="atom">Atom&lt;/option>
                 &lt;option value="eclipse">Eclipse&lt;/option>
@@ -219,10 +243,10 @@ comments:         true
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-            </div>
+                            </div>
 
-            <div class="tab-pane" id="choice-js-tab">
-                <pre><code class="xml javascript">&lt;script>
+                            <div class="tab-pane" id="choice-js-tab">
+                                <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#interviewForm').bootstrapValidator({
         feedbackIcons: {
@@ -233,7 +257,7 @@ $(document).ready(function() {
         fields: {
             'languages[]': {
                 validators: {
-                    <span class="docs-code__note">choice: {
+                    <span class="bv-note">choice: {
                         min: 2,
                         max: 4,
                         message: 'Please choose 2 - 4 programming languages you are good at'
@@ -242,7 +266,7 @@ $(document).ready(function() {
             },
             'editors[]': {
                 validators: {
-                    <span class="docs-code__note">choice: {
+                    <span class="bv-note">choice: {
                         min: 2,
                         max: 3,
                         message: 'Please choose 2 - 3 editors you use most'
@@ -253,10 +277,16 @@ $(document).ready(function() {
     });
 });
 &lt;/script></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {% include related.html %}
             </div>
         </div>
     </div>
-</section>
+</div>
 
 <script>
 $(document).ready(function() {

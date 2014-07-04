@@ -1,0 +1,315 @@
+---
+layout:           doc
+title:            Use multiple elements with the same name
+permalink:        /examples/multiple/
+previous_section:
+next_section:
+comments:         true
+---
+
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/examples/">Examples</a> / Basic</h1>
+                <p>Use multiple elements with the same name</p>
+            </div>
+
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                {% include example-basic.html %}
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section id="multiple">
+                    <h2>Multiple fields with the same name</h2>
+
+                    <p>It's possible to validate multiple fields with the same name. The fields can be radio buttons, checkboxes or text boxes, etc.</p>
+
+                    <div class="bv-example">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#multiple-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#multiple-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#multiple-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="multiple-form-tab">
+                                <form id="multipleForm" method="post" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Gender</label>
+                                        <div class="col-lg-5">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="gender" value="male" /> Male
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="gender" value="female" /> Female
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="gender" value="other" /> Other
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Browser</label>
+                                        <div class="col-lg-5">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="browsers[]" value="chrome" /> Google Chrome
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="browsers[]" value="firefox" /> Firefox
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="browsers[]" value="ie" /> IE
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="browsers[]" value="safari" /> Safari
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="browsers[]" value="opera" /> Opera
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="browsers[]" value="other" /> Other
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Editors</label>
+                                        <div class="col-lg-5">
+                                            <input class="form-control" type="text" name="editors[]" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-3 col-lg-5">
+                                            <input class="form-control" type="text" name="editors[]" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-3 col-lg-5">
+                                            <input class="form-control" type="text" name="editors[]" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-3 col-lg-5">
+                                            <input class="form-control" type="text" name="editors[]" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-lg-9 col-lg-offset-3">
+                                            <button type="submit" class="btn btn-primary">Validate</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane" id="multiple-html-tab">
+                                <pre><code class="xml">&lt;form id="multipleForm" method="post" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Gender&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;div class="radio">
+                &lt;label>
+                    &lt;input <span class="bv-note">type="radio" name="gender"</span> value="male" /> Male
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="radio">
+                &lt;label>
+                    &lt;input <span class="bv-note">type="radio" name="gender"</span> value="female" /> Female
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="radio">
+                &lt;label>
+                    &lt;input <span class="bv-note">type="radio" name="gender"</span> value="other" /> Other
+                &lt;/label>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Favourite browser&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input <span class="bv-note">type="checkbox" name="browsers[]"</span> value="chrome" /> Google Chrome
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input <span class="bv-note">type="checkbox" name="browsers[]"</span> value="firefox" /> Firefox
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input <span class="bv-note">type="checkbox" name="browsers[]"</span> value="ie" /> IE
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input <span class="bv-note">type="checkbox" name="browsers[]"</span> value="safari" /> Safari
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input <span class="bv-note">type="checkbox" name="browsers[]"</span> value="opera" /> Opera
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input <span class="bv-note">type="checkbox" name="browsers[]"</span> value="other" /> Other
+                &lt;/label>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Editors&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input class="form-control" <span class="bv-note">type="text" name="editors[]"</span> />
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;div class="col-lg-offset-3 col-lg-5">
+            &lt;input class="form-control" <span class="bv-note">type="text" name="editors[]"</span> />
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;div class="col-lg-offset-3 col-lg-5">
+            &lt;input class="form-control" <span class="bv-note">type="text" name="editors[]"</span> />
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;div class="col-lg-offset-3 col-lg-5">
+            &lt;input class="form-control" <span class="bv-note">type="text" name="editors[]"</span> />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;div class="col-lg-9 col-lg-offset-3">
+            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="multiple-js-tab">
+                                <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#multipleForm')
+        .bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            submitHandler: function(validator, form, submitButton) {
+                // Do nothing
+            },
+            fields: {
+                <span class="bv-note">gender</span>: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The gender is required'
+                        }
+                    }
+                },
+                <span class="bv-note">'browsers[]'</span>: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please specify at least one browser you use daily for development'
+                        }
+                    }
+                },
+                <span class="bv-note">'editors[]'</span>: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The editor names are required'
+                        }
+                    }
+                }
+            }
+        });
+});
+&lt;/script></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    $('#multipleForm')
+        .bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            submitHandler: function(validator, form, submitButton) {
+                // Do nothing
+            },
+            fields: {
+                gender: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The gender is required'
+                        }
+                    }
+                },
+                'browsers[]': {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please specify at least one browser you use daily for development'
+                        }
+                    }
+                },
+                'editors[]': {
+                    validators: {
+                        notEmpty: {
+                            message: 'The editor names are required'
+                        }
+                    }
+                }
+            }
+        });
+});
+</script>

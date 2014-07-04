@@ -2,29 +2,83 @@
 layout: default
 ---
 
-<article>
-    <h1 class="doc-post-title">
-        <div><a href="{{ page.url }}">{{ page.title }}</a></div>
-    </h1>
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/news/">News</a></h1>
+                <p>The latest news about BootstrapValidator</p>
+            </div>
 
-    <div class="doc-post-meta">
-        <span class="doc-post-author"><i class="fa fa-user"></i> <a href="https://github.com/{{ page.author }}">{{ page.author }}</a></span>
-        <span class="doc-post-date"><i class="fa fa-clock-o"></i> {{ page.date | date_to_string }}</span>
-        <span class="doc-post-category"><i class="fa fa-tags"></i>
-            {% for category in page.categories %}
-            <a href="/news/{{ category }}/">{{ category }}</a>
-            {% endfor %}
-        </span>
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 
-    <div class="doc-post-content">
-        {{ content }}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+            </div>
+        </div>
 
-        <section class="doc-prev-next">
-            <ul class="pager">
-                {% if page.previous.url %}<li class="previous"><a href="{{ page.previous.url }}"><i class="fa fa-long-arrow-left"></i> PREVIOUS</a></li>{% endif %}
-                {% if page.next.url %}<li class="next"><a href="{{ page.next.url }}">NEXT <i class="fa fa-long-arrow-right"></i></a></li>{% endif %}
-            </ul>
-        </section>
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2><a href="{{ page.url }}">{{ page.title }}</a></h2>
+
+                    <div class="bv-post-meta">
+                        <span class="bv-post-author"><i class="fa fa-user"></i> <a href="https://github.com/{{ page.author }}">{{ page.author }}</a></span>
+                        <span class="bv-post-date"><i class="fa fa-clock-o"></i> {{ page.date | date_to_string }}</span>
+                        <span class="bv-post-category"><i class="fa fa-tags"></i>
+                            {% for category in page.categories %}
+                            <a href="/news/{{ category }}/">{{ category }}</a>
+                            {% endfor %}
+                        </span>
+                    </div>
+
+                    <div class="bv-post-content">
+                        {{ content }}
+                    </div>
+                </section>
+            </div>
+
+            <section class="bv-pager">
+                <ul class="pager">
+                    {% if page.previous.url %}<li class="previous"><a href="{{ page.previous.url }}">PREVIOUS</a></li>{% endif %}
+                    {% if page.next.url %}<li class="next"><a href="{{ page.next.url }}">NEXT</a></li>{% endif %}
+                </ul>
+            </section>
+
+            <!-- Disqus comment -->
+            {% if page.comments %}
+            <section>
+                <div class="bv-comments">
+                    <h2 id="comments" class="bv-separator"><span>Comments</span></h2>
+
+                    <div class="bv-box bv-box-warning">
+                        If you want to report a bug, please submit the issue on <a href="{{ site.repository.source }}/issues?state=open">Github</a>. Do NOT post the issue here.<br/>
+                        For a general question or feedback, use the form below.
+                    </div>
+
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        var disqus_shortname = '{{ site.disqus }}';
+                        (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                </div>
+            </section>
+            {% endif %}
+        </div>
     </div>
-</article>
+</div>
+
+

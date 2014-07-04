@@ -1,5 +1,5 @@
 ---
-layout:           default
+layout:           doc
 title:            lessThan validator
 permalink:        /validators/lessThan/
 previous_section: /validators/issn/
@@ -10,48 +10,76 @@ related:
     - greaterThan
 ---
 
-<section class="doc-heading">
-    <h1><a href="/validators/">Validators</a> / lessThan</h1>
-    {% include edit-button.html %}
-</section>
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/validators/">Validators</a> / lessThan</h1>
+                <p>Return true if the value is less than or equals to given number.</p>
+            </div>
 
-<section>
-    <p>Return true if the value is less than or equals to given number.</p>
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <table class="table table-condensed">
-        <thead>
-            <tr>
-                <th>Option</th>
-                <th>Equivalent HTML attribute</th>
-                <th>Type</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>message</code></td>
-                <td><code>data-bv-lessthan-message</code></td>
-                <td>String</td>
-                <td>The error message</td>
-            </tr>
-            <tr>
-                <td><code>value</code> (*)</td>
-                <td><code>data-bv-lessthan-value</code></td>
-                <td>Float</td>
-                <td>The number to make a comparison to</td>
-            </tr>
-            <tr>
-                <td><code>inclusive</code></td>
-                <td><code>data-bv-lessthan-inclusive</code></td>
-                <td>Boolean</td>
-                <td>
-                    Can be <code>true</code> or <code>false</code>.<br />
-                    If <code>true</code>, the input value must be less than the comparison one.<br />
-                    If <code>false</code>, the input value must be less than or equal to the comparison one
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                <ul>
+                    <li><a href="#options">Options</a></li>
+                    <li><a href="#related-validators">Related validators</a></li>
+                </ul>
+            </div>
+        </div>
 
-{% include related.html %}
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2 id="options">Options</h2>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Option</th>
+                                <th>Equivalent HTML attribute</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>message</code></td>
+                                <td><code>data-bv-lessthan-message</code></td>
+                                <td>String</td>
+                                <td>The error message</td>
+                            </tr>
+                            <tr>
+                                <td><code>value</code> (*)</td>
+                                <td><code>data-bv-lessthan-value</code></td>
+                                <td>Float</td>
+                                <td>The number to make a comparison to</td>
+                            </tr>
+                            <tr>
+                                <td><code>inclusive</code></td>
+                                <td><code>data-bv-lessthan-inclusive</code></td>
+                                <td>Boolean</td>
+                                <td>
+                                    Can be <code>true</code> or <code>false</code>.<br />
+                                    If <code>true</code>, the input value must be less than the comparison one.<br />
+                                    If <code>false</code>, the input value must be less than or equal to the comparison one
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                {% include related.html %}
+            </div>
+        </div>
+    </div>
+</div>
