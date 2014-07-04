@@ -1,39 +1,95 @@
 ---
-layout:           default
+layout:           doc
 title:            Settings
 permalink:        /settings/
 comments:         true
 previous_section: /getting-started/
 next_section:     /validators/
-sections:
-    - title:  excluded
-      anchor: excluded
-    - title:  feedbackIcons
-      anchor: feedback-icons
-    - title:  live
-      anchor: live
-    - title:  message
-      anchor: message
-    - title:  submitButtons
-      anchor: submit-buttons
-    - title:  submitHandler
-      anchor: submit-handler
-    - title:  threshold
-      anchor: threshold
-    - title:  trigger
-      anchor: trigger
-    - title:  fields
-      anchor: fields
 ---
 
-<section class="doc-heading">
-    <h1>Settings</h1>
-    {% include edit-button.html %}
-</section>
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>Settings</h1>
+            </div>
 
-<p>The BootstrapValidator plugin can be called with the full options as sample code below:</p>
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<pre><code class="javascript">$(formSelector).bootstrapValidator({
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                <ul>
+                    <li><a href="#settings-structure">Settings Structure</a></li>
+                    <li>
+                        <a href="#form-settings">Form Settings</a>
+                        <ul>
+                            <li><a href="#form-excluded">excluded</a></li>
+                            <li><a href="#form-feedback-icons">feedbackIcons</a></li>
+                            <li><a href="#form-live">live</a></li>
+                            <li><a href="#form-message">message</a></li>
+                            <li><a href="#form-submit-buttons">submitButtons</a></li>
+                            <li><a href="#form-submit-handler">submitHandler</a></li>
+                            <li><a href="#form-threshold">threshold</a></li>
+                            <li><a href="#form-trigger">trigger</a></li>
+                            <li><a href="#form-fields">fields</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#field-settings">Field Settings</a>
+                        <ul>
+                            <li><a href="#field-enabled">enabled</a></li>
+                            <li><a href="#field-message">message</a></li>
+                            <li><a href="#field-container">container</a></li>
+                            <li><a href="#field-selector">selector</a></li>
+                            <li><a href="#field-threshold">threshold</a></li>
+                            <li><a href="#field-trigger">trigger</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#validator-settings">Validator Settings</a>
+                        <ul>
+                            <li><a href="#field-message">message</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2 id="settings-structure">Settings Structure</h2>
+                    <p>There are three levels of settings which are form, field, and validators.</p>
+                    <p>The BootstrapValidator plugin can be called as following:</p>
+                    <pre><code class="javascript">$(formSelector).bootstrapValidator({
+    ... form settings go here ...
+    fields: {
+        specificFieldName: {
+            ... field settings go here ...
+
+            validators: {
+                specificValidatorName: {
+                    ... common validator settings go here ...
+
+                    ... specific validator settings ...
+                }
+            }
+        }
+    }
+});</code></pre>
+
+                    <p>Most of settings can be set via HTML 5 attributes prefixed with <code>data-bv</code>.</p>
+                    <p>For example, the following call:</p>
+                    <pre><code class="javascript">$(formSelector).bootstrapValidator({
     excluded: [':disabled', ':hidden', ':not(:visible)'],
     feedbackIcons: {
         valid: 'glyphicon glyphicon-ok',
@@ -47,72 +103,8 @@ sections:
     trigger: null,
     fields: ...
 });</code></pre>
-
-<p>You can use HTML attributes for <code>form</code> to set the options:</p>
-<table class="table table-condensed">
-    <thead>
-        <tr>
-            <th>Option</th>
-            <th>Equivalent HTML attribute</th>
-            <th>Default</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><code>excluded</code></td>
-            <td><code>data-bv-excluded</code></td>
-            <td><code>[':disabled', ':hidden', ':not(:visible)']</code></td>
-        </tr>
-        <tr>
-            <td><code>feedbackIcons</code></td>
-            <td><code>data-bv-feedbackicons-valid</code>, <code>data-bv-feedbackicons-invalid</code>, <code>data-bv-feedbackicons-validating</code></td>
-            <td><pre><code class="javascript">{
-    valid: null,
-    invalid: null,
-    validating: null
-}</code></pre></td>
-        </tr>
-        <tr>
-            <td><code>live</code></td>
-            <td><code>data-bv-live</code></td>
-            <td><code>'enabled'</code></td>
-        </tr>
-        <tr>
-            <td><code>message</code></td>
-            <td><code>data-bv-message</code></td>
-            <td><code>'This value is not valid'</code></td>
-        </tr>
-        <tr>
-            <td><code>submitButtons</code></td>
-            <td><code>data-bv-submitbuttons</code></td>
-            <td><code>'[type="submit"]'</code></td>
-        </tr>
-        <tr>
-            <td><code>submitHandler</code></td>
-            <td>n/a</td>
-            <td><code>null</code></td>
-        </tr>
-        <tr>
-            <td><code>threshold</code></td>
-            <td><code>data-bv-threshold</code></td>
-            <td><code>null</code></td>
-        </tr>
-        <tr>
-            <td><code>trigger</code></td>
-            <td><code>data-bv-trigger</code></td>
-            <td><code>null</code></td>
-        </tr>
-        <tr>
-            <td><code>fields</code></td>
-            <td>n/a</td>
-            <td><code>null</code></td>
-        </tr>
-    </tbody>
-</table>
-
-<p>So the Javascript code above is equivalent to the following usage:</p>
-
-<pre><code class="xml javascript">&lt;form data-bv-message="This value is not valid"
+                    <p>is equivalent with the one below:</p>
+                    <pre><code class="xml javascript">&lt;form data-bv-message="This value is not valid"
       data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
       data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
       data-bv-feedbackicons-validating="glyphicon glyphicon-refresh"
@@ -130,98 +122,168 @@ $(document).ready(function() {
 });
 &lt;/script></code></pre>
 
-<p>It's also possible to set validator options for each field using HTML attributes. Look at each validator documentation for more details.</p>
+                    <p>In the next sections, you will see the full list of options for each level.</p>
+                </section>
 
-<section id="excluded">
-    <h2>excluded</h2>
-    <p>Indicate fields which won't be validated.</p>
-    <p>By default, the plugin will not validate the following kind of fields:</p>
-    <ul class="doc-list">
-        <li>disabled</li>
-        <li>hidden</li>
-        <li>invisible</li>
-    </ul>
-    <p>The setting consists of jQuery filters. Accept 3 formats:</p>
-    <table class="table table-condensed">
-        <thead>
-            <tr>
-                <th>Format</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>String</td>
-                <td>
-                    <p>Filters are separated by a comma. For example:</p>
-                    <pre><code>':disabled, :hidden, :not(:visible)'</code></pre>
-                </td>
-            </tr>
-            <tr>
-                <td>Array of strings</td>
-                <td>
-                    <p>Each element is a filter. For example:</p>
-                    <pre><code class="javascript">[':disabled', ':hidden', ':not(:visible)']</code></pre>
-                </td>
-            </tr>
-            <tr>
-                <td>Array of strings and callback functions</td>
-                <td>
-                    <p>The callback function has format as below:</p>
-                    <pre><code class="javascript">function($field, validator) {
+                <!-- form -->
+                <section>
+                    <h2 id="form-settings">Form Settings</h2>
+
+                    <p>Below is the list of settings for form:</p>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Option</th>
+                                <th>Equivalent HTML attribute</th>
+                                <th>Default</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>excluded</code></td>
+                                <td><code>data-bv-excluded</code></td>
+                                <td><code>[':disabled', ':hidden', ':not(:visible)']</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>feedbackIcons</code></td>
+                                <td><code>data-bv-feedbackicons-valid</code>, <code>data-bv-feedbackicons-invalid</code>, <code>data-bv-feedbackicons-validating</code></td>
+                                <td><pre><code class="javascript">{
+    valid: null,
+    invalid: null,
+    validating: null
+}</code></pre></td>
+                            </tr>
+                            <tr>
+                                <td><code>live</code></td>
+                                <td><code>data-bv-live</code></td>
+                                <td><code>'enabled'</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>message</code></td>
+                                <td><code>data-bv-message</code></td>
+                                <td><code>'This value is not valid'</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>submitButtons</code></td>
+                                <td><code>data-bv-submitbuttons</code></td>
+                                <td><code>'[type="submit"]'</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>submitHandler</code></td>
+                                <td>n/a</td>
+                                <td><code>null</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>threshold</code></td>
+                                <td><code>data-bv-threshold</code></td>
+                                <td><code>null</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>trigger</code></td>
+                                <td><code>data-bv-trigger</code></td>
+                                <td><code>null</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>fields</code></td>
+                                <td>n/a</td>
+                                <td><code>null</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- form:excluded -->
+                    <section>
+                        <h3 id="form-excluded">excluded: Boolean</h3>
+                        <p>Indicate fields which won't be validated.</p>
+                        <p>By default, the plugin will not validate the following kind of fields:</p>
+                        <ul>
+                            <li>disabled</li>
+                            <li>hidden</li>
+                            <li>invisible</li>
+                        </ul>
+                        <p>The setting consists of jQuery filters. Accept 3 formats:</p>
+                        <table class="table table-condensed">
+                            <thead>
+                            <tr>
+                                <th>Format</th>
+                                <th>Description</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>String</td>
+                                <td>
+                                    <p>Filters are separated by a comma. For example:</p>
+                                    <pre><code>':disabled, :hidden, :not(:visible)'</code></pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Array of strings</td>
+                                <td>
+                                    <p>Each element is a filter. For example:</p>
+                                    <pre><code class="javascript">[':disabled', ':hidden', ':not(:visible)']</code></pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Array of strings and callback functions</td>
+                                <td>
+                                    <p>The callback function has format as below:</p>
+                                    <pre><code class="javascript">function($field, validator) {
     // $field is jQuery object representing the field element
     // validator is the BootstrapValidator instance
     // return true or false;
 }</code></pre>
-                    <p>For example:</p>
-                    <pre><code class="javascript">[':disabled', ':hidden', function($field, validator) {
+                                    <p>For example:</p>
+                                    <pre><code class="javascript">[':disabled', ':hidden', function($field, validator) {
     // Do not validate invisible element
     return !$field.is(':visible');
 }]</code></pre>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <p>The <code>excluded</code> option is usually used when we need to validate the field generated by other UI plugin.</p>
-    <p>For an usage, you can take a look at:</p>
-    <ul class="doc-list">
-        <li><a href="/examples/#tab">Tab</a> example</li>
-        <li><a href="/examples/#raty">Raty</a> example</li>
-    </ul>
-</section>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <p>The <code>excluded</code> option is usually used when we need to validate the field generated by other UI plugin.</p>
+                        <p>For an usage, you can take a look at:</p>
+                        <ul>
+                            <li><a href="/examples/#tab">Tab</a> example</li>
+                            <li><a href="/examples/#raty">Raty</a> example</li>
+                        </ul>
+                    </section>
+                    <!-- /form:excluded -->
 
-<section id="feedback-icons">
-    <h2>feedbackIcons</h2>
-    <p>Indicate valid/invalid/validating icons based on the field validity.</p>
-    <p>This feature requires <a href="http://getbootstrap.com/css/#forms-control-validation">Bootstrap v3.1.0 or later</a>.
-    Since Bootstrap doesn't provide any methods to know its version, this option cannot be on/off automatically.
-    In other word, to use this feature you have to upgrade your Bootstrap to v3.1.0 or later.</p>
+                    <!-- form:feedback-icons -->
+                    <section>
+                        <h3 id="form-feedback-icons">feedbackIcons: Object</h3>
+                        <p>Indicate valid/invalid/validating icons based on the field validity.</p>
+                        <p class="bv-box bv-box-warning">This feature requires <a href="http://getbootstrap.com/css/#forms-control-validation">Bootstrap v3.1.0 or later</a>.
+                        Since Bootstrap doesn't provide any methods to know its version, this option cannot be on/off automatically.
+                        In other word, to use this feature you have to upgrade your Bootstrap to v3.1.0 or later.</p>
 
-    <p>It supports <a href="http://getbootstrap.com/components/#glyphicons">Glyphicons</a> (included in Bootstrap):</p>
+                        <p>It supports <a href="http://getbootstrap.com/components/#glyphicons">Glyphicons</a> (included in Bootstrap):</p>
 
-    <pre><code class="javascript">feedbackIcons: {
+                        <pre><code class="javascript">feedbackIcons: {
     valid: 'glyphicon glyphicon-ok',
     invalid: 'glyphicon glyphicon-remove',
     validating: 'glyphicon glyphicon-refresh'
 }</code></pre>
 
-    <p>and <a href="http://fontawesome.io/icons">FontAwesome</a> icons (don't forget to insert FontAwesome CSS in your <code>head</code>):</p>
+                        <p>and <a href="http://fontawesome.io/icons">FontAwesome</a> icons (don't forget to insert FontAwesome CSS in your <code>head</code>):</p>
 
-    <pre><code class="javascript">feedbackIcons: {
+                        <pre><code class="javascript">feedbackIcons: {
     valid: 'fa fa-check',
     invalid: 'fa fa-times',
     validating: 'fa fa-refresh'
 }</code></pre>
 
-    <p>By default, these icons are not set.</p>
-    <p>There are two popular questions with the feedback icon usage:</p>
+                        <p>By default, these icons are not set.</p>
+                        <p>There are two popular questions with the feedback icon usage:</p>
 
-    <section>
-        <p class="doc-box-warning">The feedback icons aren't shown when using custom Bootstrap theme from <a href="http://bootswatch.com/">BootsWatch</a></p>
+                        <section>
+                            <p class="bv-box bv-box-warning">The feedback icons aren't shown when using custom Bootstrap theme from <a href="http://bootswatch.com/">BootsWatch</a></p>
 
-        <p>Some BootsWatch themes override some CSS styles causing feedback icon invisible to your eyes. For instance, the <a href="http://bootswatch.com/flatly/">Flatly theme</a> set the feedback icon color to <code>#FFF</code>.</p>
-        <p>To fix this, you can simply add some CSS to your <code>head</code>, right before the BootsWatch theme CSS, to reset the feedback icons color:</p>
-        <pre><code class="xml">&lt;link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/flatly/bootstrap.min.css">
+                            <p>Some BootsWatch themes override some CSS styles causing feedback icon invisible to your eyes. For instance, the <a href="http://bootswatch.com/flatly/">Flatly theme</a> set the feedback icon color to <code>#FFF</code>.</p>
+                            <p>To fix this, you can simply add some CSS to your <code>head</code>, right before the BootsWatch theme CSS, to reset the feedback icons color:</p>
+                            <pre><code class="xml">&lt;link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/flatly/bootstrap.min.css">
 &lt;style type="text/css">
 .has-error .form-control-feedback {
     color: #E74C3C;
@@ -230,17 +292,17 @@ $(document).ready(function() {
     color: #18BCA0;
 }
 &lt;/style></code></pre>
-    </section>
+                        </section>
 
-    <section>
-        <p class="doc-box-warning">The feedback icons aren't shown properly for some elements such as select box or when using with other element such as <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Bootstrap Datetime Picker</a>, <a href="http://mjolnic.github.io/bootstrap-colorpicker/">Bootstrap Color Picker</a>, etc.</p>
-        <p>Bootstrap defines feedback icon position as following:</p>
-        <pre><code class="css">.form-horizontal .has-feedback .form-control-feedback {
+                        <section>
+                            <p class="bv-box bv-box-warning">The feedback icons aren't shown properly for some elements such as select box or when using with other element such as <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Bootstrap Datetime Picker</a>, <a href="http://mjolnic.github.io/bootstrap-colorpicker/">Bootstrap Color Picker</a>, etc.</p>
+                            <p>Bootstrap defines feedback icon position as following:</p>
+                            <pre><code class="css">.form-horizontal .has-feedback .form-control-feedback {
     top: 0;
     right: 15px;
 }</code></pre>
-                <p>You can override this to adjust feedback icon position:</p>
-                <pre><code class="css">.form-horizontal .has-feedback .form-control-feedback {
+                            <p>You can override this to adjust feedback icon position:</p>
+                            <pre><code class="css">.form-horizontal .has-feedback .form-control-feedback {
     top: 0;
     right: -15px;
 }
@@ -248,62 +310,62 @@ $(document).ready(function() {
     top: 0;
     right: -30px;
 }</code></pre>
-        <link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-        <style type="text/css">
-        #feedbackIconForm .has-feedback .form-control-feedback {
-            top: 0;
-            right: -15px;
-        }
-        #feedbackIconForm .has-feedback .input-group .form-control-feedback {
-            top: 0;
-            right: -30px;
-        }
-        </style>
+                            <link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+                            <style type="text/css">
+                            #feedbackIconForm .has-feedback .form-control-feedback {
+                                top: 0;
+                                right: -15px;
+                            }
+                            #feedbackIconForm .has-feedback .input-group .form-control-feedback {
+                                top: 0;
+                                right: -30px;
+                            }
+                            </style>
 
-        <div class="doc-example">
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#feedbackicon-form-tab" data-toggle="tab">Try it</a></li>
-                <li><a href="#feedbackicon-html-tab" data-toggle="tab">HTML</a></li>
-                <li><a href="#feedbackicon-js-tab" data-toggle="tab">JS</a></li>
-            </ul>
+                            <div class="bv-example">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#feedbackicon-form-tab" data-toggle="tab">Try it</a></li>
+                                    <li><a href="#feedbackicon-html-tab" data-toggle="tab">HTML</a></li>
+                                    <li><a href="#feedbackicon-js-tab" data-toggle="tab">JS</a></li>
+                                </ul>
 
-            <div class="tab-content">
-                <div class="tab-pane active" id="feedbackicon-form-tab">
-                    <form id="feedbackIconForm" class="form-horizontal">
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Full name</label>
-                            <div class="col-lg-5">
-                                <input type="text" class="form-control" name="fullName" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Gender</label>
-                            <div class="col-lg-5">
-                                <select class="form-control" name="gender">
-                                    <option value="">Choose gender</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Date of birth</label>
-                            <div class="col-lg-5">
-                                <div class="input-group date" id="dobPicker" data-date-format="YYYY/DD/MM">
-                                    <input type="text" class="form-control" name="dob" />
-                                    <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="feedbackicon-form-tab">
+                                        <form id="feedbackIconForm" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Full name</label>
+                                                <div class="col-lg-5">
+                                                    <input type="text" class="form-control" name="fullName" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Gender</label>
+                                                <div class="col-lg-5">
+                                                    <select class="form-control" name="gender">
+                                                        <option value="">Choose gender</option>
+                                                        <option value="male">Male</option>
+                                                        <option value="female">Female</option>
+                                                        <option value="other">Other</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Date of birth</label>
+                                                <div class="col-lg-5">
+                                                    <div class="input-group date" id="dobPicker" data-date-format="YYYY/DD/MM">
+                                                        <input type="text" class="form-control" name="dob" />
+                                                        <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
 
-                <div class="tab-pane" id="feedbackicon-html-tab">
-                    <pre><code class="xml">&lt;!-- Include CSS required by Bootstrap Datetime Picker -->
+                                    <div class="tab-pane" id="feedbackicon-html-tab">
+                                        <pre><code class="xml">&lt;!-- Include CSS required by Bootstrap Datetime Picker -->
 &lt;link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 
-<span class="doc-example-note">&lt;!-- Override feedback icon position -->
+<span class="bv-note">&lt;!-- Override feedback icon position -->
 &lt;style type="text/css">
 #feedbackIconForm .has-feedback .form-control-feedback {
     top: 0;
@@ -344,9 +406,9 @@ $(document).ready(function() {
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-                </div>
+                                    </div>
 
-                <div class="tab-pane" id="feedbackicon-js-tab">
+                                    <div class="tab-pane" id="feedbackicon-js-tab">
                     <pre><code class="xml javascript">&lt;!-- Include JS required by Bootstrap Datetime Picker -->
 &lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
 &lt;script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js">&lt;/script>
@@ -399,166 +461,449 @@ $(document).ready(function() {
     });
 });
 &lt;/script></code></pre>
-                </div>
-            </div>
-        </div>
-    </section>
-</section>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+                    <!-- /form:feedback-icons -->
 
-<section id="live">
-    <h2>live</h2>
+                    <!-- form:live -->
+                    <section>
+                        <h3 id="form-live">live: String</h3>
+                        <p>Live validating mode. Can be one of 3 values:</p>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Value</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>enabled</code></td>
+                                    <td>The plugin validates fields as soon as they are changed</td>
+                                </tr>
+                                <tr>
+                                    <td><code>disabled</code></td>
+                                    <td>Disable the live validating. The error messages are only shown after the form is submitted</td>
+                                </tr>
+                                <tr>
+                                    <td><code>submitted</code></td>
+                                    <td>The live validating is enabled after the form is submitted</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <!-- /form:live -->
 
-    <p>Live validating mode. Can be one of 3 values:</p>
+                    <!-- form:message -->
+                    <section>
+                        <h3 id="form-message">message: String</h3>
+                        <p>The default error message for all fields. You can specify the error message for any fields.</p>
+                    </section>
+                    <!-- /form:message -->
 
-    <table class="table table-condensed">
-        <thead>
-            <tr>
-                <th>Value</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>enabled</code></td>
-                <td>The plugin validates fields as soon as they are changed</td>
-            </tr>
-            <tr>
-                <td><code>disabled</code></td>
-                <td>Disable the live validating. The error messages are only shown after the form is submitted</td>
-            </tr>
-            <tr>
-                <td><code>submitted</code></td>
-                <td>The live validating is enabled after the form is submitted</td>
-            </tr>
-        </tbody>
-    </table>
-</section>
+                    <!-- form:submit-buttons -->
+                    <section>
+                        <h3 id="form-submit-buttons">submitButtons: String</h3>
+                        <p>The submit buttons selector. These buttons will be disabled when the form input are invalid.</p>
+                    </section>
+                    <!-- /form:submit-buttons -->
 
-<section id="message">
-    <h2>message</h2>
-    <p>The default error message for all fields. You can specify the error message for any fields.</p>
-</section>
-
-<section id="submit-buttons">
-    <h2>submitButtons</h2>
-    <p>The submit buttons selector. These buttons will be disabled when the form input are invalid.</p>
-</section>
-
-<section id="submit-handler">
-    <h2>submitHandler</h2>
-    <p>Custom submit handler:</p>
-    <pre><code class="javascript">submitHandler: function(validator, form, submitButton) {
+                    <!-- form:submit-handler -->
+                    <section>
+                        <h3 id="form-submit-handler">submitHandler: Function</h3>
+                        <p>Custom submit handler:</p>
+                        <pre><code class="javascript">submitHandler: function(validator, form, submitButton) {
 }</code></pre>
 
-    <table class="table table-condensed">
-        <thead>
-            <tr>
-                <th>Parameter</th>
-                <th>Type</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>validator</code></td>
-                <td>BootstrapValidator</td>
-                <td>The instance of BootstrapValidator</td>
-            </tr>
-            <tr>
-                <td><code>form</code></td>
-                <td>jQuery</td>
-                <td>Representing the current form</td>
-            </tr>
-            <tr>
-                <td><code>submitButton</code></td>
-                <td>jQuery</td>
-                <td>Representing the submit button which is clicked</td>
-            </tr>
-        </tbody>
-    </table>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>validator</code></td>
+                                    <td>BootstrapValidator</td>
+                                    <td>The instance of BootstrapValidator</td>
+                                </tr>
+                                <tr>
+                                    <td><code>form</code></td>
+                                    <td>jQuery</td>
+                                    <td>Representing the current form</td>
+                                </tr>
+                                <tr>
+                                    <td><code>submitButton</code></td>
+                                    <td>jQuery</td>
+                                    <td>Representing the submit button which is clicked</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-    <p>This option is useful when you want to use Ajax to submit the form data:</p>
+                        <p>This option is useful when you want to use Ajax to submit the form data:</p>
 
-    <pre><code class="javascript">submitHandler: function(validator, form, submitButton) {
+                        <pre><code class="javascript">submitHandler: function(validator, form, submitButton) {
     // Use Ajax to submit form data
     $.post(form.attr('action'), form.serialize(), function(result) {
         // ... process the result ...
     }, 'json');
 }</code></pre>
 
-    <p>By default, <code>submitHandler</code> is <code>null</code>.</p>
+                        <p>By default, <code>submitHandler</code> is <code>null</code>.</p>
 
-    <p>If you want to submit the form inside your custom submit handler, use the <a href="/api/#default-submit"><code>defaultSubmit()</code></a> method:</p>
-    <pre><code class="javascript">submitHandler: function(validator, form, submitButton) {
+                        <p>If you want to submit the form inside your custom submit handler, use the <a href="/api/#default-submit"><code>defaultSubmit()</code></a> method:</p>
+                        <pre><code class="javascript">submitHandler: function(validator, form, submitButton) {
     // Do your task
     // ...
     // Submit the form
     validator.defaultSubmit();
 }</code></pre>
-</section>
+                    </section>
+                    <!-- form:submit-handler -->
 
-<section id="threshold">
-    <h2>threshold</h2>
-    <p>The field will not be live validated if its length is less than this number of characters. You also can set this option for each field.</p>
+                    <!-- form:threshold-->
+                    <section>
+                        <h3 id="form-threshold">threshold: Number</h3>
+                        <p>The field will not be live validated if its length is less than this number of characters. You also can set this option for <a href="#field-threshold">each field</a>.</p>
+                    </section>
+                    <!-- /form:threshold-->
 
-    <div class="doc-example">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#threshold-form-tab" data-toggle="tab">Try it</a></li>
-            <li><a href="#threshold-html-tab" data-toggle="tab">HTML</a></li>
-            <li><a href="#threshold-js-tab" data-toggle="tab">JS</a></li>
-        </ul>
+                    <!-- form:trigger -->
+                    <section>
+                        <h3 id="form-trigger">trigger: String</h3>
+                        <p>The event which is fired to validating all fields when the live validating mode is enabled. If you need multiple events are fired, then separate them by a space.</p>
+                        <p>It's also possible to set trigger option for each field. Look at the <a href="#field-trigger">field trigger</a> section.</p>
+                    </section>
+                    <!-- /form:trigger -->
+                </section>
+                <!-- /form -->
 
-        <div class="tab-content">
-            <div class="tab-pane active" id="threshold-form-tab">
-                <form id="thresholdForm" class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">Full name</label>
-                        <div class="col-lg-5">
-                            <input type="text" class="form-control" name="fullname" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">Gender</label>
-                        <div class="col-lg-5">
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="gender" value="male" /> Male
-                                </label>
+                <!-- field -->
+                <section>
+                    <h2 id="field-settings">Field Settings</h2>
+                    <p>Below is the list of field settings:</p>
+
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Option</th>
+                                <th>Equivalent HTML attribute</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>enabled</code></td>
+                                <td>n/a</td>
+                            </tr>
+                            <tr>
+                                <td><code>message</code></td>
+                                <td><code>data-bv-message</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>container</code></td>
+                                <td><code>data-bv-container</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>selector</code></td>
+                                <td><code>data-bv-selector</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>threshold</code></td>
+                                <td><code>data-bv-threshold</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>trigger</code></td>
+                                <td><code>data-bv-trigger</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <section>
+                        <h3 id="field-enabled">enabled: Boolean</h3>
+                        <p>Enable or disable the field validators</p>
+                    </section>
+
+                    <section>
+                        <h3 id="field-message">message: String</h3>
+                        <td>The default error message for the field</td>
+                    </section>
+
+                    <!-- field:container -->
+                    <section>
+                        <h3 id="field-container">container: String</h3>
+                        <p>The CSS selector to indicate the element showing the error messages.</p>
+
+                        <h4 id="field-container-example">Example</h4>
+                        <p>The following form illustrates an usage of the <code>container</code> option. The error messages are shown in the element defined by a CSS selector.</p>
+
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#container-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#container-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#container-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="container-form-tab">
+                                    <form id="containerForm" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Full name</label>
+                                            <div class="col-lg-4">
+                                                <input type="text" class="form-control" name="firstName" placeholder="First name" />
+                                                <span class="help-block" id="firstNameMessage"></span>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <input type="text" class="form-control" name="lastName" placeholder="Last name" />
+                                                <span class="help-block lastNameMessage"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Username</label>
+                                            <div class="col-lg-5">
+                                                <input type="text" class="form-control" name="username" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane" id="container-html-tab">
+                                    <pre><code class="xml">&lt;form id="containerForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Full name&lt;/label>
+        &lt;div class="col-lg-4">
+            &lt;input type="text" class="form-control" name="firstName" placeholder="First name" />
+            <span class="bv-note">&lt;span class="help-block" id="firstNameMessage">&lt;/span></span>
+        &lt;/div>
+        &lt;div class="col-lg-4">
+            &lt;input type="text" class="form-control" name="lastName" placeholder="Last name" />
+            <span class="bv-note">&lt;span class="help-block lastNameMessage">&lt;/span></span>
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Username&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="username" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+                                </div>
+
+                                <div class="tab-pane" id="container-js-tab">
+                                    <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#containerForm').bootstrapValidator({
+        fields: {
+            firstName: {
+                <span class="bv-note">container: '#firstNameMessage'</span>,
+                validators: {
+                    ...
+                }
+            },
+            lastName: {
+                <span class="bv-note">container: '.lastNameMessage'</span>,
+                validators: {
+                    ...
+                }
+            },
+            username: {
+                validators: {
+                    ...
+                }
+            }
+        }
+    });
+});
+&lt;/script></code></pre>
+                                </div>
                             </div>
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="gender" value="female" /> Female
-                                </label>
-                            </div>
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="gender" value="other" /> Other
-                                </label>
-                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">Phone number</label>
-                        <div class="col-lg-5">
-                            <input type="text" class="form-control" name="phone" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">Address</label>
-                        <div class="col-lg-5">
-                            <input type="text" class="form-control" name="address" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-lg-9 col-lg-offset-3">
-                            <button type="submit" class="btn btn-primary">Validate</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+                    </section>
+                    <!-- /field:container -->
 
-            <div class="tab-pane" id="threshold-html-tab">
-                <pre><code class="xml">&lt;form id="thresholdForm" class="form-horizontal">
+                    <!-- field:selector -->
+                    <section>
+                        <h3 id="field-selector">selector: String</h3>
+                        <p>The CSS selector to indicate the field. It is used in case that it's not possible to use the <code>name</code> attribute for the field.</p>
+
+                        <h4 id="field-selector-example">Example</h4>
+                        <p>Instead of using the <code>name</code> attribute, the following form uses the <code>selector</code> option to define the fields:</p>
+
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#selector-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#selector-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#selector-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="selector-form-tab">
+                                    <form id="paymentForm" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Credit card number</label>
+                                            <div class="col-lg-5">
+                                                <input type="text" class="form-control" id="ccNumber" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Expiration</label>
+                                            <div class="col-lg-2">
+                                                <input type="text" class="form-control" placeholder="Month" data-stripe="exp-month" />
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <input type="text" class="form-control" placeholder="Year" data-stripe="exp-year" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">CVV</label>
+                                            <div class="col-lg-2">
+                                                <input type="text" class="form-control cvvNumber" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane" id="selector-html-tab">
+                                    <pre><code class="xml">&lt;form id="paymentForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Credit card number&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" <span class="bv-note">id="ccNumber"</span> />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Expiration&lt;/label>
+        &lt;div class="col-lg-2">
+            &lt;input type="text" class="form-control" placeholder="Month" <span class="bv-note">data-stripe="exp-month"</span> />
+        &lt;/div>
+        &lt;div class="col-lg-2">
+            &lt;input type="text" class="form-control" placeholder="Year" <span class="bv-note">data-stripe="exp-year"</span> />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">CVV&lt;/label>
+        &lt;div class="col-lg-2">
+            &lt;input type="text" class="form-control <span class="bv-note">cvvNumber</span>" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+                                </div>
+
+                                <div class="tab-pane" id="selector-js-tab">
+                                    <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#paymentForm').bootstrapValidator({
+        fields: {
+            ccNumber: {
+                <span class="bv-note">selector: '#ccNumber'</span>,
+                validators: {
+                    ...
+                }
+            },
+            expMonth: {
+                <span class="bv-note">selector: '[data-stripe="exp-month"]'</span>,
+                validators: {
+                    ...
+                }
+            },
+            expYear: {
+                <span class="bv-note">selector: '[data-stripe="exp-year"]'</span>,
+                validators: {
+                    ...
+                }
+            },
+            cvvNumber: {
+                <span class="bv-note">selector: '.cvvNumber'</span>,
+                validators: {
+                    ...
+                }
+            }
+        }
+    });
+});
+&lt;/script></code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>As you see, the field can be defined by a ID (<code>#ccNumber</code>), class (<code>.cvvNumber</code>) or attribute (<code>[data-stripe="exp-month"]</code>) selector.</p>
+                    </section>
+                    <!-- /field:selector -->
+
+                    <!-- field:threshold -->
+                    <section>
+                        <h3 id="field-threshold">threshold: Number</h3>
+                        <p>Do not live validate field until the length of field value exceed this number.</p>
+
+                        <h4 id="field-threshold-example">Example</h4>
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#threshold-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#threshold-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#threshold-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="threshold-form-tab">
+                                    <form id="thresholdForm" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Full name</label>
+                                            <div class="col-lg-5">
+                                                <input type="text" class="form-control" name="fullname" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Gender</label>
+                                            <div class="col-lg-5">
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="gender" value="male" /> Male
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="gender" value="female" /> Female
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="gender" value="other" /> Other
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Phone number</label>
+                                            <div class="col-lg-5">
+                                                <input type="text" class="form-control" name="phone" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Address</label>
+                                            <div class="col-lg-5">
+                                                <input type="text" class="form-control" name="address" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-lg-9 col-lg-offset-3">
+                                                <button type="submit" class="btn btn-primary">Validate</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane" id="threshold-html-tab">
+                                    <pre><code class="xml">&lt;form id="thresholdForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Full name&lt;/label>
         &lt;div class="col-lg-5">
@@ -607,9 +952,10 @@ $(document).ready(function() {
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-            </div>
+                                </div>
 
-            <div class="tab-pane" id="threshold-js-tab"><pre><code class="xml javascript">&lt;script>
+                                <div class="tab-pane" id="threshold-js-tab">
+                                    <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#thresholdForm').bootstrapValidator({
         message: 'This value is not valid',
@@ -618,11 +964,11 @@ $(document).ready(function() {
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
-        <span class="doc-example-note">// Set default threshold for all fields. It is null by default
+        <span class="bv-note">// Set default threshold for all fields. It is null by default
         threshold: 3,</span>
         fields: {
             fullname: {
-                <span class="doc-example-note">threshold: 10,</span>
+                <span class="bv-note">threshold: 10,</span>
                 validators: {
                     notEmpty: {
                         message: 'The full name is required'
@@ -630,7 +976,7 @@ $(document).ready(function() {
                 }
             },
             gender: {
-                <span class="doc-example-note">// The threshold option does not effect to the elements
+                <span class="bv-note">// The threshold option does not effect to the elements
                 // which user cannot type in, such as radio, checkbox, select, etc.
                 threshold: 5,</span>
                 validators: {
@@ -640,7 +986,7 @@ $(document).ready(function() {
                 }
             },
             phone: {
-                <span class="doc-example-note">threshold: 5,</span>
+                <span class="bv-note">threshold: 5,</span>
                 validators: {
                     notEmpty: {
                         message: 'The phone number is required'
@@ -652,7 +998,7 @@ $(document).ready(function() {
                 }
             },
             address: {
-                <span class="doc-example-note">// The threshold option is not set
+                <span class="bv-note">// The threshold option is not set
                 // It will be taken from the form option (which is 3 in this example)</span>
                 validators: {
                     notEmpty: {
@@ -664,341 +1010,56 @@ $(document).ready(function() {
     });
 });
 &lt;/script></code></pre>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="trigger">
-    <h2>trigger</h2>
-    <p>The event which is fired to validating all fields when the live validating mode is enabled. If you need multiple events are fired, then separate them by a space.</p>
-    <p>It's also possible to set trigger option for each field. Look at the <a href="#fields">fields</a> section.</p>
-</section>
-
-<section id="fields">
-    <h2>fields</h2>
-    <p>The fields which need to be validated.</p>
-
-    <pre><code class="javascript">fields: {
-    ...
-    &lt;fieldName>: {
-        enabled: true,
-        message: 'This value is not valid',
-        container: null,
-        selector: null,
-        trigger: null,
-
-        // Map the validator name with its options
-        validators: {
-            ...
-            &lt;validatorName>: &lt;validatorOptions>
-            ...
-        }
-    }
-    ...
-}</code></pre>
-    <p>Replace the <code>&lt;fieldName></code> with the field name, which is the value of <code>name</code> attribute. If the field cannot be defined by the <code>name</code> attribute, you can use the <code>selector</code> option described below.</p>
-    <p>The validator options for each field include:</p>
-
-    <table class="table table-condensed">
-        <thead>
-            <tr>
-                <th>Option</th>
-                <th>Equivalent HTML attribute</th>
-                <th>Type</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>enabled</code></td>
-                <td>n/a</td>
-                <td>Boolean</td>
-                <td>Enable or disable the field validators</td>
-            </tr>
-            <tr>
-                <td><code>message</code></td>
-                <td><code>data-bv-message</code></td>
-                <td>String</td>
-                <td>The default error message for the field</td>
-            </tr>
-            <tr>
-                <td><code>container</code></td>
-                <td><code>data-bv-container</code></td>
-                <td>String</td>
-                <td>The CSS selector to indicate the element showing the error messages. Take a look at <a href="#container-example">container</a> example below.</td>
-            </tr>
-            <tr>
-                <td><code>selector</code></td>
-                <td><code>data-bv-selector</code></td>
-                <td>String</td>
-                <td>The CSS selector to indicate the field. It is used in case that it's not possible to use the <code>name</code> attribute for the field. Take a look at <a href="#selector-example">selector</a> example below.</td>
-            </tr>
-            <tr>
-                <td><code>threshold</code></td>
-                <td><code>data-bv-threshold</code></td>
-                <td>String</td>
-                <td>Do not live validate field until the length of field value exceed this number</td>
-            </tr>
-            <tr>
-                <td><code>trigger</code></td>
-                <td><code>data-bv-trigger</code></td>
-                <td>String</td>
-                <td>
-                    <p>The field events (separated by a space) which are fired when the live validating mode is enabled.</p>
-                    <p>For example, <code>trigger="focus blur"</code> means that the field will be validated when user focus on or leave the focus off the field. See the <a href="#trigger-example">trigger</a> example.</p>
-                </td>
-            </tr>
-            <tr>
-                <td><code>validators</code></td>
-                <td>n/a</td>
-                <td>Object</td>
-                <td>Map the validator name <code>&lt;validatorName></code> with validator options <code>&lt;validatorOptions></code></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <p>The <code>&lt;validatorName></code> can be the name of the built-in validator which are described in the <a href="/validators/">Validators</a> page.</p>
-
-    <section id="container-example">
-        <h3>container example</h3>
-
-        <p>The following form illustrates an usage of the <code>container</code> option. The error messages are shown in the element defined by a CSS selector.</p>
-
-        <div class="doc-example">
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#container-form-tab" data-toggle="tab">Try it</a></li>
-                <li><a href="#container-html-tab" data-toggle="tab">HTML</a></li>
-                <li><a href="#container-js-tab" data-toggle="tab">JS</a></li>
-            </ul>
-
-            <div class="tab-content">
-                <div class="tab-pane active" id="container-form-tab">
-                    <form id="containerForm" class="form-horizontal">
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Full name</label>
-                            <div class="col-lg-4">
-                                <input type="text" class="form-control" name="firstName" placeholder="First name" />
-                                <span class="help-block" id="firstNameMessage"></span>
-                            </div>
-                            <div class="col-lg-4">
-                                <input type="text" class="form-control" name="lastName" placeholder="Last name" />
-                                <span class="help-block lastNameMessage"></span>
+                                </div>
                             </div>
                         </div>
+                    </section>
+                    <!-- /field:threshold -->
 
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Username</label>
-                            <div class="col-lg-5">
-                                <input type="text" class="form-control" name="username" />
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                    <!-- field:trigger -->
+                    <section>
+                        <h3 id="field-trigger">trigger: String</h3>
+                        <p>The field events (separated by a space) which are fired when the live validating mode is enabled.</p>
+                        <p>For example, <code>trigger="focus blur"</code> means that the field will be validated when user focus on or leave the focus off the field.</p>
 
-                <div class="tab-pane" id="container-html-tab">
-                    <pre><code class="xml">&lt;form id="containerForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Full name&lt;/label>
-        &lt;div class="col-lg-4">
-            &lt;input type="text" class="form-control" name="firstName" placeholder="First name" />
-            <span class="doc-example-note">&lt;span class="help-block" id="firstNameMessage">&lt;/span></span>
-        &lt;/div>
-        &lt;div class="col-lg-4">
-            &lt;input type="text" class="form-control" name="lastName" placeholder="Last name" />
-            <span class="doc-example-note">&lt;span class="help-block lastNameMessage">&lt;/span></span>
-        &lt;/div>
-    &lt;/div>
+                        <h4 id="field-trigger-example">Example</h4>
+                        <p>In the following form, the <i>Title</i> field will be validated while user type any character (<code>trigger="keyup"</code>). The <i>Summary</i> field will be validated when user lose the focus (<code>trigger="blur"</code>).</p>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Username&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="username" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
-                </div>
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#trigger-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#trigger-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#trigger-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
 
-                <div class="tab-pane" id="container-js-tab">
-                    <pre><code class="xml javascript">&lt;script>
-$(document).ready(function() {
-    $('#containerForm').bootstrapValidator({
-        fields: {
-            firstName: {
-                <span class="doc-example-note">container: '#firstNameMessage'</span>,
-                validators: {
-                    ...
-                }
-            },
-            lastName: {
-                <span class="doc-example-note">container: '.lastNameMessage'</span>,
-                validators: {
-                    ...
-                }
-            },
-            username: {
-                validators: {
-                    ...
-                }
-            }
-        }
-    });
-});
-&lt;/script></code></pre>
-                </div>
-            </div>
-        </div>
-    </section>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="trigger-form-tab">
+                                    <form id="triggerForm" method="post" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Title</label>
+                                            <div class="col-lg-5">
+                                                <input type="text" class="form-control" name="title" />
+                                            </div>
+                                        </div>
 
-    <section id="selector-example">
-        <h3>selector example</h3>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Summary</label>
+                                            <div class="col-lg-5">
+                                                <textarea rows="5" class="form-control" name="summary"></textarea>
+                                            </div>
+                                        </div>
 
-        <p>Instead of using the <code>name</code> attribute, the following form uses the <code>selector</code> option to define the fields:</p>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Description</label>
+                                            <div class="col-lg-9">
+                                                <textarea rows="10" class="form-control" name="description"></textarea>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
 
-        <div class="doc-example">
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#selector-form-tab" data-toggle="tab">Try it</a></li>
-                <li><a href="#selector-html-tab" data-toggle="tab">HTML</a></li>
-                <li><a href="#selector-js-tab" data-toggle="tab">JS</a></li>
-            </ul>
-
-            <div class="tab-content">
-                <div class="tab-pane active" id="selector-form-tab">
-                    <form id="paymentForm" class="form-horizontal">
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Credit card number</label>
-                            <div class="col-lg-5">
-                                <input type="text" class="form-control" id="ccNumber" />
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Expiration</label>
-                            <div class="col-lg-2">
-                                <input type="text" class="form-control" placeholder="Month" data-stripe="exp-month" />
-                            </div>
-                            <div class="col-lg-2">
-                                <input type="text" class="form-control" placeholder="Year" data-stripe="exp-year" />
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">CVV</label>
-                            <div class="col-lg-2">
-                                <input type="text" class="form-control cvvNumber" />
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="tab-pane" id="selector-html-tab">
-                    <pre><code class="xml">&lt;form id="paymentForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Credit card number&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" <span class="doc-example-note">id="ccNumber"</span> />
-        &lt;/div>
-    &lt;/div>
-
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Expiration&lt;/label>
-        &lt;div class="col-lg-2">
-            &lt;input type="text" class="form-control" placeholder="Month" <span class="doc-example-note">data-stripe="exp-month"</span> />
-        &lt;/div>
-        &lt;div class="col-lg-2">
-            &lt;input type="text" class="form-control" placeholder="Year" <span class="doc-example-note">data-stripe="exp-year"</span> />
-        &lt;/div>
-    &lt;/div>
-
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">CVV&lt;/label>
-        &lt;div class="col-lg-2">
-            &lt;input type="text" class="form-control <span class="doc-example-note">cvvNumber</span>" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
-                </div>
-
-                <div class="tab-pane" id="selector-js-tab">
-                    <pre><code class="xml javascript">&lt;script>
-$(document).ready(function() {
-    $('#paymentForm').bootstrapValidator({
-        fields: {
-            ccNumber: {
-                <span class="doc-example-note">selector: '#ccNumber'</span>,
-                validators: {
-                    ...
-                }
-            },
-            expMonth: {
-                <span class="doc-example-note">selector: '[data-stripe="exp-month"]'</span>,
-                validators: {
-                    ...
-                }
-            },
-            expYear: {
-                <span class="doc-example-note">selector: '[data-stripe="exp-year"]'</span>,
-                validators: {
-                    ...
-                }
-            },
-            cvvNumber: {
-                <span class="doc-example-note">selector: '.cvvNumber'</span>,
-                validators: {
-                    ...
-                }
-            }
-        }
-    });
-});
-&lt;/script></code></pre>
-                </div>
-            </div>
-        </div>
-
-        <p>As you see, the field can be defined by a ID (<code>#ccNumber</code>), class (<code>.cvvNumber</code>) or attribute (<code>[data-stripe="exp-month"]</code>) selector.</p>
-    </section>
-
-    <section id="trigger-example">
-        <h3>trigger example</h3>
-
-        <p>In the following form, the <i>Title</i> field will be validated while user type any character (<code>trigger="keyup"</code>). The <i>Summary</i> field will be validated when user lose the focus (<code>trigger="blur"</code>).</p>
-
-        <div class="doc-example">
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#trigger-form-tab" data-toggle="tab">Try it</a></li>
-                <li><a href="#trigger-html-tab" data-toggle="tab">HTML</a></li>
-                <li><a href="#trigger-js-tab" data-toggle="tab">JS</a></li>
-            </ul>
-
-            <div class="tab-content">
-                <div class="tab-pane active" id="trigger-form-tab">
-                    <form id="triggerForm" method="post" class="form-horizontal">
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Title</label>
-                            <div class="col-lg-5">
-                                <input type="text" class="form-control" name="title" />
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Summary</label>
-                            <div class="col-lg-5">
-                                <textarea rows="5" class="form-control" name="summary"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Description</label>
-                            <div class="col-lg-9">
-                                <textarea rows="10" class="form-control" name="description"></textarea>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="tab-pane" id="trigger-html-tab">
-                    <pre><code class="xml">&lt;form id="triggerForm" method="post" class="form-horizontal">
+                                <div class="tab-pane" id="trigger-html-tab">
+                                    <pre><code class="xml">&lt;form id="triggerForm" method="post" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Title&lt;/label>
         &lt;div class="col-lg-5">
@@ -1020,10 +1081,10 @@ $(document).ready(function() {
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-                </div>
+                                </div>
 
-                <div class="tab-pane" id="trigger-js-tab">
-                    <pre><code class="xml javascript">&lt;script>
+                                <div class="tab-pane" id="trigger-js-tab">
+                                    <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#triggerForm').bootstrapValidator({
         message: 'This value is not valid',
@@ -1034,7 +1095,7 @@ $(document).ready(function() {
         },
         fields: {
             title: {
-                <span class="doc-example-note">trigger: 'keyup'</span>,
+                <span class="bv-note">trigger: 'keyup'</span>,
                 validators: {
                     notEmpty: {
                         message: 'The title is required'
@@ -1042,7 +1103,7 @@ $(document).ready(function() {
                 }
             },
             summary: {
-                <span class="doc-example-note">trigger: 'blur'</span>,
+                <span class="bv-note">trigger: 'blur'</span>,
                 validators: {
                     notEmpty: {
                         message: 'The summary is required'
@@ -1060,11 +1121,44 @@ $(document).ready(function() {
     });
 });
 &lt;/script></code></pre>
-                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- /field:trigger -->
+                </section>
+                <!-- /field -->
+
+                <!-- validator -->
+                <section>
+                    <h2 id="validator-settings">Validator Settings</h2>
+                    <p>The following table shows the common settings for validators (when using it, replace <code>{validatorname}</code> with the validator name). For specific settings of each validator, please look at its documentation.</p>
+
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Option</th>
+                                <th>Equivalent HTML attribute</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>message</code></td>
+                                <td><code>data-bv-{validatorname}-message</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <section>
+                        <h3 id="validator-message">message: String</h3>
+                        <td>The error message of validator for field.</td>
+                    </section>
+                </section>
+                <!-- /validator -->
             </div>
         </div>
-    </section>
-</section>
+    </div>
+</div>
 
 <script src="/vendor/momentjs/moment.min.js"></script>
 <script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>

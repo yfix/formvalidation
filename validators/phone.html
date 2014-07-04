@@ -1,5 +1,5 @@
 ---
-layout:           default
+layout:           doc
 title:            Validate a phone number
 permalink:        /validators/phone/
 previous_section: /validators/numeric/
@@ -9,38 +9,66 @@ related:
     - zipCode
 ---
 
-<section class="doc-heading">
-    <h1><a href="/validators/">Validators</a> / phone</h1>
-    {% include edit-button.html %}
-</section>
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/validators/">Validators</a> / phone</h1>
+                <p>Validate a phone number by a country code.</p>
+            </div>
 
-<section>
-    <p>Validate a phone number by a country code.</p>
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <table class="table table-condensed">
-        <thead>
-            <tr>
-                <th>Option</th>
-                <th>Equivalent HTML attribute</th>
-                <th>Type</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>message</code></td>
-                <td><code>data-bv-phone-message</code></td>
-                <td>String</td>
-                <td>The error message</td>
-            </tr>
-            <tr>
-                <td><code>country</code></td>
-                <td><code>data-bv-phone-country</code></td>
-                <td>String</td>
-                <td>A ISO 3166 country code. Currently the validator supports United State (US) only.</td>
-            </tr>
-        </tbody>
-    </table>
-</section>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                <ul>
+                    <li><a href="#options">Options</a></li>
+                    <li><a href="#related-validators">Related validators</a></li>
+                </ul>
+            </div>
+        </div>
 
-{% include related.html %}
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2 id="options">Options</h2>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Option</th>
+                                <th>Equivalent HTML attribute</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>message</code></td>
+                                <td><code>data-bv-phone-message</code></td>
+                                <td>String</td>
+                                <td>The error message</td>
+                            </tr>
+                            <tr>
+                                <td><code>country</code></td>
+                                <td><code>data-bv-phone-country</code></td>
+                                <td>String</td>
+                                <td>A ISO 3166 country code. Currently the validator supports United State (US) only.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                {% include related.html %}
+            </div>
+        </div>
+    </div>
+</div>

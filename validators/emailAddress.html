@@ -1,5 +1,5 @@
 ---
-layout:           default
+layout:           doc
 title:            Validate an email address
 permalink:        /validators/emailAddress/
 previous_section: /validators/ean/
@@ -29,80 +29,104 @@ examples:
     - this\ still\"not\\allowed@example.com
 ---
 
-<section class="doc-heading">
-    <h1><a href="/validators/">Validators</a> / emailAddress</h1>
-    {% include edit-button.html %}
-</section>
-
-<section>
-    <p>Validate an email address.</p>
-
-    <table class="table table-condensed">
-        <thead>
-            <tr>
-                <th>Option</th>
-                <th>Equivalent HTML attribute</th>
-                <th>Type</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>message</code></td>
-                <td><code>data-bv-emailaddress-message</code></td>
-                <td>String</td>
-                <td>The error message</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="doc-box-info">
-        This validator passes an empty field since the field might be optional. If the field is required, then use the <a href="/validators/notEmpty/"><code>notEmpty</code> validator</a>.
-    </div>
-</section>
-
-<section id="example">
-    <h2>Example</h2>
-
-    <table class="table table-condensed">
-        <thead>
-            <tr>
-                <th>Email address</th>
-                <th>Result</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for email in page.examples %}
-            <tr>
-                <td><a href="javascript: void(0);" class="sample">{{ email }}</a></td>
-                <td><i class="fa"></i></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-    <div class="doc-example">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#email-form-tab" data-toggle="tab">Try it</a></li>
-            <li><a href="#email-html-tab" data-toggle="tab">HTML</a></li>
-            <li><a href="#email-js-tab" data-toggle="tab">JS</a></li>
-            <li><a href="#email-html5-tab" data-toggle="tab">HTML 5</a></li>
-        </ul>
-
-        <div class="tab-content">
-            <div class="tab-pane active" id="email-form-tab">
-                <form id="emailForm" class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">Email address</label>
-                        <div class="col-lg-7">
-                            <input type="text" class="form-control" name="email" />
-                        </div>
-                    </div>
-                </form>
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/validators/">Validators</a> / emailAddress</h1>
+                <p>Validate an email address.</p>
             </div>
 
-            <div class="tab-pane" id="email-html-tab">
-                <pre><code class="xml">&lt;form id="emailForm" class="form-horizontal">
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                <ul>
+                    <li><a href="#options">Options</a></li>
+                    <li><a href="#example">Example</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2 id="options">Options</h2>
+                        <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Option</th>
+                                <th>Equivalent HTML attribute</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>message</code></td>
+                                <td><code>data-bv-emailaddress-message</code></td>
+                                <td>String</td>
+                                <td>The error message</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="bv-box bv-box-info">
+                        This validator passes an empty field since the field might be optional. If the field is required, then use the <a href="/validators/notEmpty/"><code>notEmpty</code> validator</a>.
+                    </div>
+                </section>
+
+                <section>
+                    <h2 id="example">Example</h2>
+
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Email address</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for email in page.examples %}
+                            <tr>
+                                <td><a href="javascript: void(0);" class="sample">{{ email }}</a></td>
+                                <td><i class="fa"></i></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <div class="bv-example">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#email-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#email-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#email-js-tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#email-html5-tab" data-toggle="tab">HTML 5</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="email-form-tab">
+                                <form id="emailForm" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Email address</label>
+                                        <div class="col-lg-7">
+                                            <input type="text" class="form-control" name="email" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane" id="email-html-tab">
+                                <pre><code class="xml">&lt;form id="emailForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Email address&lt;/label>
         &lt;div class="col-lg-7">
@@ -110,10 +134,10 @@ examples:
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-            </div>
+                            </div>
 
-            <div class="tab-pane" id="email-js-tab">
-                <pre><code class="xml javascript">&lt;script>
+                            <div class="tab-pane" id="email-js-tab">
+                                <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#emailForm').bootstrapValidator({
         feedbackIcons: {
@@ -124,7 +148,7 @@ $(document).ready(function() {
         fields: {
             email: {
                 validators: {
-                    <span class="doc-example-note">emailAddress: {
+                    <span class="bv-note">emailAddress: {
                         message: 'The value is not a valid email address'
                     }</span>
                 }
@@ -133,20 +157,20 @@ $(document).ready(function() {
     });
 });
 &lt;/script></code></pre>
-            </div>
+                            </div>
 
-            <div class="tab-pane" id="email-html5-tab">
-                <pre><code class="xml">&lt;form id="emailForm" class="form-horizontal">
+                            <div class="tab-pane" id="email-html5-tab">
+                                <pre><code class="xml">&lt;form id="emailForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Email address&lt;/label>
         &lt;div class="col-lg-5">
             &lt;input class="form-control" name="email"
-                <span class="doc-example-note">type="email"
+                <span class="bv-note">type="email"
                 data-bv-emailaddress-message="The value is not a valid email address"</span> />
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-                <pre><code class="xml javascript">&lt;script>
+                                <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#emailForm').bootstrapValidator({
         feedbackIcons: {
@@ -157,12 +181,16 @@ $(document).ready(function() {
     });
 });
 &lt;/script></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {% include related.html %}
             </div>
         </div>
     </div>
-</section>
-
-{% include related.html %}
+</div>
 
 <script>
 $(document).ready(function() {

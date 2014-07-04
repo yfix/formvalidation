@@ -1,66 +1,89 @@
 ---
-layout:           default
+layout:           doc
 title:            Getting Started
 permalink:        /getting-started/
 comments:         true
 previous_section: /
 next_section:     /settings/
-sections:
-    - title:  Download
-      anchor: download
-    - title:  What's Included?
-      anchor: whats-included
-    - title:  Usage
-      anchor: usage
-    - title:  Including Library
-      anchor: including-library
-    - title:  Writing Form
-      anchor: writing-form
-    - title:  Calling Plugin
-      anchor: calling-plugin
 ---
 
-<section class="doc-heading">
-    <h1>Getting Started</h1>
-    {% include edit-button.html %}
-</section>
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>Getting Started</h1>
+                <p>Getting used with BootstrapValidator</p>
+            </div>
 
-<!-- Download -->
-<section id="download">
-    <h2>Download</h2>
-    <p>Choose the package you want to download:</p>
-
-    <div class="row">
-        <div class="col-sm-4">
-            <h3>Release</h3>
-            <p>Including the plugin, its validator source and minified versions.<br />It should be used in the production site.</p>
-            <p><a class="btn btn-lg btn-primary" href="{{ site.download.dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download release']);"><i class="fa fa-download"></i> Download v{{ site.current_version }}</a></p>
-        </div>
-        <div class="col-sm-4">
-            <h3>Source code</h3>
-            <p>Including the source code, examples and building script. Download if you want to play with or develop new validators.</p>
-            <a class="btn btn-lg btn-primary" href="{{ site.download.tag }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);"><i class="fa fa-code"></i> Download Source</a>
-        </div>
-        <div class="col-sm-4">
-            <h3>Older versions</h3>
-            <p>For older versions, take a look at the <a href="/news/releases/">Releases</a> page.</p>
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
         </div>
     </div>
+</div>
 
-    <p>See <a href="/news/2014/05/15/v0.4.5-released/">what's news</a> in v{{ site.current_version }}, released on {{ site.released_date }}</p>
 
-    <h3>Installing with Bower</h3>
-    <p>It's also possible to get the latest release from <a href="http://bower.io">bower</a>:</p>
-    <pre><code class="bash">$ bower install bootstrapValidator</code></pre>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                <ul>
+                    <li><a href="#download">Download</a></li>
+                    <li><a href="#whats-included">What's Included</a></li>
+                    <li>
+                        <a href="#usage">Usage</a>
+                        <ul>
+                            <li><a href="#including-library">Including Library</a></li>
+                            <li><a href="#writing-form">Writing Form</a></li>
+                            <li><a href="#calling-plugin">Calling Plugin</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
-    <p>BootstrapValidator also can be found on the official <a href="{{ site.jquery_plugin_url }}">jQuery plugins page</a>.</p>
-</section>
+        <div class="col-md-9">
+            <div class="bv-content">
+                <!-- download -->
+                <section>
+                    <h2 id="download">Download</h2>
 
-<!-- What's included -->
-<section id="whats-included">
-    <h2>What's Included?</h2>
+                    <p>Choose the package you want to download:</p>
 
-    <pre><code>bootstrapvalidator/
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h3>Release</h3>
+                            <p>Including the plugin, its validator source and minified versions.<br />It should be used in the production site.</p>
+                            <p><a class="btn btn-lg btn-primary" href="{{ site.download.dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download release']);"><i class="fa fa-download"></i> Download v{{ site.current_version }}</a></p>
+                        </div>
+                        <div class="col-sm-4">
+                            <h3>Source code</h3>
+                            <p>Including the source code, examples and building script. Download if you want to play with or develop new validators.</p>
+                            <a class="btn btn-lg btn-primary" href="{{ site.download.tag }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);"><i class="fa fa-code"></i> Download Source</a>
+                        </div>
+                        <div class="col-sm-4">
+                            <h3>Older versions</h3>
+                            <p>For older versions, take a look at the <a href="/news/releases/">Releases</a> page.</p>
+                        </div>
+                    </div>
+
+                    <!--<p>See <a href="/news/2014/05/15/v0.4.5-released/">what's news</a> in v{{ site.current_version }}, released on {{ site.released_date }}</p>-->
+
+                    <h3>Installing with Bower</h3>
+                    <p>It's also possible to get the latest release from <a href="http://bower.io">bower</a>:</p>
+                    <pre><code class="bash">$ bower install bootstrapValidator</code></pre>
+
+                    <p>BootstrapValidator also can be found on the official <a href="{{ site.jquery_plugin_url }}">jQuery plugins page</a>.</p>
+                </section>
+
+                <!-- included -->
+                <section>
+                    <h2 id="whats-included">What's Included?</h2>
+                    <p>The package consists of the following files:</p>
+
+                    <pre><code>bootstrapvalidator/
 ├── dist
 │   ├── css
 │   │   ├── bootstrapValidator.css
@@ -80,27 +103,29 @@ sections:
         │   └── ...
         └── bootstrapValidator.js</code></pre>
 
-    <p>The <code>src</code> directory consists of the original source files. <code>src/js/bootstrapValidator.js</code> is not compressed and doesn't include any validators.</p>
+                    <p>The <code>src</code> directory consists of the original source files. <code>src/js/bootstrapValidator.js</code> is not compressed and doesn't include any validators.</p>
 
-    <p>The <code>dist</code> directory consists of files which is combined and compressed.
-    <code>dist/js/bootstrapValidator(.min).js</code> includes all validators. It should be used in the production site.</p>
-</section>
+                    <p>The <code>dist</code> directory consists of files which is combined and compressed.
+                    <code>dist/js/bootstrapValidator(.min).js</code> includes all validators. It should be used in the production site.</p>
+                </section>
 
-<!-- Usage -->
-<section id="usage">
-    <h2>Usage</h2>
-    <p>It takes only 3 steps to use the plugin:</p>
+                <!-- usage -->
+                <section>
+                    <h2 id="usage">Usage</h2>
+                    <p>It takes only 3 steps to use the plugin:</p>
 
-    <h3 id="including-library">Including Library</h3>
-    <p>Since the BootstrapValidator plugin requires jQuery and Bootstrap 3, you have to include the required CSS and JS files to your page:</p>
-    <pre><code class="xml">&lt;link rel="stylesheet" href="/path/to/bootstrap/css/bootstrap.css"/>
+                    <!-- including -->
+                    <section>
+                        <h3 id="including-library">Including Library</h3>
+                        <p>Since the BootstrapValidator plugin requires jQuery and Bootstrap 3, you have to include the required CSS and JS files to your page:</p>
+                        <pre><code class="xml">&lt;link rel="stylesheet" href="/path/to/bootstrap/css/bootstrap.css"/>
 &lt;link rel="stylesheet" href="/path/to/dist/css/bootstrapValidator.min.css"/>
 
 &lt;script type="text/javascript" src="/path/to/jquery/jquery-1.10.2.min.js">&lt;/script>
 &lt;script type="text/javascript" src="/path/to/bootstrap/js/bootstrap.min.js">&lt;/script></code></pre>
 
-    <p>Next, requires the plugin javascript file:</p>
-    <pre><code class="xml">// Either use the compressed version (recommended in the production site)
+                        <p>Next, requires the plugin javascript file:</p>
+                        <pre><code class="xml">// Either use the compressed version (recommended in the production site)
 &lt;script type="text/javascript" src="/path/to/dist/js/bootstrapValidator.min.js">&lt;/script>
 
 // Or use the original one with all validators included
@@ -109,49 +134,52 @@ sections:
 // Or use the plugin with required validators
 &lt;script type="text/javascript" src="/path/to/src/js/bootstrapValidator.js">&lt;/script>
 &lt;script type="text/javascript" src="/path/to/src/js/validator/...validator...">&lt;/script></code></pre>
+                    </section>
 
-    <h3 id="writing-form">Writing Form</h3>
-    <p>Since BootstrapValidator is designed to use with Bootstrap, your form must be structured using Bootstrap classes.</p>
+                    <!-- writing-form -->
+                    <section>
+                        <h3 id="writing-form">Writing Form</h3>
+                        <p>Since BootstrapValidator is designed to use with Bootstrap, your form must be structured using Bootstrap classes.</p>
 
-    <p class="doc-box-warning">
-        If your form is NOT structured by Bootstrap classes (the element containing field and associated label does NOT have <code>form-group</code> class), you will see the following error in the Console:<br/>
-        <code>Uncaught RangeError: Maximum call stack size exceeded</code>
-    </p>
+                        <div class="bv-box bv-box-warning">
+                            <p>If your form is NOT structured by Bootstrap classes (the element containing field and associated label does NOT have <code>form-group</code> class), you will see the following error in the Console:</p>
+                            <code>Uncaught RangeError: Maximum call stack size exceeded</code>
+                        </div>
 
-    <div class="doc-box-warning">
-        <p>Do not use the properties of a form, such as <code>submit</code>, <code>reset</code>, <code>length</code>, <code>method</code> to set the <code>name</code> or <code>id</code> attribute of form, field elements. Name conflicts can cause the problem.</p>
-        <p>For example, you cannot submit the form after validating if use <code>submit</code> to name the Submit button:</p>
-        <pre><code class="xml">&lt;button type="submit" name="submit" class="btn btn-primary">Submit&lt;/button></code></pre>
+                        <div class="bv-box bv-box-warning">
+                            <p>Do not use the properties of a form, such as <code>submit</code>, <code>reset</code>, <code>length</code>, <code>method</code> to set the <code>name</code> or <code>id</code> attribute of form, field elements. Name conflicts can cause the problem.</p>
+                            <p>For example, you cannot submit the form after validating if use <code>submit</code> to name the Submit button:</p>
+                            <code class="xml">&lt;button type="submit" name="submit" class="btn btn-primary">Submit&lt;/button></code>
 
-        <p><a href="http://kangax.github.com/domlint/">DOMLint</a> has a complete list of rules to check the markup for these kind of problems.</p>
-    </div>
+                            <a href="http://kangax.github.com/domlint/">DOMLint</a> has a complete list of rules to check the markup for these kind of problems.
+                        </div>
 
-    <p>The plugin supports all possible kind of Bootstrap form, including:</p>
+                        <p>The plugin supports all possible kind of Bootstrap form, including:</p>
 
-    <h4>Basic Form</h4>
+                        <h4>Basic Form</h4>
 
-    <div class="doc-example">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#basic-form-tab" data-toggle="tab">Try it</a></li>
-            <li><a href="#basic-html-tab" data-toggle="tab">HTML</a></li>
-        </ul>
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#basic-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#basic-html-tab" data-toggle="tab">HTML</a></li>
+                            </ul>
 
-        <div class="tab-content">
-            <div class="tab-pane active" id="basic-form-tab">
-                <form class="registerForm">
-                    <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" class="form-control" name="username" />
-                    </div>
-                    <div class="form-group">
-                        <label>Email address</label>
-                        <input type="text" class="form-control" name="email" />
-                    </div>
-                </form>
-            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="basic-form-tab">
+                                    <form class="registerForm">
+                                        <div class="form-group">
+                                            <label>Username</label>
+                                            <input type="text" class="form-control" name="username" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email address</label>
+                                            <input type="text" class="form-control" name="email" />
+                                        </div>
+                                    </form>
+                                </div>
 
-            <div class="tab-pane" id="basic-html-tab">
-                <pre><code class="html">&lt;form>
+                                <div class="tab-pane" id="basic-html-tab">
+                                    <pre><code class="html">&lt;form>
     &lt;div class="form-group">
         &lt;label>Username&lt;/label>
         &lt;input type="text" class="form-control" name="username" />
@@ -161,32 +189,32 @@ sections:
         &lt;input type="text" class="form-control" name="email" />
     &lt;/div>
 &lt;/form></code></pre>
-            </div>
-        </div>
-    </div>
+                                </div>
+                            </div>
+                        </div>
 
-    <h4>Basic Form without Labels</h4>
+                        <h4>Basic Form without Labels</h4>
 
-    <div class="doc-example">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#basicwlabel-form-tab" data-toggle="tab">Try it</a></li>
-            <li><a href="#basicwlabel-html-tab" data-toggle="tab">HTML</a></li>
-        </ul>
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#basicwlabel-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#basicwlabel-html-tab" data-toggle="tab">HTML</a></li>
+                            </ul>
 
-        <div class="tab-content">
-            <div class="tab-pane active" id="basicwlabel-form-tab">
-                <form class="registerForm">
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="username" placeholder="Username" />
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="email" placeholder="Email address" />
-                    </div>
-                </form>
-            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="basicwlabel-form-tab">
+                                    <form class="registerForm">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="username" placeholder="Username" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="email" placeholder="Email address" />
+                                        </div>
+                                    </form>
+                                </div>
 
-            <div class="tab-pane" id="basicwlabel-html-tab">
-                <pre><code class="html">&lt;form>
+                                <div class="tab-pane" id="basicwlabel-html-tab">
+                                    <pre><code class="html">&lt;form>
     &lt;div class="form-group">
         &lt;input type="text" class="form-control" name="username" placeholder="Username" />
     &lt;/div>
@@ -194,31 +222,31 @@ sections:
         &lt;input type="text" class="form-control" name="email" placeholder="Email address" />
     &lt;/div>
 &lt;/form></code></pre>
-            </div>
-        </div>
-    </div>
+                                </div>
+                            </div>
+                        </div>
 
-    <h4>Inline Form</h4>
-    <div class="doc-example">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#inline-form-tab" data-toggle="tab">Try it</a></li>
-            <li><a href="#inline-html-tab" data-toggle="tab">HTML</a></li>
-        </ul>
+                        <h4>Inline Form</h4>
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#inline-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#inline-html-tab" data-toggle="tab">HTML</a></li>
+                            </ul>
 
-        <div class="tab-content">
-            <div class="tab-pane active" id="inline-form-tab">
-                <form class="form-inline registerForm">
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="username" placeholder="Username" />
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="email" placeholder="Email address" />
-                    </div>
-                </form>
-            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="inline-form-tab">
+                                    <form class="form-inline registerForm">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="username" placeholder="Username" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="email" placeholder="Email address" />
+                                        </div>
+                                    </form>
+                                </div>
 
-            <div class="tab-pane" id="inline-html-tab">
-                <pre><code class="xml">&lt;form class="form-inline">
+                                <div class="tab-pane" id="inline-html-tab">
+                                    <pre><code class="xml">&lt;form class="form-inline">
     &lt;div class="form-group">
         &lt;input type="text" class="form-control" name="username" placeholder="Username" />
     &lt;/div>
@@ -226,37 +254,37 @@ sections:
         &lt;input type="text" class="form-control" name="email" placeholder="Email address" />
     &lt;/div>
 &lt;/form></code></pre>
-            </div>
-        </div>
-    </div>
-
-    <h4>Horizontal Form</h4>
-    <div class="doc-example">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#horizontal-form-tab" data-toggle="tab">Try it</a></li>
-            <li><a href="#horizontal-html-tab" data-toggle="tab">HTML</a></li>
-        </ul>
-
-        <div class="tab-content">
-            <div class="tab-pane active" id="horizontal-form-tab">
-                <form class="form-horizontal registerForm">
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">Username</label>
-                        <div class="col-lg-6">
-                            <input type="text" class="form-control" name="username" />
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">Email address</label>
-                        <div class="col-lg-6">
-                            <input type="text" class="form-control" name="email" />
-                        </div>
-                    </div>
-                </form>
-            </div>
 
-            <div class="tab-pane" id="horizontal-html-tab">
-                <pre><code class="xml">&lt;form class="form-horizontal">
+                        <h4>Horizontal Form</h4>
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#horizontal-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#horizontal-html-tab" data-toggle="tab">HTML</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="horizontal-form-tab">
+                                    <form class="form-horizontal registerForm">
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Username</label>
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control" name="username" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Email address</label>
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control" name="email" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane" id="horizontal-html-tab">
+                                    <pre><code class="xml">&lt;form class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Username&lt;/label>
         &lt;div class="col-lg-9">
@@ -270,35 +298,35 @@ sections:
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-            </div>
-        </div>
-    </div>
-
-    <p>It also supports multiple fields on the same row:</p>
-
-    <div class="doc-example">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#row-form-tab" data-toggle="tab">Try it</a></li>
-            <li><a href="#row-html-tab" data-toggle="tab">HTML</a></li>
-        </ul>
-
-        <div class="tab-content">
-            <div class="tab-pane active" id="row-form-tab">
-                <form class="form-horizontal registerForm">
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Account</label>
-                        <div class="col-lg-4">
-                            <input type="text" class="form-control" name="username" placeholder="Username" />
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-lg-4">
-                            <input type="text" class="form-control" name="email" placeholder="Email address" />
-                        </div>
-                    </div>
-                </form>
-            </div>
 
-            <div class="tab-pane" id="row-html-tab">
-                <pre><code class="xml">&lt;form class="form-horizontal">
+                        <p>It also supports multiple fields on the same row:</p>
+
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#row-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#row-html-tab" data-toggle="tab">HTML</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="row-form-tab">
+                                    <form class="form-horizontal registerForm">
+                                        <div class="form-group">
+                                            <label class="col-lg-2 control-label">Account</label>
+                                            <div class="col-lg-4">
+                                                <input type="text" class="form-control" name="username" placeholder="Username" />
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <input type="text" class="form-control" name="email" placeholder="Email address" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane" id="row-html-tab">
+                                    <pre><code class="xml">&lt;form class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-2 control-label">Account&lt;/label>
         &lt;div class="col-lg-4">
@@ -309,14 +337,17 @@ sections:
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-            </div>
-        </div>
-    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
 
-    <h3 id="calling-plugin">Calling Plugin</h3>
+                    <!-- calling -->
+                    <section>
+                        <h3 id="calling-plugin">Calling Plugin</h3>
 
-    <p>Call the plugin to validate the form as following:</p>
-    <pre><code class="javascript">$(document).ready(function() {
+                            <p>Call the plugin to validate the form as following:</p>
+                            <pre><code class="javascript">$(document).ready(function() {
     $(formSelector).bootstrapValidator({
         excluded: ...,
         feedbackIcons: ...,
@@ -329,9 +360,9 @@ sections:
     });
 });</code></pre>
 
-    <p>For example, to validate the sample registration form above, the plugin might be called as:</p>
+                        <p>For example, to validate the sample registration form above, the plugin might be called as:</p>
 
-    <pre><code class="javascript">$(document).ready(function() {
+                        <pre><code class="javascript">$(document).ready(function() {
     $('.registerForm').bootstrapValidator({
         message: 'This value is not valid',
         feedbackIcons: {
@@ -371,8 +402,13 @@ sections:
     });
 });</code></pre>
 
-    <p>Look at the <a href="/settings/">Settings</a> page to see the meaning of plugin options.</p>
-</section>
+                        <p>Look at the <a href="/settings/">Settings</a> page to see the meaning of plugin options.</p>
+                    </section>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
 $(document).ready(function() {

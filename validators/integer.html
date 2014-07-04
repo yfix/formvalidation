@@ -1,5 +1,5 @@
 ---
-layout:           default
+layout:           doc
 title:            Validate an integer number
 permalink:        /validators/integer/
 previous_section: /validators/imei/
@@ -10,61 +10,86 @@ related:
     - numeric
 ---
 
-<section class="doc-heading">
-    <h1><a href="/validators/">Validators</a> / integer</h1>
-    {% include edit-button.html %}
-</section>
-
-<section>
-    <p>Validate an integer number. Accept both positive and negative number.</p>
-
-    <table class="table table-condensed">
-        <thead>
-            <tr>
-                <th>Option</th>
-                <th>Equivalent HTML attribute</th>
-                <th>Type</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>message</code></td>
-                <td><code>data-bv-integer-message</code></td>
-                <td>String</td>
-                <td>The error message</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <p>You can use HTML 5 <code>type="number"</code> attribute to enable this validator.</p>
-</section>
-
-<section id="example">
-    <h2>Example</h2>
-
-    <div class="doc-example">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#integer-form-tab" data-toggle="tab">Try it</a></li>
-            <li><a href="#integer-html-tab" data-toggle="tab">HTML</a></li>
-            <li><a href="#integer-js-tab" data-toggle="tab">JS</a></li>
-            <li><a href="#integer-html5-tab" data-toggle="tab">HTML 5</a></li>
-        </ul>
-
-        <div class="tab-content">
-            <div class="tab-pane active" id="integer-form-tab">
-                <form id="integerForm" class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-lg-4 control-label">Type an integer number</label>
-                        <div class="col-lg-3">
-                            <input type="text" class="form-control" name="number" />
-                        </div>
-                    </div>
-                </form>
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/validators/">Validators</a> / integer</h1>
+                <p>Validate an integer number. Accept both positive and negative number.</p>
             </div>
 
-            <div class="tab-pane" id="integer-html-tab">
-                <pre><code class="xml">&lt;form id="integerForm" class="form-horizontal">
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                <ul>
+                    <li><a href="#options">Options</a></li>
+                    <li><a href="#example">Example</a></li>
+                    <li><a href="#related-validators">Related validators</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2 id="options">Options</h2>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Option</th>
+                                <th>Equivalent HTML attribute</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>message</code></td>
+                                <td><code>data-bv-integer-message</code></td>
+                                <td>String</td>
+                                <td>The error message</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>You can use HTML 5 <code>type="number"</code> attribute to enable this validator.</p>
+                </section>
+
+                <section>
+                    <h2 id="example">Example</h2>
+
+                    <div class="bv-example">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#integer-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#integer-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#integer-js-tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#integer-html5-tab" data-toggle="tab">HTML 5</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="integer-form-tab">
+                                <form id="integerForm" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-lg-4 control-label">Type an integer number</label>
+                                        <div class="col-lg-3">
+                                            <input type="text" class="form-control" name="number" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane" id="integer-html-tab">
+                                <pre><code class="xml">&lt;form id="integerForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-4 control-label">Type a number&lt;/label>
         &lt;div class="col-lg-3">
@@ -72,10 +97,10 @@ related:
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-            </div>
+                            </div>
 
-            <div class="tab-pane" id="integer-js-tab">
-                <pre><code class="xml javascript">&lt;script>
+                            <div class="tab-pane" id="integer-js-tab">
+                                <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#integerForm').bootstrapValidator({
         feedbackIcons: {
@@ -86,7 +111,7 @@ $(document).ready(function() {
         fields: {
             number: {
                 validators: {
-                    <span class="doc-example-note">integer: {
+                    <span class="bv-note">integer: {
                         message: 'The value is not an integer'
                     }</span>
                 }
@@ -95,19 +120,19 @@ $(document).ready(function() {
     });
 });
 &lt;/script></code></pre>
-            </div>
+                            </div>
 
-            <div class="tab-pane" id="integer-html5-tab">
-                <pre><code class="xml">&lt;form id="integerForm" class="form-horizontal">
+                            <div class="tab-pane" id="integer-html5-tab">
+                                <pre><code class="xml">&lt;form id="integerForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-4 control-label">Type an integer number&lt;/label>
         &lt;div class="col-lg-3">
             &lt;input class="form-control" name="number"
-                <span class="doc-example-note">type="number" data-bv-integer-message="The value is not an integer"</span> />
+                <span class="bv-note">type="number" data-bv-integer-message="The value is not an integer"</span> />
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-                <pre><code class="xml javascript">&lt;script>
+                                <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#integerForm').bootstrapValidator({
         feedbackIcons: {
@@ -118,12 +143,16 @@ $(document).ready(function() {
     });
 });
 &lt;/script></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {% include related.html %}
             </div>
         </div>
     </div>
-</section>
-
-{% include related.html %}
+</div>
 
 <script>
 $(document).ready(function() {

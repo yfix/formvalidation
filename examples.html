@@ -76,7 +76,7 @@ data-bv-{validatorname}-{validatoroption}="..." /></code></pre>
         &lt;div class="radio">
             &lt;label>
                 &lt;input type="radio" name="gender" value="male"
-                    <span class="doc-example-note">data-bv-notempty data-bv-notempty-message="The gender is required"</span> /> Male
+                    <span class="bv-note">data-bv-notempty data-bv-notempty-message="The gender is required"</span> /> Male
             &lt;/label>
         &lt;/div>
         &lt;div class="radio">
@@ -92,7 +92,7 @@ data-bv-{validatorname}-{validatoroption}="..." /></code></pre>
     &lt;/div>
 &lt;/div></code></pre>
 
-    <div class="doc-example">
+    <div class="bv-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#attribute-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#attribute-html-tab" data-toggle="tab">HTML</a></li>
@@ -193,7 +193,7 @@ data-bv-{validatorname}-{validatoroption}="..." /></code></pre>
 
             <div class="tab-pane" id="attribute-html-tab">
                 <pre><code lang="xml">&lt;form id="attributeForm" method="post" class="form-horizontal"
-    <span class="doc-example-note">data-bv-message="This value is not valid"
+    <span class="bv-note">data-bv-message="This value is not valid"
     data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
     data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
     data-bv-feedbackicons-validating="glyphicon glyphicon-refresh"</span>>
@@ -201,12 +201,12 @@ data-bv-{validatorname}-{validatoroption}="..." /></code></pre>
         &lt;label class="col-lg-3 control-label">Full name&lt;/label>
         &lt;div class="col-lg-4">
             &lt;input type="text" class="form-control" name="firstName" placeholder="First name"
-                <span class="doc-example-note">data-bv-notempty="true"
+                <span class="bv-note">data-bv-notempty="true"
                 data-bv-notempty-message="The first name is required and cannot be empty"</span> />
         &lt;/div>
         &lt;div class="col-lg-4">
             &lt;input type="text" class="form-control" name="lastName" placeholder="Last name"
-                <span class="doc-example-note">data-bv-notempty="true"
+                <span class="bv-note">data-bv-notempty="true"
                 data-bv-notempty-message="The last name is required and cannot be empty"</span> />
         &lt;/div>
     &lt;/div>
@@ -215,21 +215,21 @@ data-bv-{validatorname}-{validatoroption}="..." /></code></pre>
         &lt;label class="col-lg-3 control-label">Username&lt;/label>
         &lt;div class="col-lg-5">
             &lt;input type="text" class="form-control" name="username"
-                <span class="doc-example-note">data-bv-message="The username is not valid"</span>
+                <span class="bv-note">data-bv-message="The username is not valid"</span>
 
-                <span class="doc-example-note">data-bv-notempty="true"
+                <span class="bv-note">data-bv-notempty="true"
                 data-bv-notempty-message="The username is required and cannot be empty"</span>
 
-                <span class="doc-example-note">data-bv-regexp="true"
+                <span class="bv-note">data-bv-regexp="true"
                 data-bv-regexp-regexp="[a-zA-Z0-9_\.]+"
                 data-bv-regexp-message="The username can only consist of alphabetical, number, dot and underscore"</span>
 
-                <span class="doc-example-note">data-bv-stringlength="true"
+                <span class="bv-note">data-bv-stringlength="true"
                 data-bv-stringlength-min="6"
                 data-bv-stringlength-max="30"
                 data-bv-stringlength-message="The username must be more than 6 and less than 30 characters long"</span>
 
-                <span class="doc-example-note">data-bv-different="true"
+                <span class="bv-note">data-bv-different="true"
                 data-bv-different-field="password"
                 data-bv-different-message="The username and password cannot be the same as each other"</span> />
         &lt;/div>
@@ -239,7 +239,7 @@ data-bv-{validatorname}-{validatoroption}="..." /></code></pre>
         &lt;label class="col-lg-3 control-label">Email address&lt;/label>
         &lt;div class="col-lg-5">
             &lt;input class="form-control" name="email" type="email"
-                <span class="doc-example-note">data-bv-emailaddress="true"
+                <span class="bv-note">data-bv-emailaddress="true"
                 data-bv-emailaddress-message="The input is not a valid email address"</span> />
         &lt;/div>
     &lt;/div>
@@ -248,14 +248,14 @@ data-bv-{validatorname}-{validatoroption}="..." /></code></pre>
         &lt;label class="col-lg-3 control-label">Password&lt;/label>
         &lt;div class="col-lg-5">
             &lt;input type="password" class="form-control" name="password"
-                <span class="doc-example-note">data-bv-notempty="true"
+                <span class="bv-note">data-bv-notempty="true"
                 data-bv-notempty-message="The password is required and cannot be empty"</span>
 
-                <span class="doc-example-note">data-bv-identical="true"
+                <span class="bv-note">data-bv-identical="true"
                 data-bv-identical-field="confirmPassword"
                 data-bv-identical-message="The password and its confirm are not the same"</span>
 
-                <span class="doc-example-note">data-bv-different="true"
+                <span class="bv-note">data-bv-different="true"
                 data-bv-different-field="username"
                 data-bv-different-message="The password cannot be the same as username"</span> />
         &lt;/div>
@@ -265,14 +265,14 @@ data-bv-{validatorname}-{validatoroption}="..." /></code></pre>
         &lt;label class="col-lg-3 control-label">Retype password&lt;/label>
         &lt;div class="col-lg-5">
             &lt;input type="password" class="form-control" name="confirmPassword"
-                <span class="doc-example-note">data-bv-notempty="true"
+                <span class="bv-note">data-bv-notempty="true"
                 data-bv-notempty-message="The confirm password is required and cannot be empty"</span>
 
-                <span class="doc-example-note">data-bv-identical="true"
+                <span class="bv-note">data-bv-identical="true"
                 data-bv-identical-field="password"
                 data-bv-identical-message="The password and its confirm are not the same"</span>
 
-                <span class="doc-example-note">data-bv-different="true"
+                <span class="bv-note">data-bv-different="true"
                 data-bv-different-field="username"
                 data-bv-different-message="The password cannot be the same as username"</span> />
         &lt;/div>
@@ -284,7 +284,7 @@ data-bv-{validatorname}-{validatoroption}="..." /></code></pre>
             &lt;div class="checkbox">
                 &lt;label>
                     &lt;input type="checkbox" name="languages[]" value="english"
-                        <span class="doc-example-note">data-bv-message="Please specify at least one language you can speak"
+                        <span class="bv-note">data-bv-message="Please specify at least one language you can speak"
                         data-bv-notempty="true"</span> /> English
                 &lt;/label>
             &lt;/div>
@@ -401,7 +401,7 @@ data-bv-between-max="..."</code></pre></td>
         </tbody>
     </table>
 
-    <div class="doc-example">
+    <div class="bv-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#html5-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#html5-html-tab" data-toggle="tab">HTML</a></li>
@@ -471,10 +471,10 @@ data-bv-between-max="..."</code></pre></td>
             &lt;input type="text" class="form-control" name="username"
                 data-bv-message="The username is not valid"
 
-                <span class="doc-example-note">required
+                <span class="bv-note">required
                 data-bv-notempty-message="The username is required and cannot be empty"</span>
 
-                <span class="doc-example-note">pattern="[a-zA-Z0-9]+"
+                <span class="bv-note">pattern="[a-zA-Z0-9]+"
                 data-bv-regexp-message="The username can only consist of alphabetical, number"</span> />
         &lt;/div>
     &lt;/div>
@@ -484,7 +484,7 @@ data-bv-between-max="..."</code></pre></td>
         &lt;div class="col-lg-5">
             &lt;input class="form-control" name="email"
                 required
-                <span class="doc-example-note">type="email" data-bv-emailaddress-message="The input is not a valid email address"</span> />
+                <span class="bv-note">type="email" data-bv-emailaddress-message="The input is not a valid email address"</span> />
         &lt;/div>
     &lt;/div>
 
@@ -493,7 +493,7 @@ data-bv-between-max="..."</code></pre></td>
         &lt;div class="col-lg-5">
             &lt;input class="form-control" name="website"
                 required
-                <span class="doc-example-note">type="url" data-bv-uri-message="The input is not a valid website address"</span> />
+                <span class="bv-note">type="url" data-bv-uri-message="The input is not a valid website address"</span> />
         &lt;/div>
     &lt;/div>
 
@@ -502,7 +502,7 @@ data-bv-between-max="..."</code></pre></td>
         &lt;div class="col-lg-3">
             &lt;input class="form-control" name="color"
                 required
-                <span class="doc-example-note">type="color" data-bv-hexcolor-message="The input is not a valid color code"</span> />
+                <span class="bv-note">type="color" data-bv-hexcolor-message="The input is not a valid color code"</span> />
         &lt;/div>
     &lt;/div>
 
@@ -511,17 +511,17 @@ data-bv-between-max="..."</code></pre></td>
         &lt;div class="col-lg-2">
             &lt;input type="text" class="form-control" name="age"
                 required
-                <span class="doc-example-note">min="10"
+                <span class="bv-note">min="10"
                 data-bv-greaterthan-inclusive="false"
                 data-bv-greaterthan-message="The input must be greater than or equal to 10"</span>
 
-                <span class="doc-example-note">max="100"
+                <span class="bv-note">max="100"
                 data-bv-lessthan-inclusive="true"
                 data-bv-lessthan-message="The input must be less than 100"</span> />
             &lt;!--&lt;input class="form-control" name="age"
                 required
 
-                <span class="doc-example-note">type="range"
+                <span class="bv-note">type="range"
                 min="10"
                 max="100"
                 data-bv-between-message="The input must be between 10 and 100"</span> />-->
@@ -545,7 +545,7 @@ $(document).ready(function() {
     <h2>Modal</h2>
     <p>It's possible to use the plugin with a form which is placed inside a <a href="http://getbootstrap.com/javascript/#modals">Bootstrap Modal</a>.</p>
 
-    <div class="doc-example">
+    <div class="bv-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#modal-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#modal-html-tab" data-toggle="tab">HTML</a></li>
@@ -560,8 +560,8 @@ $(document).ready(function() {
             </div>
 
             <div class="tab-pane" id="modal-html-tab">
-                <pre><code class="xml">&lt;button class="btn btn-primary" <span class="doc-example-note">data-toggle="modal" data-target="#loginModal"</span>>Login&lt;/button>
-&lt;div <span class="doc-example-note">class="modal fade" id="loginModal"</span> tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <pre><code class="xml">&lt;button class="btn btn-primary" <span class="bv-note">data-toggle="modal" data-target="#loginModal"</span>>Login&lt;/button>
+&lt;div <span class="bv-note">class="modal fade" id="loginModal"</span> tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     &lt;div class="modal-dialog">
         &lt;div class="modal-content">
             &lt;div class="modal-header">
@@ -570,7 +570,7 @@ $(document).ready(function() {
             &lt;/div>
 
             &lt;div class="modal-body">
-                <span class="doc-example-note">&lt;!-- The form is placed inside the body of modal --></span>
+                <span class="bv-note">&lt;!-- The form is placed inside the body of modal --></span>
                 &lt;form id="loginForm" method="post" class="form-horizontal">
                     &lt;div class="form-group">
                         &lt;label class="col-md-3 control-label">Username&lt;/label>
@@ -631,7 +631,7 @@ $(document).ready(function() {
 
     <h4>Setting Options via HTML Attributes</h4>
     <p>If you use <a href="#attribute">HTML attributes</a> to set the validator options, or <a href="#html5">HTML5 input</a> elements, you must set <code>excluded: [':disabled']</code>.</p>
-    <div class="doc-box-info">
+    <p class="bv-box bv-box-info">
         <p>By default, the plugin will not initialize the fields which are disabled, hidden, or not visible. Since the form is placed inside a model which is not visible after loading page, the fields/validators initialized with HTML attributes might be ignored.</p>
         <p>That's the reason why we need to set <code>excluded: [':disabled']</code>. Take a look at the <a href="/settings/#excluded"><code>excluded</code> setting</a> for more information.</p>
     </div>
@@ -639,7 +639,7 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('#loginForm').bootstrapValidator({
         message: 'This value is not valid',
-        <span class="doc-example-note">excluded: [':disabled'],</span>
+        <span class="bv-note">excluded: [':disabled'],</span>
         ...
     });
 });
@@ -663,7 +663,7 @@ $(document).ready(function() {
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
-        <span class="doc-example-note">submitHandler: function(validator, form, submitButton) {</span>
+        <span class="bv-note">submitHandler: function(validator, form, submitButton) {</span>
             $.post(form.attr('action'), form.serialize(), function(result) {
                 // The result is a JSON formatted by your back-end
                 // I assume the format is as following:
@@ -774,7 +774,7 @@ $(document).ready(function() {
     <p>The following example shows an example of toggling field validator.</p>
     <p>Try to click the <i>Add more info</i> or <i>Add more phone numbers</i> button to enable/disable the additional fields. Also, look at state of the <i>Validate</i> button based on the validity of additional fields.</p>
 
-    <div class="doc-example">
+    <div class="bv-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#toggling-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#toggling-html-tab" data-toggle="tab">HTML</a></li>
@@ -881,7 +881,7 @@ $(document).ready(function() {
     &lt;/div>
 
     &lt;!-- These fields will not be validated as long as they are not visible -->
-    &lt;div id="jobInfo" <span class="doc-example-note">style="display: none;"</span>>
+    &lt;div id="jobInfo" <span class="bv-note">style="display: none;"</span>>
         &lt;div class="form-group">
             &lt;label class="col-lg-3 control-label">Job title &lt;sup>*&lt;/sup>&lt;/label>
             &lt;div class="col-lg-5">
@@ -910,7 +910,7 @@ $(document).ready(function() {
     &lt;/div>
 
     &lt;!-- These fields will not be validated as long as they are not visible -->
-    &lt;div id="phoneInfo" <span class="doc-example-note">style="display: none;"</span>>
+    &lt;div id="phoneInfo" <span class="bv-note">style="display: none;"</span>>
         &lt;div class="form-group">
             &lt;label class="col-lg-3 control-label">Home phone&lt;/label>
             &lt;div class="col-lg-5">
@@ -971,7 +971,7 @@ $(document).ready(function() {
                     }
                 },
                 // These fields will be validated when being visible
-                <span class="doc-example-note">job: {
+                <span class="bv-note">job: {
                     validators: {
                         notEmpty: {
                             message: 'The job title is required'
@@ -996,7 +996,7 @@ $(document).ready(function() {
                     }
                 },
                 // These fields will be validated when being visible
-                <span class="doc-example-note">homePhone: {
+                <span class="bv-note">homePhone: {
                     validators: {
                         digits: {
                             message: 'The home phone number is not valid'
@@ -1015,7 +1015,7 @@ $(document).ready(function() {
         .find('button[data-toggle]')
             .on('click', function() {
                 var $target = $($(this).attr('data-toggle'));
-                <span class="doc-example-note">// Show or hide the additional fields
+                <span class="bv-note">// Show or hide the additional fields
                 // They will or will not be validated based on their visibilities
                 $target.toggle();</span>
                 if (!$target.is(':visible')) {
@@ -1036,7 +1036,7 @@ $(document).ready(function() {
     <p>By default, the fields in inactive tabs will not be validated because they are not visible. In order to validate them, we need to use the <a href="/settings/#excluded">excluded</a> option:</p>
     <pre><code class="javascript">excluded: [':disabled']</code></pre>
 
-    <div class="doc-example">
+    <div class="bv-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#info-tab" data-toggle="tab">Information</a></li>
             <li><a href="#address-tab" data-toggle="tab">Address</a></li>
@@ -1103,7 +1103,7 @@ $(document).ready(function() {
         </form>
     </div>
 
-    <div class="doc-example">
+    <div class="bv-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#tabs-html-tab" data-toggle="tab">HTML</a></li>
             <li><a href="#tabs-js-tab" data-toggle="tab">JS</a></li>
@@ -1181,7 +1181,7 @@ $(document).ready(function() {
         .bootstrapValidator({
             // Only disabled elements are excluded
             // The invisible elements belonging to inactive tabs must be validated
-            <span class="doc-example-note">excluded: [':disabled']</span>,
+            <span class="bv-note">excluded: [':disabled']</span>,
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
@@ -1230,7 +1230,7 @@ $(document).ready(function() {
 
     <p>It's possible to validate multiple fields with the same name. The fields can be radio buttons, checkboxes or text boxes, etc.</p>
 
-    <div class="doc-example">
+    <div class="bv-example">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#multiple-form-tab" data-toggle="tab">Try it</a></li>
             <li><a href="#multiple-html-tab" data-toggle="tab">HTML</a></li>
@@ -1334,17 +1334,17 @@ $(document).ready(function() {
         &lt;div class="col-lg-5">
             &lt;div class="radio">
                 &lt;label>
-                    &lt;input <span class="doc-example-note">type="radio" name="gender"</span> value="male" /> Male
+                    &lt;input <span class="bv-note">type="radio" name="gender"</span> value="male" /> Male
                 &lt;/label>
             &lt;/div>
             &lt;div class="radio">
                 &lt;label>
-                    &lt;input <span class="doc-example-note">type="radio" name="gender"</span> value="female" /> Female
+                    &lt;input <span class="bv-note">type="radio" name="gender"</span> value="female" /> Female
                 &lt;/label>
             &lt;/div>
             &lt;div class="radio">
                 &lt;label>
-                    &lt;input <span class="doc-example-note">type="radio" name="gender"</span> value="other" /> Other
+                    &lt;input <span class="bv-note">type="radio" name="gender"</span> value="other" /> Other
                 &lt;/label>
             &lt;/div>
         &lt;/div>
@@ -1355,32 +1355,32 @@ $(document).ready(function() {
         &lt;div class="col-lg-5">
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input <span class="doc-example-note">type="checkbox" name="browsers[]"</span> value="chrome" /> Google Chrome
+                    &lt;input <span class="bv-note">type="checkbox" name="browsers[]"</span> value="chrome" /> Google Chrome
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input <span class="doc-example-note">type="checkbox" name="browsers[]"</span> value="firefox" /> Firefox
+                    &lt;input <span class="bv-note">type="checkbox" name="browsers[]"</span> value="firefox" /> Firefox
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input <span class="doc-example-note">type="checkbox" name="browsers[]"</span> value="ie" /> IE
+                    &lt;input <span class="bv-note">type="checkbox" name="browsers[]"</span> value="ie" /> IE
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input <span class="doc-example-note">type="checkbox" name="browsers[]"</span> value="safari" /> Safari
+                    &lt;input <span class="bv-note">type="checkbox" name="browsers[]"</span> value="safari" /> Safari
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input <span class="doc-example-note">type="checkbox" name="browsers[]"</span> value="opera" /> Opera
+                    &lt;input <span class="bv-note">type="checkbox" name="browsers[]"</span> value="opera" /> Opera
                 &lt;/label>
             &lt;/div>
             &lt;div class="checkbox">
                 &lt;label>
-                    &lt;input <span class="doc-example-note">type="checkbox" name="browsers[]"</span> value="other" /> Other
+                    &lt;input <span class="bv-note">type="checkbox" name="browsers[]"</span> value="other" /> Other
                 &lt;/label>
             &lt;/div>
         &lt;/div>
@@ -1389,22 +1389,22 @@ $(document).ready(function() {
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Editors&lt;/label>
         &lt;div class="col-lg-5">
-            &lt;input class="form-control" <span class="doc-example-note">type="text" name="editors[]"</span> />
+            &lt;input class="form-control" <span class="bv-note">type="text" name="editors[]"</span> />
         &lt;/div>
     &lt;/div>
     &lt;div class="form-group">
         &lt;div class="col-lg-offset-3 col-lg-5">
-            &lt;input class="form-control" <span class="doc-example-note">type="text" name="editors[]"</span> />
+            &lt;input class="form-control" <span class="bv-note">type="text" name="editors[]"</span> />
         &lt;/div>
     &lt;/div>
     &lt;div class="form-group">
         &lt;div class="col-lg-offset-3 col-lg-5">
-            &lt;input class="form-control" <span class="doc-example-note">type="text" name="editors[]"</span> />
+            &lt;input class="form-control" <span class="bv-note">type="text" name="editors[]"</span> />
         &lt;/div>
     &lt;/div>
     &lt;div class="form-group">
         &lt;div class="col-lg-offset-3 col-lg-5">
-            &lt;input class="form-control" <span class="doc-example-note">type="text" name="editors[]"</span> />
+            &lt;input class="form-control" <span class="bv-note">type="text" name="editors[]"</span> />
         &lt;/div>
     &lt;/div>
 
@@ -1431,21 +1431,21 @@ $(document).ready(function() {
                 // Do nothing
             },
             fields: {
-                <span class="doc-example-note">gender</span>: {
+                <span class="bv-note">gender</span>: {
                     validators: {
                         notEmpty: {
                             message: 'The gender is required'
                         }
                     }
                 },
-                <span class="doc-example-note">'browsers[]'</span>: {
+                <span class="bv-note">'browsers[]'</span>: {
                     validators: {
                         notEmpty: {
                             message: 'Please specify at least one browser you use daily for development'
                         }
                     }
                 },
-                <span class="doc-example-note">'editors[]'</span>: {
+                <span class="bv-note">'editors[]'</span>: {
                     validators: {
                         notEmpty: {
                             message: 'The editor names are required'
@@ -1471,7 +1471,7 @@ $(document).ready(function() {
         <h3>Bootstrap Button</h3>
         <p>Use with the <a href="http://getbootstrap.com/javascript/#buttons">Bootstrap Button</a> component.</p>
 
-        <div class="doc-example">
+        <div class="bv-example">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#button-form-tab" data-toggle="tab">Try it</a></li>
                 <li><a href="#button-html-tab" data-toggle="tab">HTML</a></li>
@@ -1542,7 +1542,7 @@ $(document).ready(function() {
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Gender&lt;/label>
         &lt;div class="col-lg-9">
-            <span class="doc-example-note">&lt;div class="btn-group" data-toggle="buttons"></span>
+            <span class="bv-note">&lt;div class="btn-group" data-toggle="buttons"></span>
                 &lt;label class="btn btn-default">
                     &lt;input type="radio" name="gender" value="male" /> Male
                 &lt;/label>
@@ -1559,7 +1559,7 @@ $(document).ready(function() {
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Languages&lt;/label>
         &lt;div class="col-lg-9">
-            <span class="doc-example-note">&lt;div class="btn-group" data-toggle="buttons"></span>
+            <span class="bv-note">&lt;div class="btn-group" data-toggle="buttons"></span>
                 &lt;label class="btn btn-default">
                     &lt;input type="checkbox" name="languages[]" value="english" /> English
                 &lt;/label>
@@ -1598,7 +1598,7 @@ $(document).ready(function() {
         },
         // Since the Bootstrap Button hides the radio and checkbox
         // We exclude the disabled elements only
-        <span class="doc-example-note">excluded: ':disabled',</span>
+        <span class="bv-note">excluded: ':disabled',</span>
         fields: {
             gender: {
                 validators: {
@@ -1631,7 +1631,7 @@ $(document).ready(function() {
         <p>Use with the <a href="http://davidstutz.github.io/bootstrap-multiselect/">Bootstrap Multiselect</a> plugin.</p>
         <p>The <i>Browser</i> option requires to choose 2-3 browsers.</p>
 
-        <div class="doc-example">
+        <div class="bv-example">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#multiselect-form-tab" data-toggle="tab">Try it</a></li>
                 <li><a href="#multiselect-html-tab" data-toggle="tab">HTML</a></li>
@@ -1689,7 +1689,7 @@ $(document).ready(function() {
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Browser&lt;/label>
         &lt;div class="col-lg-5">
-            &lt;select class="form-control" name="browsers" <span class="doc-example-note">multiple</span>>
+            &lt;select class="form-control" name="browsers" <span class="bv-note">multiple</span>>
                 &lt;option value="chrome">Google Chrome&lt;/option>
                 &lt;option value="firefox">Firefox&lt;/option>
                 &lt;option value="ie">IE&lt;/option>
@@ -1719,7 +1719,7 @@ $(document).ready(function() {
         .find('[name="browsers"]')
             .multiselect({
                 // Re-validate the multiselect field when it is changed
-                <span class="doc-example-note">onChange: function(element, checked) {
+                <span class="bv-note">onChange: function(element, checked) {
                     $('#multiselectForm')
                         .data('bootstrapValidator')                 // Get plugin instance
                         .updateStatus('browsers', 'NOT_VALIDATED')  // Update field status
@@ -1730,7 +1730,7 @@ $(document).ready(function() {
         .bootstrapValidator({
             // Exclude only disabled fields
             // The invisible fields set by Bootstrap Multiselect must be validated
-            <span class="doc-example-note">excluded: ':disabled',</span>
+            <span class="bv-note">excluded: ':disabled',</span>
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
@@ -1748,7 +1748,7 @@ $(document).ready(function() {
                     validators: {
                         callback: {
                             message: 'Please choose 2-3 browsers you use for developing',
-                            <span class="doc-example-note">callback: function(value, validator) {
+                            <span class="bv-note">callback: function(value, validator) {
                                 // Get the selected options
                                 var options = validator.getFieldElements('browsers').val();
                                 return (options != null && options.length >= 2 && options.length <= 3);
@@ -1771,7 +1771,7 @@ $(document).ready(function() {
         <p>Use with the <a href="http://harvesthq.github.io/chosen/">Chosen</a> plugin.</p>
         <p>The <i>Favorite color</i> option requires to choose 2-4 colors you like most.</p>
 
-        <div class="doc-example">
+        <div class="bv-example">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#chosen-form-tab" data-toggle="tab">Try it</a></li>
                 <li><a href="#chosen-html-tab" data-toggle="tab">HTML</a></li>
@@ -1813,7 +1813,7 @@ $(document).ready(function() {
     min-height: 34px;
     padding: 6px 12px;
 }
-<span class="doc-example-note">#chosenForm .form-control-feedback {
+<span class="bv-note">#chosenForm .form-control-feedback {
     /* To make the feedback icon visible */
     z-index: 100;
 }</span>
@@ -1822,8 +1822,8 @@ $(document).ready(function() {
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Favorite color&lt;/label>
         &lt;div class="col-lg-5">
-            &lt;select name="colors" class="form-control <span class="doc-example-note">chosen-select</span>"
-                <span class="doc-example-note">multiple data-placeholder="Choose 2-4 colors"</span>>
+            &lt;select name="colors" class="form-control <span class="bv-note">chosen-select</span>"
+                <span class="bv-note">multiple data-placeholder="Choose 2-4 colors"</span>>
                 &lt;option value="black">Black&lt;/option>
                 &lt;option value="blue">Blue&lt;/option>
                 &lt;option value="green">Green&lt;/option>
@@ -1851,7 +1851,7 @@ $(document).ready(function() {
         .find('[name="colors"]')
             .chosen()
             // Re-validate the color when it is changed
-            <span class="doc-example-note">.change(function(e) {
+            <span class="bv-note">.change(function(e) {
                 $('#chosenForm')
                     .data('bootstrapValidator')
                     .updateStatus('colors', 'NOT_VALIDATED')
@@ -1859,7 +1859,7 @@ $(document).ready(function() {
             })</span>
             .end()
         .bootstrapValidator({
-            <span class="doc-example-note">excluded: ':disabled'</span>,
+            <span class="bv-note">excluded: ':disabled'</span>,
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
@@ -1893,7 +1893,7 @@ $(document).ready(function() {
         <h3>iCheck</h3>
         <p>Use with the <a href="http://fronteed.com/iCheck/">iCheck</a> plugin.</p>
 
-        <div class="doc-example">
+        <div class="bv-example">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#icheck-form-tab" data-toggle="tab">Try it</a></li>
                 <li><a href="#icheck-html-tab" data-toggle="tab">HTML</a></li>
@@ -1988,7 +1988,7 @@ $(document).ready(function() {
 
                 <div class="tab-pane" id="icheck-html-tab">
                     <pre><code class="xml">&lt;!-- Include iCheck skin -->
-<span class="doc-example-note">&lt;link rel="stylesheet" href="/vendor/icheck/skins/square/red.css" /></span>
+<span class="bv-note">&lt;link rel="stylesheet" href="/vendor/icheck/skins/square/red.css" /></span>
 &lt;!-- Set the radio/checkbox positon properly -->
 &lt;style type="text/css">
 #icheckForm .radio, #icheckForm .checkbox {
@@ -2084,7 +2084,7 @@ $(document).ready(function() {
 
                 <div class="tab-pane" id="icheck-js-tab">
                     <pre><code class="xml javascript">&lt;!-- Include iCheck plugin -->
-<span class="doc-example-note">&lt;script src="/vendor/icheck/icheck.min.js">&lt;/script></span>
+<span class="bv-note">&lt;script src="/vendor/icheck/icheck.min.js">&lt;/script></span>
 &lt;script>
 $(document).ready(function() {
     $('#icheckForm')
@@ -2115,7 +2115,7 @@ $(document).ready(function() {
         })
         .find('input[name="job"], input[name="languages[]"]')
             // Init iCheck elements
-            <span class="doc-example-note">.iCheck({
+            <span class="bv-note">.iCheck({
                 checkboxClass: 'icheckbox_square-red',
                 radioClass: 'iradio_square-red'
             })</span>
@@ -2123,7 +2123,7 @@ $(document).ready(function() {
             .on('ifChanged', function(e) {
                 // Get the field name
                 var field = $(this).attr('name');
-                <span class="doc-example-note">$('#icheckForm')
+                <span class="bv-note">$('#icheckForm')
                     // Mark the field as not validated
                     .bootstrapValidator('updateStatus', field, 'NOT_VALIDATED')
                     // Validate field
@@ -2141,7 +2141,7 @@ $(document).ready(function() {
         <h3>Mask</h3>
         <p>Use with the <a href="http://igorescobar.github.io/jQuery-Mask-Plugin/">Mask</a> plugin.</p>
 
-        <div class="doc-example">
+        <div class="bv-example">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#mask-form-tab" data-toggle="tab">Try it</a></li>
                 <li><a href="#mask-html-tab" data-toggle="tab">HTML</a></li>
@@ -2173,7 +2173,7 @@ $(document).ready(function() {
 
                 <div class="tab-pane" id="mask-js-tab">
                     <pre><code class="xml javascript">&lt;!-- Include Mask plugin -->
-<span class="doc-example-note">&lt;script src="/vendor/mask/jquery.mask.min.js">&lt;/script></span>
+<span class="bv-note">&lt;script src="/vendor/mask/jquery.mask.min.js">&lt;/script></span>
 &lt;script>
 $(document).ready(function() {
     $('#maskForm')
@@ -2193,7 +2193,7 @@ $(document).ready(function() {
                 }
             }
         })
-        <span class="doc-example-note">.find('[name="ipAddress"]').mask('099.099.099.099')</span>;
+        <span class="bv-note">.find('[name="ipAddress"]').mask('099.099.099.099')</span>;
 });
 &lt;/script></code></pre>
                 </div>
@@ -2207,7 +2207,7 @@ $(document).ready(function() {
         <p>Use with the <a href="http://wbotelhos.com/raty">Raty</a> plugin. At first, try to click the <i>Validate</i> button to validate the form. Then click the <i>Rating</i>, fill in other fields, and click the <i>Validate</i> button again to
         see that the <i>Rating</i> is validated.</p>
 
-        <div class="doc-example">
+        <div class="bv-example">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#raty-form-tab" data-toggle="tab">Try it</a></li>
                 <li><a href="#raty-html-tab" data-toggle="tab">HTML</a></li>
@@ -2248,7 +2248,7 @@ $(document).ready(function() {
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Rating&lt;/label>
         &lt;div class="col-lg-5">
-            <span class="doc-example-note">&lt;div id="ratyRating">&lt;/div></span>
+            <span class="bv-note">&lt;div id="ratyRating">&lt;/div></span>
         &lt;/div>
     &lt;/div>
     &lt;div class="form-group">
@@ -2281,9 +2281,9 @@ $(document).ready(function() {
         path: '/vendor/raty/img',
         size: 24,
         // The name of hidden field generated by Raty
-        <span class="doc-example-note">scoreName: 'star'</span>,
+        <span class="bv-note">scoreName: 'star'</span>,
         // Re-validate the star rating whenever user change it
-        <span class="doc-example-note">click: function (score, evt) {
+        <span class="bv-note">click: function (score, evt) {
             $('#ratyForm')
                 .data('bootstrapValidator')             // Return the bootstrapValidator instance
                 .updateStatus('star', 'NOT_VALIDATED')  // Mark the star field as not validated yet
@@ -2294,14 +2294,14 @@ $(document).ready(function() {
         .bootstrapValidator({
             // The disabled elements are excluded
             // Hidden elements (including the rating star) are included
-            <span class="doc-example-note">excluded: ':disabled'</span>,
+            <span class="bv-note">excluded: ':disabled'</span>,
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
             fields: {
-                <span class="doc-example-note">star</span>: {
+                <span class="bv-note">star</span>: {
                     validators: {
                         notEmpty: {
                             message: 'The rating is required'

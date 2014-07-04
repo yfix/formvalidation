@@ -1,5 +1,5 @@
 ---
-layout:           default
+layout:           doc
 title:            between validator
 permalink:        /validators/between/
 previous_section: /validators/base64/
@@ -10,88 +10,113 @@ related:
     - lessThan
 ---
 
-<section class="doc-heading">
-    <h1><a href="/validators/">Validators</a> / between</h1>
-    {% include edit-button.html %}
-</section>
-
-<section>
-    <p>Check if the input value is between (strictly or not) two given numbers.</p>
-
-    <table class="table table-condensed">
-        <thead>
-            <tr>
-                <th>Option</th>
-                <th>Equivalent HTML attribute</th>
-                <th>Type</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>message</code></td>
-                <td><code>data-bv-between-message</code></td>
-                <td>String</td>
-                <td>The error message</td>
-            </tr>
-            <tr>
-                <td><code>min</code> (*)</td>
-                <td><code>data-bv-between-min</code> or <code>min</code></td>
-                <td>Float</td>
-                <td>The lower value in the range</td>
-            </tr>
-            <tr>
-                <td><code>max</code> (*)</td>
-                <td><code>data-bv-between-max</code> or <code>max</code></td>
-                <td>Float</td>
-                <td>The upper value in the range</td>
-            </tr>
-            <tr>
-                <td><code>inclusive</code></td>
-                <td><code>data-bv-between-inclusive</code></td>
-                <td>Boolean</td>
-                <td>Can be <code>true</code> or <code>false</code>. If <code>true</code>, the input value must be in the range strictly</td>
-            </tr>
-        </tbody>
-    </table>
-    <p>If you use <code>min</code> and <code>max</code> attributes, please set <code>type="range"</code>.</p>
-</section>
-
-<section id="example">
-    <h2>Example</h2>
-
-    <p>The following example validates latitude and longitude values.</p>
-    <p>A valid latitude must be between -90.0 and 90.0, and valid longitude may range from -180.0 to 180.0.</p>
-
-    <div class="doc-example">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#latlong-form-tab" data-toggle="tab">Try it</a></li>
-            <li><a href="#latlong-html-tab" data-toggle="tab">HTML</a></li>
-            <li><a href="#latlong-js-tab" data-toggle="tab">JS</a></li>
-            <li><a href="#latlong-html5-tab" data-toggle="tab">HTML 5</a></li>
-        </ul>
-
-        <div class="tab-content">
-            <div class="tab-pane active" id="latlong-form-tab">
-                <form id="latlongForm" class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">Latitude</label>
-                        <div class="col-lg-5">
-                            <input type="text" class="form-control" name="latitude" />
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-lg-3 control-label">Longitude</label>
-                        <div class="col-lg-5">
-                            <input type="text" class="form-control" name="longitude" />
-                        </div>
-                    </div>
-                </form>
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/validators/">Validators</a> / between</h1>
+                <p>Check if the input value is between (strictly or not) two given numbers.</p>
             </div>
 
-            <div class="tab-pane" id="latlong-html-tab">
-                <pre><code class="xml">&lt;form id="latlongForm" class="form-horizontal">
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                <ul>
+                    <li><a href="#options">Options</a></li>
+                    <li><a href="#example">Example</a></li>
+                    <li><a href="#related-validators">Related validators</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2 id="options">Options</h2>
+                    <table class="table table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Option</th>
+                            <th>Equivalent HTML attribute</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><code>message</code></td>
+                            <td><code>data-bv-between-message</code></td>
+                            <td>String</td>
+                            <td>The error message</td>
+                        </tr>
+                        <tr>
+                            <td><code>min</code> (*)</td>
+                            <td><code>data-bv-between-min</code> or <code>min</code></td>
+                            <td>Float</td>
+                            <td>The lower value in the range</td>
+                        </tr>
+                        <tr>
+                            <td><code>max</code> (*)</td>
+                            <td><code>data-bv-between-max</code> or <code>max</code></td>
+                            <td>Float</td>
+                            <td>The upper value in the range</td>
+                        </tr>
+                        <tr>
+                            <td><code>inclusive</code></td>
+                            <td><code>data-bv-between-inclusive</code></td>
+                            <td>Boolean</td>
+                            <td>Can be <code>true</code> or <code>false</code>. If <code>true</code>, the input value must be in the range strictly</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p>If you use <code>min</code> and <code>max</code> attributes, please set <code>type="range"</code>.</p>
+                </section>
+
+                <section>
+                    <h2 id="example">Example</h2>
+
+                    <p>The following example validates latitude and longitude values.</p>
+                    <p>A valid latitude must be between -90.0 and 90.0, and valid longitude may range from -180.0 to 180.0.</p>
+
+                    <div class="bv-example">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#latlong-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#latlong-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#latlong-js-tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#latlong-html5-tab" data-toggle="tab">HTML 5</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="latlong-form-tab">
+                                <form id="latlongForm" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Latitude</label>
+                                        <div class="col-lg-5">
+                                            <input type="text" class="form-control" name="latitude" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Longitude</label>
+                                        <div class="col-lg-5">
+                                            <input type="text" class="form-control" name="longitude" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane" id="latlong-html-tab">
+                                <pre><code class="xml">&lt;form id="latlongForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Latitude&lt;/label>
         &lt;div class="col-lg-5">
@@ -106,10 +131,10 @@ related:
         &lt;/div>
     &lt;/div>
 &lt;/form></code></pre>
-            </div>
+                            </div>
 
-            <div class="tab-pane" id="latlong-js-tab">
-                <pre><code class="xml javascript">&lt;script>
+                            <div class="tab-pane" id="latlong-js-tab">
+                                <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#latlongForm').bootstrapValidator({
         feedbackIcons: {
@@ -120,7 +145,7 @@ $(document).ready(function() {
         fields: {
             latitude: {
                 validators: {
-                    <span class="doc-example-note">between: {
+                    <span class="bv-note">between: {
                         min: -90,
                         max: 90,
                         message: 'The latitude must be between -90.0 and 90.0'
@@ -129,7 +154,7 @@ $(document).ready(function() {
             },
             longitude: {
                 validators: {
-                    <span class="doc-example-note">between: {
+                    <span class="bv-note">between: {
                         min: -180,
                         max: 180,
                         message: 'The longitude must be between -180.0 and 180.0'
@@ -140,15 +165,15 @@ $(document).ready(function() {
     });
 });
 &lt;/script></code></pre>
-            </div>
+                            </div>
 
-            <div class="tab-pane" id="latlong-html5-tab">
-                <pre><code class="xml">&lt;form id="latlongForm" class="form-horizontal">
+                            <div class="tab-pane" id="latlong-html5-tab">
+                                <pre><code class="xml">&lt;form id="latlongForm" class="form-horizontal">
     &lt;div class="form-group">
         &lt;label class="col-lg-3 control-label">Latitude&lt;/label>
         &lt;div class="col-lg-5">
             &lt;input class="form-control" name="latitude"
-                <span class="doc-example-note">type="range" min="-90" max="90"
+                <span class="bv-note">type="range" min="-90" max="90"
                 data-bv-between-message="The latitude must be between -90.0 and 90.0"</span> />
         &lt;/div>
     &lt;/div>
@@ -157,13 +182,12 @@ $(document).ready(function() {
         &lt;label class="col-lg-3 control-label">Longitude&lt;/label>
         &lt;div class="col-lg-5">
             &lt;input class="form-control" name="longitude"
-                <span class="doc-example-note">type="range" min="-180" max="180"
+                <span class="bv-note">type="range" min="-180" max="180"
                 data-bv-between-message="The longitude must be between -180.0 and 180.0"</span> />
         &lt;/div>
     &lt;/div>
-&lt;/form>
-                </code></pre>
-                <pre><code class="xml javascript">&lt;script>
+&lt;/form></code></pre>
+                                <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#latlongForm').bootstrapValidator({
         feedbackIcons: {
@@ -174,12 +198,16 @@ $(document).ready(function() {
     });
 });
 &lt;/script></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {% include related.html %}
             </div>
         </div>
     </div>
-</section>
-
-{% include related.html %}
+</div>
 
 <script>
 $(document).ready(function() {

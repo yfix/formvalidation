@@ -58,13 +58,14 @@
 
                 <div class="navbar-collapse collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li><a href="">Getting Started</a></li>
-                        <li class="active"><a href="">Settings</a></li>
-                        <li><a href="">Validators</a></li>
-                        <li><a href="">Examples</a></li>
-                        <li><a href="">API</a></li>
-                        <li><a href="">Developing</a></li>
-                        <li><a href="">News</a></li>
+                    {% for nav in site.data.nav %}
+                        {% if page.url contains nav.permalink %}
+                            {% assign c = "active" %}
+                        {% else %}
+                            {% assign c = "" %}
+                        {% endif %}
+                        <li class="{{ c }}"><a href="{{ nav.permalink }}">{{ nav.title }}</a></li>
+                    {% endfor %}
                     </ul>
                 </div>
             </div>
@@ -83,7 +84,7 @@
             <div class="col-md-4">
                 <h4>Hire me</h4>
                 <img src="https://avatars.githubusercontent.com/u/4226036?s=50" />
-                <p>If you are looking for a Javascript, <a href="http://jquery.com/">jQuery</a>, <a href="https://angularjs.org/">AngularJS</a>, <a href="http://expressjs.com/">ExpressJS</a>, PHP or <a href="http://framework.zend.com/">Zend Framework</a> guru, feel free to drop me <a href="mailto:phuoc@huuphuoc.me">an email</a> or give me <a href="http://twitter.com/nghuuphuoc">a tweet</a>.</p>
+                <div>If you are looking for a Javascript, <a href="http://jquery.com/">jQuery</a>, <a href="https://angularjs.org/">AngularJS</a>, <a href="http://expressjs.com/">ExpressJS</a>, PHP or <a href="http://framework.zend.com/">Zend Framework</a> guru, feel free to drop me <a href="mailto:phuoc@huuphuoc.me">an email</a> or give me <a href="http://twitter.com/nghuuphuoc">a tweet</a>.</div>
             </div>
 
             <div class="col-md-4">
@@ -107,7 +108,12 @@
             </div>
         </div>
 
-        <div class="text-center">Made with love in Vietnam</div>
+        <p class="text-center">
+            &copy; 2013 - 2014 Nguyen Huu Phuoc<br/>
+            Code licensed under <a href="http://opensource.org/licenses/mit-license.html">MIT</a>, documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>
+        </p>
+
+        <p class="text-center">handcrafted with <i class="fa fa-heart"></i> in Vietnam</p>
     </div>
 </footer>
 <!-- /footer -->
@@ -116,10 +122,10 @@
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="/vendor/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
 <script>
-    $(document).ready(function() {
-        // Highlight sample code
-        hljs.initHighlightingOnLoad();
-    });
+$(document).ready(function() {
+    // Highlight sample code
+    hljs.initHighlightingOnLoad();
+});
 </script>
 </body>
 </html>
