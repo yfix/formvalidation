@@ -274,11 +274,11 @@ footer {
 
 // Sidebar
 .bv-sidebar {
-  padding-top: 100px;
+  padding-top: 80px;
   h2 {
     border-bottom: 1px solid #ddd;
-    font-size: 25px;
-    padding-bottom: 10px;
+    font-size: 30px;
+    padding-bottom: 20px;
     padding-top: 40px;
     &:first-child {
       padding-top: 0;
@@ -286,8 +286,15 @@ footer {
   }
   li {
     ul {
-      padding-left: 30px;
-      font-size: 16px;
+      a {
+        padding-left: 30px;
+        font-size: 16px;
+      }
+    }
+    &.active {
+      border-left: 3px solid #00b3fe;
+      margin-left: -20px;
+      padding-left: 20px;
     }
   }
 }
@@ -349,7 +356,9 @@ footer {
 }
 .bv-note {
   background: #f1c40f;
-  padding: 2px;
+  border-radius: 4px;
+  padding: 3px;
+  margin: -3px;
 }
 
 // Pager
