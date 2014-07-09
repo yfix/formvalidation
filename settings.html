@@ -58,6 +58,7 @@ next_section:     /validators/
                         <a href="#validator-settings">Validator Settings</a>
                         <ul>
                             <li><a href="#field-message">message</a></li>
+                            <li><a href="#dynamic-option">Dynamic Option</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -1153,6 +1154,541 @@ $(document).ready(function() {
                         <h3 id="validator-message">message: String</h3>
                         <td>The error message of validator for field.</td>
                     </section>
+
+                    <section>
+                        <h3 id="dynamic-option">Dynamic Option<span class="pull-right bv-news"></span></h3>
+                        <p>Some validators have option which its value could be change dynamically.</p>
+                        <p>For example, the <a href="/validators/zipCode/">zipCode validator</a> has the <code>country</code> option that can be changed dynamically a select element.</p>
+                        <p>The dynamic option can be determined by:</p>
+                        <ul>
+                            <li>A string</li>
+                            <li>Name of field which defines the value</li>
+                            <li>Name of function which returns the value</li>
+                            <li>A function returns the value</li>
+                        </ul>
+                        <p>In the third and fourth cases, the callback function must follow the format:</p>
+                        <pre><code class="javascript">function(value, validator, $field) {
+    // value is the value of field
+    // validator is the BootstrapValidator instance
+    // $field is the jQuery element representing field element
+}</code></pre>
+
+                        <section>
+                            <h4 id="dynamic-option-validators">Supported Validators</h4>
+                            <p>Below is the list of validators supporting dynamic option. Refer to specific validator document to see the full list of options.</p>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>Validator</th>
+                                        <th>Dynamic Option</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="/validators/between/">between validator</a></td>
+                                        <td><code>min</code>, <code>max</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="/validators/greaterThan/">greaterThan validator</a></td>
+                                        <td><code>value</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="/validators/lessThan/">lessThan validator</a></td>
+                                        <td><code>value</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="/validators/zipCode/">zipCode validator</a></td>
+                                        <td><code>country</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="bv-box bv-box-info">
+                                If you develop your own validator which support dynamic option, the <a href="/api/#get-dynamic-option">getDynamicOption()</a> method might be useful. You also should look at the source of validators above to see how this method is used.
+                            </div>
+                        </section>
+
+                        <p>To illustrate how powerful this concept is, take a look at the following example.</p>
+                        <p>Assume that your form uses <a href="/validators/zipCode/">zipCode validator</a> to validate a zipcode. The next sections show you how to use four ways above to define option value.</p>
+
+                        <div class="bv-box bv-box-info">
+                            <p>You can use the following sample zipcodes for testing:</p>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>Country</th>
+                                        <th>Valid Zipcode</th>
+                                        <th>Invalid Zipcode</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>United States</td>
+                                        <td>12345</td>
+                                        <td>123</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Italy</td>
+                                        <td>IT-12345</td>
+                                        <td>123</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <section>
+                            <h4 id="dynamic-option-string">Use string as usual</h4>
+                            <p>It's easy for you if the country code option is set initially and can't be changed:</p>
+                            <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#zipcodeForm').bootstrapValidator({
+        fields: {
+            code: {
+                validators: {
+                    zipCode: {
+                        <span class="bv-note">country: 'US'</span>,
+                        message: 'The value is not valid zipcode'
+                    }
+                }
+            }
+        }
+    });
+});
+&lt;/script></code></pre>
+
+                            <div class="bv-example">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#zipcode-form-tab" data-toggle="tab">Try it</a></li>
+                                    <li><a href="#zipcode-html-tab" data-toggle="tab">HTML</a></li>
+                                    <li><a href="#zipcode-js-tab" data-toggle="tab">JS</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="zipcode-form-tab">
+                                        <form id="zipcodeForm" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">US zipcode</label>
+                                                <div class="col-lg-5">
+                                                    <input type="text" class="form-control" name="code" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane" id="zipcode-html-tab">
+                                        <pre><code class="xml">&lt;form id="zipcodeForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">US zipcode&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="code" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+                                    </div>
+
+                                    <div class="tab-pane" id="zipcode-js-tab">
+                                        <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#zipcodeForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            code: {
+                validators: {
+                    zipCode: {
+                        <span class="bv-note">country: 'US'</span>,
+                        message: 'The value is not valid zipcode'
+                    }
+                }
+            }
+        }
+    });
+});
+&lt;/script></code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <p>What happen if you want the country to be changeable, for example, by a select element. With the dynamic option concept, it can be done easily by setting the <code>country</code> option as:</p>
+
+                        <section>
+                            <h4 id="dynamic-option-element">Use name of element defining the option value</h4>
+                            <pre><code class="xml javascript">&lt;!-- The element for choosing a country -->
+&lt;select class="form-control" <span class="bv-note">name="countrySelectBox"</span>>
+    &lt;option value="US">United States&lt;/option>
+    &lt;option value="CA">Canada&lt;/option>
+    &lt;option value="DK">Denmark&lt;/option>
+    &lt;option value="IT">Italy&lt;/option>
+    &lt;option value="NL">Netherlands&lt;/option>
+    &lt;option value="SE">Sweden&lt;/option>
+    &lt;option value="GB">United Kingdom&lt;/option>
+&lt;/select>
+
+&lt;!-- JS code -->
+&lt;script>
+$(document).ready(function() {
+    $('#zipcodeElementForm').bootstrapValidator({
+        fields: {
+            code: {
+                validators: {
+                    zipCode: {
+                        <span class="bv-note">country: 'countrySelectBox'</span>,
+                        message: 'The value is not valid zipcode'
+                    }
+                }
+            }
+        }
+    });
+});
+&lt;/script></code></pre>
+                            <div class="bv-example">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#zipcode-element-form-tab" data-toggle="tab">Try it</a></li>
+                                    <li><a href="#zipcode-element-html-tab" data-toggle="tab">HTML</a></li>
+                                    <li><a href="#zipcode-element-js-tab" data-toggle="tab">JS</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="zipcode-element-form-tab">
+                                        <form id="zipcodeElementForm" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Country:</label>
+                                                <div class="col-lg-5">
+                                                    <select class="form-control" name="countrySelectBox">
+                                                        <option value="US">United States</option>
+                                                        <option value="CA">Canada</option>
+                                                        <option value="DK">Denmark</option>
+                                                        <option value="IT">Italy</option>
+                                                        <option value="NL">Netherlands</option>
+                                                        <option value="SE">Sweden</option>
+                                                        <option value="GB">United Kingdom</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Zipcode</label>
+                                                <div class="col-lg-5">
+                                                    <input type="text" class="form-control" name="code" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane" id="zipcode-element-html-tab">
+                                        <pre><code class="xml">&lt;form id="zipcodeElementForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Country:&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;select class="form-control" <span class="bv-note">name="countrySelectBox"</span>>
+                &lt;option value="US">United States&lt;/option>
+                &lt;option value="CA">Canada&lt;/option>
+                &lt;option value="DK">Denmark&lt;/option>
+                &lt;option value="IT">Italy&lt;/option>
+                &lt;option value="NL">Netherlands&lt;/option>
+                &lt;option value="SE">Sweden&lt;/option>
+                &lt;option value="GB">United Kingdom&lt;/option>
+            &lt;/select>
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Zipcode&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="code" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+                                    </div>
+
+                                    <div class="tab-pane" id="zipcode-element-js-tab">
+                                        <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#zipcodeElementForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                code: {
+                    validators: {
+                        zipCode: {
+                            <span class="bv-note">country: 'countrySelectBox'</span>,
+                            message: 'The value is not valid zipcode'
+                        }
+                    }
+                }
+            }
+        })
+        <span class="bv-note">.on('change', '[name="countrySelectBox"]', function() {
+            // Revalidate the zipcode after changing the country
+            $('#zipcodeForm').bootstrapValidator('revalidateField', 'code');
+        });</span>
+});
+&lt;/script></code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h4 id="dynamic-option-function-name">Use name of function returning the option value</h4>
+                            <pre><code class="xml javascript">&lt;!-- The element for choosing a country -->
+&lt;select class="form-control" name="countrySelectBox">
+    &lt;option value="US">United States&lt;/option>
+    &lt;option value="CA">Canada&lt;/option>
+    &lt;option value="DK">Denmark&lt;/option>
+    &lt;option value="IT">Italy&lt;/option>
+    &lt;option value="NL">Netherlands&lt;/option>
+    &lt;option value="SE">Sweden&lt;/option>
+    &lt;option value="GB">United Kingdom&lt;/option>
+&lt;/select>
+
+&lt;!-- JS code -->
+&lt;script>
+<span class="bv-note">function getCountryCode(value, validator, $field) {
+    // Return the selected country code
+    return $('[name="countrySelectBox"]').val();
+
+    // You can use getFieldElements() method
+    // return validator.getFieldElements('countrySelectBox').val();
+};</span>
+
+$(document).ready(function() {
+    $('#zipcodeFunctionNameForm').bootstrapValidator({
+        fields: {
+            code: {
+                validators: {
+                    zipCode: {
+                        <span class="bv-note">country: 'getCountryCode'</span>,
+                        message: 'The value is not valid zipcode'
+                    }
+                }
+            }
+        }
+    });
+});
+&lt;/script></code></pre>
+                            <div class="bv-example">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#zipcode-function-form-tab" data-toggle="tab">Try it</a></li>
+                                    <li><a href="#zipcode-function-html-tab" data-toggle="tab">HTML</a></li>
+                                    <li><a href="#zipcode-function-js-tab" data-toggle="tab">JS</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="zipcode-function-form-tab">
+                                        <form id="zipcodeFunctionNameForm" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Country:</label>
+                                                <div class="col-lg-5">
+                                                    <select class="form-control" name="countrySelectBox">
+                                                        <option value="US">United States</option>
+                                                        <option value="CA">Canada</option>
+                                                        <option value="DK">Denmark</option>
+                                                        <option value="IT">Italy</option>
+                                                        <option value="NL">Netherlands</option>
+                                                        <option value="SE">Sweden</option>
+                                                        <option value="GB">United Kingdom</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Zipcode</label>
+                                                <div class="col-lg-5">
+                                                    <input type="text" class="form-control" name="code" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane" id="zipcode-function-html-tab">
+                                        <pre><code class="xml">&lt;form id="zipcodeFunctionNameForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Country:&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;select class="form-control" <span class="bv-note">name="countrySelectBox"</span>>
+                &lt;option value="US">United States&lt;/option>
+                &lt;option value="CA">Canada&lt;/option>
+                &lt;option value="DK">Denmark&lt;/option>
+                &lt;option value="IT">Italy&lt;/option>
+                &lt;option value="NL">Netherlands&lt;/option>
+                &lt;option value="SE">Sweden&lt;/option>
+                &lt;option value="GB">United Kingdom&lt;/option>
+            &lt;/select>
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Zipcode&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="code" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+                                    </div>
+
+                                    <div class="tab-pane" id="zipcode-function-js-tab">
+                                        <pre><code class="xml javascript">&lt;script>
+<span class="bv-note">function getCountryCode(value, validator, $field) {
+    // Return the selected country code
+    return $('[name="countrySelectBox"]').val();
+
+    // You can use getFieldElements() method
+    // return validator.getFieldElements('countrySelectBox').val();
+};</span>
+
+$(document).ready(function() {
+    $('#zipcodeFunctionNameForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                code: {
+                    validators: {
+                        zipCode: {
+                            <span class="bv-note">country: 'getCountryCode'</span>,
+                            message: 'The value is not valid zipcode'
+                        }
+                    }
+                }
+            }
+        })
+        <span class="bv-note">.on('change', '[name="countrySelectBox"]', function() {
+            // Revalidate the zipcode after changing the country
+            $('#zipcodeFunctionNameForm').bootstrapValidator('revalidateField', 'code');
+        });</span>
+});
+&lt;/script></code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h4 id="dynamic-option-callback">Use function returning the option value</h4>
+                            <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#zipcodeElementForm').bootstrapValidator({
+        fields: {
+            code: {
+                validators: {
+                    zipCode: {
+                        <span class="bv-note">country: function(value, validator, $field) {
+                            return $('[name="countrySelectBox"]').val();
+
+                            // You can use getFieldElements() method
+                            // return validator.getFieldElements('countrySelectBox').val();
+                        }</span>,
+                        message: 'The value is not valid zipcode'
+                    }
+                }
+            }
+        }
+    });
+});
+&lt;/script></code></pre>
+                            <div class="bv-example">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#zipcode-callback-form-tab" data-toggle="tab">Try it</a></li>
+                                    <li><a href="#zipcode-callback-html-tab" data-toggle="tab">HTML</a></li>
+                                    <li><a href="#zipcode-callback-js-tab" data-toggle="tab">JS</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="zipcode-callback-form-tab">
+                                        <form id="zipcodeCallbackForm" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Country:</label>
+                                                <div class="col-lg-5">
+                                                    <select class="form-control" name="countrySelectBox">
+                                                        <option value="US">United States</option>
+                                                        <option value="CA">Canada</option>
+                                                        <option value="DK">Denmark</option>
+                                                        <option value="IT">Italy</option>
+                                                        <option value="NL">Netherlands</option>
+                                                        <option value="SE">Sweden</option>
+                                                        <option value="GB">United Kingdom</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Zipcode</label>
+                                                <div class="col-lg-5">
+                                                    <input type="text" class="form-control" name="code" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane" id="zipcode-callback-html-tab">
+                                        <pre><code class="xml">&lt;form id="zipcodeCallbackForm" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Country:&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;select class="form-control" <span class="bv-note">name="countrySelectBox"</span>>
+                &lt;option value="US">United States&lt;/option>
+                &lt;option value="CA">Canada&lt;/option>
+                &lt;option value="DK">Denmark&lt;/option>
+                &lt;option value="IT">Italy&lt;/option>
+                &lt;option value="NL">Netherlands&lt;/option>
+                &lt;option value="SE">Sweden&lt;/option>
+                &lt;option value="GB">United Kingdom&lt;/option>
+            &lt;/select>
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Zipcode&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="code" />
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+                                    </div>
+
+                                    <div class="tab-pane" id="zipcode-callback-js-tab">
+                                        <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#zipcodeCallbackForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                code: {
+                    validators: {
+                        zipCode: {
+                            <span class="bv-note">country: function(value, validator, $field) {
+                                return $('[name="countrySelectBox"]').val();
+
+                                // You can use getFieldElements() method
+                                // return validator.getFieldElements('countrySelectBox').val();
+                            }</span>,
+                            message: 'The value is not valid zipcode'
+                        }
+                    }
+                }
+            }
+        })
+        <span class="bv-note">.on('change', '[name="countrySelectBox"]', function() {
+            // Revalidate the zipcode after changing the country
+            $('#zipcodeCallbackForm').bootstrapValidator('revalidateField', 'code');
+        });</span>
+});
+&lt;/script></code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
                 </section>
                 <!-- /validator -->
             </div>
@@ -1163,6 +1699,11 @@ $(document).ready(function() {
 <script src="/vendor/momentjs/moment.min.js"></script>
 <script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 <script>
+function getCountryCode(value, validator, $field) {
+    // Return the selected country code
+    return validator.getFieldElements('countrySelectBox').val();
+};
+
 $(document).ready(function() {
     $('#dobPicker')
         .datetimepicker({
@@ -1434,5 +1975,97 @@ $(document).ready(function() {
             }
         }
     });
+
+    // Dynamic option concept
+    // #1 usage
+    $('#zipcodeForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            code: {
+                validators: {
+                    zipCode: {
+                        country: 'US',
+                        message: 'The value is not valid zipcode'
+                    }
+                }
+            }
+        }
+    });
+
+    // #2 usage
+    $('#zipcodeElementForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                code: {
+                    validators: {
+                        zipCode: {
+                            country: 'countrySelectBox',
+                            message: 'The value is not valid zipcode'
+                        }
+                    }
+                }
+            }
+        })
+        .on('change', '[name="countrySelectBox"]', function() {
+            // Revalidate the zipcode after changing the country
+            $('#zipcodeElementForm').bootstrapValidator('revalidateField', 'code');
+        });
+
+    // #3 usage
+    $('#zipcodeFunctionNameForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                code: {
+                    validators: {
+                        zipCode: {
+                            country: 'getCountryCode',
+                            message: 'The value is not valid zipcode'
+                        }
+                    }
+                }
+            }
+        })
+        .on('change', '[name="countrySelectBox"]', function() {
+            $('#zipcodeFunctionNameForm').bootstrapValidator('revalidateField', 'code');
+        });
+
+    // #4 usage
+    $('#zipcodeCallbackForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                code: {
+                    validators: {
+                        zipCode: {
+                            country: function(value, validator, $field) {
+                                return validator.getFieldElements('countrySelectBox').val();
+                            },
+                            message: 'The value is not valid zipcode'
+                        }
+                    }
+                }
+            }
+        })
+        .on('change', '[name="countrySelectBox"]', function() {
+            $('#getCountryCode').bootstrapValidator('revalidateField', 'code');
+        });
 });
 </script>
