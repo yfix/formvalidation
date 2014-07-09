@@ -141,7 +141,7 @@ comments:         true
                             <div class="tab-pane" id="icheck-html-tab">
                                 <pre><code class="xml">&lt;!-- Include iCheck skin -->
 <span class="bv-note">&lt;link rel="stylesheet" href="/vendor/icheck/skins/square/red.css" /></span>
-&lt;!-- Set the radio/checkbox positon properly -->
+&lt;!-- Set the radio/checkbox position properly -->
 &lt;style type="text/css">
 #icheckForm .radio, #icheckForm .checkbox {
     padding-left: 0;
@@ -275,11 +275,7 @@ $(document).ready(function() {
             .on('ifChanged', function(e) {
                 // Get the field name
                 var field = $(this).attr('name');
-                <span class="bv-note">$('#icheckForm')
-                    // Mark the field as not validated
-                    .bootstrapValidator('updateStatus', field, 'NOT_VALIDATED')
-                    // Validate field
-                    .bootstrapValidator('validateField', field);</span>
+                <span class="bv-note">$('#icheckForm').bootstrapValidator('revalidateField', field);</span>
             });
 });
 &lt;/script></code></pre>
@@ -331,9 +327,7 @@ $(document).ready(function() {
                 radioClass: 'iradio_square-red'
             })
             .on('ifChanged', function(e) {
-                var field = $(this).attr('name');
-                $('#icheckForm').bootstrapValidator('updateStatus', field, 'NOT_VALIDATED')
-                                .bootstrapValidator('validateField', field);
+                $('#icheckForm').bootstrapValidator('revalidateField', $(this).attr('name'));
             });
 });
 </script>

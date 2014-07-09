@@ -131,12 +131,9 @@ $(document).ready(function() {
     $('#chosenForm')
         .find('[name="colors"]')
             .chosen()
-            // Re-validate the color when it is changed
+            // Revalidate the color when it is changed
             <span class="bv-note">.change(function(e) {
-                $('#chosenForm')
-                    .data('bootstrapValidator')
-                    .updateStatus('colors', 'NOT_VALIDATED')
-                    .validateField('colors');
+                $('#chosenForm').bootstrapValidator('revalidateField', 'colors');
             })</span>
             .end()
         .bootstrapValidator({
@@ -179,7 +176,7 @@ $(document).ready(function() {
         .find('[name="colors"]')
             .chosen()
             .change(function(e) {
-                $('#chosenForm').data('bootstrapValidator').updateStatus('colors', 'NOT_VALIDATED').validateField('colors');
+                $('#chosenForm').bootstrapValidator('revalidateField', 'colors');
             })
             .end()
         .bootstrapValidator({

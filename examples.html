@@ -78,15 +78,13 @@ comments:         true
     .on(pluginChangedEvent, function() {
         $(form)
             .data('bootstrapValidator')             // Get the validator instance
-            .updateStatus(field, 'NOT_VALIDATED')   // Mark it as not validated yet
-            .validateField(field);                  // Revalidate it
+            .revalidateField(field);                // Revalidate it
 
         // It is equivalent to use
-        $(form).bootstrapValidator('updateStatus', field, 'NOT_VALIDATED')
-               .bootstrapValidator('validateField', field);
+        $(form).bootstrapValidator('revalidateField', field);
     });</code></pre>
                     </div>
-                    <p>Look at <a href="/api/#update-status"><code>updateStatus()</code></a> and <a href="/api/#validate-field"><code>validateField()</code></a> methods for more details.</p>
+                    <p>Look at the <a href="/api/#revalidate-field"><code>revalidateField()</code></a> method for more details.</p>
                     <p>Example: <a href="/examples/chosen/">Chosen</a></p>
 
                     <p>These examples show how you can use BootstrapValidator with other Javascript plugins.</p>

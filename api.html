@@ -216,7 +216,7 @@ $(form)
                     <!-- getDynamicOption() -->
                     <section>
                         <h3 id="get-dynamic-option">getDynamicOption(): String<span class="pull-right bv-news"></span></h3>
-                        <p><code>getDynamicOption(option<sup>*</sup>, field<sup>*</sup>)</code> &mdash; Returns the option value which can be set dynamically.</p>
+                        <p><code>getDynamicOption(field<sup>*</sup>, option<sup>*</sup>)</code> &mdash; Returns the option value which can be set dynamically.</p>
                         <p>For example, the <a href="/validators/zipCode/">zipCode validator</a> has <code>country</code> option that can be changed dynamically a select element.</p>
 
                         <table class="table table-condensed">
@@ -229,14 +229,14 @@ $(form)
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td><code>field</code></td>
+                                    <td>String|jQuery</td>
+                                    <td>The field name or element</td>
+                                </tr>
+                                <tr>
                                     <td><code>option</code></td>
                                     <td>String</td>
                                     <td>The <a href="/settings/#dynamic-option">dynamic option</a></td>
-                                </tr>
-                                <tr>
-                                    <td><code>field</code></td>
-                                    <td>String</td>
-                                    <td>The field name or element</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -267,6 +267,12 @@ $(form)
                                 </tr>
                             </tbody>
                         </table>
+                    </section>
+
+                    <!-- getInvalidFields() -->
+                    <section>
+                        <h3 id="get-invalid-fields">getInvalidFields(): jQuery[]<span class="pull-right bv-news"></span></h3>
+                        <p><code>getInvalidFields()</code> &mdash; Returns the list of invalid fields.</p>
                     </section>
 
                     <!-- getMessages() -->
@@ -329,12 +335,6 @@ $(form)
                         </table>
                     </section>
 
-                    <!-- getInvalidFields() -->
-                    <section>
-                        <h3 id="get-invalid-fields">getInvalidFields(): jQuery[]<span class="pull-right bv-news"></span></h3>
-                        <p><code>getInvalidFields()</code> &mdash; Returns the list of invalid fields.</p>
-                    </section>
-
                     <!-- getSubmitButton() -->
                     <section>
                         <h3 id="get-submit-button">getSubmitButton(): jQuery<span class="pull-right bv-news"></span></h3>
@@ -364,9 +364,9 @@ $(form)
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><code>$container</code></td>
-                                    <td>jQuery</td>
-                                    <td>The container element</td>
+                                    <td><code>container</code></td>
+                                    <td>String|jQuery</td>
+                                    <td>The container selector or container element</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -475,6 +475,9 @@ $(form).data('bootstrapValidator').resetForm();</code></pre>
                         <h3 id="revalidate-field">revalidateField(): BootstrapValidator<span class="pull-right bv-news"></span></h3>
                         <p><code>revalidateField(field<sup>*</sup>)</code> &mdash; Revalidate given field.</p>
                         <p>It's used when you need to revalidate the field which its value is updated by other plugin.</p>
+                        <p>By default, the plugin doesn't re-validate a field once it is already validated and marked as a valid one.
+                            When using with other plugins, the field value is changed and therefore need to be re-validated.</p>
+
                         <p>Behide the sences, the method is equivalent to:</p>
                         <pre><code class="javascript">$(form).data('bootstrapValidator')
     .updateStatus(field, 'NOT_VALIDATED')
@@ -500,6 +503,12 @@ $(form).bootstrapValidator('updateStatus', field, 'NOT_VALIDATED')
                                 </tr>
                             </tbody>
                         </table>
+
+                        <h4>Examples:</h4>
+                        <ul>
+                            <li><a href="#datepicker-example">Date Picker</a></li>
+                            <li><a href="/examples/#compatibility">Play with other plugins</a></li>
+                        </ul>
                     </section>
 
                     <!-- updateMessage() -->
@@ -604,14 +613,8 @@ $(form).bootstrapValidator('updateStatus', field, 'NOT_VALIDATED')
                             </tbody>
                         </table>
 
-                        <p>This method is useful when you want to use BootstrapValidator with other plugins such as <a href="http://eternicode.github.io/bootstrap-datepicker/">Bootstrap Date Picker</a>,
-                            <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Boostrap Datetime Picker</a>, <a href="http://ivaynberg.github.io/select2/">Select2</a>, etc.</p>
-
-                        <p>By default, the plugin doesn't re-validate a field once it is already validated and marked as a valid one. When using with other plugins, the field value is changed and therefore need to be re-validated.</p>
-
                         <h4>Examples:</h4>
                         <ul>
-                            <li><a href="#datepicker-example">Date Picker</a></li>
                             <li><a href="#credit-card-example">Credit Card</a></li>
                         </ul>
                     </section>
@@ -664,9 +667,9 @@ $(form).data('bootstrapValidator').validate();</code></pre>
 
                         <link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
                         <style type="text/css">
-                        .form-horizontal .has-feedback .input-group .form-control-feedback {
+                        #datetimeForm .has-feedback .form-control-feedback {
                             top: 0;
-                            right: -30px;
+                            right: -15px;
                         }
                         </style>
 
@@ -685,9 +688,9 @@ $(form).data('bootstrapValidator').validate();</code></pre>
                                             <div class="col-lg-5">
                                                 <div class="input-group date" id="datetimePicker">
                                                     <input type="text" class="form-control" name="datetimePicker" />
-                                                <span class="input-group-addon">
-                                                    <span class="glyphicon glyphicon-calendar"></span>
-                                                </span>
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -696,6 +699,13 @@ $(form).data('bootstrapValidator').validate();</code></pre>
 
                                 <div class="tab-pane" id="datepicker-html-tab">
                                     <pre><code class="html">&lt;link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+&lt;style type="text/css">
+/* Adjust the feedback icon position */
+<span class="bv-note">#datetimeForm .has-feedback .form-control-feedback {
+    top: 0;
+    right: -15px;
+}</span>
+&lt;/style>
 
 &lt;form id="datetimeForm" method="post" class="form-horizontal">
     ...
@@ -739,14 +749,8 @@ $(document).ready(function() {
 
     $('#datetimePicker')
         .on('dp.change dp.show', function(e) {
-            // Validate the date when user change it
-            $('#datetimeForm')
-                // Get the bootstrapValidator instance
-                .data('bootstrapValidator')
-                // Mark the field as not validated, so it'll be re-validated when the user change date
-                <span class="bv-note">.updateStatus('datetimePicker', 'NOT_VALIDATED', null)</span>
-                // Validate the field
-                .validateField('datetimePicker');
+            // Revalidate the date when user change it
+            <span class="bv-note">$('#datetimeForm').bootstrapValidator('revalidateField', 'datetimePicker');</span>
         });
 });
 &lt;/script></code></pre>
@@ -913,11 +917,8 @@ $(document).ready(function() {
 
     $('#datetimePicker')
         .on('dp.change dp.show', function(e) {
-            // Validate the date when user change it
-            $('#datetimeForm')
-                .data('bootstrapValidator')
-                .updateStatus('datetimePicker', 'NOT_VALIDATED', null)
-                .validateField('datetimePicker');
+            // Revalidate the date when user change it
+            $('#datetimeForm').bootstrapValidator('revalidateField', 'datetimePicker');
         });
 
     $('#paymentForm').bootstrapValidator({

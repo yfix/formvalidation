@@ -102,9 +102,7 @@ comments:         true
 $(document).ready(function() {
     <span class="bv-note">function validateEditor() {
         // Revalidate the content when its value is changed by Summernote
-        $('#summernoteForm')
-            .bootstrapValidator('updateStatus', 'content', 'NOT_VALIDATED')
-            .bootstrapValidator('validateField', 'content');
+        $('#summernoteForm').bootstrapValidator('revalidateField', 'content');
     };</span>
 
     $('#summernoteForm')
@@ -162,9 +160,7 @@ $(document).ready(function() {
 <script>
 $(document).ready(function() {
     function validateEditor() {
-        $('#summernoteForm')
-            .bootstrapValidator('updateStatus', 'content', 'NOT_VALIDATED')
-            .bootstrapValidator('validateField', 'content');
+        $('#summernoteForm').bootstrapValidator('revalidateField', 'content');
     };
 
     $('#summernoteForm')

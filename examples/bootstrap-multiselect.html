@@ -130,10 +130,7 @@ $(document).ready(function() {
             .multiselect({
                 // Re-validate the multiselect field when it is changed
                 <span class="bv-note">onChange: function(element, checked) {
-                    $('#multiselectForm')
-                        .data('bootstrapValidator')                 // Get plugin instance
-                        .updateStatus('browsers', 'NOT_VALIDATED')  // Update field status
-                        .validateField('browsers');                 // and re-validate it
+                    $('#multiselectForm').bootstrapValidator('revalidateField', 'browsers');
                 }</span>
             })
             .end()
@@ -161,7 +158,8 @@ $(document).ready(function() {
                             <span class="bv-note">callback: function(value, validator) {
                                 // Get the selected options
                                 var options = validator.getFieldElements('browsers').val();
-                                return (options != null && options.length >= 2 && options.length <= 3);
+                                return (options != null
+                                        && options.length >= 2 && options.length <= 3);
                             }</span>
                         }
                     }
@@ -189,7 +187,7 @@ $(document).ready(function() {
         .find('[name="browsers"]')
             .multiselect({
                 onChange: function(element, checked) {
-                    $('#multiselectForm').data('bootstrapValidator').updateStatus('browsers', 'NOT_VALIDATED').validateField('browsers');
+                    $('#multiselectForm').bootstrapValidator('revalidateField', 'browsers');
                 }
             })
             .end()

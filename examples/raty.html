@@ -116,10 +116,7 @@ $(document).ready(function() {
         <span class="bv-note">scoreName: 'star'</span>,
         // Re-validate the star rating whenever user change it
         <span class="bv-note">click: function (score, evt) {
-            $('#ratyForm')
-                .data('bootstrapValidator')             // Return the bootstrapValidator instance
-                .updateStatus('star', 'NOT_VALIDATED')  // Mark the star field as not validated yet
-                .validateField('star');                 // Validate it again
+            $('#ratyForm').bootstrapValidator('revalidateField', 'star');
         }</span>
     });
     $('#ratyForm')
@@ -179,10 +176,7 @@ $(document).ready(function() {
         size: 24,
         scoreName: 'star',
         click: function(score, evt) {
-            $('#ratyForm')
-                .data('bootstrapValidator')             // Return the bootstrapValidator instance
-                .updateStatus('star', 'NOT_VALIDATED')  // Mark the score as not validated yet
-                .validateField('star');                 // Validate it again
+            $('#ratyForm').bootstrapValidator('revalidateField', 'star');
         }
     });
     $('#ratyForm')
