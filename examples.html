@@ -30,6 +30,7 @@ comments:         true
             <div class="bv-sidebar">
                 <ul>
                     <li><a href="#basic">Basic</a></li>
+                    <li><a href="#advance">Advance</a></li>
                     <li><a href="#compatibility">Compatibility</a></li>
                 </ul>
             </div>
@@ -45,23 +46,61 @@ comments:         true
                         <li><a href="/examples/html5/">Play with HTML 5 input types and attributes</a></li>
                         <li><a href="/examples/modal/">Validate a form placed inside a Bootstrap modal</a></li>
                         <li><a href="/examples/multiple/">Use multiple elements with the same name</a></li>
-                        <li><a href="/examples/toggle/">Toggle field validator</a></li>
+                        <li><a href="/examples/toggle/">Toggle field</a></li>
                     </ul>
                 </section>
                 <!-- /basic -->
 
+                <!-- advance -->
+                <section>
+                    <h2 id="advance">Advance</h2>
+                    <ul>
+                        <li><a href="/examples/enable-validator/">Enable/disable validator</a></li>
+                    </ul>
+                </section>
+                <!-- /advance -->
+
                 <!-- compatibility -->
                 <section>
                     <h2 id="compatibility">Compatibility</h2>
+                    <p>In order to make BootstrapValidator work together with other plugin, you should follow two rules below:</p>
+                    <div>
+                        <p><strong>1 &mdash; Don't exclude the field if the plugin changes the field visibility</strong></p>
+                        <p>Some plugins hide your field and create new elements to change how the field looks like. By default, the hidden, invisible fields will not be validated. Therefore, you need to set <code>excluded: ':disabled'</code>. See the <a href="/settings/#form-excluded">excluded</a> option for more information.</p>
+                        <p>Example: <a href="/examples/bootstrap-button/">Bootstrap Button</a></p>
+                    </div>
+
+                    <div>
+                        <p><strong>2 &mdash; Revalidate the field if the plugin changes its value dynamically:</strong></p>
+                        <p>Most plugins trigger an event after changing the field value. By using this kind of event handler, you need to ask BootstrapValidator to revalidate the field.</p>
+                        <pre><code class="javascript">$(field)
+    .nameOfPlugin(pluginOptions)
+    .on(pluginChangedEvent, function() {
+        $(form)
+            .data('bootstrapValidator')             // Get the validator instance
+            .updateStatus(field, 'NOT_VALIDATED')   // Mark it as not validated yet
+            .validateField(field);                  // Revalidate it
+
+        // It is equivalent to use
+        $(form).bootstrapValidator('updateStatus', field, 'NOT_VALIDATED')
+               .bootstrapValidator('validateField', field);
+    });</code></pre>
+                    </div>
+                    <p>Look at <a href="/api/#update-status"><code>updateStatus()</code></a> and <a href="/api/#validate-field"><code>validateField()</code></a> methods for more details.</p>
+                    <p>Example: <a href="/examples/chosen/">Chosen</a></p>
+
                     <p>These examples show how you can use BootstrapValidator with other Javascript plugins.</p>
                     <ul>
                         <li><a href="/examples/bootstrap-button/">Bootstrap Button</a></li>
+                        <li><a href="/validators/hexColor/#color-picker-example">Bootstrap Color Picker</a></li>
+                        <li><a href="/api/#datepicker-example">Bootstrap Datetime Picker</a></li>
                         <li><a href="/examples/bootstrap-multiselect/">Bootstrap Multiselect</a></li>
                         <li><a href="/examples/bootstrap-tab/">Bootstrap Tabs</a></li>
                         <li><a href="/examples/chosen/">Chosen</a></li>
                         <li><a href="/examples/icheck/">iCheck</a></li>
                         <li><a href="/examples/mask/">Mask</a></li>
                         <li><a href="/examples/raty/">Raty</a></li>
+                        <li><a href="/examples/summernote/">Summernote</a></li>
                     </ul>
                 </section>
                 <!-- /compatibility -->

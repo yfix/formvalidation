@@ -14,7 +14,7 @@
             'default': 'Vui lòng nhập giá trị hợp lệ',
             less: 'Vui lòng chọn ít nhất %s lựa chọn',
             more: 'Vui lòng chọn nhiều nhất %s lựa chọn',
-            between: 'Vui lòng chọn %s - %s lựa chọn',
+            between: 'Vui lòng chọn %s - %s lựa chọn'
         },
         creditCard: {
             'default': 'Vui lòng nhập số thẻ tín dụng hợp lệ'
@@ -184,7 +184,9 @@
             'default': 'Vui lòng nhập số hợp lệ'
         },
         ip: {
-            'default': 'Vui lòng nhập địa chỉ IP hợp lệ'
+            'default': 'Vui lòng nhập địa chỉ IP hợp lệ',
+            ipv4: 'Vui lòng nhập địa chỉ IPv4 hợp lệ',
+            ipv6: 'Vui lòng nhập địa chỉ IPv6 hợp lệ'
         },
         isbn: {
             'default': 'Vui lòng nhập số ISBN hợp lệ'

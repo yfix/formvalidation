@@ -2,6 +2,7 @@
 layout:           doc
 title:            Play with Bootstrap Tabs
 permalink:        /examples/bootstrap-tab/
+categories:       [Compatibility]
 previous_section:
 next_section:
 comments:         true
@@ -12,7 +13,6 @@ comments:         true
         <div class="row">
             <div class="col-md-8">
                 <h1><a href="/examples/">Examples</a> / Compatibility</h1>
-                <p>Play with Bootstrap Tabs</p>
             </div>
 
             <div class="col-md-4">
@@ -28,14 +28,14 @@ comments:         true
     <div class="row">
         <div class="col-md-3">
             <div class="bv-sidebar">
-                {% include example-compatibility.html %}
+                {% include example.html category='Compatibility' %}
             </div>
         </div>
 
         <div class="col-md-9">
             <div class="bv-content">
                 <section>
-                    <h2 id="tab">Tabs</h2>
+                    <h2 id="bootstrap-tab">Play with Bootstrap Tabs</h2>
                     <p>The following example shows that the plugin works perfectly with <a href="http://getbootstrap.com/javascript/#tabs">Bootstrap Tabs</a>.</p>
                     <p>By default, the fields in inactive tabs will not be validated because they are not visible. In order to validate them, we need to use the <a href="/settings/#excluded">excluded</a> option:</p>
                     <pre><code class="javascript">excluded: [':disabled']</code></pre>

@@ -2,6 +2,7 @@
 layout:           doc
 title:            Play with HTML 5 input types and attributes
 permalink:        /examples/html5/
+categories:       [Basic]
 previous_section:
 next_section:
 comments:         true
@@ -12,7 +13,6 @@ comments:         true
         <div class="row">
             <div class="col-md-8">
                 <h1><a href="/examples/">Examples</a> / Basic</h1>
-                <p>Play with HTML 5 input types and attributes</p>
             </div>
 
             <div class="col-md-4">
@@ -28,14 +28,14 @@ comments:         true
     <div class="row">
         <div class="col-md-3">
             <div class="bv-sidebar">
-                {% include example-basic.html %}
+                {% include example.html category='Basic' %}
             </div>
         </div>
 
         <div class="col-md-9">
             <div class="bv-content">
                 <section>
-                    <h2 id="html5">HTML 5 input types</h2>
+                    <h2 id="html5">Play with HTML 5 input types and attributes</h2>
                     <p>BootstrapValidator supports a few of HTML 5 types, attributes listed as following:</p>
 
                     <table class="table table-condensed">
@@ -240,7 +240,7 @@ data-bv-between-max="..."</code></pre></td>
                             </div>
 
                             <div class="tab-pane" id="html5-js-tab">
-                                <pre><code class="xml javascript">&lt;script type="text/javascript">
+                                <pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $('#html5Form').bootstrapValidator();
 });

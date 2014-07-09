@@ -4,10 +4,10 @@
   permalink: /settings/
 - title:     Validators
   permalink: /validators/
-- title:     Examples
-  permalink: /examples/
 - title:     API
   permalink: /api/
+- title:     Examples
+  permalink: /examples/
 - title:     Developing
   permalink: /developing/
 - title:     News
