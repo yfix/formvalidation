@@ -476,8 +476,14 @@ $(form).data('bootstrapValidator').resetForm();</code></pre>
                         <p><code>revalidateField(field<sup>*</sup>)</code> &mdash; Revalidate given field.</p>
                         <p>It's used when you need to revalidate the field which its value is updated by other plugin.</p>
                         <p>Behide the sences, the method is equivalent to:</p>
-                        <pre><code class="javascript">bootstrapValidatorInstance.updateStatus(field, 'STATUS_NOT_VALIDATED')
-    .validateField(field);</code></pre>
+                        <pre><code class="javascript">$(form).data('bootstrapValidator')
+    .updateStatus(field, 'NOT_VALIDATED')
+    .validateField(field);
+
+// Or
+$(form).bootstrapValidator('updateStatus', field, 'NOT_VALIDATED')
+       .bootstrapValidator('validateField', field);
+                        </code></pre>
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
