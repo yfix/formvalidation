@@ -1,5 +1,5 @@
 name:                 BootstrapValidator
-pygments:             false
+#pygments:             false
 relative_permalinks:  false
 
 markdown:             redcarpet
@@ -12,19 +12,19 @@ timezone:             Asia/Ho_Chi_Minh
 
 # Custom variables
 # not defined by Jekyll
-current_version:      0.4.5
+current_version:      0.5.0
 released_date:        2014-05-15
 github_watchers:      547
 github_forks:         218
 github_downloads:     31200
 twitter_followers:    100
 download:
-  dist:               https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.4.5/bootstrapvalidator-dist-0.4.5.zip
-  tag:                https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.4.5.zip
+  dist:               https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.5.0/bootstrapvalidator-dist-0.5.0.zip
+  tag:                https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.5.0.zip
 repository:
   source:             https://github.com/nghuuphuoc/bootstrapvalidator
   docs:               https://github.com/nghuuphuoc/bootstrapvalidator/gh-pages
   docs_edit:          https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages
 ga_code:              UA-44786951-2
 jquery_plugin_url:    http://plugins.jquery.com/bootstrapValidator
-disqus:               bootstrapvalidator
+#disqus:               bootstrapvalidator
