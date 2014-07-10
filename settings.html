@@ -68,15 +68,11 @@ next_section:     /validators/
                     </li>
                 </ul>
 
-                <h4><a href="#events">Events</a></h4>
+                <h4><a href="#events">Events<span class="pull-right bv-news"></span></a></h4>
                 <ul>
-                    <li><a href="#event-error-field">error.field.bv</a></li>
-                    <li><a href="#event-error-form">error.form.bv</a></li>
-                    <li><a href="#event-error-validator">error.validator.bv</a></li>
-                    <li><a href="#event-status-field">status.field.bv</a></li>
-                    <li><a href="#event-success-field">success.field.bv</a></li>
-                    <li><a href="#event-success-form">success.form.bv</a></li>
-                    <li><a href="#event-success-validator">success.validator.bv</a></li>
+                    <li><a href="#event-form">Form Events</a></li>
+                    <li><a href="#event-field">Field Events</a></li>
+                    <li><a href="#event-validator">Validator Events</a></li>
                 </ul>
             </div>
         </div>
@@ -1731,27 +1727,153 @@ $(document).ready(function() {
                 <!-- events -->
                 <section>
                     <h2 id="events">Events<span class="pull-right bv-news"></span></h2>
-                    <p>Similar to the <a href="#settings-structure">settings</a>, there are also events for form, field and validator. Each event can be set by one of there methods:</p>
+                    <p>Similar to the <a href="#settings-structure">settings</a>, there are also events for form, field and validator. Each event can be set by one of three ways:</p>
                     <ul>
-                        <li>i) Using jQuery <code>on(eventName)</code></li>
-                        <li>ii) Using option</li>
-                        <li>iii) Using HTML declrative attribute</li>
+                        <li>Listening to event using jQuery <code>on(eventName, callback)</code></li>
+                        <li>Using option</li>
+                        <li>Using HTML 5 attributes</li>
                     </ul>
 
-                    <!-- field.error.bv -->
+                    <!-- event-form -->
                     <section>
-                        <h3 id="#event-field-error">field.error.bv</h3>
-                        <p>Triggered when any field is invalid.</p>
+                        <h3 id="event-form">Form Events</h3>
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
-                                    <th>Method</th>
-                                    <th>Usage</th>
+                                    <th>Event</th>
+                                    <th>Description</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>i</td>
+                                    <td><code>error.form.bv</code></td>
+                                    <td>Triggered when the form is invalid</td>
+                                </tr>
+                                <tr>
+                                    <td><code>success.form.bv</code></td>
+                                    <td>Triggered when the form is valid</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Usage</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Listening to event</td>
+                                    <td><pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $(form)
+        .bootstrapValidator(options)
+        .on('error.form.bv', function(e) {
+            // Get the form instance
+            // $(e.target);
+
+            // Get the bootstrapValidator instance
+            // $(e.target).data('bootstrapValidator');
+
+            // Do something ...
+        })
+        .on('success.form.bv', function(e) {
+            // The e parameter is the same as one
+            // in the error.form.bv event above
+
+            // Do something ...
+        });
+});
+&lt;/script></code></pre>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Using option</td>
+                                    <td><pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $(form)
+        .bootstrapValidator({
+            onError: function(e) {
+                // Do something ...
+            },
+            onSuccess: function(e) {
+                // Do something ...
+            }
+        });
+});
+&lt;/script></code></pre>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Using HTML 5 attributes</td>
+                                    <td>
+                                        <pre><code class="xml javascript">&lt;form data-bv-onerror="onFormError" data-bv-onsuccess="onFormSuccess">&lt;/form>
+
+&lt;script>
+function onFormError(e) {
+    // Do something ...
+};
+
+function onFormSuccess(e) {
+    // Do something ...
+};
+
+$(document).ready(function() {
+    $(form).bootstrapValidator(options);
+});
+&lt;/script></code></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <!-- event-field -->
+                    <section>
+                        <h3 id="event-field">Field Events</h3>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Event</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>error.field.bv</code></td>
+                                    <td>Triggered when any field is invalid</td>
+                                </tr>
+                                <tr>
+                                    <td><code>success.field.bv</code></td>
+                                    <td>Triggered when any field is valid</td>
+                                </tr>
+                                <tr>
+                                    <td><code>status.field.bv</code></td>
+                                    <td>
+                                        <p>Triggered when field changes status. Each field has four possible status:</p>
+                                        <ul>
+                                            <li><code>NOT_VALIDATED</code>: The field is not validated yet</li>
+                                            <li><code>VALIDATING</code>: The field is being validated</li>
+                                            <li><code>INVALID</code>: The field is invalid</li>
+                                            <li><code>VALID</code>: The field is valid</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Usage</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Listening to event</td>
                                     <td><pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $(form)
@@ -1770,18 +1892,25 @@ $(document).ready(function() {
             // data.element
 
             // Do something ...
+        })
+        .on('success.field.bv', function(e, data) {
+            // The e and data parameters are the same
+            // as one in the error.field.bv event above
+
+            // Do something ...
+        })
+        .on('status.field.bv', function(e, data) {
+            // The e and data parameters are the same
+            // as one in the error.field.bv event above
+
+            // New field status
+            // data.status
+
+            // Do something ...
         });
 });
 &lt;/script></code></pre>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>ii</td>
-                                    <td>n/a</td>
-                                </tr>
-                                <tr>
-                                    <td>iii</td>
-                                    <td>n/a</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1790,18 +1919,24 @@ $(document).ready(function() {
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
-                                    <th>Method</th>
                                     <th>Usage</th>
+                                    <th>Example</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>i</td>
+                                    <td>Listening to event</td>
                                     <td><pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $(form)
         .bootstrapValidator(options)
         .on('error.field.bv', '[name="email"]', function(e, data) {
+            // Do something ...
+        })
+        .on('success.field.bv', '[name="email"]', function(e, data) {
+            // Do something ...
+        })
+        .on('status.field.bv', '[name="email"]', function(e, data) {
             // Do something ...
         });
 });
@@ -1809,7 +1944,7 @@ $(document).ready(function() {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>ii</td>
+                                    <td>Using option</td>
                                     <td><pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $(form)
@@ -1817,6 +1952,12 @@ $(document).ready(function() {
             fields: {
                 email: {
                     onError: function(e, data) {
+                        // Do something ...
+                    },
+                    onSuccess: function(e, data) {
+                        // Do something ...
+                    },
+                    onStatus: function(e, data) {
                         // Do something ...
                     },
                     validators: {
@@ -1830,16 +1971,27 @@ $(document).ready(function() {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>iii</td>
+                                    <td>Using HTML 5 attributes</td>
                                     <td>
                                         <pre><code class="xml javascript">&lt;form>
     ...
-    &lt;input type="text" name="email" class="form-control" data-bv-onerror="onFieldError" />
+    &lt;input type="text" name="email" class="form-control"
+        data-bv-onerror="onFieldError"
+        data-bv-onsuccess="onFieldSuccess"
+        data-bv-onstatus="onFieldStatus" />
     ...
 &lt;/form>
 
 &lt;script>
-function onFieldError(e) {
+function onFieldError(e, data) {
+    // Do something ...
+};
+
+function onFieldSuccess(e, data) {
+    // Do something ...
+};
+
+function onFieldStatus(e, data) {
     // Do something ...
 };
 
@@ -1853,95 +2005,63 @@ $(document).ready(function() {
                         </table>
                     </section>
 
-                    <!-- form.error.bv -->
+                    <!-- event-validator -->
                     <section>
-                        <h3 id="#event-form-error">form.error.bv</h3>
-                        <p>Triggered when the form is invalid.</p>
+                        <h3 id="event-validator">Validator Events</h3>
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
-                                    <th>Method</th>
-                                    <th>Usage</th>
+                                    <th>Event</th>
+                                    <th>Description</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>i</td>
-                                    <td><pre><code class="xml javascript">&lt;script>
-$(document).ready(function() {
-    $(form)
-        .bootstrapValidator(options)
-        .on('error.form.bv', function(e) {
-            // Get the form instance
-            // $(e.target);
-
-            // Get the bootstrapValidator instance
-            // $(e.target).data('bootstrapValidator');
-
-            // Do something ...
-        });
-});
-&lt;/script></code></pre>
-                                    </td>
+                                    <td><code>error.validator.bv</code></td>
+                                    <td>Triggered when field passes given validator</td>
                                 </tr>
                                 <tr>
-                                    <td>ii</td>
-                                    <td><pre><code class="xml javascript">&lt;script>
-$(document).ready(function() {
-    $(form)
-        .bootstrapValidator({
-            onError: function(e) {
-                // Do something ...
-            }
-        });
-});
-&lt;/script></code></pre>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>iii</td>
-                                    <td>
-                                        <pre><code class="xml javascript">&lt;form data-bv-onerror="onFormError">&lt;/form>
-
-&lt;script>
-function onFormError(e) {
-    // Do something ...
-};
-
-$(document).ready(function() {
-    $(form).bootstrapValidator(options);
-});
-&lt;/script></code></pre>
-                                    </td>
+                                    <td><code>success.validator.bv</code></td>
+                                    <td>Triggered when field doesn't pass given validator</td>
                                 </tr>
                             </tbody>
                         </table>
-                    </section>
 
-                    <!-- form.success.bv -->
-                    <section>
-                        <h3 id="#event-form-success">form.success.bv</h3>
-                        <p>Triggered when the form is valid.</p>
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
-                                    <th>Method</th>
                                     <th>Usage</th>
+                                    <th>Example</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>i</td>
+                                    <td>Listening to event</td>
                                     <td><pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $(form)
         .bootstrapValidator(options)
-        .on('success.form.bv', function(e) {
+        .on('error.validator.bv', function(e) {
             // Get the form instance
-            // $(e.target);
+            // $(e.target)
 
-            // Get the bootstrapValidator instance
-            // $(e.target).data('bootstrapValidator');
+            // Get the BootstrapValidator instance
+            // $(e.target).data('bootstrapValidator')
+
+            // Get the field name
+            // data.field
+
+            // Get the field element
+            // data.element
+
+            // Get the validator name
+            // data.validator
+
+            // Do something ...
+        })
+        .on('success.validator.bv', function(e) {
+            // The e parameter is the same as one
+            // in the error.validator.bv event above
 
             // Do something ...
         });
@@ -1950,13 +2070,25 @@ $(document).ready(function() {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>ii</td>
+                                    <td>Using option</td>
                                     <td><pre><code class="xml javascript">&lt;script>
 $(document).ready(function() {
     $(form)
         .bootstrapValidator({
-            onSuccess: function(e) {
-                // Do something ...
+            fields: {
+                email: {
+                    validators: {
+                        emailAddress: {
+                            onError: function(e, data) {
+                                // Do something ...
+                            },
+                            onSuccess: function(e, data) {
+                                // Do something ...
+                            },
+                            // ... other validator options ...
+                        }
+                    }
+                }
             }
         });
 });
@@ -1964,12 +2096,22 @@ $(document).ready(function() {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>iii</td>
+                                    <td>Using HTML 5 attributes</td>
                                     <td>
-                                        <pre><code class="xml javascript">&lt;form data-bv-onsuccess="onFormSuccess">&lt;/form>
+                                        <pre><code class="xml javascript">&lt;form>
+    ...
+    &lt;input type="text" name="email" class="form-control"
+        data-bv-emailaddress-onerror="onEmailAddressError"
+        data-bv-emailaddress-onsuccess="onEmailAddressSuccess" />
+    ...
+&lt;/form>
 
 &lt;script>
-function onFormSuccess(e) {
+function onEmailAddressError(e, data) {
+    // Do something ...
+};
+
+function onEmailAddressSuccess(e, data) {
     // Do something ...
 };
 
