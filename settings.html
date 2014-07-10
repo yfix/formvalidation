@@ -27,40 +27,56 @@ next_section:     /validators/
     <div class="row">
         <div class="col-md-3">
             <div class="bv-sidebar">
+                <h4><a href="#settings-structure">Settings Structure</a></h4>
+
+                <h4><a href="#form-settings">Form Settings</a></h4>
                 <ul>
-                    <li><a href="#settings-structure">Settings Structure</a></li>
+                    <li><a href="#form-excluded">excluded</a></li>
+                    <li><a href="#form-feedback-icons">feedbackIcons</a></li>
+                    <li><a href="#form-live">live</a></li>
+                    <li><a href="#form-message">message</a></li>
+                    <li><a href="#form-submit-buttons">submitButtons</a></li>
+                    <li><a href="#form-submit-handler">submitHandler</a></li>
+                    <li><a href="#form-threshold">threshold</a></li>
+                    <li><a href="#form-trigger">trigger</a></li>
+                    <li><a href="#form-fields">fields</a></li>
+                </ul>
+
+                <h4><a href="#field-settings">Field Settings</a></h4>
+                <ul>
+                    <li><a href="#field-enabled">enabled</a></li>
+                    <li><a href="#field-message">message</a></li>
+                    <li><a href="#field-container">container</a></li>
+                    <li><a href="#field-selector">selector</a></li>
+                    <li><a href="#field-threshold">threshold</a></li>
+                    <li><a href="#field-trigger">trigger</a></li>
+                </ul>
+
+
+                <h4><a href="#validator-settings">Validator Settings</a></h4>
+                <ul>
+                    <li><a href="#field-message">message</a></li>
                     <li>
-                        <a href="#form-settings">Form Settings</a>
+                        <a href="#dynamic-option">Dynamic Option<span class="pull-right bv-news"></span></a>
                         <ul>
-                            <li><a href="#form-excluded">excluded</a></li>
-                            <li><a href="#form-feedback-icons">feedbackIcons</a></li>
-                            <li><a href="#form-live">live</a></li>
-                            <li><a href="#form-message">message</a></li>
-                            <li><a href="#form-submit-buttons">submitButtons</a></li>
-                            <li><a href="#form-submit-handler">submitHandler</a></li>
-                            <li><a href="#form-threshold">threshold</a></li>
-                            <li><a href="#form-trigger">trigger</a></li>
-                            <li><a href="#form-fields">fields</a></li>
+                            <li><a href="#dynamic-option-validators">Supported Validators</a></li>
+                            <li><a href="#dynamic-option-string">Use string</a></li>
+                            <li><a href="#dynamic-option-element">Use element</a></li>
+                            <li><a href="#dynamic-option-function-name">Use function name</a></li>
+                            <li><a href="#dynamic-option-callback">Use function</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="#field-settings">Field Settings</a>
-                        <ul>
-                            <li><a href="#field-enabled">enabled</a></li>
-                            <li><a href="#field-message">message</a></li>
-                            <li><a href="#field-container">container</a></li>
-                            <li><a href="#field-selector">selector</a></li>
-                            <li><a href="#field-threshold">threshold</a></li>
-                            <li><a href="#field-trigger">trigger</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#validator-settings">Validator Settings</a>
-                        <ul>
-                            <li><a href="#field-message">message</a></li>
-                            <li><a href="#dynamic-option">Dynamic Option</a></li>
-                        </ul>
-                    </li>
+                </ul>
+
+                <h4><a href="#events">Events</a></h4>
+                <ul>
+                    <li><a href="#event-error-field">error.field.bv</a></li>
+                    <li><a href="#event-error-form">error.form.bv</a></li>
+                    <li><a href="#event-error-validator">error.validator.bv</a></li>
+                    <li><a href="#event-status-field">status.field.bv</a></li>
+                    <li><a href="#event-success-field">success.field.bv</a></li>
+                    <li><a href="#event-success-form">success.form.bv</a></li>
+                    <li><a href="#event-success-validator">success.validator.bv</a></li>
                 </ul>
             </div>
         </div>
@@ -1711,6 +1727,263 @@ $(document).ready(function() {
                     </section>
                 </section>
                 <!-- /validator -->
+
+                <!-- events -->
+                <section>
+                    <h2 id="events">Events<span class="pull-right bv-news"></span></h2>
+                    <p>Similar to the <a href="#settings-structure">settings</a>, there are also events for form, field and validator. Each event can be set by one of there methods:</p>
+                    <ul>
+                        <li>i) Using jQuery <code>on(eventName)</code></li>
+                        <li>ii) Using option</li>
+                        <li>iii) Using HTML declrative attribute</li>
+                    </ul>
+
+                    <!-- field.error.bv -->
+                    <section>
+                        <h3 id="#event-field-error">field.error.bv</h3>
+                        <p>Triggered when any field is invalid.</p>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Method</th>
+                                    <th>Usage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>i</td>
+                                    <td><pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $(form)
+        .bootstrapValidator(options)
+        .on('error.field.bv', function(e, data) {
+            // Get the form instance
+            // $(e.target)
+
+            // Get the BootstrapValidator instance
+            // $(e.target).data('bootstrapValidator')
+
+            // Get the field name
+            // data.field
+
+            // Get the field element
+            // data.element
+
+            // Do something ...
+        });
+});
+&lt;/script></code></pre>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ii</td>
+                                    <td>n/a</td>
+                                </tr>
+                                <tr>
+                                    <td>iii</td>
+                                    <td>n/a</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p>If you want to trigger this event for particular field, for example, the <code>name="email"</code> field:</p>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Method</th>
+                                    <th>Usage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>i</td>
+                                    <td><pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $(form)
+        .bootstrapValidator(options)
+        .on('error.field.bv', '[name="email"]', function(e, data) {
+            // Do something ...
+        });
+});
+&lt;/script></code></pre>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ii</td>
+                                    <td><pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $(form)
+        .bootstrapValidator({
+            fields: {
+                email: {
+                    onError: function(e, data) {
+                        // Do something ...
+                    },
+                    validators: {
+                        ...
+                    }
+                }
+            }
+        });
+});
+&lt;/script></code></pre>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>iii</td>
+                                    <td>
+                                        <pre><code class="xml javascript">&lt;form>
+    ...
+    &lt;input type="text" name="email" class="form-control" data-bv-onerror="onFieldError" />
+    ...
+&lt;/form>
+
+&lt;script>
+function onFieldError(e) {
+    // Do something ...
+};
+
+$(document).ready(function() {
+    $(form).bootstrapValidator(options);
+});
+&lt;/script></code></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <!-- form.error.bv -->
+                    <section>
+                        <h3 id="#event-form-error">form.error.bv</h3>
+                        <p>Triggered when the form is invalid.</p>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Method</th>
+                                    <th>Usage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>i</td>
+                                    <td><pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $(form)
+        .bootstrapValidator(options)
+        .on('error.form.bv', function(e) {
+            // Get the form instance
+            // $(e.target);
+
+            // Get the bootstrapValidator instance
+            // $(e.target).data('bootstrapValidator');
+
+            // Do something ...
+        });
+});
+&lt;/script></code></pre>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ii</td>
+                                    <td><pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $(form)
+        .bootstrapValidator({
+            onError: function(e) {
+                // Do something ...
+            }
+        });
+});
+&lt;/script></code></pre>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>iii</td>
+                                    <td>
+                                        <pre><code class="xml javascript">&lt;form data-bv-onerror="onFormError">&lt;/form>
+
+&lt;script>
+function onFormError(e) {
+    // Do something ...
+};
+
+$(document).ready(function() {
+    $(form).bootstrapValidator(options);
+});
+&lt;/script></code></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <!-- form.success.bv -->
+                    <section>
+                        <h3 id="#event-form-success">form.success.bv</h3>
+                        <p>Triggered when the form is valid.</p>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Method</th>
+                                    <th>Usage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>i</td>
+                                    <td><pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $(form)
+        .bootstrapValidator(options)
+        .on('success.form.bv', function(e) {
+            // Get the form instance
+            // $(e.target);
+
+            // Get the bootstrapValidator instance
+            // $(e.target).data('bootstrapValidator');
+
+            // Do something ...
+        });
+});
+&lt;/script></code></pre>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ii</td>
+                                    <td><pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $(form)
+        .bootstrapValidator({
+            onSuccess: function(e) {
+                // Do something ...
+            }
+        });
+});
+&lt;/script></code></pre>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>iii</td>
+                                    <td>
+                                        <pre><code class="xml javascript">&lt;form data-bv-onsuccess="onFormSuccess">&lt;/form>
+
+&lt;script>
+function onFormSuccess(e) {
+    // Do something ...
+};
+
+$(document).ready(function() {
+    $(form).bootstrapValidator(options);
+});
+&lt;/script></code></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </section>
+                <!-- /events -->
             </div>
         </div>
     </div>
