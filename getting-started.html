@@ -28,17 +28,20 @@ next_section:     /settings/
     <div class="row">
         <div class="col-md-3">
             <div class="bv-sidebar">
+                <h4><a href="#download">Download</a></h4>
                 <ul>
-                    <li><a href="#download">Download</a></li>
-                    <li><a href="#whats-included">What's Included</a></li>
-                    <li>
-                        <a href="#usage">Usage</a>
-                        <ul>
-                            <li><a href="#including-library">Including Library</a></li>
-                            <li><a href="#writing-form">Writing Form</a></li>
-                            <li><a href="#calling-plugin">Calling Plugin</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="#release">Release</a></li>
+                    <li><a href="#installing-bower">Installing with Bower</a></li>
+                    <li><a href="#language-package">Language Packages<span class="pull-right bv-news"></span></a></li>
+                </ul>
+
+                <h4><a href="#whats-included">What's Included</a></h4>
+
+                <h4><a href="#usage">Usage</a></h4>
+                <ul>
+                    <li><a href="#including-library">Including Library</a></li>
+                    <li><a href="#writing-form">Writing Form</a></li>
+                    <li><a href="#calling-plugin">Calling Plugin</a></li>
                 </ul>
             </div>
         </div>
@@ -50,10 +53,9 @@ next_section:     /settings/
                     <h2 id="download">Download</h2>
 
                     <p>Choose the package you want to download:</p>
-
                     <div class="row">
                         <div class="col-sm-4">
-                            <h3>Release</h3>
+                            <h3 id="release">Release</h3>
                             <p>Including the plugin, its validator source and minified versions.<br />It should be used in the production site.</p>
                             <p><a class="btn btn-lg btn-primary" href="{{ site.download.dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download release']);"><i class="fa fa-download"></i> Download v{{ site.current_version }}</a></p>
                         </div>
@@ -63,18 +65,76 @@ next_section:     /settings/
                             <a class="btn btn-lg btn-primary" href="{{ site.download.tag }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);"><i class="fa fa-code"></i> Download Source</a>
                         </div>
                         <div class="col-sm-4">
-                            <h3>Older versions</h3>
+                            <h3>Older Versions</h3>
                             <p>For older versions, take a look at the <a href="/news/releases/">Releases</a> page.</p>
                         </div>
                     </div>
 
                     <!--<p>See <a href="/news/2014/05/15/v0.4.5-released/">what's news</a> in v{{ site.current_version }}, released on {{ site.released_date }}</p>-->
 
-                    <h3>Installing with Bower</h3>
+                    <h3 id="installing-bower">Installing with Bower</h3>
                     <p>It's also possible to get the latest release from <a href="http://bower.io">bower</a>:</p>
                     <pre><code class="bash">$ bower install bootstrapValidator</code></pre>
 
                     <p>BootstrapValidator also can be found on the official <a href="{{ site.jquery_plugin_url }}">jQuery plugins page</a>.</p>
+
+                    <h3 id="language-package">Language Packages</h3>
+                    <p>BootstrapValidator has been translated into the following languages:</p>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Language</th>
+                                <th>File Name</th>
+                                <th>Translated By</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Chinese</td>
+                                <td><a href="/vendor/bootstrapvalidator/js/language/zh_CN.js">zh_CN.js</a></td>
+                                <td><a href="http://github.com/tureki">@tureki</a></td>
+                            </tr>
+                            <tr>
+                                <td>English <span class="label label-default">built in</span></td>
+                                <td><a href="/vendor/bootstrapvalidator/js/language/en_US.js">en_US.js</a></td>
+                                <td><a href="http://github.com/nghuuphuoc">@nghuuphuoc</a></td>
+                            </tr>
+                            <tr>
+                                <td>German</td>
+                                <td><a href="/vendor/bootstrapvalidator/js/language/de_DE.js">de_DE.js</a></td>
+                                <td><a href="http://github.com/logemann">@logemann</a></td>
+                            </tr>
+                            <tr>
+                                <td>Hungarian</td>
+                                <td><a href="/vendor/bootstrapvalidator/js/language/hu_HU.js">hu_HU.js</a></td>
+                                <td><a href="http://github.com/blackfyre">@blackfyre</a></td>
+                            </tr>
+                            <tr>
+                                <td>Vietnamese</td>
+                                <td><a href="/vendor/bootstrapvalidator/js/language/vi_VN.js">vi_VN.js</a></td>
+                                <td><a href="http://github.com/nghuuphuoc">@nghuuphuoc</a></td>
+                            </tr>
+                            <tr>
+                                <td>Taiwanese</td>
+                                <td><a href="/vendor/bootstrapvalidator/js/language/zh_TW.js">zh_TW.js</a></td>
+                                <td><a href="http://github.com/tureki">@tureki</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="bv-box bv-box-info">
+                        <p>It is very easy to translate default English package into your language. Follow the steps below:</p>
+                        <ul>
+                            <li>Fork the <a href="{{ site.repository.source }}">project</a></li>
+                            <li>
+                                Create new language file in the <a href="{{ site.repository.source }}/tree/master/src/js/language">language</a> directory.<br/>
+                                The file must be named as <code>countrycode_LANGUAGECODE.js</code>, where <code>countrycode</code> and <code>LANGUAGECODE</code> are the ISO 3166 country and language codes in lowercase and uppercase respectively.<br/>
+                                The <strong>File Name</strong> column in the table above are some examples of valid language file name.
+                            </li>
+                            <li>Translate the <a href="/vendor/bootstrapvalidator/js/language/en_US.js">English language package</a> into your language file created above</li>
+                            <li>Make a pull request</li>
+                        </ul>
+                    </div>
                 </section>
 
                 <!-- included -->
@@ -148,8 +208,7 @@ next_section:     /settings/
                         <div class="bv-box bv-box-warning">
                             <p>Do not use the properties of a form, such as <code>submit</code>, <code>reset</code>, <code>length</code>, <code>method</code> to set the <code>name</code> or <code>id</code> attribute of form, field elements. Name conflicts can cause the problem.</p>
                             <p>For example, you cannot submit the form after validating if use <code>submit</code> to name the Submit button:</p>
-                            <code class="xml">&lt;button type="submit" name="submit" class="btn btn-primary">Submit&lt;/button></code>
-
+                            <pre><code class="xml">&lt;button type="submit" name="submit" class="btn btn-primary">Submit&lt;/button></code></pre>
                             <a href="http://kangax.github.com/domlint/">DOMLint</a> has a complete list of rules to check the markup for these kind of problems.
                         </div>
 
