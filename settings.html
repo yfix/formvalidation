@@ -1976,6 +1976,7 @@ $(document).ready(function() {
                                         <pre><code class="xml javascript">&lt;form>
     ...
     &lt;input type="text" name="email" class="form-control"
+        data-bv-emailaddress
         data-bv-onerror="onFieldError"
         data-bv-onsuccess="onFieldSuccess"
         data-bv-onstatus="onFieldStatus" />
@@ -2041,7 +2042,7 @@ $(document).ready(function() {
 $(document).ready(function() {
     $(form)
         .bootstrapValidator(options)
-        .on('error.validator.bv', function(e) {
+        .on('error.validator.bv', function(e, data) {
             // Get the form instance
             // $(e.target)
 
@@ -2059,7 +2060,7 @@ $(document).ready(function() {
 
             // Do something ...
         })
-        .on('success.validator.bv', function(e) {
+        .on('success.validator.bv', function(e, data) {
             // The e parameter is the same as one
             // in the error.validator.bv event above
 
@@ -2101,6 +2102,7 @@ $(document).ready(function() {
                                         <pre><code class="xml javascript">&lt;form>
     ...
     &lt;input type="text" name="email" class="form-control"
+        data-bv-emailaddress
         data-bv-emailaddress-onerror="onEmailAddressError"
         data-bv-emailaddress-onsuccess="onEmailAddressSuccess" />
     ...
