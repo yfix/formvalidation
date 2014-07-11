@@ -58,20 +58,23 @@ comments:         true
                             </div>
 
                             <div class="tab-pane" id="mask-html-tab">
-                                <pre><code class="xml">&lt;form id="maskForm" method="post" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">IP address&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="ipAddress" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<!-- Include Mask plugin -->
+<script src="/vendor/mask/jquery.mask.min.js"></script>
+
+<form id="maskForm" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">IP address</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="ipAddress" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="mask-js-tab">
-                                <pre><code class="xml javascript">&lt;!-- Include Mask plugin -->
-<span class="bv-note">&lt;script src="/vendor/mask/jquery.mask.min.js">&lt;/script></span>
-&lt;script>
+{% highlight javascript hl_lines="19" %}
 $(document).ready(function() {
     $('#maskForm')
         .bootstrapValidator({
@@ -90,9 +93,9 @@ $(document).ready(function() {
                 }
             }
         })
-        <span class="bv-note">.find('[name="ipAddress"]').mask('099.099.099.099')</span>;
+        .find('[name="ipAddress"]').mask('099.099.099.099');
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

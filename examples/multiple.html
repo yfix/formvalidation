@@ -137,124 +137,122 @@ comments:         true
                             </div>
 
                             <div class="tab-pane" id="multiple-html-tab">
-                                <pre><code class="xml">&lt;form id="multipleForm" method="post" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Gender&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;div class="radio">
-                &lt;label>
-                    &lt;input <span class="bv-note">type="radio" name="gender"</span> value="male" /> Male
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="radio">
-                &lt;label>
-                    &lt;input <span class="bv-note">type="radio" name="gender"</span> value="female" /> Female
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="radio">
-                &lt;label>
-                    &lt;input <span class="bv-note">type="radio" name="gender"</span> value="other" /> Other
-                &lt;/label>
-            &lt;/div>
-        &lt;/div>
-    &lt;/div>
+{% highlight html hl_lines="7 28 62" %}
+<form id="multipleForm" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Gender</label>
+        <div class="col-lg-5">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="gender" value="male" /> Male
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="gender" value="female" /> Female
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="gender" value="other" /> Other
+                </label>
+            </div>
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Favourite browser&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;div class="checkbox">
-                &lt;label>
-                    &lt;input <span class="bv-note">type="checkbox" name="browsers[]"</span> value="chrome" /> Google Chrome
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="checkbox">
-                &lt;label>
-                    &lt;input <span class="bv-note">type="checkbox" name="browsers[]"</span> value="firefox" /> Firefox
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="checkbox">
-                &lt;label>
-                    &lt;input <span class="bv-note">type="checkbox" name="browsers[]"</span> value="ie" /> IE
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="checkbox">
-                &lt;label>
-                    &lt;input <span class="bv-note">type="checkbox" name="browsers[]"</span> value="safari" /> Safari
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="checkbox">
-                &lt;label>
-                    &lt;input <span class="bv-note">type="checkbox" name="browsers[]"</span> value="opera" /> Opera
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="checkbox">
-                &lt;label>
-                    &lt;input <span class="bv-note">type="checkbox" name="browsers[]"</span> value="other" /> Other
-                &lt;/label>
-            &lt;/div>
-        &lt;/div>
-    &lt;/div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Favourite browser</label>
+        <div class="col-lg-5">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="browsers[]" value="chrome" /> Google Chrome
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="browsers[]" value="firefox" /> Firefox
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="browsers[]" value="ie" /> IE
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="browsers[]" value="safari" /> Safari
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="browsers[]" value="opera" /> Opera
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="browsers[]" value="other" /> Other
+                </label>
+            </div>
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Editors&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input class="form-control" <span class="bv-note">type="text" name="editors[]"</span> />
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;div class="col-lg-offset-3 col-lg-5">
-            &lt;input class="form-control" <span class="bv-note">type="text" name="editors[]"</span> />
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;div class="col-lg-offset-3 col-lg-5">
-            &lt;input class="form-control" <span class="bv-note">type="text" name="editors[]"</span> />
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;div class="col-lg-offset-3 col-lg-5">
-            &lt;input class="form-control" <span class="bv-note">type="text" name="editors[]"</span> />
-        &lt;/div>
-    &lt;/div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Editors</label>
+        <div class="col-lg-5">
+            <input class="form-control" type="text" name="editors[]" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-offset-3 col-lg-5">
+            <input class="form-control" type="text" name="editors[]" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-offset-3 col-lg-5">
+            <input class="form-control" type="text" name="editors[]" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-offset-3 col-lg-5">
+            <input class="form-control" type="text" name="editors[]" />
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;div class="col-lg-9 col-lg-offset-3">
-            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <div class="form-group">
+        <div class="col-lg-9 col-lg-offset-3">
+            <button type="submit" class="btn btn-primary">Validate</button>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="multiple-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="10 17 24" %}
 $(document).ready(function() {
     $('#multipleForm')
         .bootstrapValidator({
-            message: 'This value is not valid',
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
-            submitHandler: function(validator, form, submitButton) {
-                // Do nothing
-            },
             fields: {
-                <span class="bv-note">gender</span>: {
+                gender: {
                     validators: {
                         notEmpty: {
                             message: 'The gender is required'
                         }
                     }
                 },
-                <span class="bv-note">'browsers[]'</span>: {
+                'browsers[]': {
                     validators: {
                         notEmpty: {
                             message: 'Please specify at least one browser you use daily for development'
                         }
                     }
                 },
-                <span class="bv-note">'editors[]'</span>: {
+                'editors[]': {
                     validators: {
                         notEmpty: {
                             message: 'The editor names are required'
@@ -264,7 +262,7 @@ $(document).ready(function() {
             }
         });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>
@@ -278,7 +276,6 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('#multipleForm')
         .bootstrapValidator({
-            message: 'This value is not valid',
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',

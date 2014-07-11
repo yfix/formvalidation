@@ -38,7 +38,9 @@ comments:         true
                     <h2 id="bootstrap-tab">Play with Bootstrap Tabs</h2>
                     <p>The following example shows that the plugin works perfectly with <a href="http://getbootstrap.com/javascript/#tabs">Bootstrap Tabs</a>.</p>
                     <p>By default, the fields in inactive tabs will not be validated because they are not visible. In order to validate them, we need to use the <a href="/settings/#excluded">excluded</a> option:</p>
-                    <pre><code class="javascript">excluded: [':disabled']</code></pre>
+{% highlight javascript %}
+excluded: [':disabled']
+{% endhighlight %}
 
                     <div class="bv-example">
                         <ul class="nav nav-tabs">
@@ -115,77 +117,79 @@ comments:         true
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-html-tab">
-                                <pre><code class="xml">&lt;form id="accountForm" method="post" class="form-horizontal">
-    &lt;div class="tab-content">
-        &lt;div class="tab-pane active" id="info-tab">
-            &lt;div class="form-group">
-                &lt;label class="col-lg-3 control-label">Full name&lt;/label>
-                &lt;div class="col-lg-5">
-                    &lt;input type="text" class="form-control" name="fullName" />
-                &lt;/div>
-            &lt;/div>
-            &lt;div class="form-group">
-                &lt;label class="col-lg-3 control-label">Company&lt;/label>
-                &lt;div class="col-lg-5">
-                    &lt;input type="text" class="form-control" name="company" />
-                &lt;/div>
-            &lt;/div>
-            &lt;div class="form-group">
-                &lt;label class="col-lg-3 control-label">Job title&lt;/label>
-                &lt;div class="col-lg-5">
-                    &lt;input type="text" class="form-control" name="jobTitle" />
-                &lt;/div>
-            &lt;/div>
-        &lt;/div>
+{% highlight html %}
+<form id="accountForm" method="post" class="form-horizontal">
+    <div class="tab-content">
+        <div class="tab-pane active" id="info-tab">
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Full name</label>
+                <div class="col-lg-5">
+                    <input type="text" class="form-control" name="fullName" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Company</label>
+                <div class="col-lg-5">
+                    <input type="text" class="form-control" name="company" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Job title</label>
+                <div class="col-lg-5">
+                    <input type="text" class="form-control" name="jobTitle" />
+                </div>
+            </div>
+        </div>
 
-        &lt;div class="tab-pane" id="address-tab">
-            &lt;div class="form-group">
-                &lt;label class="col-lg-3 control-label">Address&lt;/label>
-                &lt;div class="col-lg-5">
-                    &lt;input type="text" class="form-control" name="address" />
-                &lt;/div>
-            &lt;/div>
-            &lt;div class="form-group">
-                &lt;label class="col-lg-3 control-label">City&lt;/label>
-                &lt;div class="col-lg-5">
-                    &lt;input type="text" class="form-control" name="city" />
-                &lt;/div>
-            &lt;/div>
-            &lt;div class="form-group">
-                &lt;label class="col-lg-3 control-label">Country&lt;/label>
-                &lt;div class="col-lg-5">
-                    &lt;select class="form-control" name="country">
-                        &lt;option value="">Select a country&lt;/option>
-                        &lt;option value="FR">France&lt;/option>
-                        &lt;option value="DE">Germany&lt;/option>
-                        &lt;option value="IT">Italy&lt;/option>
-                        &lt;option value="JP">Japan&lt;/option>
-                        &lt;option value="RU">Russian&lt;/option>
-                        &lt;option value="US">United State&lt;/option>
-                        &lt;option value="GB">United Kingdom&lt;/option>
-                        &lt;option value="other">Other&lt;/option>
-                    &lt;/select>
-                &lt;/div>
-            &lt;/div>
-        &lt;/div>
-    &lt;/div>
+        <div class="tab-pane" id="address-tab">
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Address</label>
+                <div class="col-lg-5">
+                    <input type="text" class="form-control" name="address" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-3 control-label">City</label>
+                <div class="col-lg-5">
+                    <input type="text" class="form-control" name="city" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Country</label>
+                <div class="col-lg-5">
+                    <select class="form-control" name="country">
+                        <option value="">Select a country</option>
+                        <option value="FR">France</option>
+                        <option value="DE">Germany</option>
+                        <option value="IT">Italy</option>
+                        <option value="JP">Japan</option>
+                        <option value="RU">Russian</option>
+                        <option value="US">United State</option>
+                        <option value="GB">United Kingdom</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;div class="col-lg-5 col-lg-offset-3">
-            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <div class="form-group">
+        <div class="col-lg-5 col-lg-offset-3">
+            <button type="submit" class="btn btn-primary">Validate</button>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="tabs-js-tab">
-                                <pre><code class="xml">&lt;script>
+{% highlight javascript hl_lines="6" %}
 $(document).ready(function() {
     $('#accountForm')
         .bootstrapValidator({
             // Only disabled elements are excluded
             // The invisible elements belonging to inactive tabs must be validated
-            <span class="bv-note">excluded: [':disabled']</span>,
+            excluded: [':disabled'],
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
@@ -223,7 +227,7 @@ $(document).ready(function() {
             }
         });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

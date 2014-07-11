@@ -71,16 +71,20 @@ comments:         true
                 <section>
                     <h2 id="usage">Usage</h2>
                     <p>After initializing the form with the plugin using <code>$(form).bootstrapValidator(options)</code>, there are two ways to call the plugin method:</p>
-                    <pre><code class="javascript">// Get plugin instance
+{% highlight javascript %}
+// Get plugin instance
 var bootstrapValidator = $(form).data('bootstrapValidator');
 // and then call method
 bootstrapValidator.methodName(parameters)
-</code></pre>
+{% endhighlight %}
                     <p>or:</p>
-                    <pre><code class="javascript">$(form).bootstrapValidator(methodName, parameters);</code></pre>
+{% highlight javascript %}
+$(form).bootstrapValidator(methodName, parameters);
+{% endhighlight %}
                     <p>The first way mostly returns the <code>BootstrapValidator</code> instance, meanwhile the second one always returns the jQuery object representing the form.</p>
                     <p>So, it's possible to chain methods as below:</p>
-                    <pre><code class="javascript">// The first way
+{% highlight javascript %}
+// The first way
 $(form)
     .data('bootstrapValidator')
     .updateStatus('birthday', 'NOT_VALIDATED')
@@ -89,7 +93,8 @@ $(form)
 // The second one
 $(form)
     .bootstrapValidator('updateStatus', 'birthday', 'NOT_VALIDATED')
-    .bootstrapValidator('validateField', 'birthday');</code></pre>
+    .bootstrapValidator('validateField', 'birthday');
+{% endhighlight %}
                 </section>
 
                 <!-- api -->
@@ -98,7 +103,8 @@ $(form)
                     <p>Below is the list of public methods provided by the plugin.</p>
 
                     <div class="bv-box bv-box-info">
-                        <p>All the methods use the same format as following:</p>
+                        <h5><i></i>Method Description Format</h5>
+                        <p>The methods use the same format as following:</p>
                         <p><code>methodName()</code>: Type of return value</p>
                         <p><code>methodName(requiredParameter<sup>*</sup>, optionalParameter, ...)</code> &mdash; The purpose of method</p>
                     </div>
@@ -462,8 +468,10 @@ $(form)
                             </tbody>
                         </table>
 
-                        <pre><code class="javascript">$(form).bootstrapValidator(options);
-$(form).data('bootstrapValidator').resetForm();</code></pre>
+{% highlight javascript %}
+$(form).bootstrapValidator(options);
+$(form).data('bootstrapValidator').resetForm();
+{% endhighlight %}
                     </section>
 
                     <!-- revalidateField() -->
@@ -475,14 +483,15 @@ $(form).data('bootstrapValidator').resetForm();</code></pre>
                             When using with other plugins, the field value is changed and therefore need to be re-validated.</p>
 
                         <p>Behide the sences, the method is equivalent to:</p>
-                        <pre><code class="javascript">$(form).data('bootstrapValidator')
+{% highlight javascript %}
+$(form).data('bootstrapValidator')
     .updateStatus(field, 'NOT_VALIDATED')
     .validateField(field);
 
 // Or
 $(form).bootstrapValidator('updateStatus', field, 'NOT_VALIDATED')
        .bootstrapValidator('validateField', field);
-                        </code></pre>
+{% endhighlight %}
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
@@ -621,11 +630,13 @@ $(form).bootstrapValidator('updateStatus', field, 'NOT_VALIDATED')
 
                         <p><code>validate()</code> &mdash; Validate form manually. It is useful when you want to validate form by clicking a button or a link instead of a submit buttons.</p>
 
-                        <pre><code class="javascript">$(form).bootstrapValidator(options).bootstrapValidator('validate');
+{% highlight javascript %}
+$(form).bootstrapValidator(options).bootstrapValidator('validate');
 
 // or
 $(form).bootstrapValidator(options);
-$(form).data('bootstrapValidator').validate();</code></pre>
+$(form).data('bootstrapValidator').validate();
+{% endhighlight %}
                     </section>
 
                     <!-- validateField() -->
@@ -694,36 +705,36 @@ $(form).data('bootstrapValidator').validate();</code></pre>
                                 </div>
 
                                 <div class="tab-pane" id="datepicker-html-tab">
-                                    <pre><code class="html">&lt;link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-&lt;style type="text/css">
-/* Adjust the feedback icon position */
-<span class="bv-note">#datetimeForm .has-feedback .form-control-feedback {
+{% highlight html hl_lines="8" %}
+<link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<script src="/vendor/momentjs/moment.min.js"></script>
+<script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>                                    
+
+<style type="text/css">
+#datetimeForm .has-feedback .form-control-feedback {
     top: 0;
     right: -15px;
-}</span>
-&lt;/style>
+}
+</style>
 
-&lt;form id="datetimeForm" method="post" class="form-horizontal">
-    ...
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">DateTime Picker&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;div class="input-group date" id="datetimePicker">
-                &lt;input type="text" class="form-control" name="datetimePicker" />
-                &lt;span class="input-group-addon">
-                    &lt;span class="glyphicon glyphicon-calendar">&lt;/span>
-                &lt;/span>
-            &lt;/div>
-        &lt;/div>
-    &lt;/div>
-    ...
-&lt;/form></code></pre>
+<form id="datetimeForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">DateTime Picker</label>
+        <div class="col-lg-5">
+            <div class="input-group date" id="datetimePicker">
+                <input type="text" class="form-control" name="datetimePicker" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                                 </div>
 
                                 <div class="tab-pane" id="datepicker-js-tab">
-                                    <pre><code class="xml javascript">&lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
-&lt;script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js">&lt;/script>
-&lt;script>
+{% highlight javascript hl_lines="23" %}
 $(document).ready(function() {
     $('#datetimePicker').datetimepicker();
 
@@ -746,10 +757,10 @@ $(document).ready(function() {
     $('#datetimePicker')
         .on('dp.change dp.show', function(e) {
             // Revalidate the date when user change it
-            <span class="bv-note">$('#datetimeForm').bootstrapValidator('revalidateField', 'datetimePicker');</span>
+            $('#datetimeForm').bootstrapValidator('revalidateField', 'datetimePicker');
         });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                 </div>
                             </div>
                         </div>
@@ -782,21 +793,23 @@ $(document).ready(function() {
                                 </div>
 
                                 <div class="tab-pane" id="cc-html-tab">
-                                    <pre><code class="xml">&lt;form id="paymentForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Expiration&lt;/label>
-        &lt;div class="col-lg-2">
-            &lt;input type="text" class="form-control" placeholder="Month" name="expMonth" />
-        &lt;/div>
-        &lt;div class="col-lg-2">
-            &lt;input type="text" class="form-control" placeholder="Year" name="expYear" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form id="paymentForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Expiration</label>
+        <div class="col-lg-2">
+            <input type="text" class="form-control" placeholder="Month" name="expMonth" />
+        </div>
+        <div class="col-lg-2">
+            <input type="text" class="form-control" placeholder="Year" name="expYear" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                                 </div>
 
                                 <div class="tab-pane" id="cc-js-tab">
-                                    <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="32 64" %}
 $(document).ready(function() {
     $('#paymentForm').bootstrapValidator({
         feedbackIcons: {
@@ -828,7 +841,7 @@ $(document).ready(function() {
                             }
                             year = parseInt(year, 10);
                             if (year > currentYear || (year == currentYear && value > currentMonth)) {
-                                <span class="bv-note">validator.updateStatus('expYear', 'VALID');</span>
+                                validator.updateStatus('expYear', 'VALID');
                                 return true;
                             } else {
                                 return false;
@@ -860,7 +873,7 @@ $(document).ready(function() {
                             }
                             month = parseInt(month, 10);
                             if (value > currentYear || (value == currentYear && month > currentMonth)) {
-                                <span class="bv-note">validator.updateStatus('expMonth', 'VALID');</span>
+                                validator.updateStatus('expMonth', 'VALID');
                                 return true;
                             } else {
                                 return false;
@@ -872,7 +885,7 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                 </div>
                             </div>
                         </div>

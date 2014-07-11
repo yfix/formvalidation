@@ -4,13 +4,6 @@ title:            Developing
 permalink:        /developing/
 previous_section: /api/
 comments:         true
-sections:
-    - title:
-      anchor:
-    - title:
-      anchor:
-    - title:
-      anchor:
 ---
 
 <div class="bv-heading">
@@ -47,8 +40,9 @@ sections:
                 <section>
                     <h2 id="writing-new-validator">Writing New Validator</h2>
                     <p>A validator has to follow the syntax:</p>
-                    <pre><code class="javascript">(function($) {
-    $.fn.bootstrapValidator.validators.&lt;validatorName> = {
+{% highlight javascript %}
+(function($) {
+    $.fn.bootstrapValidator.validators.validatorName = {
         /**
          * @param {BootstrapValidator} validator The validator plugin instance
          * @param {jQuery} $field The jQuery object represents the field element
@@ -66,35 +60,40 @@ sections:
             // otherwise return false
         }
     };
-}(window.jQuery));</code></pre>
+}(window.jQuery));
+{% endhighlight %}
 
-                    <p><code>&lt;validatorName></code> is the validator name. Since the validators are distinct by the names, <code>&lt;validatorName></code> has to be different with <a href="/validators/">built-in validators</a>.</p>
+                    <p><code>validatorName</code> is the validator name. Since the validators are distinct by the names, <code>validatorName</code> has to be different with <a href="/validators/">built-in validators</a>.</p>
 
                     <p>To apply the validator to particular field:</p>
-
-                    <pre><code class="javascript">$(form).bootstrapValidator({
+{% highlight javascript %}
+$(form).bootstrapValidator({
     fields: {
-        &lt;fieldName>: {
-            // Replace &lt;validatorName> with the name of validator
-            // &lt;validatorOptions> will be passed as third parameter of the
+        fieldName: {
+            // Replace validatorName with the name of validator
+            // validatorOptions will be passed as third parameter of the
             // validate(validator, $field, options) method
-            &lt;validatorName>: &lt;validatorOptions>
+            validatorName: validatorOptions
         }
     }
-});</code></pre>
+});{% endhighlight %}
 
                     <p>For Rails, the input field is constructed from model name and field name. For example, user have email as field, when form helper render
                         view, the input field name will be <code>'user[email]'</code>. The syntax for these is somewhat different as shown below:</p>
 
-                    <pre><code class="javascript">$(form).bootstrapValidator({
+{% highlight javascript %}
+$(form).bootstrapValidator({
     fields: {
         'user[email]': {
-            &lt;validatorName>: &lt;validatorOptions>
+            validatorName: validatorOptions
         }
     }
-});</code></pre>
+});{% endhighlight %}
 
-                    <p class="bv-box bv-box-info">To see how built-in validators are developed, you can look at their sources located at the <a href="{{ site.repository.source }}/tree/master/src/js/validator">src/js/validator</a> directory.</p>
+                    <div class="bv-box bv-box-info">
+                        <h5><i></i>How built-in validators are developed</h5>
+                        <p>To see how built-in validators are developed, you can look at their sources located at the <a href="{{ site.repository.source }}/tree/master/src/js/validator">src/js/validator</a> directory.</p>
+                    </div>
                 </section>
 
                 <section>
@@ -104,13 +103,19 @@ sections:
 
                     <p>From the BootstrapValidator root directory, install dependencies:</p>
 
-                    <pre><code class="bash">$ npm install</code></pre>
+{% highlight bash %}
+$ npm install
+{% endhighlight %}
 
                     <p>Then, uses grunt to build:</p>
-                    <pre><code class="bash">$ grunt</code></pre>
+{% highlight bash %}
+$ grunt
+{% endhighlight %}
 
                     <p>If you want grunt to generate scripts whenever the original scripts (located in <code>src</code>) change, use the following command:</p>
-                    <pre><code class="bash">$ grunt watch</code></pre>
+{% highlight bash %}
+$ grunt watch
+{% endhighlight %}
 
                     <p>The generated scripts (including source and compressed versions) are placed inside the <code>dist</code> directory.</p>
                 </section>

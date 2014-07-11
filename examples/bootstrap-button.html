@@ -104,65 +104,67 @@ comments:         true
                             </div>
 
                             <div class="tab-pane" id="button-html-tab">
-                                <pre><code class="xml">&lt;!-- Override the feedback icons position -->
-&lt;style type="text/css">
+{% highlight html hl_lines="5" %}
+<!-- Override the feedback icons position -->
+<style type="text/css">
 #buttonGroupForm.form-horizontal .has-feedback .form-control-feedback {
     top: 0;
     right: -30px;
 }
-&lt;/style>
+</style>
 
-&lt;form id="buttonGroupForm" method="post" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Gender&lt;/label>
-        &lt;div class="col-lg-9">
-            <span class="bv-note">&lt;div class="btn-group" data-toggle="buttons"></span>
-                &lt;label class="btn btn-default">
-                    &lt;input type="radio" name="gender" value="male" /> Male
-                &lt;/label>
-                &lt;label class="btn btn-default">
-                    &lt;input type="radio" name="gender" value="female" /> Female
-                &lt;/label>
-                &lt;label class="btn btn-default">
-                    &lt;input type="radio" name="gender" value="other" /> Other
-                &lt;/label>
-            &lt;/div>
-        &lt;/div>
-    &lt;/div>
+<form id="buttonGroupForm" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Gender</label>
+        <div class="col-lg-9">
+            <span class="bv-note"><div class="btn-group" data-toggle="buttons"></span>
+                <label class="btn btn-default">
+                    <input type="radio" name="gender" value="male" /> Male
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="gender" value="female" /> Female
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="gender" value="other" /> Other
+                </label>
+            </div>
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Languages&lt;/label>
-        &lt;div class="col-lg-9">
-            <span class="bv-note">&lt;div class="btn-group" data-toggle="buttons"></span>
-                &lt;label class="btn btn-default">
-                    &lt;input type="checkbox" name="languages[]" value="english" /> English
-                &lt;/label>
-                &lt;label class="btn btn-default">
-                    &lt;input type="checkbox" name="languages[]" value="german" /> German
-                &lt;/label>
-                &lt;label class="btn btn-default">
-                    &lt;input type="checkbox" name="languages[]" value="french" /> French
-                &lt;/label>
-                &lt;label class="btn btn-default">
-                    &lt;input type="checkbox" name="languages[]" value="russian" /> Russian
-                &lt;/label>
-                &lt;label class="btn btn-default">
-                    &lt;input type="checkbox" name="languages[]" value="italian"> Italian
-                &lt;/label>
-            &lt;/div>
-        &lt;/div>
-    &lt;/div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Languages</label>
+        <div class="col-lg-9">
+            <span class="bv-note"><div class="btn-group" data-toggle="buttons"></span>
+                <label class="btn btn-default">
+                    <input type="checkbox" name="languages[]" value="english" /> English
+                </label>
+                <label class="btn btn-default">
+                    <input type="checkbox" name="languages[]" value="german" /> German
+                </label>
+                <label class="btn btn-default">
+                    <input type="checkbox" name="languages[]" value="french" /> French
+                </label>
+                <label class="btn btn-default">
+                    <input type="checkbox" name="languages[]" value="russian" /> Russian
+                </label>
+                <label class="btn btn-default">
+                    <input type="checkbox" name="languages[]" value="italian"> Italian
+                </label>
+            </div>
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;div class="col-lg-9 col-lg-offset-3">
-            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <div class="form-group">
+        <div class="col-lg-9 col-lg-offset-3">
+            <button type="submit" class="btn btn-primary">Validate</button>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="button-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="10" %}
 $(document).ready(function() {
     $('#buttonGroupForm').bootstrapValidator({
         feedbackIcons: {
@@ -172,7 +174,7 @@ $(document).ready(function() {
         },
         // Since the Bootstrap Button hides the radio and checkbox
         // We exclude the disabled elements only
-        <span class="bv-note">excluded: ':disabled',</span>
+        excluded: ':disabled',
         fields: {
             gender: {
                 validators: {
@@ -193,7 +195,7 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>
