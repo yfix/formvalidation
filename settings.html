@@ -83,7 +83,8 @@ next_section:     /validators/
                     <h2 id="settings-structure">Settings Structure</h2>
                     <p>There are three levels of settings which are form, field, and validators.</p>
                     <p>The BootstrapValidator plugin can be called as following:</p>
-                    <pre><code class="javascript">$(formSelector).bootstrapValidator({
+{% highlight javascript %}
+$(formSelector).bootstrapValidator({
     ... form settings go here ...
     fields: {
         specificFieldName: {
@@ -98,11 +99,13 @@ next_section:     /validators/
             }
         }
     }
-});</code></pre>
+});
+{% endhighlight %}
 
                     <p>Most of settings can be set via HTML 5 attributes prefixed with <code>data-bv</code>.</p>
                     <p>For example, the following call:</p>
-                    <pre><code class="javascript">$(formSelector).bootstrapValidator({
+{% highlight javascript %}
+$(formSelector).bootstrapValidator({
     excluded: [':disabled', ':hidden', ':not(:visible)'],
     feedbackIcons: {
         valid: 'glyphicon glyphicon-ok',
@@ -115,25 +118,27 @@ next_section:     /validators/
     submitHandler: null,
     trigger: null,
     fields: ...
-});</code></pre>
+});
+{% endhighlight %}
                     <p>is equivalent with the one below:</p>
-                    <pre><code class="xml javascript">&lt;form data-bv-message="This value is not valid"
+{% highlight html %}
+<form data-bv-message="This value is not valid"
       data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
       data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
       data-bv-feedbackicons-validating="glyphicon glyphicon-refresh"
       data-bv-submitbuttons='button[type="submit"]'
       data-bv-live="enabled">
     ...
-&lt;/form>
-
-&lt;script>
+</form>
+{% endhighlight %}
+{% highlight javascript %}
 $(document).ready(function() {
     $(formSelector).bootstrapValidator({
         submitHandler: null,
         fields: ...
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
 
                     <p>In the next sections, you will see the full list of options for each level.</p>
                 </section>
@@ -160,11 +165,15 @@ $(document).ready(function() {
                             <tr>
                                 <td><code>feedbackIcons</code></td>
                                 <td><code>data-bv-feedbackicons-valid</code>, <code>data-bv-feedbackicons-invalid</code>, <code>data-bv-feedbackicons-validating</code></td>
-                                <td><pre><code class="javascript">{
+                                <td>
+{% highlight javascript %}
+{
     valid: null,
     invalid: null,
     validating: null
-}</code></pre></td>
+}
+{% endhighlight %}
+                                </td>
                             </tr>
                             <tr>
                                 <td><code>live</code></td>
@@ -227,30 +236,37 @@ $(document).ready(function() {
                                 <td>String</td>
                                 <td>
                                     <p>Filters are separated by a comma. For example:</p>
-                                    <pre><code>':disabled, :hidden, :not(:visible)'</code></pre>
+{% highlight javascript %}
+':disabled, :hidden, :not(:visible)'
+{% endhighlight %}
                                 </td>
                             </tr>
                             <tr>
                                 <td>Array of strings</td>
                                 <td>
                                     <p>Each element is a filter. For example:</p>
-                                    <pre><code class="javascript">[':disabled', ':hidden', ':not(:visible)']</code></pre>
+{% highlight javascript %}
+[':disabled', ':hidden', ':not(:visible)']
+{% endhighlight %}
                                 </td>
                             </tr>
                             <tr>
                                 <td>Array of strings and callback functions</td>
                                 <td>
                                     <p>The callback function has format as below:</p>
-                                    <pre><code class="javascript">function($field, validator) {
+{% highlight javascript %}
+function($field, validator) {
     // $field is jQuery object representing the field element
     // validator is the BootstrapValidator instance
     // return true or false;
-}</code></pre>
+}
+{% endhighlight %}
                                     <p>For example:</p>
-                                    <pre><code class="javascript">[':disabled', ':hidden', function($field, validator) {
+{% highlight javascript %}
+[':disabled', ':hidden', function($field, validator) {
     // Do not validate invisible element
     return !$field.is(':visible');
-}]</code></pre>
+}]{% endhighlight %}
                                 </td>
                             </tr>
                             </tbody>
@@ -264,61 +280,74 @@ $(document).ready(function() {
                     <section>
                         <h3 id="form-feedback-icons">feedbackIcons: Object</h3>
                         <p>Indicate valid/invalid/validating icons based on the field validity.</p>
-                        <p class="bv-box bv-box-warning">This feature requires <a href="http://getbootstrap.com/css/#forms-control-validation">Bootstrap v3.1.0 or later</a>.
-                        Since Bootstrap doesn't provide any methods to know its version, this option cannot be on/off automatically.
-                        In other word, to use this feature you have to upgrade your Bootstrap to v3.1.0 or later.</p>
+                        <div class="bv-box bv-box-warning">
+                            <h5 id="form-feedback-icons-require"><i></i>Require Bootstrap v3.1.0 or later</h5>
+                            <p>This feature requires <a href="http://getbootstrap.com/css/#forms-control-validation">Bootstrap v3.1.0 or later</a>.
+                            Since Bootstrap doesn't provide any methods to know its version, this option cannot be on/off automatically.
+                            In other word, to use this feature you have to upgrade your Bootstrap to v3.1.0 or later.</p>
+                        </div>
 
                         <p>It supports <a href="http://getbootstrap.com/components/#glyphicons">Glyphicons</a> (included in Bootstrap):</p>
 
-                        <pre><code class="javascript">feedbackIcons: {
+{% highlight javascript %}
+feedbackIcons: {
     valid: 'glyphicon glyphicon-ok',
     invalid: 'glyphicon glyphicon-remove',
     validating: 'glyphicon glyphicon-refresh'
-}</code></pre>
+}
+{% endhighlight %}
 
                         <p>and <a href="http://fontawesome.io/icons">FontAwesome</a> icons (don't forget to insert FontAwesome CSS in your <code>head</code>):</p>
 
-                        <pre><code class="javascript">feedbackIcons: {
+{% highlight javascript %}
+feedbackIcons: {
     valid: 'fa fa-check',
     invalid: 'fa fa-times',
     validating: 'fa fa-refresh'
-}</code></pre>
+}
+{% endhighlight %}
 
                         <p>By default, these icons are not set.</p>
                         <p>There are two popular questions with the feedback icon usage:</p>
 
-                        <section>
-                            <p class="bv-box bv-box-warning">The feedback icons aren't shown when using custom Bootstrap theme from <a href="http://bootswatch.com/">BootsWatch</a></p>
-
-                            <p>Some BootsWatch themes override some CSS styles causing feedback icon invisible to your eyes. For instance, the <a href="http://bootswatch.com/flatly/">Flatly theme</a> set the feedback icon color to <code>#FFF</code>.</p>
+                        <div class="bv-box bv-box-info">
+                            <h5 id="form-feedback-icons-bootswatch"><i></i> Using with Bootswatch</h5>
+                            <p>Some <a href="http://bootswatch.com">BootsWatch</a> themes override some CSS styles causing feedback icon invisible to your eyes. For instance, the <a href="http://bootswatch.com/flatly/">Flatly theme</a> set the feedback icon color to <code>#FFF</code>.</p>
                             <p>To fix this, you can simply add some CSS to your <code>head</code>, right before the BootsWatch theme CSS, to reset the feedback icons color:</p>
-                            <pre><code class="xml">&lt;link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/flatly/bootstrap.min.css">
-&lt;style type="text/css">
+{% highlight html hl_lines="4 7" %}
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/flatly/bootstrap.min.css">
+<style type="text/css">
 .has-error .form-control-feedback {
     color: #E74C3C;
 }
 .has-success .form-control-feedback {
     color: #18BCA0;
 }
-&lt;/style></code></pre>
-                        </section>
+</style>
+{% endhighlight %}
+                        </div>
 
-                        <section>
-                            <p class="bv-box bv-box-warning">The feedback icons aren't shown properly for some elements such as select box or when using with other element such as <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Bootstrap Datetime Picker</a>, <a href="http://mjolnic.github.io/bootstrap-colorpicker/">Bootstrap Color Picker</a>, etc.</p>
+                        <div class="bv-box bv-box-info">
+                            <h5 id="form-feedback-icons-adjust"><i></i>Adjust Feedback Icon Position</h5>
+                            <p>The feedback icons aren't shown properly for some elements such as select box or when using with other element such as <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Bootstrap Datetime Picker</a>, <a href="http://mjolnic.github.io/bootstrap-colorpicker/">Bootstrap Color Picker</a>, etc.</p>
                             <p>Bootstrap defines feedback icon position as following:</p>
-                            <pre><code class="css">.form-horizontal .has-feedback .form-control-feedback {
+{% highlight css hl_lines="3" %}
+.form-horizontal .has-feedback .form-control-feedback {
     top: 0;
     right: 15px;
-}</code></pre>
+}
+{% endhighlight %}
                             <p>You can override this to adjust feedback icon position:</p>
-                            <pre><code class="css">.form-horizontal .has-feedback .form-control-feedback {
+{% highlight css hl_lines="3 6" %}
+.form-horizontal .has-feedback .form-control-feedback {
     top: 0;
     right: -15px;
 }
 .form-horizontal .has-feedback .input-group .form-control-feedback {
     top: 0;
     right: -30px;
-}</code></pre>
+}
+{% endhighlight %}
                             <link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
                             <style type="text/css">
                             #feedbackIconForm .has-feedback .form-control-feedback {
@@ -371,11 +400,16 @@ $(document).ready(function() {
                                     </div>
 
                                     <div class="tab-pane" id="feedbackicon-html-tab">
-                                        <pre><code class="xml">&lt;!-- Include CSS required by Bootstrap Datetime Picker -->
-&lt;link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+{% highlight html %}
+<!-- Include CSS required by Bootstrap Datetime Picker -->
+<link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 
-<span class="bv-note">&lt;!-- Override feedback icon position -->
-&lt;style type="text/css">
+<!-- Include JS required by Bootstrap Datetime Picker -->
+<script src="/vendor/momentjs/moment.min.js"></script>
+<script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+
+<!-- Override feedback icon position -->
+<style type="text/css">
 #feedbackIconForm .has-feedback .form-control-feedback {
     top: 0;
     right: -15px;
@@ -384,54 +418,50 @@ $(document).ready(function() {
     top: 0;
     right: -30px;
 }
-&lt;/style></span>
-&lt;form id="feedbackIconForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Full name&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="fullName" />
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Gender&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;select class="form-control" name="gender">
-                &lt;option value="">Choose gender&lt;/option>
-                &lt;option value="male">Male&lt;/option>
-                &lt;option value="female">Female&lt;/option>
-                &lt;option value="other">Other&lt;/option>
-            &lt;/select>
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Date of birth&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;div class="input-group date" id="dobPicker" data-date-format="YYYY/DD/MM">
-                &lt;input type="text" class="form-control" name="dob" />
-                &lt;span class="input-group-addon">
-                    &lt;span class="glyphicon-calendar glyphicon">&lt;/span>
-                &lt;/span>
-            &lt;/div>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+</style>
+
+<form id="feedbackIconForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Full name</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="fullName" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Gender</label>
+        <div class="col-lg-5">
+            <select class="form-control" name="gender">
+                <option value="">Choose gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Date of birth</label>
+        <div class="col-lg-5">
+            <div class="input-group date" id="dobPicker" data-date-format="YYYY/DD/MM">
+                <input type="text" class="form-control" name="dob" />
+                <span class="input-group-addon">
+                    <span class="glyphicon-calendar glyphicon"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                                     </div>
 
                                     <div class="tab-pane" id="feedbackicon-js-tab">
-                    <pre><code class="xml javascript">&lt;!-- Include JS required by Bootstrap Datetime Picker -->
-&lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
-&lt;script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js">&lt;/script>
-&lt;script>
+{% highlight javascript %}
 $(document).ready(function() {
     $('#dobPicker')
         .datetimepicker({
             pickTime: false
         })
         .on('dp.change dp.show', function(e) {
-            $('#feedbackIconForm')
-                .data('bootstrapValidator')
-                .updateStatus('dob', 'NOT_VALIDATED', null)
-                .validateField('dob');
+            $('#feedbackIconForm').bootstrapValidator('revalidateField', 'dob');
         });
     $('#feedbackIconForm').bootstrapValidator({
         message: 'This value is not valid',
@@ -469,11 +499,11 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                        </div>
                     </section>
                     <!-- /form:feedback-icons -->
 
@@ -524,8 +554,10 @@ $(document).ready(function() {
                     <section>
                         <h3 id="form-submit-handler">submitHandler: Function</h3>
                         <p>Custom submit handler:</p>
-                        <pre><code class="javascript">submitHandler: function(validator, form) {
-}</code></pre>
+{% highlight javascript %}
+submitHandler: function(validator, form) {
+}
+{% endhighlight %}
 
                         <table class="table table-condensed">
                             <thead>
@@ -550,8 +582,8 @@ $(document).ready(function() {
                         </table>
 
                         <p>This option is useful when you want to use Ajax to submit the form data:</p>
-
-                        <pre><code class="javascript">submitHandler: function(validator, form) {
+{% highlight javascript %}
+submitHandler: function(validator, form) {
     // In the case the form have more than one submit buttons,
     // you might want to know which one is clicked.
     // Use the getSubmitButton() method.
@@ -561,24 +593,27 @@ $(document).ready(function() {
     $.post(form.attr('action'), form.serialize(), function(result) {
         // ... process the result ...
     }, 'json');
-}</code></pre>
+}
+{% endhighlight %}
 
                         <p>By default, <code>submitHandler</code> is <code>null</code>.</p>
 
                         <p>If you want to submit the form inside your custom submit handler, use the <a href="/api/#default-submit"><code>defaultSubmit()</code></a> method:</p>
-                        <pre><code class="javascript">submitHandler: function(validator, form) {
+{% highlight javascript %}
+submitHandler: function(validator, form) {
     // Do your task
     // ...
     // Submit the form
     validator.defaultSubmit();
-}</code></pre>
+}
+{% endhighlight %}
                     </section>
                     <!-- form:submit-handler -->
 
                     <!-- form:threshold-->
                     <section>
                         <h3 id="form-threshold">threshold: Number</h3>
-                        <p>The field will not be live validated if its length is less than this number of characters. You also can set this option for <a href="#field-threshold">each field</a>.</p>
+                        <p>The field will not be live validated if its length is less than this number of characters. You also can set this option for <a href="#field-threshold">particular field</a>.</p>
                     </section>
                     <!-- /form:threshold-->
 
@@ -682,41 +717,43 @@ $(document).ready(function() {
                                 </div>
 
                                 <div class="tab-pane" id="container-html-tab">
-                                    <pre><code class="xml">&lt;form id="containerForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Full name&lt;/label>
-        &lt;div class="col-lg-4">
-            &lt;input type="text" class="form-control" name="firstName" placeholder="First name" />
-            <span class="bv-note">&lt;span class="help-block" id="firstNameMessage">&lt;/span></span>
-        &lt;/div>
-        &lt;div class="col-lg-4">
-            &lt;input type="text" class="form-control" name="lastName" placeholder="Last name" />
-            <span class="bv-note">&lt;span class="help-block lastNameMessage">&lt;/span></span>
-        &lt;/div>
-    &lt;/div>
+{% highlight html hl_lines="6 10" %}
+<form id="containerForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Full name</label>
+        <div class="col-lg-4">
+            <input type="text" class="form-control" name="firstName" placeholder="First name" />
+            <span class="help-block" id="firstNameMessage"></span>
+        </div>
+        <div class="col-lg-4">
+            <input type="text" class="form-control" name="lastName" placeholder="Last name" />
+            <span class="help-block lastNameMessage"></span>
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Username&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="username" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Username</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="username" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                                 </div>
 
                                 <div class="tab-pane" id="container-js-tab">
-                                    <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="5 11" %}
 $(document).ready(function() {
     $('#containerForm').bootstrapValidator({
         fields: {
             firstName: {
-                <span class="bv-note">container: '#firstNameMessage'</span>,
+                container: '#firstNameMessage',
                 validators: {
                     ...
                 }
             },
             lastName: {
-                <span class="bv-note">container: '.lastNameMessage'</span>,
+                container: '.lastNameMessage',
                 validators: {
                     ...
                 }
@@ -729,7 +766,7 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                 </div>
                             </div>
                         </div>
@@ -781,58 +818,60 @@ $(document).ready(function() {
                                 </div>
 
                                 <div class="tab-pane" id="selector-html-tab">
-                                    <pre><code class="xml">&lt;form id="paymentForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Credit card number&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" <span class="bv-note">id="ccNumber"</span> />
-        &lt;/div>
-    &lt;/div>
+{% highlight html hl_lines="5 12 15 22" %}
+<form id="paymentForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Credit card number</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" id="ccNumber" />
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Expiration&lt;/label>
-        &lt;div class="col-lg-2">
-            &lt;input type="text" class="form-control" placeholder="Month" <span class="bv-note">data-stripe="exp-month"</span> />
-        &lt;/div>
-        &lt;div class="col-lg-2">
-            &lt;input type="text" class="form-control" placeholder="Year" <span class="bv-note">data-stripe="exp-year"</span> />
-        &lt;/div>
-    &lt;/div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Expiration</label>
+        <div class="col-lg-2">
+            <input type="text" class="form-control" placeholder="Month" data-stripe="exp-month" />
+        </div>
+        <div class="col-lg-2">
+            <input type="text" class="form-control" placeholder="Year" data-stripe="exp-year" />
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">CVV&lt;/label>
-        &lt;div class="col-lg-2">
-            &lt;input type="text" class="form-control <span class="bv-note">cvvNumber</span>" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">CVV</label>
+        <div class="col-lg-2">
+            <input type="text" class="form-control cvvNumber" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                                 </div>
 
                                 <div class="tab-pane" id="selector-js-tab">
-                                    <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="5 11 17 23" %}
 $(document).ready(function() {
     $('#paymentForm').bootstrapValidator({
         fields: {
             ccNumber: {
-                <span class="bv-note">selector: '#ccNumber'</span>,
+                selector: '#ccNumber',
                 validators: {
                     ...
                 }
             },
             expMonth: {
-                <span class="bv-note">selector: '[data-stripe="exp-month"]'</span>,
+                selector: '[data-stripe="exp-month"]',
                 validators: {
                     ...
                 }
             },
             expYear: {
-                <span class="bv-note">selector: '[data-stripe="exp-year"]'</span>,
+                selector: '[data-stripe="exp-year"]',
                 validators: {
                     ...
                 }
             },
             cvvNumber: {
-                <span class="bv-note">selector: '.cvvNumber'</span>,
+                selector: '.cvvNumber',
                 validators: {
                     ...
                 }
@@ -840,7 +879,7 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                 </div>
                             </div>
                         </div>
@@ -912,59 +951,61 @@ $(document).ready(function() {
                                 </div>
 
                                 <div class="tab-pane" id="threshold-html-tab">
-                                    <pre><code class="xml">&lt;form id="thresholdForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Full name&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="fullname" />
-        &lt;/div>
-    &lt;/div>
+{% highlight html %}
+<form id="thresholdForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Full name</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="fullname" />
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Gender&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;div class="radio">
-                &lt;label>
-                    &lt;input type="radio" name="gender" value="male" /> Male
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="radio">
-                &lt;label>
-                    &lt;input type="radio" name="gender" value="female" /> Female
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="radio">
-                &lt;label>
-                    &lt;input type="radio" name="gender" value="other" /> Other
-                &lt;/label>
-            &lt;/div>
-        &lt;/div>
-    &lt;/div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Gender</label>
+        <div class="col-lg-5">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="gender" value="male" /> Male
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="gender" value="female" /> Female
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="gender" value="other" /> Other
+                </label>
+            </div>
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Phone number&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="phone" />
-        &lt;/div>
-    &lt;/div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Phone number</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="phone" />
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Address&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="address" />
-        &lt;/div>
-    &lt;/div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Address</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="address" />
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;div class="col-lg-9 col-lg-offset-3">
-            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <div class="form-group">
+        <div class="col-lg-9 col-lg-offset-3">
+            <button type="submit" class="btn btn-primary">Validate</button>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                                 </div>
 
                                 <div class="tab-pane" id="threshold-js-tab">
-                                    <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="10 13 23 31 43 44" %}
 $(document).ready(function() {
     $('#thresholdForm').bootstrapValidator({
         message: 'This value is not valid',
@@ -973,11 +1014,11 @@ $(document).ready(function() {
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
-        <span class="bv-note">// Set default threshold for all fields. It is null by default
-        threshold: 3,</span>
+        // Set default threshold for all fields. It is null by default
+        threshold: 3,
         fields: {
             fullname: {
-                <span class="bv-note">threshold: 10,</span>
+                threshold: 10,
                 validators: {
                     notEmpty: {
                         message: 'The full name is required'
@@ -985,9 +1026,9 @@ $(document).ready(function() {
                 }
             },
             gender: {
-                <span class="bv-note">// The threshold option does not effect to the elements
+                // The threshold option does not effect to the elements
                 // which user cannot type in, such as radio, checkbox, select, etc.
-                threshold: 5,</span>
+                threshold: 5,
                 validators: {
                     notEmpty: {
                         message: 'The summary is required'
@@ -995,7 +1036,7 @@ $(document).ready(function() {
                 }
             },
             phone: {
-                <span class="bv-note">threshold: 5,</span>
+                threshold: 5,
                 validators: {
                     notEmpty: {
                         message: 'The phone number is required'
@@ -1007,8 +1048,8 @@ $(document).ready(function() {
                 }
             },
             address: {
-                <span class="bv-note">// The threshold option is not set
-                // It will be taken from the form option (which is 3 in this example)</span>
+                // The threshold option is not set
+                // It will be taken from the form option (which is 3 in this example)
                 validators: {
                     notEmpty: {
                         message: 'The city is required'
@@ -1018,7 +1059,7 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                 </div>
                             </div>
                         </div>
@@ -1068,35 +1109,36 @@ $(document).ready(function() {
                                 </div>
 
                                 <div class="tab-pane" id="trigger-html-tab">
-                                    <pre><code class="xml">&lt;form id="triggerForm" method="post" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Title&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="title" />
-        &lt;/div>
-    &lt;/div>
+{% highlight html %}
+<form id="triggerForm" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Title</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="title" />
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Summary&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;textarea rows="5" class="form-control" name="summary">&lt;/textarea>
-        &lt;/div>
-    &lt;/div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Summary</label>
+        <div class="col-lg-5">
+            <textarea rows="5" class="form-control" name="summary"></textarea>
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Description&lt;/label>
-        &lt;div class="col-lg-9">
-            &lt;textarea rows="10" class="form-control" name="description">&lt;/textarea>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Description</label>
+        <div class="col-lg-9">
+            <textarea rows="10" class="form-control" name="description"></textarea>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                                 </div>
 
                                 <div class="tab-pane" id="trigger-js-tab">
-                                    <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="10 18" %}
 $(document).ready(function() {
     $('#triggerForm').bootstrapValidator({
-        message: 'This value is not valid',
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
@@ -1104,7 +1146,7 @@ $(document).ready(function() {
         },
         fields: {
             title: {
-                <span class="bv-note">trigger: 'keyup'</span>,
+                trigger: 'keyup',
                 validators: {
                     notEmpty: {
                         message: 'The title is required'
@@ -1112,7 +1154,7 @@ $(document).ready(function() {
                 }
             },
             summary: {
-                <span class="bv-note">trigger: 'blur'</span>,
+                trigger: 'blur',
                 validators: {
                     notEmpty: {
                         message: 'The summary is required'
@@ -1129,7 +1171,7 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                 </div>
                             </div>
                         </div>
@@ -1175,11 +1217,13 @@ $(document).ready(function() {
                             <li>A function returns the value</li>
                         </ul>
                         <p>In the third and fourth cases, the callback function must follow the format:</p>
-                        <pre><code class="javascript">function(value, validator, $field) {
+{% highlight javascript %}
+function(value, validator, $field) {
     // value is the value of field
     // validator is the BootstrapValidator instance
     // $field is the jQuery element representing field element
-}</code></pre>
+}
+{% endhighlight %}
 
                         <section>
                             <h4 id="dynamic-option-validators">Supported Validators</h4>
@@ -1236,7 +1280,8 @@ $(document).ready(function() {
                             </table>
 
                             <div class="bv-box bv-box-info">
-                                If you develop your own validator which support dynamic option, the <a href="/api/#get-dynamic-option">getDynamicOption()</a> method might be useful. You should look at the source of validators above to see how this method is used.
+                                <h5><i></i>Add Dynamic Option for Custom Validator</h5>
+                                <p>If you develop your own validator which support dynamic option, the <a href="/api/#get-dynamic-option">getDynamicOption()</a> method might be useful. You should look at the source of validators above to see how this method is used.</p>
                             </div>
                         </section>
 
@@ -1244,6 +1289,7 @@ $(document).ready(function() {
                         <p>Assume that your form uses <a href="/validators/zipCode/">zipCode validator</a> to validate a zipcode. The next sections show you how to use four ways above to define option value.</p>
 
                         <div class="bv-box bv-box-info">
+                            <h5><i></i>Sample Zipcodes</h5>
                             <p>You can use the following sample zipcodes for testing:</p>
                             <table class="table table-condensed">
                                 <thead>
@@ -1271,14 +1317,14 @@ $(document).ready(function() {
                         <section>
                             <h4 id="dynamic-option-string">Use string as usual</h4>
                             <p>It's easy for you if the country code option is set initially and can't be changed:</p>
-                            <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="7" %}
 $(document).ready(function() {
     $('#zipcodeForm').bootstrapValidator({
         fields: {
             code: {
                 validators: {
                     zipCode: {
-                        <span class="bv-note">country: 'US'</span>,
+                        country: 'US',
                         message: 'The value is not valid zipcode'
                     }
                 }
@@ -1286,7 +1332,7 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
 
                             <div class="bv-example">
                                 <ul class="nav nav-tabs">
@@ -1308,18 +1354,20 @@ $(document).ready(function() {
                                     </div>
 
                                     <div class="tab-pane" id="zipcode-html-tab">
-                                        <pre><code class="xml">&lt;form id="zipcodeForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">US zipcode&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="code" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form id="zipcodeForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">US zipcode</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="code" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                                     </div>
 
                                     <div class="tab-pane" id="zipcode-js-tab">
-                                        <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="12" %}
 $(document).ready(function() {
     $('#zipcodeForm').bootstrapValidator({
         feedbackIcons: {
@@ -1331,7 +1379,7 @@ $(document).ready(function() {
             code: {
                 validators: {
                     zipCode: {
-                        <span class="bv-note">country: 'US'</span>,
+                        country: 'US',
                         message: 'The value is not valid zipcode'
                     }
                 }
@@ -1339,7 +1387,7 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                     </div>
                                 </div>
                             </div>
@@ -1349,26 +1397,26 @@ $(document).ready(function() {
 
                         <section>
                             <h4 id="dynamic-option-element">Use name of element defining the option value</h4>
-                            <pre><code class="xml javascript">&lt;!-- The element for choosing a country -->
-&lt;select class="form-control" <span class="bv-note">name="countrySelectBox"</span>>
-    &lt;option value="US">United States&lt;/option>
-    &lt;option value="CA">Canada&lt;/option>
-    &lt;option value="DK">Denmark&lt;/option>
-    &lt;option value="IT">Italy&lt;/option>
-    &lt;option value="NL">Netherlands&lt;/option>
-    &lt;option value="SE">Sweden&lt;/option>
-    &lt;option value="GB">United Kingdom&lt;/option>
-&lt;/select>
-
-&lt;!-- JS code -->
-&lt;script>
+{% highlight html hl_lines="2" %}
+<!-- The element for choosing a country -->
+<select class="form-control" name="countrySelectBox">
+    <option value="US">United States</option>
+    <option value="CA">Canada</option>
+    <option value="DK">Denmark</option>
+    <option value="IT">Italy</option>
+    <option value="NL">Netherlands</option>
+    <option value="SE">Sweden</option>
+    <option value="GB">United Kingdom</option>
+</select>
+{% endhighlight %}
+{% highlight javascript hl_lines="7" %}
 $(document).ready(function() {
     $('#zipcodeElementForm').bootstrapValidator({
         fields: {
             code: {
                 validators: {
                     zipCode: {
-                        <span class="bv-note">country: 'countrySelectBox'</span>,
+                        country: 'countrySelectBox',
                         message: 'The value is not valid zipcode'
                     }
                 }
@@ -1376,7 +1424,7 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             <div class="bv-example">
                                 <ul class="nav nav-tabs">
                                     <li class="active"><a href="#zipcode-element-form-tab" data-toggle="tab">Try it</a></li>
@@ -1411,32 +1459,35 @@ $(document).ready(function() {
                                     </div>
 
                                     <div class="tab-pane" id="zipcode-element-html-tab">
-                                        <pre><code class="xml">&lt;form id="zipcodeElementForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Country:&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;select class="form-control" <span class="bv-note">name="countrySelectBox"</span>>
-                &lt;option value="US">United States&lt;/option>
-                &lt;option value="CA">Canada&lt;/option>
-                &lt;option value="DK">Denmark&lt;/option>
-                &lt;option value="IT">Italy&lt;/option>
-                &lt;option value="NL">Netherlands&lt;/option>
-                &lt;option value="SE">Sweden&lt;/option>
-                &lt;option value="GB">United Kingdom&lt;/option>
-            &lt;/select>
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Zipcode&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="code" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html hl_lines="5" %}
+<form id="zipcodeElementForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Country:</label>
+        <div class="col-lg-5">
+            <select class="form-control" name="countrySelectBox">
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="DK">Denmark</option>
+                <option value="IT">Italy</option>
+                <option value="NL">Netherlands</option>
+                <option value="SE">Sweden</option>
+                <option value="GB">United Kingdom</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Zipcode</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="code" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                                     </div>
 
                                     <div class="tab-pane" id="zipcode-element-js-tab">
-                                        <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="13 22" %}
 $(document).ready(function() {
     $('#zipcodeElementForm')
         .bootstrapValidator({
@@ -1449,19 +1500,19 @@ $(document).ready(function() {
                 code: {
                     validators: {
                         zipCode: {
-                            <span class="bv-note">country: 'countrySelectBox'</span>,
+                            country: 'countrySelectBox',
                             message: 'The value is not valid zipcode'
                         }
                     }
                 }
             }
         })
-        <span class="bv-note">.on('change', '[name="countrySelectBox"]', function() {
+        .on('change', '[name="countrySelectBox"]', function() {
             // Revalidate the zipcode after changing the country
             $('#zipcodeForm').bootstrapValidator('revalidateField', 'code');
-        });</span>
+        });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                     </div>
                                 </div>
                             </div>
@@ -1469,26 +1520,26 @@ $(document).ready(function() {
 
                         <section>
                             <h4 id="dynamic-option-function-name">Use name of function returning the option value</h4>
-                            <pre><code class="xml javascript">&lt;!-- The element for choosing a country -->
-&lt;select class="form-control" name="countrySelectBox">
-    &lt;option value="US">United States&lt;/option>
-    &lt;option value="CA">Canada&lt;/option>
-    &lt;option value="DK">Denmark&lt;/option>
-    &lt;option value="IT">Italy&lt;/option>
-    &lt;option value="NL">Netherlands&lt;/option>
-    &lt;option value="SE">Sweden&lt;/option>
-    &lt;option value="GB">United Kingdom&lt;/option>
-&lt;/select>
-
-&lt;!-- JS code -->
-&lt;script>
-<span class="bv-note">function getCountryCode(value, validator, $field) {
+{% highlight html hl_lines="2" %}
+<!-- The element for choosing a country -->
+<select class="form-control" name="countrySelectBox">
+    <option value="US">United States</option>
+    <option value="CA">Canada</option>
+    <option value="DK">Denmark</option>
+    <option value="IT">Italy</option>
+    <option value="NL">Netherlands</option>
+    <option value="SE">Sweden</option>
+    <option value="GB">United Kingdom</option>
+</select>
+{% endhighlight %}
+{% highlight javascript hl_lines="1 15" %}
+function getCountryCode(value, validator, $field) {
     // Return the selected country code
     return $('[name="countrySelectBox"]').val();
 
     // You can use getFieldElements() method
     // return validator.getFieldElements('countrySelectBox').val();
-};</span>
+};
 
 $(document).ready(function() {
     $('#zipcodeFunctionNameForm').bootstrapValidator({
@@ -1496,7 +1547,7 @@ $(document).ready(function() {
             code: {
                 validators: {
                     zipCode: {
-                        <span class="bv-note">country: 'getCountryCode'</span>,
+                        country: 'getCountryCode',
                         message: 'The value is not valid zipcode'
                     }
                 }
@@ -1504,7 +1555,7 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             <div class="bv-example">
                                 <ul class="nav nav-tabs">
                                     <li class="active"><a href="#zipcode-function-form-tab" data-toggle="tab">Try it</a></li>
@@ -1539,39 +1590,42 @@ $(document).ready(function() {
                                     </div>
 
                                     <div class="tab-pane" id="zipcode-function-html-tab">
-                                        <pre><code class="xml">&lt;form id="zipcodeFunctionNameForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Country:&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;select class="form-control" <span class="bv-note">name="countrySelectBox"</span>>
-                &lt;option value="US">United States&lt;/option>
-                &lt;option value="CA">Canada&lt;/option>
-                &lt;option value="DK">Denmark&lt;/option>
-                &lt;option value="IT">Italy&lt;/option>
-                &lt;option value="NL">Netherlands&lt;/option>
-                &lt;option value="SE">Sweden&lt;/option>
-                &lt;option value="GB">United Kingdom&lt;/option>
-            &lt;/select>
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Zipcode&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="code" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html hl_lines="5" %}
+<form id="zipcodeFunctionNameForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Country:</label>
+        <div class="col-lg-5">
+            <select class="form-control" name="countrySelectBox">
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="DK">Denmark</option>
+                <option value="IT">Italy</option>
+                <option value="NL">Netherlands</option>
+                <option value="SE">Sweden</option>
+                <option value="GB">United Kingdom</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Zipcode</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="code" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                                     </div>
 
                                     <div class="tab-pane" id="zipcode-function-js-tab">
-                                        <pre><code class="xml javascript">&lt;script>
-<span class="bv-note">function getCountryCode(value, validator, $field) {
+{% highlight javascript hl_lines="1 21 30" %}
+function getCountryCode(value, validator, $field) {
     // Return the selected country code
     return $('[name="countrySelectBox"]').val();
 
     // You can use getFieldElements() method
     // return validator.getFieldElements('countrySelectBox').val();
-};</span>
+};
 
 $(document).ready(function() {
     $('#zipcodeFunctionNameForm')
@@ -1585,19 +1639,19 @@ $(document).ready(function() {
                 code: {
                     validators: {
                         zipCode: {
-                            <span class="bv-note">country: 'getCountryCode'</span>,
+                            country: 'getCountryCode',
                             message: 'The value is not valid zipcode'
                         }
                     }
                 }
             }
         })
-        <span class="bv-note">.on('change', '[name="countrySelectBox"]', function() {
+        .on('change', '[name="countrySelectBox"]', function() {
             // Revalidate the zipcode after changing the country
             $('#zipcodeFunctionNameForm').bootstrapValidator('revalidateField', 'code');
-        });</span>
+        });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                     </div>
                                 </div>
                             </div>
@@ -1605,19 +1659,19 @@ $(document).ready(function() {
 
                         <section>
                             <h4 id="dynamic-option-callback">Use function returning the option value</h4>
-                            <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="7" %}
 $(document).ready(function() {
     $('#zipcodeElementForm').bootstrapValidator({
         fields: {
             code: {
                 validators: {
                     zipCode: {
-                        <span class="bv-note">country: function(value, validator, $field) {
+                        country: function(value, validator, $field) {
                             return $('[name="countrySelectBox"]').val();
 
                             // You can use getFieldElements() method
                             // return validator.getFieldElements('countrySelectBox').val();
-                        }</span>,
+                        },
                         message: 'The value is not valid zipcode'
                     }
                 }
@@ -1625,7 +1679,7 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             <div class="bv-example">
                                 <ul class="nav nav-tabs">
                                     <li class="active"><a href="#zipcode-callback-form-tab" data-toggle="tab">Try it</a></li>
@@ -1660,32 +1714,35 @@ $(document).ready(function() {
                                     </div>
 
                                     <div class="tab-pane" id="zipcode-callback-html-tab">
-                                        <pre><code class="xml">&lt;form id="zipcodeCallbackForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Country:&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;select class="form-control" <span class="bv-note">name="countrySelectBox"</span>>
-                &lt;option value="US">United States&lt;/option>
-                &lt;option value="CA">Canada&lt;/option>
-                &lt;option value="DK">Denmark&lt;/option>
-                &lt;option value="IT">Italy&lt;/option>
-                &lt;option value="NL">Netherlands&lt;/option>
-                &lt;option value="SE">Sweden&lt;/option>
-                &lt;option value="GB">United Kingdom&lt;/option>
-            &lt;/select>
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Zipcode&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="code" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html hl_lines="5" %}
+<form id="zipcodeCallbackForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Country:</label>
+        <div class="col-lg-5">
+            <select class="form-control" name="countrySelectBox">
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="DK">Denmark</option>
+                <option value="IT">Italy</option>
+                <option value="NL">Netherlands</option>
+                <option value="SE">Sweden</option>
+                <option value="GB">United Kingdom</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Zipcode</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="code" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                                     </div>
 
                                     <div class="tab-pane" id="zipcode-callback-js-tab">
-                                        <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="13 27" %}
 $(document).ready(function() {
     $('#zipcodeCallbackForm')
         .bootstrapValidator({
@@ -1698,24 +1755,24 @@ $(document).ready(function() {
                 code: {
                     validators: {
                         zipCode: {
-                            <span class="bv-note">country: function(value, validator, $field) {
+                            country: function(value, validator, $field) {
                                 return $('[name="countrySelectBox"]').val();
 
                                 // You can use getFieldElements() method
                                 // return validator.getFieldElements('countrySelectBox').val();
-                            }</span>,
+                            },
                             message: 'The value is not valid zipcode'
                         }
                     }
                 }
             }
         })
-        <span class="bv-note">.on('change', '[name="countrySelectBox"]', function() {
+        .on('change', '[name="countrySelectBox"]', function() {
             // Revalidate the zipcode after changing the country
             $('#zipcodeCallbackForm').bootstrapValidator('revalidateField', 'code');
-        });</span>
+        });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                     </div>
                                 </div>
                             </div>
@@ -1766,7 +1823,8 @@ $(document).ready(function() {
                             <tbody>
                                 <tr>
                                     <td>Listening to event</td>
-                                    <td><pre><code class="xml javascript">&lt;script>
+                                    <td>
+{% highlight javascript hl_lines="4 13" %}
 $(document).ready(function() {
     $(form)
         .bootstrapValidator(options)
@@ -1786,12 +1844,13 @@ $(document).ready(function() {
             // Do something ...
         });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Using option</td>
-                                    <td><pre><code class="xml javascript">&lt;script>
+                                    <td>
+{% highlight javascript hl_lines="4 7" %}
 $(document).ready(function() {
     $(form)
         .bootstrapValidator({
@@ -1803,15 +1862,16 @@ $(document).ready(function() {
             }
         });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Using HTML 5 attributes</td>
                                     <td>
-                                        <pre><code class="xml javascript">&lt;form data-bv-onerror="onFormError" data-bv-onsuccess="onFormSuccess">&lt;/form>
-
-&lt;script>
+{% highlight html %}
+<form data-bv-onerror="onFormError" data-bv-onsuccess="onFormSuccess"></form>
+{% endhighlight %}
+{% highlight javascript hl_lines="1 5" %}
 function onFormError(e) {
     // Do something ...
 };
@@ -1823,7 +1883,7 @@ function onFormSuccess(e) {
 $(document).ready(function() {
     $(form).bootstrapValidator(options);
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                     </td>
                                 </tr>
                             </tbody>
@@ -1874,7 +1934,8 @@ $(document).ready(function() {
                             <tbody>
                                 <tr>
                                     <td>Listening to event</td>
-                                    <td><pre><code class="xml javascript">&lt;script>
+                                    <td>
+{% highlight javascript hl_lines="4 19 25" %}
 $(document).ready(function() {
     $(form)
         .bootstrapValidator(options)
@@ -1909,7 +1970,7 @@ $(document).ready(function() {
             // Do something ...
         });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                     </td>
                                 </tr>
                             </tbody>
@@ -1926,7 +1987,8 @@ $(document).ready(function() {
                             <tbody>
                                 <tr>
                                     <td>Listening to event</td>
-                                    <td><pre><code class="xml javascript">&lt;script>
+                                    <td>
+{% highlight javascript hl_lines="4 7 10" %}
 $(document).ready(function() {
     $(form)
         .bootstrapValidator(options)
@@ -1940,12 +2002,13 @@ $(document).ready(function() {
             // Do something ...
         });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Using option</td>
-                                    <td><pre><code class="xml javascript">&lt;script>
+                                    <td>
+{% highlight javascript hl_lines="6 9 12" %}
 $(document).ready(function() {
     $(form)
         .bootstrapValidator({
@@ -1967,23 +2030,24 @@ $(document).ready(function() {
             }
         });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Using HTML 5 attributes</td>
                                     <td>
-                                        <pre><code class="xml javascript">&lt;form>
+{% highlight html hl_lines="5 6 7" %}
+<form>
     ...
-    &lt;input type="text" name="email" class="form-control"
+    <input type="text" name="email" class="form-control"
         data-bv-emailaddress
         data-bv-onerror="onFieldError"
         data-bv-onsuccess="onFieldSuccess"
         data-bv-onstatus="onFieldStatus" />
     ...
-&lt;/form>
-
-&lt;script>
+</form>
+{% endhighlight %}
+{% highlight javascript hl_lines="1 5 9" %}
 function onFieldError(e, data) {
     // Do something ...
 };
@@ -1999,7 +2063,7 @@ function onFieldStatus(e, data) {
 $(document).ready(function() {
     $(form).bootstrapValidator(options);
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                     </td>
                                 </tr>
                             </tbody>
@@ -2038,7 +2102,8 @@ $(document).ready(function() {
                             <tbody>
                                 <tr>
                                     <td>Listening to event</td>
-                                    <td><pre><code class="xml javascript">&lt;script>
+                                    <td>
+{% highlight javascript hl_lines="4 22" %}
 $(document).ready(function() {
     $(form)
         .bootstrapValidator(options)
@@ -2067,12 +2132,13 @@ $(document).ready(function() {
             // Do something ...
         });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Using option</td>
-                                    <td><pre><code class="xml javascript">&lt;script>
+                                    <td>
+{% highlight javascript hl_lines="8 11" %}
 $(document).ready(function() {
     $(form)
         .bootstrapValidator({
@@ -2093,22 +2159,23 @@ $(document).ready(function() {
             }
         });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Using HTML 5 attributes</td>
                                     <td>
-                                        <pre><code class="xml javascript">&lt;form>
+{% highlight html hl_lines="5 6" %}
+<form>
     ...
-    &lt;input type="text" name="email" class="form-control"
+    <input type="text" name="email" class="form-control"
         data-bv-emailaddress
         data-bv-emailaddress-onerror="onEmailAddressError"
         data-bv-emailaddress-onsuccess="onEmailAddressSuccess" />
     ...
-&lt;/form>
-
-&lt;script>
+</form>
+{% endhighlight %}
+{% highlight javascript hl_lines="1 5" %}
 function onEmailAddressError(e, data) {
     // Do something ...
 };
@@ -2120,7 +2187,7 @@ function onEmailAddressSuccess(e, data) {
 $(document).ready(function() {
     $(form).bootstrapValidator(options);
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                     </td>
                                 </tr>
                             </tbody>

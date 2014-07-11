@@ -124,6 +124,10 @@
 <script>
 $(document).ready(function() {
     $('.bv-content').find('h1, h2, h3, h4, h5, h6').each(function() {
+        if (!$(this).attr('id')) {
+            return;
+        }
+
         var $heading = $(this),
             $span    =  $heading.find('span'),
             $anchor  = $('<a/>')
