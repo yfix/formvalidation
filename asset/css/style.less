@@ -16,6 +16,13 @@ pre, .hljs {
   background: transparent;
 }
 
+// Code highlight
+.hll {
+  background-color: #ffffcc;
+  display: block;
+  width: 100%;
+}
+
 // Font
 body {
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -115,14 +122,39 @@ footer {
 .bv-box {
   margin: 30px 0;
   padding: 15px;
-  border: 1px solid #2ecc71;
+  border: 1px solid transparent;
   border-left-width: 5px;
+  border-radius: 4px;
+  h5 {
+    font-size: 22px;
+    i {
+      font-family: FontAwesome;
+      font-style: normal;
+      padding-right: 10px;
+    }
+  }
 }
 .bv-box-info {
-  border-left-color: #3498db;
+  border-color: #3498db;
+  h5 {
+    color: #3498db;
+    i {
+      &:before {
+        content: '\f005'
+      }
+    }
+  }
 }
 .bv-box-warning {
-  border-left-color: #c0392b;
+  border-color: #c0392b;
+  h5 {
+    color: #c0392b;
+    i {
+      &:before {
+        content: '\f12a\f12a'
+      }
+    }
+  }
 }
 
 // Header
@@ -285,7 +317,7 @@ footer {
 
 // Sidebar
 .bv-sidebar {
-  padding-top: 55px;
+  padding-top: 61px;
   h4 {
     border-bottom: 1px solid #ddd;
     font-size: 25px;
@@ -313,7 +345,7 @@ footer {
     h2 {
       border-bottom: 1px solid #ccc;
       padding: 80px 0 10px 0;
-      font-size: 25px;
+      font-size: 30px;
     }
   }
   h3 {

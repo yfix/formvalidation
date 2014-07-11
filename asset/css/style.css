@@ -13,6 +13,11 @@ pre,
 .hljs {
   background: transparent;
 }
+.hll {
+  background-color: #ffffcc;
+  display: block;
+  width: 100%;
+}
 body {
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 18px;
@@ -106,14 +111,35 @@ footer p {
 .bv-box {
   margin: 30px 0;
   padding: 15px;
-  border: 1px solid #2ecc71;
+  border: 1px solid transparent;
   border-left-width: 5px;
+  border-radius: 4px;
+}
+.bv-box h5 {
+  font-size: 22px;
+}
+.bv-box h5 i {
+  font-family: FontAwesome;
+  font-style: normal;
+  padding-right: 10px;
 }
 .bv-box-info {
-  border-left-color: #3498db;
+  border-color: #3498db;
+}
+.bv-box-info h5 {
+  color: #3498db;
+}
+.bv-box-info h5 i:before {
+  content: '\f005';
 }
 .bv-box-warning {
-  border-left-color: #c0392b;
+  border-color: #c0392b;
+}
+.bv-box-warning h5 {
+  color: #c0392b;
+}
+.bv-box-warning h5 i:before {
+  content: '\f12a\f12a';
 }
 .bv-header .navbar-default {
   background-color: #354b60;
@@ -256,7 +282,7 @@ footer p {
   padding: 0 0 40px 0;
 }
 .bv-sidebar {
-  padding-top: 55px;
+  padding-top: 61px;
 }
 .bv-sidebar h4 {
   border-bottom: 1px solid #ddd;
@@ -276,7 +302,7 @@ footer p {
 .bv-content section h2 {
   border-bottom: 1px solid #ccc;
   padding: 80px 0 10px 0;
-  font-size: 25px;
+  font-size: 30px;
 }
 .bv-content h3 {
   border-bottom: 1px solid #ddd;

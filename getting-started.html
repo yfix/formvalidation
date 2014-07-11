@@ -123,6 +123,7 @@ next_section:     /settings/
                     </table>
 
                     <div class="bv-box bv-box-info">
+                        <h5 id="translate"><i></i>Translate to other language</h5>
                         <p>It is very easy to translate default English package into your language. Follow the steps below:</p>
                         <ul>
                             <li>Fork the <a href="{{ site.repository.source }}">project</a></li>
@@ -142,7 +143,8 @@ next_section:     /settings/
                     <h2 id="whats-included">What's Included?</h2>
                     <p>The package consists of the following files:</p>
 
-                    <pre><code>bootstrapvalidator/
+{% highlight html %}
+bootstrapvalidator/
 ├── dist
 │   ├── css
 │   │   ├── bootstrapValidator.css
@@ -160,7 +162,8 @@ next_section:     /settings/
         │   ├── between.js
         │   ├── callback.js
         │   └── ...
-        └── bootstrapValidator.js</code></pre>
+        └── bootstrapValidator.js
+{% endhighlight %}
 
                     <p>The <code>src</code> directory consists of the original source files. <code>src/js/bootstrapValidator.js</code> is not compressed and doesn't include any validators.</p>
 
@@ -177,22 +180,29 @@ next_section:     /settings/
                     <section>
                         <h3 id="including-library">Including Library</h3>
                         <p>Since the BootstrapValidator plugin requires jQuery and Bootstrap 3, you have to include the required CSS and JS files to your page:</p>
-                        <pre><code class="xml">&lt;link rel="stylesheet" href="/path/to/bootstrap/css/bootstrap.css"/>
-&lt;link rel="stylesheet" href="/path/to/dist/css/bootstrapValidator.min.css"/>
 
-&lt;script type="text/javascript" src="/path/to/jquery/jquery-1.10.2.min.js">&lt;/script>
-&lt;script type="text/javascript" src="/path/to/bootstrap/js/bootstrap.min.js">&lt;/script></code></pre>
+{% highlight html %}
+<link rel="stylesheet" href="/path/to/bootstrap/css/bootstrap.css"/>
+<link rel="stylesheet" href="/path/to/dist/css/bootstrapValidator.min.css"/>
+
+<script type="text/javascript" src="/path/to/jquery/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/path/to/bootstrap/js/bootstrap.min.js"></script>
+{% endhighlight %}
 
                         <p>Next, requires the plugin javascript file:</p>
-                        <pre><code class="xml">// Either use the compressed version (recommended in the production site)
-&lt;script type="text/javascript" src="/path/to/dist/js/bootstrapValidator.min.js">&lt;/script>
 
-// Or use the original one with all validators included
-&lt;script type="text/javascript" src="/path/to/dist/js/bootstrapValidator.js">&lt;/script>
+{% highlight html %}
+<!-- Either use the compressed version (recommended in the production site) -->
+<script type="text/javascript" src="/path/to/dist/js/bootstrapValidator.min.js"></script>
 
-// Or use the plugin with required validators
-&lt;script type="text/javascript" src="/path/to/src/js/bootstrapValidator.js">&lt;/script>
-&lt;script type="text/javascript" src="/path/to/src/js/validator/...validator...">&lt;/script></code></pre>
+<!-- Or use the original one with all validators included -->
+<script type="text/javascript" src="/path/to/dist/js/bootstrapValidator.js"></script>
+
+<!-- Or use the plugin with required validators -->
+<script type="text/javascript" src="/path/to/src/js/bootstrapValidator.js"></script>
+<script type="text/javascript" src="/path/to/src/js/validator/...validator..."></script>
+{% endhighlight %}
+
                     </section>
 
                     <!-- writing-form -->
@@ -201,14 +211,20 @@ next_section:     /settings/
                         <p>Since BootstrapValidator is designed to use with Bootstrap, your form must be structured using Bootstrap classes.</p>
 
                         <div class="bv-box bv-box-warning">
+                            <h5 id="maximum-call-stack-error"><i></i>Maximum call stack size exceeded error</h5>
                             <p>If your form is NOT structured by Bootstrap classes (the element containing field and associated label does NOT have <code>form-group</code> class), you will see the following error in the Console:</p>
-                            <code>Uncaught RangeError: Maximum call stack size exceeded</code>
+{% highlight html %}
+Uncaught RangeError: Maximum call stack size exceeded
+{% endhighlight %}
                         </div>
 
                         <div class="bv-box bv-box-warning">
+                            <h5 id="name-conflict"><i></i>Name conflict</h5>
                             <p>Do not use the properties of a form, such as <code>submit</code>, <code>reset</code>, <code>length</code>, <code>method</code> to set the <code>name</code> or <code>id</code> attribute of form, field elements. Name conflicts can cause the problem.</p>
                             <p>For example, you cannot submit the form after validating if use <code>submit</code> to name the Submit button:</p>
-                            <pre><code class="xml">&lt;button type="submit" name="submit" class="btn btn-primary">Submit&lt;/button></code></pre>
+{% highlight html %}
+<button type="submit" name="submit" class="btn btn-primary">Submit</button>
+{% endhighlight %}
                             <a href="http://kangax.github.com/domlint/">DOMLint</a> has a complete list of rules to check the markup for these kind of problems.
                         </div>
 
@@ -236,16 +252,18 @@ next_section:     /settings/
                                 </div>
 
                                 <div class="tab-pane" id="basic-html-tab">
-                                    <pre><code class="html">&lt;form>
-    &lt;div class="form-group">
-        &lt;label>Username&lt;/label>
-        &lt;input type="text" class="form-control" name="username" />
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;label>Email address&lt;/label>
-        &lt;input type="text" class="form-control" name="email" />
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form>
+    <div class="form-group">
+        <label>Username</label>
+        <input type="text" class="form-control" name="username" />
+    </div>
+    <div class="form-group">
+        <label>Email address</label>
+        <input type="text" class="form-control" name="email" />
+    </div>
+</form>
+{% endhighlight %}
                                 </div>
                             </div>
                         </div>
@@ -270,14 +288,16 @@ next_section:     /settings/
                                 </div>
 
                                 <div class="tab-pane" id="basicwlabel-html-tab">
-                                    <pre><code class="html">&lt;form>
-    &lt;div class="form-group">
-        &lt;input type="text" class="form-control" name="username" placeholder="Username" />
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;input type="text" class="form-control" name="email" placeholder="Email address" />
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form>
+    <div class="form-group">
+        <input type="text" class="form-control" name="username" placeholder="Username" />
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="email" placeholder="Email address" />
+    </div>
+</form>
+{% endhighlight %}
                                 </div>
                             </div>
                         </div>
@@ -302,14 +322,16 @@ next_section:     /settings/
                                 </div>
 
                                 <div class="tab-pane" id="inline-html-tab">
-                                    <pre><code class="xml">&lt;form class="form-inline">
-    &lt;div class="form-group">
-        &lt;input type="text" class="form-control" name="username" placeholder="Username" />
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;input type="text" class="form-control" name="email" placeholder="Email address" />
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form class="form-inline">
+    <div class="form-group">
+        <input type="text" class="form-control" name="username" placeholder="Username" />
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="email" placeholder="Email address" />
+    </div>
+</form>
+{% endhighlight %}
                                 </div>
                             </div>
                         </div>
@@ -340,20 +362,22 @@ next_section:     /settings/
                                 </div>
 
                                 <div class="tab-pane" id="horizontal-html-tab">
-                                    <pre><code class="xml">&lt;form class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Username&lt;/label>
-        &lt;div class="col-lg-9">
-            &lt;input type="text" class="form-control" name="username" />
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Email address&lt;/label>
-        &lt;div class="col-lg-9">
-            &lt;input type="text" class="form-control" name="email" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Username</label>
+        <div class="col-lg-6">
+            <input type="text" class="form-control" name="username" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Email address</label>
+        <div class="col-lg-6">
+            <input type="text" class="form-control" name="email" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                                 </div>
                             </div>
                         </div>
@@ -382,17 +406,19 @@ next_section:     /settings/
                                 </div>
 
                                 <div class="tab-pane" id="row-html-tab">
-                                    <pre><code class="xml">&lt;form class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-2 control-label">Account&lt;/label>
-        &lt;div class="col-lg-4">
-            &lt;input type="text" class="form-control" name="username" placeholder="Username" />
-        &lt;/div>
-        &lt;div class="col-lg-4">
-            &lt;input type="text" class="form-control" name="email" placeholder="Email address" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Account</label>
+        <div class="col-lg-4">
+            <input type="text" class="form-control" name="username" placeholder="Username" />
+        </div>
+        <div class="col-lg-4">
+            <input type="text" class="form-control" name="email" placeholder="Email address" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                                 </div>
                             </div>
                         </div>
@@ -403,7 +429,8 @@ next_section:     /settings/
                         <h3 id="calling-plugin">Calling Plugin</h3>
 
                             <p>Call the plugin to validate the form as following:</p>
-                            <pre><code class="javascript">$(document).ready(function() {
+{% highlight javascript %}
+$(document).ready(function() {
     $(formSelector).bootstrapValidator({
         excluded: ...,
         feedbackIcons: ...,
@@ -414,11 +441,12 @@ next_section:     /settings/
         trigger: null,
         fields: ...
     });
-});</code></pre>
+});
+{% endhighlight %}
 
                         <p>For example, to validate the sample registration form above, the plugin might be called as:</p>
-
-                        <pre><code class="javascript">$(document).ready(function() {
+{% highlight javascript %}
+$(document).ready(function() {
     $('.registerForm').bootstrapValidator({
         message: 'This value is not valid',
         feedbackIcons: {
@@ -456,7 +484,8 @@ next_section:     /settings/
             }
         }
     });
-});</code></pre>
+});
+{% endhighlight %}
 
                         <p>Look at the <a href="/settings/">Settings</a> page to see the meaning of plugin options.</p>
                     </section>
