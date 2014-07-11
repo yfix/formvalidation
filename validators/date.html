@@ -170,7 +170,10 @@ comments:         true
 
                     <p>It's possible to support other date format by using <a href="/validators/callback/">callback</a> validator as shown in the <a href="#custom-format-example">Custom format example</a>.</p>
 
-                    <p class="bv-box bv-box-info">The date validator also checks the number of days in February of leap year. For example, 02/29/2000 is valid date, while 02/29/2001 is invalid one.</p>
+                    <div class="bv-box bv-box-info">
+                        <h5><i></i>Leap year</h5>
+                        <p>The date validator also checks the number of days in February of leap year. For example, 02/29/2000 is valid date, while 02/29/2001 is invalid one.</p>
+                    </div>
                 </section>
 
                 <section>
@@ -201,19 +204,21 @@ comments:         true
                                 </div>
 
                                 <div class="tab-pane" id="example-html-tab">
-                                    <pre><code class="xml">&lt;form id="profileForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Birthday&lt;/label>
-        &lt;div class="col-lg-3">
-            &lt;input type="text" class="form-control" name="birthday" />
-            &lt;span class="help-block">YYYY/MM/DD&lt;/span>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form id="profileForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Birthday</label>
+        <div class="col-lg-3">
+            <input type="text" class="form-control" name="birthday" />
+            <span class="help-block">YYYY/MM/DD</span>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                                 </div>
 
                                 <div class="tab-pane" id="example-js-tab">
-                                    <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="11" %}
 $(document).ready(function() {
     $('#profileForm').bootstrapValidator({
         feedbackIcons: {
@@ -224,16 +229,16 @@ $(document).ready(function() {
         fields: {
             birthday: {
                 validators: {
-                    <span class="bv-note">date: {
+                    date: {
                         format: 'YYYY/MM/DD',
                         message: 'The value is not a valid date'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                 </div>
                             </div>
                         </div>
@@ -277,37 +282,39 @@ $(document).ready(function() {
                                 </div>
 
                                 <div class="tab-pane" id="datepicker-html-tab">
-                                    <pre><code class="xml">&lt;!-- Required CSS -->
-&lt;link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-&lt;style type="text/css">
-<span class="bv-note">/* Override feedback icon position */
+{% highlight html hl_lines="10" %}
+<!-- Required CSS and JS -->
+<link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<script src="/vendor/momentjs/moment.min.js"></script>
+<script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+
+<style type="text/css">
+/* Override feedback icon position */
 .form-horizontal .has-feedback .input-group .form-control-feedback {
     top: 0;
     right: -30px;
-}</span>
-&lt;/style>
+}
+</style>
 
-&lt;form id="meetingForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Meeting time&lt;/label>
-        &lt;div class="col-lg-4">
-            &lt;div class="input-group date" id="datetimePicker">
-                &lt;input type="text" class="form-control" name="meeting" />
-                &lt;span class="input-group-addon">
-                    &lt;span class="glyphicon glyphicon-calendar">&lt;/span>
-                &lt;/span>
-            &lt;/div>
-            &lt;span class="help-block">MM/DD/YYYY h:m A&lt;/span>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+<form id="meetingForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Meeting time</label>
+        <div class="col-lg-4">
+            <div class="input-group date" id="datetimePicker">
+                <input type="text" class="form-control" name="meeting" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+            <span class="help-block">MM/DD/YYYY h:m A</span>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                                 </div>
 
                                 <div class="tab-pane" id="datepicker-js-tab">
-                                    <pre><code class="xml javascript">&lt;!-- Required JS -->
-&lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
-&lt;script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js">&lt;/script>
-&lt;script>
+{% highlight javascript hl_lines="13 25" %}
 $(document).ready(function() {
     $('#datetimePicker').datetimepicker();
 
@@ -320,10 +327,10 @@ $(document).ready(function() {
         fields: {
             meeting: {
                 validators: {
-                    <span class="bv-note">date: {
+                    date: {
                         format: 'MM/DD/YYYY h:m A',
                         message: 'The value is not a valid date'
-                    }</span>
+                    }
                 }
             }
         }
@@ -332,16 +339,10 @@ $(document).ready(function() {
     $('#datetimePicker')
         .on('dp.change dp.show', function(e) {
             // Validate the date when user change it
-            $('#meetingForm')
-                // Get the bootstrapValidator instance
-                .data('bootstrapValidator')
-                // Mark the field as not validated, so it'll be re-validated when the user change date
-                <span class="bv-note">.updateStatus('meeting', 'NOT_VALIDATED', null)
-                // Validate the field
-                .validateField('meeting');</span>
+            $('#meetingForm').bootstrapValidator('revalidateField', 'meeting');
         });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                 </div>
                             </div>
                         </div>
@@ -373,21 +374,24 @@ $(document).ready(function() {
                                 </div>
 
                                 <div class="tab-pane" id="custom-html-tab">
-                                    <pre><code class="xml">&lt;form id="customFormatForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-5 control-label">What's US independence day?&lt;/label>
-        &lt;div class="col-lg-3">
-            &lt;input type="text" class="form-control" name="independenceDay" />
-            &lt;span class="help-block">MMM D (Sep 6, for example)&lt;/span>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<!-- Include the momentjs library to use later -->
+<script src="/vendor/momentjs/moment.min.js"></script>
+
+<form id="customFormatForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-5 control-label">What's US independence day?</label>
+        <div class="col-lg-3">
+            <input type="text" class="form-control" name="independenceDay" />
+            <span class="help-block">MMM D (Sep 6, for example)</span>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                                 </div>
 
                                 <div class="tab-pane" id="custom-js-tab">
-                                    <pre><code class="xml javascript">&lt;!-- Include the momentjs library to use later -->
-&lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
-&lt;script>
+{% highlight javascript hl_lines="13" %}
 $(document).ready(function() {
     $('#customFormatForm').bootstrapValidator({
         feedbackIcons: {
@@ -398,7 +402,7 @@ $(document).ready(function() {
         fields: {
             independenceDay: {
                 validators: {
-                    <span class="bv-note">callback: {
+                    callback: {
                         message: 'Wrong answer',
                         callback: function(value, validator) {
                             var m = new moment(value, 'MMMM D', true);
@@ -409,13 +413,13 @@ $(document).ready(function() {
                             // US independence day is July 4
                             return (m.months() == 6 && m.date() == 4);
                         }
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                 </div>
                             </div>
                         </div>
@@ -447,20 +451,23 @@ $(document).ready(function() {
                                 </div>
 
                                 <div class="tab-pane" id="range-html-tab">
-                                    <pre><code class="xml">&lt;form id="rangeForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-md-6 control-label">Enter a date between 2000/01/01 and 2020/12/30&lt;/label>
-        &lt;div class="col-md-3">
-            &lt;input type="text" class="form-control" name="date" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<!-- Include the momentjs library to use later -->
+<script src="/vendor/momentjs/moment.min.js"></script>
+
+<form id="rangeForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-md-6 control-label">Enter a date between 2000/01/01 and 2020/12/30</label>
+        <div class="col-md-3">
+            <input type="text" class="form-control" name="date" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                                 </div>
 
                                 <div class="tab-pane" id="range-js-tab">
-                                    <pre><code class="xml javascript">&lt;!-- Include the momentjs library to use later -->
-&lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
-&lt;script>
+{% highlight javascript hl_lines="15" %}
 $(document).ready(function() {
     $('#rangeForm').bootstrapValidator({
         feedbackIcons: {
@@ -475,7 +482,7 @@ $(document).ready(function() {
                         message: 'The date is not valid',
                         format: 'YYYY/MM/DD'
                     },
-                    <span class="bv-note">callback: {
+                    callback: {
                         message: 'The date is not in the range',
                         callback: function(value, validator) {
                             var m = new moment(value, 'YYYY/MM/DD', true);
@@ -485,13 +492,13 @@ $(document).ready(function() {
                             // Check if the date in our range
                             return m.isAfter('2000/01/01') && m.isBefore('2020/12/30');
                         }
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                 </div>
                             </div>
                         </div>

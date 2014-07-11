@@ -92,42 +92,42 @@ comments:         true
 
                         <p class="bv-box bv-box-info">Use different name for same field on different forms:</p>
                         <p>For example, the <i>Sign up</i> and <i>Profile</i> forms use the same back-end URL to validate the email address which is declared with different name:</p>
-                        <pre><code class="xml">&lt;!-- Signup form -->
-&lt;form id="signupForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Email&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" <span class="bv-note">name="login" data-bv-remote-name="email"</span> />
-        &lt;/div>
-    &lt;/div>
-&lt;/form>
+                        {% highlight html %}<!-- Signup form -->
+<form id="signupForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Email</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" <span class="bv-note">name="login" data-bv-remote-name="email"</span> />
+        </div>
+    </div>
+</form>
 
-&lt;!-- Edit profile form -->
-&lt;form id="profileForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Email&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" <span class="bv-note">name="email" data-bv-remote-name="email"</span> />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+<!-- Edit profile form -->
+<form id="profileForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Email</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" <span class="bv-note">name="email" data-bv-remote-name="email"</span> />
+        </div>
+    </div>
+</form>{% endhighlight %}
 
                         <p class="bv-box bv-box-info">Multiple fields using the same back-end URL to validate</p>
-                        <pre><code class="xml">&lt;form id="profileForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Primary email&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control"
+                        {% highlight html %}<form id="profileForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Primary email</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control"
                 <span class="bv-note">name="primary_email" data-bv-remote-name="email"</span> />
-        &lt;/div>
+        </div>
 
-        &lt;label class="col-lg-3 control-label">Secondary email&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control"
+        <label class="col-lg-3 control-label">Secondary email</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control"
                 <span class="bv-note">name="secondary_email" data-bv-remote-name="email"</span> />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+        </div>
+    </div>
+</form>{% endhighlight %}
                     </section>
 
                     <section>
@@ -146,27 +146,27 @@ comments:         true
 
                             <div class="tab-content">
                                 <div class="tab-pane active" id="staticdata-html-tab">
-                                    <pre><code class="xml">&lt;form id="registrationForm" class="form-horizontal">
-    &lt;! -- Other fields -->
+                                    {% highlight html %}<form id="registrationForm" class="form-horizontal">
+    <! -- Other fields -->
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Username&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="username" />
-        &lt;/div>
-    &lt;/div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Username</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="username" />
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Email&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="email" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Email</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="email" />
+        </div>
+    </div>
+</form>{% endhighlight %}
                                 </div>
 
                                 <div class="tab-pane" id="staticdata-js-tab">
-                                    <pre><code class="xml javascript">&lt;script>
+                                    {% highlight javascript %}<script>
 $(document).ready(function() {
     $('#registrationForm').bootstrapValidator({
         fields: {
@@ -199,11 +199,11 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+</script>{% endhighlight %}
                                 </div>
 
                                 <div class="tab-pane" id="staticdata-php-tab">
-                                    <pre><code class="xml">&lt;?php
+                                    {% highlight html %}<?php
 // The code bellow demonstrates a simple back-end written in PHP
 
 // Determine which field you want to check its existence
@@ -227,7 +227,7 @@ switch ($_POST['type']) {
 echo json_encode(array(
     'valid' => $isAvailable,
 ));
-</code></pre>
+{% endhighlight %}
                                 </div>
                             </div>
                         </div>
@@ -242,30 +242,30 @@ echo json_encode(array(
 
                             <div class="tab-content">
                                 <div class="tab-pane active" id="data-html-tab">
-                                    <pre><code class="xml">&lt;form id="registrationForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Username&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="username" />
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Email&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="email" />
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Password&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="password" class="form-control" name="password" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+                                    {% highlight html %}<form id="registrationForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Username</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="username" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Email</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="email" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Password</label>
+        <div class="col-lg-5">
+            <input type="password" class="form-control" name="password" />
+        </div>
+    </div>
+</form>{% endhighlight %}
                                 </div>
 
                                 <div class="tab-pane" id="data-js-tab">
-                                    <pre><code class="xml javascript">&lt;script>
+                                    {% highlight javascript %}<script>
 $(document).ready(function() {
     $('#registrationForm').bootstrapValidator({
         fields: {
@@ -301,7 +301,7 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+</script>{% endhighlight %}
                                 </div>
                             </div>
                         </div>
@@ -321,20 +321,20 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="example-html-tab">
-                                <pre><code class="xml">&lt;form id="registrationForm" class="form-horizontal">
-    &lt;! -- Other fields -->
+                                {% highlight html %}<form id="registrationForm" class="form-horizontal">
+    <! -- Other fields -->
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Username&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="username" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Username</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="username" />
+        </div>
+    </div>
+</form>{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="example-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+                                {% highlight javascript %}<script>
 $(document).ready(function() {
     $('#registrationForm').bootstrapValidator({
         fields: {
@@ -352,11 +352,11 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+</script>{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="example-php-tab">
-                                <pre><code class="xml">&lt;?php
+                                {% highlight html %}<?php
 // The back-end then will determine if the username is available or not,
 // and finally returns a JSON <span class="bv-note">{ "valid": true }</span> or <span class="bv-note">{ "valid": false }</span>
 // The code bellow demonstrates a simple back-end written in PHP
@@ -371,7 +371,7 @@ $isAvailable = true; // or false
 echo json_encode(array(
     'valid' => $isAvailable,
 ));
-</code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

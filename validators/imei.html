@@ -101,18 +101,20 @@ examples:         35-209900-176148-1, 35-209900-176148-23, 3568680000414120, 490
                             </div>
 
                             <div class="tab-pane" id="imei-html-tab">
-                                <pre><code class="xml">&lt;form id="imeiForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">IMEI&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="imei" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form id="imeiForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">IMEI</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="imei" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="imei-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="11" %}
 $(document).ready(function() {
     $('#imeiForm').bootstrapValidator({
         feedbackIcons: {
@@ -123,15 +125,15 @@ $(document).ready(function() {
         fields: {
             imei: {
                 validators: {
-                    <span class="bv-note">imei: {
+                    imei: {
                         message: 'The value is not valid IMEI'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

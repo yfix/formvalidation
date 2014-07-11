@@ -81,7 +81,8 @@ examples:
                     </table>
 
                     <div class="bv-box bv-box-info">
-                        This validator passes an empty field since the field might be optional. If the field is required, then use the <a href="/validators/notEmpty/"><code>notEmpty</code> validator</a>.
+                        <h5><i></i>Why does empty email address still pass?</h5>
+                        <p>This validator passes an empty field since the field might be optional. If the field is required, then use the <a href="/validators/notEmpty/"><code>notEmpty</code> validator</a>.</p>
                     </div>
                 </section>
 
@@ -126,18 +127,20 @@ examples:
                             </div>
 
                             <div class="tab-pane" id="email-html-tab">
-                                <pre><code class="xml">&lt;form id="emailForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Email address&lt;/label>
-        &lt;div class="col-lg-7">
-            &lt;input type="text" class="form-control" name="email" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form id="emailForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Email address</label>
+        <div class="col-lg-7">
+            <input type="text" class="form-control" name="email" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="email-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="11" %}
 $(document).ready(function() {
     $('#emailForm').bootstrapValidator({
         feedbackIcons: {
@@ -148,29 +151,31 @@ $(document).ready(function() {
         fields: {
             email: {
                 validators: {
-                    <span class="bv-note">emailAddress: {
+                    emailAddress: {
                         message: 'The value is not a valid email address'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="email-html5-tab">
-                                <pre><code class="xml">&lt;form id="emailForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Email address&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input class="form-control" name="email"
-                <span class="bv-note">type="email"
-                data-bv-emailaddress-message="The value is not a valid email address"</span> />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight html hl_lines="6" %}
+<form id="emailForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Email address</label>
+        <div class="col-lg-5">
+            <input class="form-control" name="email"
+                type="email"
+                data-bv-emailaddress-message="The value is not a valid email address" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+{% highlight javascript %}
 $(document).ready(function() {
     $('#emailForm').bootstrapValidator({
         feedbackIcons: {
@@ -180,7 +185,7 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

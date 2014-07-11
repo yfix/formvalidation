@@ -106,25 +106,27 @@ related:
                             </div>
 
                             <div class="tab-pane" id="cvv-html-tab">
-                                <pre><code class="xml">&lt;form id="paymentForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Credit card number&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="ccNumber" />
-        &lt;/div>
-    &lt;/div>
+{% highlight html %}
+<form id="paymentForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Credit card number</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="ccNumber" />
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">CVV&lt;/label>
-        &lt;div class="col-lg-2">
-            &lt;input type="text" class="form-control" name="cvvNumber" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">CVV</label>
+        <div class="col-lg-2">
+            <input type="text" class="form-control" name="cvvNumber" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="cvv-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="18" %}
 $(document).ready(function() {
     $('#paymentForm').bootstrapValidator({
         feedbackIcons: {
@@ -142,16 +144,16 @@ $(document).ready(function() {
             },
             cvvNumber: {
                 validators: {
-                    <span class="bv-note">cvv: {
+                    cvv: {
                         creditCardField: 'ccNumber',
                         message: 'The CVV number is not valid'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

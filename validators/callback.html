@@ -65,13 +65,15 @@ comments:         true
                     </table>
 
                     <p>The callback method must follow the format below:</p>
-                    <pre><code class="javascript">function(fieldValue, validator) {
+{% highlight javascript %}
+function(fieldValue, validator) {
     // fieldValue is the value of field
     // validator is instance of BootstrapValidator
 
     // Check the field validity
     // return true or false
-}</code></pre>
+}
+{% endhighlight %}
                 </section>
 
                 <section>
@@ -99,18 +101,20 @@ comments:         true
                             </div>
 
                             <div class="tab-pane" id="callback-html-tab">
-                                <pre><code class="xml">&lt;form id="captchaForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label" id="captchaOperation">&lt;/label>
-        &lt;div class="col-lg-2">
-            &lt;input type="text" class="form-control" name="captcha" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form id="captchaForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label" id="captchaOperation"></label>
+        <div class="col-lg-2">
+            <input type="text" class="form-control" name="captcha" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="callback-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="19" %}
 $(document).ready(function() {
     // Return a random number between min and max
     function randomNumber(min, max) {
@@ -129,7 +133,7 @@ $(document).ready(function() {
         fields: {
             captcha: {
                 validators: {
-                    <span class="bv-note">callback: {
+                    callback: {
                         message: 'Wrong answer',
                         callback: function(value, validator) {
                             // Determine the numbers which are generated in captchaOperation
@@ -137,13 +141,13 @@ $(document).ready(function() {
                                 sum   = parseInt(items[0]) + parseInt(items[2]);
                             return value == sum;
                         }
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

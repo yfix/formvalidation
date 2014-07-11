@@ -63,7 +63,10 @@ related:
                         </tbody>
                     </table>
 
-                    <p>In addition to using the <a href="http://en.wikipedia.org/wiki/Luhn">Luhn algorithm</a>, the validator also validate the IIN ranges and length of credit card number.</p>
+                    <div class="bv-box bv-box-info">
+                        <h5><i></i>Behind the scene</h5>
+                        <p>In addition to using the <a href="http://en.wikipedia.org/wiki/Luhn">Luhn algorithm</a>, the validator also validate the IIN ranges and length of credit card number.</p>
+                    </div>
 
                     <p>It supports validating the following cards:</p>
 
@@ -158,18 +161,20 @@ related:
                             </div>
 
                             <div class="tab-pane" id="cc-html-tab">
-                                <pre><code class="xml">&lt;form id="ccForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Credit card number&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="cc" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form id="ccForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Credit card number</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="cc" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="cc-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="11" %}
 $(document).ready(function() {
     $('#ccForm').bootstrapValidator({
         feedbackIcons: {
@@ -180,15 +185,15 @@ $(document).ready(function() {
         fields: {
             cc: {
                 validators: {
-                    <span class="bv-note">creditCard: {
+                    creditCard: {
                         message: 'The credit card number is not valid'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

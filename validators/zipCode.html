@@ -149,18 +149,20 @@ related:
                             </div>
 
                             <div class="tab-pane" id="postcode-html-tab">
-                                <pre><code class="xml">&lt;form id="postcodeForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">UK postcode&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="postcode" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form id="postcodeForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">UK postcode</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="postcode" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="postcode-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="11" %}
 $(document).ready(function() {
     $('#postcodeForm').bootstrapValidator({
         feedbackIcons: {
@@ -171,16 +173,16 @@ $(document).ready(function() {
         fields: {
             postcode: {
                 validators: {
-                    <span class="bv-note">zipCode: {
+                    zipCode: {
                         country: 'GB',
                         message: 'The value is not valid UK postcode'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

@@ -136,34 +136,35 @@ related:
                             </div>
 
                             <div class="tab-pane" id="id-html-tab">
-                                <pre><code class="xml">&lt;form id="idForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Country&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;select class="form-control" name="country">{% for item in site.data.id %}
-                {% assign data = item | split: '|' %}&lt;option value="{{ data[2] }}">{{ data[0] }}&lt;/option>{% endfor %}
-            &lt;/select>
-        &lt;/div>
-    &lt;/div>
+{% highlight html %}
+<form id="idForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Country</label>
+        <div class="col-lg-5">
+            <select class="form-control" name="country">{% for item in site.data.id %}
+                {% assign data = item | split: '|' %}<option value="{{ data[2] }}">{{ data[0] }}</option>{% endfor %}
+            </select>
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">ID&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="id" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">ID</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="id" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="id-js-tab">
-                                <pre><code class="xml javascript">&lt;script>{% assign data = site.data.id[0] | split: '|' %}
+{% highlight javascript %}
+{% assign data = site.data.id[0] | split: '|' %}
 $(document).ready(function() {
     $('#idForm')
         .on('change', 'select[name="country"]', function() {
             // Set the country option
-            <span class="bv-note">var validator = $('#idForm').data('bootstrapValidator');
-            validator.options.fields['id'].validators.id.country = $(this).val();
-            validator.updateStatus('id', 'NOT_VALIDATED');</span>
+            $('#idForm').bootstrapValidator('updateOption', 'id', 'id', 'country', $(this).val());
         })
         .bootstrapValidator({
             feedbackIcons: {
@@ -174,16 +175,16 @@ $(document).ready(function() {
             fields: {
                 id: {
                     validators: {
-                        <span class="bv-note">id: {
+                        id: {
                             country: '{{ data[2] }}',
                             message: 'The ID is not valid'
-                        }</span>
+                        }
                     }
                 }
             }
         });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>
@@ -209,8 +210,7 @@ $(document).ready(function() {
                 .val($(this).text());
 
         // Re-validate field
-        validator.options.fields['id'].validators.id.country = country;
-        validator.updateStatus('id', 'NOT_VALIDATED').validate();
+        $('#idForm').bootstrapValidator('updateOption', 'id', 'id', 'country', country);
 
         // Show the result
         var isValid = validator.isValid();
@@ -225,9 +225,7 @@ $(document).ready(function() {
     {% assign data = site.data.id[0] | split: '|' %}
     $('#idForm')
         .on('change', 'select[name="country"]', function() {
-            var validator = $('#idForm').data('bootstrapValidator');
-            validator.options.fields['id'].validators.id.country = $(this).val();
-            validator.updateStatus('id', 'NOT_VALIDATED');
+            $('#idForm').bootstrapValidator('updateOption', 'id', 'id', 'country', $(this).val());
         })
         .bootstrapValidator({
             feedbackIcons: {

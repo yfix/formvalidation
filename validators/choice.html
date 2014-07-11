@@ -72,6 +72,7 @@ comments:         true
                     </table>
 
                     <div class="bv-box bv-box-info">
+                        <h5><i></i> Naming convention</h5>
                         <p>In order to get the correct submit data in the server side, you should pay attention on setting the <code>name</code> attribute of checkbox/select elements.</p>
                         <table class="table table-condensed">
                             <thead>
@@ -85,15 +86,22 @@ comments:         true
                                 <tr>
                                     <td>PHP</td>
                                     <td><code>name[]</code></td>
-                                    <td><pre><code class="xml">&lt;input type="checkbox" name="languages[]" />
-&lt;select name="editors[]" multiple="multiple">&lt;/select></code></pre>
+                                    <td>
+{% highlight html %}
+<input type="checkbox" name="languages[]" />
+<select name="editors[]" multiple="multiple"></select>
+{% endhighlight %}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td><a href="http://projects.spring.io/spring-framework/">Spring framework</a></td>
                                     <td><code>name</code></td>
-                                    <td><pre><code class="xml">&lt;input type="checkbox" name="languages" />
-&lt;select name="editors" multiple="multiple">&lt;/select></code></pre></td>
+                                    <td>
+{% highlight html %}
+<input type="checkbox" name="languages" />
+<select name="editors" multiple="multiple"></select>
+{% endhighlight %}
+</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -180,73 +188,75 @@ comments:         true
                             </div>
 
                             <div class="tab-pane" id="choice-html-tab">
-                                <pre><code class="xml">&lt;form id="interviewForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Programming Languages&lt;/label>
-        &lt;div class="col-lg-4">
-            &lt;div class="checkbox">
-                &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="net" /> .Net
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="checkbox">
-                &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="java" /> Java
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="checkbox">
-                &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="c" /> C/C++
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="checkbox">
-                &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="php" /> PHP
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="checkbox">
-                &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="perl" /> Perl
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="checkbox">
-                &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="ruby" /> Ruby
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="checkbox">
-                &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="python" /> Python
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="checkbox">
-                &lt;label>
-                    &lt;input type="checkbox" name="languages" value="javascript" /> Javascript
-                &lt;/label>
-            &lt;/div>
-        &lt;/div>
-    &lt;/div>
+{% highlight html hl_lines="51" %}
+<form id="interviewForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Programming Languages</label>
+        <div class="col-lg-4">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="languages[]" value="net" /> .Net
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="languages[]" value="java" /> Java
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="languages[]" value="c" /> C/C++
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="languages[]" value="php" /> PHP
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="languages[]" value="perl" /> Perl
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="languages[]" value="ruby" /> Ruby
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="languages[]" value="python" /> Python
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="languages" value="javascript" /> Javascript
+                </label>
+            </div>
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Editors&lt;/label>
-        &lt;div class="col-lg-4">
-            &lt;select class="form-control" <span class="bv-note">name="editors[]" multiple="multiple"</span> style="height: 200px;">
-                &lt;option value="" disabled>Choose 2 - 3 editors&lt;/option>
-                &lt;option value="atom">Atom&lt;/option>
-                &lt;option value="eclipse">Eclipse&lt;/option>
-                &lt;option value="netbeen">NetBean&lt;/option>
-                &lt;option value="nodepadplusplus">Nodepad++&lt;/option>
-                &lt;option value="phpstorm">PHP Storm&lt;/option>
-                &lt;option value="sublime">Sublime&lt;/option>
-                &lt;option value="webstorm">Web Storm&lt;/option>
-            &lt;/select>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Editors</label>
+        <div class="col-lg-4">
+            <select class="form-control" name="editors[]" multiple="multiple" style="height: 200px;">
+                <option value="" disabled>Choose 2 - 3 editors</option>
+                <option value="atom">Atom</option>
+                <option value="eclipse">Eclipse</option>
+                <option value="netbeen">NetBean</option>
+                <option value="nodepadplusplus">Nodepad++</option>
+                <option value="phpstorm">PHP Storm</option>
+                <option value="sublime">Sublime</option>
+                <option value="webstorm">Web Storm</option>
+            </select>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="choice-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="11 20" %}
 $(document).ready(function() {
     $('#interviewForm').bootstrapValidator({
         feedbackIcons: {
@@ -257,26 +267,26 @@ $(document).ready(function() {
         fields: {
             'languages[]': {
                 validators: {
-                    <span class="bv-note">choice: {
+                    choice: {
                         min: 2,
                         max: 4,
                         message: 'Please choose 2 - 4 programming languages you are good at'
-                    }</span>
+                    }
                 }
             },
             'editors[]': {
                 validators: {
-                    <span class="bv-note">choice: {
+                    choice: {
                         min: 2,
                         max: 3,
                         message: 'Please choose 2 - 3 editors you use most'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

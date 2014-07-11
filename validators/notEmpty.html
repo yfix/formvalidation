@@ -89,18 +89,20 @@ related:
                             </div>
 
                             <div class="tab-pane" id="notempty-html-tab">
-                                <pre><code class="xml">&lt;form id="profileForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Full name&lt;/label>
-        &lt;div class="col-lg-4">
-            &lt;input type="text" class="form-control" name="fullName" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form id="profileForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Full name</label>
+        <div class="col-lg-4">
+            <input type="text" class="form-control" name="fullName" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="notempty-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="11" %}
 $(document).ready(function() {
     $('#profileForm').bootstrapValidator({
         feedbackIcons: {
@@ -111,28 +113,30 @@ $(document).ready(function() {
         fields: {
             fullName: {
                 validators: {
-                    <span class="bv-note">notEmpty: {
+                    notEmpty: {
                         message: 'The full name is required'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="notempty-html5-tab">
-                                <pre><code class="xml">&lt;form id="profileForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Full name&lt;/label>
-        &lt;div class="col-lg-4">
-            &lt;input type="text" class="form-control" name="fullName"
-                <span class="bv-note">required data-bv-notempty-message="The full name is required"</span> />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight html hl_lines="6" %}
+<form id="profileForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Full name</label>
+        <div class="col-lg-4">
+            <input type="text" class="form-control" name="fullName"
+                required data-bv-notempty-message="The full name is required" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+{% highlight javascript %}
 $(document).ready(function() {
     $('#profileForm').bootstrapValidator({
         feedbackIcons: {
@@ -142,7 +146,7 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

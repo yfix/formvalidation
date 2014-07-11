@@ -90,18 +90,20 @@ comments:         true
                             </div>
 
                             <div class="tab-pane" id="regexp-html-tab">
-                                <pre><code class="xml">&lt;form id="profileForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Full name&lt;/label>
-        &lt;div class="col-lg-4">
-            &lt;input type="text" class="form-control" name="fullName" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form id="profileForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Full name</label>
+        <div class="col-lg-4">
+            <input type="text" class="form-control" name="fullName" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="regexp-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="11" %}
 $(document).ready(function() {
     $('#profileForm').bootstrapValidator({
         feedbackIcons: {
@@ -112,30 +114,32 @@ $(document).ready(function() {
         fields: {
             fullName: {
                 validators: {
-                    <span class="bv-note">regexp: {
+                    regexp: {
                         regexp: /^[a-z\s]+$/i,
                         message: 'The full name can consist of alphabetical characters and spaces only'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="regexp-html5-tab">
-                                <pre><code class="xml">&lt;form id="profileForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Full name&lt;/label>
-        &lt;div class="col-lg-4">
-            &lt;input type="text" class="form-control" name="fullName"
-                <span class="bv-note">pattern="^[a-z\s]+$"
-                data-bv-regexp-message="The full name can consist of alphabetical characters and spaces only"</span> />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight html hl_lines="6" %}
+<form id="profileForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Full name</label>
+        <div class="col-lg-4">
+            <input type="text" class="form-control" name="fullName"
+                pattern="^[a-z\s]+$"
+                data-bv-regexp-message="The full name can consist of alphabetical characters and spaces only" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+{% highlight javascript %}
 $(document).ready(function() {
     $('#profileForm').bootstrapValidator({
         feedbackIcons: {
@@ -145,7 +149,7 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

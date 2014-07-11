@@ -116,25 +116,27 @@ related:
                             </div>
 
                             <div class="tab-pane" id="latlong-html-tab">
-                                <pre><code class="xml">&lt;form id="latlongForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Latitude&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="latitude" />
-        &lt;/div>
-    &lt;/div>
+{% highlight html %}
+<form id="latlongForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Latitude</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="latitude" />
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Longitude&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="longitude" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Longitude</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="longitude" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="latlong-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="11 20" %}
 $(document).ready(function() {
     $('#latlongForm').bootstrapValidator({
         feedbackIcons: {
@@ -145,49 +147,51 @@ $(document).ready(function() {
         fields: {
             latitude: {
                 validators: {
-                    <span class="bv-note">between: {
+                    between: {
                         min: -90,
                         max: 90,
                         message: 'The latitude must be between -90.0 and 90.0'
-                    }</span>
+                    }
                 }
             },
             longitude: {
                 validators: {
-                    <span class="bv-note">between: {
+                    between: {
                         min: -180,
                         max: 180,
                         message: 'The longitude must be between -180.0 and 180.0'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="latlong-html5-tab">
-                                <pre><code class="xml">&lt;form id="latlongForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Latitude&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input class="form-control" name="latitude"
-                <span class="bv-note">type="range" min="-90" max="90"
-                data-bv-between-message="The latitude must be between -90.0 and 90.0"</span> />
-        &lt;/div>
-    &lt;/div>
+{% highlight html hl_lines="6 15" %}
+<form id="latlongForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Latitude</label>
+        <div class="col-lg-5">
+            <input class="form-control" name="latitude"
+                type="range" min="-90" max="90"
+                data-bv-between-message="The latitude must be between -90.0 and 90.0" />
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Longitude&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input class="form-control" name="longitude"
-                <span class="bv-note">type="range" min="-180" max="180"
-                data-bv-between-message="The longitude must be between -180.0 and 180.0"</span> />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
-                                <pre><code class="xml javascript">&lt;script>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Longitude</label>
+        <div class="col-lg-5">
+            <input class="form-control" name="longitude"
+                type="range" min="-180" max="180"
+                data-bv-between-message="The longitude must be between -180.0 and 180.0" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+{% highlight javascript %}
 $(document).ready(function() {
     $('#latlongForm').bootstrapValidator({
         feedbackIcons: {
@@ -197,7 +201,7 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

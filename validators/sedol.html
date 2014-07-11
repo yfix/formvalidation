@@ -105,18 +105,20 @@ related:
                             </div>
 
                             <div class="tab-pane" id="sedol-html-tab">
-                                <pre><code class="xml">&lt;form id="sedolForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">SEDOL&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="sedol" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form id="sedolForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">SEDOL</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="sedol" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="sedol-js-tab">
-                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="11" %}
 $(document).ready(function() {
     $('#sedolForm').bootstrapValidator({
         feedbackIcons: {
@@ -127,15 +129,15 @@ $(document).ready(function() {
         fields: {
             sedol: {
                 validators: {
-                    <span class="bv-note">sedol: {
+                    sedol: {
                         message: 'The value is not valid SEDOL'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

@@ -106,24 +106,26 @@ related:
                             </div>
 
                             <div class="tab-pane" id="stringlength-html-tab">
-                                <pre><code class="xml">&lt;form id="profileForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Full name&lt;/label>
-        &lt;div class="col-lg-6">
-            &lt;input type="text" class="form-control" name="fullName" />
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Bio&lt;/label>
-        &lt;div class="col-lg-6">
-            &lt;textarea rows="5" class="form-control" name="bio">&lt;/textarea>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form id="profileForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Full name</label>
+        <div class="col-lg-6">
+            <input type="text" class="form-control" name="fullName" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Bio</label>
+        <div class="col-lg-6">
+            <textarea rows="5" class="form-control" name="bio"></textarea>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="stringlength-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="11 19" %}
 $(document).ready(function() {
     $('#profileForm').bootstrapValidator({
         feedbackIcons: {
@@ -134,24 +136,24 @@ $(document).ready(function() {
         fields: {
             fullName: {
                 validators: {
-                    <span class="bv-note">stringLength: {
+                    stringLength: {
                         max: 50,
                         message: 'The full name must be less than 50 characters'
-                    }</span>
+                    }
                 }
             },
             bio: {
                 validators: {
-                    <span class="bv-note">stringLength: {
+                    stringLength: {
                         max: 200,
                         message: 'The bio must be less than 200 characters'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>
