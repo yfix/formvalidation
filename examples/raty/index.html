@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Play with Raty - BootstrapValidator</title>
+
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="BootstrapValidator, a jQuery plugin to validate form fields">
+    <meta name="keywords" content="Bootstrap, jQuery, validate, plugin, validator, form">
+    <meta name="author" content="Nguyen Huu Phuoc">
+    <meta name="google-site-verification" content="uzi08FxE8yqb9q-PlBzFxZeuUGalNFp3gX2haopVWBc" />
+
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrapvalidator/css/bootstrapValidator.min.css">
+    <link rel="stylesheet" href="/vendor/highlight/styles/github.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400,700">
+    <link rel="stylesheet" href="/asset/css/style.css">
+
+    <!--[if lt IE 9]>
+    <script src="/vendor/html5shiv/html5shiv.min.js"></script>
+    <script src="/vendor/respond/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/vendor/jquery/jquery-1.10.2.min.js"></script>
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-44786951-2']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    
+</head>
+<body>
+<div class="bv-wrapper">
+    <!-- navbar -->
+    <header class="bv-header">
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">BootstrapValidator</a>
+                </div>
+
+                <div class="navbar-collapse collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/getting-started/">Getting Started</a></li>
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/settings/">Settings</a></li>
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/validators/">Validators</a></li>
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/api/">API</a></li>
+                    
+                        
+                            
+                        
+                        <li class="active"><a href="/examples/">Examples</a></li>
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/developing/">Developing</a></li>
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/news/">News</a></li>
+                    
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- main -->
+<div class="bv-main">
+    <div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/examples/">Examples</a> / Compatibility</h1>
+            </div>
+
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    <div id="carbonads-container">
+    <div class="carbonad">
+        <div id="azcarbon"></div>
+        <script type="text/javascript">
+        var z = document.createElement("script");
+        z.type = "text/javascript";
+        z.async = true;
+        z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(z, s);
+        </script>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                
+
+<h2>Compatibility</h2>
+<ul>
+    
+        
+    
+        
+            
+        
+    
+        
+    
+        
+    
+        
+            
+            <li ><a href="/examples/bootstrap-button/">Play with Bootstrap Button</a></li>
+            
+        
+    
+        
+            
+            <li ><a href="/examples/bootstrap-multiselect/">Play with Bootstrap Multiselect</a></li>
+            
+        
+    
+        
+            
+            <li ><a href="/examples/bootstrap-tab/">Play with Bootstrap Tabs</a></li>
+            
+        
+    
+        
+    
+        
+    
+        
+            
+            <li ><a href="/examples/chosen/">Play with Chosen</a></li>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+        
+    
+        
+    
+        
+            
+            <li ><a href="/examples/icheck/">Play with iCheck</a></li>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+            <li ><a href="/examples/mask/">Play with Mask</a></li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+            <li class="active"><a href="/examples/raty/">Play with Raty</a></li>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+            <li ><a href="/examples/summernote/">Play with Summernote</a></li>
+            
+        
+    
+        
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+</ul>
+
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2 id="raty">Play with Raty</h2>
+                    <p>Use with the <a href="http://wbotelhos.com/raty">Raty</a> plugin. At first, try to click the <i>Validate</i> button to validate the form. Then click the <i>Rating</i>, fill in other fields, and click the <i>Validate</i> button again to
+                    see that the <i>Rating</i> is validated.</p>
+
+                    <div class="bv-example">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#raty-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#raty-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#raty-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="raty-form-tab">
+                                <form id="ratyForm" method="post" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Rating</label>
+                                        <div class="col-lg-5">
+                                            <div id="ratyRating"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Review title</label>
+                                        <div class="col-lg-5">
+                                            <input type="text" class="form-control" name="title" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Your review</label>
+                                        <div class="col-lg-5">
+                                            <textarea rows="5" class="form-control" name="content"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-5 col-lg-offset-3">
+                                            <button type="submit" class="btn btn-primary">Validate</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane" id="raty-html-tab">
+                                <pre><code class="xml">&lt;form id="ratyForm" method="post" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Rating&lt;/label>
+        &lt;div class="col-lg-5">
+            <span class="bv-note">&lt;div id="ratyRating">&lt;/div></span>
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Review title&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="title" />
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Your review&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;textarea rows="5" class="form-control" name="content">&lt;/textarea>
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;div class="col-lg-5 col-lg-offset-3">
+            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="raty-js-tab">
+                                <pre><code class="xml javascript">&lt;!-- Include Raty JS file -->
+&lt;script src="/vendor/raty/jquery.raty.min.js">&lt;/script>
+&lt;script>
+$(document).ready(function() {
+    // Raty example
+    $('#ratyRating').raty({
+        path: '/vendor/raty/img',
+        size: 24,
+        // The name of hidden field generated by Raty
+        <span class="bv-note">scoreName: 'star'</span>,
+        // Re-validate the star rating whenever user change it
+        <span class="bv-note">click: function (score, evt) {
+            $('#ratyForm')
+                .data('bootstrapValidator')             // Return the bootstrapValidator instance
+                .updateStatus('star', 'NOT_VALIDATED')  // Mark the star field as not validated yet
+                .validateField('star');                 // Validate it again
+        }</span>
+    });
+    $('#ratyForm')
+        .bootstrapValidator({
+            // The disabled elements are excluded
+            // Hidden elements (including the rating star) are included
+            <span class="bv-note">excluded: ':disabled'</span>,
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                <span class="bv-note">star</span>: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The rating is required'
+                        }
+                    }
+                },
+                title: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The review title is required'
+                        }
+                    }
+                },
+                content: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The review content is required'
+                        },
+                        stringLength: {
+                            max: 200,
+                            message: 'The review content must be less than 200 characters'
+                        }
+                    }
+                }
+            }
+        });
+});
+&lt;/script></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/vendor/raty/jquery.raty.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#ratyRating').raty({
+        path: '/vendor/raty/img',
+        size: 24,
+        scoreName: 'star',
+        click: function(score, evt) {
+            $('#ratyForm')
+                .data('bootstrapValidator')             // Return the bootstrapValidator instance
+                .updateStatus('star', 'NOT_VALIDATED')  // Mark the score as not validated yet
+                .validateField('star');                 // Validate it again
+        }
+    });
+    $('#ratyForm')
+        .bootstrapValidator({
+            excluded: ':disabled',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            submitHandler: function(validator, form, submitButton) {
+                // Do nothing
+            },
+            fields: {
+                star: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The rating is required'
+                        }
+                    }
+                },
+                title: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The review title is required'
+                        }
+                    }
+                },
+                content: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The review content is required'
+                        },
+                        stringLength: {
+                            max: 200,
+                            message: 'The review content must be less than 200 characters'
+                        }
+                    }
+                }
+            }
+        });
+});
+</script>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 col-md-offset-3">
+            <section class="bv-pager">
+                <ul class="pager">
+                    
+                    
+                </ul>
+            </section>
+
+            <!-- Disqus comment -->
+            
+            <section>
+                <div class="bv-comments">
+                    <h2 id="comments" class="bv-separator"><span>Comments</span></h2>
+
+                    <div class="bv-box bv-box-warning">
+                        If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. Do NOT post the issue here.<br/>
+                        For a general question or feedback, use the form below.
+                    </div>
+
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                    var disqus_shortname = 'bootstrapvalidator';
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                    </script>
+                </div>
+            </section>
+            
+        </div>
+    </div>
+</div>
+
+</div>
+<!-- /main -->
+
+
+    <div class="bv-pusher"></div>
+</div>
+
+<!-- footer -->
+<footer class="bv-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Hire me</h4>
+                <img src="https://avatars.githubusercontent.com/u/4226036?s=50" />
+                <div>If you are looking for a Javascript, <a href="http://jquery.com/">jQuery</a>, <a href="https://angularjs.org/">AngularJS</a>, <a href="http://expressjs.com/">ExpressJS</a>, PHP or <a href="http://framework.zend.com/">Zend Framework</a> guru, feel free to drop me <a href="mailto:phuoc@huuphuoc.me">an email</a> or give me <a href="http://twitter.com/nghuuphuoc">a tweet</a>.</div>
+            </div>
+
+            <div class="col-md-4">
+                <h4>Follow me</h4>
+                <ul>
+                    <li><a href="http://github.com/nghuuphuoc"><i class="fa fa-github"></i> @nghuuphuoc</a></li>
+                    <li><a href="http://twitter.com/nghuuphuoc"><i class="fa fa-twitter"></i> @nghuuphuoc</a></li>
+                    <li><a href="http://twitter.com/bsvalidator"><i class="fa fa-twitter"></i> @bsvalidator</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator">Github</a></li>
+                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Issues</a></li>
+                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/blob/master/CHANGELOG.md">Change Log</a></li>
+                    <li><a href="/news/releases/">Releases</a></li>
+                    <li><a href="http://plugins.jquery.com/bootstrapValidator">jQuery Plugin Page</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="text-center">
+            &copy; 2013 - 2014 Nguyen Huu Phuoc<br/>
+            Code licensed under <a href="http://opensource.org/licenses/mit-license.html">MIT</a>, documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>
+        </p>
+
+        <p class="text-center">handcrafted with <i class="fa fa-heart"></i> in Vietnam</p>
+    </div>
+</footer>
+<!-- /footer -->
+
+<script src="/vendor/highlight/highlight.pack.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/vendor/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Highlight sample code
+    hljs.initHighlightingOnLoad();
+});
+</script>
+</body>
+</html>

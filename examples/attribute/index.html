@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Set validator options via HTML attributes - BootstrapValidator</title>
+
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="BootstrapValidator, a jQuery plugin to validate form fields">
+    <meta name="keywords" content="Bootstrap, jQuery, validate, plugin, validator, form">
+    <meta name="author" content="Nguyen Huu Phuoc">
+    <meta name="google-site-verification" content="uzi08FxE8yqb9q-PlBzFxZeuUGalNFp3gX2haopVWBc" />
+
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrapvalidator/css/bootstrapValidator.min.css">
+    <link rel="stylesheet" href="/vendor/highlight/styles/github.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400,700">
+    <link rel="stylesheet" href="/asset/css/style.css">
+
+    <!--[if lt IE 9]>
+    <script src="/vendor/html5shiv/html5shiv.min.js"></script>
+    <script src="/vendor/respond/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/vendor/jquery/jquery-1.10.2.min.js"></script>
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-44786951-2']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    
+</head>
+<body>
+<div class="bv-wrapper">
+    <!-- navbar -->
+    <header class="bv-header">
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">BootstrapValidator</a>
+                </div>
+
+                <div class="navbar-collapse collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/getting-started/">Getting Started</a></li>
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/settings/">Settings</a></li>
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/validators/">Validators</a></li>
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/api/">API</a></li>
+                    
+                        
+                            
+                        
+                        <li class="active"><a href="/examples/">Examples</a></li>
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/developing/">Developing</a></li>
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/news/">News</a></li>
+                    
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- main -->
+<div class="bv-main">
+    <div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/examples/">Examples</a> / Basic</h1>
+            </div>
+
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    <div id="carbonads-container">
+    <div class="carbonad">
+        <div id="azcarbon"></div>
+        <script type="text/javascript">
+        var z = document.createElement("script");
+        z.type = "text/javascript";
+        z.async = true;
+        z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(z, s);
+        </script>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                
+
+<h2>Basic</h2>
+<ul>
+    
+        
+    
+        
+            
+            <li class="active"><a href="/examples/attribute/">Set validator options via HTML attributes</a></li>
+            
+        
+    
+        
+    
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+    
+        
+    
+        
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+            <li ><a href="/examples/html5/">Play with HTML 5 input types and attributes</a></li>
+            
+        
+    
+        
+    
+        
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+        
+    
+        
+            
+            <li ><a href="/examples/modal/">Validate a form placed inside a Bootstrap modal</a></li>
+            
+        
+    
+        
+            
+            <li ><a href="/examples/multiple/">Use multiple elements with the same name</a></li>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+        
+    
+        
+            
+            <li ><a href="/examples/toggle/">Toggle field</a></li>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+</ul>
+
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2 id="attribute">Set validator options via HTML attributes</h2>
+                    <p>This example illustrates the ability of setting validator options via HTML attributes.</p>
+                    <p>In order to set a specific validator to given field, you have to declare additional attributes for the field. For example:</p>
+
+                    <pre><code class="xml">&lt;input
+    data-bv-{validatorname}
+    data-bv-{validatorname}-{validatoroption}="..." /></code></pre>
+
+                    <p>Here are some important points when setting the attributes for field:</p>
+
+                    <ul class="doc-list">
+                        <li><code>{validatorname}</code> and <code>{validatoroption}</code> must be lowercase.</li>
+                        <li>Set <code>data-bv-{validatorname}</code> or <code>data-bv-{validatorname}="true"</code> to enable particular validator for field.<br/>Set <code>data-bv-{validatorname}="false"</code> to disable the validator.</li>
+                        <li>There are some validators which not all options are configurable via HTML attribute. Refer to each validator documentation to see exactly the equivalent HTML attribute for each option.</li>
+                    </ul>
+
+                    <p>If there are multiple elements having the same name, you just need to set the HTML attribute to one of them. For example:</p>
+                    <pre><code class="xml">&lt;div class="form-group">
+    &lt;label class="col-lg-3 control-label">Gender&lt;/label>
+    &lt;div class="col-lg-5">
+        &lt;div class="radio">
+            &lt;label>
+                &lt;input type="radio" name="gender" value="male"
+                    <span class="bv-note">data-bv-notempty data-bv-notempty-message="The gender is required"</span> /> Male
+            &lt;/label>
+        &lt;/div>
+        &lt;div class="radio">
+            &lt;label>
+                &lt;input type="radio" name="gender" value="female" /> Female
+            &lt;/label>
+        &lt;/div>
+        &lt;div class="radio">
+            &lt;label>
+                &lt;input type="radio" name="gender" value="other" /> Other
+            &lt;/label>
+        &lt;/div>
+    &lt;/div>
+&lt;/div></code></pre>
+
+                    <div class="bv-example">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#attribute-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#attribute-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#attribute-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="attribute-form-tab">
+                                <form id="attributeForm" method="post" class="form-horizontal"
+                                      data-bv-message="This value is not valid"
+                                      data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+                                      data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+                                      data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Full name</label>
+                                        <div class="col-lg-4">
+                                            <input type="text" class="form-control" name="firstName" placeholder="First name"
+                                                   data-bv-notempty="true" data-bv-notempty-message="The first name is required and cannot be empty" />
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input type="text" class="form-control" name="lastName" placeholder="Last name"
+                                                   data-bv-notempty="true" data-bv-notempty-message="The last name is required and cannot be empty" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Username</label>
+                                        <div class="col-lg-5">
+                                            <input type="text" class="form-control" name="username"
+                                                   data-bv-message="The username is not valid"
+                                                   data-bv-notempty="true" data-bv-notempty-message="The username is required and cannot be empty"
+                                                   data-bv-regexp="true" data-bv-regexp-regexp="^[a-zA-Z0-9_\.]+$" data-bv-regexp-message="The username can only consist of alphabetical, number, dot and underscore"
+                                                   data-bv-stringlength="true" data-bv-stringlength-min="6" data-bv-stringlength-max="30" data-bv-stringlength-message="The username must be more than 6 and less than 30 characters long"
+                                                   data-bv-different="true" data-bv-different-field="password" data-bv-different-message="The username and password cannot be the same as each other" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Email address</label>
+                                        <div class="col-lg-5">
+                                            <input class="form-control" name="email" type="email"
+                                                   data-bv-emailaddress="true" data-bv-emailaddress-message="The input is not a valid email address" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Password</label>
+                                        <div class="col-lg-5">
+                                            <input type="password" class="form-control" name="password"
+                                                   data-bv-notempty="true" data-bv-notempty-message="The password is required and cannot be empty"
+                                                   data-bv-identical="true" data-bv-identical-field="confirmPassword" data-bv-identical-message="The password and its confirm are not the same"
+                                                   data-bv-different="true" data-bv-different-field="username" data-bv-different-message="The password cannot be the same as username" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Retype password</label>
+                                        <div class="col-lg-5">
+                                            <input type="password" class="form-control" name="confirmPassword"
+                                                   data-bv-notempty="true" data-bv-notempty-message="The confirm password is required and cannot be empty"
+                                                   data-bv-identical="true" data-bv-identical-field="password" data-bv-identical-message="The password and its confirm are not the same"
+                                                   data-bv-different="true" data-bv-different-field="username" data-bv-different-message="The password cannot be the same as username" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Languages</label>
+                                        <div class="col-lg-5">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="languages[]" value="english" data-bv-notempty="true" data-bv-message="Please specify at least one language you can speak" /> English
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="languages[]" value="french" /> French
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="languages[]" value="german" /> German
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="languages[]" value="russian" /> Russian
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="languages[]" value="other" /> Other
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane" id="attribute-html-tab">
+                                <pre><code lang="xml">&lt;form id="attributeForm" method="post" class="form-horizontal"
+    <span class="bv-note">data-bv-message="This value is not valid"
+    data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+    data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+    data-bv-feedbackicons-validating="glyphicon glyphicon-refresh"</span>>
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Full name&lt;/label>
+        &lt;div class="col-lg-4">
+            &lt;input type="text" class="form-control" name="firstName" placeholder="First name"
+                <span class="bv-note">data-bv-notempty="true"
+                data-bv-notempty-message="The first name is required and cannot be empty"</span> />
+        &lt;/div>
+        &lt;div class="col-lg-4">
+            &lt;input type="text" class="form-control" name="lastName" placeholder="Last name"
+                <span class="bv-note">data-bv-notempty="true"
+                data-bv-notempty-message="The last name is required and cannot be empty"</span> />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Username&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="text" class="form-control" name="username"
+                <span class="bv-note">data-bv-message="The username is not valid"</span>
+
+                <span class="bv-note">data-bv-notempty="true"
+                data-bv-notempty-message="The username is required and cannot be empty"</span>
+
+                <span class="bv-note">data-bv-regexp="true"
+                data-bv-regexp-regexp="^[a-zA-Z0-9_\.]+$"
+                data-bv-regexp-message="The username can only consist of alphabetical, number, dot and underscore"</span>
+
+                <span class="bv-note">data-bv-stringlength="true"
+                data-bv-stringlength-min="6"
+                data-bv-stringlength-max="30"
+                data-bv-stringlength-message="The username must be more than 6 and less than 30 characters long"</span>
+
+                <span class="bv-note">data-bv-different="true"
+                data-bv-different-field="password"
+                data-bv-different-message="The username and password cannot be the same as each other"</span> />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Email address&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input class="form-control" name="email" type="email"
+                <span class="bv-note">data-bv-emailaddress="true"
+                data-bv-emailaddress-message="The input is not a valid email address"</span> />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Password&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="password" class="form-control" name="password"
+                <span class="bv-note">data-bv-notempty="true"
+                data-bv-notempty-message="The password is required and cannot be empty"</span>
+
+                <span class="bv-note">data-bv-identical="true"
+                data-bv-identical-field="confirmPassword"
+                data-bv-identical-message="The password and its confirm are not the same"</span>
+
+                <span class="bv-note">data-bv-different="true"
+                data-bv-different-field="username"
+                data-bv-different-message="The password cannot be the same as username"</span> />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Retype password&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;input type="password" class="form-control" name="confirmPassword"
+                <span class="bv-note">data-bv-notempty="true"
+                data-bv-notempty-message="The confirm password is required and cannot be empty"</span>
+
+                <span class="bv-note">data-bv-identical="true"
+                data-bv-identical-field="password"
+                data-bv-identical-message="The password and its confirm are not the same"</span>
+
+                <span class="bv-note">data-bv-different="true"
+                data-bv-different-field="username"
+                data-bv-different-message="The password cannot be the same as username"</span> />
+        &lt;/div>
+    &lt;/div>
+
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Languages&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input type="checkbox" name="languages[]" value="english"
+                        <span class="bv-note">data-bv-message="Please specify at least one language you can speak"
+                        data-bv-notempty="true"</span> /> English
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input type="checkbox" name="languages[]" value="french" /> French
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input type="checkbox" name="languages[]" value="german" /> German
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input type="checkbox" name="languages[]" value="russian" /> Russian
+                &lt;/label>
+            &lt;/div>
+            &lt;div class="checkbox">
+                &lt;label>
+                    &lt;input type="checkbox" name="languages[]" value="other" /> Other
+                &lt;/label>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="attribute-js-tab">
+                                <pre><code class="xml javascript">&lt;script>
+$(document).ready(function() {
+    $('#attributeForm').bootstrapValidator();
+});
+&lt;/script></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    $('#attributeForm').bootstrapValidator();
+});
+</script>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 col-md-offset-3">
+            <section class="bv-pager">
+                <ul class="pager">
+                    
+                    
+                </ul>
+            </section>
+
+            <!-- Disqus comment -->
+            
+            <section>
+                <div class="bv-comments">
+                    <h2 id="comments" class="bv-separator"><span>Comments</span></h2>
+
+                    <div class="bv-box bv-box-warning">
+                        If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. Do NOT post the issue here.<br/>
+                        For a general question or feedback, use the form below.
+                    </div>
+
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                    var disqus_shortname = 'bootstrapvalidator';
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                    </script>
+                </div>
+            </section>
+            
+        </div>
+    </div>
+</div>
+
+</div>
+<!-- /main -->
+
+
+    <div class="bv-pusher"></div>
+</div>
+
+<!-- footer -->
+<footer class="bv-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Hire me</h4>
+                <img src="https://avatars.githubusercontent.com/u/4226036?s=50" />
+                <div>If you are looking for a Javascript, <a href="http://jquery.com/">jQuery</a>, <a href="https://angularjs.org/">AngularJS</a>, <a href="http://expressjs.com/">ExpressJS</a>, PHP or <a href="http://framework.zend.com/">Zend Framework</a> guru, feel free to drop me <a href="mailto:phuoc@huuphuoc.me">an email</a> or give me <a href="http://twitter.com/nghuuphuoc">a tweet</a>.</div>
+            </div>
+
+            <div class="col-md-4">
+                <h4>Follow me</h4>
+                <ul>
+                    <li><a href="http://github.com/nghuuphuoc"><i class="fa fa-github"></i> @nghuuphuoc</a></li>
+                    <li><a href="http://twitter.com/nghuuphuoc"><i class="fa fa-twitter"></i> @nghuuphuoc</a></li>
+                    <li><a href="http://twitter.com/bsvalidator"><i class="fa fa-twitter"></i> @bsvalidator</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator">Github</a></li>
+                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Issues</a></li>
+                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/blob/master/CHANGELOG.md">Change Log</a></li>
+                    <li><a href="/news/releases/">Releases</a></li>
+                    <li><a href="http://plugins.jquery.com/bootstrapValidator">jQuery Plugin Page</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="text-center">
+            &copy; 2013 - 2014 Nguyen Huu Phuoc<br/>
+            Code licensed under <a href="http://opensource.org/licenses/mit-license.html">MIT</a>, documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>
+        </p>
+
+        <p class="text-center">handcrafted with <i class="fa fa-heart"></i> in Vietnam</p>
+    </div>
+</footer>
+<!-- /footer -->
+
+<script src="/vendor/highlight/highlight.pack.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/vendor/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Highlight sample code
+    hljs.initHighlightingOnLoad();
+});
+</script>
+</body>
+</html>
