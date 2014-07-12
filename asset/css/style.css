@@ -330,6 +330,9 @@ footer p {
   padding-left: 2px;
   top: -0.8em;
 }
+.bv-content dt {
+  font-weight: 300;
+}
 .bv-example {
   margin-bottom: 15px;
 }
@@ -349,12 +352,6 @@ footer p {
 }
 .bv-example li:before {
   content: '';
-}
-.bv-note {
-  background: #f1c40f;
-  border-radius: 4px;
-  padding: 3px;
-  margin: -3px;
 }
 .bv-pager .previous a:hover,
 .bv-pager .next a:hover {

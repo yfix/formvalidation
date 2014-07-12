@@ -62,7 +62,7 @@ related:
                                 <td><code>country</code></td>
                                 <td><code>data-bv-vat-country</code></td>
                                 <td>String</td>
-                                <td>A ISO 3166 country code. If it is not defined, it will be parsed from the VAT number.</td>
+                                <td>An ISO-3166 country code. It's <a href="/settings/#dynamic-option">dynamic option</a>.<br/>If it is not defined, it will be parsed from the VAT number</td>
                             </tr>
                         </tbody>
                     </table>
@@ -89,12 +89,13 @@ related:
                                 <td>{{ data[2] }}</td>
                                 <td>
                                     {% if data[3] %}
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         {% assign samples = data[3] | split: ',' %}
                                         {% for sample in samples %}
-                                        <li><a href="javascript: void(0);" class="sample">{{ sample }}</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">{{ sample }}</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         {% endfor %}
-                                    </ul>
+                                    </dl>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -177,12 +178,11 @@ $(document).ready(function() {
             .find('input[name="vat"]')
                 .val($(this).text())
                 .end()
-            .data('bootstrapValidator')
-                .updateStatus('vat', 'NOT_VALIDATED')
-                .validate();
+            .bootstrapValidator('revalidateField', 'vat');
+
         var isValid = $('#vatForm').data('bootstrapValidator').isValid();
-        $(this)
-            .next()
+        $(this).parent().next()
+                .find('i')
                 .removeClass('fa-check fa-times')
                 .addClass(isValid ? 'fa-check' : 'fa-times')
                 .show()

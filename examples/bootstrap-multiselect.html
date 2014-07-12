@@ -83,7 +83,7 @@ comments:         true
                             </div>
 
                             <div class="tab-pane" id="multiselect-html-tab">
-{% highlight html %}
+{% highlight html hl_lines="22" %}
 <!-- Include Bootstrap Multiselect CSS -->
 <link rel="stylesheet" href="/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css" />
 
@@ -105,7 +105,7 @@ comments:         true
     <div class="form-group">
         <label class="col-lg-3 control-label">Browser</label>
         <div class="col-lg-5">
-            <select class="form-control" name="browsers" <span class="bv-note">multiple</span>>
+            <select class="form-control" name="browsers" multiple>
                 <option value="chrome">Google Chrome</option>
                 <option value="firefox">Firefox</option>
                 <option value="ie">IE</option>
@@ -126,7 +126,7 @@ comments:         true
                             </div>
 
                             <div class="tab-pane" id="multiselect-js-tab">
-{% highlight javascript hl_lines="8 17 35" %}
+{% highlight javascript hl_lines="10 17 35" %}
 $(document).ready(function() {
     $('#multiselectForm')
         .find('[name="gender"]')

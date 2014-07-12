@@ -27,9 +27,9 @@ next_section:     /validators/
     <div class="row">
         <div class="col-md-3">
             <div class="bv-sidebar">
-                <h4><a href="#settings-structure">Settings Structure</a></h4>
+                <h4><a href="#settings-structure">Settings structure</a></h4>
 
-                <h4><a href="#form-settings">Form Settings</a></h4>
+                <h4><a href="#form-settings">Form settings</a></h4>
                 <ul>
                     <li><a href="#form-excluded">excluded</a></li>
                     <li><a href="#form-feedback-icons">feedbackIcons</a></li>
@@ -42,7 +42,7 @@ next_section:     /validators/
                     <li><a href="#form-fields">fields</a></li>
                 </ul>
 
-                <h4><a href="#field-settings">Field Settings</a></h4>
+                <h4><a href="#field-settings">Field settings</a></h4>
                 <ul>
                     <li><a href="#field-enabled">enabled</a></li>
                     <li><a href="#field-message">message</a></li>
@@ -53,26 +53,26 @@ next_section:     /validators/
                 </ul>
 
 
-                <h4><a href="#validator-settings">Validator Settings</a></h4>
+                <h4><a href="#validator-settings">Validator settings</a></h4>
                 <ul>
                     <li><a href="#field-message">message</a></li>
                     <li>
-                        <a href="#dynamic-option">Dynamic Option<span class="pull-right bv-news"></span></a>
+                        <a href="#dynamic-option">Dynamic option<span class="pull-right bv-news"></span></a>
                         <ul>
-                            <li><a href="#dynamic-option-validators">Supported Validators</a></li>
-                            <li><a href="#dynamic-option-string">Use string</a></li>
-                            <li><a href="#dynamic-option-element">Use element</a></li>
-                            <li><a href="#dynamic-option-function-name">Use function name</a></li>
-                            <li><a href="#dynamic-option-callback">Use function</a></li>
+                            <li><a href="#dynamic-option-validators">Supported validators</a></li>
+                            <li><a href="#dynamic-option-string">Using string</a></li>
+                            <li><a href="#dynamic-option-element">Using element</a></li>
+                            <li><a href="#dynamic-option-function-name">Using function name</a></li>
+                            <li><a href="#dynamic-option-callback">Using function</a></li>
                         </ul>
                     </li>
                 </ul>
 
                 <h4><a href="#events">Events<span class="pull-right bv-news"></span></a></h4>
                 <ul>
-                    <li><a href="#event-form">Form Events</a></li>
-                    <li><a href="#event-field">Field Events</a></li>
-                    <li><a href="#event-validator">Validator Events</a></li>
+                    <li><a href="#event-form">Form events</a></li>
+                    <li><a href="#event-field">Field events</a></li>
+                    <li><a href="#event-validator">Validator events</a></li>
                 </ul>
             </div>
         </div>
@@ -80,15 +80,15 @@ next_section:     /validators/
         <div class="col-md-9">
             <div class="bv-content">
                 <section>
-                    <h2 id="settings-structure">Settings Structure</h2>
+                    <h2 id="settings-structure">Settings structure</h2>
                     <p>There are three levels of settings which are form, field, and validators.</p>
                     <p>The BootstrapValidator plugin can be called as following:</p>
 {% highlight javascript %}
 $(formSelector).bootstrapValidator({
-    ... form settings go here ...
+    ... Form settings go here ...
     fields: {
         specificFieldName: {
-            ... field settings go here ...
+            ... Field settings go here ...
 
             validators: {
                 specificValidatorName: {
@@ -145,7 +145,7 @@ $(document).ready(function() {
 
                 <!-- form -->
                 <section>
-                    <h2 id="form-settings">Form Settings</h2>
+                    <h2 id="form-settings">Form settings</h2>
 
                     <p>Below is the list of settings for form:</p>
                     <table class="table table-condensed">
@@ -328,7 +328,7 @@ feedbackIcons: {
                         </div>
 
                         <div class="bv-box bv-box-info">
-                            <h5 id="form-feedback-icons-adjust"><i></i>Adjust Feedback Icon Position</h5>
+                            <h5 id="form-feedback-icons-adjust"><i></i>Adjusting feedback icon position</h5>
                             <p>The feedback icons aren't shown properly for some elements such as select box or when using with other element such as <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Bootstrap Datetime Picker</a>, <a href="http://mjolnic.github.io/bootstrap-colorpicker/">Bootstrap Color Picker</a>, etc.</p>
                             <p>Bootstrap defines feedback icon position as following:</p>
 {% highlight css hl_lines="3" %}
@@ -629,8 +629,8 @@ submitHandler: function(validator, form) {
 
                 <!-- field -->
                 <section>
-                    <h2 id="field-settings">Field Settings</h2>
-                    <p>Below is the list of field settings:</p>
+                    <h2 id="field-settings">Field settings</h2>
+                    <p>Below is the list of Field settings:</p>
 
                     <table class="table table-condensed">
                         <thead>
@@ -1182,7 +1182,7 @@ $(document).ready(function() {
 
                 <!-- validator -->
                 <section>
-                    <h2 id="validator-settings">Validator Settings</h2>
+                    <h2 id="validator-settings">Validator settings</h2>
                     <p>The following table shows the common settings for validators (when using it, replace <code>{validatorname}</code> with the validator name). For specific settings of each validator, please look at its documentation.</p>
 
                     <table class="table table-condensed">
@@ -1206,7 +1206,7 @@ $(document).ready(function() {
                     </section>
 
                     <section>
-                        <h3 id="dynamic-option">Dynamic Option<span class="pull-right bv-news"></span></h3>
+                        <h3 id="dynamic-option">Dynamic option<span class="pull-right bv-news"></span></h3>
                         <p>Some validators have option which its value could be change dynamically.</p>
                         <p>For example, the <a href="/validators/zipCode/">zipCode validator</a> has the <code>country</code> option that can be changed dynamically a select element.</p>
                         <p>The dynamic option can be determined by:</p>
@@ -1226,13 +1226,13 @@ function(value, validator, $field) {
 {% endhighlight %}
 
                         <section>
-                            <h4 id="dynamic-option-validators">Supported Validators</h4>
+                            <h4 id="dynamic-option-validators">Supported validators</h4>
                             <p>Below is the list of validators supporting dynamic option. Refer to specific validator document to see the full list of options.</p>
                             <table class="table table-condensed">
                                 <thead>
                                     <tr>
                                         <th>Validator</th>
-                                        <th>Dynamic Option</th>
+                                        <th>Dynamic option</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -1280,7 +1280,7 @@ function(value, validator, $field) {
                             </table>
 
                             <div class="bv-box bv-box-info">
-                                <h5><i></i>Add Dynamic Option for Custom Validator</h5>
+                                <h5><i></i>Adding dynamic option for custom validator</h5>
                                 <p>If you develop your own validator which support dynamic option, the <a href="/api/#get-dynamic-option">getDynamicOption()</a> method might be useful. You should look at the source of validators above to see how this method is used.</p>
                             </div>
                         </section>
@@ -1289,7 +1289,7 @@ function(value, validator, $field) {
                         <p>Assume that your form uses <a href="/validators/zipCode/">zipCode validator</a> to validate a zipcode. The next sections show you how to use four ways above to define option value.</p>
 
                         <div class="bv-box bv-box-info">
-                            <h5><i></i>Sample Zipcodes</h5>
+                            <h5><i></i>Sample zipcodes</h5>
                             <p>You can use the following sample zipcodes for testing:</p>
                             <table class="table table-condensed">
                                 <thead>
@@ -1315,7 +1315,7 @@ function(value, validator, $field) {
                         </div>
 
                         <section>
-                            <h4 id="dynamic-option-string">Use string as usual</h4>
+                            <h4 id="dynamic-option-string">Using string as usual</h4>
                             <p>It's easy for you if the country code option is set initially and can't be changed:</p>
 {% highlight javascript hl_lines="7" %}
 $(document).ready(function() {
@@ -1396,7 +1396,7 @@ $(document).ready(function() {
                         <p>What happen if you want the country to be changeable, for example, by a select element. With the dynamic option concept, it can be done easily by setting the <code>country</code> option as:</p>
 
                         <section>
-                            <h4 id="dynamic-option-element">Use name of element defining the option value</h4>
+                            <h4 id="dynamic-option-element">Using name of element defining the option value</h4>
 {% highlight html hl_lines="2" %}
 <!-- The element for choosing a country -->
 <select class="form-control" name="countrySelectBox">
@@ -1519,7 +1519,7 @@ $(document).ready(function() {
                         </section>
 
                         <section>
-                            <h4 id="dynamic-option-function-name">Use name of function returning the option value</h4>
+                            <h4 id="dynamic-option-function-name">Using name of function returning the option value</h4>
 {% highlight html hl_lines="2" %}
 <!-- The element for choosing a country -->
 <select class="form-control" name="countrySelectBox">
@@ -1658,7 +1658,7 @@ $(document).ready(function() {
                         </section>
 
                         <section>
-                            <h4 id="dynamic-option-callback">Use function returning the option value</h4>
+                            <h4 id="dynamic-option-callback">Using function returning the option value</h4>
 {% highlight javascript hl_lines="7" %}
 $(document).ready(function() {
     $('#zipcodeElementForm').bootstrapValidator({
@@ -1793,7 +1793,7 @@ $(document).ready(function() {
 
                     <!-- event-form -->
                     <section>
-                        <h3 id="event-form">Form Events</h3>
+                        <h3 id="event-form">Form events</h3>
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
@@ -1892,7 +1892,7 @@ $(document).ready(function() {
 
                     <!-- event-field -->
                     <section>
-                        <h3 id="event-field">Field Events</h3>
+                        <h3 id="event-field">Field events</h3>
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
@@ -2072,7 +2072,7 @@ $(document).ready(function() {
 
                     <!-- event-validator -->
                     <section>
-                        <h3 id="event-validator">Validator Events</h3>
+                        <h3 id="event-validator">Validator events</h3>
                         <table class="table table-condensed">
                             <thead>
                                 <tr>

@@ -59,10 +59,10 @@ related:
                                 <td>The error message</td>
                             </tr>
                             <tr>
-                                <td><code>country</code> (*)</td>
+                                <td><code>country</code><sup>*</sup></td>
                                 <td><code>data-bv-id-country</code></td>
                                 <td>String</td>
-                                <td>A ISO 3166 country code</td>
+                                <td>An ISO-3166 country code. It's <a href="/settings/#dynamic-option">dynamic option</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -88,12 +88,13 @@ related:
                                 <td>{{ data[2] }}</td>
                                 <td>
                                     {% if data[3] %}
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         {% assign samples = data[3] | split: ',' %}
                                         {% for sample in samples %}
-                                        <li><a href="javascript: void(0);" class="sample" data-country="{{ data[2] }}">{{ sample }}</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="{{ data[2] }}">{{ sample }}</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         {% endfor %}
-                                    </ul>
+                                    </dl>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -118,7 +119,7 @@ related:
                                     <div class="form-group">
                                         <label class="col-lg-3 control-label">Country</label>
                                         <div class="col-lg-5">
-                                            <select class="form-control" name="country">
+                                            <select class="form-control" name="countrySelectBox">
                                             {% for item in site.data.id %}
                                                 {% assign data = item | split: '|' %}
                                                 <option value="{{ data[2] }}">{{ data[0] }}</option>
@@ -136,12 +137,12 @@ related:
                             </div>
 
                             <div class="tab-pane" id="id-html-tab">
-{% highlight html %}
+{% highlight html hl_lines="5" %}
 <form id="idForm" class="form-horizontal">
     <div class="form-group">
         <label class="col-lg-3 control-label">Country</label>
         <div class="col-lg-5">
-            <select class="form-control" name="country">{% for item in site.data.id %}
+            <select class="form-control" name="countrySelectBox">{% for item in site.data.id %}
                 {% assign data = item | split: '|' %}<option value="{{ data[2] }}">{{ data[0] }}</option>{% endfor %}
             </select>
         </div>
@@ -158,14 +159,9 @@ related:
                             </div>
 
                             <div class="tab-pane" id="id-js-tab">
-{% highlight javascript %}
-{% assign data = site.data.id[0] | split: '|' %}
+{% highlight javascript hl_lines="13 14" %}
 $(document).ready(function() {
     $('#idForm')
-        .on('change', 'select[name="country"]', function() {
-            // Set the country option
-            $('#idForm').bootstrapValidator('updateOption', 'id', 'id', 'country', $(this).val());
-        })
         .bootstrapValidator({
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
@@ -176,8 +172,8 @@ $(document).ready(function() {
                 id: {
                     validators: {
                         id: {
-                            country: '{{ data[2] }}',
-                            message: 'The ID is not valid'
+                            country: 'countrySelectBox',
+                            message: 'The value is not valid %s ID'
                         }
                     }
                 }
@@ -203,30 +199,25 @@ $(document).ready(function() {
             country   = $(this).attr('data-country');
 
         $('#idForm')
-            .find('select[name="country"]')
+            .find('select[name="countrySelectBox"]')
                 .val(country)
                 .end()
             .find('input[name="id"]')
                 .val($(this).text());
 
-        // Re-validate field
-        $('#idForm').bootstrapValidator('updateOption', 'id', 'id', 'country', country);
+        // Revalidate field
+        $('#idForm').bootstrapValidator('revalidateField', 'id');
 
         // Show the result
         var isValid = validator.isValid();
-        $(this)
-            .next()
+        $(this).parent().next()
+                .find('i')
                 .removeClass('fa-check fa-times')
                 .addClass(isValid ? 'fa-check' : 'fa-times')
-                .show()
-                .end();
+                .show();
     });
 
-    {% assign data = site.data.id[0] | split: '|' %}
     $('#idForm')
-        .on('change', 'select[name="country"]', function() {
-            $('#idForm').bootstrapValidator('updateOption', 'id', 'id', 'country', $(this).val());
-        })
         .bootstrapValidator({
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
@@ -237,8 +228,8 @@ $(document).ready(function() {
                 id: {
                     validators: {
                         id: {
-                            country: '{{ data[2] }}',
-                            message: 'The ID is not valid'
+                            country: 'countrySelectBox',
+                            message: 'The value is not valid %s ID'
                         }
                     }
                 }
