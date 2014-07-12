@@ -1,11 +1,106 @@
----
-layout:    base
-title:     The best jQuery plugin to validate form fields. Designed to use with Bootstrap 3
-permalink: /
-comments:  false
----
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>The best jQuery plugin to validate form fields. Designed to use with Bootstrap 3 - BootstrapValidator</title>
 
-<div class="bv-heading">
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="BootstrapValidator, a jQuery plugin to validate form fields">
+    <meta name="keywords" content="Bootstrap, jQuery, validate, plugin, validator, form">
+    <meta name="author" content="Nguyen Huu Phuoc">
+    <meta name="google-site-verification" content="uzi08FxE8yqb9q-PlBzFxZeuUGalNFp3gX2haopVWBc" />
+
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrapvalidator/css/bootstrapValidator.min.css">
+    <link rel="stylesheet" href="/vendor/highlight/styles/github.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400,700">
+    <link rel="stylesheet" href="/asset/css/style.css">
+
+    <!--[if lt IE 9]>
+    <script src="/vendor/html5shiv/html5shiv.min.js"></script>
+    <script src="/vendor/respond/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/vendor/jquery/jquery-1.10.2.min.js"></script>
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-44786951-2']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    
+</head>
+<body>
+<div class="bv-wrapper">
+    <!-- navbar -->
+    <header class="bv-header">
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">BootstrapValidator</a>
+                </div>
+
+                <div class="navbar-collapse collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/getting-started/">Getting Started</a></li>
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/settings/">Settings</a></li>
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/validators/">Validators</a></li>
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/api/">API</a></li>
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/examples/">Examples</a></li>
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/developing/">Developing</a></li>
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/news/">News</a></li>
+                    
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="bv-heading">
     <div class="container text-center">
         <h1>the best <a href="http://plugins.jquery.com/bootstrapValidator">jQuery plugin</a> to validate form fields</h1>
         <h2>designed to use with <a href="http://getbootstrap.com">Bootstrap 3</a></h2>
@@ -20,10 +115,23 @@ comments:  false
                 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
             </form> -->
         </p>
-        <p>v{{ site.current_version }} &mdash; MIT license</p>
+        <p>v0.4.5 &mdash; MIT license</p>
 
         <div class="bv-ad">
-        {% include ad.html %}
+        <div id="carbonads-container">
+    <div class="carbonad">
+        <div id="azcarbon"></div>
+        <script type="text/javascript">
+        var z = document.createElement("script");
+        z.type = "text/javascript";
+        z.async = true;
+        z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(z, s);
+        </script>
+    </div>
+</div>
+
         </div>
     </div>
 </div>
@@ -32,8 +140,8 @@ comments:  false
 <div class="bv-follower">
     <div class="container">
         <ul>
-            <li><a href="{{ site.repository.source }}"><i class="fa fa-github"></i> <span id="ghStars"></span></a></li>
-            <li><a href="{{ site.repository.source }}/network/members"><i class="fa fa-code-fork"></i> <span id="ghForks"></span></a></li>
+            <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator"><i class="fa fa-github"></i> <span id="ghStars"></span></a></li>
+            <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/network/members"><i class="fa fa-code-fork"></i> <span id="ghForks"></span></a></li>
             <li><a href="https://twitter.com/bsvalidator"><i class="fa fa-twitter"></i> <span id="twFollowers"></span></a></li>
         </ul>
     </div>
@@ -115,18 +223,170 @@ comments:  false
 <!-- contributors -->
 <div class="bv-contributor">
     <div class="container">
-        <h2 id="contributors">{{ site.data.contributors.size }} contributors</h2>
+        <h2 id="contributors">39 contributors</h2>
 
         <ul>
-            {% for user in site.data.contributors %}
+            
             <li>
-                <a href="https://github.com/{{ user.username }}" title="@{{ user.username }}"><img src="https://github.com/{{ user.username }}.png" width="60px" height="60px" /></a>
+                <a href="https://github.com/aca02djr" title="@aca02djr"><img src="https://github.com/aca02djr.png" width="60px" height="60px" /></a>
             </li>
-            {% endfor %}
+            
+            <li>
+                <a href="https://github.com/adgrafik" title="@adgrafik"><img src="https://github.com/adgrafik.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/alavers" title="@alavers"><img src="https://github.com/alavers.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/AlaskanShade" title="@AlaskanShade"><img src="https://github.com/AlaskanShade.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/Azuka" title="@Azuka"><img src="https://github.com/Azuka.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/blackfyre" title="@blackfyre"><img src="https://github.com/blackfyre.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/easonhan007" title="@easonhan007"><img src="https://github.com/easonhan007.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/emilchristensen" title="@emilchristensen"><img src="https://github.com/emilchristensen.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/ericnakagawa" title="@ericnakagawa"><img src="https://github.com/ericnakagawa.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/evilchili" title="@evilchili"><img src="https://github.com/evilchili.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/Francismori7" title="@Francismori7"><img src="https://github.com/Francismori7.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/gercheq" title="@gercheq"><img src="https://github.com/gercheq.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/henningda" title="@henningda"><img src="https://github.com/henningda.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/ikanedo" title="@ikanedo"><img src="https://github.com/ikanedo.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/iplus" title="@iplus"><img src="https://github.com/iplus.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/jcnmulio" title="@jcnmulio"><img src="https://github.com/jcnmulio.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/jjshoe" title="@jjshoe"><img src="https://github.com/jjshoe.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/johanronn77" title="@johanronn77"><img src="https://github.com/johanronn77.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/jswale" title="@jswale"><img src="https://github.com/jswale.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/jzhang6" title="@jzhang6"><img src="https://github.com/jzhang6.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/khangvm53" title="@khangvm53"><img src="https://github.com/khangvm53.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/kristian-puccio" title="@kristian-puccio"><img src="https://github.com/kristian-puccio.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/lloydde" title="@lloydde"><img src="https://github.com/lloydde.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/logemann" title="@logemann"><img src="https://github.com/logemann.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/manish-in-java" title="@manish-in-java"><img src="https://github.com/manish-in-java.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/MartinDevillers" title="@MartinDevillers"><img src="https://github.com/MartinDevillers.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/mike1e" title="@mike1e"><img src="https://github.com/mike1e.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/MrC0mm0n" title="@MrC0mm0n"><img src="https://github.com/MrC0mm0n.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/mrpollo" title="@mrpollo"><img src="https://github.com/mrpollo.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/narutosanjiv" title="@narutosanjiv"><img src="https://github.com/narutosanjiv.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/nathanrosspowell" title="@nathanrosspowell"><img src="https://github.com/nathanrosspowell.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/patmoore" title="@patmoore"><img src="https://github.com/patmoore.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/phillprice" title="@phillprice"><img src="https://github.com/phillprice.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/smeagol74" title="@smeagol74"><img src="https://github.com/smeagol74.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/thisisclement" title="@thisisclement"><img src="https://github.com/thisisclement.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/tiagofontella" title="@tiagofontella"><img src="https://github.com/tiagofontella.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/tomByrer" title="@tomByrer"><img src="https://github.com/tomByrer.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/tureki" title="@tureki"><img src="https://github.com/tureki.png" width="60px" height="60px" /></a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/vaz" title="@vaz"><img src="https://github.com/vaz.png" width="60px" height="60px" /></a>
+            </li>
+            
         </ul>
 
         <div class="text-center">
-            <a href="{{ site.repository.source }}/network/members" class="btn btn-default btn-lg">JOIN US</a>
+            <a href="https://github.com/nghuuphuoc/bootstrapvalidator/network/members" class="btn btn-default btn-lg">JOIN US</a>
         </div>
     </div>
 </div>
@@ -170,8 +430,8 @@ $(document).ready(function() {
         dataType: 'jsonp',
         url: 'https://api.github.com/repos/nghuuphuoc/bootstrapvalidator',
         success: function(response) {
-            $('#ghStars').html(response && response.data.watchers_count ? parseInt(response.data.watchers_count) : '{{ site.github_watchers }}');
-            $('#ghForks').html(response && response.data.forks_count    ? parseInt(response.data.forks_count)    : '{{ site.github_forks }}');
+            $('#ghStars').html(response && response.data.watchers_count ? parseInt(response.data.watchers_count) : '552');
+            $('#ghForks').html(response && response.data.forks_count    ? parseInt(response.data.forks_count)    : '220');
         }
     });
 
@@ -180,7 +440,7 @@ $(document).ready(function() {
         dataType: 'jsonp',
         url: 'https://cdn.api.twitter.com/1/users/show.json?screen_name=bsvalidator',
         success: function(response) {
-            $('#twFollowers').html(response && response.followers_count ? parseInt(response.followers_count) : '{{ site.twitter_followers }}');
+            $('#twFollowers').html(response && response.followers_count ? parseInt(response.followers_count) : '102');
         }
     });
 
@@ -197,8 +457,65 @@ $(document).ready(function() {
                     }
                 }
             }
-            $('#ghDownloads').html((total || '{{ site.github_downloads }}').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+            $('#ghDownloads').html((total || '31552').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
         }
     });
 });
 </script>
+
+
+    <div class="bv-pusher"></div>
+</div>
+
+<!-- footer -->
+<footer class="bv-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Hire me</h4>
+                <img src="https://avatars.githubusercontent.com/u/4226036?s=50" />
+                <div>If you are looking for a Javascript, <a href="http://jquery.com/">jQuery</a>, <a href="https://angularjs.org/">AngularJS</a>, <a href="http://expressjs.com/">ExpressJS</a>, PHP or <a href="http://framework.zend.com/">Zend Framework</a> guru, feel free to drop me <a href="mailto:phuoc@huuphuoc.me">an email</a> or give me <a href="http://twitter.com/nghuuphuoc">a tweet</a>.</div>
+            </div>
+
+            <div class="col-md-4">
+                <h4>Follow me</h4>
+                <ul>
+                    <li><a href="http://github.com/nghuuphuoc"><i class="fa fa-github"></i> @nghuuphuoc</a></li>
+                    <li><a href="http://twitter.com/nghuuphuoc"><i class="fa fa-twitter"></i> @nghuuphuoc</a></li>
+                    <li><a href="http://twitter.com/bsvalidator"><i class="fa fa-twitter"></i> @bsvalidator</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator">Github</a></li>
+                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Issues</a></li>
+                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/blob/master/CHANGELOG.md">Change Log</a></li>
+                    <li><a href="/news/releases/">Releases</a></li>
+                    <li><a href="http://plugins.jquery.com/bootstrapValidator">jQuery Plugin Page</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="text-center">
+            &copy; 2013 - 2014 Nguyen Huu Phuoc<br/>
+            Code licensed under <a href="http://opensource.org/licenses/mit-license.html">MIT</a>, documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>
+        </p>
+
+        <p class="text-center">handcrafted with <i class="fa fa-heart"></i> in Vietnam</p>
+    </div>
+</footer>
+<!-- /footer -->
+
+<script src="/vendor/highlight/highlight.pack.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/vendor/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Highlight sample code
+    hljs.initHighlightingOnLoad();
+});
+</script>
+</body>
+</html>

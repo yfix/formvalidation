@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Play with Chosen - BootstrapValidator</title>
+
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="BootstrapValidator, a jQuery plugin to validate form fields">
+    <meta name="keywords" content="Bootstrap, jQuery, validate, plugin, validator, form">
+    <meta name="author" content="Nguyen Huu Phuoc">
+    <meta name="google-site-verification" content="uzi08FxE8yqb9q-PlBzFxZeuUGalNFp3gX2haopVWBc" />
+
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrapvalidator/css/bootstrapValidator.min.css">
+    <link rel="stylesheet" href="/vendor/highlight/styles/github.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400,700">
+    <link rel="stylesheet" href="/asset/css/style.css">
+
+    <!--[if lt IE 9]>
+    <script src="/vendor/html5shiv/html5shiv.min.js"></script>
+    <script src="/vendor/respond/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/vendor/jquery/jquery-1.10.2.min.js"></script>
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-44786951-2']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    
+</head>
+<body>
+<div class="bv-wrapper">
+    <!-- navbar -->
+    <header class="bv-header">
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">BootstrapValidator</a>
+                </div>
+
+                <div class="navbar-collapse collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/getting-started/">Getting Started</a></li>
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/settings/">Settings</a></li>
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/validators/">Validators</a></li>
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/api/">API</a></li>
+                    
+                        
+                            
+                        
+                        <li class="active"><a href="/examples/">Examples</a></li>
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/developing/">Developing</a></li>
+                    
+                        
+                            
+                        
+                        <li class=""><a href="/news/">News</a></li>
+                    
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- main -->
+<div class="bv-main">
+    <link rel="stylesheet" href="/vendor/chosen/chosen.min.css" />
+<style type="text/css">
+#chosenForm .chosen-choices {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-height: 34px;
+    padding: 6px 12px;
+}
+#chosenForm .form-control-feedback {
+    z-index: 100;
+}
+</style>
+
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/examples/">Examples</a> / Compatibility</h1>
+            </div>
+
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    <div id="carbonads-container">
+    <div class="carbonad">
+        <div id="azcarbon"></div>
+        <script type="text/javascript">
+        var z = document.createElement("script");
+        z.type = "text/javascript";
+        z.async = true;
+        z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(z, s);
+        </script>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                
+
+<h2>Compatibility</h2>
+<ul>
+    
+        
+    
+        
+            
+        
+    
+        
+    
+        
+    
+        
+            
+            <li ><a href="/examples/bootstrap-button/">Play with Bootstrap Button</a></li>
+            
+        
+    
+        
+            
+            <li ><a href="/examples/bootstrap-multiselect/">Play with Bootstrap Multiselect</a></li>
+            
+        
+    
+        
+            
+            <li ><a href="/examples/bootstrap-tab/">Play with Bootstrap Tabs</a></li>
+            
+        
+    
+        
+    
+        
+    
+        
+            
+            <li class="active"><a href="/examples/chosen/">Play with Chosen</a></li>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+        
+    
+        
+    
+        
+            
+            <li ><a href="/examples/icheck/">Play with iCheck</a></li>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+            <li ><a href="/examples/mask/">Play with Mask</a></li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+            <li ><a href="/examples/raty/">Play with Raty</a></li>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+            <li ><a href="/examples/summernote/">Play with Summernote</a></li>
+            
+        
+    
+        
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+</ul>
+
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2 id="chosen">Play with Chosen</h2>
+                    <p>Use with the <a href="http://harvesthq.github.io/chosen/">Chosen</a> plugin.</p>
+                    <p>The <i>Favorite color</i> option requires to choose 2-4 colors you like most.</p>
+
+                    <div class="bv-example">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#chosen-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#chosen-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#chosen-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="chosen-form-tab">
+                                <form id="chosenForm" method="post" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Favorite color</label>
+                                        <div class="col-lg-5">
+                                            <select class="form-control chosen-select" name="colors" multiple data-placeholder="Choose 2-4 colors">
+                                                <option value="black">Black</option>
+                                                <option value="blue">Blue</option>
+                                                <option value="green">Green</option>
+                                                <option value="orange">Orange</option>
+                                                <option value="red">Red</option>
+                                                <option value="yellow">Yellow</option>
+                                                <option value="white">White</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-5 col-lg-offset-3">
+                                            <button type="submit" class="btn btn-primary">Validate</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane" id="chosen-html-tab">
+                                <pre><code class="xml">&lt;!-- Include chosen CSS -->
+&lt;link rel="stylesheet" href="/vendor/chosen/chosen.min.css" />
+&lt;style type="text/css">
+#chosenForm .chosen-choices {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-height: 34px;
+    padding: 6px 12px;
+}
+<span class="bv-note">#chosenForm .form-control-feedback {
+    /* To make the feedback icon visible */
+    z-index: 100;
+}</span>
+&lt;/style>
+&lt;form id="chosenForm" method="post" class="form-horizontal">
+    &lt;div class="form-group">
+        &lt;label class="col-lg-3 control-label">Favorite color&lt;/label>
+        &lt;div class="col-lg-5">
+            &lt;select name="colors" class="form-control <span class="bv-note">chosen-select</span>"
+                <span class="bv-note">multiple data-placeholder="Choose 2-4 colors"</span>>
+                &lt;option value="black">Black&lt;/option>
+                &lt;option value="blue">Blue&lt;/option>
+                &lt;option value="green">Green&lt;/option>
+                &lt;option value="orange">Orange&lt;/option>
+                &lt;option value="red">Red&lt;/option>
+                &lt;option value="yellow">Yellow&lt;/option>
+                &lt;option value="white">White&lt;/option>
+            &lt;/select>
+        &lt;/div>
+    &lt;/div>
+    &lt;div class="form-group">
+        &lt;div class="col-lg-5 col-lg-offset-3">
+            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
+        &lt;/div>
+    &lt;/div>
+&lt;/form></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="chosen-js-tab">
+                                <pre><code class="xml javascript">&lt;!-- Include choosen JS -->
+&lt;script src="/vendor/chosen/chosen.jquery.min.js">&lt;/script>
+&lt;script>
+$(document).ready(function() {
+    $('#chosenForm')
+        .find('[name="colors"]')
+            .chosen()
+            // Re-validate the color when it is changed
+            <span class="bv-note">.change(function(e) {
+                $('#chosenForm')
+                    .data('bootstrapValidator')
+                    .updateStatus('colors', 'NOT_VALIDATED')
+                    .validateField('colors');
+            })</span>
+            .end()
+        .bootstrapValidator({
+            <span class="bv-note">excluded: ':disabled'</span>,
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                colors: {
+                    validators: {
+                        callback: {
+                            message: 'Please choose 2-4 color you like most',
+                            callback: function(value, validator) {
+                                // Get the selected options
+                                var options = validator.getFieldElements('colors').val();
+                                return (options != null && options.length >= 2 && options.length <= 4);
+                            }
+                        }
+                    }
+                }
+            }
+        });
+});
+&lt;/script></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/vendor/chosen/chosen.jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#chosenForm')
+        .find('[name="colors"]')
+            .chosen()
+            .change(function(e) {
+                $('#chosenForm').data('bootstrapValidator').updateStatus('colors', 'NOT_VALIDATED').validateField('colors');
+            })
+            .end()
+        .bootstrapValidator({
+            excluded: ':disabled',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            submitHandler: function(validator, form, submitButton) {
+                // Do nothing
+            },
+            fields: {
+                colors: {
+                    validators: {
+                        callback: {
+                            message: 'Please choose 2-4 color you like most',
+                            callback: function(value, validator) {
+                                // Get the selected options
+                                var options = validator.getFieldElements('colors').val();
+                                return (options != null && options.length >= 2 && options.length <= 4);
+                            }
+                        }
+                    }
+                }
+            }
+        });
+});
+</script>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 col-md-offset-3">
+            <section class="bv-pager">
+                <ul class="pager">
+                    
+                    
+                </ul>
+            </section>
+
+            <!-- Disqus comment -->
+            
+            <section>
+                <div class="bv-comments">
+                    <h2 id="comments" class="bv-separator"><span>Comments</span></h2>
+
+                    <div class="bv-box bv-box-warning">
+                        If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. Do NOT post the issue here.<br/>
+                        For a general question or feedback, use the form below.
+                    </div>
+
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                    var disqus_shortname = 'bootstrapvalidator';
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                    </script>
+                </div>
+            </section>
+            
+        </div>
+    </div>
+</div>
+
+</div>
+<!-- /main -->
+
+
+    <div class="bv-pusher"></div>
+</div>
+
+<!-- footer -->
+<footer class="bv-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Hire me</h4>
+                <img src="https://avatars.githubusercontent.com/u/4226036?s=50" />
+                <div>If you are looking for a Javascript, <a href="http://jquery.com/">jQuery</a>, <a href="https://angularjs.org/">AngularJS</a>, <a href="http://expressjs.com/">ExpressJS</a>, PHP or <a href="http://framework.zend.com/">Zend Framework</a> guru, feel free to drop me <a href="mailto:phuoc@huuphuoc.me">an email</a> or give me <a href="http://twitter.com/nghuuphuoc">a tweet</a>.</div>
+            </div>
+
+            <div class="col-md-4">
+                <h4>Follow me</h4>
+                <ul>
+                    <li><a href="http://github.com/nghuuphuoc"><i class="fa fa-github"></i> @nghuuphuoc</a></li>
+                    <li><a href="http://twitter.com/nghuuphuoc"><i class="fa fa-twitter"></i> @nghuuphuoc</a></li>
+                    <li><a href="http://twitter.com/bsvalidator"><i class="fa fa-twitter"></i> @bsvalidator</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator">Github</a></li>
+                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Issues</a></li>
+                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/blob/master/CHANGELOG.md">Change Log</a></li>
+                    <li><a href="/news/releases/">Releases</a></li>
+                    <li><a href="http://plugins.jquery.com/bootstrapValidator">jQuery Plugin Page</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="text-center">
+            &copy; 2013 - 2014 Nguyen Huu Phuoc<br/>
+            Code licensed under <a href="http://opensource.org/licenses/mit-license.html">MIT</a>, documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>
+        </p>
+
+        <p class="text-center">handcrafted with <i class="fa fa-heart"></i> in Vietnam</p>
+    </div>
+</footer>
+<!-- /footer -->
+
+<script src="/vendor/highlight/highlight.pack.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/vendor/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Highlight sample code
+    hljs.initHighlightingOnLoad();
+});
+</script>
+</body>
+</html>
