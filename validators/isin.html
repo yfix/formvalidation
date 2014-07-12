@@ -48,7 +48,7 @@ related:
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
                                 <th>Description</th>
                             </tr>
@@ -156,9 +156,8 @@ $(document).ready(function() {
             .find('input[name="isin"]')
                 .val($(this).html())
                 .end()
-            .data('bootstrapValidator')
-                .updateStatus('isin', 'NOT_VALIDATED')
-                .validate();
+            .bootstrapValidator('revalidateField', 'isin');
+
         var isValid = $('#isinForm').data('bootstrapValidator').isValid();
         $(this)
             .parents('tr').find('i')

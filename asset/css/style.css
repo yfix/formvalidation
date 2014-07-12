@@ -90,8 +90,6 @@ footer p {
   background: #2ecc71;
   border-radius: 4px;
   color: #fff;
-  height: 28px;
-  line-height: 28px;
   padding: 0 5px;
 }
 .bv-news:before {
@@ -289,6 +287,9 @@ footer p {
   font-size: 25px;
   padding-bottom: 10px;
   padding-top: 35px;
+}
+.bv-sidebar li {
+  padding: 3px 0px;
 }
 .bv-sidebar li ul a {
   padding-left: 30px;

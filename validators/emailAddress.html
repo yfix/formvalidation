@@ -65,7 +65,7 @@ examples:
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
                                 <th>Description</th>
                             </tr>
@@ -80,7 +80,9 @@ examples:
                         </tbody>
                     </table>
 
-                    <div class="bv-box bv-box-info">
+                    <p>You can use <code>type="email"</code> attribute to enable this validator.</p>
+
+                    <div class="bv-box bv-box-warning">
                         <h5><i></i>Why does empty email address still pass?</h5>
                         <p>This validator passes an empty field since the field might be optional. If the field is required, then use the <a href="/validators/notEmpty/"><code>notEmpty</code> validator</a>.</p>
                     </div>

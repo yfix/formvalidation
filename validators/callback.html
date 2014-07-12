@@ -43,32 +43,33 @@ comments:         true
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
                                 <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+                                <td><code>callback</code><sup>*</sup></td>
+                                <td><code>data-bv-callback-callback</code> <span class="bv-news"></span></td>
+                                <td>Function</td>
+                                <td>The callback method</td>
+                            </tr>
+                            <tr>
                                 <td><code>message</code></td>
                                 <td><code>data-bv-callback-message</code></td>
                                 <td>String</td>
                                 <td>The error message</td>
-                            </tr>
-                            <tr>
-                                <td><code>callback</code> (*)</td>
-                                <td>n/a</td>
-                                <td>Function</td>
-                                <td>The callback method</td>
                             </tr>
                         </tbody>
                     </table>
 
                     <p>The callback method must follow the format below:</p>
 {% highlight javascript %}
-function(fieldValue, validator) {
-    // fieldValue is the value of field
+function(value, validator, $field) {
+    // value is the value of field
     // validator is instance of BootstrapValidator
+    // $field is the jQuery object representing the field element
 
     // Check the field validity
     // return true or false

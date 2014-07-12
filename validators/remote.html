@@ -51,12 +51,18 @@ comments:         true
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
                                 <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <tr>
+                                <td><code>data</code></td>
+                                <td>n/a</td>
+                                <td>Object</td>
+                                <td>The data sent to remote URL.<br />You don't need to use this option if there is only field, defined as field name, sent to the remote URL.</td>
+                            </tr>
                             <tr>
                                 <td><code>message</code></td>
                                 <td><code>data-bv-remote-message</code></td>
@@ -64,10 +70,10 @@ comments:         true
                                 <td>The error message</td>
                             </tr>
                             <tr>
-                                <td><code>url</code> (*)</td>
-                                <td><code>data-bv-remote-url</code></td>
+                                <td><code>method</code> <span class="bv-news"></span></td>
+                                <td><code>data-bv-remote-method</code></td>
                                 <td>String</td>
-                                <td>The remote URL that responses an encoded JSON of array containing the <code>valid</code> key</td>
+                                <td>The method used to send data to back-end. It can be <code>GET</code> or <code>POST</code> <span class="label label-default">default</span></td>
                             </tr>
                             <tr>
                                 <td><code>name</code></td>
@@ -76,13 +82,26 @@ comments:         true
                                 <td>The name of field which need to validate</td>
                             </tr>
                             <tr>
-                                <td><code>data</code></td>
-                                <td>n/a</td>
-                                <td>Object</td>
-                                <td>The data sent to remote URL.<br />You don't need to use this option if there is only field, defined as field name, sent to the remote URL.</td>
+                                <td><code>url</code><sup>*</sup></td>
+                                <td><code>data-bv-remote-url</code></td>
+                                <td>String|Function</td>
+                                <td>The remote URL.<br/>
+                                    If you want to use a dynamic URL, then use the callback as following: <span class="bv-news"></span>
+{% highlight javascript %}
+url: function(validator) {
+    // validator is BootstrapValidator instance
+    return 'the URL';
+}
+{% endhighlight %}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
+
+                    <p>The remote URL has to return an encoded JSON of array containing the <code>valid</code> key:</p>
+{% highlight javascript %}
+{ valid: 'true or false' }
+{% endhighlight %}
                 </section>
 
                 <section>

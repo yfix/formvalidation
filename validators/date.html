@@ -34,9 +34,9 @@ comments:         true
                         <a href="#example">Example</a>
                         <ul>
                             <li><a href="#basic-example">Basic</a></li>
-                            <li><a href="#date-picker-example">Datetime Picker</a></li>
-                            <li><a href="#custom-format-example">Custom Format</a></li>
-                            <li><a href="#date-range-example">Date Range</a></li>
+                            <li><a href="#date-picker-example">Datetime picker</a></li>
+                            <li><a href="#custom-format-example">Custom format</a></li>
+                            <li><a href="#date-range-example">Date range</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -51,12 +51,18 @@ comments:         true
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
                                 <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <tr>
+                                <td><code>format</code><sup>*</sup></td>
+                                <td><code>data-bv-date-format</code></td>
+                                <td>String</td>
+                                <td>The date format. It is <code>MM/DD/YYYY</code>, by default</td>
+                            </tr>
                             <tr>
                                 <td><code>message</code></td>
                                 <td><code>data-bv-date-message</code></td>
@@ -64,10 +70,10 @@ comments:         true
                                 <td>The error message</td>
                             </tr>
                             <tr>
-                                <td><code>format</code> (*)</td>
-                                <td><code>data-bv-date-format</code></td>
+                                <td><code>separator</code> <span class="bv-news"></span></td>
+                                <td><code>data-bv-date-separator</code></td>
                                 <td>String</td>
-                                <td>The date format. It is <code>MM/DD/YYYY</code>, by default</td>
+                                <td>Used to separate the day, month, and year. It is <code>/</code>, by default</td>
                             </tr>
                         </tbody>
                     </table>
@@ -86,7 +92,7 @@ comments:         true
                             <tr>
                                 <td>Date</td>
                                 <td>DD, MM, YYYY</td>
-                                <td>a slash (/) or hyphen (-)</td>
+                                <td>Defined by the <code>separator</code> option.<br/>Most popular examples are a slash (/), hyphen (-), or dot (.)</td>
                             </tr>
                             <tr>
                                 <td>Time</td>
@@ -246,7 +252,7 @@ $(document).ready(function() {
 
 
                     <section>
-                        <h3 id="date-picker-example">Datetime Picker</h3>
+                        <h3 id="date-picker-example">Datetime picker</h3>
 
                         <p>The form below is an example of using the date validator with <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Bootstrap Datetime Picker</a>:</p>
 
@@ -349,7 +355,7 @@ $(document).ready(function() {
                     </section>
 
                     <section>
-                        <h3 id="custom-format-example">Custom Format</h3>
+                        <h3 id="custom-format-example">Custom format</h3>
 
                         <p>This example illustrates the ability of validating date in custom format by using the <a href="/validators/callback/">callback</a> validator and <a href="http://momentjs.com/">momentjs</a> to parse/validate.</p>
 
@@ -426,7 +432,7 @@ $(document).ready(function() {
                     </section>
 
                     <section>
-                        <h3 id="date-range-example">Date Range</h3>
+                        <h3 id="date-range-example">Date range</h3>
 
                         <p>One more example illustrates how to use the <a href="/validators/callback/">callback</a> validator and <a href="http://momentjs.com/">momentjs</a> to check whether or not a date is in given range.</p>
                         <p><a href="http://momentjs.com/">momentjs</a> provides <a href="http://momentjs.com/docs/#/query/is-before/"><code>isBefore()</code></a> and <a href="http://momentjs.com/docs/#/query/is-after/"><code>isAfter()</code></a> methods which are exactly what we need.</p>

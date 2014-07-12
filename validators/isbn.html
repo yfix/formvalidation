@@ -48,7 +48,7 @@ related:
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
                                 <th>Description</th>
                             </tr>
@@ -156,9 +156,8 @@ $(document).ready(function() {
             .find('input[name="isbn"]')
                 .val($(this).html())
                 .end()
-            .data('bootstrapValidator')
-                .updateStatus('isbn', 'NOT_VALIDATED')
-                .validate();
+            .bootstrapValidator('revalidateField', 'isbn');
+
         var isValid = $('#isbnForm').data('bootstrapValidator').isValid();
         $(this)
             .parents('tr').find('i')
