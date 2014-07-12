@@ -52,7 +52,6 @@ next_section:     /validators/
                     <li><a href="#field-trigger">trigger</a></li>
                 </ul>
 
-
                 <h4><a href="#validator-settings">Validator settings</a></h4>
                 <ul>
                     <li><a href="#field-message">message</a></li>
@@ -66,6 +65,7 @@ next_section:     /validators/
                             <li><a href="#dynamic-option-callback">Using function</a></li>
                         </ul>
                     </li>
+                    <li><a href="#dynamic-message">Dynamic message<span class="pull-right bv-news"></span></a></li>
                 </ul>
 
                 <h4><a href="#events">Events<span class="pull-right bv-news"></span></a></h4>
@@ -1778,6 +1778,401 @@ $(document).ready(function() {
                             </div>
                         </section>
                     </section>
+
+                    <section>
+                        <h3 id="dynamic-message">Dynamic message<span class="pull-right bv-news"></span></h3>
+                        <p>Looking back to the <a href="#dynamic-option-element">zipcode example</a> above, you will realize that the message is static:</p>
+
+{% highlight html hl_lines="2" %}
+<!-- The element for choosing a country -->
+<select class="form-control" name="countrySelectBox">
+    <option value="US">United States</option>
+    <option value="CA">Canada</option>
+    <option value="DK">Denmark</option>
+    <option value="IT">Italy</option>
+    <option value="NL">Netherlands</option>
+    <option value="SE">Sweden</option>
+    <option value="GB">United Kingdom</option>
+</select>
+{% endhighlight %}
+{% highlight javascript hl_lines="8" %}
+$(document).ready(function() {
+    $('#dynamicMessageForm').bootstrapValidator({
+        fields: {
+            code: {
+                validators: {
+                    zipCode: {
+                        country: 'countrySelectBox',
+                        message: 'The value is not valid zipcode'
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                        <p>As you see, the message is always <code>The value is not valid zipcode</code> and does not change nomatter what the country is.</p>
+                        <p>Fortunately, it is easy to convert this message to a dynamic one. Just use <code>%s</code> characters in the message and they will be replaced with the country you choose:</p>
+{% highlight javascript hl_lines="8 9 10" %}
+$(document).ready(function() {
+    $('#dynamicMessageForm').bootstrapValidator({
+        fields: {
+            code: {
+                validators: {
+                    zipCode: {
+                        country: 'countrySelectBox',
+                        // %s will be replaced with "US zipcode", "Italian postal code", and so on
+                        // when you choose the country as US, IT, etc.
+                        message: 'The value is not valid %s'
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#dynamic-message-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#dynamic-message-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#dynamic-message-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="dynamic-message-form-tab">
+                                    <form id="dynamicMessageForm" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Country:</label>
+                                            <div class="col-lg-5">
+                                                <select class="form-control" name="countrySelectBox">
+                                                    <option value="US">United States</option>
+                                                    <option value="CA">Canada</option>
+                                                    <option value="DK">Denmark</option>
+                                                    <option value="IT">Italy</option>
+                                                    <option value="NL">Netherlands</option>
+                                                    <option value="SE">Sweden</option>
+                                                    <option value="GB">United Kingdom</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Zipcode</label>
+                                            <div class="col-lg-5">
+                                                <input type="text" class="form-control" name="code" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane" id="dynamic-message-html-tab">
+{% highlight html hl_lines="5" %}
+<form id="dynamicMessageForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Country:</label>
+        <div class="col-lg-5">
+            <select class="form-control" name="countrySelectBox">
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="DK">Denmark</option>
+                <option value="IT">Italy</option>
+                <option value="NL">Netherlands</option>
+                <option value="SE">Sweden</option>
+                <option value="GB">United Kingdom</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Zipcode</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="code" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+                                </div>
+
+                                <div class="tab-pane" id="dynamic-message-js-tab">
+{% highlight javascript hl_lines="13 14 22" %}
+$(document).ready(function() {
+    $('#dynamicMessageForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                code: {
+                    validators: {
+                        zipCode: {
+                            country: 'countrySelectBox',
+                            message: 'The value is not valid %s'
+                        }
+                    }
+                }
+            }
+        })
+        .on('change', '[name="countrySelectBox"]', function() {
+            // Revalidate the zipcode after changing the country
+            $('#dynamicMessageForm').bootstrapValidator('revalidateField', 'code');
+        });
+});
+{% endhighlight %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Below is the list of validators supporting dynamic message:</p>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Validator</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="/validators/between/">between validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="4" %}
+between: {
+    min: ...,
+    max: ...,
+    message: 'Please enter a value between %s and %s'
+}
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/validators/choice/">choice validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="4" %}
+choice: {
+    min: ...,
+    max: ...,
+    message: 'Please choose %s - %s options'
+}
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/validators/greaterThan/">greaterThan validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="3" %}
+greaterThan: {
+    value: ...,
+    message: 'Please enter a value greater than or equal to %s'
+}
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/validators/iban/">iban validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="3" %}
+iban: {
+    country: ...,
+    message: 'Please enter a valid IBAN number in %s'
+}
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/validators/id/">id validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="3" %}
+id: {
+    country: ...,
+    message: 'Please enter a valid %s identification number'
+}
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/validators/lessThan/">lessThan validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="3" %}
+lessThan: {
+    value: ...,
+    message: 'Please enter a value less than or equal to %s'
+}
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/validators/phone/">phone validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="3" %}
+phone: {
+    country: ...,
+    message: 'Please enter a valid phone number in %s'
+}
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/validators/stringLength/">stringLength validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="4" %}
+stringLength: {
+    min: ...,
+    max: ...,
+    message: 'Please enter value between %s and %s characters long'
+}
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/validators/vat/">vat validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="3" %}
+vat: {
+    country: ...,
+    message: 'Please enter a valid %s VAT number'
+}
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/validators/zipCode/">zipCode validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="3" %}
+zipCode: {
+    country: ...,
+    message: 'Please enter a valid %s'
+}
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/validators/callback/">callback validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="7 13" %}
+callback: {
+    callback: function(value, validator, $field) {
+        // ... Do your logic checking
+        if (...) {
+            return {
+                valid: true,    // or false
+                message: 'The error message'
+            }
+        }
+
+        return {
+            valid: false,       // or true
+            message: 'Other error message'
+        }
+    }
+}
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/validators/remote/">remote validator</a></td>
+                                    <td>
+                                        <p>The backend returns a JSON string that consists of <code>valid</code> and <code>message</code> keys:</p>
+{% highlight javascript %}
+{ valid: true, message: 'The error message' }
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/developing/">Your own validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="8 14" %}
+(function($) {
+    $.fn.bootstrapValidator.validators.yourValidatorName = {
+        validate: function(validator, $field, options) {
+            // ... Do your logic checking
+            if (...) {
+                return {
+                    valid: true,    // or false
+                    message: 'The error message'
+                }
+            }
+
+            return {
+                valid: false,       // or true
+                message: 'Other error message'
+            }
+        }
+    };
+}(window.jQuery));
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="bv-box bv-box-info">
+                            <h5 id="turning-off-dynamic-message"><i></i>Turning off dynamic message</h5>
+                            <p>Hey, I don't want to use the dynamic message. What should I do? Here is the answer:</p>
+                            <ul>
+                                <li>Don't use <code>%s</code> characters in the message</li>
+                                <li>Don't include the <code>message</code> in the result returned by <a href="/validators/callback/">callback</a>, <a href="/validators/remote/">remote validator</a>, or <a href="/developing/">your own validator</a>.</li>
+                            </ul>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>Validator</th>
+                                        <th>Example</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="/validators/between/">between validator</a></td>
+                                        <td>
+{% highlight javascript hl_lines="4" %}
+between: {
+    min: 20,
+    max: 100,
+    message: 'Please enter a value between 20 and 100'
+}
+{% endhighlight %}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="/validators/callback/">callback validator</a></td>
+                                        <td>
+{% highlight javascript hl_lines="3 4" %}
+callback: {
+    callback: function(value, validator, $field) {
+        // ... Do your logic checking
+        return true;        // or false
+    }
+}
+{% endhighlight %}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="/validators/remote/">remote validator</a></td>
+                                        <td>
+                                            <p>The backend returns a JSON string that consists of <code>valid</code> key:</p>
+{% highlight javascript %}
+{ valid: true }
+{% endhighlight %}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="/developing/">Your own validator</a></td>
+                                        <td>
+{% highlight javascript hl_lines="4 5" %}
+(function($) {
+    $.fn.bootstrapValidator.validators.yourValidatorName = {
+        validate: function(validator, $field, options) {
+            // ... Do your logic checking
+            return true;        // or false
+        }
+    };
+}(window.jQuery));
+{% endhighlight %}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
                 </section>
                 <!-- /validator -->
 
@@ -2570,6 +2965,30 @@ $(document).ready(function() {
         })
         .on('change', '[name="countrySelectBox"]', function() {
             $('#getCountryCode').bootstrapValidator('revalidateField', 'code');
+        });
+
+    // Dynamic message
+    $('#dynamicMessageForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                code: {
+                    validators: {
+                        zipCode: {
+                            country: 'countrySelectBox',
+                            message: 'The value is not valid %s'
+                        }
+                    }
+                }
+            }
+        })
+        .on('change', '[name="countrySelectBox"]', function() {
+            // Revalidate the zipcode after changing the country
+            $('#dynamicMessageForm').bootstrapValidator('revalidateField', 'code');
         });
 });
 </script>
