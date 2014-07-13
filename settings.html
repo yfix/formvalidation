@@ -466,7 +466,7 @@ feedbackIcons: {
                         <p>There are two popular questions with the feedback icon usage:</p>
 
                         <div class="bv-box bv-box-info">
-                            <h5 id="form-feedback-icons-bootswatch"><i></i> Using with Bootswatch</h5>
+                            <h5 id="using-with-bootswatch"><i></i> Using with Bootswatch</h5>
                             <p>Some <a href="http://bootswatch.com">BootsWatch</a> themes override some CSS styles causing feedback icon invisible to your eyes. For instance, the <a href="http://bootswatch.com/flatly/">Flatly theme</a> set the feedback icon color to <code>#FFF</code>.</p>
                             <p>To fix this, you can simply add some CSS to your <code>head</code>, right before the BootsWatch theme CSS, to reset the feedback icons color:</p>
 {% highlight html hl_lines="4 7" %}
@@ -483,7 +483,7 @@ feedbackIcons: {
                         </div>
 
                         <div class="bv-box bv-box-info">
-                            <h5 id="form-feedback-icons-adjust"><i></i>Adjusting feedback icon position</h5>
+                            <h5 id="adjusting-feedback-icon-position"><i></i>Adjusting feedback icon position</h5>
                             <p>The feedback icons aren't shown properly for some elements such as select box or when using with other element such as <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Bootstrap Datetime Picker</a>, <a href="http://mjolnic.github.io/bootstrap-colorpicker/">Bootstrap Color Picker</a>, etc.</p>
                             <p>Bootstrap defines feedback icon position as following:</p>
 {% highlight css hl_lines="3" %}
@@ -493,7 +493,7 @@ feedbackIcons: {
 }
 {% endhighlight %}
                             <p>You can override this to adjust feedback icon position:</p>
-{% highlight css hl_lines="3 6" %}
+{% highlight css hl_lines="3 7" %}
 .form-horizontal .has-feedback .form-control-feedback {
     top: 0;
     right: -15px;

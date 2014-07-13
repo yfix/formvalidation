@@ -223,6 +223,11 @@ Uncaught RangeError: Maximum call stack size exceeded
 {% endhighlight %}
                         </div>
 
+                        <div class="bv-box bv-box-info">
+                            <h5 id="using-complex-form"><i></i>Using complex form</h5>
+                            <p>If your form is complex and uses custom CSS class for each group instead of <code>form-group</code>, use the <a href="/settings/#form-group">group option</a>.</p>
+                        </div>
+
                         <div class="bv-box bv-box-warning">
                             <h5 id="name-conflict"><i></i>Name conflict</h5>
                             <p>Do not use the properties of a form, such as <code>submit</code>, <code>reset</code>, <code>length</code>, <code>method</code> to set the <code>name</code> or <code>id</code> attribute of form, field elements. Name conflicts can cause the problem.</p>
@@ -257,7 +262,7 @@ Uncaught RangeError: Maximum call stack size exceeded
                                 </div>
 
                                 <div class="tab-pane" id="basic-html-tab">
-{% highlight html %}
+{% highlight html hl_lines="1 2 6" %}
 <form>
     <div class="form-group">
         <label>Username</label>
@@ -293,7 +298,7 @@ Uncaught RangeError: Maximum call stack size exceeded
                                 </div>
 
                                 <div class="tab-pane" id="basicwlabel-html-tab">
-{% highlight html %}
+{% highlight html hl_lines="1 2 5" %}
 <form>
     <div class="form-group">
         <input type="text" class="form-control" name="username" placeholder="Username" />
@@ -327,7 +332,7 @@ Uncaught RangeError: Maximum call stack size exceeded
                                 </div>
 
                                 <div class="tab-pane" id="inline-html-tab">
-{% highlight html %}
+{% highlight html hl_lines="1 2 5" %}
 <form class="form-inline">
     <div class="form-group">
         <input type="text" class="form-control" name="username" placeholder="Username" />
@@ -367,7 +372,7 @@ Uncaught RangeError: Maximum call stack size exceeded
                                 </div>
 
                                 <div class="tab-pane" id="horizontal-html-tab">
-{% highlight html %}
+{% highlight html hl_lines="1 2 8" %}
 <form class="form-horizontal">
     <div class="form-group">
         <label class="col-lg-3 control-label">Username</label>
@@ -411,7 +416,7 @@ Uncaught RangeError: Maximum call stack size exceeded
                                 </div>
 
                                 <div class="tab-pane" id="row-html-tab">
-{% highlight html %}
+{% highlight html hl_lines="1 2" %}
 <form class="form-horizontal">
     <div class="form-group">
         <label class="col-lg-2 control-label">Account</label>
