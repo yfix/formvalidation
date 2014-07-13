@@ -31,6 +31,7 @@ next_section:     /validators/
 
                 <h4><a href="#form-settings">Form settings</a></h4>
                 <ul>
+                    <li><a href="#form-container">container<span class="pull-right bv-news"></span></a></li>
                     <li><a href="#form-excluded">excluded</a></li>
                     <li><a href="#form-feedback-icons">feedbackIcons</a></li>
                     <li><a href="#form-live">live</a></li>
@@ -158,6 +159,11 @@ $(document).ready(function() {
                         </thead>
                         <tbody>
                             <tr>
+                                <td><code>container</code> <span class="bv-news"></span></td>
+                                <td><code>data-bv-container</code></td>
+                                <td>n/a</td>
+                            </tr>
+                            <tr>
                                 <td><code>excluded</code></td>
                                 <td><code>data-bv-excluded</code></td>
                                 <td><code>[':disabled', ':hidden', ':not(:visible)']</code></td>
@@ -212,8 +218,148 @@ $(document).ready(function() {
                             </tr>
                         </tbody>
                     </table>
+                    
+                    <!-- form-container -->
+                    <section>
+                        <h3 id="form-container">container: String <span class="pull-right bv-news"></span></h3>
+                        <p>Indicate where the error messages are shown.</p>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Value</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CSS selector</td>
+                                    <td>All error messages are placed in element defined by this CSS selector</td>
+                                </tr>
+                                <tr>
+                                    <td><code>tooltip</code></td>
+                                    <td>Error messages of each field are placed inside a <a href="http://getbootstrap.com/javascript/#tooltips">Bootstrap tooltip</a>.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>popover</code></td>
+                                    <td>Error messages of each field are placed inside a <a href="http://getbootstrap.com/javascript/#popovers">Bootstrap popover</a>.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>This option can be <a href="#field-container">overridden</a> by particular field.</p>
 
-                    <!-- form:excluded -->
+                        <section>
+                            <h4 id="form-container-example">Example</h4>
+                            <p>The following form uses <a href="http://getbootstrap.com/javascript/#tooltips">Bootstrap tooltip</a> to show the error message.</p>
+                            <div class="bv-example">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#container-form-tab" data-toggle="tab">Try it</a></li>
+                                    <li><a href="#container-html-tab" data-toggle="tab">HTML</a></li>
+                                    <li><a href="#container-js-tab" data-toggle="tab">JS</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="container-form-tab">
+                                        <form id="containerForm" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Full name</label>
+                                                <div class="col-lg-4">
+                                                    <input type="text" class="form-control" name="firstName" placeholder="First name" />
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <input type="text" class="form-control" name="lastName" placeholder="Last name" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Phone number</label>
+                                                <div class="col-lg-5">
+                                                    <input type="text" class="form-control" name="phone" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-lg-9 col-lg-offset-3">
+                                                    <button type="submit" class="btn btn-primary">Validate</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane" id="container-html-tab">
+{% highlight html %}
+<form id="containerForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Full name</label>
+        <div class="col-lg-4">
+            <input type="text" class="form-control" name="firstName" placeholder="First name" />
+        </div>
+        <div class="col-lg-4">
+            <input type="text" class="form-control" name="lastName" placeholder="Last name" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Phone number</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="phone" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-9 col-lg-offset-3">
+            <button type="submit" class="btn btn-primary">Validate</button>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+                                    </div>
+
+                                    <div class="tab-pane" id="container-js-tab">
+{% highlight javascript hl_lines="3" %}
+$(document).ready(function() {
+    $('#containerForm').bootstrapValidator({
+        container: 'tooltip',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            firstName: {
+                validators: {
+                    notEmpty: {
+                        message: 'The first name is required'
+                    }
+                }
+            },
+            lastName: {
+                validators: {
+                    notEmpty: {
+                        message: 'The last name is required'
+                    }
+                }
+            },
+            phone: {
+                validators: {
+                    digits: {
+                        message: 'The phone number can contain digits only'
+                    },
+                    notEmpty: {
+                        message: 'The phone number is required'
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+
+                    <!-- form-excluded -->
                     <section>
                         <h3 id="form-excluded">excluded: Boolean</h3>
                         <p>Indicate fields which won't be validated.</p>
@@ -274,9 +420,8 @@ function($field, validator) {
                         <p>The <code>excluded</code> option is usually used when we need to validate the field generated by other UI plugin.</p>
                         <p>For an usage, you can take a look at <a href="/examples/#compatibility">compatibility</a> examples.</p>
                     </section>
-                    <!-- /form:excluded -->
 
-                    <!-- form:feedback-icons -->
+                    <!-- form-feedback-icons -->
                     <section>
                         <h3 id="form-feedback-icons">feedbackIcons: Object</h3>
                         <p>Indicate valid/invalid/validating icons based on the field validity.</p>
@@ -505,9 +650,8 @@ $(document).ready(function() {
                             </div>
                         </div>
                     </section>
-                    <!-- /form:feedback-icons -->
 
-                    <!-- form:live -->
+                    <!-- form-live -->
                     <section>
                         <h3 id="form-live">live: String</h3>
                         <p>Live validating mode. Can be one of three values:</p>
@@ -534,23 +678,20 @@ $(document).ready(function() {
                             </tbody>
                         </table>
                     </section>
-                    <!-- /form:live -->
 
-                    <!-- form:message -->
+                    <!-- form-message -->
                     <section>
                         <h3 id="form-message">message: String</h3>
                         <p>The default error message for all fields. You can specify the error message for any fields.</p>
                     </section>
-                    <!-- /form:message -->
 
-                    <!-- form:submit-buttons -->
+                    <!-- form-submit-buttons -->
                     <section>
                         <h3 id="form-submit-buttons">submitButtons: String</h3>
                         <p>The submit buttons selector. These buttons will be disabled when the form input are invalid.</p>
                     </section>
-                    <!-- /form:submit-buttons -->
 
-                    <!-- form:submit-handler -->
+                    <!-- form-submit-handler -->
                     <section>
                         <h3 id="form-submit-handler">submitHandler: Function</h3>
                         <p>Custom submit handler:</p>
@@ -608,22 +749,19 @@ submitHandler: function(validator, form) {
 }
 {% endhighlight %}
                     </section>
-                    <!-- form:submit-handler -->
 
-                    <!-- form:threshold-->
+                    <!-- form-threshold-->
                     <section>
                         <h3 id="form-threshold">threshold: Number</h3>
                         <p>The field will not be live validated if its length is less than this number of characters. You also can set this option for <a href="#field-threshold">particular field</a>.</p>
                     </section>
-                    <!-- /form:threshold-->
 
-                    <!-- form:trigger -->
+                    <!-- form-trigger -->
                     <section>
                         <h3 id="form-trigger">trigger: String</h3>
                         <p>The event which is fired to validating all fields when the live validating mode is enabled. If you need multiple events are fired, then separate them by a space.</p>
                         <p>It's also possible to set trigger option for each field. Look at the <a href="#field-trigger">field trigger</a> section.</p>
                     </section>
-                    <!-- /form:trigger -->
                 </section>
                 <!-- /form -->
 
@@ -641,16 +779,16 @@ submitHandler: function(validator, form) {
                         </thead>
                         <tbody>
                             <tr>
+                                <td><code>container</code></td>
+                                <td><code>data-bv-container</code></td>
+                            </tr>
+                            <tr>
                                 <td><code>enabled</code></td>
-                                <td>n/a</td>
+                                <td><code>data-bv-enabled</code> <span class="bv-news"></span></td>
                             </tr>
                             <tr>
                                 <td><code>message</code></td>
                                 <td><code>data-bv-message</code></td>
-                            </tr>
-                            <tr>
-                                <td><code>container</code></td>
-                                <td><code>data-bv-container</code></td>
                             </tr>
                             <tr>
                                 <td><code>selector</code></td>
@@ -677,24 +815,46 @@ submitHandler: function(validator, form) {
                         <td>The default error message for the field</td>
                     </section>
 
-                    <!-- field:container -->
+                    <!-- field-container -->
                     <section>
                         <h3 id="field-container">container: String</h3>
-                        <p>The CSS selector to indicate the element showing the error messages.</p>
+                        <p>Indicate where the error messages are shown.</p>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Value</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CSS selector</td>
+                                    <td>Error messages are placed in element defined by this CSS selector</td>
+                                </tr>
+                                <tr>
+                                    <td><code>tooltip</code> <span class="bv-news"></span></td>
+                                    <td>Error messages are placed inside a <a href="http://getbootstrap.com/javascript/#tooltips">Bootstrap tooltip</a>.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>popover</code> <span class="bv-news"></span></td>
+                                    <td>Error messages are placed inside a <a href="http://getbootstrap.com/javascript/#popovers">Bootstrap popover</a>.</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
                         <h4 id="field-container-example">Example</h4>
                         <p>The following form illustrates an usage of the <code>container</code> option. The error messages are shown in the element defined by a CSS selector.</p>
 
                         <div class="bv-example">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#container-form-tab" data-toggle="tab">Try it</a></li>
-                                <li><a href="#container-html-tab" data-toggle="tab">HTML</a></li>
-                                <li><a href="#container-js-tab" data-toggle="tab">JS</a></li>
+                                <li class="active"><a href="#field-container-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#field-container-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#field-container-js-tab" data-toggle="tab">JS</a></li>
                             </ul>
 
                             <div class="tab-content">
-                                <div class="tab-pane active" id="container-form-tab">
-                                    <form id="containerForm" class="form-horizontal">
+                                <div class="tab-pane active" id="field-container-form-tab">
+                                    <form id="fieldContainerForm" class="form-horizontal">
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Full name</label>
                                             <div class="col-lg-4">
@@ -716,9 +876,9 @@ submitHandler: function(validator, form) {
                                     </form>
                                 </div>
 
-                                <div class="tab-pane" id="container-html-tab">
+                                <div class="tab-pane" id="field-container-html-tab">
 {% highlight html hl_lines="6 10" %}
-<form id="containerForm" class="form-horizontal">
+<form id="fieldContainerForm" class="form-horizontal">
     <div class="form-group">
         <label class="col-lg-3 control-label">Full name</label>
         <div class="col-lg-4">
@@ -741,10 +901,10 @@ submitHandler: function(validator, form) {
 {% endhighlight %}
                                 </div>
 
-                                <div class="tab-pane" id="container-js-tab">
+                                <div class="tab-pane" id="field-container-js-tab">
 {% highlight javascript hl_lines="5 11" %}
 $(document).ready(function() {
-    $('#containerForm').bootstrapValidator({
+    $('#fieldContainerForm').bootstrapValidator({
         fields: {
             firstName: {
                 container: '#firstNameMessage',
@@ -771,9 +931,8 @@ $(document).ready(function() {
                             </div>
                         </div>
                     </section>
-                    <!-- /field:container -->
 
-                    <!-- field:selector -->
+                    <!-- field-selector -->
                     <section>
                         <h3 id="field-selector">selector: String</h3>
                         <p>The CSS selector to indicate the field. It is used in case that it's not possible to use the <code>name</code> attribute for the field.</p>
@@ -886,9 +1045,8 @@ $(document).ready(function() {
 
                         <p>As you see, the field can be defined by a ID (<code>#ccNumber</code>), class (<code>.cvvNumber</code>) or attribute (<code>[data-stripe="exp-month"]</code>) selector.</p>
                     </section>
-                    <!-- /field:selector -->
 
-                    <!-- field:threshold -->
+                    <!-- field-threshold -->
                     <section>
                         <h3 id="field-threshold">threshold: Number</h3>
                         <p>Do not live validate field until the length of field value exceed this number.</p>
@@ -1064,9 +1222,8 @@ $(document).ready(function() {
                             </div>
                         </div>
                     </section>
-                    <!-- /field:threshold -->
 
-                    <!-- field:trigger -->
+                    <!-- field-trigger -->
                     <section>
                         <h3 id="field-trigger">trigger: String</h3>
                         <p>The field events (separated by a space) which are fired when the live validating mode is enabled.</p>
@@ -1176,7 +1333,6 @@ $(document).ready(function() {
                             </div>
                         </div>
                     </section>
-                    <!-- /field:trigger -->
                 </section>
                 <!-- /field -->
 
@@ -1779,6 +1935,7 @@ $(document).ready(function() {
                         </section>
                     </section>
 
+                    <!-- dynamic-message -->
                     <section>
                         <h3 id="dynamic-message">Dynamic message<span class="pull-right bv-news"></span></h3>
                         <p>Looking back to the <a href="#dynamic-option-element">zipcode example</a> above, you will realize that the message is static:</p>
@@ -2651,6 +2808,44 @@ $(document).ready(function() {
     });
 
     $('#containerForm').bootstrapValidator({
+        container: 'tooltip',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        submitHandler: function(validator, form) {
+            // Do nothing
+        },
+        fields: {
+            firstName: {
+                validators: {
+                    notEmpty: {
+                        message: 'The first name is required'
+                    }
+                }
+            },
+            lastName: {
+                validators: {
+                    notEmpty: {
+                        message: 'The last name is required'
+                    }
+                }
+            },
+            phone: {
+                validators: {
+                    digits: {
+                        message: 'The phone number can contain digits only'
+                    },
+                    notEmpty: {
+                        message: 'The phone number is required'
+                    }
+                }
+            }
+        }
+    });
+
+    $('#fieldContainerForm').bootstrapValidator({
         message: 'This value is not valid',
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
@@ -2796,7 +2991,7 @@ $(document).ready(function() {
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
-        submitHandler: function(validator, form, submitButton) {
+        submitHandler: function(validator, form) {
             // Do nothing
         },
         threshold: 3,
