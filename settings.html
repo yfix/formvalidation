@@ -49,6 +49,7 @@ next_section:     /validators/
                     <li><a href="#field-container">container</a></li>
                     <li><a href="#field-enabled">enabled</a></li>
                     <li><a href="#field-excluded">excluded<span class="pull-right bv-news"></span></a></li>
+                    <li><a href="#field-feedback-icons">feedbackIcons<span class="pull-right bv-news"></span></a></li>
                     <li><a href="#field-group">group</a><span class="pull-right bv-news"></span></li>
                     <li><a href="#field-message">message</a></li>
                     <li><a href="#field-selector">selector</a></li>
@@ -287,7 +288,7 @@ $(document).ready(function() {
 
                                             <div class="form-group">
                                                 <div class="col-lg-9 col-lg-offset-3">
-                                                    <button type="submit" class="btn btn-primary">Validate</button>
+                                                    <button type="submit" class="btn btn-default">Validate</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -315,7 +316,7 @@ $(document).ready(function() {
 
     <div class="form-group">
         <div class="col-lg-9 col-lg-offset-3">
-            <button type="submit" class="btn btn-primary">Validate</button>
+            <button type="submit" class="btn btn-default">Validate</button>
         </div>
     </div>
 </form>
@@ -462,8 +463,7 @@ feedbackIcons: {
 }
 {% endhighlight %}
 
-                        <p>By default, these icons are not set.</p>
-                        <p>There are two popular questions with the feedback icon usage:</p>
+                        <p>By default, these icons are not set. You also can <a href="#field-feedback-icons">enabled or disable</a> feedback icon for particular field.</p>
 
                         <div class="bv-box bv-box-info">
                             <h5 id="using-with-bootswatch"><i></i> Using with Bootswatch</h5>
@@ -731,7 +731,7 @@ $(document).ready(function() {
                                                 </tbody>
                                             </table>
 
-                                            <button type="submit" class="btn btn-primary">Validate</button>
+                                            <button type="submit" class="btn btn-default">Validate</button>
                                         </form>
                                     </div>
 
@@ -783,7 +783,7 @@ $(document).ready(function() {
         </tbody>
     </table>
 
-    <button type="submit" class="btn btn-primary">Validate</button>
+    <button type="submit" class="btn btn-default">Validate</button>
 </form>
 {% endhighlight %}
                                     </div>
@@ -974,6 +974,10 @@ submitHandler: function(validator, form) {
                                 <td><code>data-bv-excluded</code></td>
                             </tr>
                             <tr>
+                                <td><code>feedbackIcons</code> <span class="bv-news"></span></td>
+                                <td><code>data-bv-feedbackicons</code></td>
+                            </tr>
+                            <tr>
                                 <td><code>group</code> <span class="bv-news"></span></td>
                                 <td><code>data-bv-group</code></td>
                             </tr>
@@ -1121,6 +1125,135 @@ $(document).ready(function() {
                     <section>
                         <h3 id="field-enabled">enabled: Boolean</h3>
                         <p>Enable or disable the field validators</p>
+                    </section>
+
+                    <!-- field-feedback-icons -->
+                    <section>
+                        <h3 id="field-feedback-icons">feedbackIcons: Boolean <span class="pull-right bv-news"></span></h3>
+                        <p>Enable or disable feedback icons.</p>
+
+                        <section>
+                            <h4 id="field-feedback-icons-example">Example</h4>
+                            <p>The form below disables the feedback icons for field by setting <code>feedbackIcons: false</code> or <code>feedbackIcons: 'false'</code></p>
+
+                            <div class="bv-example">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#field-icons-form-tab" data-toggle="tab">Try it</a></li>
+                                    <li><a href="#field-icons-html-tab" data-toggle="tab">HTML</a></li>
+                                    <li><a href="#field-icons-js-tab" data-toggle="tab">JS</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="field-icons-form-tab">
+                                        <form id="fieldIconsForm" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Address</label>
+                                                <div class="col-lg-5">
+                                                    <input type="text" class="form-control" name="address" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">City</label>
+                                                <div class="col-lg-5">
+                                                    <input type="text" class="form-control" name="city" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Phone number</label>
+                                                <div class="col-lg-5">
+                                                    <input type="text" class="form-control" name="phone" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-lg-5 col-lg-offset-3">
+                                                    <button type="submit" class="btn btn-default">Validate</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane" id="field-icons-html-tab">
+{% highlight html %}
+<form id="fieldIconsForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Address</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="address" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-3 control-label">City</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="city" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Phone number</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="phone" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-5 col-lg-offset-3">
+            <button type="submit" class="btn btn-default">Validate</button>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+                                    </div>
+
+                                    <div class="tab-pane" id="field-icons-js-tab">
+{% highlight javascript hl_lines="10 18 26" %}
+$(document).ready(function() {
+    $('#fieldIconsForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            address: {
+                feedbackIcons: 'false',
+                validators: {
+                    notEmpty: {
+                        message: 'The address is required and cannot be empty'
+                    }
+                }
+            },
+            city: {
+                feedbackIcons: false,
+                validators: {
+                    notEmpty: {
+                        message: 'The city is required and cannot be empty'
+                    }
+                }
+            },
+            phone: {
+                feedbackIcons: true,
+                validators: {
+                    notEmpty: {
+                        message: 'The phone number is required and cannot be empty'
+                    },
+                    phone: {
+                        country: 'US',
+                        message: 'The phone number is not valid'
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                     </section>
 
                     <!-- field-group -->
@@ -1304,7 +1437,7 @@ $(document).ready(function() {
                                         </div>
                                         <div class="form-group">
                                             <div class="col-lg-9 col-lg-offset-3">
-                                                <button type="submit" class="btn btn-primary">Validate</button>
+                                                <button type="submit" class="btn btn-default">Validate</button>
                                             </div>
                                         </div>
                                     </form>
@@ -1357,7 +1490,7 @@ $(document).ready(function() {
 
     <div class="form-group">
         <div class="col-lg-9 col-lg-offset-3">
-            <button type="submit" class="btn btn-primary">Validate</button>
+            <button type="submit" class="btn btn-default">Validate</button>
         </div>
     </div>
 </form>
@@ -3119,6 +3252,47 @@ $(document).ready(function() {
                         min: 6,
                         max: 30,
                         message: 'The username must be more than 6 and less than 30 characters long'
+                    }
+                }
+            }
+        }
+    });
+
+    $('#fieldIconsForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        submitHandler: function(validator, form) {
+            // Do nothing
+        },
+        fields: {
+            address: {
+                feedbackIcons: 'false',
+                validators: {
+                    notEmpty: {
+                        message: 'The address is required and cannot be empty'
+                    }
+                }
+            },
+            city: {
+                feedbackIcons: false,
+                validators: {
+                    notEmpty: {
+                        message: 'The city is required and cannot be empty'
+                    }
+                }
+            },
+            phone: {
+                feedbackIcons: true,
+                validators: {
+                    notEmpty: {
+                        message: 'The phone number is required and cannot be empty'
+                    },
+                    phone: {
+                        country: 'US',
+                        message: 'The phone number is not valid'
                     }
                 }
             }
