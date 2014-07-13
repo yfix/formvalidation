@@ -59,7 +59,8 @@ next_section:     /validators/
 
                 <h4><a href="#validator-settings">Validator settings</a></h4>
                 <ul>
-                    <li><a href="#field-message">message</a></li>
+                    <li><a href="#validator-enabled">enabled<span class="pull-right bv-news"></span></a></li>
+                    <li><a href="#validator-message">message</a></li>
                     <li>
                         <a href="#dynamic-option">Dynamic option<span class="pull-right bv-news"></span></a>
                         <ul>
@@ -1124,7 +1125,8 @@ $(document).ready(function() {
 
                     <section>
                         <h3 id="field-enabled">enabled: Boolean</h3>
-                        <p>Enable or disable the field validators</p>
+                        <p>Enable or disable the field validators.</p>
+                        <p>If you want to enable or disable particular validator, use validator's <a href="#validator-enabled">enabled</a> option or <a href="/api/#enable-field-validators">enableFieldValidators()</a> method.</p>
                     </section>
 
                     <!-- field-feedback-icons -->
@@ -1685,11 +1687,165 @@ $(document).ready(function() {
                         </thead>
                         <tbody>
                             <tr>
+                                <td><code>enabled</code></td>
+                                <td><code>data-bv-{validatorname}</code></td>
+                            </tr>
+                            <tr>
                                 <td><code>message</code></td>
                                 <td><code>data-bv-{validatorname}-message</code></td>
                             </tr>
                         </tbody>
                     </table>
+
+                    <!-- validator-enabled -->
+                    <section>
+                        <h3 id="validator-enabled">enabled: Boolean<span class="pull-right bv-news"></span></h3>
+                        <p>Indicate the validator is enabled or disabled. It is <code>true</code>, by default.</p>
+                        <p>Look at the field's <a href="#field-enabled">enabled</a> option if you want to enable/disable all validators.</p>
+                        <p>The table below shows three equivalent ways to enable or disable given validator:</p>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Usage</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>HTML 5 attribute</td>
+                                    <td>
+{% highlight html hl_lines="2 5 8" %}
+<!-- Enable validator -->
+<input class="form-control" name="fullName" data-bv-notempty />
+
+<!-- or -->
+<input class="form-control" name="fullName" data-bv-notempty="true" />
+
+<!-- Disable validator -->
+<input class="form-control" name="fullName" data-bv-notempty="false" />
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Plugin option</td>
+                                    <td>
+{% highlight javascript hl_lines="7" %}
+$(document).ready(function() {
+    $(form).bootstrapValidator({
+        fields: {
+            fullName: {
+                validators: {
+                    notEmpty: {
+                        enabled: true   // or false
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                                    </td>
+                                <tr>
+                                    <td><a href="/api/#enable-field-validators">enableFieldValidators()</a></td>
+                                    <td>
+{% highlight javascript hl_lines="3 7" %}
+// Enable validator
+$(form)
+    .bootstrapValidator('enableFieldValidators', fullName, 'notEmpty', true);
+
+// Disable validator
+$(form)
+    .bootstrapValidator('enableFieldValidators', fullName, 'notEmpty', false);
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <section>
+                            <h4 id="validator-enabled-example">Example</h4>
+                            <div class="bv-example">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#validator-enabled-form-tab" data-toggle="tab">Try it</a></li>
+                                    <li><a href="#validator-enabled-html-tab" data-toggle="tab">HTML</a></li>
+                                    <li><a href="#validator-enabled-js-tab" data-toggle="tab">JS</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="validator-enabled-form-tab">
+                                        <form id="validatorEnabledForm" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Full name</label>
+                                                <div class="col-lg-5">
+                                                    <input type="text" class="form-control" name="fullName" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-lg-5 col-lg-offset-3">
+                                                    <button type="submit" class="btn btn-default">Validate</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane" id="validator-enabled-html-tab">
+{% highlight html %}
+<form id="validatorEnabledForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Full name</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="fullName" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-5 col-lg-offset-3">
+            <button type="submit" class="btn btn-default">Validate</button>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+                                    </div>
+
+                                    <div class="tab-pane" id="validator-enabled-js-tab">
+{% highlight javascript hl_lines="12 16 22" %}
+$(document).ready(function() {
+    $('#validatorEnabledForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            fullName: {
+                validators: {
+                    notEmpty: {
+                        // enabled is true, by default
+                        message: 'The full name is required and cannot be empty'
+                    },
+                    stringLength: {
+                        enabled: true,
+                        min: 8,
+                        max: 40,
+                        message: 'The full name must be more than 8 and less than 40 characters long'
+                    },
+                    regexp: {
+                        enabled: false,
+                        regexp: /^[a-zA-Z\s]+$/,
+                        message: 'The full name can only consist of alphabetical, number, and space'
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
 
                     <section>
                         <h3 id="validator-message">message: String</h3>
@@ -3476,6 +3632,38 @@ $(document).ready(function() {
                 validators: {
                     notEmpty: {
                         message: 'The description is required'
+                    }
+                }
+            }
+        }
+    });
+
+    $('#validatorEnabledForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        submitHandler: function(validator, form) {
+            // Do nothing
+        },
+        fields: {
+            fullName: {
+                validators: {
+                    notEmpty: {
+                        // enabled is true, by default
+                        message: 'The full name is required and cannot be empty'
+                    },
+                    stringLength: {
+                        enabled: true,
+                        min: 8,
+                        max: 40,
+                        message: 'The full name must be more than 8 and less than 40 characters long'
+                    },
+                    regexp: {
+                        enabled: false,
+                        regexp: /^[a-zA-Z\s]+$/,
+                        message: 'The full name can only consist of alphabetical, number, and space'
                     }
                 }
             }
