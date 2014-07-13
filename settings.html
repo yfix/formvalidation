@@ -34,6 +34,7 @@ next_section:     /validators/
                     <li><a href="#form-container">container<span class="pull-right bv-news"></span></a></li>
                     <li><a href="#form-excluded">excluded</a></li>
                     <li><a href="#form-feedback-icons">feedbackIcons</a></li>
+                    <li><a href="#form-group">group</a><span class="pull-right bv-news"></span></li>
                     <li><a href="#form-live">live</a></li>
                     <li><a href="#form-message">message</a></li>
                     <li><a href="#form-submit-buttons">submitButtons</a></li>
@@ -48,6 +49,7 @@ next_section:     /validators/
                     <li><a href="#field-container">container</a></li>
                     <li><a href="#field-enabled">enabled</a></li>
                     <li><a href="#field-excluded">excluded<span class="pull-right bv-news"></span></a></li>
+                    <li><a href="#field-group">group</a><span class="pull-right bv-news"></span></li>
                     <li><a href="#field-message">message</a></li>
                     <li><a href="#field-selector">selector</a></li>
                     <li><a href="#field-threshold">threshold</a></li>
@@ -181,6 +183,11 @@ $(document).ready(function() {
 }
 {% endhighlight %}
                                 </td>
+                            </tr>
+                            <tr>
+                                <td><code>group</code> <span class="bv-news"></span></td>
+                                <td><code>data-bv-group</code></td>
+                                <td><code>'.form-group'</code></td>
                             </tr>
                             <tr>
                                 <td><code>live</code></td>
@@ -373,34 +380,34 @@ $(document).ready(function() {
                         <p>The setting consists of jQuery filters. Accept 3 formats:</p>
                         <table class="table table-condensed">
                             <thead>
-                            <tr>
-                                <th>Format</th>
-                                <th>Description</th>
-                            </tr>
+                                <tr>
+                                    <th>Format</th>
+                                    <th>Description</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>String</td>
-                                <td>
-                                    <p>Filters are separated by a comma. For example:</p>
+                                <tr>
+                                    <td>String</td>
+                                    <td>
+                                        <p>Filters are separated by a comma. For example:</p>
 {% highlight javascript %}
 ':disabled, :hidden, :not(:visible)'
 {% endhighlight %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Array of strings</td>
-                                <td>
-                                    <p>Each element is a filter. For example:</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Array of strings</td>
+                                    <td>
+                                        <p>Each element is a filter. For example:</p>
 {% highlight javascript %}
 [':disabled', ':hidden', ':not(:visible)']
 {% endhighlight %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Array of strings and callback functions</td>
-                                <td>
-                                    <p>The callback function has format as below:</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Array of strings and callback functions</td>
+                                    <td>
+                                        <p>The callback function has format as below:</p>
 {% highlight javascript %}
 function($field, validator) {
     // $field is jQuery object representing the field element
@@ -408,14 +415,14 @@ function($field, validator) {
     // return true or false;
 }
 {% endhighlight %}
-                                    <p>For example:</p>
+                                        <p>For example:</p>
 {% highlight javascript %}
 [':disabled', ':hidden', function($field, validator) {
     // Do not validate invisible element
     return !$field.is(':visible');
 }]{% endhighlight %}
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                         <p>It is also possible to <a href="#field-excluded">excluded</a> particular field.</p>
@@ -654,6 +661,179 @@ $(document).ready(function() {
                         </div>
                     </section>
 
+                    <!-- form-group -->
+                    <section>
+                        <h3 id="form-group">group: String <span class="pull-right bv-news"></span></h3>
+                        <p>CSS selector indicates the parent element of field. By default, it is <code>.form-group</code>.</p>
+                        <p>Following Bootstrap form structure, each field and its label are wrapped inside <code>.form-group</code> element.</p>
+                        <p>This option might be used in the following cases:</p>
+                        <ul>
+                            <li>The form uses a custom CSS class for each group</li>
+                            <li>Each group consist of more than one field</li>
+                        </ul>
+
+                        <p>You also can specify the <a href="#field-group">group</a> for particular field.</p>
+
+                        <section>
+                            <h4 id="form-group-example">Example</h4>
+                            <p>In the following form, each field is placed inside a cell of table. The error messages are placed inside a <a href="#form-container">tooltip</a>.</p>
+                            <style type="text/css">
+                            #groupForm i.form-control-feedback {
+                                top: 5px !important;
+                                right: 5px;
+                            }
+                            </style>
+                            <div class="bv-example">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#form-group-form-tab" data-toggle="tab">Try it</a></li>
+                                    <li><a href="#form-group-html-tab" data-toggle="tab">HTML</a></li>
+                                    <li><a href="#form-group-js-tab" data-toggle="tab">JS</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="form-group-form-tab">
+                                        <p>We would like to know 5 recent projects you have done:</p>
+                                        <form id="groupForm">
+                                            <table class="table table-condensed">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Project</th>
+                                                        <th>Role</th>
+                                                        <th>URL</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><input type="text" class="form-control" name="project[]" /></td>
+                                                        <td><input type="text" class="form-control" name="role[]" /></td>
+                                                        <td><input type="text" class="form-control" name="url[]" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="text" class="form-control" name="project[]" /></td>
+                                                        <td><input type="text" class="form-control" name="role[]" /></td>
+                                                        <td><input type="text" class="form-control" name="url[]" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="text" class="form-control" name="project[]" /></td>
+                                                        <td><input type="text" class="form-control" name="role[]" /></td>
+                                                        <td><input type="text" class="form-control" name="url[]" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="text" class="form-control" name="project[]" /></td>
+                                                        <td><input type="text" class="form-control" name="role[]" /></td>
+                                                        <td><input type="text" class="form-control" name="url[]" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="text" class="form-control" name="project[]" /></td>
+                                                        <td><input type="text" class="form-control" name="role[]" /></td>
+                                                        <td><input type="text" class="form-control" name="url[]" /></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <button type="submit" class="btn btn-primary">Validate</button>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane" id="form-group-html-tab">
+{% highlight html hl_lines="4 5" %}
+<style type="text/css">
+/* Adjust feeback icon position */
+#groupForm i.form-control-feedback {
+    top: 5px !important;
+    right: 5px;
+}
+</style>
+
+<form id="groupForm">
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>Project</th>
+                <th>Role</th>
+                <th>URL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" class="form-control" name="project[]" /></td>
+                <td><input type="text" class="form-control" name="role[]" /></td>
+                <td><input type="text" class="form-control" name="url[]" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="form-control" name="project[]" /></td>
+                <td><input type="text" class="form-control" name="role[]" /></td>
+                <td><input type="text" class="form-control" name="url[]" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="form-control" name="project[]" /></td>
+                <td><input type="text" class="form-control" name="role[]" /></td>
+                <td><input type="text" class="form-control" name="url[]" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="form-control" name="project[]" /></td>
+                <td><input type="text" class="form-control" name="role[]" /></td>
+                <td><input type="text" class="form-control" name="url[]" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="form-control" name="project[]" /></td>
+                <td><input type="text" class="form-control" name="role[]" /></td>
+                <td><input type="text" class="form-control" name="url[]" /></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-primary">Validate</button>
+</form>
+{% endhighlight %}
+                                    </div>
+
+                                    <div class="tab-pane" id="form-group-js-tab">
+{% highlight javascript hl_lines="3 4" %}
+$(document).ready(function() {
+    $('#groupForm').bootstrapValidator({
+        container: 'tooltip',
+        group: 'td',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            'project[]': {
+                validators: {
+                    notEmpty: {
+                        message: 'The project name is required'
+                    }
+                }
+            },
+            'role[]': {
+                validators: {
+                    notEmpty: {
+                        message: 'The role is required'
+                    }
+                }
+            },
+            'url[]': {
+                validators: {
+                    notEmpty: {
+                        message: 'The URL is required'
+                    },
+                    uri: {
+                        message: 'The URL is invalid'
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+
                     <!-- form-live -->
                     <section>
                         <h3 id="form-live">live: String</h3>
@@ -792,6 +972,10 @@ submitHandler: function(validator, form) {
                             <tr>
                                 <td><code>excluded</code> <span class="bv-news"></span></td>
                                 <td><code>data-bv-excluded</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>group</code> <span class="bv-news"></span></td>
+                                <td><code>data-bv-group</code></td>
                             </tr>
                             <tr>
                                 <td><code>message</code></td>
@@ -937,6 +1121,12 @@ $(document).ready(function() {
                     <section>
                         <h3 id="field-enabled">enabled: Boolean</h3>
                         <p>Enable or disable the field validators</p>
+                    </section>
+
+                    <!-- field-group -->
+                    <section>
+                        <h3 id="field-group">group: String <span class="pull-right bv-news"></span></h3>
+                        <p>CSS selector indicates the parent element of field. By default, it is <code>.form-group</code>.</p>
                     </section>
 
                     <section>
@@ -2783,41 +2973,6 @@ $(document).ready(function() {
                 .updateStatus('dob', 'NOT_VALIDATED', null)
                 .validateField('dob');
         });
-    $('#feedbackIconForm').bootstrapValidator({
-        message: 'This value is not valid',
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            fullName: {
-                validators: {
-                    notEmpty: {
-                        message: 'The full name is required and cannot be empty'
-                    }
-                }
-            },
-            gender: {
-                validators: {
-                    notEmpty: {
-                        message: 'The gender is required and cannot be empty'
-                    }
-                }
-            },
-            dob: {
-                validators: {
-                    notEmpty: {
-                        message: 'The date of birth is required and cannot be empty'
-                    },
-                    date: {
-                        format: 'YYYY/DD/MM',
-                        message: 'The value is not a valid date'
-                    }
-                }
-            }
-        }
-    });
 
     $('#containerForm').bootstrapValidator({
         container: 'tooltip',
@@ -2857,8 +3012,81 @@ $(document).ready(function() {
         }
     });
 
+    $('#feedbackIconForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            fullName: {
+                validators: {
+                    notEmpty: {
+                        message: 'The full name is required and cannot be empty'
+                    }
+                }
+            },
+            gender: {
+                validators: {
+                    notEmpty: {
+                        message: 'The gender is required and cannot be empty'
+                    }
+                }
+            },
+            dob: {
+                validators: {
+                    notEmpty: {
+                        message: 'The date of birth is required and cannot be empty'
+                    },
+                    date: {
+                        format: 'YYYY/DD/MM',
+                        message: 'The value is not a valid date'
+                    }
+                }
+            }
+        }
+    });
+
+    $('#groupForm').bootstrapValidator({
+        container: 'tooltip',
+        group: 'td',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        submitHandler: function(validator, form) {
+            // Do nothing
+        },
+        fields: {
+            'project[]': {
+                validators: {
+                    notEmpty: {
+                        message: 'The project name is required'
+                    }
+                }
+            },
+            'role[]': {
+                validators: {
+                    notEmpty: {
+                        message: 'The role is required'
+                    }
+                }
+            },
+            'url[]': {
+                validators: {
+                    notEmpty: {
+                        message: 'The URL is required'
+                    },
+                    uri: {
+                        message: 'The URL is invalid'
+                    }
+                }
+            }
+        }
+    });
+
     $('#fieldContainerForm').bootstrapValidator({
-        message: 'This value is not valid',
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
@@ -2997,7 +3225,6 @@ $(document).ready(function() {
     });
 
     $('#thresholdForm').bootstrapValidator({
-        message: 'This value is not valid',
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
@@ -3049,7 +3276,6 @@ $(document).ready(function() {
     });
 
     $('#triggerForm').bootstrapValidator({
-        message: 'This value is not valid',
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
