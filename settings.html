@@ -27,39 +27,57 @@ next_section:     /validators/
     <div class="row">
         <div class="col-md-3">
             <div class="bv-sidebar">
+                <h4><a href="#settings-structure">Settings structure</a></h4>
+
+                <h4><a href="#form-settings">Form settings</a></h4>
                 <ul>
-                    <li><a href="#settings-structure">Settings Structure</a></li>
+                    <li><a href="#form-container">container<span class="pull-right bv-news"></span></a></li>
+                    <li><a href="#form-excluded">excluded</a></li>
+                    <li><a href="#form-feedback-icons">feedbackIcons</a></li>
+                    <li><a href="#form-group">group</a><span class="pull-right bv-news"></span></li>
+                    <li><a href="#form-live">live</a></li>
+                    <li><a href="#form-message">message</a></li>
+                    <li><a href="#form-submit-buttons">submitButtons</a></li>
+                    <li><a href="#form-threshold">threshold</a></li>
+                    <li><a href="#form-trigger">trigger</a></li>
+                    <li><a href="#form-fields">fields</a></li>
+                </ul>
+
+                <h4><a href="#field-settings">Field settings</a></h4>
+                <ul>
+                    <li><a href="#field-container">container</a></li>
+                    <li><a href="#field-enabled">enabled</a></li>
+                    <li><a href="#field-excluded">excluded<span class="pull-right bv-news"></span></a></li>
+                    <li><a href="#field-feedback-icons">feedbackIcons<span class="pull-right bv-news"></span></a></li>
+                    <li><a href="#field-group">group</a><span class="pull-right bv-news"></span></li>
+                    <li><a href="#field-message">message</a></li>
+                    <li><a href="#field-selector">selector</a></li>
+                    <li><a href="#field-threshold">threshold</a></li>
+                    <li><a href="#field-trigger">trigger</a></li>
+                </ul>
+
+                <h4><a href="#validator-settings">Validator settings</a></h4>
+                <ul>
+                    <li><a href="#validator-enabled">enabled<span class="pull-right bv-news"></span></a></li>
+                    <li><a href="#validator-message">message</a></li>
                     <li>
-                        <a href="#form-settings">Form Settings</a>
+                        <a href="#dynamic-option">Dynamic option<span class="pull-right bv-news"></span></a>
                         <ul>
-                            <li><a href="#form-excluded">excluded</a></li>
-                            <li><a href="#form-feedback-icons">feedbackIcons</a></li>
-                            <li><a href="#form-live">live</a></li>
-                            <li><a href="#form-message">message</a></li>
-                            <li><a href="#form-submit-buttons">submitButtons</a></li>
-                            <li><a href="#form-submit-handler">submitHandler</a></li>
-                            <li><a href="#form-threshold">threshold</a></li>
-                            <li><a href="#form-trigger">trigger</a></li>
-                            <li><a href="#form-fields">fields</a></li>
+                            <li><a href="#dynamic-option-validators">Supported validators</a></li>
+                            <li><a href="#dynamic-option-string">Using string</a></li>
+                            <li><a href="#dynamic-option-element">Using element</a></li>
+                            <li><a href="#dynamic-option-function-name">Using function name</a></li>
+                            <li><a href="#dynamic-option-callback">Using function</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="#field-settings">Field Settings</a>
-                        <ul>
-                            <li><a href="#field-enabled">enabled</a></li>
-                            <li><a href="#field-message">message</a></li>
-                            <li><a href="#field-container">container</a></li>
-                            <li><a href="#field-selector">selector</a></li>
-                            <li><a href="#field-threshold">threshold</a></li>
-                            <li><a href="#field-trigger">trigger</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#validator-settings">Validator Settings</a>
-                        <ul>
-                            <li><a href="#field-message">message</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="#dynamic-message">Dynamic message<span class="pull-right bv-news"></span></a></li>
+                </ul>
+
+                <h4><a href="#events">Events<span class="pull-right bv-news"></span></a></h4>
+                <ul>
+                    <li><a href="#event-form">Form events</a></li>
+                    <li><a href="#event-field">Field events</a></li>
+                    <li><a href="#event-validator">Validator events</a></li>
                 </ul>
             </div>
         </div>
@@ -67,14 +85,15 @@ next_section:     /validators/
         <div class="col-md-9">
             <div class="bv-content">
                 <section>
-                    <h2 id="settings-structure">Settings Structure</h2>
+                    <h2 id="settings-structure">Settings structure</h2>
                     <p>There are three levels of settings which are form, field, and validators.</p>
                     <p>The BootstrapValidator plugin can be called as following:</p>
-                    <pre><code class="javascript">$(formSelector).bootstrapValidator({
-    ... form settings go here ...
+{% highlight javascript %}
+$(formSelector).bootstrapValidator({
+    ... Form settings go here ...
     fields: {
         specificFieldName: {
-            ... field settings go here ...
+            ... Field settings go here ...
 
             validators: {
                 specificValidatorName: {
@@ -85,11 +104,13 @@ next_section:     /validators/
             }
         }
     }
-});</code></pre>
+});
+{% endhighlight %}
 
                     <p>Most of settings can be set via HTML 5 attributes prefixed with <code>data-bv</code>.</p>
                     <p>For example, the following call:</p>
-                    <pre><code class="javascript">$(formSelector).bootstrapValidator({
+{% highlight javascript %}
+$(formSelector).bootstrapValidator({
     excluded: [':disabled', ':hidden', ':not(:visible)'],
     feedbackIcons: {
         valid: 'glyphicon glyphicon-ok',
@@ -99,35 +120,35 @@ next_section:     /validators/
     live: 'enabled',
     message: 'This value is not valid',
     submitButtons: 'button[type="submit"]',
-    submitHandler: null,
     trigger: null,
     fields: ...
-});</code></pre>
+});
+{% endhighlight %}
                     <p>is equivalent with the one below:</p>
-                    <pre><code class="xml javascript">&lt;form data-bv-message="This value is not valid"
+{% highlight html %}
+<form data-bv-message="This value is not valid"
       data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
       data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
       data-bv-feedbackicons-validating="glyphicon glyphicon-refresh"
       data-bv-submitbuttons='button[type="submit"]'
       data-bv-live="enabled">
     ...
-&lt;/form>
-
-&lt;script>
+</form>
+{% endhighlight %}
+{% highlight javascript %}
 $(document).ready(function() {
     $(formSelector).bootstrapValidator({
-        submitHandler: null,
         fields: ...
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
 
                     <p>In the next sections, you will see the full list of options for each level.</p>
                 </section>
 
                 <!-- form -->
                 <section>
-                    <h2 id="form-settings">Form Settings</h2>
+                    <h2 id="form-settings">Form settings</h2>
 
                     <p>Below is the list of settings for form:</p>
                     <table class="table table-condensed">
@@ -140,6 +161,11 @@ $(document).ready(function() {
                         </thead>
                         <tbody>
                             <tr>
+                                <td><code>container</code> <span class="bv-news"></span></td>
+                                <td><code>data-bv-container</code></td>
+                                <td>n/a</td>
+                            </tr>
+                            <tr>
                                 <td><code>excluded</code></td>
                                 <td><code>data-bv-excluded</code></td>
                                 <td><code>[':disabled', ':hidden', ':not(:visible)']</code></td>
@@ -147,11 +173,20 @@ $(document).ready(function() {
                             <tr>
                                 <td><code>feedbackIcons</code></td>
                                 <td><code>data-bv-feedbackicons-valid</code>, <code>data-bv-feedbackicons-invalid</code>, <code>data-bv-feedbackicons-validating</code></td>
-                                <td><pre><code class="javascript">{
+                                <td>
+{% highlight javascript %}
+{
     valid: null,
     invalid: null,
     validating: null
-}</code></pre></td>
+}
+{% endhighlight %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>group</code> <span class="bv-news"></span></td>
+                                <td><code>data-bv-group</code></td>
+                                <td><code>'.form-group'</code></td>
                             </tr>
                             <tr>
                                 <td><code>live</code></td>
@@ -167,11 +202,6 @@ $(document).ready(function() {
                                 <td><code>submitButtons</code></td>
                                 <td><code>data-bv-submitbuttons</code></td>
                                 <td><code>'[type="submit"]'</code></td>
-                            </tr>
-                            <tr>
-                                <td><code>submitHandler</code></td>
-                                <td>n/a</td>
-                                <td><code>null</code></td>
                             </tr>
                             <tr>
                                 <td><code>threshold</code></td>
@@ -190,8 +220,148 @@ $(document).ready(function() {
                             </tr>
                         </tbody>
                     </table>
+                    
+                    <!-- form-container -->
+                    <section>
+                        <h3 id="form-container">container: String <span class="pull-right bv-news"></span></h3>
+                        <p>Indicate where the error messages are shown.</p>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Value</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CSS selector</td>
+                                    <td>All error messages are placed in element defined by this CSS selector</td>
+                                </tr>
+                                <tr>
+                                    <td><code>tooltip</code></td>
+                                    <td>Error messages of each field are placed inside a <a href="http://getbootstrap.com/javascript/#tooltips">Bootstrap tooltip</a>.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>popover</code></td>
+                                    <td>Error messages of each field are placed inside a <a href="http://getbootstrap.com/javascript/#popovers">Bootstrap popover</a>.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>This option can be <a href="#field-container">overridden</a> by particular field.</p>
 
-                    <!-- form:excluded -->
+                        <section>
+                            <h4 id="form-container-example">Example</h4>
+                            <p>The following form uses <a href="http://getbootstrap.com/javascript/#tooltips">Bootstrap tooltip</a> to show the error message.</p>
+                            <div class="bv-example">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#container-form-tab" data-toggle="tab">Try it</a></li>
+                                    <li><a href="#container-html-tab" data-toggle="tab">HTML</a></li>
+                                    <li><a href="#container-js-tab" data-toggle="tab">JS</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="container-form-tab">
+                                        <form id="containerForm" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Full name</label>
+                                                <div class="col-lg-4">
+                                                    <input type="text" class="form-control" name="firstName" placeholder="First name" />
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <input type="text" class="form-control" name="lastName" placeholder="Last name" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Phone number</label>
+                                                <div class="col-lg-5">
+                                                    <input type="text" class="form-control" name="phone" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-lg-9 col-lg-offset-3">
+                                                    <button type="submit" class="btn btn-default">Validate</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane" id="container-html-tab">
+{% highlight html %}
+<form id="containerForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Full name</label>
+        <div class="col-lg-4">
+            <input type="text" class="form-control" name="firstName" placeholder="First name" />
+        </div>
+        <div class="col-lg-4">
+            <input type="text" class="form-control" name="lastName" placeholder="Last name" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Phone number</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="phone" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-9 col-lg-offset-3">
+            <button type="submit" class="btn btn-default">Validate</button>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+                                    </div>
+
+                                    <div class="tab-pane" id="container-js-tab">
+{% highlight javascript hl_lines="3" %}
+$(document).ready(function() {
+    $('#containerForm').bootstrapValidator({
+        container: 'tooltip',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            firstName: {
+                validators: {
+                    notEmpty: {
+                        message: 'The first name is required'
+                    }
+                }
+            },
+            lastName: {
+                validators: {
+                    notEmpty: {
+                        message: 'The last name is required'
+                    }
+                }
+            },
+            phone: {
+                validators: {
+                    digits: {
+                        message: 'The phone number can contain digits only'
+                    },
+                    notEmpty: {
+                        message: 'The phone number is required'
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+
+                    <!-- form-excluded -->
                     <section>
                         <h3 id="form-excluded">excluded: Boolean</h3>
                         <p>Indicate fields which won't be validated.</p>
@@ -204,112 +374,128 @@ $(document).ready(function() {
                         <p>The setting consists of jQuery filters. Accept 3 formats:</p>
                         <table class="table table-condensed">
                             <thead>
-                            <tr>
-                                <th>Format</th>
-                                <th>Description</th>
-                            </tr>
+                                <tr>
+                                    <th>Format</th>
+                                    <th>Description</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>String</td>
-                                <td>
-                                    <p>Filters are separated by a comma. For example:</p>
-                                    <pre><code>':disabled, :hidden, :not(:visible)'</code></pre>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Array of strings</td>
-                                <td>
-                                    <p>Each element is a filter. For example:</p>
-                                    <pre><code class="javascript">[':disabled', ':hidden', ':not(:visible)']</code></pre>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Array of strings and callback functions</td>
-                                <td>
-                                    <p>The callback function has format as below:</p>
-                                    <pre><code class="javascript">function($field, validator) {
+                                <tr>
+                                    <td>String</td>
+                                    <td>
+                                        <p>Filters are separated by a comma. For example:</p>
+{% highlight javascript %}
+':disabled, :hidden, :not(:visible)'
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Array of strings</td>
+                                    <td>
+                                        <p>Each element is a filter. For example:</p>
+{% highlight javascript %}
+[':disabled', ':hidden', ':not(:visible)']
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Array of strings and callback functions</td>
+                                    <td>
+                                        <p>The callback function has format as below:</p>
+{% highlight javascript %}
+function($field, validator) {
     // $field is jQuery object representing the field element
     // validator is the BootstrapValidator instance
     // return true or false;
-}</code></pre>
-                                    <p>For example:</p>
-                                    <pre><code class="javascript">[':disabled', ':hidden', function($field, validator) {
+}
+{% endhighlight %}
+                                        <p>For example:</p>
+{% highlight javascript %}
+[':disabled', ':hidden', function($field, validator) {
     // Do not validate invisible element
     return !$field.is(':visible');
-}]</code></pre>
-                                </td>
-                            </tr>
+}]{% endhighlight %}
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
-                        <p>The <code>excluded</code> option is usually used when we need to validate the field generated by other UI plugin.</p>
-                        <p>For an usage, you can take a look at:</p>
-                        <ul>
-                            <li><a href="/examples/#tab">Tab</a> example</li>
-                            <li><a href="/examples/#raty">Raty</a> example</li>
-                        </ul>
-                    </section>
-                    <!-- /form:excluded -->
+                        <p>It is also possible to <a href="#field-excluded">excluded</a> particular field.</p>
 
-                    <!-- form:feedback-icons -->
+                        <p>The <code>excluded</code> option is usually used when we need to validate the field generated by other UI plugin.
+                            For an usage, you can take a look at <a href="/examples/#compatibility">compatibility</a> examples.</p>
+                    </section>
+
+                    <!-- form-feedback-icons -->
                     <section>
                         <h3 id="form-feedback-icons">feedbackIcons: Object</h3>
                         <p>Indicate valid/invalid/validating icons based on the field validity.</p>
-                        <p class="bv-box bv-box-warning">This feature requires <a href="http://getbootstrap.com/css/#forms-control-validation">Bootstrap v3.1.0 or later</a>.
-                        Since Bootstrap doesn't provide any methods to know its version, this option cannot be on/off automatically.
-                        In other word, to use this feature you have to upgrade your Bootstrap to v3.1.0 or later.</p>
+                        <div class="bv-box bv-box-warning">
+                            <h5 id="form-feedback-icons-require"><i></i>Require Bootstrap v3.1.0 or later</h5>
+                            <p>This feature requires <a href="http://getbootstrap.com/css/#forms-control-validation">Bootstrap v3.1.0 or later</a>.
+                            Since Bootstrap doesn't provide any methods to know its version, this option cannot be on/off automatically.
+                            In other word, to use this feature you have to upgrade your Bootstrap to v3.1.0 or later.</p>
+                        </div>
 
                         <p>It supports <a href="http://getbootstrap.com/components/#glyphicons">Glyphicons</a> (included in Bootstrap):</p>
 
-                        <pre><code class="javascript">feedbackIcons: {
+{% highlight javascript %}
+feedbackIcons: {
     valid: 'glyphicon glyphicon-ok',
     invalid: 'glyphicon glyphicon-remove',
     validating: 'glyphicon glyphicon-refresh'
-}</code></pre>
+}
+{% endhighlight %}
 
                         <p>and <a href="http://fontawesome.io/icons">FontAwesome</a> icons (don't forget to insert FontAwesome CSS in your <code>head</code>):</p>
 
-                        <pre><code class="javascript">feedbackIcons: {
+{% highlight javascript %}
+feedbackIcons: {
     valid: 'fa fa-check',
     invalid: 'fa fa-times',
     validating: 'fa fa-refresh'
-}</code></pre>
+}
+{% endhighlight %}
 
-                        <p>By default, these icons are not set.</p>
-                        <p>There are two popular questions with the feedback icon usage:</p>
+                        <p>By default, these icons are not set. You also can <a href="#field-feedback-icons">enabled or disable</a> feedback icon for particular field.</p>
 
-                        <section>
-                            <p class="bv-box bv-box-warning">The feedback icons aren't shown when using custom Bootstrap theme from <a href="http://bootswatch.com/">BootsWatch</a></p>
-
-                            <p>Some BootsWatch themes override some CSS styles causing feedback icon invisible to your eyes. For instance, the <a href="http://bootswatch.com/flatly/">Flatly theme</a> set the feedback icon color to <code>#FFF</code>.</p>
+                        <div class="bv-box bv-box-info">
+                            <h5 id="using-with-bootswatch"><i></i> Using with Bootswatch</h5>
+                            <p>Some <a href="http://bootswatch.com">BootsWatch</a> themes override some CSS styles causing feedback icon invisible to your eyes. For instance, the <a href="http://bootswatch.com/flatly/">Flatly theme</a> set the feedback icon color to <code>#FFF</code>.</p>
                             <p>To fix this, you can simply add some CSS to your <code>head</code>, right before the BootsWatch theme CSS, to reset the feedback icons color:</p>
-                            <pre><code class="xml">&lt;link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/flatly/bootstrap.min.css">
-&lt;style type="text/css">
+{% highlight html hl_lines="4 7" %}
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/flatly/bootstrap.min.css">
+<style type="text/css">
 .has-error .form-control-feedback {
     color: #E74C3C;
 }
 .has-success .form-control-feedback {
     color: #18BCA0;
 }
-&lt;/style></code></pre>
-                        </section>
+</style>
+{% endhighlight %}
+                        </div>
 
-                        <section>
-                            <p class="bv-box bv-box-warning">The feedback icons aren't shown properly for some elements such as select box or when using with other element such as <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Bootstrap Datetime Picker</a>, <a href="http://mjolnic.github.io/bootstrap-colorpicker/">Bootstrap Color Picker</a>, etc.</p>
+                        <div class="bv-box bv-box-info">
+                            <h5 id="adjusting-feedback-icon-position"><i></i>Adjusting feedback icon position</h5>
+                            <p>The feedback icons aren't shown properly for some elements such as select box or when using with other element such as <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Bootstrap Datetime Picker</a>, <a href="http://mjolnic.github.io/bootstrap-colorpicker/">Bootstrap Color Picker</a>, etc.</p>
                             <p>Bootstrap defines feedback icon position as following:</p>
-                            <pre><code class="css">.form-horizontal .has-feedback .form-control-feedback {
+{% highlight css hl_lines="3" %}
+.form-horizontal .has-feedback .form-control-feedback {
     top: 0;
     right: 15px;
-}</code></pre>
+}
+{% endhighlight %}
                             <p>You can override this to adjust feedback icon position:</p>
-                            <pre><code class="css">.form-horizontal .has-feedback .form-control-feedback {
+{% highlight css hl_lines="3 7" %}
+.form-horizontal .has-feedback .form-control-feedback {
     top: 0;
     right: -15px;
 }
 .form-horizontal .has-feedback .input-group .form-control-feedback {
     top: 0;
     right: -30px;
-}</code></pre>
+}
+{% endhighlight %}
                             <link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
                             <style type="text/css">
                             #feedbackIconForm .has-feedback .form-control-feedback {
@@ -362,11 +548,16 @@ $(document).ready(function() {
                                     </div>
 
                                     <div class="tab-pane" id="feedbackicon-html-tab">
-                                        <pre><code class="xml">&lt;!-- Include CSS required by Bootstrap Datetime Picker -->
-&lt;link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+{% highlight html %}
+<!-- Include CSS required by Bootstrap Datetime Picker -->
+<link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 
-<span class="bv-note">&lt;!-- Override feedback icon position -->
-&lt;style type="text/css">
+<!-- Include JS required by Bootstrap Datetime Picker -->
+<script src="/vendor/momentjs/moment.min.js"></script>
+<script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+
+<!-- Override feedback icon position -->
+<style type="text/css">
 #feedbackIconForm .has-feedback .form-control-feedback {
     top: 0;
     right: -15px;
@@ -375,54 +566,50 @@ $(document).ready(function() {
     top: 0;
     right: -30px;
 }
-&lt;/style></span>
-&lt;form id="feedbackIconForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Full name&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="fullName" />
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Gender&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;select class="form-control" name="gender">
-                &lt;option value="">Choose gender&lt;/option>
-                &lt;option value="male">Male&lt;/option>
-                &lt;option value="female">Female&lt;/option>
-                &lt;option value="other">Other&lt;/option>
-            &lt;/select>
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Date of birth&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;div class="input-group date" id="dobPicker" data-date-format="YYYY/DD/MM">
-                &lt;input type="text" class="form-control" name="dob" />
-                &lt;span class="input-group-addon">
-                    &lt;span class="glyphicon-calendar glyphicon">&lt;/span>
-                &lt;/span>
-            &lt;/div>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+</style>
+
+<form id="feedbackIconForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Full name</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="fullName" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Gender</label>
+        <div class="col-lg-5">
+            <select class="form-control" name="gender">
+                <option value="">Choose gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Date of birth</label>
+        <div class="col-lg-5">
+            <div class="input-group date" id="dobPicker" data-date-format="YYYY/DD/MM">
+                <input type="text" class="form-control" name="dob" />
+                <span class="input-group-addon">
+                    <span class="glyphicon-calendar glyphicon"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                                     </div>
 
                                     <div class="tab-pane" id="feedbackicon-js-tab">
-                    <pre><code class="xml javascript">&lt;!-- Include JS required by Bootstrap Datetime Picker -->
-&lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
-&lt;script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js">&lt;/script>
-&lt;script>
+{% highlight javascript %}
 $(document).ready(function() {
     $('#dobPicker')
         .datetimepicker({
             pickTime: false
         })
         .on('dp.change dp.show', function(e) {
-            $('#feedbackIconForm')
-                .data('bootstrapValidator')
-                .updateStatus('dob', 'NOT_VALIDATED', null)
-                .validateField('dob');
+            $('#feedbackIconForm').bootstrapValidator('revalidateField', 'dob');
         });
     $('#feedbackIconForm').bootstrapValidator({
         message: 'This value is not valid',
@@ -460,18 +647,190 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- form-group -->
+                    <section>
+                        <h3 id="form-group">group: String <span class="pull-right bv-news"></span></h3>
+                        <p>CSS selector indicates the parent element of field. By default, it is <code>.form-group</code>.</p>
+                        <p>Following Bootstrap form structure, each field and its label are wrapped inside <code>.form-group</code> element.</p>
+                        <p>This option might be used in the following cases:</p>
+                        <ul>
+                            <li>The form uses a custom CSS class for each group</li>
+                            <li>Each group consist of more than one field</li>
+                        </ul>
+
+                        <p>You also can specify the <a href="#field-group">group</a> for particular field.</p>
+
+                        <section>
+                            <h4 id="form-group-example">Example</h4>
+                            <p>In the following form, each field is placed inside a cell of table. The error messages are placed inside a <a href="#form-container">tooltip</a>.</p>
+                            <style type="text/css">
+                            #groupForm i.form-control-feedback {
+                                top: 5px !important;
+                                right: 5px;
+                            }
+                            </style>
+                            <div class="bv-example">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#form-group-form-tab" data-toggle="tab">Try it</a></li>
+                                    <li><a href="#form-group-html-tab" data-toggle="tab">HTML</a></li>
+                                    <li><a href="#form-group-js-tab" data-toggle="tab">JS</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="form-group-form-tab">
+                                        <p>We would like to know 5 recent projects you have done:</p>
+                                        <form id="groupForm">
+                                            <table class="table table-condensed">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Project</th>
+                                                        <th>Role</th>
+                                                        <th>URL</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><input type="text" class="form-control" name="project[]" /></td>
+                                                        <td><input type="text" class="form-control" name="role[]" /></td>
+                                                        <td><input type="text" class="form-control" name="url[]" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="text" class="form-control" name="project[]" /></td>
+                                                        <td><input type="text" class="form-control" name="role[]" /></td>
+                                                        <td><input type="text" class="form-control" name="url[]" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="text" class="form-control" name="project[]" /></td>
+                                                        <td><input type="text" class="form-control" name="role[]" /></td>
+                                                        <td><input type="text" class="form-control" name="url[]" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="text" class="form-control" name="project[]" /></td>
+                                                        <td><input type="text" class="form-control" name="role[]" /></td>
+                                                        <td><input type="text" class="form-control" name="url[]" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="text" class="form-control" name="project[]" /></td>
+                                                        <td><input type="text" class="form-control" name="role[]" /></td>
+                                                        <td><input type="text" class="form-control" name="url[]" /></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <button type="submit" class="btn btn-default">Validate</button>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane" id="form-group-html-tab">
+{% highlight html hl_lines="4 5" %}
+<style type="text/css">
+/* Adjust feeback icon position */
+#groupForm i.form-control-feedback {
+    top: 5px !important;
+    right: 5px;
+}
+</style>
+
+<form id="groupForm">
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>Project</th>
+                <th>Role</th>
+                <th>URL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" class="form-control" name="project[]" /></td>
+                <td><input type="text" class="form-control" name="role[]" /></td>
+                <td><input type="text" class="form-control" name="url[]" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="form-control" name="project[]" /></td>
+                <td><input type="text" class="form-control" name="role[]" /></td>
+                <td><input type="text" class="form-control" name="url[]" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="form-control" name="project[]" /></td>
+                <td><input type="text" class="form-control" name="role[]" /></td>
+                <td><input type="text" class="form-control" name="url[]" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="form-control" name="project[]" /></td>
+                <td><input type="text" class="form-control" name="role[]" /></td>
+                <td><input type="text" class="form-control" name="url[]" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" class="form-control" name="project[]" /></td>
+                <td><input type="text" class="form-control" name="role[]" /></td>
+                <td><input type="text" class="form-control" name="url[]" /></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-default">Validate</button>
+</form>
+{% endhighlight %}
+                                    </div>
+
+                                    <div class="tab-pane" id="form-group-js-tab">
+{% highlight javascript hl_lines="3 4" %}
+$(document).ready(function() {
+    $('#groupForm').bootstrapValidator({
+        container: 'tooltip',
+        group: 'td',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            'project[]': {
+                validators: {
+                    notEmpty: {
+                        message: 'The project name is required'
+                    }
+                }
+            },
+            'role[]': {
+                validators: {
+                    notEmpty: {
+                        message: 'The role is required'
+                    }
+                }
+            },
+            'url[]': {
+                validators: {
+                    notEmpty: {
+                        message: 'The URL is required'
+                    },
+                    uri: {
+                        message: 'The URL is invalid'
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
                                     </div>
                                 </div>
                             </div>
                         </section>
                     </section>
-                    <!-- /form:feedback-icons -->
 
-                    <!-- form:live -->
+                    <!-- form-live -->
                     <section>
                         <h3 id="form-live">live: String</h3>
-                        <p>Live validating mode. Can be one of 3 values:</p>
+                        <p>Live validating mode. Can be one of three values:</p>
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
@@ -481,7 +840,7 @@ $(document).ready(function() {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><code>enabled</code></td>
+                                    <td><code>enabled</code> <span class="label label-default">default</span></td>
                                     <td>The plugin validates fields as soon as they are changed</td>
                                 </tr>
                                 <tr>
@@ -495,98 +854,38 @@ $(document).ready(function() {
                             </tbody>
                         </table>
                     </section>
-                    <!-- /form:live -->
 
-                    <!-- form:message -->
+                    <!-- form-message -->
                     <section>
                         <h3 id="form-message">message: String</h3>
                         <p>The default error message for all fields. You can specify the error message for any fields.</p>
                     </section>
-                    <!-- /form:message -->
 
-                    <!-- form:submit-buttons -->
+                    <!-- form-submit-buttons -->
                     <section>
                         <h3 id="form-submit-buttons">submitButtons: String</h3>
                         <p>The submit buttons selector. These buttons will be disabled when the form input are invalid.</p>
                     </section>
-                    <!-- /form:submit-buttons -->
 
-                    <!-- form:submit-handler -->
-                    <section>
-                        <h3 id="form-submit-handler">submitHandler: Function</h3>
-                        <p>Custom submit handler:</p>
-                        <pre><code class="javascript">submitHandler: function(validator, form, submitButton) {
-}</code></pre>
-
-                        <table class="table table-condensed">
-                            <thead>
-                                <tr>
-                                    <th>Parameter</th>
-                                    <th>Type</th>
-                                    <th>Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><code>validator</code></td>
-                                    <td>BootstrapValidator</td>
-                                    <td>The instance of BootstrapValidator</td>
-                                </tr>
-                                <tr>
-                                    <td><code>form</code></td>
-                                    <td>jQuery</td>
-                                    <td>Representing the current form</td>
-                                </tr>
-                                <tr>
-                                    <td><code>submitButton</code></td>
-                                    <td>jQuery</td>
-                                    <td>Representing the submit button which is clicked</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <p>This option is useful when you want to use Ajax to submit the form data:</p>
-
-                        <pre><code class="javascript">submitHandler: function(validator, form, submitButton) {
-    // Use Ajax to submit form data
-    $.post(form.attr('action'), form.serialize(), function(result) {
-        // ... process the result ...
-    }, 'json');
-}</code></pre>
-
-                        <p>By default, <code>submitHandler</code> is <code>null</code>.</p>
-
-                        <p>If you want to submit the form inside your custom submit handler, use the <a href="/api/#default-submit"><code>defaultSubmit()</code></a> method:</p>
-                        <pre><code class="javascript">submitHandler: function(validator, form, submitButton) {
-    // Do your task
-    // ...
-    // Submit the form
-    validator.defaultSubmit();
-}</code></pre>
-                    </section>
-                    <!-- form:submit-handler -->
-
-                    <!-- form:threshold-->
+                    <!-- form-threshold-->
                     <section>
                         <h3 id="form-threshold">threshold: Number</h3>
-                        <p>The field will not be live validated if its length is less than this number of characters. You also can set this option for <a href="#field-threshold">each field</a>.</p>
+                        <p>The field will not be live validated if its length is less than this number of characters. You also can set this option for <a href="#field-threshold">particular field</a>.</p>
                     </section>
-                    <!-- /form:threshold-->
 
-                    <!-- form:trigger -->
+                    <!-- form-trigger -->
                     <section>
                         <h3 id="form-trigger">trigger: String</h3>
                         <p>The event which is fired to validating all fields when the live validating mode is enabled. If you need multiple events are fired, then separate them by a space.</p>
                         <p>It's also possible to set trigger option for each field. Look at the <a href="#field-trigger">field trigger</a> section.</p>
                     </section>
-                    <!-- /form:trigger -->
                 </section>
                 <!-- /form -->
 
                 <!-- field -->
                 <section>
-                    <h2 id="field-settings">Field Settings</h2>
-                    <p>Below is the list of field settings:</p>
+                    <h2 id="field-settings">Field settings</h2>
+                    <p>Below is the list of Field settings:</p>
 
                     <table class="table table-condensed">
                         <thead>
@@ -597,16 +896,28 @@ $(document).ready(function() {
                         </thead>
                         <tbody>
                             <tr>
+                                <td><code>container</code></td>
+                                <td><code>data-bv-container</code></td>
+                            </tr>
+                            <tr>
                                 <td><code>enabled</code></td>
-                                <td>n/a</td>
+                                <td><code>data-bv-enabled</code> <span class="bv-news"></span></td>
+                            </tr>
+                            <tr>
+                                <td><code>excluded</code> <span class="bv-news"></span></td>
+                                <td><code>data-bv-excluded</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>feedbackIcons</code> <span class="bv-news"></span></td>
+                                <td><code>data-bv-feedbackicons</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>group</code> <span class="bv-news"></span></td>
+                                <td><code>data-bv-group</code></td>
                             </tr>
                             <tr>
                                 <td><code>message</code></td>
                                 <td><code>data-bv-message</code></td>
-                            </tr>
-                            <tr>
-                                <td><code>container</code></td>
-                                <td><code>data-bv-container</code></td>
                             </tr>
                             <tr>
                                 <td><code>selector</code></td>
@@ -623,34 +934,46 @@ $(document).ready(function() {
                         </tbody>
                     </table>
 
-                    <section>
-                        <h3 id="field-enabled">enabled: Boolean</h3>
-                        <p>Enable or disable the field validators</p>
-                    </section>
-
-                    <section>
-                        <h3 id="field-message">message: String</h3>
-                        <td>The default error message for the field</td>
-                    </section>
-
-                    <!-- field:container -->
+                    <!-- field-container -->
                     <section>
                         <h3 id="field-container">container: String</h3>
-                        <p>The CSS selector to indicate the element showing the error messages.</p>
+                        <p>Indicate where the error messages are shown.</p>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Value</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CSS selector</td>
+                                    <td>Error messages are placed in element defined by this CSS selector</td>
+                                </tr>
+                                <tr>
+                                    <td><code>tooltip</code> <span class="bv-news"></span></td>
+                                    <td>Error messages are placed inside a <a href="http://getbootstrap.com/javascript/#tooltips">Bootstrap tooltip</a>.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>popover</code> <span class="bv-news"></span></td>
+                                    <td>Error messages are placed inside a <a href="http://getbootstrap.com/javascript/#popovers">Bootstrap popover</a>.</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
                         <h4 id="field-container-example">Example</h4>
                         <p>The following form illustrates an usage of the <code>container</code> option. The error messages are shown in the element defined by a CSS selector.</p>
 
                         <div class="bv-example">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#container-form-tab" data-toggle="tab">Try it</a></li>
-                                <li><a href="#container-html-tab" data-toggle="tab">HTML</a></li>
-                                <li><a href="#container-js-tab" data-toggle="tab">JS</a></li>
+                                <li class="active"><a href="#field-container-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#field-container-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#field-container-js-tab" data-toggle="tab">JS</a></li>
                             </ul>
 
                             <div class="tab-content">
-                                <div class="tab-pane active" id="container-form-tab">
-                                    <form id="containerForm" class="form-horizontal">
+                                <div class="tab-pane active" id="field-container-form-tab">
+                                    <form id="fieldContainerForm" class="form-horizontal">
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Full name</label>
                                             <div class="col-lg-4">
@@ -672,42 +995,44 @@ $(document).ready(function() {
                                     </form>
                                 </div>
 
-                                <div class="tab-pane" id="container-html-tab">
-                                    <pre><code class="xml">&lt;form id="containerForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Full name&lt;/label>
-        &lt;div class="col-lg-4">
-            &lt;input type="text" class="form-control" name="firstName" placeholder="First name" />
-            <span class="bv-note">&lt;span class="help-block" id="firstNameMessage">&lt;/span></span>
-        &lt;/div>
-        &lt;div class="col-lg-4">
-            &lt;input type="text" class="form-control" name="lastName" placeholder="Last name" />
-            <span class="bv-note">&lt;span class="help-block lastNameMessage">&lt;/span></span>
-        &lt;/div>
-    &lt;/div>
+                                <div class="tab-pane" id="field-container-html-tab">
+{% highlight html hl_lines="6 10" %}
+<form id="fieldContainerForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Full name</label>
+        <div class="col-lg-4">
+            <input type="text" class="form-control" name="firstName" placeholder="First name" />
+            <span class="help-block" id="firstNameMessage"></span>
+        </div>
+        <div class="col-lg-4">
+            <input type="text" class="form-control" name="lastName" placeholder="Last name" />
+            <span class="help-block lastNameMessage"></span>
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Username&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="username" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Username</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="username" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                                 </div>
 
-                                <div class="tab-pane" id="container-js-tab">
-                                    <pre><code class="xml javascript">&lt;script>
+                                <div class="tab-pane" id="field-container-js-tab">
+{% highlight javascript hl_lines="5 11" %}
 $(document).ready(function() {
-    $('#containerForm').bootstrapValidator({
+    $('#fieldContainerForm').bootstrapValidator({
         fields: {
             firstName: {
-                <span class="bv-note">container: '#firstNameMessage'</span>,
+                container: '#firstNameMessage',
                 validators: {
                     ...
                 }
             },
             lastName: {
-                <span class="bv-note">container: '.lastNameMessage'</span>,
+                container: '.lastNameMessage',
                 validators: {
                     ...
                 }
@@ -720,14 +1045,164 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                 </div>
                             </div>
                         </div>
                     </section>
-                    <!-- /field:container -->
 
-                    <!-- field:selector -->
+                    <section>
+                        <h3 id="field-excluded">excluded: Boolean <span class="pull-right bv-news"></span></h3>
+                        <p>Indicate whether or not the field is excluded.</p>
+                    </section>
+
+                    <section>
+                        <h3 id="field-enabled">enabled: Boolean</h3>
+                        <p>Enable or disable the field validators.</p>
+                        <p>If you want to enable or disable particular validator, use validator's <a href="#validator-enabled">enabled</a> option or <a href="/api/#enable-field-validators">enableFieldValidators()</a> method.</p>
+                    </section>
+
+                    <!-- field-feedback-icons -->
+                    <section>
+                        <h3 id="field-feedback-icons">feedbackIcons: Boolean <span class="pull-right bv-news"></span></h3>
+                        <p>Enable or disable feedback icons.</p>
+
+                        <section>
+                            <h4 id="field-feedback-icons-example">Example</h4>
+                            <p>The form below disables the feedback icons for field by setting <code>feedbackIcons: false</code> or <code>feedbackIcons: 'false'</code></p>
+
+                            <div class="bv-example">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#field-icons-form-tab" data-toggle="tab">Try it</a></li>
+                                    <li><a href="#field-icons-html-tab" data-toggle="tab">HTML</a></li>
+                                    <li><a href="#field-icons-js-tab" data-toggle="tab">JS</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="field-icons-form-tab">
+                                        <form id="fieldIconsForm" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Address</label>
+                                                <div class="col-lg-5">
+                                                    <input type="text" class="form-control" name="address" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">City</label>
+                                                <div class="col-lg-5">
+                                                    <input type="text" class="form-control" name="city" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Phone number</label>
+                                                <div class="col-lg-5">
+                                                    <input type="text" class="form-control" name="phone" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-lg-5 col-lg-offset-3">
+                                                    <button type="submit" class="btn btn-default">Validate</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane" id="field-icons-html-tab">
+{% highlight html %}
+<form id="fieldIconsForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Address</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="address" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-3 control-label">City</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="city" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Phone number</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="phone" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-5 col-lg-offset-3">
+            <button type="submit" class="btn btn-default">Validate</button>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+                                    </div>
+
+                                    <div class="tab-pane" id="field-icons-js-tab">
+{% highlight javascript hl_lines="10 18 26" %}
+$(document).ready(function() {
+    $('#fieldIconsForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            address: {
+                feedbackIcons: 'false',
+                validators: {
+                    notEmpty: {
+                        message: 'The address is required and cannot be empty'
+                    }
+                }
+            },
+            city: {
+                feedbackIcons: false,
+                validators: {
+                    notEmpty: {
+                        message: 'The city is required and cannot be empty'
+                    }
+                }
+            },
+            phone: {
+                feedbackIcons: true,
+                validators: {
+                    notEmpty: {
+                        message: 'The phone number is required and cannot be empty'
+                    },
+                    phone: {
+                        country: 'US',
+                        message: 'The phone number is not valid'
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+
+                    <!-- field-group -->
+                    <section>
+                        <h3 id="field-group">group: String <span class="pull-right bv-news"></span></h3>
+                        <p>CSS selector indicates the parent element of field. By default, it is <code>.form-group</code>.</p>
+                    </section>
+
+                    <section>
+                        <h3 id="field-message">message: String</h3>
+                        <td>The default error message for the field</td>
+                    </section>
+
+                    <!-- field-selector -->
                     <section>
                         <h3 id="field-selector">selector: String</h3>
                         <p>The CSS selector to indicate the field. It is used in case that it's not possible to use the <code>name</code> attribute for the field.</p>
@@ -772,58 +1247,60 @@ $(document).ready(function() {
                                 </div>
 
                                 <div class="tab-pane" id="selector-html-tab">
-                                    <pre><code class="xml">&lt;form id="paymentForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Credit card number&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" <span class="bv-note">id="ccNumber"</span> />
-        &lt;/div>
-    &lt;/div>
+{% highlight html hl_lines="5 12 15 22" %}
+<form id="paymentForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Credit card number</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" id="ccNumber" />
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Expiration&lt;/label>
-        &lt;div class="col-lg-2">
-            &lt;input type="text" class="form-control" placeholder="Month" <span class="bv-note">data-stripe="exp-month"</span> />
-        &lt;/div>
-        &lt;div class="col-lg-2">
-            &lt;input type="text" class="form-control" placeholder="Year" <span class="bv-note">data-stripe="exp-year"</span> />
-        &lt;/div>
-    &lt;/div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Expiration</label>
+        <div class="col-lg-2">
+            <input type="text" class="form-control" placeholder="Month" data-stripe="exp-month" />
+        </div>
+        <div class="col-lg-2">
+            <input type="text" class="form-control" placeholder="Year" data-stripe="exp-year" />
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">CVV&lt;/label>
-        &lt;div class="col-lg-2">
-            &lt;input type="text" class="form-control <span class="bv-note">cvvNumber</span>" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">CVV</label>
+        <div class="col-lg-2">
+            <input type="text" class="form-control cvvNumber" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                                 </div>
 
                                 <div class="tab-pane" id="selector-js-tab">
-                                    <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="5 11 17 23" %}
 $(document).ready(function() {
     $('#paymentForm').bootstrapValidator({
         fields: {
             ccNumber: {
-                <span class="bv-note">selector: '#ccNumber'</span>,
+                selector: '#ccNumber',
                 validators: {
                     ...
                 }
             },
             expMonth: {
-                <span class="bv-note">selector: '[data-stripe="exp-month"]'</span>,
+                selector: '[data-stripe="exp-month"]',
                 validators: {
                     ...
                 }
             },
             expYear: {
-                <span class="bv-note">selector: '[data-stripe="exp-year"]'</span>,
+                selector: '[data-stripe="exp-year"]',
                 validators: {
                     ...
                 }
             },
             cvvNumber: {
-                <span class="bv-note">selector: '.cvvNumber'</span>,
+                selector: '.cvvNumber',
                 validators: {
                     ...
                 }
@@ -831,16 +1308,15 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                 </div>
                             </div>
                         </div>
 
                         <p>As you see, the field can be defined by a ID (<code>#ccNumber</code>), class (<code>.cvvNumber</code>) or attribute (<code>[data-stripe="exp-month"]</code>) selector.</p>
                     </section>
-                    <!-- /field:selector -->
 
-                    <!-- field:threshold -->
+                    <!-- field-threshold -->
                     <section>
                         <h3 id="field-threshold">threshold: Number</h3>
                         <p>Do not live validate field until the length of field value exceed this number.</p>
@@ -896,66 +1372,68 @@ $(document).ready(function() {
                                         </div>
                                         <div class="form-group">
                                             <div class="col-lg-9 col-lg-offset-3">
-                                                <button type="submit" class="btn btn-primary">Validate</button>
+                                                <button type="submit" class="btn btn-default">Validate</button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
 
                                 <div class="tab-pane" id="threshold-html-tab">
-                                    <pre><code class="xml">&lt;form id="thresholdForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Full name&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="fullname" />
-        &lt;/div>
-    &lt;/div>
+{% highlight html %}
+<form id="thresholdForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Full name</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="fullname" />
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Gender&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;div class="radio">
-                &lt;label>
-                    &lt;input type="radio" name="gender" value="male" /> Male
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="radio">
-                &lt;label>
-                    &lt;input type="radio" name="gender" value="female" /> Female
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="radio">
-                &lt;label>
-                    &lt;input type="radio" name="gender" value="other" /> Other
-                &lt;/label>
-            &lt;/div>
-        &lt;/div>
-    &lt;/div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Gender</label>
+        <div class="col-lg-5">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="gender" value="male" /> Male
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="gender" value="female" /> Female
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="gender" value="other" /> Other
+                </label>
+            </div>
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Phone number&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="phone" />
-        &lt;/div>
-    &lt;/div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Phone number</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="phone" />
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Address&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="address" />
-        &lt;/div>
-    &lt;/div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Address</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="address" />
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;div class="col-lg-9 col-lg-offset-3">
-            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <div class="form-group">
+        <div class="col-lg-9 col-lg-offset-3">
+            <button type="submit" class="btn btn-default">Validate</button>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                                 </div>
 
                                 <div class="tab-pane" id="threshold-js-tab">
-                                    <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="10 13 23 31 43 44" %}
 $(document).ready(function() {
     $('#thresholdForm').bootstrapValidator({
         message: 'This value is not valid',
@@ -964,11 +1442,11 @@ $(document).ready(function() {
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
-        <span class="bv-note">// Set default threshold for all fields. It is null by default
-        threshold: 3,</span>
+        // Set default threshold for all fields. It is null by default
+        threshold: 3,
         fields: {
             fullname: {
-                <span class="bv-note">threshold: 10,</span>
+                threshold: 10,
                 validators: {
                     notEmpty: {
                         message: 'The full name is required'
@@ -976,9 +1454,9 @@ $(document).ready(function() {
                 }
             },
             gender: {
-                <span class="bv-note">// The threshold option does not effect to the elements
+                // The threshold option does not effect to the elements
                 // which user cannot type in, such as radio, checkbox, select, etc.
-                threshold: 5,</span>
+                threshold: 5,
                 validators: {
                     notEmpty: {
                         message: 'The summary is required'
@@ -986,7 +1464,7 @@ $(document).ready(function() {
                 }
             },
             phone: {
-                <span class="bv-note">threshold: 5,</span>
+                threshold: 5,
                 validators: {
                     notEmpty: {
                         message: 'The phone number is required'
@@ -998,8 +1476,8 @@ $(document).ready(function() {
                 }
             },
             address: {
-                <span class="bv-note">// The threshold option is not set
-                // It will be taken from the form option (which is 3 in this example)</span>
+                // The threshold option is not set
+                // It will be taken from the form option (which is 3 in this example)
                 validators: {
                     notEmpty: {
                         message: 'The city is required'
@@ -1009,14 +1487,13 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                 </div>
                             </div>
                         </div>
                     </section>
-                    <!-- /field:threshold -->
 
-                    <!-- field:trigger -->
+                    <!-- field-trigger -->
                     <section>
                         <h3 id="field-trigger">trigger: String</h3>
                         <p>The field events (separated by a space) which are fired when the live validating mode is enabled.</p>
@@ -1059,35 +1536,36 @@ $(document).ready(function() {
                                 </div>
 
                                 <div class="tab-pane" id="trigger-html-tab">
-                                    <pre><code class="xml">&lt;form id="triggerForm" method="post" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Title&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="title" />
-        &lt;/div>
-    &lt;/div>
+{% highlight html %}
+<form id="triggerForm" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Title</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="title" />
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Summary&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;textarea rows="5" class="form-control" name="summary">&lt;/textarea>
-        &lt;/div>
-    &lt;/div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Summary</label>
+        <div class="col-lg-5">
+            <textarea rows="5" class="form-control" name="summary"></textarea>
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Description&lt;/label>
-        &lt;div class="col-lg-9">
-            &lt;textarea rows="10" class="form-control" name="description">&lt;/textarea>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Description</label>
+        <div class="col-lg-9">
+            <textarea rows="10" class="form-control" name="description"></textarea>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                                 </div>
 
                                 <div class="tab-pane" id="trigger-js-tab">
-                                    <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="10 18" %}
 $(document).ready(function() {
     $('#triggerForm').bootstrapValidator({
-        message: 'This value is not valid',
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
@@ -1095,7 +1573,7 @@ $(document).ready(function() {
         },
         fields: {
             title: {
-                <span class="bv-note">trigger: 'keyup'</span>,
+                trigger: 'keyup',
                 validators: {
                     notEmpty: {
                         message: 'The title is required'
@@ -1103,7 +1581,7 @@ $(document).ready(function() {
                 }
             },
             summary: {
-                <span class="bv-note">trigger: 'blur'</span>,
+                trigger: 'blur',
                 validators: {
                     notEmpty: {
                         message: 'The summary is required'
@@ -1120,18 +1598,17 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                                 </div>
                             </div>
                         </div>
                     </section>
-                    <!-- /field:trigger -->
                 </section>
                 <!-- /field -->
 
                 <!-- validator -->
                 <section>
-                    <h2 id="validator-settings">Validator Settings</h2>
+                    <h2 id="validator-settings">Validator settings</h2>
                     <p>The following table shows the common settings for validators (when using it, replace <code>{validatorname}</code> with the validator name). For specific settings of each validator, please look at its documentation.</p>
 
                     <table class="table table-condensed">
@@ -1143,18 +1620,1562 @@ $(document).ready(function() {
                         </thead>
                         <tbody>
                             <tr>
+                                <td><code>enabled</code></td>
+                                <td><code>data-bv-{validatorname}</code></td>
+                            </tr>
+                            <tr>
                                 <td><code>message</code></td>
                                 <td><code>data-bv-{validatorname}-message</code></td>
                             </tr>
                         </tbody>
                     </table>
 
+                    <!-- validator-enabled -->
+                    <section>
+                        <h3 id="validator-enabled">enabled: Boolean<span class="pull-right bv-news"></span></h3>
+                        <p>Indicate the validator is enabled or disabled. It is <code>true</code>, by default.</p>
+                        <p>Look at the field's <a href="#field-enabled">enabled</a> option if you want to enable/disable all validators.</p>
+                        <p>The table below shows three equivalent ways to enable or disable given validator:</p>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Usage</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>HTML 5 attribute</td>
+                                    <td>
+{% highlight html hl_lines="2 5 8" %}
+<!-- Enable validator -->
+<input class="form-control" name="fullName" data-bv-notempty />
+
+<!-- or -->
+<input class="form-control" name="fullName" data-bv-notempty="true" />
+
+<!-- Disable validator -->
+<input class="form-control" name="fullName" data-bv-notempty="false" />
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Plugin option</td>
+                                    <td>
+{% highlight javascript hl_lines="7" %}
+$(document).ready(function() {
+    $(form).bootstrapValidator({
+        fields: {
+            fullName: {
+                validators: {
+                    notEmpty: {
+                        enabled: true   // or false
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                                    </td>
+                                <tr>
+                                    <td><a href="/api/#enable-field-validators">enableFieldValidators()</a></td>
+                                    <td>
+{% highlight javascript hl_lines="3 7" %}
+// Enable validator
+$(form)
+    .bootstrapValidator('enableFieldValidators', fullName, 'notEmpty', true);
+
+// Disable validator
+$(form)
+    .bootstrapValidator('enableFieldValidators', fullName, 'notEmpty', false);
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <section>
+                            <h4 id="validator-enabled-example">Example</h4>
+                            <div class="bv-example">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#validator-enabled-form-tab" data-toggle="tab">Try it</a></li>
+                                    <li><a href="#validator-enabled-html-tab" data-toggle="tab">HTML</a></li>
+                                    <li><a href="#validator-enabled-js-tab" data-toggle="tab">JS</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="validator-enabled-form-tab">
+                                        <form id="validatorEnabledForm" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Full name</label>
+                                                <div class="col-lg-5">
+                                                    <input type="text" class="form-control" name="fullName" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-lg-5 col-lg-offset-3">
+                                                    <button type="submit" class="btn btn-default">Validate</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane" id="validator-enabled-html-tab">
+{% highlight html %}
+<form id="validatorEnabledForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Full name</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="fullName" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-5 col-lg-offset-3">
+            <button type="submit" class="btn btn-default">Validate</button>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+                                    </div>
+
+                                    <div class="tab-pane" id="validator-enabled-js-tab">
+{% highlight javascript hl_lines="12 16 22" %}
+$(document).ready(function() {
+    $('#validatorEnabledForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            fullName: {
+                validators: {
+                    notEmpty: {
+                        // enabled is true, by default
+                        message: 'The full name is required and cannot be empty'
+                    },
+                    stringLength: {
+                        enabled: true,
+                        min: 8,
+                        max: 40,
+                        message: 'The full name must be more than 8 and less than 40 characters long'
+                    },
+                    regexp: {
+                        enabled: false,
+                        regexp: /^[a-zA-Z\s]+$/,
+                        message: 'The full name can only consist of alphabetical, number, and space'
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+
                     <section>
                         <h3 id="validator-message">message: String</h3>
                         <td>The error message of validator for field.</td>
                     </section>
+
+                    <section>
+                        <h3 id="dynamic-option">Dynamic option<span class="pull-right bv-news"></span></h3>
+                        <p>Some validators have option which its value could be change dynamically.</p>
+                        <p>For example, the <a href="/validators/zipCode/">zipCode validator</a> has the <code>country</code> option that can be changed dynamically a select element.</p>
+                        <p>The dynamic option can be determined by:</p>
+                        <ul>
+                            <li>A string</li>
+                            <li>Name of field which defines the value</li>
+                            <li>Name of function which returns the value</li>
+                            <li>A function returns the value</li>
+                        </ul>
+                        <p>In the third and fourth cases, the callback function must follow the format:</p>
+{% highlight javascript %}
+function(value, validator, $field) {
+    // value is the value of field
+    // validator is the BootstrapValidator instance
+    // $field is the jQuery element representing field element
+}
+{% endhighlight %}
+
+                        <section>
+                            <h4 id="dynamic-option-validators">Supported validators</h4>
+                            <p>Below is the list of validators supporting dynamic option. Refer to specific validator document to see the full list of options.</p>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>Validator</th>
+                                        <th>Dynamic option</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="/validators/between/">between validator</a></td>
+                                        <td><code>min</code>, <code>max</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="/validators/choice/">choice validator</a></td>
+                                        <td><code>min</code>, <code>max</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="/validators/greaterThan/">greaterThan validator</a></td>
+                                        <td><code>value</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="/validators/iban/">iban validator</a></td>
+                                        <td><code>country</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="/validators/id/">id validator</a></td>
+                                        <td><code>country</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="/validators/lessThan/">lessThan validator</a></td>
+                                        <td><code>value</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="/validators/phone/">phone validator</a></td>
+                                        <td><code>country</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="/validators/stringLength/">stringLength validator</a></td>
+                                        <td><code>min</code>, <code>max</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="/validators/vat/">vat validator</a></td>
+                                        <td><code>country</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="/validators/zipCode/">zipCode validator</a></td>
+                                        <td><code>country</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="bv-box bv-box-info">
+                                <h5><i></i>Adding dynamic option for custom validator</h5>
+                                <p>If you develop your own validator which support dynamic option, the <a href="/api/#get-dynamic-option">getDynamicOption()</a> method might be useful. You should look at the source of validators above to see how this method is used.</p>
+                            </div>
+                        </section>
+
+                        <p>To illustrate how powerful this concept is, take a look at the following example.</p>
+                        <p>Assume that your form uses <a href="/validators/zipCode/">zipCode validator</a> to validate a zipcode. The next sections show you how to use four ways above to define option value.</p>
+
+                        <div class="bv-box bv-box-info">
+                            <h5><i></i>Sample zipcodes</h5>
+                            <p>You can use the following sample zipcodes for testing:</p>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>Country</th>
+                                        <th>Valid Zipcode</th>
+                                        <th>Invalid Zipcode</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>United States</td>
+                                        <td>12345</td>
+                                        <td>123</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Italy</td>
+                                        <td>IT-12345</td>
+                                        <td>123</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <section>
+                            <h4 id="dynamic-option-string">Using string as usual</h4>
+                            <p>It's easy for you if the country code option is set initially and can't be changed:</p>
+{% highlight javascript hl_lines="7" %}
+$(document).ready(function() {
+    $('#zipcodeForm').bootstrapValidator({
+        fields: {
+            code: {
+                validators: {
+                    zipCode: {
+                        country: 'US',
+                        message: 'The value is not valid zipcode'
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+
+                            <div class="bv-example">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#zipcode-form-tab" data-toggle="tab">Try it</a></li>
+                                    <li><a href="#zipcode-html-tab" data-toggle="tab">HTML</a></li>
+                                    <li><a href="#zipcode-js-tab" data-toggle="tab">JS</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="zipcode-form-tab">
+                                        <form id="zipcodeForm" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">US zipcode</label>
+                                                <div class="col-lg-5">
+                                                    <input type="text" class="form-control" name="code" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane" id="zipcode-html-tab">
+{% highlight html %}
+<form id="zipcodeForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">US zipcode</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="code" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+                                    </div>
+
+                                    <div class="tab-pane" id="zipcode-js-tab">
+{% highlight javascript hl_lines="12" %}
+$(document).ready(function() {
+    $('#zipcodeForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            code: {
+                validators: {
+                    zipCode: {
+                        country: 'US',
+                        message: 'The value is not valid zipcode'
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <p>What happen if you want the country to be changeable, for example, by a select element. With the dynamic option concept, it can be done easily by setting the <code>country</code> option as:</p>
+
+                        <section>
+                            <h4 id="dynamic-option-element">Using name of element defining the option value</h4>
+{% highlight html hl_lines="2" %}
+<!-- The element for choosing a country -->
+<select class="form-control" name="countrySelectBox">
+    <option value="US">United States</option>
+    <option value="CA">Canada</option>
+    <option value="DK">Denmark</option>
+    <option value="IT">Italy</option>
+    <option value="NL">Netherlands</option>
+    <option value="SE">Sweden</option>
+    <option value="GB">United Kingdom</option>
+</select>
+{% endhighlight %}
+{% highlight javascript hl_lines="7" %}
+$(document).ready(function() {
+    $('#zipcodeElementForm').bootstrapValidator({
+        fields: {
+            code: {
+                validators: {
+                    zipCode: {
+                        country: 'countrySelectBox',
+                        message: 'The value is not valid zipcode'
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                            <div class="bv-example">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#zipcode-element-form-tab" data-toggle="tab">Try it</a></li>
+                                    <li><a href="#zipcode-element-html-tab" data-toggle="tab">HTML</a></li>
+                                    <li><a href="#zipcode-element-js-tab" data-toggle="tab">JS</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="zipcode-element-form-tab">
+                                        <form id="zipcodeElementForm" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Country:</label>
+                                                <div class="col-lg-5">
+                                                    <select class="form-control" name="countrySelectBox">
+                                                        <option value="US">United States</option>
+                                                        <option value="CA">Canada</option>
+                                                        <option value="DK">Denmark</option>
+                                                        <option value="IT">Italy</option>
+                                                        <option value="NL">Netherlands</option>
+                                                        <option value="SE">Sweden</option>
+                                                        <option value="GB">United Kingdom</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Zipcode</label>
+                                                <div class="col-lg-5">
+                                                    <input type="text" class="form-control" name="code" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane" id="zipcode-element-html-tab">
+{% highlight html hl_lines="5" %}
+<form id="zipcodeElementForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Country:</label>
+        <div class="col-lg-5">
+            <select class="form-control" name="countrySelectBox">
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="DK">Denmark</option>
+                <option value="IT">Italy</option>
+                <option value="NL">Netherlands</option>
+                <option value="SE">Sweden</option>
+                <option value="GB">United Kingdom</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Zipcode</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="code" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+                                    </div>
+
+                                    <div class="tab-pane" id="zipcode-element-js-tab">
+{% highlight javascript hl_lines="13 22" %}
+$(document).ready(function() {
+    $('#zipcodeElementForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                code: {
+                    validators: {
+                        zipCode: {
+                            country: 'countrySelectBox',
+                            message: 'The value is not valid zipcode'
+                        }
+                    }
+                }
+            }
+        })
+        .on('change', '[name="countrySelectBox"]', function() {
+            // Revalidate the zipcode after changing the country
+            $('#zipcodeForm').bootstrapValidator('revalidateField', 'code');
+        });
+});
+{% endhighlight %}
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h4 id="dynamic-option-function-name">Using name of function returning the option value</h4>
+{% highlight html hl_lines="2" %}
+<!-- The element for choosing a country -->
+<select class="form-control" name="countrySelectBox">
+    <option value="US">United States</option>
+    <option value="CA">Canada</option>
+    <option value="DK">Denmark</option>
+    <option value="IT">Italy</option>
+    <option value="NL">Netherlands</option>
+    <option value="SE">Sweden</option>
+    <option value="GB">United Kingdom</option>
+</select>
+{% endhighlight %}
+{% highlight javascript hl_lines="1 15" %}
+function getCountryCode(value, validator, $field) {
+    // Return the selected country code
+    return $('[name="countrySelectBox"]').val();
+
+    // You can use getFieldElements() method
+    // return validator.getFieldElements('countrySelectBox').val();
+};
+
+$(document).ready(function() {
+    $('#zipcodeFunctionNameForm').bootstrapValidator({
+        fields: {
+            code: {
+                validators: {
+                    zipCode: {
+                        country: 'getCountryCode',
+                        message: 'The value is not valid zipcode'
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                            <div class="bv-example">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#zipcode-function-form-tab" data-toggle="tab">Try it</a></li>
+                                    <li><a href="#zipcode-function-html-tab" data-toggle="tab">HTML</a></li>
+                                    <li><a href="#zipcode-function-js-tab" data-toggle="tab">JS</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="zipcode-function-form-tab">
+                                        <form id="zipcodeFunctionNameForm" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Country:</label>
+                                                <div class="col-lg-5">
+                                                    <select class="form-control" name="countrySelectBox">
+                                                        <option value="US">United States</option>
+                                                        <option value="CA">Canada</option>
+                                                        <option value="DK">Denmark</option>
+                                                        <option value="IT">Italy</option>
+                                                        <option value="NL">Netherlands</option>
+                                                        <option value="SE">Sweden</option>
+                                                        <option value="GB">United Kingdom</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Zipcode</label>
+                                                <div class="col-lg-5">
+                                                    <input type="text" class="form-control" name="code" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane" id="zipcode-function-html-tab">
+{% highlight html hl_lines="5" %}
+<form id="zipcodeFunctionNameForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Country:</label>
+        <div class="col-lg-5">
+            <select class="form-control" name="countrySelectBox">
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="DK">Denmark</option>
+                <option value="IT">Italy</option>
+                <option value="NL">Netherlands</option>
+                <option value="SE">Sweden</option>
+                <option value="GB">United Kingdom</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Zipcode</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="code" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+                                    </div>
+
+                                    <div class="tab-pane" id="zipcode-function-js-tab">
+{% highlight javascript hl_lines="1 21 30" %}
+function getCountryCode(value, validator, $field) {
+    // Return the selected country code
+    return $('[name="countrySelectBox"]').val();
+
+    // You can use getFieldElements() method
+    // return validator.getFieldElements('countrySelectBox').val();
+};
+
+$(document).ready(function() {
+    $('#zipcodeFunctionNameForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                code: {
+                    validators: {
+                        zipCode: {
+                            country: 'getCountryCode',
+                            message: 'The value is not valid zipcode'
+                        }
+                    }
+                }
+            }
+        })
+        .on('change', '[name="countrySelectBox"]', function() {
+            // Revalidate the zipcode after changing the country
+            $('#zipcodeFunctionNameForm').bootstrapValidator('revalidateField', 'code');
+        });
+});
+{% endhighlight %}
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section>
+                            <h4 id="dynamic-option-callback">Using function returning the option value</h4>
+{% highlight javascript hl_lines="7" %}
+$(document).ready(function() {
+    $('#zipcodeElementForm').bootstrapValidator({
+        fields: {
+            code: {
+                validators: {
+                    zipCode: {
+                        country: function(value, validator, $field) {
+                            return $('[name="countrySelectBox"]').val();
+
+                            // You can use getFieldElements() method
+                            // return validator.getFieldElements('countrySelectBox').val();
+                        },
+                        message: 'The value is not valid zipcode'
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                            <div class="bv-example">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#zipcode-callback-form-tab" data-toggle="tab">Try it</a></li>
+                                    <li><a href="#zipcode-callback-html-tab" data-toggle="tab">HTML</a></li>
+                                    <li><a href="#zipcode-callback-js-tab" data-toggle="tab">JS</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="zipcode-callback-form-tab">
+                                        <form id="zipcodeCallbackForm" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Country:</label>
+                                                <div class="col-lg-5">
+                                                    <select class="form-control" name="countrySelectBox">
+                                                        <option value="US">United States</option>
+                                                        <option value="CA">Canada</option>
+                                                        <option value="DK">Denmark</option>
+                                                        <option value="IT">Italy</option>
+                                                        <option value="NL">Netherlands</option>
+                                                        <option value="SE">Sweden</option>
+                                                        <option value="GB">United Kingdom</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Zipcode</label>
+                                                <div class="col-lg-5">
+                                                    <input type="text" class="form-control" name="code" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane" id="zipcode-callback-html-tab">
+{% highlight html hl_lines="5" %}
+<form id="zipcodeCallbackForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Country:</label>
+        <div class="col-lg-5">
+            <select class="form-control" name="countrySelectBox">
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="DK">Denmark</option>
+                <option value="IT">Italy</option>
+                <option value="NL">Netherlands</option>
+                <option value="SE">Sweden</option>
+                <option value="GB">United Kingdom</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Zipcode</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="code" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+                                    </div>
+
+                                    <div class="tab-pane" id="zipcode-callback-js-tab">
+{% highlight javascript hl_lines="13 27" %}
+$(document).ready(function() {
+    $('#zipcodeCallbackForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                code: {
+                    validators: {
+                        zipCode: {
+                            country: function(value, validator, $field) {
+                                return $('[name="countrySelectBox"]').val();
+
+                                // You can use getFieldElements() method
+                                // return validator.getFieldElements('countrySelectBox').val();
+                            },
+                            message: 'The value is not valid zipcode'
+                        }
+                    }
+                }
+            }
+        })
+        .on('change', '[name="countrySelectBox"]', function() {
+            // Revalidate the zipcode after changing the country
+            $('#zipcodeCallbackForm').bootstrapValidator('revalidateField', 'code');
+        });
+});
+{% endhighlight %}
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+
+                    <!-- dynamic-message -->
+                    <section>
+                        <h3 id="dynamic-message">Dynamic message<span class="pull-right bv-news"></span></h3>
+                        <p>Looking back to the <a href="#dynamic-option-element">zipcode example</a> above, you will realize that the message is static:</p>
+
+{% highlight html hl_lines="2" %}
+<!-- The element for choosing a country -->
+<select class="form-control" name="countrySelectBox">
+    <option value="US">United States</option>
+    <option value="CA">Canada</option>
+    <option value="DK">Denmark</option>
+    <option value="IT">Italy</option>
+    <option value="NL">Netherlands</option>
+    <option value="SE">Sweden</option>
+    <option value="GB">United Kingdom</option>
+</select>
+{% endhighlight %}
+{% highlight javascript hl_lines="8" %}
+$(document).ready(function() {
+    $('#dynamicMessageForm').bootstrapValidator({
+        fields: {
+            code: {
+                validators: {
+                    zipCode: {
+                        country: 'countrySelectBox',
+                        message: 'The value is not valid zipcode'
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                        <p>As you see, the message is always <code>The value is not valid zipcode</code> and does not change nomatter what the country is.</p>
+                        <p>Fortunately, it is easy to convert this message to a dynamic one. Just use <code>%s</code> characters in the message and they will be replaced with the country you choose:</p>
+{% highlight javascript hl_lines="8 9 10" %}
+$(document).ready(function() {
+    $('#dynamicMessageForm').bootstrapValidator({
+        fields: {
+            code: {
+                validators: {
+                    zipCode: {
+                        country: 'countrySelectBox',
+                        // %s will be replaced with "US zipcode", "Italian postal code", and so on
+                        // when you choose the country as US, IT, etc.
+                        message: 'The value is not valid %s'
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#dynamic-message-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#dynamic-message-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#dynamic-message-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="dynamic-message-form-tab">
+                                    <form id="dynamicMessageForm" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Country:</label>
+                                            <div class="col-lg-5">
+                                                <select class="form-control" name="countrySelectBox">
+                                                    <option value="US">United States</option>
+                                                    <option value="CA">Canada</option>
+                                                    <option value="DK">Denmark</option>
+                                                    <option value="IT">Italy</option>
+                                                    <option value="NL">Netherlands</option>
+                                                    <option value="SE">Sweden</option>
+                                                    <option value="GB">United Kingdom</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Zipcode</label>
+                                            <div class="col-lg-5">
+                                                <input type="text" class="form-control" name="code" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane" id="dynamic-message-html-tab">
+{% highlight html hl_lines="5" %}
+<form id="dynamicMessageForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Country:</label>
+        <div class="col-lg-5">
+            <select class="form-control" name="countrySelectBox">
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="DK">Denmark</option>
+                <option value="IT">Italy</option>
+                <option value="NL">Netherlands</option>
+                <option value="SE">Sweden</option>
+                <option value="GB">United Kingdom</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Zipcode</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="code" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+                                </div>
+
+                                <div class="tab-pane" id="dynamic-message-js-tab">
+{% highlight javascript hl_lines="13 14 22" %}
+$(document).ready(function() {
+    $('#dynamicMessageForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                code: {
+                    validators: {
+                        zipCode: {
+                            country: 'countrySelectBox',
+                            message: 'The value is not valid %s'
+                        }
+                    }
+                }
+            }
+        })
+        .on('change', '[name="countrySelectBox"]', function() {
+            // Revalidate the zipcode after changing the country
+            $('#dynamicMessageForm').bootstrapValidator('revalidateField', 'code');
+        });
+});
+{% endhighlight %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Below is the list of validators supporting dynamic message:</p>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Validator</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="/validators/between/">between validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="4" %}
+between: {
+    min: ...,
+    max: ...,
+    message: 'Please enter a value between %s and %s'
+}
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/validators/choice/">choice validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="4" %}
+choice: {
+    min: ...,
+    max: ...,
+    message: 'Please choose %s - %s options'
+}
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/validators/greaterThan/">greaterThan validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="3" %}
+greaterThan: {
+    value: ...,
+    message: 'Please enter a value greater than or equal to %s'
+}
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/validators/iban/">iban validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="3" %}
+iban: {
+    country: ...,
+    message: 'Please enter a valid IBAN number in %s'
+}
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/validators/id/">id validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="3" %}
+id: {
+    country: ...,
+    message: 'Please enter a valid %s identification number'
+}
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/validators/lessThan/">lessThan validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="3" %}
+lessThan: {
+    value: ...,
+    message: 'Please enter a value less than or equal to %s'
+}
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/validators/phone/">phone validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="3" %}
+phone: {
+    country: ...,
+    message: 'Please enter a valid phone number in %s'
+}
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/validators/stringLength/">stringLength validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="4" %}
+stringLength: {
+    min: ...,
+    max: ...,
+    message: 'Please enter value between %s and %s characters long'
+}
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/validators/vat/">vat validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="3" %}
+vat: {
+    country: ...,
+    message: 'Please enter a valid %s VAT number'
+}
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/validators/zipCode/">zipCode validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="3" %}
+zipCode: {
+    country: ...,
+    message: 'Please enter a valid %s'
+}
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/validators/callback/">callback validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="7 13" %}
+callback: {
+    callback: function(value, validator, $field) {
+        // ... Do your logic checking
+        if (...) {
+            return {
+                valid: true,    // or false
+                message: 'The error message'
+            }
+        }
+
+        return {
+            valid: false,       // or true
+            message: 'Other error message'
+        }
+    }
+}
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/validators/remote/">remote validator</a></td>
+                                    <td>
+                                        <p>The backend returns a JSON string that consists of <code>valid</code> and <code>message</code> keys:</p>
+{% highlight javascript %}
+{ valid: true, message: 'The error message' }
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/developing/">Your own validator</a></td>
+                                    <td>
+{% highlight javascript hl_lines="8 14" %}
+(function($) {
+    $.fn.bootstrapValidator.validators.yourValidatorName = {
+        validate: function(validator, $field, options) {
+            // ... Do your logic checking
+            if (...) {
+                return {
+                    valid: true,    // or false
+                    message: 'The error message'
+                }
+            }
+
+            return {
+                valid: false,       // or true
+                message: 'Other error message'
+            }
+        }
+    };
+}(window.jQuery));
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="bv-box bv-box-info">
+                            <h5 id="turning-off-dynamic-message"><i></i>Turning off dynamic message</h5>
+                            <p>Hey, I don't want to use the dynamic message. What should I do? Here is the answer:</p>
+                            <ul>
+                                <li>Don't use <code>%s</code> characters in the message</li>
+                                <li>Don't include the <code>message</code> in the result returned by <a href="/validators/callback/">callback</a>, <a href="/validators/remote/">remote validator</a>, or <a href="/developing/">your own validator</a>.</li>
+                            </ul>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>Validator</th>
+                                        <th>Example</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="/validators/between/">between validator</a></td>
+                                        <td>
+{% highlight javascript hl_lines="4" %}
+between: {
+    min: 20,
+    max: 100,
+    message: 'Please enter a value between 20 and 100'
+}
+{% endhighlight %}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="/validators/callback/">callback validator</a></td>
+                                        <td>
+{% highlight javascript hl_lines="3 4" %}
+callback: {
+    callback: function(value, validator, $field) {
+        // ... Do your logic checking
+        return true;        // or false
+    }
+}
+{% endhighlight %}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="/validators/remote/">remote validator</a></td>
+                                        <td>
+                                            <p>The backend returns a JSON string that consists of <code>valid</code> key:</p>
+{% highlight javascript %}
+{ valid: true }
+{% endhighlight %}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="/developing/">Your own validator</a></td>
+                                        <td>
+{% highlight javascript hl_lines="4 5" %}
+(function($) {
+    $.fn.bootstrapValidator.validators.yourValidatorName = {
+        validate: function(validator, $field, options) {
+            // ... Do your logic checking
+            return true;        // or false
+        }
+    };
+}(window.jQuery));
+{% endhighlight %}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
                 </section>
                 <!-- /validator -->
+
+                <!-- events -->
+                <section>
+                    <h2 id="events">Events<span class="pull-right bv-news"></span></h2>
+                    <p>Similar to the <a href="#settings-structure">settings</a>, there are also events for form, field and validator. Each event can be set by one of three ways:</p>
+                    <ul>
+                        <li>Listening to event using jQuery <code>on(eventName, callback)</code></li>
+                        <li>Using option</li>
+                        <li>Using HTML 5 attributes</li>
+                    </ul>
+
+                    <!-- event-form -->
+                    <section>
+                        <h3 id="event-form">Form events</h3>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Event</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>error.form.bv</code></td>
+                                    <td>Triggered when the form is invalid</td>
+                                </tr>
+                                <tr>
+                                    <td><code>success.form.bv</code></td>
+                                    <td>Triggered when the form is valid</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Usage</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Listening to event</td>
+                                    <td>
+{% highlight javascript hl_lines="4 13" %}
+$(document).ready(function() {
+    $(form)
+        .bootstrapValidator(options)
+        .on('error.form.bv', function(e) {
+            // Get the form instance
+            // $(e.target);
+
+            // Get the bootstrapValidator instance
+            // $(e.target).data('bootstrapValidator');
+
+            // Do something ...
+        })
+        .on('success.form.bv', function(e) {
+            // The e parameter is the same as one
+            // in the error.form.bv event above
+
+            // Do something ...
+        });
+});
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Using option</td>
+                                    <td>
+{% highlight javascript hl_lines="4 7" %}
+$(document).ready(function() {
+    $(form)
+        .bootstrapValidator({
+            onError: function(e) {
+                // Do something ...
+            },
+            onSuccess: function(e) {
+                // Do something ...
+            }
+        });
+});
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Using HTML 5 attributes</td>
+                                    <td>
+{% highlight html %}
+<form data-bv-onerror="onFormError" data-bv-onsuccess="onFormSuccess"></form>
+{% endhighlight %}
+{% highlight javascript hl_lines="1 5" %}
+function onFormError(e) {
+    // Do something ...
+};
+
+function onFormSuccess(e) {
+    // Do something ...
+};
+
+$(document).ready(function() {
+    $(form).bootstrapValidator(options);
+});
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h4>Examples</h4>
+                        <ul>
+                            <li><a href="/examples/ajax-submit/">Using Ajax to submit the form</a></li>
+                        </ul>
+                    </section>
+
+                    <!-- event-field -->
+                    <section>
+                        <h3 id="event-field">Field events</h3>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Event</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>error.field.bv</code></td>
+                                    <td>Triggered when any field is invalid</td>
+                                </tr>
+                                <tr>
+                                    <td><code>success.field.bv</code></td>
+                                    <td>Triggered when any field is valid</td>
+                                </tr>
+                                <tr>
+                                    <td><code>status.field.bv</code></td>
+                                    <td>
+                                        <p>Triggered when field changes status. Each field has four possible status:</p>
+                                        <ul>
+                                            <li><code>NOT_VALIDATED</code>: The field is not validated yet</li>
+                                            <li><code>VALIDATING</code>: The field is being validated</li>
+                                            <li><code>INVALID</code>: The field is invalid</li>
+                                            <li><code>VALID</code>: The field is valid</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Usage</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Listening to event</td>
+                                    <td>
+{% highlight javascript hl_lines="4 19 25" %}
+$(document).ready(function() {
+    $(form)
+        .bootstrapValidator(options)
+        .on('error.field.bv', function(e, data) {
+            // Get the form instance
+            // $(e.target)
+
+            // Get the BootstrapValidator instance
+            // $(e.target).data('bootstrapValidator')
+
+            // Get the field name
+            // data.field
+
+            // Get the field element
+            // data.element
+
+            // Do something ...
+        })
+        .on('success.field.bv', function(e, data) {
+            // The e and data parameters are the same
+            // as one in the error.field.bv event above
+
+            // Do something ...
+        })
+        .on('status.field.bv', function(e, data) {
+            // The e and data parameters are the same
+            // as one in the error.field.bv event above
+
+            // New field status
+            // data.status
+
+            // Do something ...
+        });
+});
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p>If you want to trigger this event for particular field, for example, the <code>name="email"</code> field:</p>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Usage</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Listening to event</td>
+                                    <td>
+{% highlight javascript hl_lines="4 7 10" %}
+$(document).ready(function() {
+    $(form)
+        .bootstrapValidator(options)
+        .on('error.field.bv', '[name="email"]', function(e, data) {
+            // Do something ...
+        })
+        .on('success.field.bv', '[name="email"]', function(e, data) {
+            // Do something ...
+        })
+        .on('status.field.bv', '[name="email"]', function(e, data) {
+            // Do something ...
+        });
+});
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Using option</td>
+                                    <td>
+{% highlight javascript hl_lines="6 9 12" %}
+$(document).ready(function() {
+    $(form)
+        .bootstrapValidator({
+            fields: {
+                email: {
+                    onError: function(e, data) {
+                        // Do something ...
+                    },
+                    onSuccess: function(e, data) {
+                        // Do something ...
+                    },
+                    onStatus: function(e, data) {
+                        // Do something ...
+                    },
+                    validators: {
+                        ...
+                    }
+                }
+            }
+        });
+});
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Using HTML 5 attributes</td>
+                                    <td>
+{% highlight html hl_lines="5 6 7" %}
+<form>
+    ...
+    <input type="text" name="email" class="form-control"
+        data-bv-emailaddress
+        data-bv-onerror="onFieldError"
+        data-bv-onsuccess="onFieldSuccess"
+        data-bv-onstatus="onFieldStatus" />
+    ...
+</form>
+{% endhighlight %}
+{% highlight javascript hl_lines="1 5 9" %}
+function onFieldError(e, data) {
+    // Do something ...
+};
+
+function onFieldSuccess(e, data) {
+    // Do something ...
+};
+
+function onFieldStatus(e, data) {
+    // Do something ...
+};
+
+$(document).ready(function() {
+    $(form).bootstrapValidator(options);
+});
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <!-- event-validator -->
+                    <section>
+                        <h3 id="event-validator">Validator events</h3>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Event</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>error.validator.bv</code></td>
+                                    <td>Triggered when field passes given validator</td>
+                                </tr>
+                                <tr>
+                                    <td><code>success.validator.bv</code></td>
+                                    <td>Triggered when field doesn't pass given validator</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Usage</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Listening to event</td>
+                                    <td>
+{% highlight javascript hl_lines="4 22" %}
+$(document).ready(function() {
+    $(form)
+        .bootstrapValidator(options)
+        .on('error.validator.bv', function(e, data) {
+            // Get the form instance
+            // $(e.target)
+
+            // Get the BootstrapValidator instance
+            // $(e.target).data('bootstrapValidator')
+
+            // Get the field name
+            // data.field
+
+            // Get the field element
+            // data.element
+
+            // Get the validator name
+            // data.validator
+
+            // Do something ...
+        })
+        .on('success.validator.bv', function(e, data) {
+            // The e parameter is the same as one
+            // in the error.validator.bv event above
+
+            // Do something ...
+        });
+});
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Using option</td>
+                                    <td>
+{% highlight javascript hl_lines="8 11" %}
+$(document).ready(function() {
+    $(form)
+        .bootstrapValidator({
+            fields: {
+                email: {
+                    validators: {
+                        emailAddress: {
+                            onError: function(e, data) {
+                                // Do something ...
+                            },
+                            onSuccess: function(e, data) {
+                                // Do something ...
+                            },
+                            // ... other validator options ...
+                        }
+                    }
+                }
+            }
+        });
+});
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Using HTML 5 attributes</td>
+                                    <td>
+{% highlight html hl_lines="5 6" %}
+<form>
+    ...
+    <input type="text" name="email" class="form-control"
+        data-bv-emailaddress
+        data-bv-emailaddress-onerror="onEmailAddressError"
+        data-bv-emailaddress-onsuccess="onEmailAddressSuccess" />
+    ...
+</form>
+{% endhighlight %}
+{% highlight javascript hl_lines="1 5" %}
+function onEmailAddressError(e, data) {
+    // Do something ...
+};
+
+function onEmailAddressSuccess(e, data) {
+    // Do something ...
+};
+
+$(document).ready(function() {
+    $(form).bootstrapValidator(options);
+});
+{% endhighlight %}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </section>
+                <!-- /events -->
             </div>
         </div>
     </div>
@@ -1163,6 +3184,11 @@ $(document).ready(function() {
 <script src="/vendor/momentjs/moment.min.js"></script>
 <script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 <script>
+function getCountryCode(value, validator, $field) {
+    // Return the selected country code
+    return validator.getFieldElements('countrySelectBox').val();
+};
+
 $(document).ready(function() {
     $('#dobPicker')
         .datetimepicker({
@@ -1174,8 +3200,46 @@ $(document).ready(function() {
                 .updateStatus('dob', 'NOT_VALIDATED', null)
                 .validateField('dob');
         });
+
+    $('#containerForm').bootstrapValidator({
+        container: 'tooltip',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        submitHandler: function(validator, form) {
+            // Do nothing
+        },
+        fields: {
+            firstName: {
+                validators: {
+                    notEmpty: {
+                        message: 'The first name is required'
+                    }
+                }
+            },
+            lastName: {
+                validators: {
+                    notEmpty: {
+                        message: 'The last name is required'
+                    }
+                }
+            },
+            phone: {
+                validators: {
+                    digits: {
+                        message: 'The phone number can contain digits only'
+                    },
+                    notEmpty: {
+                        message: 'The phone number is required'
+                    }
+                }
+            }
+        }
+    });
+
     $('#feedbackIconForm').bootstrapValidator({
-        message: 'This value is not valid',
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
@@ -1210,8 +3274,46 @@ $(document).ready(function() {
         }
     });
 
-    $('#containerForm').bootstrapValidator({
-        message: 'This value is not valid',
+    $('#groupForm').bootstrapValidator({
+        container: 'tooltip',
+        group: 'td',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        submitHandler: function(validator, form) {
+            // Do nothing
+        },
+        fields: {
+            'project[]': {
+                validators: {
+                    notEmpty: {
+                        message: 'The project name is required'
+                    }
+                }
+            },
+            'role[]': {
+                validators: {
+                    notEmpty: {
+                        message: 'The role is required'
+                    }
+                }
+            },
+            'url[]': {
+                validators: {
+                    notEmpty: {
+                        message: 'The URL is required'
+                    },
+                    uri: {
+                        message: 'The URL is invalid'
+                    }
+                }
+            }
+        }
+    });
+
+    $('#fieldContainerForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
@@ -1244,6 +3346,47 @@ $(document).ready(function() {
                         min: 6,
                         max: 30,
                         message: 'The username must be more than 6 and less than 30 characters long'
+                    }
+                }
+            }
+        }
+    });
+
+    $('#fieldIconsForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        submitHandler: function(validator, form) {
+            // Do nothing
+        },
+        fields: {
+            address: {
+                feedbackIcons: 'false',
+                validators: {
+                    notEmpty: {
+                        message: 'The address is required and cannot be empty'
+                    }
+                }
+            },
+            city: {
+                feedbackIcons: false,
+                validators: {
+                    notEmpty: {
+                        message: 'The city is required and cannot be empty'
+                    }
+                }
+            },
+            phone: {
+                feedbackIcons: true,
+                validators: {
+                    notEmpty: {
+                        message: 'The phone number is required and cannot be empty'
+                    },
+                    phone: {
+                        country: 'US',
+                        message: 'The phone number is not valid'
                     }
                 }
             }
@@ -1350,13 +3493,12 @@ $(document).ready(function() {
     });
 
     $('#thresholdForm').bootstrapValidator({
-        message: 'This value is not valid',
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
-        submitHandler: function(validator, form, submitButton) {
+        submitHandler: function(validator, form) {
             // Do nothing
         },
         threshold: 3,
@@ -1402,7 +3544,6 @@ $(document).ready(function() {
     });
 
     $('#triggerForm').bootstrapValidator({
-        message: 'This value is not valid',
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
@@ -1434,5 +3575,153 @@ $(document).ready(function() {
             }
         }
     });
+
+    $('#validatorEnabledForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        submitHandler: function(validator, form) {
+            // Do nothing
+        },
+        fields: {
+            fullName: {
+                validators: {
+                    notEmpty: {
+                        // enabled is true, by default
+                        message: 'The full name is required and cannot be empty'
+                    },
+                    stringLength: {
+                        enabled: true,
+                        min: 8,
+                        max: 40,
+                        message: 'The full name must be more than 8 and less than 40 characters long'
+                    },
+                    regexp: {
+                        enabled: false,
+                        regexp: /^[a-zA-Z\s]+$/,
+                        message: 'The full name can only consist of alphabetical, number, and space'
+                    }
+                }
+            }
+        }
+    });
+
+    // Dynamic option concept
+    // #1 usage
+    $('#zipcodeForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            code: {
+                validators: {
+                    zipCode: {
+                        country: 'US',
+                        message: 'The value is not valid zipcode'
+                    }
+                }
+            }
+        }
+    });
+
+    // #2 usage
+    $('#zipcodeElementForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                code: {
+                    validators: {
+                        zipCode: {
+                            country: 'countrySelectBox',
+                            message: 'The value is not valid zipcode'
+                        }
+                    }
+                }
+            }
+        })
+        .on('change', '[name="countrySelectBox"]', function() {
+            // Revalidate the zipcode after changing the country
+            $('#zipcodeElementForm').bootstrapValidator('revalidateField', 'code');
+        });
+
+    // #3 usage
+    $('#zipcodeFunctionNameForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                code: {
+                    validators: {
+                        zipCode: {
+                            country: 'getCountryCode',
+                            message: 'The value is not valid zipcode'
+                        }
+                    }
+                }
+            }
+        })
+        .on('change', '[name="countrySelectBox"]', function() {
+            $('#zipcodeFunctionNameForm').bootstrapValidator('revalidateField', 'code');
+        });
+
+    // #4 usage
+    $('#zipcodeCallbackForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                code: {
+                    validators: {
+                        zipCode: {
+                            country: function(value, validator, $field) {
+                                return validator.getFieldElements('countrySelectBox').val();
+                            },
+                            message: 'The value is not valid zipcode'
+                        }
+                    }
+                }
+            }
+        })
+        .on('change', '[name="countrySelectBox"]', function() {
+            $('#getCountryCode').bootstrapValidator('revalidateField', 'code');
+        });
+
+    // Dynamic message
+    $('#dynamicMessageForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                code: {
+                    validators: {
+                        zipCode: {
+                            country: 'countrySelectBox',
+                            message: 'The value is not valid %s'
+                        }
+                    }
+                }
+            }
+        })
+        .on('change', '[name="countrySelectBox"]', function() {
+            // Revalidate the zipcode after changing the country
+            $('#dynamicMessageForm').bootstrapValidator('revalidateField', 'code');
+        });
 });
 </script>

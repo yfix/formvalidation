@@ -1,0 +1,72 @@
+---
+layout:           doc
+title:            Using Ajax to submit the form
+permalink:        /examples/ajax-submit/
+categories:       [Advance]
+previous_section:
+next_section:
+comments:         true
+---
+
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/examples/">Examples</a> / Advance</h1>
+            </div>
+
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                {% include example.html category='Advance' %}
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2 id="enable-validator">Using Ajax to submit the form</h2>
+                    <p>By triggering the <a href="/settings/#event-form"><code>success.form.bv</code> event</a>, we can use Ajax to submit the form data.</p>
+{% highlight javascript hl_lines="6 8" %}
+$(document).ready(function() {
+    $(form)
+        .bootstrapValidator({
+            ... options ...
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+
+            // Get the form instance
+            var $form = $(e.target);
+
+            // Get the BootstrapValidator instance
+            var bv = $form.data('bootstrapValidator');
+
+            // Use Ajax to submit form data
+            $.post($form.attr('action'), $form.serialize(), function(result) {
+                // ... Process the result ...
+            }, 'json');
+        });
+});
+{% endhighlight %}
+                    <p>In the example above, you can see the form is prevented from doing default submission by using</p>
+{% highlight javascript %}
+e.preventDefault();
+{% endhighlight %}
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

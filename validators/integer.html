@@ -47,7 +47,7 @@ related:
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
                                 <th>Description</th>
                             </tr>
@@ -89,18 +89,20 @@ related:
                             </div>
 
                             <div class="tab-pane" id="integer-html-tab">
-                                <pre><code class="xml">&lt;form id="integerForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-4 control-label">Type a number&lt;/label>
-        &lt;div class="col-lg-3">
-            &lt;input type="text" class="form-control" name="number" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form id="integerForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-4 control-label">Type a number</label>
+        <div class="col-lg-3">
+            <input type="text" class="form-control" name="number" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="integer-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="11" %}
 $(document).ready(function() {
     $('#integerForm').bootstrapValidator({
         feedbackIcons: {
@@ -111,28 +113,30 @@ $(document).ready(function() {
         fields: {
             number: {
                 validators: {
-                    <span class="bv-note">integer: {
+                    integer: {
                         message: 'The value is not an integer'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="integer-html5-tab">
-                                <pre><code class="xml">&lt;form id="integerForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-4 control-label">Type an integer number&lt;/label>
-        &lt;div class="col-lg-3">
-            &lt;input class="form-control" name="number"
-                <span class="bv-note">type="number" data-bv-integer-message="The value is not an integer"</span> />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight html hl_lines="6" %}
+<form id="integerForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-4 control-label">Type an integer number</label>
+        <div class="col-lg-3">
+            <input class="form-control" name="number"
+                type="number" step="1" data-bv-integer-message="The value is not an integer" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+{% highlight javascript %}
 $(document).ready(function() {
     $('#integerForm').bootstrapValidator({
         feedbackIcons: {
@@ -142,7 +146,7 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

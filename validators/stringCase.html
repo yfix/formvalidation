@@ -43,26 +43,23 @@ comments:         true
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
-                                <th>Default</th>
                                 <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>message</code></td>
-                                <td><code>data-bv-stringcase-message</code></td>
-                                <td>String</td>
-                                <td>n/a</td>
-                                <td>The error message</td>
-                            </tr>
-                            <tr>
                                 <td><code>case</code></td>
                                 <td><code>data-bv-stringcase-case</code></td>
                                 <td>String</td>
-                                <td><code>lower</code></td>
-                                <td>Can be <code>lower</code>, <code>upper</code></td>
+                                <td>Can be <code>lower</code> <span class="label label-default">default</span> or <code>upper</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>message</code></td>
+                                <td><code>data-bv-stringcase-message</code></td>
+                                <td>String</td>
+                                <td>The error message</td>
                             </tr>
                         </tbody>
                     </table>
@@ -92,18 +89,20 @@ comments:         true
                             </div>
 
                             <div class="tab-pane" id="stringcase-html-tab">
-                                <pre><code class="xml">&lt;form id="cardHolderForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-4 control-label">Credit card holder&lt;/label>
-        &lt;div class="col-lg-4">
-            &lt;input type="text" class="form-control" name="name" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form id="cardHolderForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-4 control-label">Credit card holder</label>
+        <div class="col-lg-4">
+            <input type="text" class="form-control" name="name" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="stringcase-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="14" %}
 $(document).ready(function() {
     $('#cardHolderForm').bootstrapValidator({
         feedbackIcons: {
@@ -117,16 +116,16 @@ $(document).ready(function() {
                     // Since case is a Javascript keyword,
                     // you should place it between quotes (like 'case' or "case")
                     // to make it work in all browsers
-                    <span class="bv-note">stringCase: {
+                    stringCase: {
                         message: 'The card holder must be in uppercase',
                         'case': 'upper'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

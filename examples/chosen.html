@@ -85,62 +85,66 @@ comments:         true
                             </div>
 
                             <div class="tab-pane" id="chosen-html-tab">
-                                <pre><code class="xml">&lt;!-- Include chosen CSS -->
-&lt;link rel="stylesheet" href="/vendor/chosen/chosen.min.css" />
-&lt;style type="text/css">
+                                {% highlight html hl_lines="16" %}
+<!-- Include chosen CSS -->
+<link rel="stylesheet" href="/vendor/chosen/chosen.min.css" />
+
+<!-- Include choosen JS -->
+<script src="/vendor/chosen/chosen.jquery.min.js"></script>
+
+<style type="text/css">
 #chosenForm .chosen-choices {
     border: 1px solid #ccc;
     border-radius: 4px;
     min-height: 34px;
     padding: 6px 12px;
 }
-<span class="bv-note">#chosenForm .form-control-feedback {
+#chosenForm .form-control-feedback {
     /* To make the feedback icon visible */
     z-index: 100;
-}</span>
-&lt;/style>
-&lt;form id="chosenForm" method="post" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Favorite color&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;select name="colors" class="form-control <span class="bv-note">chosen-select</span>"
-                <span class="bv-note">multiple data-placeholder="Choose 2-4 colors"</span>>
-                &lt;option value="black">Black&lt;/option>
-                &lt;option value="blue">Blue&lt;/option>
-                &lt;option value="green">Green&lt;/option>
-                &lt;option value="orange">Orange&lt;/option>
-                &lt;option value="red">Red&lt;/option>
-                &lt;option value="yellow">Yellow&lt;/option>
-                &lt;option value="white">White&lt;/option>
-            &lt;/select>
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;div class="col-lg-5 col-lg-offset-3">
-            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+}
+</style>
+
+<form id="chosenForm" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Favorite color</label>
+        <div class="col-lg-5">
+            <select name="colors" class="form-control chosen-select"
+                multiple data-placeholder="Choose 2-4 colors">
+
+                <option value="black">Black</option>
+                <option value="blue">Blue</option>
+                <option value="green">Green</option>
+                <option value="orange">Orange</option>
+                <option value="red">Red</option>
+                <option value="yellow">Yellow</option>
+                <option value="white">White</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-5 col-lg-offset-3">
+            <button type="submit" class="btn btn-primary">Validate</button>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="chosen-js-tab">
-                                <pre><code class="xml javascript">&lt;!-- Include choosen JS -->
-&lt;script src="/vendor/chosen/chosen.jquery.min.js">&lt;/script>
-&lt;script>
+{% highlight javascript hl_lines="7 11" %}
 $(document).ready(function() {
     $('#chosenForm')
         .find('[name="colors"]')
             .chosen()
-            // Re-validate the color when it is changed
-            <span class="bv-note">.change(function(e) {
-                $('#chosenForm')
-                    .data('bootstrapValidator')
-                    .updateStatus('colors', 'NOT_VALIDATED')
-                    .validateField('colors');
-            })</span>
+            // Revalidate the color when it is changed
+            .change(function(e) {
+                $('#chosenForm').bootstrapValidator('revalidateField', 'colors');
+            })
             .end()
         .bootstrapValidator({
-            <span class="bv-note">excluded: ':disabled'</span>,
+            excluded: ':disabled',
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
@@ -162,7 +166,7 @@ $(document).ready(function() {
             }
         });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>
@@ -179,7 +183,7 @@ $(document).ready(function() {
         .find('[name="colors"]')
             .chosen()
             .change(function(e) {
-                $('#chosenForm').data('bootstrapValidator').updateStatus('colors', 'NOT_VALIDATED').validateField('colors');
+                $('#chosenForm').bootstrapValidator('revalidateField', 'colors');
             })
             .end()
         .bootstrapValidator({
@@ -188,9 +192,6 @@ $(document).ready(function() {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
-            },
-            submitHandler: function(validator, form, submitButton) {
-                // Do nothing
             },
             fields: {
                 colors: {
@@ -206,6 +207,10 @@ $(document).ready(function() {
                     }
                 }
             }
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
         });
 });
 </script>

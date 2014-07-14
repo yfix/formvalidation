@@ -125,12 +125,18 @@ related:
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
                                 <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <tr>
+                                <td><code>allowLocal</code> <span class="bv-news"></span></td>
+                                <td><code>data-bv-uri-allowlocal</code></td>
+                                <td>Boolean</td>
+                                <td>Allow the private and local network IP.<br/>It is <code>false</code>, by default.</td>
+                            </tr>
                             <tr>
                                 <td><code>message</code></td>
                                 <td><code>data-bv-uri-message</code></td>
@@ -146,7 +152,10 @@ related:
                 <section>
                     <h2 id="example">Example</h2>
 
-                    <p class="bv-box bv-box-info">Thank to <a href="http://mathiasbynens.be/">Mathias Bynens</a> for providing this amazing collection of <a href="http://mathiasbynens.be/demo/url-regex">URL examples</a>.</div>
+                    <div class="bv-box bv-box-info">
+                        <h5><i></i>Sample URLs for testing</h5>
+                        <p>Thank to <a href="http://mathiasbynens.be/">Mathias Bynens</a> for providing this amazing collection of <a href="http://mathiasbynens.be/demo/url-regex">URL examples</a>.</p>
+                    </div>
 
                     <table class="table table-condensed">
                         <thead>
@@ -199,18 +208,20 @@ related:
                             </div>
 
                             <div class="tab-pane" id="uri-html-tab">
-                                <pre><code class="xml">&lt;form id="urlForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Your website&lt;/label>
-        &lt;div class="col-lg-4">
-            &lt;input type="text" class="form-control" name="website" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form id="urlForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Your website</label>
+        <div class="col-lg-4">
+            <input type="text" class="form-control" name="website" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="uri-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="11" %}
 $(document).ready(function() {
     $('#urlForm').bootstrapValidator({
         feedbackIcons: {
@@ -221,28 +232,30 @@ $(document).ready(function() {
         fields: {
             website: {
                 validators: {
-                    <span class="bv-note">uri: {
+                    uri: {
                         message: 'The website address is not valid'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="uri-html5-tab">
-                                <pre><code class="xml">&lt;form id="urlForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Your website&lt;/label>
-        &lt;div class="col-lg-4">
-            &lt;input class="form-control" name="website"
-                <span class="bv-note">type="url" data-bv-uri-message="The website address is not valid"</span> />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight html hl_lines="6" %}
+<form id="urlForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Your website</label>
+        <div class="col-lg-4">
+            <input class="form-control" name="website"
+                type="url" data-bv-uri-message="The website address is not valid" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+{% highlight javascript %}
 $(document).ready(function() {
     $('#urlForm').bootstrapValidator({
         feedbackIcons: {
@@ -252,7 +265,7 @@ $(document).ready(function() {
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

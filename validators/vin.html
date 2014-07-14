@@ -44,7 +44,7 @@ examples:         1FAHP26W49G252740, 2FTRX07W53C371582, WP0CA29863U153381, JTMKF
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
                                 <th>Description</th>
                             </tr>
@@ -63,6 +63,11 @@ examples:         1FAHP26W49G252740, 2FTRX07W53C371582, WP0CA29863U153381, JTMKF
                 <section>
                     <h2 id="example">Example</h2>
 
+                    <div class="bv-box bv-box-info">
+                        <h5><i></i>Sample VIN for testing</h5>
+                        <p><a href="http://randomvin.com/">randomvin.com</a> helps you generate a random vin.</p>
+                    </div>
+
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -80,8 +85,6 @@ examples:         1FAHP26W49G252740, 2FTRX07W53C371582, WP0CA29863U153381, JTMKF
                             {% endfor %}
                         </tbody>
                     </table>
-
-                    <p class="bv-box bv-box-info"><a href="http://randomvin.com/">http://randomvin.com</a> helps you generate a random vin.</p>
 
                     <div class="bv-example">
                         <ul class="nav nav-tabs">
@@ -103,18 +106,20 @@ examples:         1FAHP26W49G252740, 2FTRX07W53C371582, WP0CA29863U153381, JTMKF
                             </div>
 
                             <div class="tab-pane" id="vin-html-tab">
-                                <pre><code class="xml">&lt;form id="vinForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">VIN&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="vin" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form id="vinForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">VIN</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="vin" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="vin-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="11" %}
 $(document).ready(function() {
     $('#vinForm').bootstrapValidator({
         feedbackIcons: {
@@ -125,15 +130,15 @@ $(document).ready(function() {
         fields: {
             vin: {
                 validators: {
-                    <span class="bv-note">vin: {
+                    vin: {
                         message: 'The VIN number is not valid'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

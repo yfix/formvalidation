@@ -48,7 +48,7 @@ related:
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
                                 <th>Description</th>
                             </tr>
@@ -105,18 +105,20 @@ related:
                             </div>
 
                             <div class="tab-pane" id="isin-html-tab">
-                                <pre><code class="xml">&lt;form id="isinForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">ISIN&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="isin" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form id="isinForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">ISIN</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="isin" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="isin-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="11" %}
 $(document).ready(function() {
     $('#isinForm').bootstrapValidator({
         feedbackIcons: {
@@ -127,15 +129,15 @@ $(document).ready(function() {
         fields: {
             isin: {
                 validators: {
-                    <span class="bv-note">isin: {
+                    isin: {
                         message: 'The value is not valid ISIN'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>
@@ -154,9 +156,8 @@ $(document).ready(function() {
             .find('input[name="isin"]')
                 .val($(this).html())
                 .end()
-            .data('bootstrapValidator')
-                .updateStatus('isin', 'NOT_VALIDATED')
-                .validate();
+            .bootstrapValidator('revalidateField', 'isin');
+
         var isValid = $('#isinForm').data('bootstrapValidator').isValid();
         $(this)
             .parents('tr').find('i')

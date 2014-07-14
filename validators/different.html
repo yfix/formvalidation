@@ -46,23 +46,23 @@ related:
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
                                 <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+                                <td><code>field</code><sup>*</sup></td>
+                                <td><code>data-bv-different-field</code></td>
+                                <td>String</td>
+                                <td>The name of field that will be used to compare with current one</td>
+                            </tr>
+                            <tr>
                                 <td><code>message</code></td>
                                 <td><code>data-bv-different-message</code></td>
                                 <td>String</td>
                                 <td>The error message</td>
-                            </tr>
-                            <tr>
-                                <td><code>field</code> (*)</td>
-                                <td><code>data-bv-different-field</code></td>
-                                <td>String</td>
-                                <td>The name of field that will be used to compare with current one</td>
                             </tr>
                         </tbody>
                     </table>
@@ -99,25 +99,27 @@ related:
                             </div>
 
                             <div class="tab-pane" id="different-html-tab">
-                                <pre><code class="xml">&lt;form id="registerForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Username&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="username" />
-        &lt;/div>
-    &lt;/div>
+{% highlight html %}
+<form id="registerForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Username</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="username" />
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Password&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="password" class="form-control" name="password" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Password</label>
+        <div class="col-lg-5">
+            <input type="password" class="form-control" name="password" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="different-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="11 19" %}
 $(document).ready(function() {
     $('#registerForm').bootstrapValidator({
         feedbackIcons: {
@@ -128,24 +130,24 @@ $(document).ready(function() {
         fields: {
             username: {
                 validators: {
-                    <span class="bv-note">different: {
+                    different: {
                         field: 'password',
                         message: 'The username and password cannot be the same as each other'
-                    }</span>
+                    }
                 }
             },
             password: {
                 validators: {
-                    <span class="bv-note">different: {
+                    different: {
                         field: 'username',
                         message: 'The password cannot be the same as username'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

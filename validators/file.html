@@ -44,18 +44,12 @@ comments:         true
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
                                 <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><code>message</code></td>
-                                <td><code>data-bv-file-message</code></td>
-                                <td>String</td>
-                                <td>The error message</td>
-                            </tr>
                             <tr>
                                 <td><code>extension</code></td>
                                 <td><code>data-bv-file-extension</code></td>
@@ -67,6 +61,12 @@ comments:         true
                                 <td><code>data-bv-file-maxsize</code></td>
                                 <td>Number</td>
                                 <td>The maximum file size in bytes</td>
+                            </tr>
+                            <tr>
+                                <td><code>message</code></td>
+                                <td><code>data-bv-file-message</code></td>
+                                <td>String</td>
+                                <td>The error message</td>
                             </tr>
                             <tr>
                                 <td><code>type</code></td>
@@ -132,18 +132,20 @@ comments:         true
                             </div>
 
                             <div class="tab-pane" id="file-html-tab">
-                                <pre><code class="xml">&lt;form id="uploadForm" class="form-horizontal" <span class="bv-note">enctype="multipart/form-data"</span>>
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Avatar&lt;/label>
-        &lt;div class="col-lg-4">
-            &lt;input type="file" class="form-control" name="avatar" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html hl_lines="1" %}
+<form id="uploadForm" class="form-horizontal" enctype="multipart/form-data">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Avatar</label>
+        <div class="col-lg-4">
+            <input type="file" class="form-control" name="avatar" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="file-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="11" %}
 $(document).ready(function() {
     $('#uploadForm').bootstrapValidator({
         feedbackIcons: {
@@ -154,18 +156,18 @@ $(document).ready(function() {
         fields: {
             avatar: {
                 validators: {
-                    <span class="bv-note">file: {
+                    file: {
                         extension: 'jpeg,png',
                         type: 'image/jpeg,image/png',
                         maxSize: 2048 * 1024,   // 2 MB
                         message: 'The selected file is not valid'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

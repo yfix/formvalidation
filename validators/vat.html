@@ -46,23 +46,23 @@ related:
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
                                 <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+                                <td><code>country</code></td>
+                                <td><code>data-bv-vat-country</code></td>
+                                <td>String</td>
+                                <td>An ISO-3166 country code.<br/>It's <a href="/settings/#dynamic-option">dynamic option</a> <span class="bv-news"></span>.<br/>If it is not defined, it will be parsed from the VAT number</td>
+                            </tr>
+                            <tr>
                                 <td><code>message</code></td>
                                 <td><code>data-bv-vat-message</code></td>
                                 <td>String</td>
                                 <td>The error message</td>
-                            </tr>
-                            <tr>
-                                <td><code>country</code></td>
-                                <td><code>data-bv-vat-country</code></td>
-                                <td>String</td>
-                                <td>A ISO 3166 country code. If it is not defined, it will be parsed from the VAT number.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -89,12 +89,13 @@ related:
                                 <td>{{ data[2] }}</td>
                                 <td>
                                     {% if data[3] %}
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         {% assign samples = data[3] | split: ',' %}
                                         {% for sample in samples %}
-                                        <li><a href="javascript: void(0);" class="sample">{{ sample }}</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">{{ sample }}</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         {% endfor %}
-                                    </ul>
+                                    </dl>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -126,18 +127,20 @@ related:
                             </div>
 
                             <div class="tab-pane" id="vat-html-tab">
-                                <pre><code class="xml">&lt;form id="vatForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">VAT number&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="vat" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form id="vatForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">VAT number</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="vat" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="vat-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="11" %}
 $(document).ready(function() {
     $('#vatForm').bootstrapValidator({
         feedbackIcons: {
@@ -148,15 +151,15 @@ $(document).ready(function() {
         fields: {
             vat: {
                 validators: {
-                    <span class="bv-note">vat: {
+                    vat: {
                         message: 'The VAT number is not valid'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>
@@ -175,12 +178,11 @@ $(document).ready(function() {
             .find('input[name="vat"]')
                 .val($(this).text())
                 .end()
-            .data('bootstrapValidator')
-                .updateStatus('vat', 'NOT_VALIDATED')
-                .validate();
+            .bootstrapValidator('revalidateField', 'vat');
+
         var isValid = $('#vatForm').data('bootstrapValidator').isValid();
-        $(this)
-            .next()
+        $(this).parent().next()
+                .find('i')
                 .removeClass('fa-check fa-times')
                 .addClass(isValid ? 'fa-check' : 'fa-times')
                 .show()

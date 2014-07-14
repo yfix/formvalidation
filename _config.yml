@@ -1,26 +1,29 @@
 name:                 BootstrapValidator
-pygments:             false
+highlighter:          pygments
+#highlighter:          rouge
 relative_permalinks:  false
 
-markdown:             redcarpet
+source:               .
 destination:          _gh_pages
+markdown:             kramdown
+#markdown:             redcarpet
 exclude:              ['node_modules', '*.less']
 url:                  http://bootstrapvalidator.com/
-#paginate:             5
-permalink:            /news/:year/:month/:day/:title/
+paginate:             5
+permalink:            /news/:title/
 timezone:             Asia/Ho_Chi_Minh
 
 # Custom variables
 # not defined by Jekyll
-current_version:      0.4.5
-released_date:        2014-05-15
-github_watchers:      552
-github_forks:         220
-github_downloads:     31552
-twitter_followers:    102
+current_version:      0.5.0
+released_date:        2014-07-14
+github_watchers:      568
+github_forks:         225
+github_downloads:     32200
+twitter_followers:    101
 download:
-  dist:               https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.4.5/bootstrapvalidator-dist-0.4.5.zip
-  tag:                https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.4.5.zip
+  dist:               https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.5.0/bootstrapvalidator-dist-0.5.0.zip
+  tag:                https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.5.0.zip
 repository:
   source:             https://github.com/nghuuphuoc/bootstrapvalidator
   docs:               https://github.com/nghuuphuoc/bootstrapvalidator/gh-pages

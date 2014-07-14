@@ -48,23 +48,23 @@ related:
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
                                 <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+                                <td><code>country</code></td>
+                                <td><code>data-bv-iban-country</code></td>
+                                <td>String</td>
+                                <td>An ISO-3166 country code.<br/>It's <a href="/settings/#dynamic-option">dynamic option</a> <span class="bv-news"></span></td>
+                            </tr>
+                            <tr>
                                 <td><code>message</code></td>
                                 <td><code>data-bv-iban-message</code></td>
                                 <td>String</td>
                                 <td>The error message</td>
-                            </tr>
-                            <tr>
-                                <td><code>country</code></td>
-                                <td><code>data-bv-iban-country</code></td>
-                                <td>String</td>
-                                <td>A ISO 3166 country code</td>
                             </tr>
                         </tbody>
                     </table>
@@ -120,18 +120,20 @@ related:
                             </div>
 
                             <div class="tab-pane" id="iban-html-tab">
-                                <pre><code class="xml">&lt;form id="ibanForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">IBAN&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="iban" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form id="ibanForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">IBAN</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="iban" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="iban-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="11" %}
 $(document).ready(function() {
     $('#ibanForm').bootstrapValidator({
         feedbackIcons: {
@@ -142,15 +144,15 @@ $(document).ready(function() {
         fields: {
             iban: {
                 validators: {
-                    <span class="bv-note">iban: {
+                    iban: {
                         message: 'The value is not valid IBAN'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

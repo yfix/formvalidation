@@ -139,105 +139,109 @@ comments:         true
                             </div>
 
                             <div class="tab-pane" id="icheck-html-tab">
-                                <pre><code class="xml">&lt;!-- Include iCheck skin -->
-<span class="bv-note">&lt;link rel="stylesheet" href="/vendor/icheck/skins/square/red.css" /></span>
-&lt;!-- Set the radio/checkbox positon properly -->
-&lt;style type="text/css">
+{% highlight html hl_lines="10" %}
+<!-- Include iCheck skin -->
+<link rel="stylesheet" href="/vendor/icheck/skins/square/red.css" />
+
+<!-- Include iCheck plugin -->
+<script src="/vendor/icheck/icheck.min.js"></script>
+
+<!-- Set the radio/checkbox position properly -->
+<style type="text/css">
 #icheckForm .radio, #icheckForm .checkbox {
     padding-left: 0;
 }
-&lt;/style>
+</style>
 
-&lt;form id="icheckForm" method="post" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Job position&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;div class="radio">
-                &lt;label>
-                    &lt;input type="radio" name="job" value="designer" /> Designer
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="radio">
-                &lt;label>
-                    &lt;input type="radio" name="job" value="frontend" /> Front-end Developer
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="radio">
-                &lt;label>
-                    &lt;input type="radio" name="job" value="backend" /> Back-end Developer
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="radio">
-                &lt;label>
-                    &lt;input type="radio" name="job" value="dba" /> Database Administrator
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="radio">
-                &lt;label>
-                    &lt;input type="radio" name="job" value="sys" /> System Engineer
-                &lt;/label>
-            &lt;/div>
-        &lt;/div>
-    &lt;/div>
+<form id="icheckForm" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Job position</label>
+        <div class="col-lg-5">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="job" value="designer" /> Designer
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="job" value="frontend" /> Front-end Developer
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="job" value="backend" /> Back-end Developer
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="job" value="dba" /> Database Administrator
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="job" value="sys" /> System Engineer
+                </label>
+            </div>
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Programming Languages&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;div class="checkbox">
-                &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="net" /> .Net
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="checkbox">
-                &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="java" /> Java
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="checkbox">
-                &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="c" /> C/C++
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="checkbox">
-                &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="php" /> PHP
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="checkbox">
-                &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="perl" /> Perl
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="checkbox">
-                &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="ruby" /> Ruby
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="checkbox">
-                &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="python" /> Python
-                &lt;/label>
-            &lt;/div>
-            &lt;div class="checkbox">
-                &lt;label>
-                    &lt;input type="checkbox" name="languages[]" value="javascript" /> Javascript
-                &lt;/label>
-            &lt;/div>
-        &lt;/div>
-    &lt;/div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Programming Languages</label>
+        <div class="col-lg-5">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="languages[]" value="net" /> .Net
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="languages[]" value="java" /> Java
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="languages[]" value="c" /> C/C++
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="languages[]" value="php" /> PHP
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="languages[]" value="perl" /> Perl
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="languages[]" value="ruby" /> Ruby
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="languages[]" value="python" /> Python
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="languages[]" value="javascript" /> Javascript
+                </label>
+            </div>
+        </div>
+    </div>
 
-    &lt;div class="form-group">
-        &lt;div class="col-lg-5 col-lg-offset-3">
-            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <div class="form-group">
+        <div class="col-lg-5 col-lg-offset-3">
+            <button type="submit" class="btn btn-primary">Validate</button>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="icheck-js-tab">
-                                <pre><code class="xml javascript">&lt;!-- Include iCheck plugin -->
-<span class="bv-note">&lt;script src="/vendor/icheck/icheck.min.js">&lt;/script></span>
-&lt;script>
+{% highlight javascript hl_lines="30 38" %}
 $(document).ready(function() {
     $('#icheckForm')
         .bootstrapValidator({
@@ -267,22 +271,18 @@ $(document).ready(function() {
         })
         .find('input[name="job"], input[name="languages[]"]')
             // Init iCheck elements
-            <span class="bv-note">.iCheck({
+            .iCheck({
                 checkboxClass: 'icheckbox_square-red',
                 radioClass: 'iradio_square-red'
-            })</span>
+            })
             // Called when the radios/checkboxes are changed
             .on('ifChanged', function(e) {
                 // Get the field name
                 var field = $(this).attr('name');
-                <span class="bv-note">$('#icheckForm')
-                    // Mark the field as not validated
-                    .bootstrapValidator('updateStatus', field, 'NOT_VALIDATED')
-                    // Validate field
-                    .bootstrapValidator('validateField', field);</span>
+                $('#icheckForm').bootstrapValidator('revalidateField', field);
             });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>
@@ -303,9 +303,6 @@ $(document).ready(function() {
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
-            submitHandler: function(validator, form, submitButton) {
-                // Do nothing
-            },
             fields: {
                 job: {
                     validators: {
@@ -325,15 +322,17 @@ $(document).ready(function() {
                 }
             }
         })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+        })
         .find('input[name="job"], input[name="languages[]"]')
             .iCheck({
                 checkboxClass: 'icheckbox_square-red',
                 radioClass: 'iradio_square-red'
             })
             .on('ifChanged', function(e) {
-                var field = $(this).attr('name');
-                $('#icheckForm').bootstrapValidator('updateStatus', field, 'NOT_VALIDATED')
-                                .bootstrapValidator('validateField', field);
+                $('#icheckForm').bootstrapValidator('revalidateField', $(this).attr('name'));
             });
 });
 </script>

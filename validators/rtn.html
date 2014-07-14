@@ -49,7 +49,7 @@ related:
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
                                 <th>Description</th>
                             </tr>
@@ -106,18 +106,20 @@ related:
                             </div>
 
                             <div class="tab-pane" id="rtn-html-tab">
-                                <pre><code class="xml">&lt;form id="rtnForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">RTN&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="rtn" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form id="rtnForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">RTN</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="rtn" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="rtn-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="11" %}
 $(document).ready(function() {
     $('#rtnForm').bootstrapValidator({
         feedbackIcons: {
@@ -128,15 +130,15 @@ $(document).ready(function() {
         fields: {
             rtn: {
                 validators: {
-                    <span class="bv-note">rtn: {
+                    rtn: {
                         message: 'The value is not valid RTN'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

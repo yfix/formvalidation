@@ -46,23 +46,23 @@ related:
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
                                 <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+                                <td><code>country</code></td>
+                                <td><code>data-bv-zipcode-country</code></td>
+                                <td>String</td>
+                                <td>An ISO-3166 country code.<br/>It's <a href="/settings/#dynamic-option">dynamic option</a> <span class="bv-news"></span></td>
+                            </tr>
+                            <tr>
                                 <td><code>message</code></td>
                                 <td><code>data-bv-zipcode-message</code></td>
                                 <td>String</td>
                                 <td>The error message</td>
-                            </tr>
-                            <tr>
-                                <td><code>country</code></td>
-                                <td><code>data-bv-zipcode-country</code></td>
-                                <td>String</td>
-                                <td>The ISO-3166 country code</td>
                             </tr>
                         </tbody>
                     </table>
@@ -78,7 +78,7 @@ related:
                         <tbody>
                             <tr>
                                 <td>United States</td>
-                                <td>US <label class="label label-info">default</label></td>
+                                <td>US <label class="label label-default">default</label></td>
                             </tr>
                             <tr>
                                 <td>Canada</td>
@@ -99,6 +99,10 @@ related:
                             <tr>
                                 <td>Sweden</td>
                                 <td>SE</td>
+                            </tr>
+                            <tr>
+                                <td>Singapore</td>
+                                <td>SG <span class="bv-news"></span></td>
                             </tr>
                             <tr>
                                 <td>United Kingdom</td>
@@ -149,18 +153,20 @@ related:
                             </div>
 
                             <div class="tab-pane" id="postcode-html-tab">
-                                <pre><code class="xml">&lt;form id="postcodeForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">UK postcode&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="postcode" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form id="postcodeForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">UK postcode</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="postcode" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="postcode-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="11" %}
 $(document).ready(function() {
     $('#postcodeForm').bootstrapValidator({
         feedbackIcons: {
@@ -171,16 +177,16 @@ $(document).ready(function() {
         fields: {
             postcode: {
                 validators: {
-                    <span class="bv-note">zipCode: {
+                    zipCode: {
                         country: 'GB',
                         message: 'The value is not valid UK postcode'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

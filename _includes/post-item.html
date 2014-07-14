@@ -1,17 +1,22 @@
-<section>
-    <h2 class="bv-post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+<div class="bv-post">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-post-meta">
+                <p><a href="https://github.com/{{ post.author }}" title="@{{ post.author }}"><img src="https://github.com/{{ post.author }}.png" width="80px" height="80px" /></a></p>
+                <p>{{ post.date | date_to_string }}</p>
+                <p>
+                    {% for category in post.categories %}
+                    <a href="/news/{{ category }}/">{{ category }}</a>
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
 
-    <div class="bv-post-meta">
-        <span class="bv-post-author"><i class="fa fa-user"></i> <a href="https://github.com/{{ post.author }}">{{ post.author }}</a></span>
-        <span class="bv-post-date"><i class="fa fa-clock-o"></i> {{ post.date | date_to_string }}</span>
-        <span class="bv-post-category"><i class="fa fa-tags"></i>
-            {% for category in post.categories %}
-            <a href="/news/{{ category }}/">{{ category }}</a>
-            {% endfor %}
-        </span>
+        <div class="col-md-9">
+            <div class="bv-post-content">
+                <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+                {{ post.content }}
+            </div>
+        </div>
     </div>
-
-    <div class="bv-post-content">
-        {{ post.content }}
-    </div>
-<section>
+</div>

@@ -23,18 +23,7 @@ comment:   false
 </div>
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
-                {% for post in site.posts %}
-                {% include post-item.html %}
-                {% endfor %}
-            </div>
-        </div>
-    </div>
+    {% for post in site.posts %}
+        {% include post-item.html %}
+    {% endfor %}
 </div>

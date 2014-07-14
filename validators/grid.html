@@ -47,7 +47,7 @@ related:
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
                                 <th>Description</th>
                             </tr>
@@ -104,18 +104,20 @@ related:
                             </div>
 
                             <div class="tab-pane" id="grid-html-tab">
-                                <pre><code class="xml">&lt;form id="gridForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">GRId&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="grid" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+{% highlight html %}
+<form id="gridForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">GRId</label>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" name="grid" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="grid-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
+{% highlight javascript hl_lines="11" %}
 $(document).ready(function() {
     $('#gridForm').bootstrapValidator({
         feedbackIcons: {
@@ -126,15 +128,15 @@ $(document).ready(function() {
         fields: {
             grid: {
                 validators: {
-                    <span class="bv-note">grid: {
+                    grid: {
                         message: 'The value is not valid GRId'
-                    }</span>
+                    }
                 }
             }
         }
     });
 });
-&lt;/script></code></pre>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>
