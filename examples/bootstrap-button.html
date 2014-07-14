@@ -207,34 +207,36 @@ $(document).ready(function() {
 
 <script>
 $(document).ready(function() {
-    $('#buttonGroupForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        excluded: ':disabled',
-        submitHandler: function(validator, form, submitButton) {
-            // Do nothing
-        },
-        fields: {
-            gender: {
-                validators: {
-                    notEmpty: {
-                        message: 'The gender is required'
-                    }
-                }
+    $('#buttonGroupForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
             },
-            'languages[]': {
-                validators: {
-                    choice: {
-                        min: 1,
-                        max: 2,
-                        message: 'Please choose 1 - 2 languages you can speak'
+            excluded: ':disabled',
+            fields: {
+                gender: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The gender is required'
+                        }
+                    }
+                },
+                'languages[]': {
+                    validators: {
+                        choice: {
+                            min: 1,
+                            max: 2,
+                            message: 'Please choose 1 - 2 languages you can speak'
+                        }
                     }
                 }
             }
-        }
-    });
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+        });
 });
 </script>

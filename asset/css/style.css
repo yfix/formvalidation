@@ -362,7 +362,42 @@ footer p {
 .bv-comments {
   padding-bottom: 50px;
 }
-.bv-post-content h2,
+.bv-post {
+  border-bottom: 1px solid #ddd;
+  padding: 60px 0 80px 0;
+  clear: both;
+}
+.bv-post-meta {
+  padding-top: 30px;
+  text-align: center;
+}
+.bv-post-meta img {
+  border-radius: 40px;
+  width: 80px;
+  height: 80px;
+}
+.bv-post-content h2 {
+  border-bottom: 1px solid #eee;
+  font-size: 30px;
+  margin-bottom: 40px;
+  padding: 0px 0 10px 0;
+}
 .bv-post-content h3 {
-  border-bottom: none;
+  border-bottom: 1px solid #eee;
+  font-size: 26px;
+  padding: 30px 0 10px 0;
+}
+.bv-post-content code {
+  background: transparent;
+  font-family: Monaco, Consolas, 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+  padding: 0;
+}
+.bv-post-content li:before {
+  content: '\b7\a0';
+}
+.bv-post-content p {
+  margin: 25px 0 10px 0;
 }

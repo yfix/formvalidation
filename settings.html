@@ -38,7 +38,6 @@ next_section:     /validators/
                     <li><a href="#form-live">live</a></li>
                     <li><a href="#form-message">message</a></li>
                     <li><a href="#form-submit-buttons">submitButtons</a></li>
-                    <li><a href="#form-submit-handler">submitHandler</a></li>
                     <li><a href="#form-threshold">threshold</a></li>
                     <li><a href="#form-trigger">trigger</a></li>
                     <li><a href="#form-fields">fields</a></li>
@@ -121,7 +120,6 @@ $(formSelector).bootstrapValidator({
     live: 'enabled',
     message: 'This value is not valid',
     submitButtons: 'button[type="submit"]',
-    submitHandler: null,
     trigger: null,
     fields: ...
 });
@@ -140,7 +138,6 @@ $(formSelector).bootstrapValidator({
 {% highlight javascript %}
 $(document).ready(function() {
     $(formSelector).bootstrapValidator({
-        submitHandler: null,
         fields: ...
     });
 });
@@ -205,11 +202,6 @@ $(document).ready(function() {
                                 <td><code>submitButtons</code></td>
                                 <td><code>data-bv-submitbuttons</code></td>
                                 <td><code>'[type="submit"]'</code></td>
-                            </tr>
-                            <tr>
-                                <td><code>submitHandler</code></td>
-                                <td>n/a</td>
-                                <td><code>null</code></td>
                             </tr>
                             <tr>
                                 <td><code>threshold</code></td>
@@ -873,65 +865,6 @@ $(document).ready(function() {
                     <section>
                         <h3 id="form-submit-buttons">submitButtons: String</h3>
                         <p>The submit buttons selector. These buttons will be disabled when the form input are invalid.</p>
-                    </section>
-
-                    <!-- form-submit-handler -->
-                    <section>
-                        <h3 id="form-submit-handler">submitHandler: Function</h3>
-                        <p>Custom submit handler:</p>
-{% highlight javascript %}
-submitHandler: function(validator, form) {
-}
-{% endhighlight %}
-
-                        <table class="table table-condensed">
-                            <thead>
-                                <tr>
-                                    <th>Parameter</th>
-                                    <th>Type</th>
-                                    <th>Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><code>validator</code></td>
-                                    <td>BootstrapValidator</td>
-                                    <td>The instance of BootstrapValidator</td>
-                                </tr>
-                                <tr>
-                                    <td><code>form</code></td>
-                                    <td>jQuery</td>
-                                    <td>Representing the current form</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <p>This option is useful when you want to use Ajax to submit the form data:</p>
-{% highlight javascript %}
-submitHandler: function(validator, form) {
-    // In the case the form have more than one submit buttons,
-    // you might want to know which one is clicked.
-    // Use the getSubmitButton() method.
-    // var $submitButton = validator.getSubmitButton();
-
-    // Use Ajax to submit form data
-    $.post(form.attr('action'), form.serialize(), function(result) {
-        // ... process the result ...
-    }, 'json');
-}
-{% endhighlight %}
-
-                        <p>By default, <code>submitHandler</code> is <code>null</code>.</p>
-
-                        <p>If you want to submit the form inside your custom submit handler, use the <a href="/api/#default-submit"><code>defaultSubmit()</code></a> method:</p>
-{% highlight javascript %}
-submitHandler: function(validator, form) {
-    // Do your task
-    // ...
-    // Submit the form
-    validator.defaultSubmit();
-}
-{% endhighlight %}
                     </section>
 
                     <!-- form-threshold-->
@@ -2931,6 +2864,11 @@ $(document).ready(function() {
                                 </tr>
                             </tbody>
                         </table>
+
+                        <h4>Examples</h4>
+                        <ul>
+                            <li><a href="/examples/ajax-submit/">Using Ajax to submit the form</a></li>
+                        </ul>
                     </section>
 
                     <!-- event-field -->

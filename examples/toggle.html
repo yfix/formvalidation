@@ -314,9 +314,6 @@ $(document).ready(function() {
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
-            submitHandler: function(validator, form, submitButton) {
-                // Do nothing
-            },
             fields: {
                 firstName: {
                     validators: {
@@ -378,6 +375,10 @@ $(document).ready(function() {
                     }
                 }
             }
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
         })
         .find('button[data-toggle]')
             .on('click', function() {

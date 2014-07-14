@@ -9,18 +9,18 @@ markdown:             kramdown
 #markdown:             redcarpet
 exclude:              ['node_modules', '*.less']
 url:                  http://bootstrapvalidator.com/
-#paginate:             5
-permalink:            /news/:year/:month/:day/:title/
+paginate:             5
+permalink:            /news/:title/
 timezone:             Asia/Ho_Chi_Minh
 
 # Custom variables
 # not defined by Jekyll
 current_version:      0.5.0
-released_date:        2014-05-15
-github_watchers:      547
-github_forks:         218
-github_downloads:     31200
-twitter_followers:    100
+released_date:        2014-07-15
+github_watchers:      568
+github_forks:         225
+github_downloads:     32200
+twitter_followers:    101
 download:
   dist:               https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.5.0/bootstrapvalidator-dist-0.5.0.zip
   tag:                https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.5.0.zip

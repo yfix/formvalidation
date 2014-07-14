@@ -174,9 +174,6 @@ $(document).ready(function() {
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
-            submitHandler: function(validator, form) {
-                // Do nothing
-            },
             fields: {
                 title: {
                     validators: {
@@ -199,6 +196,10 @@ $(document).ready(function() {
                     }
                 }
             }
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
         })
         .find('[name="content"]')
             .summernote({

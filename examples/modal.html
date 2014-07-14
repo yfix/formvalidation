@@ -145,69 +145,6 @@ $(document).ready(function() {
                 </section>
 
                 <section>
-                    <h3 id="ajax-submit">Using Ajax to submit form</h3>
-                    <p>In the case you want to use Ajax to submit the form and perform additional tasks after that, you can use <a href="/settings/#submit-handler"><code>submitHandler</code> option</a>.</p>
-                    <p>Regard to our modal example, the following code shows how to:</p>
-                    <ul>
-                        <li>Check if there is an account with given username and password by sending them to remote URL via an Ajax request</li>
-                        <li>If yes, reload current page</li>
-                        <li>Otherwise, show the message informing the account is not found</li>
-                    </ul>
-
-{% highlight javascript hl_lines="8" %}
-$(document).ready(function() {
-    $('#loginForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        submitHandler: function(validator, form) {
-            $.post(form.attr('action'), form.serialize(), function(result) {
-                // The result is a JSON formatted by your back-end
-                // I assume the format is as following:
-                //  {
-                //      valid: true,          // false if the account is not found
-                //      username: 'Username', // null if the account is not found
-                //  }
-                if (result.valid == true || result.valid == 'true') {
-                    // You can reload the current location
-                    window.location.reload();
-
-                    // Or use Javascript to update your page, such as showing the account name
-                    // $('#welcome').html('Hello ' + result.username);
-                } else {
-                    // The account is not found
-                    // Show the errors
-                    $('#errors').html('The account is not found').removeClass('hide');
-
-                    // Enable the submit buttons
-                    $('#loginForm').bootstrapValidator('disableSubmitButtons', false);
-                }
-            }, 'json');
-        },
-        fields: {
-            username: {
-                validators: {
-                    notEmpty: {
-                        message: 'The username is required'
-                    }
-                }
-            },
-            password: {
-                validators: {
-                    notEmpty: {
-                        message: 'The password is required'
-                    }
-                }
-            }
-        }
-    });
-});
-{% endhighlight %}
-                </section>
-
-                <section>
                     <h3 id="reset-form">Resetting form when showing the modal</h3>
 
                     <p>If you want to reset all the fields in form whenever the modal is shown, the <a href="/api/#reset-form"><code>resetForm()</code> method</a> will help you:</p>
@@ -271,13 +208,35 @@ $('#loginModal').on('show.bs.modal', function() {
 
 <script>
 $(document).ready(function() {
-    $('#loginForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        submitHandler: function(validator, form, submitButton) {
+    $('#loginForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                username: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The username is required'
+                        }
+                    }
+                },
+                password: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The password is required'
+                        }
+                    }
+                }
+            }
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+
+            var validator = $(e.target).data('bootstrapValidator');
             $('#loginModal')
                 .one('hidden.bs.modal', function() {
                     $('#welcomeModal')
@@ -286,24 +245,7 @@ $(document).ready(function() {
                         .modal('show');
                 })
                 .modal('hide');
-        },
-        fields: {
-            username: {
-                validators: {
-                    notEmpty: {
-                        message: 'The username is required'
-                    }
-                }
-            },
-            password: {
-                validators: {
-                    notEmpty: {
-                        message: 'The password is required'
-                    }
-                }
-            }
-        }
-    });
+        });
 
     $('#loginModal').on('show.bs.modal', function() {
         $('#loginForm').bootstrapValidator('resetForm', true);

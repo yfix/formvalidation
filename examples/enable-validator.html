@@ -195,9 +195,6 @@ $(document).ready(function() {
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
-            submitHandler: function(validator, form) {
-                // Do nothing
-            },
             fields: {
                 full_name: {
                     validators: {
@@ -231,6 +228,10 @@ $(document).ready(function() {
                     }
                 }
             }
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
         })
         // Enable the password/confirm password validators if the password is not empty
         .on('keyup', '[name="password"]', function() {

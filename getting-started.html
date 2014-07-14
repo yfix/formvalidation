@@ -62,7 +62,7 @@ next_section:     /settings/
                         <div class="col-sm-4">
                             <h3>Source code</h3>
                             <p>Including the source code, examples and building script. Download if you want to play with or develop new validators.</p>
-                            <a class="btn btn-lg btn-primary" href="{{ site.download.tag }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);"><i class="fa fa-code"></i> Download Source</a>
+                            <p><a class="btn btn-lg btn-primary" href="{{ site.download.tag }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);"><i class="fa fa-code"></i> Download Source</a></p>
                         </div>
                         <div class="col-sm-4">
                             <h3>Older versions</h3>
@@ -70,11 +70,18 @@ next_section:     /settings/
                         </div>
                     </div>
 
-                    <!--<p>See <a href="/news/2014/05/15/v0.4.5-released/">what's news</a> in v{{ site.current_version }}, released on {{ site.released_date }}</p>-->
+                    <p>See <a href="/news/v0.5.0-released/">what's news</a> in v{{ site.current_version }}, released on {{ site.released_date }}</p>
+
+                    <div class="bv-box bv-box-warning">
+                        <h5><i></i>Upgrading to v0.5.0</h5>
+                        <p>If you upgrade from v0.4.5 or older versions to v0.5.0, please follow this <a href="/news/upgrading-to-v0.5.0/">guide</a>.</p>
+                    </div>
 
                     <h3 id="installing-bower">Installing with Bower</h3>
                     <p>It's also possible to get the latest release from <a href="http://bower.io">bower</a>:</p>
-                    <pre><code class="bash">$ bower install bootstrapValidator</code></pre>
+{% highlight bash %}
+$ bower install bootstrapValidator
+{% endhighlight %}
 
                     <p>BootstrapValidator also can be found on the official <a href="{{ site.jquery_plugin_url }}">jQuery plugins page</a>.</p>
 
@@ -147,8 +154,7 @@ next_section:     /settings/
                 <section>
                     <h2 id="whats-included">What's included?</h2>
                     <p>The package consists of the following files:</p>
-
-{% highlight html %}
+{% highlight bash %}
 bootstrapvalidator/
 ├── dist
 │   ├── css
@@ -447,7 +453,6 @@ $(document).ready(function() {
         live: 'enabled',
         message: 'This value is not valid',
         submitButtons: 'button[type="submit"]',
-        submitHandler: null,
         trigger: null,
         fields: ...
     });
