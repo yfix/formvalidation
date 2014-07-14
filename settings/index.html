@@ -2733,6 +2733,10 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td><code>init.form.bv</code></td>
+                                    <td>Triggered after the form is initialized by the plugin</td>
+                                </tr>
+                                <tr>
                                     <td><code>error.form.bv</code></td>
                                     <td>Triggered when the form is invalid</td>
                                 </tr>
@@ -2756,16 +2760,26 @@
                                     <td>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">$</span><span class="p">(</span><span class="nx">form</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
-<span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error.form.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-</span>            <span class="c1">// Get the form instance</span>
-            <span class="c1">// $(e.target);</span>
-
-            <span class="c1">// Get the bootstrapValidator instance</span>
-            <span class="c1">// $(e.target).data(&#39;bootstrapValidator&#39;);</span>
+<span class="hll">        <span class="c1">// on(&#39;init.form.bv&#39;) must be declared</span>
+</span><span class="hll">        <span class="c1">// before calling .bootstrapValidator(options)</span>
+</span><span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;init.form.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span>            <span class="c1">// $(e.target)  --&gt; The form instance</span>
+            <span class="c1">// data.bv      --&gt; The BootstrapValidator instance</span>
+            <span class="c1">// data.options --&gt; The form options</span>
 
             <span class="c1">// Do something ...</span>
         <span class="p">})</span>
+
+<span class="hll">        <span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+</span>
+<span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error.form.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span>            <span class="c1">// $(e.target) --&gt; The form instance</span>
+            <span class="c1">// $(e.target).data(&#39;bootstrapValidator&#39;)</span>
+            <span class="c1">//             --&gt; The BootstrapValidator instance</span>
+
+            <span class="c1">// Do something ...</span>
+        <span class="p">})</span>
+
 <span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;success.form.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
 </span>            <span class="c1">// The e parameter is the same as one</span>
             <span class="c1">// in the error.form.bv event above</span>
@@ -2829,6 +2843,10 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td><code>init.field.bv</code></td>
+                                    <td>Triggered after the field is initialized by the plugin</td>
+                                </tr>
+                                <tr>
                                     <td><code>error.field.bv</code></td>
                                     <td>Triggered when any field is invalid</td>
                                 </tr>
@@ -2864,34 +2882,36 @@
                                     <td>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">$</span><span class="p">(</span><span class="nx">form</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+<span class="hll">        <span class="c1">// on(&#39;init.field.bv&#39;) must be declared</span>
+</span><span class="hll">        <span class="c1">// before calling .bootstrapValidator(options)</span>
+</span><span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;init.field.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span>            <span class="c1">// $(e.target)  --&gt; The form instance</span>
+            <span class="c1">// data.bv      --&gt; The BootstrapValidator instance</span>
+            <span class="c1">// data.field   --&gt; The field name</span>
+            <span class="c1">// data.element --&gt; The field element</span>
+        <span class="p">})</span>
+
+<span class="hll">        <span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+</span>
 <span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error.field.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-</span>            <span class="c1">// Get the form instance</span>
-            <span class="c1">// $(e.target)</span>
-
-            <span class="c1">// Get the BootstrapValidator instance</span>
-            <span class="c1">// $(e.target).data(&#39;bootstrapValidator&#39;)</span>
-
-            <span class="c1">// Get the field name</span>
-            <span class="c1">// data.field</span>
-
-            <span class="c1">// Get the field element</span>
-            <span class="c1">// data.element</span>
+</span>            <span class="c1">// The e and data parameters are the same</span>
+            <span class="c1">// as one in the init.field.bv event above</span>
 
             <span class="c1">// Do something ...</span>
         <span class="p">})</span>
+
 <span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;success.field.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
 </span>            <span class="c1">// The e and data parameters are the same</span>
-            <span class="c1">// as one in the error.field.bv event above</span>
+            <span class="c1">// as one in the init.field.bv event above</span>
 
             <span class="c1">// Do something ...</span>
         <span class="p">})</span>
+
 <span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;status.field.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
 </span>            <span class="c1">// The e and data parameters are the same</span>
-            <span class="c1">// as one in the error.field.bv event above</span>
+            <span class="c1">// as one in the init.field.bv event above</span>
 
-            <span class="c1">// New field status</span>
-            <span class="c1">// data.status</span>
+            <span class="c1">// data.status --&gt; New field status</span>
 
             <span class="c1">// Do something ...</span>
         <span class="p">});</span>
@@ -2915,13 +2935,22 @@
                                     <td>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">$</span><span class="p">(</span><span class="nx">form</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+<span class="hll">        <span class="c1">// on(&#39;init.field.bv&#39;) must be declared</span>
+</span><span class="hll">        <span class="c1">// before calling .bootstrapValidator(options)</span>
+</span><span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;init.field.bv&#39;</span><span class="p">,</span> <span class="s1">&#39;[name=&quot;email&quot;]&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span>            <span class="c1">// Do something ...</span>
+        <span class="p">})</span>
+
+<span class="hll">        <span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+</span>
 <span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error.field.bv&#39;</span><span class="p">,</span> <span class="s1">&#39;[name=&quot;email&quot;]&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
 </span>            <span class="c1">// Do something ...</span>
         <span class="p">})</span>
+
 <span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;success.field.bv&#39;</span><span class="p">,</span> <span class="s1">&#39;[name=&quot;email&quot;]&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
 </span>            <span class="c1">// Do something ...</span>
         <span class="p">})</span>
+
 <span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;status.field.bv&#39;</span><span class="p">,</span> <span class="s1">&#39;[name=&quot;email&quot;]&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
 </span>            <span class="c1">// Do something ...</span>
         <span class="p">});</span>
@@ -2985,6 +3014,11 @@
                                 </tr>
                             </tbody>
                         </table>
+
+                        <h4>Examples</h4>
+                        <ul>
+                            <li><a href="/examples/showing-valid-message/">Showing valid message</a></li>
+                        </ul>
                     </section>
 
                     <!-- event-validator -->
@@ -3022,25 +3056,17 @@
                                     <td>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">$</span><span class="p">(</span><span class="nx">form</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+<span class="hll">        <span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+</span>
 <span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error.validator.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-</span>            <span class="c1">// Get the form instance</span>
-            <span class="c1">// $(e.target)</span>
-
-            <span class="c1">// Get the BootstrapValidator instance</span>
-            <span class="c1">// $(e.target).data(&#39;bootstrapValidator&#39;)</span>
-
-            <span class="c1">// Get the field name</span>
-            <span class="c1">// data.field</span>
-
-            <span class="c1">// Get the field element</span>
-            <span class="c1">// data.element</span>
-
-            <span class="c1">// Get the validator name</span>
-            <span class="c1">// data.validator</span>
+</span>            <span class="c1">// $(e.target)    --&gt; The form instance</span>
+            <span class="c1">// data.field     --&gt; The field name</span>
+            <span class="c1">// data.element   --&gt; The field element</span>
+            <span class="c1">// data.validator --&gt; The validator name</span>
 
             <span class="c1">// Do something ...</span>
         <span class="p">})</span>
+
 <span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;success.validator.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
 </span>            <span class="c1">// The e parameter is the same as one</span>
             <span class="c1">// in the error.validator.bv event above</span>
