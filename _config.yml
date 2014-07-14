@@ -16,7 +16,7 @@ timezone:             Asia/Ho_Chi_Minh
 # Custom variables
 # not defined by Jekyll
 current_version:      0.5.0
-released_date:        2014-07-15
+released_date:        2014-07-14
 github_watchers:      568
 github_forks:         225
 github_downloads:     32200
