@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/vendor/bootstrapvalidator/css/bootstrapValidator.min.css">
-    <link rel="stylesheet" href="/vendor/highlight/styles/github.css">
+    <link rel="stylesheet" href="/vendor/pygments/github.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400,700">
     <link rel="stylesheet" href="/asset/css/style.css">
@@ -113,20 +113,7 @@
 
             <div class="col-md-4">
                 <div class="bv-ad">
-                    <div id="carbonads-container">
-    <div class="carbonad">
-        <div id="azcarbon"></div>
-        <script type="text/javascript">
-        var z = document.createElement("script");
-        z.type = "text/javascript";
-        z.async = true;
-        z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(z, s);
-        </script>
-    </div>
-</div>
-
+                    <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script");z.type = "text/javascript";z.async = true;z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z, s);</script></div></div>
                 </div>
             </div>
         </div>
@@ -139,8 +126,12 @@
             <div class="bv-sidebar">
                 
 
-<h2>Compatibility</h2>
+<h4>Compatibility</h4>
 <ul>
+    
+        
+            
+        
     
         
     
@@ -324,6 +315,12 @@
     
         
     
+        
+    
+        
+    
+        
+    
 </ul>
 
             </div>
@@ -378,93 +375,93 @@
                             </div>
 
                             <div class="tab-pane" id="multiselect-html-tab">
-                                <pre><code class="xml">&lt;!-- Include Bootstrap Multiselect CSS -->
-&lt;link rel="stylesheet" href="/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css" />
-&lt;form id="multiselectForm" method="post" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Gender&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;select class="form-control" name="gender">
-                &lt;option value="male">Male&lt;/option>
-                &lt;option value="female">Female&lt;/option>
-                &lt;option value="other">Other&lt;/option>
-            &lt;/select>
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Browser&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;select class="form-control" name="browsers" <span class="bv-note">multiple</span>>
-                &lt;option value="chrome">Google Chrome&lt;/option>
-                &lt;option value="firefox">Firefox&lt;/option>
-                &lt;option value="ie">IE&lt;/option>
-                &lt;option value="safari">Safari&lt;/option>
-                &lt;option value="opera">Opera&lt;/option>
-                &lt;option value="other">Other&lt;/option>
-            &lt;/select>
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;div class="col-lg-5 col-lg-offset-3">
-            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Include Bootstrap Multiselect CSS --&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css&quot;</span> <span class="nt">/&gt;</span>
+
+<span class="c">&lt;!-- Include Bootstrap Multiselect JS --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/vendor/bootstrap-multiselect/js/bootstrap-multiselect.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;multiselectForm&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Gender<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;gender&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;male&quot;</span><span class="nt">&gt;</span>Male<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;female&quot;</span><span class="nt">&gt;</span>Female<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;other&quot;</span><span class="nt">&gt;</span>Other<span class="nt">&lt;/option&gt;</span>
+            <span class="nt">&lt;/select&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Browser<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+<span class="hll">            <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;browsers&quot;</span> <span class="na">multiple</span><span class="nt">&gt;</span>
+</span>                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;chrome&quot;</span><span class="nt">&gt;</span>Google Chrome<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;firefox&quot;</span><span class="nt">&gt;</span>Firefox<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;ie&quot;</span><span class="nt">&gt;</span>IE<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;safari&quot;</span><span class="nt">&gt;</span>Safari<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;opera&quot;</span><span class="nt">&gt;</span>Opera<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;other&quot;</span><span class="nt">&gt;</span>Other<span class="nt">&lt;/option&gt;</span>
+            <span class="nt">&lt;/select&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5 col-lg-offset-3&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-primary&quot;</span><span class="nt">&gt;</span>Validate<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
                             </div>
 
                             <div class="tab-pane" id="multiselect-js-tab">
-                                <pre><code class="xml javascript">&lt;!-- Include Bootstrap Multiselect JS -->
-&lt;script src="/vendor/bootstrap-multiselect/js/bootstrap-multiselect.js">&lt;/script>
-&lt;script>
-$(document).ready(function() {
-    $('#multiselectForm')
-        .find('[name="gender"]')
-            .multiselect()
-            .end()
-        .find('[name="browsers"]')
-            .multiselect({
-                // Re-validate the multiselect field when it is changed
-                <span class="bv-note">onChange: function(element, checked) {
-                    $('#multiselectForm')
-                        .data('bootstrapValidator')                 // Get plugin instance
-                        .updateStatus('browsers', 'NOT_VALIDATED')  // Update field status
-                        .validateField('browsers');                 // and re-validate it
-                }</span>
-            })
-            .end()
-        .bootstrapValidator({
-            // Exclude only disabled fields
-            // The invisible fields set by Bootstrap Multiselect must be validated
-            <span class="bv-note">excluded: ':disabled',</span>
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                gender: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The gender is required'
-                        }
-                    }
-                },
-                browsers: {
-                    validators: {
-                        callback: {
-                            message: 'Please choose 2-3 browsers you use for developing',
-                            <span class="bv-note">callback: function(value, validator) {
-                                // Get the selected options
-                                var options = validator.getFieldElements('browsers').val();
-                                return (options != null && options.length >= 2 && options.length <= 3);
-                            }</span>
-                        }
-                    }
-                }
-            }
-        });
-});
-&lt;/script></code></pre>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#multiselectForm&#39;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;[name=&quot;gender&quot;]&#39;</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">multiselect</span><span class="p">()</span>
+            <span class="p">.</span><span class="nx">end</span><span class="p">()</span>
+        <span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;[name=&quot;browsers&quot;]&#39;</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">multiselect</span><span class="p">({</span>
+                <span class="c1">// Re-validate the multiselect field when it is changed</span>
+                <span class="nx">onChange</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">checked</span><span class="p">)</span> <span class="p">{</span>
+<span class="hll">                    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#multiselectForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">(</span><span class="s1">&#39;revalidateField&#39;</span><span class="p">,</span> <span class="s1">&#39;browsers&#39;</span><span class="p">);</span>
+</span>                <span class="p">}</span>
+            <span class="p">})</span>
+            <span class="p">.</span><span class="nx">end</span><span class="p">()</span>
+        <span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+            <span class="c1">// Exclude only disabled fields</span>
+            <span class="c1">// The invisible fields set by Bootstrap Multiselect must be validated</span>
+<span class="hll">            <span class="nx">excluded</span><span class="o">:</span> <span class="s1">&#39;:disabled&#39;</span><span class="p">,</span>
+</span>            <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
+                <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
+                <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
+            <span class="p">},</span>
+            <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">gender</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">notEmpty</span><span class="o">:</span> <span class="p">{</span>
+                            <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The gender is required&#39;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nx">browsers</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">callback</span><span class="o">:</span> <span class="p">{</span>
+                            <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Please choose 2-3 browsers you use for developing&#39;</span><span class="p">,</span>
+<span class="hll">                            <span class="nx">callback</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">validator</span><span class="p">)</span> <span class="p">{</span>
+</span>                                <span class="c1">// Get the selected options</span>
+                                <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="nx">validator</span><span class="p">.</span><span class="nx">getFieldElements</span><span class="p">(</span><span class="s1">&#39;browsers&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+                                <span class="k">return</span> <span class="p">(</span><span class="nx">options</span> <span class="o">!=</span> <span class="kc">null</span>
+                                        <span class="o">&amp;&amp;</span> <span class="nx">options</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="nx">options</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">);</span>
+                            <span class="p">}</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
                             </div>
                         </div>
                     </div>
@@ -484,7 +481,7 @@ $(document).ready(function() {
         .find('[name="browsers"]')
             .multiselect({
                 onChange: function(element, checked) {
-                    $('#multiselectForm').data('bootstrapValidator').updateStatus('browsers', 'NOT_VALIDATED').validateField('browsers');
+                    $('#multiselectForm').bootstrapValidator('revalidateField', 'browsers');
                 }
             })
             .end()
@@ -494,9 +491,6 @@ $(document).ready(function() {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
-            },
-            submitHandler: function(validator, form, submitButton) {
-                // Do nothing
             },
             fields: {
                 gender: {
@@ -519,6 +513,10 @@ $(document).ready(function() {
                     }
                 }
             }
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
         });
 });
 </script>
@@ -541,8 +539,8 @@ $(document).ready(function() {
                     <h2 id="comments" class="bv-separator"><span>Comments</span></h2>
 
                     <div class="bv-box bv-box-warning">
-                        If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. Do NOT post the issue here.<br/>
-                        For a general question or feedback, use the form below.
+                        <h5><i></i>Don't submit the issue here</h5>
+                        <p>If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. For a general question or feedback, use the form below.</p>
                     </div>
 
                     <div id="disqus_thread"></div>
@@ -609,13 +607,27 @@ $(document).ready(function() {
 </footer>
 <!-- /footer -->
 
-<script src="/vendor/highlight/highlight.pack.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="/vendor/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
 <script>
 $(document).ready(function() {
-    // Highlight sample code
-    hljs.initHighlightingOnLoad();
+    $('.bv-content, .bv-post').find('h1, h2, h3, h4, h5, h6').each(function() {
+        if (!$(this).attr('id')) {
+            return;
+        }
+
+        var $heading = $(this),
+            $span    =  $heading.find('span'),
+            $anchor  = $('<a/>')
+                            .html('#')
+                            .attr('href', '#' + $heading.attr('id'))
+                            .attr('title', $heading.text())
+                            .hide();
+        ($span.length === 0) ? $anchor.appendTo($heading) : $anchor.insertBefore($span);
+        $heading.hover(function() {
+            $(this).find('a').toggle();
+        });
+    });
 });
 </script>
 </body>

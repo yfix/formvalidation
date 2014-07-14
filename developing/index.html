@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/vendor/bootstrapvalidator/css/bootstrapValidator.min.css">
-    <link rel="stylesheet" href="/vendor/highlight/styles/github.css">
+    <link rel="stylesheet" href="/vendor/pygments/github.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400,700">
     <link rel="stylesheet" href="/asset/css/style.css">
@@ -112,20 +112,7 @@
 
             <div class="col-md-4">
                 <div class="bv-ad">
-                    <div id="carbonads-container">
-    <div class="carbonad">
-        <div id="azcarbon"></div>
-        <script type="text/javascript">
-        var z = document.createElement("script");
-        z.type = "text/javascript";
-        z.async = true;
-        z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(z, s);
-        </script>
-    </div>
-</div>
-
+                    <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script");z.type = "text/javascript";z.async = true;z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z, s);</script></div></div>
                 </div>
             </div>
         </div>
@@ -137,7 +124,13 @@
         <div class="col-md-3">
             <div class="bv-sidebar">
                 <ul>
-                    <li><a href="#writing-new-validator">Writing New Validator</a></li>
+                    <li>
+                        <a href="#writing-new-validator">Writing new validator</a>
+                        <ul>
+                            <li><a href="#dynamic-message">Dynamic message<span class="pull-right bv-news"></span></a></li>
+                            <li><a href="#example">Example</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#building">Building</a></li>
                     <li><a href="#contributing">Contributing</a></li>
                 </ul>
@@ -147,72 +140,335 @@
         <div class="col-md-9">
             <div class="bv-content">
                 <section>
-                    <h2 id="writing-new-validator">Writing New Validator</h2>
+                    <h2 id="writing-new-validator">Writing new validator</h2>
                     <p>A validator has to follow the syntax:</p>
-                    <pre><code class="javascript">(function($) {
-    $.fn.bootstrapValidator.validators.&lt;validatorName> = {
-        /**
-         * @param {BootstrapValidator} validator The validator plugin instance
-         * @param {jQuery} $field The jQuery object represents the field element
-         * @param {Object} options The validator options
-         * @returns {boolean}
-         */
-        validate: function(validator, $field, options) {
-            // You can get the field value
-            // var value = $field.val();
-            //
-            // Perform validating
-            // ...
-            //
-            // return true if the field value is valid
-            // otherwise return false
-        }
-    };
-}(window.jQuery));</code></pre>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">.</span><span class="nx">validators</span><span class="p">.</span><span class="nx">validatorName</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="cm">/**</span>
+<span class="cm">         * @param {BootstrapValidator} validator The validator plugin instance</span>
+<span class="cm">         * @param {jQuery} $field The jQuery object represents the field element</span>
+<span class="cm">         * @param {Object} options The validator options</span>
+<span class="cm">         * @returns {Boolean}</span>
+<span class="cm">         */</span>
+        <span class="nx">validate</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">validator</span><span class="p">,</span> <span class="nx">$field</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// You can get the field value</span>
+            <span class="c1">// var value = $field.val();</span>
+            <span class="c1">//</span>
+            <span class="c1">// Perform validating</span>
+            <span class="c1">// ...</span>
+            <span class="c1">//</span>
+            <span class="c1">// return true if the field value is valid</span>
+            <span class="c1">// otherwise return false</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">));</span></code></pre></div>
 
-                    <p><code>&lt;validatorName></code> is the validator name. Since the validators are distinct by the names, <code>&lt;validatorName></code> has to be different with <a href="/validators/">built-in validators</a>.</p>
+                    <p>The validator must implement <code>validate()</code> method that returns <code>true</code> if the field is valid, or <code>false</code> otherwise.</p>
+                    <p><code>validatorName</code> is the validator name. Since the validators are distinct by the names, <code>validatorName</code> has to be different with <a href="/validators/">built-in validators</a>.</p>
 
                     <p>To apply the validator to particular field:</p>
-
-                    <pre><code class="javascript">$(form).bootstrapValidator({
-    fields: {
-        &lt;fieldName>: {
-            // Replace &lt;validatorName> with the name of validator
-            // &lt;validatorOptions> will be passed as third parameter of the
-            // validate(validator, $field, options) method
-            &lt;validatorName>: &lt;validatorOptions>
-        }
-    }
-});</code></pre>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nx">form</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+    <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">fieldName</span><span class="o">:</span> <span class="p">{</span>
+            <span class="c1">// Replace validatorName with the name of validator</span>
+            <span class="c1">// validatorOptions will be passed as third parameter of the</span>
+            <span class="c1">// validate(validator, $field, options) method</span>
+            <span class="nx">validatorName</span><span class="o">:</span> <span class="nx">validatorOptions</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span></code></pre></div>
 
                     <p>For Rails, the input field is constructed from model name and field name. For example, user have email as field, when form helper render
                         view, the input field name will be <code>'user[email]'</code>. The syntax for these is somewhat different as shown below:</p>
 
-                    <pre><code class="javascript">$(form).bootstrapValidator({
-    fields: {
-        'user[email]': {
-            &lt;validatorName>: &lt;validatorOptions>
-        }
-    }
-});</code></pre>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nx">form</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+    <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;user[email]&#39;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">validatorName</span><span class="o">:</span> <span class="nx">validatorOptions</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span></code></pre></div>
 
-                    <p class="bv-box bv-box-info">To see how built-in validators are developed, you can look at their sources located at the <a href="https://github.com/nghuuphuoc/bootstrapvalidator/tree/master/src/js/validator">src/js/validator</a> directory.</p>
+                    <div class="bv-box bv-box-info">
+                        <h5><i></i>How built-in validators are developed</h5>
+                        <p>To see how built-in validators are developed, you can look at their sources located at the <a href="https://github.com/nghuuphuoc/bootstrapvalidator/tree/master/src/js/validator">src/js/validator</a> directory.</p>
+                    </div>
+
+                    <section>
+                        <h3 id="dynamic-message">Dynamic message<span class="pull-right bv-news"></span></h3>
+                        <p>If you want to set dynamic error message, the validator must return an object that consists of <code>valid</code> and <code>message</code> members:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">.</span><span class="nx">validators</span><span class="p">.</span><span class="nx">validatorName</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">validate</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">validator</span><span class="p">,</span> <span class="nx">$field</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// ... Do your logic checking</span>
+            <span class="k">if</span> <span class="p">(...)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">{</span>
+<span class="hll">                    <span class="nx">valid</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>    <span class="c1">// or false</span>
+</span><span class="hll">                    <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The error message&#39;</span>
+</span>                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="p">{</span>
+<span class="hll">                <span class="nx">valid</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>       <span class="c1">// or true</span>
+</span><span class="hll">                <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Other error message&#39;</span>
+</span>            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">));</span></code></pre></div>
+                    </section>
+
+                    <section>
+                        <h3 id="example">Example</h3>
+                        <p>The following example illustrates how to develop a simple validator which validate a password. The validator will treat a password as valid, if it satisfies all the conditions below:</p>
+                        <ul>
+                            <li>Must be more than 8 characters long</li>
+                            <li>Must contain at least one upper case character</li>
+                            <li>Must contain at least one lower case character</li>
+                            <li>Must contain at least one digit</li>
+                        </ul>
+                        <p>In fact, you can add more conditions to make a secure password.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">.</span><span class="nx">validators</span><span class="p">.</span><span class="nx">password</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">validate</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">validator</span><span class="p">,</span> <span class="nx">$field</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">$field</span><span class="p">.</span><span class="nx">val</span><span class="p">();</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">===</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="c1">// Check the password strength</span>
+<span class="hll">            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="p">{</span>
+</span>                <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="c1">// The password doesn&#39;t contain any uppercase character</span>
+<span class="hll">            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">===</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">())</span> <span class="p">{</span>
+</span>                <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="c1">// The password doesn&#39;t contain any uppercase character</span>
+<span class="hll">            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">===</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">())</span> <span class="p">{</span>
+</span>                <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="c1">// The password doesn&#39;t contain any digit</span>
+<span class="hll">            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="sr">/[0-9]/</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span>                <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">));</span></code></pre></div>
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#password-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#password-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#password-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="password-form-tab">
+                                    <form id="passwordForm" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Password</label>
+                                            <div class="col-lg-5">
+                                                <input type="password" class="form-control" name="pwd" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-5 col-lg-offset-3">
+                                                <button type="submit" class="btn btn-default">Validate</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane" id="password-html-tab">
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;passwordForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Password<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+<span class="hll">            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;password&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;pwd&quot;</span> <span class="nt">/&gt;</span>
+</span>        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5 col-lg-offset-3&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>Validate<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
+                                </div>
+
+                                <div class="tab-pane" id="password-js-tab">
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="hll">    <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">.</span><span class="nx">validators</span><span class="p">.</span><span class="nx">password</span> <span class="o">=</span> <span class="p">{</span>
+</span>        <span class="nx">validate</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">validator</span><span class="p">,</span> <span class="nx">$field</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+            <span class="p">...</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#passwordForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+        <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
+            <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
+            <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
+        <span class="p">},</span>
+        <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+<span class="hll">            <span class="nx">pwd</span><span class="o">:</span> <span class="p">{</span>
+</span>                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">notEmpty</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The password is required and cannot be empty&#39;</span>
+                    <span class="p">},</span>
+<span class="hll">                    <span class="nx">password</span><span class="o">:</span> <span class="p">{</span>
+</span>                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The password is not valid&#39;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Basically, the validator works fine. It returns <code>false</code> if the password doesn't satisfy any of conditions we define. The limitation here is that the user don't know
+                        which condition the password doesn't pass. It informs the same <code>The password is not valid</code> message in all cases.</p>
+                        <p>Using <a href="#dynamic-message">dynamic message</a> ability, it's easy to make the validator more friendly.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">.</span><span class="nx">validators</span><span class="p">.</span><span class="nx">securePassword</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">validate</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">validator</span><span class="p">,</span> <span class="nx">$field</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">$field</span><span class="p">.</span><span class="nx">val</span><span class="p">();</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">===</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="c1">// Check the password strength</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">{</span>
+<span class="hll">                    <span class="nx">valid</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span><span class="hll">                    <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The password must be more than 8 characters long&#39;</span>
+</span>                <span class="p">};</span>
+            <span class="p">}</span>
+
+            <span class="c1">// The password doesn&#39;t contain any uppercase character</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">===</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">())</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">{</span>
+<span class="hll">                    <span class="nx">valid</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span><span class="hll">                    <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The password must contain at least one upper case character&#39;</span>
+</span>                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="c1">// The password doesn&#39;t contain any uppercase character</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">===</span> <span class="nx">value</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">())</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">{</span>
+<span class="hll">                    <span class="nx">valid</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span><span class="hll">                    <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The password must contain at least one lower case character&#39;</span>
+</span>                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="c1">// The password doesn&#39;t contain any digit</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="sr">/[0-9]/</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">{</span>
+<span class="hll">                    <span class="nx">valid</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span><span class="hll">                    <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The password must contain at least one digit&#39;</span>
+</span>                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+<span class="p">}(</span><span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">));</span></code></pre></div>
+                        <p>Now, the form shows exactly condition that we want the password to satisfy.</p>
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#secure-password-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#secure-password-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#secure-password-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="secure-password-form-tab">
+                                    <form id="securePasswordForm" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Password</label>
+                                            <div class="col-lg-5">
+                                                <input type="password" class="form-control" name="pwd" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-5 col-lg-offset-3">
+                                                <button type="submit" class="btn btn-default">Validate</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane" id="secure-password-html-tab">
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;securePasswordForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Password<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+<span class="hll">            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;password&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;pwd&quot;</span> <span class="nt">/&gt;</span>
+</span>        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5 col-lg-offset-3&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>Validate<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
+                                </div>
+
+                                <div class="tab-pane" id="secure-password-js-tab">
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="hll">    <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">.</span><span class="nx">validators</span><span class="p">.</span><span class="nx">securePassword</span> <span class="o">=</span> <span class="p">{</span>
+</span>        <span class="nx">validate</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">validator</span><span class="p">,</span> <span class="nx">$field</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+            <span class="p">...</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#securePasswordForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+        <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
+            <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
+            <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
+        <span class="p">},</span>
+        <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+<span class="hll">            <span class="nx">pwd</span><span class="o">:</span> <span class="p">{</span>
+</span>                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">notEmpty</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The password is required and cannot be empty&#39;</span>
+                    <span class="p">},</span>
+<span class="hll">                    <span class="nx">securePassword</span><span class="o">:</span> <span class="p">{</span>
+</span>                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The password is not valid&#39;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </section>
 
                 <section>
                     <h2 id="building">Building</h2>
 
                     <p>BootstrapValidator uses <a href="http://gruntjs.com">grunt</a> to simplify building process.</p>
-
                     <p>From the BootstrapValidator root directory, install dependencies:</p>
-
-                    <pre><code class="bash">$ npm install</code></pre>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install</code></pre></div>
 
                     <p>Then, uses grunt to build:</p>
-                    <pre><code class="bash">$ grunt</code></pre>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>grunt</code></pre></div>
 
                     <p>If you want grunt to generate scripts whenever the original scripts (located in <code>src</code>) change, use the following command:</p>
-                    <pre><code class="bash">$ grunt watch</code></pre>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>grunt watch</code></pre></div>
 
                     <p>The generated scripts (including source and compressed versions) are placed inside the <code>dist</code> directory.</p>
                 </section>
@@ -236,6 +492,129 @@
     </div>
 </div>
 
+<script>
+$(document).ready(function() {
+    $.fn.bootstrapValidator.validators.password = {
+        validate: function(validator, $field, options) {
+            var value = $field.val();
+            if (value === '') {
+                return true;
+            }
+
+            if (value.length < 8) {
+                return false;
+            }
+            if (value === value.toLowerCase()) {
+                return false;
+            }
+            if (value === value.toUpperCase()) {
+                return false;
+            }
+            if (value.search(/[0-9]/) < 0) {
+                return false;
+            }
+
+            return true;
+        }
+    };
+
+    $.fn.bootstrapValidator.validators.securePassword = {
+        validate: function(validator, $field, options) {
+            var value = $field.val();
+            if (value === '') {
+                return true;
+            }
+
+            // Check the password strength
+            if (value.length < 8) {
+                return {
+                    valid: false,
+                    message: 'The password must be more than 8 characters long'
+                };
+            }
+
+            // The password doesn't contain any uppercase character
+            if (value === value.toLowerCase()) {
+                return {
+                    valid: false,
+                    message: 'The password must contain at least one upper case character'
+                }
+            }
+
+            // The password doesn't contain any uppercase character
+            if (value === value.toUpperCase()) {
+                return {
+                    valid: false,
+                    message: 'The password must contain at least one lower case character'
+                }
+            }
+
+            // The password doesn't contain any digit
+            if (value.search(/[0-9]/) < 0) {
+                return {
+                    valid: false,
+                    message: 'The password must contain at least one digit'
+                }
+            }
+
+            return true;
+        }
+    };
+
+    $('#passwordForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            submitHandler: function(validator, form) {
+                // Do nothing
+            },
+            fields: {
+                pwd: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The password is required and cannot be empty'
+                        },
+                        password: {
+                            message: 'The password is not valid'
+                        }
+                    }
+                }
+            }
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+        });
+
+    $('#securePasswordForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                pwd: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The password is required and cannot be empty'
+                        },
+                        securePassword: {
+                            message: 'The password is not valid'
+                        }
+                    }
+                }
+            }
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+        });
+});
+</script>
 
 <div class="container">
     <div class="row">
@@ -254,8 +633,8 @@
                     <h2 id="comments" class="bv-separator"><span>Comments</span></h2>
 
                     <div class="bv-box bv-box-warning">
-                        If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. Do NOT post the issue here.<br/>
-                        For a general question or feedback, use the form below.
+                        <h5><i></i>Don't submit the issue here</h5>
+                        <p>If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. For a general question or feedback, use the form below.</p>
                     </div>
 
                     <div id="disqus_thread"></div>
@@ -322,13 +701,27 @@
 </footer>
 <!-- /footer -->
 
-<script src="/vendor/highlight/highlight.pack.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="/vendor/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
 <script>
 $(document).ready(function() {
-    // Highlight sample code
-    hljs.initHighlightingOnLoad();
+    $('.bv-content, .bv-post').find('h1, h2, h3, h4, h5, h6').each(function() {
+        if (!$(this).attr('id')) {
+            return;
+        }
+
+        var $heading = $(this),
+            $span    =  $heading.find('span'),
+            $anchor  = $('<a/>')
+                            .html('#')
+                            .attr('href', '#' + $heading.attr('id'))
+                            .attr('title', $heading.text())
+                            .hide();
+        ($span.length === 0) ? $anchor.appendTo($heading) : $anchor.insertBefore($span);
+        $heading.hover(function() {
+            $(this).find('a').toggle();
+        });
+    });
 });
 </script>
 </body>

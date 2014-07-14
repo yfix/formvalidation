@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/vendor/bootstrapvalidator/css/bootstrapValidator.min.css">
-    <link rel="stylesheet" href="/vendor/highlight/styles/github.css">
+    <link rel="stylesheet" href="/vendor/pygments/github.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400,700">
     <link rel="stylesheet" href="/asset/css/style.css">
@@ -112,20 +112,7 @@
 
             <div class="col-md-4">
                 <div class="bv-ad">
-                    <div id="carbonads-container">
-    <div class="carbonad">
-        <div id="azcarbon"></div>
-        <script type="text/javascript">
-        var z = document.createElement("script");
-        z.type = "text/javascript";
-        z.async = true;
-        z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(z, s);
-        </script>
-    </div>
-</div>
-
+                    <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script");z.type = "text/javascript";z.async = true;z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z, s);</script></div></div>
                 </div>
             </div>
         </div>
@@ -152,23 +139,23 @@
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
                                 <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+                                <td><code>country</code></td>
+                                <td><code>data-bv-vat-country</code></td>
+                                <td>String</td>
+                                <td>An ISO-3166 country code.<br/>It's <a href="/settings/#dynamic-option">dynamic option</a> <span class="bv-news"></span>.<br/>If it is not defined, it will be parsed from the VAT number</td>
+                            </tr>
+                            <tr>
                                 <td><code>message</code></td>
                                 <td><code>data-bv-vat-message</code></td>
                                 <td>String</td>
                                 <td>The error message</td>
-                            </tr>
-                            <tr>
-                                <td><code>country</code></td>
-                                <td><code>data-bv-vat-country</code></td>
-                                <td>String</td>
-                                <td>A ISO 3166 country code. If it is not defined, it will be parsed from the VAT number.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -195,14 +182,16 @@
                                 <td>AT</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">ATU13585627</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">ATU13585627</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">ATU13585626</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">ATU13585626</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -215,14 +204,16 @@
                                 <td>BE</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">BE0428759497</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">BE0428759497</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">BE431150351</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">BE431150351</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -235,26 +226,34 @@
                                 <td>BG</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">BG175074752</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">BG175074752</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">BG7523169263</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">BG7523169263</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">BG8032056031</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">BG8032056031</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">BG7542011030</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">BG7542011030</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">BG7111042925</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">BG7111042925</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">BG175074753</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">BG175074753</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">BG7552A10004</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">BG7552A10004</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">BG7111042922</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">BG7111042922</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -267,14 +266,16 @@
                                 <td>HR</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">HR33392005961</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">HR33392005961</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">HR33392005962</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">HR33392005962</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -287,14 +288,16 @@
                                 <td>CY</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">CY10259033P</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">CY10259033P</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">CY10259033Z</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">CY10259033Z</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -307,24 +310,31 @@
                                 <td>CZ</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">CZ25123891</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">CZ25123891</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">CZ7103192745</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">CZ7103192745</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">CZ991231123</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">CZ991231123</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">CZ640903926</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">CZ640903926</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">CZ25123890</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">CZ25123890</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">CZ1103492745</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">CZ1103492745</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">CZ590312123</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">CZ590312123</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -337,14 +347,16 @@
                                 <td>DK</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">DK13585628</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">DK13585628</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">DK13585627</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">DK13585627</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -357,16 +369,19 @@
                                 <td>EE</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">EE100931558</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">EE100931558</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">EE100594102</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">EE100594102</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">EE100594103</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">EE100594103</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -379,14 +394,16 @@
                                 <td>FI</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">FI20774740</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">FI20774740</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">FI20774741</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">FI20774741</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -399,20 +416,25 @@
                                 <td>FR</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">FR40303265045</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">FR40303265045</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">FR23334175221</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">FR23334175221</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">FRK7399859412</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">FRK7399859412</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">FR4Z123456782</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">FR4Z123456782</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">FR84323140391</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">FR84323140391</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -425,14 +447,16 @@
                                 <td>DE</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">DE136695976</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">DE136695976</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">DE136695978</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">DE136695978</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -445,16 +469,19 @@
                                 <td>GR / EL</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">GR023456780</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">GR023456780</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">EL094259216</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">EL094259216</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">EL123456781</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">EL123456781</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -467,14 +494,16 @@
                                 <td>HU</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">HU12892312</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">HU12892312</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">HU12892313</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">HU12892313</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -487,18 +516,22 @@
                                 <td>IE</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">IE6433435F</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">IE6433435F</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">IE6433435OA</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">IE6433435OA</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">IE8D79739I</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">IE8D79739I</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">IE8D79738J</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">IE8D79738J</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -511,14 +544,16 @@
                                 <td>IT</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">IT00743110157</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">IT00743110157</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">IT00743110158</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">IT00743110158</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -531,18 +566,22 @@
                                 <td>LV</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">LV40003521600</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">LV40003521600</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">LV16117519997</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">LV16117519997</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">LV40003521601</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">LV40003521601</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">LV16137519997</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">LV16137519997</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -555,18 +594,22 @@
                                 <td>LT</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">LT119511515</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">LT119511515</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">LT100001919017</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">LT100001919017</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">LT100004801610</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">LT100004801610</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">LT100001919018</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">LT100001919018</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -579,14 +622,16 @@
                                 <td>LU</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">LU15027442</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">LU15027442</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">LU15027443</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">LU15027443</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -599,14 +644,16 @@
                                 <td>MT</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">MT11679112</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">MT11679112</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">MT11679113</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">MT11679113</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -619,14 +666,16 @@
                                 <td>NL</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">NL004495445B01</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">NL004495445B01</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">NL123456789B90</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">NL123456789B90</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -650,14 +699,16 @@
                                 <td>PL</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">PL8567346215</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">PL8567346215</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">PL8567346216</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">PL8567346216</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -670,14 +721,16 @@
                                 <td>PT</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">PT501964843</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">PT501964843</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">PT501964842</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">PT501964842</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -690,14 +743,16 @@
                                 <td>RO</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">RO18547290</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">RO18547290</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">RO18547291</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">RO18547291</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -732,14 +787,16 @@
                                 <td>SK</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">SK2022749619</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">SK2022749619</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">SK2022749618</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">SK2022749618</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -752,14 +809,16 @@
                                 <td>SI</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">SI50223054</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">SI50223054</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">SI50223055</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">SI50223055</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -772,30 +831,40 @@
                                 <td>ES</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">ES54362315K</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">ES54362315K</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">ESX2482300W</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">ESX2482300W</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">ESX5253868R</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">ESX5253868R</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">ESM1234567L</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">ESM1234567L</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">ESJ99216582</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">ESJ99216582</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">ESB58378431</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">ESB58378431</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">ESB64717838</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">ESB64717838</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">ES54362315Z</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">ES54362315Z</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">ESX2482300A</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">ESX2482300A</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">ESJ99216583</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">ESJ99216583</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -808,14 +877,16 @@
                                 <td>SE</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">SE123456789701</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">SE123456789701</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">SE123456789101</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">SE123456789101</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -839,14 +910,16 @@
                                 <td>GB</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample">GB980780684</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">GB980780684</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample">GB802311781</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample">GB802311781</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -878,37 +951,35 @@
                             </div>
 
                             <div class="tab-pane" id="vat-html-tab">
-                                <pre><code class="xml">&lt;form id="vatForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">VAT number&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="vat" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;vatForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>VAT number<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;vat&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
                             </div>
 
                             <div class="tab-pane" id="vat-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
-$(document).ready(function() {
-    $('#vatForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            vat: {
-                validators: {
-                    <span class="bv-note">vat: {
-                        message: 'The VAT number is not valid'
-                    }</span>
-                }
-            }
-        }
-    });
-});
-&lt;/script></code></pre>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#vatForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+        <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
+            <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
+            <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
+        <span class="p">},</span>
+        <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">vat</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+<span class="hll">                    <span class="nx">vat</span><span class="o">:</span> <span class="p">{</span>
+</span>                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The VAT number is not valid&#39;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
                             </div>
                         </div>
                     </div>
@@ -916,7 +987,7 @@ $(document).ready(function() {
 
                 
 <section>
-    <h2 id="related-validators">Related Validators</h2>
+    <h2 id="related-validators">Related validators</h2>
 
     <p>The following validators might be useful to you:</p>
 
@@ -940,12 +1011,11 @@ $(document).ready(function() {
             .find('input[name="vat"]')
                 .val($(this).text())
                 .end()
-            .data('bootstrapValidator')
-                .updateStatus('vat', 'NOT_VALIDATED')
-                .validate();
+            .bootstrapValidator('revalidateField', 'vat');
+
         var isValid = $('#vatForm').data('bootstrapValidator').isValid();
-        $(this)
-            .next()
+        $(this).parent().next()
+                .find('i')
                 .removeClass('fa-check fa-times')
                 .addClass(isValid ? 'fa-check' : 'fa-times')
                 .show()
@@ -989,8 +1059,8 @@ $(document).ready(function() {
                     <h2 id="comments" class="bv-separator"><span>Comments</span></h2>
 
                     <div class="bv-box bv-box-warning">
-                        If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. Do NOT post the issue here.<br/>
-                        For a general question or feedback, use the form below.
+                        <h5><i></i>Don't submit the issue here</h5>
+                        <p>If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. For a general question or feedback, use the form below.</p>
                     </div>
 
                     <div id="disqus_thread"></div>
@@ -1057,13 +1127,27 @@ $(document).ready(function() {
 </footer>
 <!-- /footer -->
 
-<script src="/vendor/highlight/highlight.pack.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="/vendor/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
 <script>
 $(document).ready(function() {
-    // Highlight sample code
-    hljs.initHighlightingOnLoad();
+    $('.bv-content, .bv-post').find('h1, h2, h3, h4, h5, h6').each(function() {
+        if (!$(this).attr('id')) {
+            return;
+        }
+
+        var $heading = $(this),
+            $span    =  $heading.find('span'),
+            $anchor  = $('<a/>')
+                            .html('#')
+                            .attr('href', '#' + $heading.attr('id'))
+                            .attr('title', $heading.text())
+                            .hide();
+        ($span.length === 0) ? $anchor.appendTo($heading) : $anchor.insertBefore($span);
+        $heading.hover(function() {
+            $(this).find('a').toggle();
+        });
+    });
 });
 </script>
 </body>

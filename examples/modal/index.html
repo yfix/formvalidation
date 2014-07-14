@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/vendor/bootstrapvalidator/css/bootstrapValidator.min.css">
-    <link rel="stylesheet" href="/vendor/highlight/styles/github.css">
+    <link rel="stylesheet" href="/vendor/pygments/github.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400,700">
     <link rel="stylesheet" href="/asset/css/style.css">
@@ -111,20 +111,7 @@
 
             <div class="col-md-4">
                 <div class="bv-ad">
-                    <div id="carbonads-container">
-    <div class="carbonad">
-        <div id="azcarbon"></div>
-        <script type="text/javascript">
-        var z = document.createElement("script");
-        z.type = "text/javascript";
-        z.async = true;
-        z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(z, s);
-        </script>
-    </div>
-</div>
-
+                    <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script");z.type = "text/javascript";z.async = true;z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z, s);</script></div></div>
                 </div>
             </div>
         </div>
@@ -137,8 +124,12 @@
             <div class="bv-sidebar">
                 
 
-<h2>Basic</h2>
+<h4>Basic</h4>
 <ul>
+    
+        
+            
+        
     
         
     
@@ -316,6 +307,12 @@
     
         
     
+        
+    
+        
+    
+        
+    
 </ul>
 
             </div>
@@ -342,165 +339,98 @@
                             </div>
 
                             <div class="tab-pane" id="modal-html-tab">
-                                <pre><code class="xml">&lt;button class="btn btn-primary" <span class="bv-note">data-toggle="modal" data-target="#loginModal"</span>>Login&lt;/button>
-&lt;div <span class="bv-note">class="modal fade" id="loginModal"</span> tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    &lt;div class="modal-dialog">
-        &lt;div class="modal-content">
-            &lt;div class="modal-header">
-                &lt;button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;&lt;/button>
-                &lt;h4 class="modal-title">Login&lt;/h4>
-            &lt;/div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-primary&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;modal&quot;</span> <span class="na">data-target=</span><span class="s">&quot;#loginModal&quot;</span><span class="nt">&gt;</span>Login<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal fade&quot;</span> <span class="na">id=</span><span class="s">&quot;loginModal&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span> <span class="na">role=</span><span class="s">&quot;dialog&quot;</span> <span class="na">aria-labelledby=</span><span class="s">&quot;myModalLabel&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal-dialog&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal-content&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal-header&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;close&quot;</span> <span class="na">data-dismiss=</span><span class="s">&quot;modal&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/button&gt;</span>
+                <span class="nt">&lt;h4</span> <span class="na">class=</span><span class="s">&quot;modal-title&quot;</span><span class="nt">&gt;</span>Login<span class="nt">&lt;/h4&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
 
-            &lt;div class="modal-body">
-                <span class="bv-note">&lt;!-- The form is placed inside the body of modal --></span>
-                &lt;form id="loginForm" method="post" class="form-horizontal">
-                    &lt;div class="form-group">
-                        &lt;label class="col-md-3 control-label">Username&lt;/label>
-                        &lt;div class="col-md-5">
-                            &lt;input type="text" class="form-control" name="username" />
-                        &lt;/div>
-                    &lt;/div>
-                    &lt;div class="form-group">
-                        &lt;label class="col-md-3 control-label">Password&lt;/label>
-                        &lt;div class="col-md-5">
-                            &lt;input type="password" class="form-control" name="password" />
-                        &lt;/div>
-                    &lt;/div>
-                    &lt;div class="form-group">
-                        &lt;div class="col-md-5 col-md-offset-3">
-                            &lt;button type="submit" class="btn btn-primary">Login&lt;/button>
-                        &lt;/div>
-                    &lt;/div>
-                &lt;/form>
-            &lt;/div>
-        &lt;/div>
-    &lt;/div>
-&lt;/div></code></pre>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal-body&quot;</span><span class="nt">&gt;</span>
+<span class="hll">                <span class="c">&lt;!-- The form is placed inside the body of modal --&gt;</span>
+</span>                <span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;loginForm&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-md-3 control-label&quot;</span><span class="nt">&gt;</span>Username<span class="nt">&lt;/label&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-5&quot;</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span> <span class="nt">/&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-md-3 control-label&quot;</span><span class="nt">&gt;</span>Password<span class="nt">&lt;/label&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-5&quot;</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;password&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;password&quot;</span> <span class="nt">/&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-5 col-md-offset-3&quot;</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-primary&quot;</span><span class="nt">&gt;</span>Login<span class="nt">&lt;/button&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/form&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
                             </div>
 
                             <div class="tab-pane" id="modal-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
-$(document).ready(function() {
-    $('#loginForm').bootstrapValidator({
-        message: 'This value is not valid',
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            username: {
-                validators: {
-                    notEmpty: {
-                        message: 'The username is required'
-                    }
-                }
-            },
-            password: {
-                validators: {
-                    notEmpty: {
-                        message: 'The password is required'
-                    }
-                }
-            }
-        }
-    });
-});
-&lt;/script></code></pre>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#loginForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;This value is not valid&#39;</span><span class="p">,</span>
+        <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
+            <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
+            <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
+        <span class="p">},</span>
+        <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">username</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">notEmpty</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The username is required&#39;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nx">password</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">notEmpty</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The password is required&#39;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
                             </div>
                         </div>
                     </div>
                 </section>
 
                 <section>
-                    <h3 id="html5-attribute">Setting Options via HTML Attributes</h3>
+                    <h3 id="html5-attribute">Setting options via HTML attributes</h3>
                     <p>If you use <a href="#attribute">HTML attributes</a> to set the validator options, or <a href="#html5">HTML5 input</a> elements, you must set <code>excluded: [':disabled']</code>.</p>
                     <div class="bv-box bv-box-info">
+                        <h5><i></i>The excluded option</h5>
                         <p>By default, the plugin will not initialize the fields which are disabled, hidden, or not visible. Since the form is placed inside a model which is not visible after loading page, the fields/validators initialized with HTML attributes might be ignored.</p>
                         <p>That's the reason why we need to set <code>excluded: [':disabled']</code>. Take a look at the <a href="/settings/#excluded"><code>excluded</code> setting</a> for more information.</p>
                     </div>
-                    <pre><code class="xml javascript">&lt;script>
-$(document).ready(function() {
-    $('#loginForm').bootstrapValidator({
-        message: 'This value is not valid',
-        <span class="bv-note">excluded: [':disabled'],</span>
-        ...
-    });
-});
-&lt;/script></code></pre>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#loginForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;This value is not valid&#39;</span><span class="p">,</span>
+<span class="hll">        <span class="nx">excluded</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;:disabled&#39;</span><span class="p">],</span>
+</span>        <span class="p">...</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
                 </section>
 
                 <section>
-                    <h3 id="ajax-submit">Using Ajax to Submit Form</h3>
-                    <p>In the case you want to use Ajax to submit the form and perform additional tasks after that, you can use <a href="/settings/#submit-handler"><code>submitHandler</code> option</a>.</p>
-                    <p>Regard to our modal example, the following code shows how to:</p>
-                    <ul class="doc-list">
-                        <li>Check if there is an account with given username and password by sending them to remote URL via an Ajax request</li>
-                        <li>If yes, reload current page</li>
-                        <li>Otherwise, show the message informing the account is not found</li>
-                    </ul>
-
-                    <p><pre><code class="xml javascript">&lt;script>
-$(document).ready(function() {
-    $('#loginForm').bootstrapValidator({
-        message: 'This value is not valid',
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        <span class="bv-note">submitHandler: function(validator, form, submitButton) {</span>
-            $.post(form.attr('action'), form.serialize(), function(result) {
-                // The result is a JSON formatted by your back-end
-                // I assume the format is as following:
-                //  {
-                //      valid: true,          // false if the account is not found
-                //      username: 'Username', // null if the account is not found
-                //  }
-                if (result.valid == true || result.valid == 'true') {
-                    // You can reload the current location
-                    window.location.reload();
-
-                    // Or use Javascript to update your page, such as showing the account name
-                    // $('#welcome').html('Hello ' + result.username);
-                } else {
-                    // The account is not found
-                    // Show the errors
-                    $('#errors').html('The account is not found').removeClass('hide');
-
-                    // Enable the submit buttons
-                    $('#loginForm').bootstrapValidator('disableSubmitButtons', false);
-                }
-            }, 'json');
-        },
-        fields: {
-            username: {
-                validators: {
-                    notEmpty: {
-                        message: 'The username is required'
-                    }
-                }
-            },
-            password: {
-                validators: {
-                    notEmpty: {
-                        message: 'The password is required'
-                    }
-                }
-            }
-        }
-    });
-});
-&lt;/script></code></pre></p>
-                </section>
-
-                <section>
-                    <h3 id="reset-form">Resetting Form When Showing the Modal</h3>
+                    <h3 id="reset-form">Resetting form when showing the modal</h3>
 
                     <p>If you want to reset all the fields in form whenever the modal is shown, the <a href="/api/#reset-form"><code>resetForm()</code> method</a> will help you:</p>
-                    <pre><code class="javascript">$('#loginModal').on('show.bs.modal', function() {
-    $('#loginForm').bootstrapValidator('resetForm', true);
-});</code></pre>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#loginModal&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;show.bs.modal&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#loginForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">(</span><span class="s1">&#39;resetForm&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<span class="p">});</span></code></pre></div>
                 </section>
             </div>
         </div>
@@ -556,14 +486,35 @@ $(document).ready(function() {
 
 <script>
 $(document).ready(function() {
-    $('#loginForm').bootstrapValidator({
-        message: 'This value is not valid',
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        submitHandler: function(validator, form, submitButton) {
+    $('#loginForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                username: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The username is required'
+                        }
+                    }
+                },
+                password: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The password is required'
+                        }
+                    }
+                }
+            }
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+
+            var validator = $(e.target).data('bootstrapValidator');
             $('#loginModal')
                 .one('hidden.bs.modal', function() {
                     $('#welcomeModal')
@@ -572,24 +523,7 @@ $(document).ready(function() {
                         .modal('show');
                 })
                 .modal('hide');
-        },
-        fields: {
-            username: {
-                validators: {
-                    notEmpty: {
-                        message: 'The username is required'
-                    }
-                }
-            },
-            password: {
-                validators: {
-                    notEmpty: {
-                        message: 'The password is required'
-                    }
-                }
-            }
-        }
-    });
+        });
 
     $('#loginModal').on('show.bs.modal', function() {
         $('#loginForm').bootstrapValidator('resetForm', true);
@@ -615,8 +549,8 @@ $(document).ready(function() {
                     <h2 id="comments" class="bv-separator"><span>Comments</span></h2>
 
                     <div class="bv-box bv-box-warning">
-                        If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. Do NOT post the issue here.<br/>
-                        For a general question or feedback, use the form below.
+                        <h5><i></i>Don't submit the issue here</h5>
+                        <p>If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. For a general question or feedback, use the form below.</p>
                     </div>
 
                     <div id="disqus_thread"></div>
@@ -683,13 +617,27 @@ $(document).ready(function() {
 </footer>
 <!-- /footer -->
 
-<script src="/vendor/highlight/highlight.pack.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="/vendor/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
 <script>
 $(document).ready(function() {
-    // Highlight sample code
-    hljs.initHighlightingOnLoad();
+    $('.bv-content, .bv-post').find('h1, h2, h3, h4, h5, h6').each(function() {
+        if (!$(this).attr('id')) {
+            return;
+        }
+
+        var $heading = $(this),
+            $span    =  $heading.find('span'),
+            $anchor  = $('<a/>')
+                            .html('#')
+                            .attr('href', '#' + $heading.attr('id'))
+                            .attr('title', $heading.text())
+                            .hide();
+        ($span.length === 0) ? $anchor.appendTo($heading) : $anchor.insertBefore($span);
+        $heading.hover(function() {
+            $(this).find('a').toggle();
+        });
+    });
 });
 </script>
 </body>

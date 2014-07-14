@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/vendor/bootstrapvalidator/css/bootstrapValidator.min.css">
-    <link rel="stylesheet" href="/vendor/highlight/styles/github.css">
+    <link rel="stylesheet" href="/vendor/pygments/github.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400,700">
     <link rel="stylesheet" href="/asset/css/style.css">
@@ -112,20 +112,7 @@
 
             <div class="col-md-4">
                 <div class="bv-ad">
-                    <div id="carbonads-container">
-    <div class="carbonad">
-        <div id="azcarbon"></div>
-        <script type="text/javascript">
-        var z = document.createElement("script");
-        z.type = "text/javascript";
-        z.async = true;
-        z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(z, s);
-        </script>
-    </div>
-</div>
-
+                    <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script");z.type = "text/javascript";z.async = true;z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z, s);</script></div></div>
                 </div>
             </div>
         </div>
@@ -152,23 +139,23 @@
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
                                 <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+                                <td><code>field</code><sup>*</sup></td>
+                                <td><code>data-bv-identical-field</code></td>
+                                <td>String</td>
+                                <td>The name of field that will be used to compare with current one</td>
+                            </tr>
+                            <tr>
                                 <td><code>message</code></td>
                                 <td><code>data-bv-identical-message</code></td>
                                 <td>String</td>
                                 <td>The error message</td>
-                            </tr>
-                            <tr>
-                                <td><code>field</code> (*)</td>
-                                <td><code>data-bv-identical-field</code></td>
-                                <td>String</td>
-                                <td>The name of field that will be used to compare with current one</td>
                             </tr>
                         </tbody>
                     </table>
@@ -205,53 +192,51 @@
                             </div>
 
                             <div class="tab-pane" id="identical-html-tab">
-                                <pre><code class="xml">&lt;form id="registerForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Password&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="password" class="form-control" name="password" />
-        &lt;/div>
-    &lt;/div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;registerForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Password<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;password&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;password&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Retype password&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="password" class="form-control" name="confirmPassword" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Retype password<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;password&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;confirmPassword&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
                             </div>
 
                             <div class="tab-pane" id="identical-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
-$(document).ready(function() {
-    $('#registerForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            password: {
-                validators: {
-                    <span class="bv-note">identical: {
-                        field: 'confirmPassword',
-                        message: 'The password and its confirm are not the same'
-                    }</span>
-                }
-            },
-            confirmPassword: {
-                validators: {
-                    <span class="bv-note">identical: {
-                        field: 'password',
-                        message: 'The password and its confirm are not the same'
-                    }</span>
-                }
-            }
-        }
-    });
-});
-&lt;/script></code></pre>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#registerForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+        <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
+            <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
+            <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
+        <span class="p">},</span>
+        <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">password</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+<span class="hll">                    <span class="nx">identical</span><span class="o">:</span> <span class="p">{</span>
+</span>                        <span class="nx">field</span><span class="o">:</span> <span class="s1">&#39;confirmPassword&#39;</span><span class="p">,</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The password and its confirm are not the same&#39;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nx">confirmPassword</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+<span class="hll">                    <span class="nx">identical</span><span class="o">:</span> <span class="p">{</span>
+</span>                        <span class="nx">field</span><span class="o">:</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The password and its confirm are not the same&#39;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
                             </div>
                         </div>
                     </div>
@@ -259,7 +244,7 @@ $(document).ready(function() {
 
                 
 <section>
-    <h2 id="related-validators">Related Validators</h2>
+    <h2 id="related-validators">Related validators</h2>
 
     <p>The following validators might be useful to you:</p>
 
@@ -324,8 +309,8 @@ $(document).ready(function() {
                     <h2 id="comments" class="bv-separator"><span>Comments</span></h2>
 
                     <div class="bv-box bv-box-warning">
-                        If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. Do NOT post the issue here.<br/>
-                        For a general question or feedback, use the form below.
+                        <h5><i></i>Don't submit the issue here</h5>
+                        <p>If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. For a general question or feedback, use the form below.</p>
                     </div>
 
                     <div id="disqus_thread"></div>
@@ -392,13 +377,27 @@ $(document).ready(function() {
 </footer>
 <!-- /footer -->
 
-<script src="/vendor/highlight/highlight.pack.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="/vendor/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
 <script>
 $(document).ready(function() {
-    // Highlight sample code
-    hljs.initHighlightingOnLoad();
+    $('.bv-content, .bv-post').find('h1, h2, h3, h4, h5, h6').each(function() {
+        if (!$(this).attr('id')) {
+            return;
+        }
+
+        var $heading = $(this),
+            $span    =  $heading.find('span'),
+            $anchor  = $('<a/>')
+                            .html('#')
+                            .attr('href', '#' + $heading.attr('id'))
+                            .attr('title', $heading.text())
+                            .hide();
+        ($span.length === 0) ? $anchor.appendTo($heading) : $anchor.insertBefore($span);
+        $heading.hover(function() {
+            $(this).find('a').toggle();
+        });
+    });
 });
 </script>
 </body>

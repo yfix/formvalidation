@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/vendor/bootstrapvalidator/css/bootstrapValidator.min.css">
-    <link rel="stylesheet" href="/vendor/highlight/styles/github.css">
+    <link rel="stylesheet" href="/vendor/pygments/github.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400,700">
     <link rel="stylesheet" href="/asset/css/style.css">
@@ -107,7 +107,7 @@
 
         <p>
             <a class="btn btn-lg" href="/getting-started/#download">Download</a>
-            <a class="btn btn-lg" href="https://pledgie.com/campaigns/24885" alt="Click here to lend your support to: BootstrapValidator and make a donation at pledgie.com!">Donation</a>
+            <a class="btn btn-lg" href="https://pledgie.com/campaigns/24885" alt="Click here to lend your support to: BootstrapValidator and make a donation at pledgie.com!">Donate</a>
             <!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                 <input type="hidden" name="cmd" value="_s-xclick">
                 <input type="hidden" name="hosted_button_id" value="D9K5AMXE87UXJ">
@@ -115,23 +115,10 @@
                 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
             </form> -->
         </p>
-        <p>v0.4.5 &mdash; MIT license</p>
+        <p><a href="/news/v0.5.0-released/">v0.5.0</a> &mdash; MIT license</p>
 
         <div class="bv-ad">
-        <div id="carbonads-container">
-    <div class="carbonad">
-        <div id="azcarbon"></div>
-        <script type="text/javascript">
-        var z = document.createElement("script");
-        z.type = "text/javascript";
-        z.async = true;
-        z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(z, s);
-        </script>
-    </div>
-</div>
-
+        <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script");z.type = "text/javascript";z.async = true;z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z, s);</script></div></div>
         </div>
     </div>
 </div>
@@ -158,7 +145,7 @@
                     <li>Written from scratch</li>
                     <li>Very solid and clean</li>
                     <li>Core and validators code are separated</li>
-                    <li>JSHint free <span class="bv-upcoming"></span></li>
+                    <li>JSHint free <span class="bv-news"></span></li>
                 </ul>
                 <p>  </p>
             </div>
@@ -177,7 +164,7 @@
                 <ul>
                     <li>Provide 46 built-in validators and counting!</li>
                     <li>Easy to write a new validator</li>
-                    <li>Internationalization <span class="bv-upcoming"></span></li>
+                    <li>Internationalization <span class="bv-news"></span></li>
                 </ul>
             </div>
         </div>
@@ -190,7 +177,7 @@
                     <li>Show feedback icons based on field validity</li>
                     <li>Focus on the first invalid field</li>
                     <li>Don't validate until given length</li>
-                    <li>Possible to show errors as tooltip/popover <span class="bv-upcoming"></span></li>
+                    <li>Possible to show errors as <a href="/settings/#form-container">tooltip/popover</a> <span class="bv-news"></span></li>
                 </ul>
             </div>
             <div class="col-md-4">
@@ -200,8 +187,9 @@
                     <li>Define field by name or CSS selector</li>
                     <li>Possible to indicate excluded fields</li>
                     <li>Enable/disable validators on the fly</li>
-                    <li>Support dynamic fields <span class="bv-upcoming"></span></li>
-                    <li>Support dynamic messages <span class="bv-upcoming"></span></li>
+                    <li>Support <a href="/settings/#dynamic-option">dynamic option</a> <span class="bv-news"></span></li>
+                    <li>Support dynamic fields <span class="bv-news"></span></li>
+                    <li>Support <a href="/settings/#dynamic-message">dynamic messages</a> <span class="bv-news"></span></li>
                 </ul>
             </div>
             <div class="col-md-4">
@@ -213,7 +201,7 @@
                     <li>Color Picker, Date Picker</li>
                     <li>iCheck</li>
                     <li>Select2</li>
-                    <li> ... we play nice with all of them</li>
+                    <li> ... we <a href="/examples/#compatibility">play nice</a> with all of them</li>
                 </ul>
             </div>
         </div>
@@ -434,8 +422,8 @@ $(document).ready(function() {
         dataType: 'jsonp',
         url: 'https://api.github.com/repos/nghuuphuoc/bootstrapvalidator',
         success: function(response) {
-            $('#ghStars').html(response && response.data.watchers_count ? parseInt(response.data.watchers_count) : '552');
-            $('#ghForks').html(response && response.data.forks_count    ? parseInt(response.data.forks_count)    : '220');
+            $('#ghStars').html(response && response.data.watchers_count ? parseInt(response.data.watchers_count) : '568');
+            $('#ghForks').html(response && response.data.forks_count    ? parseInt(response.data.forks_count)    : '225');
         }
     });
 
@@ -444,7 +432,7 @@ $(document).ready(function() {
         dataType: 'jsonp',
         url: 'https://cdn.api.twitter.com/1/users/show.json?screen_name=bsvalidator',
         success: function(response) {
-            $('#twFollowers').html(response && response.followers_count ? parseInt(response.followers_count) : '102');
+            $('#twFollowers').html(response && response.followers_count ? parseInt(response.followers_count) : '101');
         }
     });
 
@@ -461,7 +449,7 @@ $(document).ready(function() {
                     }
                 }
             }
-            $('#ghDownloads').html((total || '31552').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+            $('#ghDownloads').html((total || '32200').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
         }
     });
 });
@@ -512,13 +500,27 @@ $(document).ready(function() {
 </footer>
 <!-- /footer -->
 
-<script src="/vendor/highlight/highlight.pack.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="/vendor/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
 <script>
 $(document).ready(function() {
-    // Highlight sample code
-    hljs.initHighlightingOnLoad();
+    $('.bv-content, .bv-post').find('h1, h2, h3, h4, h5, h6').each(function() {
+        if (!$(this).attr('id')) {
+            return;
+        }
+
+        var $heading = $(this),
+            $span    =  $heading.find('span'),
+            $anchor  = $('<a/>')
+                            .html('#')
+                            .attr('href', '#' + $heading.attr('id'))
+                            .attr('title', $heading.text())
+                            .hide();
+        ($span.length === 0) ? $anchor.appendTo($heading) : $anchor.insertBefore($span);
+        $heading.hover(function() {
+            $(this).find('a').toggle();
+        });
+    });
 });
 </script>
 </body>

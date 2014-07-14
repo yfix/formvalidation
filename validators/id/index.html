@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/vendor/bootstrapvalidator/css/bootstrapValidator.min.css">
-    <link rel="stylesheet" href="/vendor/highlight/styles/github.css">
+    <link rel="stylesheet" href="/vendor/pygments/github.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400,700">
     <link rel="stylesheet" href="/asset/css/style.css">
@@ -112,20 +112,7 @@
 
             <div class="col-md-4">
                 <div class="bv-ad">
-                    <div id="carbonads-container">
-    <div class="carbonad">
-        <div id="azcarbon"></div>
-        <script type="text/javascript">
-        var z = document.createElement("script");
-        z.type = "text/javascript";
-        z.async = true;
-        z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(z, s);
-        </script>
-    </div>
-</div>
-
+                    <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script");z.type = "text/javascript";z.async = true;z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z, s);</script></div></div>
                 </div>
             </div>
         </div>
@@ -152,23 +139,23 @@
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
                                 <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+                                <td><code>country</code><sup>*</sup></td>
+                                <td><code>data-bv-id-country</code></td>
+                                <td>String</td>
+                                <td>An ISO-3166 country code.<br/>It's <a href="/settings/#dynamic-option">dynamic option</a> <span class="bv-news"></span></td>
+                            </tr>
+                            <tr>
                                 <td><code>message</code></td>
                                 <td><code>data-bv-id-message</code></td>
                                 <td>String</td>
                                 <td>The error message</td>
-                            </tr>
-                            <tr>
-                                <td><code>country</code> (*)</td>
-                                <td><code>data-bv-id-country</code></td>
-                                <td>String</td>
-                                <td>A ISO 3166 country code</td>
                             </tr>
                         </tbody>
                     </table>
@@ -205,18 +192,22 @@
                                 <td>BR</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="BR">39053344705</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="BR">39053344705</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="BR">390.533.447-05</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="BR">390.533.447-05</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="BR">111.444.777-35</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="BR">111.444.777-35</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="BR">231.002.999-00</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="BR">231.002.999-00</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -229,26 +220,34 @@
                                 <td>BG</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="BG">7523169263</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="BG">7523169263</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="BG">8032056031</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="BG">8032056031</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="BG">803205 603 1</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="BG">803205 603 1</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="BG">8001010008</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="BG">8001010008</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="BG">7501020018</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="BG">7501020018</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="BG">7552010005</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="BG">7552010005</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="BG">7542011030</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="BG">7542011030</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="BG">8019010008</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="BG">8019010008</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -261,16 +260,19 @@
                                 <td>CL</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="CL">76086428-5</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="CL">76086428-5</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="CL">22060449-7</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="CL">22060449-7</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="CL">12531909-2</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="CL">12531909-2</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -283,14 +285,16 @@
                                 <td>HR</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="HR">33392005961</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="HR">33392005961</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="HR">33392005962</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="HR">33392005962</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -303,18 +307,22 @@
                                 <td>CZ</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="CZ">7103192745</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="CZ">7103192745</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="CZ">991231123</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="CZ">991231123</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="CZ">1103492745</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="CZ">1103492745</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="CZ">590312123</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="CZ">590312123</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -327,16 +335,19 @@
                                 <td>DK</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="DK">2110625629</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="DK">2110625629</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="DK">211062-5629</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="DK">211062-5629</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="DK">511062-5629</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="DK">511062-5629</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -349,12 +360,13 @@
                                 <td>EE</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="EE">37605030299</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="EE">37605030299</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -367,18 +379,22 @@
                                 <td>FI</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="FI">311280-888Y</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="FI">311280-888Y</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="FI">131052-308T</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="FI">131052-308T</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="FI">131052-308U</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="FI">131052-308U</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="FI">310252-308Y</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="FI">310252-308Y</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -391,16 +407,19 @@
                                 <td>IS</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="IS">120174-3399</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="IS">120174-3399</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="IS">1201743399</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="IS">1201743399</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="IS">0902862349</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="IS">0902862349</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -413,28 +432,37 @@
                                 <td>IE</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="IE">6433435F</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="IE">6433435F</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="IE">6433435FT</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="IE">6433435FT</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="IE">6433435FW</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="IE">6433435FW</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="IE">6433435OA</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="IE">6433435OA</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="IE">6433435IH</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="IE">6433435IH</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="IE">1234567TW</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="IE">1234567TW</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="IE">1234567FA</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="IE">1234567FA</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="IE">6433435E</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="IE">6433435E</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="IE">6433435VH</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="IE">6433435VH</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -447,16 +475,19 @@
                                 <td>LV</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="LV">161175-19997</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="LV">161175-19997</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="LV">16117519997</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="LV">16117519997</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="LV">161375-19997</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="LV">161375-19997</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -469,18 +500,22 @@
                                 <td>LT</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="LT">38703181745</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="LT">38703181745</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="LT">38703181746</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="LT">38703181746</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="LT">78703181745</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="LT">78703181745</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="LT">38703421745</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="LT">38703421745</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -515,18 +550,22 @@
                                 <td>NL</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="NL">111222333</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="NL">111222333</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="NL">941331490</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="NL">941331490</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="NL">9413.31.490</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="NL">9413.31.490</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="NL">111252333</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="NL">111252333</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -539,20 +578,25 @@
                                 <td>RO</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="RO">1630615123457</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="RO">1630615123457</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="RO">1800101221144</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="RO">1800101221144</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="RO">8800101221144</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="RO">8800101221144</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="RO">1632215123457</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="RO">1632215123457</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="RO">1630615123458</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="RO">1630615123458</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -587,18 +631,22 @@
                                 <td>SK</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="SK">7103192745</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="SK">7103192745</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="SK">991231123</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="SK">991231123</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="SK">7103192746</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="SK">7103192746</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="SK">1103492745</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="SK">1103492745</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -611,12 +659,13 @@
                                 <td>SI</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="SI">0101006500006</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="SI">0101006500006</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -629,16 +678,19 @@
                                 <td>ZA</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="ZA">8001015009087</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="ZA">8001015009087</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="ZA">8001015009287</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="ZA">8001015009287</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="ZA">8001015009086</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="ZA">8001015009086</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -651,24 +703,31 @@
                                 <td>ES</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="ES">54362315K</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="ES">54362315K</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="ES">54362315-K</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="ES">54362315-K</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="ES">X2482300W</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="ES">X2482300W</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="ES">X-2482300W</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="ES">X-2482300W</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="ES">X-2482300-W</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="ES">X-2482300-W</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="ES">54362315Z</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="ES">54362315Z</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="ES">X-2482300A</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="ES">X-2482300A</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -681,18 +740,22 @@
                                 <td>SE</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="SE">8112289874</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="SE">8112289874</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="SE">811228-9874</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="SE">811228-9874</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="SE">811228+9874</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="SE">811228+9874</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="SE">811228-9873</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="SE">811228-9873</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -705,14 +768,16 @@
                                 <td>CH</td>
                                 <td>
                                     
-                                    <ul class="docs-sample">
+                                    <dl class="dl-horizontal">
                                         
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="CH">756.1234.5678.95</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="CH">756.1234.5678.95</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                        <li><a href="javascript: void(0);" class="sample" data-country="CH">7561234567895</a><i class="fa"></i></li>
+                                        <dt><a href="javascript: void(0);" class="sample" data-country="CH">7561234567895</a></dt>
+                                        <dd><i class="fa"></i></dd>
                                         
-                                    </ul>
+                                    </dl>
                                     
                                 </td>
                             </tr>
@@ -737,7 +802,7 @@
                                     <div class="form-group">
                                         <label class="col-lg-3 control-label">Country</label>
                                         <div class="col-lg-5">
-                                            <select class="form-control" name="country">
+                                            <select class="form-control" name="countrySelectBox">
                                             
                                                 
                                                 <option value="BA">Bosnia and Herzegovina</option>
@@ -827,78 +892,70 @@
                             </div>
 
                             <div class="tab-pane" id="id-html-tab">
-                                <pre><code class="xml">&lt;form id="idForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Country&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;select class="form-control" name="country">
-                &lt;option value="BA">Bosnia and Herzegovina&lt;/option>
-                &lt;option value="BR">Brazil&lt;/option>
-                &lt;option value="BG">Bulgari&lt;/option>
-                &lt;option value="CL">Chile&lt;/option>
-                &lt;option value="HR">Croatia&lt;/option>
-                &lt;option value="CZ">Czech&lt;/option>
-                &lt;option value="DK">Denmark&lt;/option>
-                &lt;option value="EE">Estonia&lt;/option>
-                &lt;option value="FI">Finland&lt;/option>
-                &lt;option value="IS">Iceland&lt;/option>
-                &lt;option value="IE">Ireland&lt;/option>
-                &lt;option value="LV">Latvia&lt;/option>
-                &lt;option value="LT">Lithuania&lt;/option>
-                &lt;option value="MK">Macedonia&lt;/option>
-                &lt;option value="ME">Montenegro&lt;/option>
-                &lt;option value="NL">Netherlands&lt;/option>
-                &lt;option value="RO">Romania&lt;/option>
-                &lt;option value="SM">San Marino&lt;/option>
-                &lt;option value="RS">Serbia&lt;/option>
-                &lt;option value="SK">Slovakia&lt;/option>
-                &lt;option value="SI">Slovenia&lt;/option>
-                &lt;option value="ZA">South Africa&lt;/option>
-                &lt;option value="ES">Spain&lt;/option>
-                &lt;option value="SE">Sweden&lt;/option>
-                &lt;option value="CH">Switzerland&lt;/option>
-            &lt;/select>
-        &lt;/div>
-    &lt;/div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;idForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Country<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+<span class="hll">            <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;countrySelectBox&quot;</span><span class="nt">&gt;</span>
+</span>                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;BA&quot;</span><span class="nt">&gt;</span>Bosnia and Herzegovina<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;BR&quot;</span><span class="nt">&gt;</span>Brazil<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;BG&quot;</span><span class="nt">&gt;</span>Bulgari<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;CL&quot;</span><span class="nt">&gt;</span>Chile<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;HR&quot;</span><span class="nt">&gt;</span>Croatia<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;CZ&quot;</span><span class="nt">&gt;</span>Czech<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;DK&quot;</span><span class="nt">&gt;</span>Denmark<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;EE&quot;</span><span class="nt">&gt;</span>Estonia<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;FI&quot;</span><span class="nt">&gt;</span>Finland<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;IS&quot;</span><span class="nt">&gt;</span>Iceland<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;IE&quot;</span><span class="nt">&gt;</span>Ireland<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;LV&quot;</span><span class="nt">&gt;</span>Latvia<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;LT&quot;</span><span class="nt">&gt;</span>Lithuania<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;MK&quot;</span><span class="nt">&gt;</span>Macedonia<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;ME&quot;</span><span class="nt">&gt;</span>Montenegro<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;NL&quot;</span><span class="nt">&gt;</span>Netherlands<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;RO&quot;</span><span class="nt">&gt;</span>Romania<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;SM&quot;</span><span class="nt">&gt;</span>San Marino<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;RS&quot;</span><span class="nt">&gt;</span>Serbia<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;SK&quot;</span><span class="nt">&gt;</span>Slovakia<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;SI&quot;</span><span class="nt">&gt;</span>Slovenia<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;ZA&quot;</span><span class="nt">&gt;</span>South Africa<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;ES&quot;</span><span class="nt">&gt;</span>Spain<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;SE&quot;</span><span class="nt">&gt;</span>Sweden<span class="nt">&lt;/option&gt;</span>
+                <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;CH&quot;</span><span class="nt">&gt;</span>Switzerland<span class="nt">&lt;/option&gt;</span>
+            <span class="nt">&lt;/select&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">ID&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="id" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>ID<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
                             </div>
 
                             <div class="tab-pane" id="id-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
-$(document).ready(function() {
-    $('#idForm')
-        .on('change', 'select[name="country"]', function() {
-            // Set the country option
-            <span class="bv-note">var validator = $('#idForm').data('bootstrapValidator');
-            validator.options.fields['id'].validators.id.country = $(this).val();
-            validator.updateStatus('id', 'NOT_VALIDATED');</span>
-        })
-        .bootstrapValidator({
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                id: {
-                    validators: {
-                        <span class="bv-note">id: {
-                            country: 'BA',
-                            message: 'The ID is not valid'
-                        }</span>
-                    }
-                }
-            }
-        });
-});
-&lt;/script></code></pre>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#idForm&#39;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+            <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
+                <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
+                <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
+            <span class="p">},</span>
+            <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">id</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">id</span><span class="o">:</span> <span class="p">{</span>
+<span class="hll">                            <span class="nx">country</span><span class="o">:</span> <span class="s1">&#39;countrySelectBox&#39;</span><span class="p">,</span>
+</span><span class="hll">                            <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The value is not valid %s ID&#39;</span>
+</span>                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
                             </div>
                         </div>
                     </div>
@@ -906,7 +963,7 @@ $(document).ready(function() {
 
                 
 <section>
-    <h2 id="related-validators">Related Validators</h2>
+    <h2 id="related-validators">Related validators</h2>
 
     <p>The following validators might be useful to you:</p>
 
@@ -930,33 +987,25 @@ $(document).ready(function() {
             country   = $(this).attr('data-country');
 
         $('#idForm')
-            .find('select[name="country"]')
+            .find('select[name="countrySelectBox"]')
                 .val(country)
                 .end()
             .find('input[name="id"]')
                 .val($(this).text());
 
-        // Re-validate field
-        validator.options.fields['id'].validators.id.country = country;
-        validator.updateStatus('id', 'NOT_VALIDATED').validate();
+        // Revalidate field
+        $('#idForm').bootstrapValidator('revalidateField', 'id');
 
         // Show the result
         var isValid = validator.isValid();
-        $(this)
-            .next()
+        $(this).parent().next()
+                .find('i')
                 .removeClass('fa-check fa-times')
                 .addClass(isValid ? 'fa-check' : 'fa-times')
-                .show()
-                .end();
+                .show();
     });
 
-    
     $('#idForm')
-        .on('change', 'select[name="country"]', function() {
-            var validator = $('#idForm').data('bootstrapValidator');
-            validator.options.fields['id'].validators.id.country = $(this).val();
-            validator.updateStatus('id', 'NOT_VALIDATED');
-        })
         .bootstrapValidator({
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
@@ -967,8 +1016,8 @@ $(document).ready(function() {
                 id: {
                     validators: {
                         id: {
-                            country: 'BA',
-                            message: 'The ID is not valid'
+                            country: 'countrySelectBox',
+                            message: 'The value is not valid %s ID'
                         }
                     }
                 }
@@ -995,8 +1044,8 @@ $(document).ready(function() {
                     <h2 id="comments" class="bv-separator"><span>Comments</span></h2>
 
                     <div class="bv-box bv-box-warning">
-                        If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. Do NOT post the issue here.<br/>
-                        For a general question or feedback, use the form below.
+                        <h5><i></i>Don't submit the issue here</h5>
+                        <p>If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. For a general question or feedback, use the form below.</p>
                     </div>
 
                     <div id="disqus_thread"></div>
@@ -1063,13 +1112,27 @@ $(document).ready(function() {
 </footer>
 <!-- /footer -->
 
-<script src="/vendor/highlight/highlight.pack.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="/vendor/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
 <script>
 $(document).ready(function() {
-    // Highlight sample code
-    hljs.initHighlightingOnLoad();
+    $('.bv-content, .bv-post').find('h1, h2, h3, h4, h5, h6').each(function() {
+        if (!$(this).attr('id')) {
+            return;
+        }
+
+        var $heading = $(this),
+            $span    =  $heading.find('span'),
+            $anchor  = $('<a/>')
+                            .html('#')
+                            .attr('href', '#' + $heading.attr('id'))
+                            .attr('title', $heading.text())
+                            .hide();
+        ($span.length === 0) ? $anchor.appendTo($heading) : $anchor.insertBefore($span);
+        $heading.hover(function() {
+            $(this).find('a').toggle();
+        });
+    });
 });
 </script>
 </body>

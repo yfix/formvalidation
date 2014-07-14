@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/vendor/bootstrapvalidator/css/bootstrapValidator.min.css">
-    <link rel="stylesheet" href="/vendor/highlight/styles/github.css">
+    <link rel="stylesheet" href="/vendor/pygments/github.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400,700">
     <link rel="stylesheet" href="/asset/css/style.css">
@@ -112,20 +112,7 @@
 
             <div class="col-md-4">
                 <div class="bv-ad">
-                    <div id="carbonads-container">
-    <div class="carbonad">
-        <div id="azcarbon"></div>
-        <script type="text/javascript">
-        var z = document.createElement("script");
-        z.type = "text/javascript";
-        z.async = true;
-        z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(z, s);
-        </script>
-    </div>
-</div>
-
+                    <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script");z.type = "text/javascript";z.async = true;z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z, s);</script></div></div>
                 </div>
             </div>
         </div>
@@ -137,15 +124,16 @@
         <div class="col-md-3">
             <div class="bv-sidebar">
                 <ul>
+                    <li><a href="#options">Options</a></li>
                     <li>
-                        <a href="#options">Options</a>
+                        <a href="#example">Example</a>
                         <ul>
-                            <li><a href="#name-option">name option</a></li>
-                            <li><a href="#data-option">date option</a></li>
-                            <li></li>
+                            <li><a href="#basic-example">Basic</a></li>
+                            <li><a href="#sending-static-data">Sending static data</a></li>
+                            <li><a href="#sending-dynamic-data">Sending dynamic data</a></li>
+                            <li><a href="#overriding-name">Overriding name</a></li>
                         </ul>
                     </li>
-                    <li><a href="#example">Example</a></li>
                 </ul>
             </div>
         </div>
@@ -158,12 +146,18 @@
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
                                 <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <tr>
+                                <td><code>data</code></td>
+                                <td>n/a</td>
+                                <td>Object</td>
+                                <td>The data sent to remote URL.<br />You don't need to use this option if there is only field, defined as field name, sent to the remote URL.</td>
+                            </tr>
                             <tr>
                                 <td><code>message</code></td>
                                 <td><code>data-bv-remote-message</code></td>
@@ -171,10 +165,10 @@
                                 <td>The error message</td>
                             </tr>
                             <tr>
-                                <td><code>url</code> (*)</td>
-                                <td><code>data-bv-remote-url</code></td>
+                                <td><code>method</code> <span class="bv-news"></span></td>
+                                <td><code>data-bv-remote-method</code></td>
                                 <td>String</td>
-                                <td>The remote URL that responses an encoded JSON of array containing the <code>valid</code> key</td>
+                                <td>The method used to send data to back-end. It can be <code>GET</code> or <code>POST</code> <span class="label label-default">default</span></td>
                             </tr>
                             <tr>
                                 <td><code>name</code></td>
@@ -183,67 +177,94 @@
                                 <td>The name of field which need to validate</td>
                             </tr>
                             <tr>
-                                <td><code>data</code></td>
-                                <td>n/a</td>
-                                <td>Object</td>
-                                <td>The data sent to remote URL.<br />You don't need to use this option if there is only field, defined as field name, sent to the remote URL.</td>
+                                <td><code>url</code><sup>*</sup></td>
+                                <td><code>data-bv-remote-url</code></td>
+                                <td>String|Function</td>
+                                <td>The remote URL.<br/>
+                                    If you want to use a dynamic URL, then use the callback as following: <span class="bv-news"></span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">url</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">validator</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// validator is BootstrapValidator instance</span>
+    <span class="k">return</span> <span class="s1">&#39;the URL&#39;</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
 
+                    <p>The remote URL has to return an encoded JSON of array containing the <code>valid</code> key:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span> <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;true or false&#39;</span> <span class="p">}</span></code></pre></div>
+                </section>
+
+                <section>
+                    <h2 id="example">Example</h2>
+
+                    <!-- basic example -->
                     <section>
-                        <h3 id="name-option">name option</h3>
-                        <p>By default, it will be set as the name of field.</p>
-                        <p>You can override the <code>name</code> option by using the <code>data-bv-remote-name</code> attribute.</p>
+                        <h3 id="basic-example">Basic</h3>
+                        <p>The following example shows how to use a remote back-end to check if a given username is already taken or not.</p>
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#example-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#example-js-tab" data-toggle="tab">JS</a></li>
+                                <li><a href="#example-php-tab" data-toggle="tab">Back-end</a></li>
+                            </ul>
 
-                        <p>Here are two cases which you might need to use this attribute.</p>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="example-html-tab">
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;registrationForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Username<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
+                                </div>
 
-                        <p class="bv-box bv-box-info">Use different name for same field on different forms:</p>
-                        <p>For example, the <i>Sign up</i> and <i>Profile</i> forms use the same back-end URL to validate the email address which is declared with different name:</p>
-                        <pre><code class="xml">&lt;!-- Signup form -->
-&lt;form id="signupForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Email&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" <span class="bv-note">name="login" data-bv-remote-name="email"</span> />
-        &lt;/div>
-    &lt;/div>
-&lt;/form>
+                                <div class="tab-pane" id="example-js-tab">
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#registrationForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+        <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">username</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The username is not valid&#39;</span><span class="p">,</span>
+                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="c1">// The validator will create an Ajax request</span>
+                    <span class="c1">// sending { username: &#39;its value&#39; } to the back-end</span>
+<span class="hll">                    <span class="nx">remote</span><span class="o">:</span> <span class="p">{</span>
+</span>                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The username is not available&#39;</span><span class="p">,</span>
+                        <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/path/to/backend/&#39;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
+                                </div>
 
-&lt;!-- Edit profile form -->
-&lt;form id="profileForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Email&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" <span class="bv-note">name="email" data-bv-remote-name="email"</span> />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+                                <div class="tab-pane" id="example-php-tab">
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// The back-end then will determine if the username is available or not,</span>
+<span class="c1">// and finally returns a JSON { &quot;valid&quot;: true } or { &quot;valid&quot;: false }</span>
+<span class="c1">// The code bellow demonstrates a simple back-end written in PHP</span>
 
-                        <p class="bv-box bv-box-info">Multiple fields using the same back-end URL to validate</p>
-                        <pre><code class="xml">&lt;form id="profileForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Primary email&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control"
-                <span class="bv-note">name="primary_email" data-bv-remote-name="email"</span> />
-        &lt;/div>
+<span class="c1">// Get the username from request</span>
+<span class="nv">$username</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">];</span>
 
-        &lt;label class="col-lg-3 control-label">Secondary email&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control"
-                <span class="bv-note">name="secondary_email" data-bv-remote-name="email"</span> />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+<span class="c1">// Check its existence (for example, execute a query from the database) ...</span>
+<span class="nv">$isAvailable</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span> <span class="c1">// or false</span>
+
+<span class="c1">// Finally, return a JSON</span>
+<span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;valid&#39;</span> <span class="o">=&gt;</span> <span class="nv">$isAvailable</span><span class="p">,</span>
+<span class="p">));</span></code></pre></div>
+                                </div>
+                            </div>
+                        </div>
                     </section>
 
+                    <!-- sending static data example -->
                     <section>
-                        <h3 id="data-option">data option</h3>
-                        <p>As you see in the <a href="#example">example</a> at the top of page, the validator will send <code>{ fieldName: fieldValue }</code> to the back-end, where <code>fieldName</code> and <code>fieldValue</code> are replaced with the field name and current value, respectively.</p>
-                        <p>In fact, you might want to send more data to the back-end.</p>
-
-                        <p class="bv-box bv-box-info">All additional data are static:</p>
+                        <h3 id="sending-static-data">Sending static data</h3>
                         <p>For example, there is same back-end for validating both username and email address. The back-end uses additional parameter named <code>type</code> to determine which field is going to be validated.</p>
                         <div class="bv-example">
                             <ul class="nav nav-tabs">
@@ -254,93 +275,91 @@
 
                             <div class="tab-content">
                                 <div class="tab-pane active" id="staticdata-html-tab">
-                                    <pre><code class="xml">&lt;form id="registrationForm" class="form-horizontal">
-    &lt;! -- Other fields -->
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;registrationForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Username<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Username&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="username" />
-        &lt;/div>
-    &lt;/div>
-
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Email&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="email" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Email<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;email&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
                                 </div>
 
                                 <div class="tab-pane" id="staticdata-js-tab">
-                                    <pre><code class="xml javascript">&lt;script>
-$(document).ready(function() {
-    $('#registrationForm').bootstrapValidator({
-        fields: {
-            username: {
-                message: 'The username is not valid',
-                validators: {
-                    // Send { username: 'its value', type: 'username' } to the back-end
-                    <span class="bv-note">remote: {
-                        message: 'The username is not available',
-                        url: '/path/to/backend/',
-                        data: {
-                            type: 'username'
-                        }
-                    }</span>
-                }
-            },
-            email: {
-                message: 'The email address is not valid',
-                validators: {
-                    // Send { email: 'its value', type: 'email' } to the back-end
-                    <span class="bv-note">remote: {
-                        message: 'The email is not available',
-                        url: '/path/to/backend/',
-                        data: {
-                            type: 'email'
-                        }
-                    }</span>
-                }
-            }
-        }
-    });
-});
-&lt;/script></code></pre>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#registrationForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+        <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">username</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The username is not valid&#39;</span><span class="p">,</span>
+                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="c1">// Send { username: &#39;its value&#39;, type: &#39;username&#39; } to the back-end</span>
+                    <span class="nx">remote</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The username is not available&#39;</span><span class="p">,</span>
+                        <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/path/to/backend/&#39;</span><span class="p">,</span>
+<span class="hll">                        <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+</span>                            <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;username&#39;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nx">email</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The email address is not valid&#39;</span><span class="p">,</span>
+                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="c1">// Send { email: &#39;its value&#39;, type: &#39;email&#39; } to the back-end</span>
+                    <span class="nx">remote</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The email is not available&#39;</span><span class="p">,</span>
+                        <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/path/to/backend/&#39;</span><span class="p">,</span>
+<span class="hll">                        <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+</span>                            <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;email&#39;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
                                 </div>
 
                                 <div class="tab-pane" id="staticdata-php-tab">
-                                    <pre><code class="xml">&lt;?php
-// The code bellow demonstrates a simple back-end written in PHP
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// The code bellow demonstrates a simple back-end written in PHP</span>
+<span class="c1">// Determine which field you want to check its existence</span>
+<span class="nv">$isAvailable</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
 
-// Determine which field you want to check its existence
-$isAvailable = true;
-switch ($_POST['type']) {
-    case 'email':
-        $email = $_POST['email'];
-        // Check the email existence ...
-        $isAvailable = true; // or false
-        break;
+<span class="hll"><span class="k">switch</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">])</span> <span class="p">{</span>
+</span>    <span class="k">case</span> <span class="s1">&#39;email&#39;</span><span class="o">:</span>
+        <span class="nv">$email</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">];</span>
+        <span class="c1">// Check the email existence ...</span>
+        <span class="nv">$isAvailable</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span> <span class="c1">// or false</span>
+        <span class="k">break</span><span class="p">;</span>
 
-    case 'username':
-    default:
-        $username = $_POST['username'];
-        // Check the username existence ...
-        $isAvailable = true; // or false
-        break;
-}
+    <span class="k">case</span> <span class="s1">&#39;username&#39;</span><span class="o">:</span>
+    <span class="k">default</span><span class="o">:</span>
+        <span class="nv">$username</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">];</span>
+        <span class="c1">// Check the username existence ...</span>
+        <span class="nv">$isAvailable</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span> <span class="c1">// or false</span>
+        <span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
 
-// Finally, return a JSON
-echo json_encode(array(
-    'valid' => $isAvailable,
-));
-</code></pre>
+<span class="c1">// Finally, return a JSON</span>
+<span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;valid&#39;</span> <span class="o">=&gt;</span> <span class="nv">$isAvailable</span><span class="p">,</span>
+<span class="p">));</span></code></pre></div>
                                 </div>
                             </div>
                         </div>
+                    </section>
 
-                        <p class="bv-box bv-box-info">Send more fields with dynamic values to the back-end:</p>
+                    <!-- sending dynamic data example -->
+                    <section>
+                        <h3 id="sending-dynamic-data">Sending dynamic data</h3>
                         <p>For instance, the registration form need to validate both the username and emails.</p>
                         <div class="bv-example">
                             <ul class="nav nav-tabs">
@@ -350,141 +369,122 @@ echo json_encode(array(
 
                             <div class="tab-content">
                                 <div class="tab-pane active" id="data-html-tab">
-                                    <pre><code class="xml">&lt;form id="registrationForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Username&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="username" />
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Email&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="email" />
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Password&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="password" class="form-control" name="password" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;registrationForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Username<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Email<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;email&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Password<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;password&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;password&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
                                 </div>
 
                                 <div class="tab-pane" id="data-js-tab">
-                                    <pre><code class="xml javascript">&lt;script>
-$(document).ready(function() {
-    $('#registrationForm').bootstrapValidator({
-        fields: {
-            username: {
-                message: 'The username is not valid',
-                validators: {
-                    remote: {
-                        url: '/path/to/backend/',
-                        // Send { username: 'its value', email: 'its value' } to the back-end
-                        <span class="bv-note">data: function(validator) {
-                            return {
-                                email: validator.getFieldElements('email').val()
-                            };
-                        },</span>
-                        message: 'The username is not available'
-                    }
-                }
-            },
-            email: {
-                validators: {
-                    remote: {
-                        url: '/path/to/backend/',
-                        // Send { email: 'its value', username: 'its value' } to the back-end
-                        <span class="bv-note">data: function(validator) {
-                            return {
-                                username: validator.getFieldElements('username').val()
-                            };
-                        },</span>
-                        message: 'The email is not available'
-                    }
-                }
-            }
-        }
-    });
-});
-&lt;/script></code></pre>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#registrationForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+        <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">username</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The username is not valid&#39;</span><span class="p">,</span>
+                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">remote</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/path/to/backend/&#39;</span><span class="p">,</span>
+                        <span class="c1">// Send { username: &#39;its value&#39;, email: &#39;its value&#39; } to the back-end</span>
+<span class="hll">                        <span class="nx">data</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">validator</span><span class="p">)</span> <span class="p">{</span>
+</span>                            <span class="k">return</span> <span class="p">{</span>
+                                <span class="nx">email</span><span class="o">:</span> <span class="nx">validator</span><span class="p">.</span><span class="nx">getFieldElements</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span>
+                            <span class="p">};</span>
+                        <span class="p">},</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The username is not available&#39;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nx">email</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">remote</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/path/to/backend/&#39;</span><span class="p">,</span>
+                        <span class="c1">// Send { email: &#39;its value&#39;, username: &#39;its value&#39; } to the back-end</span>
+<span class="hll">                        <span class="nx">data</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">validator</span><span class="p">)</span> <span class="p">{</span>
+</span>                            <span class="k">return</span> <span class="p">{</span>
+                                <span class="nx">username</span><span class="o">:</span> <span class="nx">validator</span><span class="p">.</span><span class="nx">getFieldElements</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span>
+                            <span class="p">};</span>
+                        <span class="p">},</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The email is not available&#39;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
                                 </div>
                             </div>
                         </div>
                     </section>
-                </section>
 
-                <section>
-                    <h2 id="example">Example</h2>
+                    <!-- different names example -->
+                    <section>
+                        <h3 id="overriding-name">Overriding name</h3>
 
-                    <p>The following example shows how to use a remote back-end to check if a given username is already taken or not.</p>
-                    <div class="bv-example">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#example-html-tab" data-toggle="tab">HTML</a></li>
-                            <li><a href="#example-js-tab" data-toggle="tab">JS</a></li>
-                            <li><a href="#example-php-tab" data-toggle="tab">Back-end</a></li>
-                        </ul>
+                        <p>By default, it will be set as the name of field. You can override the name option by using the <code>data-bv-remote-name</code> attribute.Here are two cases which you might need to use this attribute.</p>
 
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="example-html-tab">
-                                <pre><code class="xml">&lt;form id="registrationForm" class="form-horizontal">
-    &lt;! -- Other fields -->
+                        <section>
+                            <h4 id="using-different-name">Using different names for same field</h4>
+                            <p>For example, the <i>Sign up</i> and <i>Profile</i> forms use the same back-end URL to validate the email address which is declared with different name.</p>
+                            <p>In this case, use the same <code>data-bv-remote-name</code> attribute and the back-end will get the same data key.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- In the signup form, the email address field is named as &quot;login&quot; --&gt;</span>
+<span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;signupForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Email<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+<span class="hll">            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;login&quot;</span> <span class="na">data-bv-remote-name=</span><span class="s">&quot;email&quot;</span> <span class="nt">/&gt;</span>
+</span>        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Username&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="username" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
-                            </div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- In the edit profile form, the email address field is named as &quot;email&quot; --&gt;</span>
+<span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;profileForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Email<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+<span class="hll">            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;email&quot;</span> <span class="na">data-bv-remote-name=</span><span class="s">&quot;email&quot;</span> <span class="nt">/&gt;</span>
+</span>        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
+                        </section>
 
-                            <div class="tab-pane" id="example-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
-$(document).ready(function() {
-    $('#registrationForm').bootstrapValidator({
-        fields: {
-            username: {
-                message: 'The username is not valid',
-                validators: {
-                    // The validator will create an Ajax request
-                    // sending { username: 'its value' } to the back-end
-                    <span class="bv-note">remote: {
-                        message: 'The username is not available',
-                        url: '/path/to/backend/'
-                    }</span>
-                }
-            }
-        }
-    });
-});
-&lt;/script></code></pre>
-                            </div>
+                        <section>
+                            <h4 id="using-same-backend">Using same backend for different fields</h4>
+                            <p>Assume that the profile form asks you to update multiple email address (primary, secondary, for example).
+                            These emails will be validated by the same backend.</p>
+                            <p>In this case, just use the same <code>data-bv-remote-name</code> attribute for these email address fields.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;profileForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Primary email<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span>
+<span class="hll">                <span class="na">name=</span><span class="s">&quot;primary_email&quot;</span> <span class="na">data-bv-remote-name=</span><span class="s">&quot;email&quot;</span> <span class="nt">/&gt;</span>
+</span>        <span class="nt">&lt;/div&gt;</span>
 
-                            <div class="tab-pane" id="example-php-tab">
-                                <pre><code class="xml">&lt;?php
-// The back-end then will determine if the username is available or not,
-// and finally returns a JSON <span class="bv-note">{ "valid": true }</span> or <span class="bv-note">{ "valid": false }</span>
-// The code bellow demonstrates a simple back-end written in PHP
-
-// Get the username from request
-$username = $_POST['username'];
-
-// Check its existence (for example, execute a query from the database) ...
-$isAvailable = true; // or false
-
-// Finally, return a JSON
-echo json_encode(array(
-    'valid' => $isAvailable,
-));
-</code></pre>
-                            </div>
-                        </div>
-                    </div>
-
-                    <p>If you want to send more data to the back-end, see the <a href="#data-option">data option</a> section.</p>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Secondary email<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span>
+<span class="hll">                <span class="na">name=</span><span class="s">&quot;secondary_email&quot;</span> <span class="na">data-bv-remote-name=</span><span class="s">&quot;email&quot;</span> <span class="nt">/&gt;</span>
+</span>        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
+                        </section>
+                    </section>
                 </section>
 
                 
@@ -512,8 +512,8 @@ echo json_encode(array(
                     <h2 id="comments" class="bv-separator"><span>Comments</span></h2>
 
                     <div class="bv-box bv-box-warning">
-                        If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. Do NOT post the issue here.<br/>
-                        For a general question or feedback, use the form below.
+                        <h5><i></i>Don't submit the issue here</h5>
+                        <p>If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. For a general question or feedback, use the form below.</p>
                     </div>
 
                     <div id="disqus_thread"></div>
@@ -580,13 +580,27 @@ echo json_encode(array(
 </footer>
 <!-- /footer -->
 
-<script src="/vendor/highlight/highlight.pack.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="/vendor/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
 <script>
 $(document).ready(function() {
-    // Highlight sample code
-    hljs.initHighlightingOnLoad();
+    $('.bv-content, .bv-post').find('h1, h2, h3, h4, h5, h6').each(function() {
+        if (!$(this).attr('id')) {
+            return;
+        }
+
+        var $heading = $(this),
+            $span    =  $heading.find('span'),
+            $anchor  = $('<a/>')
+                            .html('#')
+                            .attr('href', '#' + $heading.attr('id'))
+                            .attr('title', $heading.text())
+                            .hide();
+        ($span.length === 0) ? $anchor.appendTo($heading) : $anchor.insertBefore($span);
+        $heading.hover(function() {
+            $(this).find('a').toggle();
+        });
+    });
 });
 </script>
 </body>

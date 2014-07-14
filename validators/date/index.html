@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/vendor/bootstrapvalidator/css/bootstrapValidator.min.css">
-    <link rel="stylesheet" href="/vendor/highlight/styles/github.css">
+    <link rel="stylesheet" href="/vendor/pygments/github.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400,700">
     <link rel="stylesheet" href="/asset/css/style.css">
@@ -112,20 +112,7 @@
 
             <div class="col-md-4">
                 <div class="bv-ad">
-                    <div id="carbonads-container">
-    <div class="carbonad">
-        <div id="azcarbon"></div>
-        <script type="text/javascript">
-        var z = document.createElement("script");
-        z.type = "text/javascript";
-        z.async = true;
-        z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(z, s);
-        </script>
-    </div>
-</div>
-
+                    <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script");z.type = "text/javascript";z.async = true;z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z, s);</script></div></div>
                 </div>
             </div>
         </div>
@@ -142,9 +129,9 @@
                         <a href="#example">Example</a>
                         <ul>
                             <li><a href="#basic-example">Basic</a></li>
-                            <li><a href="#date-picker-example">Datetime Picker</a></li>
-                            <li><a href="#custom-format-example">Custom Format</a></li>
-                            <li><a href="#date-range-example">Date Range</a></li>
+                            <li><a href="#date-picker-example">Datetime picker</a></li>
+                            <li><a href="#custom-format-example">Custom format</a></li>
+                            <li><a href="#date-range-example">Date range</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -159,12 +146,18 @@
                         <thead>
                             <tr>
                                 <th>Option</th>
-                                <th>Equivalent HTML attribute</th>
+                                <th>HTML attribute</th>
                                 <th>Type</th>
                                 <th>Description</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <tr>
+                                <td><code>format</code><sup>*</sup></td>
+                                <td><code>data-bv-date-format</code></td>
+                                <td>String</td>
+                                <td>The date format. It is <code>MM/DD/YYYY</code>, by default</td>
+                            </tr>
                             <tr>
                                 <td><code>message</code></td>
                                 <td><code>data-bv-date-message</code></td>
@@ -172,10 +165,10 @@
                                 <td>The error message</td>
                             </tr>
                             <tr>
-                                <td><code>format</code> (*)</td>
-                                <td><code>data-bv-date-format</code></td>
+                                <td><code>separator</code> <span class="bv-news"></span></td>
+                                <td><code>data-bv-date-separator</code></td>
                                 <td>String</td>
-                                <td>The date format. It is <code>MM/DD/YYYY</code>, by default</td>
+                                <td>Used to separate the day, month, and year. It is <code>/</code>, by default</td>
                             </tr>
                         </tbody>
                     </table>
@@ -194,7 +187,7 @@
                             <tr>
                                 <td>Date</td>
                                 <td>DD, MM, YYYY</td>
-                                <td>a slash (/) or hyphen (-)</td>
+                                <td>Defined by the <code>separator</code> option.<br/>Most popular examples are a slash (/), hyphen (-), or dot (.)</td>
                             </tr>
                             <tr>
                                 <td>Time</td>
@@ -278,7 +271,10 @@
 
                     <p>It's possible to support other date format by using <a href="/validators/callback/">callback</a> validator as shown in the <a href="#custom-format-example">Custom format example</a>.</p>
 
-                    <p class="bv-box bv-box-info">The date validator also checks the number of days in February of leap year. For example, 02/29/2000 is valid date, while 02/29/2001 is invalid one.</p>
+                    <div class="bv-box bv-box-info">
+                        <h5><i></i>Leap year</h5>
+                        <p>The date validator also checks the number of days in February of leap year. For example, 02/29/2000 is valid date, while 02/29/2001 is invalid one.</p>
+                    </div>
                 </section>
 
                 <section>
@@ -309,39 +305,37 @@
                                 </div>
 
                                 <div class="tab-pane" id="example-html-tab">
-                                    <pre><code class="xml">&lt;form id="profileForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Birthday&lt;/label>
-        &lt;div class="col-lg-3">
-            &lt;input type="text" class="form-control" name="birthday" />
-            &lt;span class="help-block">YYYY/MM/DD&lt;/span>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;profileForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Birthday<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-3&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;birthday&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;help-block&quot;</span><span class="nt">&gt;</span>YYYY/MM/DD<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
                                 </div>
 
                                 <div class="tab-pane" id="example-js-tab">
-                                    <pre><code class="xml javascript">&lt;script>
-$(document).ready(function() {
-    $('#profileForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            birthday: {
-                validators: {
-                    <span class="bv-note">date: {
-                        format: 'YYYY/MM/DD',
-                        message: 'The value is not a valid date'
-                    }</span>
-                }
-            }
-        }
-    });
-});
-&lt;/script></code></pre>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#profileForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+        <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
+            <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
+            <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
+        <span class="p">},</span>
+        <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">birthday</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+<span class="hll">                    <span class="nx">date</span><span class="o">:</span> <span class="p">{</span>
+</span>                        <span class="nx">format</span><span class="o">:</span> <span class="s1">&#39;YYYY/MM/DD&#39;</span><span class="p">,</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The value is not a valid date&#39;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
                                 </div>
                             </div>
                         </div>
@@ -349,7 +343,7 @@ $(document).ready(function() {
 
 
                     <section>
-                        <h3 id="date-picker-example">Datetime Picker</h3>
+                        <h3 id="date-picker-example">Datetime picker</h3>
 
                         <p>The form below is an example of using the date validator with <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Bootstrap Datetime Picker</a>:</p>
 
@@ -385,78 +379,70 @@ $(document).ready(function() {
                                 </div>
 
                                 <div class="tab-pane" id="datepicker-html-tab">
-                                    <pre><code class="xml">&lt;!-- Required CSS -->
-&lt;link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-&lt;style type="text/css">
-<span class="bv-note">/* Override feedback icon position */
-.form-horizontal .has-feedback .input-group .form-control-feedback {
-    top: 0;
-    right: -30px;
-}</span>
-&lt;/style>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Required CSS and JS --&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/vendor/momentjs/moment.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 
-&lt;form id="meetingForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Meeting time&lt;/label>
-        &lt;div class="col-lg-4">
-            &lt;div class="input-group date" id="datetimePicker">
-                &lt;input type="text" class="form-control" name="meeting" />
-                &lt;span class="input-group-addon">
-                    &lt;span class="glyphicon glyphicon-calendar">&lt;/span>
-                &lt;/span>
-            &lt;/div>
-            &lt;span class="help-block">MM/DD/YYYY h:m A&lt;/span>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+<span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">&gt;</span>
+<span class="c">/* Override feedback icon position */</span>
+<span class="nc">.form-horizontal</span> <span class="nc">.has-feedback</span> <span class="nc">.input-group</span> <span class="nc">.form-control-feedback</span> <span class="p">{</span>
+    <span class="k">top</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="hll">    <span class="k">right</span><span class="o">:</span> <span class="m">-30px</span><span class="p">;</span>
+</span><span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+
+<span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;meetingForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Meeting time<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-4&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;input-group date&quot;</span> <span class="na">id=</span><span class="s">&quot;datetimePicker&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;meeting&quot;</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;input-group-addon&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;glyphicon glyphicon-calendar&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+                <span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;help-block&quot;</span><span class="nt">&gt;</span>MM/DD/YYYY h:m A<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
                                 </div>
 
                                 <div class="tab-pane" id="datepicker-js-tab">
-                                    <pre><code class="xml javascript">&lt;!-- Required JS -->
-&lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
-&lt;script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js">&lt;/script>
-&lt;script>
-$(document).ready(function() {
-    $('#datetimePicker').datetimepicker();
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#datetimePicker&#39;</span><span class="p">).</span><span class="nx">datetimepicker</span><span class="p">();</span>
 
-    $('#meetingForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            meeting: {
-                validators: {
-                    <span class="bv-note">date: {
-                        format: 'MM/DD/YYYY h:m A',
-                        message: 'The value is not a valid date'
-                    }</span>
-                }
-            }
-        }
-    });
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#meetingForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+        <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
+            <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
+            <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
+        <span class="p">},</span>
+        <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">meeting</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+<span class="hll">                    <span class="nx">date</span><span class="o">:</span> <span class="p">{</span>
+</span>                        <span class="nx">format</span><span class="o">:</span> <span class="s1">&#39;MM/DD/YYYY h:m A&#39;</span><span class="p">,</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The value is not a valid date&#39;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
 
-    $('#datetimePicker')
-        .on('dp.change dp.show', function(e) {
-            // Validate the date when user change it
-            $('#meetingForm')
-                // Get the bootstrapValidator instance
-                .data('bootstrapValidator')
-                // Mark the field as not validated, so it'll be re-validated when the user change date
-                <span class="bv-note">.updateStatus('meeting', 'NOT_VALIDATED', null)
-                // Validate the field
-                .validateField('meeting');</span>
-        });
-});
-&lt;/script></code></pre>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#datetimePicker&#39;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;dp.change dp.show&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Validate the date when user change it</span>
+<span class="hll">            <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#meetingForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">(</span><span class="s1">&#39;revalidateField&#39;</span><span class="p">,</span> <span class="s1">&#39;meeting&#39;</span><span class="p">);</span>
+</span>        <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
                                 </div>
                             </div>
                         </div>
                     </section>
 
                     <section>
-                        <h3 id="custom-format-example">Custom Format</h3>
+                        <h3 id="custom-format-example">Custom format</h3>
 
                         <p>This example illustrates the ability of validating date in custom format by using the <a href="/validators/callback/">callback</a> validator and <a href="http://momentjs.com/">momentjs</a> to parse/validate.</p>
 
@@ -481,56 +467,55 @@ $(document).ready(function() {
                                 </div>
 
                                 <div class="tab-pane" id="custom-html-tab">
-                                    <pre><code class="xml">&lt;form id="customFormatForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-5 control-label">What's US independence day?&lt;/label>
-        &lt;div class="col-lg-3">
-            &lt;input type="text" class="form-control" name="independenceDay" />
-            &lt;span class="help-block">MMM D (Sep 6, for example)&lt;/span>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Include the momentjs library to use later --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/vendor/momentjs/moment.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;customFormatForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-5 control-label&quot;</span><span class="nt">&gt;</span>What&#39;s US independence day?<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-3&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;independenceDay&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;help-block&quot;</span><span class="nt">&gt;</span>MMM D (Sep 6, for example)<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
                                 </div>
 
                                 <div class="tab-pane" id="custom-js-tab">
-                                    <pre><code class="xml javascript">&lt;!-- Include the momentjs library to use later -->
-&lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
-&lt;script>
-$(document).ready(function() {
-    $('#customFormatForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            independenceDay: {
-                validators: {
-                    <span class="bv-note">callback: {
-                        message: 'Wrong answer',
-                        callback: function(value, validator) {
-                            var m = new moment(value, 'MMMM D', true);
-                            // Check if the input value follows the MMMM D format
-                            if (!m.isValid()) {
-                                return false;
-                            }
-                            // US independence day is July 4
-                            return (m.months() == 6 && m.date() == 4);
-                        }
-                    }</span>
-                }
-            }
-        }
-    });
-});
-&lt;/script></code></pre>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#customFormatForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+        <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
+            <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
+            <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
+        <span class="p">},</span>
+        <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">independenceDay</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">callback</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Wrong answer&#39;</span><span class="p">,</span>
+<span class="hll">                        <span class="nx">callback</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">validator</span><span class="p">)</span> <span class="p">{</span>
+</span>                            <span class="kd">var</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">moment</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="s1">&#39;MMMM D&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+                            <span class="c1">// Check if the input value follows the MMMM D format</span>
+                            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">m</span><span class="p">.</span><span class="nx">isValid</span><span class="p">())</span> <span class="p">{</span>
+                                <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+                            <span class="p">}</span>
+                            <span class="c1">// US independence day is July 4</span>
+                            <span class="k">return</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">months</span><span class="p">()</span> <span class="o">==</span> <span class="mi">6</span> <span class="o">&amp;&amp;</span> <span class="nx">m</span><span class="p">.</span><span class="nx">date</span><span class="p">()</span> <span class="o">==</span> <span class="mi">4</span><span class="p">);</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
                                 </div>
                             </div>
                         </div>
                     </section>
 
                     <section>
-                        <h3 id="date-range-example">Date Range</h3>
+                        <h3 id="date-range-example">Date range</h3>
 
                         <p>One more example illustrates how to use the <a href="/validators/callback/">callback</a> validator and <a href="http://momentjs.com/">momentjs</a> to check whether or not a date is in given range.</p>
                         <p><a href="http://momentjs.com/">momentjs</a> provides <a href="http://momentjs.com/docs/#/query/is-before/"><code>isBefore()</code></a> and <a href="http://momentjs.com/docs/#/query/is-after/"><code>isAfter()</code></a> methods which are exactly what we need.</p>
@@ -555,51 +540,50 @@ $(document).ready(function() {
                                 </div>
 
                                 <div class="tab-pane" id="range-html-tab">
-                                    <pre><code class="xml">&lt;form id="rangeForm" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-md-6 control-label">Enter a date between 2000/01/01 and 2020/12/30&lt;/label>
-        &lt;div class="col-md-3">
-            &lt;input type="text" class="form-control" name="date" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Include the momentjs library to use later --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/vendor/momentjs/moment.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;rangeForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-md-6 control-label&quot;</span><span class="nt">&gt;</span>Enter a date between 2000/01/01 and 2020/12/30<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-3&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;date&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
                                 </div>
 
                                 <div class="tab-pane" id="range-js-tab">
-                                    <pre><code class="xml javascript">&lt;!-- Include the momentjs library to use later -->
-&lt;script src="/vendor/momentjs/moment.min.js">&lt;/script>
-&lt;script>
-$(document).ready(function() {
-    $('#rangeForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            date: {
-                validators: {
-                    date: {
-                        message: 'The date is not valid',
-                        format: 'YYYY/MM/DD'
-                    },
-                    <span class="bv-note">callback: {
-                        message: 'The date is not in the range',
-                        callback: function(value, validator) {
-                            var m = new moment(value, 'YYYY/MM/DD', true);
-                            if (!m.isValid()) {
-                                return false;
-                            }
-                            // Check if the date in our range
-                            return m.isAfter('2000/01/01') && m.isBefore('2020/12/30');
-                        }
-                    }</span>
-                }
-            }
-        }
-    });
-});
-&lt;/script></code></pre>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#rangeForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+        <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
+            <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
+            <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
+        <span class="p">},</span>
+        <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">date</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">date</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The date is not valid&#39;</span><span class="p">,</span>
+                        <span class="nx">format</span><span class="o">:</span> <span class="s1">&#39;YYYY/MM/DD&#39;</span>
+                    <span class="p">},</span>
+<span class="hll">                    <span class="nx">callback</span><span class="o">:</span> <span class="p">{</span>
+</span>                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The date is not in the range&#39;</span><span class="p">,</span>
+                        <span class="nx">callback</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">validator</span><span class="p">)</span> <span class="p">{</span>
+                            <span class="kd">var</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">moment</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="s1">&#39;YYYY/MM/DD&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+                            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">m</span><span class="p">.</span><span class="nx">isValid</span><span class="p">())</span> <span class="p">{</span>
+                                <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+                            <span class="p">}</span>
+                            <span class="c1">// Check if the date in our range</span>
+                            <span class="k">return</span> <span class="nx">m</span><span class="p">.</span><span class="nx">isAfter</span><span class="p">(</span><span class="s1">&#39;2000/01/01&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">m</span><span class="p">.</span><span class="nx">isBefore</span><span class="p">(</span><span class="s1">&#39;2020/12/30&#39;</span><span class="p">);</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
                                 </div>
                             </div>
                         </div>
@@ -734,8 +718,8 @@ $(document).ready(function() {
                     <h2 id="comments" class="bv-separator"><span>Comments</span></h2>
 
                     <div class="bv-box bv-box-warning">
-                        If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. Do NOT post the issue here.<br/>
-                        For a general question or feedback, use the form below.
+                        <h5><i></i>Don't submit the issue here</h5>
+                        <p>If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. For a general question or feedback, use the form below.</p>
                     </div>
 
                     <div id="disqus_thread"></div>
@@ -802,13 +786,27 @@ $(document).ready(function() {
 </footer>
 <!-- /footer -->
 
-<script src="/vendor/highlight/highlight.pack.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="/vendor/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
 <script>
 $(document).ready(function() {
-    // Highlight sample code
-    hljs.initHighlightingOnLoad();
+    $('.bv-content, .bv-post').find('h1, h2, h3, h4, h5, h6').each(function() {
+        if (!$(this).attr('id')) {
+            return;
+        }
+
+        var $heading = $(this),
+            $span    =  $heading.find('span'),
+            $anchor  = $('<a/>')
+                            .html('#')
+                            .attr('href', '#' + $heading.attr('id'))
+                            .attr('title', $heading.text())
+                            .hide();
+        ($span.length === 0) ? $anchor.appendTo($heading) : $anchor.insertBefore($span);
+        $heading.hover(function() {
+            $(this).find('a').toggle();
+        });
+    });
 });
 </script>
 </body>

@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/vendor/bootstrapvalidator/css/bootstrapValidator.min.css">
-    <link rel="stylesheet" href="/vendor/highlight/styles/github.css">
+    <link rel="stylesheet" href="/vendor/pygments/github.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400,700">
     <link rel="stylesheet" href="/asset/css/style.css">
@@ -112,20 +112,7 @@
 
             <div class="col-md-4">
                 <div class="bv-ad">
-                    <div id="carbonads-container">
-    <div class="carbonad">
-        <div id="azcarbon"></div>
-        <script type="text/javascript">
-        var z = document.createElement("script");
-        z.type = "text/javascript";
-        z.async = true;
-        z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(z, s);
-        </script>
-    </div>
-</div>
-
+                    <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script");z.type = "text/javascript";z.async = true;z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z, s);</script></div></div>
                 </div>
             </div>
         </div>
@@ -181,20 +168,18 @@
                     <div>
                         <p><strong>2 &mdash; Revalidate the field if the plugin changes its value dynamically:</strong></p>
                         <p>Most plugins trigger an event after changing the field value. By using this kind of event handler, you need to ask BootstrapValidator to revalidate the field.</p>
-                        <pre><code class="javascript">$(field)
-    .nameOfPlugin(pluginOptions)
-    .on(pluginChangedEvent, function() {
-        $(form)
-            .data('bootstrapValidator')             // Get the validator instance
-            .updateStatus(field, 'NOT_VALIDATED')   // Mark it as not validated yet
-            .validateField(field);                  // Revalidate it
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nx">field</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">nameOfPlugin</span><span class="p">(</span><span class="nx">pluginOptions</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="nx">pluginChangedEvent</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="nx">form</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;bootstrapValidator&#39;</span><span class="p">)</span>             <span class="c1">// Get the validator instance</span>
+            <span class="p">.</span><span class="nx">revalidateField</span><span class="p">(</span><span class="nx">field</span><span class="p">);</span>                <span class="c1">// Revalidate it</span>
 
-        // It is equivalent to use
-        $(form).bootstrapValidator('updateStatus', field, 'NOT_VALIDATED')
-               .bootstrapValidator('validateField', field);
-    });</code></pre>
+        <span class="c1">// It is equivalent to use</span>
+<span class="hll">        <span class="nx">$</span><span class="p">(</span><span class="nx">form</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">(</span><span class="s1">&#39;revalidateField&#39;</span><span class="p">,</span> <span class="nx">field</span><span class="p">);</span>
+</span>    <span class="p">});</span></code></pre></div>
                     </div>
-                    <p>Look at <a href="/api/#update-status"><code>updateStatus()</code></a> and <a href="/api/#validate-field"><code>validateField()</code></a> methods for more details.</p>
+                    <p>Look at the <a href="/api/#revalidate-field"><code>revalidateField()</code></a> method for more details.</p>
                     <p>Example: <a href="/examples/chosen/">Chosen</a></p>
 
                     <p>These examples show how you can use BootstrapValidator with other Javascript plugins.</p>
@@ -235,8 +220,8 @@
                     <h2 id="comments" class="bv-separator"><span>Comments</span></h2>
 
                     <div class="bv-box bv-box-warning">
-                        If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. Do NOT post the issue here.<br/>
-                        For a general question or feedback, use the form below.
+                        <h5><i></i>Don't submit the issue here</h5>
+                        <p>If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. For a general question or feedback, use the form below.</p>
                     </div>
 
                     <div id="disqus_thread"></div>
@@ -303,13 +288,27 @@
 </footer>
 <!-- /footer -->
 
-<script src="/vendor/highlight/highlight.pack.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="/vendor/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
 <script>
 $(document).ready(function() {
-    // Highlight sample code
-    hljs.initHighlightingOnLoad();
+    $('.bv-content, .bv-post').find('h1, h2, h3, h4, h5, h6').each(function() {
+        if (!$(this).attr('id')) {
+            return;
+        }
+
+        var $heading = $(this),
+            $span    =  $heading.find('span'),
+            $anchor  = $('<a/>')
+                            .html('#')
+                            .attr('href', '#' + $heading.attr('id'))
+                            .attr('title', $heading.text())
+                            .hide();
+        ($span.length === 0) ? $anchor.appendTo($heading) : $anchor.insertBefore($span);
+        $heading.hover(function() {
+            $(this).find('a').toggle();
+        });
+    });
 });
 </script>
 </body>

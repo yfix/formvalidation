@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/vendor/bootstrapvalidator/css/bootstrapValidator.min.css">
-    <link rel="stylesheet" href="/vendor/highlight/styles/github.css">
+    <link rel="stylesheet" href="/vendor/pygments/github.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400,700">
     <link rel="stylesheet" href="/asset/css/style.css">
@@ -111,20 +111,7 @@
 
             <div class="col-md-4">
                 <div class="bv-ad">
-                    <div id="carbonads-container">
-    <div class="carbonad">
-        <div id="azcarbon"></div>
-        <script type="text/javascript">
-        var z = document.createElement("script");
-        z.type = "text/javascript";
-        z.async = true;
-        z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(z, s);
-        </script>
-    </div>
-</div>
-
+                    <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script");z.type = "text/javascript";z.async = true;z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z, s);</script></div></div>
                 </div>
             </div>
         </div>
@@ -137,8 +124,12 @@
             <div class="bv-sidebar">
                 
 
-<h2>Compatibility</h2>
+<h4>Compatibility</h4>
 <ul>
+    
+        
+            
+        
     
         
     
@@ -322,6 +313,12 @@
     
         
     
+        
+    
+        
+    
+        
+    
 </ul>
 
             </div>
@@ -333,7 +330,7 @@
                     <h2 id="bootstrap-tab">Play with Bootstrap Tabs</h2>
                     <p>The following example shows that the plugin works perfectly with <a href="http://getbootstrap.com/javascript/#tabs">Bootstrap Tabs</a>.</p>
                     <p>By default, the fields in inactive tabs will not be validated because they are not visible. In order to validate them, we need to use the <a href="/settings/#excluded">excluded</a> option:</p>
-                    <pre><code class="javascript">excluded: [':disabled']</code></pre>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">excluded</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;:disabled&#39;</span><span class="p">]</span></code></pre></div>
 
                     <div class="bv-example">
                         <ul class="nav nav-tabs">
@@ -410,115 +407,113 @@
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-html-tab">
-                                <pre><code class="xml">&lt;form id="accountForm" method="post" class="form-horizontal">
-    &lt;div class="tab-content">
-        &lt;div class="tab-pane active" id="info-tab">
-            &lt;div class="form-group">
-                &lt;label class="col-lg-3 control-label">Full name&lt;/label>
-                &lt;div class="col-lg-5">
-                    &lt;input type="text" class="form-control" name="fullName" />
-                &lt;/div>
-            &lt;/div>
-            &lt;div class="form-group">
-                &lt;label class="col-lg-3 control-label">Company&lt;/label>
-                &lt;div class="col-lg-5">
-                    &lt;input type="text" class="form-control" name="company" />
-                &lt;/div>
-            &lt;/div>
-            &lt;div class="form-group">
-                &lt;label class="col-lg-3 control-label">Job title&lt;/label>
-                &lt;div class="col-lg-5">
-                    &lt;input type="text" class="form-control" name="jobTitle" />
-                &lt;/div>
-            &lt;/div>
-        &lt;/div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;accountForm&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tab-content&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tab-pane active&quot;</span> <span class="na">id=</span><span class="s">&quot;info-tab&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Full name<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;fullName&quot;</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Company<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;company&quot;</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Job title<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;jobTitle&quot;</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
 
-        &lt;div class="tab-pane" id="address-tab">
-            &lt;div class="form-group">
-                &lt;label class="col-lg-3 control-label">Address&lt;/label>
-                &lt;div class="col-lg-5">
-                    &lt;input type="text" class="form-control" name="address" />
-                &lt;/div>
-            &lt;/div>
-            &lt;div class="form-group">
-                &lt;label class="col-lg-3 control-label">City&lt;/label>
-                &lt;div class="col-lg-5">
-                    &lt;input type="text" class="form-control" name="city" />
-                &lt;/div>
-            &lt;/div>
-            &lt;div class="form-group">
-                &lt;label class="col-lg-3 control-label">Country&lt;/label>
-                &lt;div class="col-lg-5">
-                    &lt;select class="form-control" name="country">
-                        &lt;option value="">Select a country&lt;/option>
-                        &lt;option value="FR">France&lt;/option>
-                        &lt;option value="DE">Germany&lt;/option>
-                        &lt;option value="IT">Italy&lt;/option>
-                        &lt;option value="JP">Japan&lt;/option>
-                        &lt;option value="RU">Russian&lt;/option>
-                        &lt;option value="US">United State&lt;/option>
-                        &lt;option value="GB">United Kingdom&lt;/option>
-                        &lt;option value="other">Other&lt;/option>
-                    &lt;/select>
-                &lt;/div>
-            &lt;/div>
-        &lt;/div>
-    &lt;/div>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tab-pane&quot;</span> <span class="na">id=</span><span class="s">&quot;address-tab&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Address<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;address&quot;</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>City<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;city&quot;</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Country<span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;country&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>Select a country<span class="nt">&lt;/option&gt;</span>
+                        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;FR&quot;</span><span class="nt">&gt;</span>France<span class="nt">&lt;/option&gt;</span>
+                        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;DE&quot;</span><span class="nt">&gt;</span>Germany<span class="nt">&lt;/option&gt;</span>
+                        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;IT&quot;</span><span class="nt">&gt;</span>Italy<span class="nt">&lt;/option&gt;</span>
+                        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;JP&quot;</span><span class="nt">&gt;</span>Japan<span class="nt">&lt;/option&gt;</span>
+                        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;RU&quot;</span><span class="nt">&gt;</span>Russian<span class="nt">&lt;/option&gt;</span>
+                        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;US&quot;</span><span class="nt">&gt;</span>United State<span class="nt">&lt;/option&gt;</span>
+                        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;GB&quot;</span><span class="nt">&gt;</span>United Kingdom<span class="nt">&lt;/option&gt;</span>
+                        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;other&quot;</span><span class="nt">&gt;</span>Other<span class="nt">&lt;/option&gt;</span>
+                    <span class="nt">&lt;/select&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
 
-    &lt;div class="form-group">
-        &lt;div class="col-lg-5 col-lg-offset-3">
-            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5 col-lg-offset-3&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-primary&quot;</span><span class="nt">&gt;</span>Validate<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
                             </div>
 
                             <div class="tab-pane" id="tabs-js-tab">
-                                <pre><code class="xml">&lt;script>
-$(document).ready(function() {
-    $('#accountForm')
-        .bootstrapValidator({
-            // Only disabled elements are excluded
-            // The invisible elements belonging to inactive tabs must be validated
-            <span class="bv-note">excluded: [':disabled']</span>,
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                fullName: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The full name is required'
-                        }
-                    }
-                },
-                company: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The company name is required'
-                        }
-                    }
-                },
-                address: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The address is required'
-                        }
-                    }
-                },
-                city: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The city is required'
-                        }
-                    }
-                }
-            }
-        });
-});
-&lt;/script></code></pre>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#accountForm&#39;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+            <span class="c1">// Only disabled elements are excluded</span>
+            <span class="c1">// The invisible elements belonging to inactive tabs must be validated</span>
+<span class="hll">            <span class="nx">excluded</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;:disabled&#39;</span><span class="p">],</span>
+</span>            <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
+                <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
+                <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
+            <span class="p">},</span>
+            <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">fullName</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">notEmpty</span><span class="o">:</span> <span class="p">{</span>
+                            <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The full name is required&#39;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nx">company</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">notEmpty</span><span class="o">:</span> <span class="p">{</span>
+                            <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The company name is required&#39;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nx">address</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">notEmpty</span><span class="o">:</span> <span class="p">{</span>
+                            <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The address is required&#39;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nx">city</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">notEmpty</span><span class="o">:</span> <span class="p">{</span>
+                            <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The city is required&#39;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
                             </div>
                         </div>
                     </div>
@@ -538,9 +533,6 @@ $(document).ready(function() {
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
-            submitHandler: function(validator, form, submitButton) {
-                // Do nothing
-            },
             fields: {
                 fullName: {
                     validators: {
@@ -571,6 +563,10 @@ $(document).ready(function() {
                     }
                 }
             }
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
         });
 });
 </script>
@@ -593,8 +589,8 @@ $(document).ready(function() {
                     <h2 id="comments" class="bv-separator"><span>Comments</span></h2>
 
                     <div class="bv-box bv-box-warning">
-                        If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. Do NOT post the issue here.<br/>
-                        For a general question or feedback, use the form below.
+                        <h5><i></i>Don't submit the issue here</h5>
+                        <p>If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. For a general question or feedback, use the form below.</p>
                     </div>
 
                     <div id="disqus_thread"></div>
@@ -661,13 +657,27 @@ $(document).ready(function() {
 </footer>
 <!-- /footer -->
 
-<script src="/vendor/highlight/highlight.pack.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="/vendor/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
 <script>
 $(document).ready(function() {
-    // Highlight sample code
-    hljs.initHighlightingOnLoad();
+    $('.bv-content, .bv-post').find('h1, h2, h3, h4, h5, h6').each(function() {
+        if (!$(this).attr('id')) {
+            return;
+        }
+
+        var $heading = $(this),
+            $span    =  $heading.find('span'),
+            $anchor  = $('<a/>')
+                            .html('#')
+                            .attr('href', '#' + $heading.attr('id'))
+                            .attr('title', $heading.text())
+                            .hide();
+        ($span.length === 0) ? $anchor.appendTo($heading) : $anchor.insertBefore($span);
+        $heading.hover(function() {
+            $(this).find('a').toggle();
+        });
+    });
 });
 </script>
 </body>

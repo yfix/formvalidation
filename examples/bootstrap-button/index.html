@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/vendor/bootstrapvalidator/css/bootstrapValidator.min.css">
-    <link rel="stylesheet" href="/vendor/highlight/styles/github.css">
+    <link rel="stylesheet" href="/vendor/pygments/github.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400,700">
     <link rel="stylesheet" href="/asset/css/style.css">
@@ -118,20 +118,7 @@
 
             <div class="col-md-4">
                 <div class="bv-ad">
-                    <div id="carbonads-container">
-    <div class="carbonad">
-        <div id="azcarbon"></div>
-        <script type="text/javascript">
-        var z = document.createElement("script");
-        z.type = "text/javascript";
-        z.async = true;
-        z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(z, s);
-        </script>
-    </div>
-</div>
-
+                    <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script");z.type = "text/javascript";z.async = true;z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z, s);</script></div></div>
                 </div>
             </div>
         </div>
@@ -144,8 +131,12 @@
             <div class="bv-sidebar">
                 
 
-<h2>Compatibility</h2>
+<h4>Compatibility</h4>
 <ul>
+    
+        
+            
+        
     
         
     
@@ -329,6 +320,12 @@
     
         
     
+        
+    
+        
+    
+        
+    
 </ul>
 
             </div>
@@ -399,96 +396,94 @@
                             </div>
 
                             <div class="tab-pane" id="button-html-tab">
-                                <pre><code class="xml">&lt;!-- Override the feedback icons position -->
-&lt;style type="text/css">
-#buttonGroupForm.form-horizontal .has-feedback .form-control-feedback {
-    top: 0;
-    right: -30px;
-}
-&lt;/style>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Override the feedback icons position --&gt;</span>
+<span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">&gt;</span>
+<span class="nf">#buttonGroupForm</span><span class="nc">.form-horizontal</span> <span class="nc">.has-feedback</span> <span class="nc">.form-control-feedback</span> <span class="p">{</span>
+    <span class="k">top</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="hll">    <span class="k">right</span><span class="o">:</span> <span class="m">-30px</span><span class="p">;</span>
+</span><span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
 
-&lt;form id="buttonGroupForm" method="post" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Gender&lt;/label>
-        &lt;div class="col-lg-9">
-            <span class="bv-note">&lt;div class="btn-group" data-toggle="buttons"></span>
-                &lt;label class="btn btn-default">
-                    &lt;input type="radio" name="gender" value="male" /> Male
-                &lt;/label>
-                &lt;label class="btn btn-default">
-                    &lt;input type="radio" name="gender" value="female" /> Female
-                &lt;/label>
-                &lt;label class="btn btn-default">
-                    &lt;input type="radio" name="gender" value="other" /> Other
-                &lt;/label>
-            &lt;/div>
-        &lt;/div>
-    &lt;/div>
+<span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;buttonGroupForm&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Gender<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-9&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;btn-group&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;buttons&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;gender&quot;</span> <span class="na">value=</span><span class="s">&quot;male&quot;</span> <span class="nt">/&gt;</span> Male
+                <span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;gender&quot;</span> <span class="na">value=</span><span class="s">&quot;female&quot;</span> <span class="nt">/&gt;</span> Female
+                <span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;gender&quot;</span> <span class="na">value=</span><span class="s">&quot;other&quot;</span> <span class="nt">/&gt;</span> Other
+                <span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
 
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Languages&lt;/label>
-        &lt;div class="col-lg-9">
-            <span class="bv-note">&lt;div class="btn-group" data-toggle="buttons"></span>
-                &lt;label class="btn btn-default">
-                    &lt;input type="checkbox" name="languages[]" value="english" /> English
-                &lt;/label>
-                &lt;label class="btn btn-default">
-                    &lt;input type="checkbox" name="languages[]" value="german" /> German
-                &lt;/label>
-                &lt;label class="btn btn-default">
-                    &lt;input type="checkbox" name="languages[]" value="french" /> French
-                &lt;/label>
-                &lt;label class="btn btn-default">
-                    &lt;input type="checkbox" name="languages[]" value="russian" /> Russian
-                &lt;/label>
-                &lt;label class="btn btn-default">
-                    &lt;input type="checkbox" name="languages[]" value="italian"> Italian
-                &lt;/label>
-            &lt;/div>
-        &lt;/div>
-    &lt;/div>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Languages<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-9&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;btn-group&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;buttons&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">name=</span><span class="s">&quot;languages[]&quot;</span> <span class="na">value=</span><span class="s">&quot;english&quot;</span> <span class="nt">/&gt;</span> English
+                <span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">name=</span><span class="s">&quot;languages[]&quot;</span> <span class="na">value=</span><span class="s">&quot;german&quot;</span> <span class="nt">/&gt;</span> German
+                <span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">name=</span><span class="s">&quot;languages[]&quot;</span> <span class="na">value=</span><span class="s">&quot;french&quot;</span> <span class="nt">/&gt;</span> French
+                <span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">name=</span><span class="s">&quot;languages[]&quot;</span> <span class="na">value=</span><span class="s">&quot;russian&quot;</span> <span class="nt">/&gt;</span> Russian
+                <span class="nt">&lt;/label&gt;</span>
+                <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">name=</span><span class="s">&quot;languages[]&quot;</span> <span class="na">value=</span><span class="s">&quot;italian&quot;</span><span class="nt">&gt;</span> Italian
+                <span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
 
-    &lt;div class="form-group">
-        &lt;div class="col-lg-9 col-lg-offset-3">
-            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-9 col-lg-offset-3&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-primary&quot;</span><span class="nt">&gt;</span>Validate<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
                             </div>
 
                             <div class="tab-pane" id="button-js-tab">
-                                <pre><code class="xml javascript">&lt;script>
-$(document).ready(function() {
-    $('#buttonGroupForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        // Since the Bootstrap Button hides the radio and checkbox
-        // We exclude the disabled elements only
-        <span class="bv-note">excluded: ':disabled',</span>
-        fields: {
-            gender: {
-                validators: {
-                    notEmpty: {
-                        message: 'The gender is required'
-                    }
-                }
-            },
-            'languages[]': {
-                validators: {
-                    choice: {
-                        min: 1,
-                        max: 2,
-                        message: 'Please choose 1 - 2 languages you can speak'
-                    }
-                }
-            }
-        }
-    });
-});
-&lt;/script></code></pre>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#buttonGroupForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+        <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
+            <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
+            <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
+        <span class="p">},</span>
+        <span class="c1">// Since the Bootstrap Button hides the radio and checkbox</span>
+        <span class="c1">// We exclude the disabled elements only</span>
+<span class="hll">        <span class="nx">excluded</span><span class="o">:</span> <span class="s1">&#39;:disabled&#39;</span><span class="p">,</span>
+</span>        <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">gender</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">notEmpty</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The gender is required&#39;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s1">&#39;languages[]&#39;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">choice</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">min</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                        <span class="nx">max</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Please choose 1 - 2 languages you can speak&#39;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
                             </div>
                         </div>
                     </div>
@@ -500,35 +495,37 @@ $(document).ready(function() {
 
 <script>
 $(document).ready(function() {
-    $('#buttonGroupForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        excluded: ':disabled',
-        submitHandler: function(validator, form, submitButton) {
-            // Do nothing
-        },
-        fields: {
-            gender: {
-                validators: {
-                    notEmpty: {
-                        message: 'The gender is required'
-                    }
-                }
+    $('#buttonGroupForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
             },
-            'languages[]': {
-                validators: {
-                    choice: {
-                        min: 1,
-                        max: 2,
-                        message: 'Please choose 1 - 2 languages you can speak'
+            excluded: ':disabled',
+            fields: {
+                gender: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The gender is required'
+                        }
+                    }
+                },
+                'languages[]': {
+                    validators: {
+                        choice: {
+                            min: 1,
+                            max: 2,
+                            message: 'Please choose 1 - 2 languages you can speak'
+                        }
                     }
                 }
             }
-        }
-    });
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+        });
 });
 </script>
 
@@ -550,8 +547,8 @@ $(document).ready(function() {
                     <h2 id="comments" class="bv-separator"><span>Comments</span></h2>
 
                     <div class="bv-box bv-box-warning">
-                        If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. Do NOT post the issue here.<br/>
-                        For a general question or feedback, use the form below.
+                        <h5><i></i>Don't submit the issue here</h5>
+                        <p>If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. For a general question or feedback, use the form below.</p>
                     </div>
 
                     <div id="disqus_thread"></div>
@@ -618,13 +615,27 @@ $(document).ready(function() {
 </footer>
 <!-- /footer -->
 
-<script src="/vendor/highlight/highlight.pack.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="/vendor/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
 <script>
 $(document).ready(function() {
-    // Highlight sample code
-    hljs.initHighlightingOnLoad();
+    $('.bv-content, .bv-post').find('h1, h2, h3, h4, h5, h6').each(function() {
+        if (!$(this).attr('id')) {
+            return;
+        }
+
+        var $heading = $(this),
+            $span    =  $heading.find('span'),
+            $anchor  = $('<a/>')
+                            .html('#')
+                            .attr('href', '#' + $heading.attr('id'))
+                            .attr('title', $heading.text())
+                            .hide();
+        ($span.length === 0) ? $anchor.appendTo($heading) : $anchor.insertBefore($span);
+        $heading.hover(function() {
+            $(this).find('a').toggle();
+        });
+    });
 });
 </script>
 </body>

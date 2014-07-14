@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/vendor/bootstrapvalidator/css/bootstrapValidator.min.css">
-    <link rel="stylesheet" href="/vendor/highlight/styles/github.css">
+    <link rel="stylesheet" href="/vendor/pygments/github.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400,700">
     <link rel="stylesheet" href="/asset/css/style.css">
@@ -112,20 +112,7 @@
 
             <div class="col-md-4">
                 <div class="bv-ad">
-                    <div id="carbonads-container">
-    <div class="carbonad">
-        <div id="azcarbon"></div>
-        <script type="text/javascript">
-        var z = document.createElement("script");
-        z.type = "text/javascript";
-        z.async = true;
-        z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(z, s);
-        </script>
-    </div>
-</div>
-
+                    <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script");z.type = "text/javascript";z.async = true;z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z, s);</script></div></div>
                 </div>
             </div>
         </div>
@@ -136,17 +123,20 @@
     <div class="row">
         <div class="col-md-3">
             <div class="bv-sidebar">
+                <h4><a href="#download">Download</a></h4>
                 <ul>
-                    <li><a href="#download">Download</a></li>
-                    <li><a href="#whats-included">What's Included</a></li>
-                    <li>
-                        <a href="#usage">Usage</a>
-                        <ul>
-                            <li><a href="#including-library">Including Library</a></li>
-                            <li><a href="#writing-form">Writing Form</a></li>
-                            <li><a href="#calling-plugin">Calling Plugin</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="#release">Release</a></li>
+                    <li><a href="#installing-bower">Installing with Bower</a></li>
+                    <li><a href="#language-package">Language packages<span class="pull-right bv-news"></span></a></li>
+                </ul>
+
+                <h4><a href="#whats-included">What's included</a></h4>
+
+                <h4><a href="#usage">Usage</a></h4>
+                <ul>
+                    <li><a href="#including-library">Including library</a></li>
+                    <li><a href="#writing-form">Writing form</a></li>
+                    <li><a href="#calling-plugin">Calling plugin</a></li>
                 </ul>
             </div>
         </div>
@@ -158,17 +148,16 @@
                     <h2 id="download">Download</h2>
 
                     <p>Choose the package you want to download:</p>
-
                     <div class="row">
                         <div class="col-sm-4">
-                            <h3>Release</h3>
+                            <h3 id="release">Release</h3>
                             <p>Including the plugin, its validator source and minified versions.<br />It should be used in the production site.</p>
-                            <p><a class="btn btn-lg btn-primary" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.4.5/bootstrapvalidator-dist-0.4.5.zip" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download release']);"><i class="fa fa-download"></i> Download v0.4.5</a></p>
+                            <p><a class="btn btn-lg btn-primary" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.5.0/bootstrapvalidator-dist-0.5.0.zip" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download release']);"><i class="fa fa-download"></i> Download v0.5.0</a></p>
                         </div>
                         <div class="col-sm-4">
                             <h3>Source code</h3>
                             <p>Including the source code, examples and building script. Download if you want to play with or develop new validators.</p>
-                            <a class="btn btn-lg btn-primary" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.4.5.zip" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);"><i class="fa fa-code"></i> Download Source</a>
+                            <p><a class="btn btn-lg btn-primary" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.5.0.zip" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);"><i class="fa fa-code"></i> Download Source</a></p>
                         </div>
                         <div class="col-sm-4">
                             <h3>Older versions</h3>
@@ -176,21 +165,89 @@
                         </div>
                     </div>
 
-                    <p>See <a href="/news/2014/05/15/v0.4.5-released/">what's news</a> in v0.4.5, released on 2014-05-15</p>
+                    <p>See <a href="/news/v0.5.0-released/">what's news</a> in v0.5.0, released on 2014-07-14</p>
 
-                    <h3>Installing with Bower</h3>
+                    <div class="bv-box bv-box-warning">
+                        <h5><i></i>Upgrading to v0.5.0</h5>
+                        <p>If you upgrade from v0.4.5 or older versions to v0.5.0, please follow this <a href="/news/upgrading-to-v0.5.0/">guide</a>.</p>
+                    </div>
+
+                    <h3 id="installing-bower">Installing with Bower</h3>
                     <p>It's also possible to get the latest release from <a href="http://bower.io">bower</a>:</p>
-                    <pre><code class="bash">$ bower install bootstrapValidator</code></pre>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>bower install bootstrapValidator</code></pre></div>
 
                     <p>BootstrapValidator also can be found on the official <a href="http://plugins.jquery.com/bootstrapValidator">jQuery plugins page</a>.</p>
+
+                    <h3 id="language-package">Language packages<span class="pull-right bv-news"></span></h3>
+                    <p>BootstrapValidator has been translated into the following languages:</p>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Language</th>
+                                <th>File Name</th>
+                                <th>Translated By</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Chilean Spanish</td>
+                                <td><a href="/vendor/bootstrapvalidator/js/language/es_CL.js">es_CL.js</a></td>
+                                <td><a href="http://github.com/marceloampuerop6">@marceloampuerop6</a></td>
+                            </tr>
+                            <tr>
+                                <td>Chinese</td>
+                                <td><a href="/vendor/bootstrapvalidator/js/language/zh_CN.js">zh_CN.js</a></td>
+                                <td><a href="http://github.com/tureki">@tureki</a></td>
+                            </tr>
+                            <tr>
+                                <td>English <span class="label label-default">built in</span></td>
+                                <td><a href="/vendor/bootstrapvalidator/js/language/en_US.js">en_US.js</a></td>
+                                <td><a href="http://github.com/nghuuphuoc">@nghuuphuoc</a></td>
+                            </tr>
+                            <tr>
+                                <td>German</td>
+                                <td><a href="/vendor/bootstrapvalidator/js/language/de_DE.js">de_DE.js</a></td>
+                                <td><a href="http://github.com/logemann">@logemann</a></td>
+                            </tr>
+                            <tr>
+                                <td>Hungarian</td>
+                                <td><a href="/vendor/bootstrapvalidator/js/language/hu_HU.js">hu_HU.js</a></td>
+                                <td><a href="http://github.com/blackfyre">@blackfyre</a></td>
+                            </tr>
+                            <tr>
+                                <td>Vietnamese</td>
+                                <td><a href="/vendor/bootstrapvalidator/js/language/vi_VN.js">vi_VN.js</a></td>
+                                <td><a href="http://github.com/nghuuphuoc">@nghuuphuoc</a></td>
+                            </tr>
+                            <tr>
+                                <td>Taiwanese</td>
+                                <td><a href="/vendor/bootstrapvalidator/js/language/zh_TW.js">zh_TW.js</a></td>
+                                <td><a href="http://github.com/tureki">@tureki</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="bv-box bv-box-info">
+                        <h5 id="translate"><i></i>Translate to other language</h5>
+                        <p>It is very easy to translate default English package into your language. Follow the steps below:</p>
+                        <ul>
+                            <li>Fork the <a href="https://github.com/nghuuphuoc/bootstrapvalidator">project</a></li>
+                            <li>
+                                Create new language file in the <a href="https://github.com/nghuuphuoc/bootstrapvalidator/tree/master/src/js/language">language</a> directory.<br/>
+                                The file must be named as <code>countrycode_LANGUAGECODE.js</code>, where <code>countrycode</code> and <code>LANGUAGECODE</code> are the ISO 3166 country and language codes in lowercase and uppercase respectively.<br/>
+                                The <strong>File Name</strong> column in the table above are some examples of valid language file name.
+                            </li>
+                            <li>Translate the <a href="/vendor/bootstrapvalidator/js/language/en_US.js">English language package</a> into your language file created above</li>
+                            <li>Make a pull request</li>
+                        </ul>
+                    </div>
                 </section>
 
                 <!-- included -->
                 <section>
-                    <h2 id="whats-included">What's Included?</h2>
+                    <h2 id="whats-included">What's included?</h2>
                     <p>The package consists of the following files:</p>
-
-                    <pre><code>bootstrapvalidator/
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">bootstrapvalidator/
 ├── dist
 │   ├── css
 │   │   ├── bootstrapValidator.css
@@ -208,7 +265,7 @@
         │   ├── between.js
         │   ├── callback.js
         │   └── ...
-        └── bootstrapValidator.js</code></pre>
+        └── bootstrapValidator.js</code></pre></div>
 
                     <p>The <code>src</code> directory consists of the original source files. <code>src/js/bootstrapValidator.js</code> is not compressed and doesn't include any validators.</p>
 
@@ -223,48 +280,56 @@
 
                     <!-- including -->
                     <section>
-                        <h3 id="including-library">Including Library</h3>
+                        <h3 id="including-library">Including library</h3>
                         <p>Since the BootstrapValidator plugin requires jQuery and Bootstrap 3, you have to include the required CSS and JS files to your page:</p>
-                        <pre><code class="xml">&lt;link rel="stylesheet" href="/path/to/bootstrap/css/bootstrap.css"/>
-&lt;link rel="stylesheet" href="/path/to/dist/css/bootstrapValidator.min.css"/>
 
-&lt;script type="text/javascript" src="/path/to/jquery/jquery-1.10.2.min.js">&lt;/script>
-&lt;script type="text/javascript" src="/path/to/bootstrap/js/bootstrap.min.js">&lt;/script></code></pre>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;/path/to/bootstrap/css/bootstrap.css&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;/path/to/dist/css/bootstrapValidator.min.css&quot;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/path/to/jquery/jquery-1.10.2.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/path/to/bootstrap/js/bootstrap.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
 
                         <p>Next, requires the plugin javascript file:</p>
-                        <pre><code class="xml">// Either use the compressed version (recommended in the production site)
-&lt;script type="text/javascript" src="/path/to/dist/js/bootstrapValidator.min.js">&lt;/script>
 
-// Or use the original one with all validators included
-&lt;script type="text/javascript" src="/path/to/dist/js/bootstrapValidator.js">&lt;/script>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Either use the compressed version (recommended in the production site) --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/path/to/dist/js/bootstrapValidator.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 
-// Or use the plugin with required validators
-&lt;script type="text/javascript" src="/path/to/src/js/bootstrapValidator.js">&lt;/script>
-&lt;script type="text/javascript" src="/path/to/src/js/validator/...validator...">&lt;/script></code></pre>
+<span class="c">&lt;!-- Or use the original one with all validators included --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/path/to/dist/js/bootstrapValidator.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="c">&lt;!-- Or use the plugin with required validators --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/path/to/src/js/bootstrapValidator.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/path/to/src/js/validator/...validator...&quot;</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
+
                     </section>
 
                     <!-- writing-form -->
                     <section>
-                        <h3 id="writing-form">Writing Form</h3>
+                        <h3 id="writing-form">Writing form</h3>
                         <p>Since BootstrapValidator is designed to use with Bootstrap, your form must be structured using Bootstrap classes.</p>
 
                         <div class="bv-box bv-box-warning">
+                            <h5 id="maximum-call-stack-error"><i></i>Maximum call stack size exceeded error</h5>
                             <p>If your form is NOT structured by Bootstrap classes (the element containing field and associated label does NOT have <code>form-group</code> class), you will see the following error in the Console:</p>
-                            <code>Uncaught RangeError: Maximum call stack size exceeded</code>
+<div class="highlight"><pre><code class="language-html" data-lang="html">Uncaught RangeError: Maximum call stack size exceeded</code></pre></div>
+                        </div>
+
+                        <div class="bv-box bv-box-info">
+                            <h5 id="using-complex-form"><i></i>Using complex form</h5>
+                            <p>If your form is complex and uses custom CSS class for each group instead of <code>form-group</code>, use the <a href="/settings/#form-group">group option</a>.</p>
                         </div>
 
                         <div class="bv-box bv-box-warning">
+                            <h5 id="name-conflict"><i></i>Name conflict</h5>
                             <p>Do not use the properties of a form, such as <code>submit</code>, <code>reset</code>, <code>length</code>, <code>method</code> to set the <code>name</code> or <code>id</code> attribute of form, field elements. Name conflicts can cause the problem.</p>
                             <p>For example, you cannot submit the form after validating if use <code>submit</code> to name the Submit button:</p>
-                            <code class="xml">&lt;button type="submit" name="submit" class="btn btn-primary">Submit&lt;/button></code>
-
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">name=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-primary&quot;</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span></code></pre></div>
                             <a href="http://kangax.github.com/domlint/">DOMLint</a> has a complete list of rules to check the markup for these kind of problems.
                         </div>
 
                         <p>The plugin supports all possible kind of Bootstrap form, including:</p>
 
-                        <h4>Basic Form</h4>
-
+                        <h4 id="basic-form">Basic form</h4>
                         <div class="bv-example">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#basic-form-tab" data-toggle="tab">Try it</a></li>
@@ -286,22 +351,21 @@
                                 </div>
 
                                 <div class="tab-pane" id="basic-html-tab">
-                                    <pre><code class="html">&lt;form>
-    &lt;div class="form-group">
-        &lt;label>Username&lt;/label>
-        &lt;input type="text" class="form-control" name="username" />
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;label>Email address&lt;/label>
-        &lt;input type="text" class="form-control" name="email" />
-    &lt;/div>
-&lt;/form></code></pre>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="hll"><span class="nt">&lt;form&gt;</span>
+</span><span class="hll">    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+</span>        <span class="nt">&lt;label&gt;</span>Username<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="hll">    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+</span>        <span class="nt">&lt;label&gt;</span>Email address<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;email&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
                                 </div>
                             </div>
                         </div>
 
-                        <h4>Basic Form without Labels</h4>
-
+                        <h4 id="basic-form-without-labels">Basic form without labels</h4>
                         <div class="bv-example">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#basicwlabel-form-tab" data-toggle="tab">Try it</a></li>
@@ -321,19 +385,19 @@
                                 </div>
 
                                 <div class="tab-pane" id="basicwlabel-html-tab">
-                                    <pre><code class="html">&lt;form>
-    &lt;div class="form-group">
-        &lt;input type="text" class="form-control" name="username" placeholder="Username" />
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;input type="text" class="form-control" name="email" placeholder="Email address" />
-    &lt;/div>
-&lt;/form></code></pre>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="hll"><span class="nt">&lt;form&gt;</span>
+</span><span class="hll">    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+</span>        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Username&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="hll">    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+</span>        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;email&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Email address&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
                                 </div>
                             </div>
                         </div>
 
-                        <h4>Inline Form</h4>
+                        <h4 id="inline-form">Inline form</h4>
                         <div class="bv-example">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#inline-form-tab" data-toggle="tab">Try it</a></li>
@@ -353,19 +417,19 @@
                                 </div>
 
                                 <div class="tab-pane" id="inline-html-tab">
-                                    <pre><code class="xml">&lt;form class="form-inline">
-    &lt;div class="form-group">
-        &lt;input type="text" class="form-control" name="username" placeholder="Username" />
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;input type="text" class="form-control" name="email" placeholder="Email address" />
-    &lt;/div>
-&lt;/form></code></pre>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="hll"><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;form-inline&quot;</span><span class="nt">&gt;</span>
+</span><span class="hll">    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+</span>        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Username&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="hll">    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+</span>        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;email&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Email address&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
                                 </div>
                             </div>
                         </div>
 
-                        <h4>Horizontal Form</h4>
+                        <h4 id="horizontal-form">Horizontal form</h4>
                         <div class="bv-example">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#horizontal-form-tab" data-toggle="tab">Try it</a></li>
@@ -391,20 +455,20 @@
                                 </div>
 
                                 <div class="tab-pane" id="horizontal-html-tab">
-                                    <pre><code class="xml">&lt;form class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Username&lt;/label>
-        &lt;div class="col-lg-9">
-            &lt;input type="text" class="form-control" name="username" />
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Email address&lt;/label>
-        &lt;div class="col-lg-9">
-            &lt;input type="text" class="form-control" name="email" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="hll"><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+</span><span class="hll">    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+</span>        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Username<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-6&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="hll">    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+</span>        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Email address<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-6&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;email&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
                                 </div>
                             </div>
                         </div>
@@ -433,17 +497,17 @@
                                 </div>
 
                                 <div class="tab-pane" id="row-html-tab">
-                                    <pre><code class="xml">&lt;form class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-2 control-label">Account&lt;/label>
-        &lt;div class="col-lg-4">
-            &lt;input type="text" class="form-control" name="username" placeholder="Username" />
-        &lt;/div>
-        &lt;div class="col-lg-4">
-            &lt;input type="text" class="form-control" name="email" placeholder="Email address" />
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="hll"><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+</span><span class="hll">    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+</span>        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-2 control-label&quot;</span><span class="nt">&gt;</span>Account<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-4&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Username&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-4&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;email&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Email address&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
                                 </div>
                             </div>
                         </div>
@@ -451,63 +515,61 @@
 
                     <!-- calling -->
                     <section>
-                        <h3 id="calling-plugin">Calling Plugin</h3>
+                        <h3 id="calling-plugin">Calling plugin</h3>
 
                             <p>Call the plugin to validate the form as following:</p>
-                            <pre><code class="javascript">$(document).ready(function() {
-    $(formSelector).bootstrapValidator({
-        excluded: ...,
-        feedbackIcons: ...,
-        live: 'enabled',
-        message: 'This value is not valid',
-        submitButtons: 'button[type="submit"]',
-        submitHandler: null,
-        trigger: null,
-        fields: ...
-    });
-});</code></pre>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nx">formSelector</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+        <span class="nx">excluded</span><span class="o">:</span> <span class="p">...,</span>
+        <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">...,</span>
+        <span class="nx">live</span><span class="o">:</span> <span class="s1">&#39;enabled&#39;</span><span class="p">,</span>
+        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;This value is not valid&#39;</span><span class="p">,</span>
+        <span class="nx">submitButtons</span><span class="o">:</span> <span class="s1">&#39;button[type=&quot;submit&quot;]&#39;</span><span class="p">,</span>
+        <span class="nx">trigger</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nx">fields</span><span class="o">:</span> <span class="p">...</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
 
                         <p>For example, to validate the sample registration form above, the plugin might be called as:</p>
-
-                        <pre><code class="javascript">$(document).ready(function() {
-    $('.registerForm').bootstrapValidator({
-        message: 'This value is not valid',
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            username: {
-                message: 'The username is not valid',
-                validators: {
-                    notEmpty: {
-                        message: 'The username is required and cannot be empty'
-                    },
-                    stringLength: {
-                        min: 6,
-                        max: 30,
-                        message: 'The username must be more than 6 and less than 30 characters long'
-                    },
-                    regexp: {
-                        regexp: /^[a-zA-Z0-9_]+$/,
-                        message: 'The username can only consist of alphabetical, number and underscore'
-                    }
-                }
-            },
-            email: {
-                validators: {
-                    notEmpty: {
-                        message: 'The email is required and cannot be empty'
-                    },
-                    emailAddress: {
-                        message: 'The input is not a valid email address'
-                    }
-                }
-            }
-        }
-    });
-});</code></pre>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.registerForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;This value is not valid&#39;</span><span class="p">,</span>
+        <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
+            <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
+            <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
+        <span class="p">},</span>
+        <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">username</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The username is not valid&#39;</span><span class="p">,</span>
+                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">notEmpty</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The username is required and cannot be empty&#39;</span>
+                    <span class="p">},</span>
+                    <span class="nx">stringLength</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">min</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span>
+                        <span class="nx">max</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The username must be more than 6 and less than 30 characters long&#39;</span>
+                    <span class="p">},</span>
+                    <span class="nx">regexp</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">regexp</span><span class="o">:</span> <span class="sr">/^[a-zA-Z0-9_]+$/</span><span class="p">,</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The username can only consist of alphabetical, number and underscore&#39;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nx">email</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">notEmpty</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The email is required and cannot be empty&#39;</span>
+                    <span class="p">},</span>
+                    <span class="nx">emailAddress</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The input is not a valid email address&#39;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
 
                         <p>Look at the <a href="/settings/">Settings</a> page to see the meaning of plugin options.</p>
                     </section>
@@ -577,8 +639,8 @@ $(document).ready(function() {
                     <h2 id="comments" class="bv-separator"><span>Comments</span></h2>
 
                     <div class="bv-box bv-box-warning">
-                        If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. Do NOT post the issue here.<br/>
-                        For a general question or feedback, use the form below.
+                        <h5><i></i>Don't submit the issue here</h5>
+                        <p>If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. For a general question or feedback, use the form below.</p>
                     </div>
 
                     <div id="disqus_thread"></div>
@@ -645,13 +707,27 @@ $(document).ready(function() {
 </footer>
 <!-- /footer -->
 
-<script src="/vendor/highlight/highlight.pack.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="/vendor/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
 <script>
 $(document).ready(function() {
-    // Highlight sample code
-    hljs.initHighlightingOnLoad();
+    $('.bv-content, .bv-post').find('h1, h2, h3, h4, h5, h6').each(function() {
+        if (!$(this).attr('id')) {
+            return;
+        }
+
+        var $heading = $(this),
+            $span    =  $heading.find('span'),
+            $anchor  = $('<a/>')
+                            .html('#')
+                            .attr('href', '#' + $heading.attr('id'))
+                            .attr('title', $heading.text())
+                            .hide();
+        ($span.length === 0) ? $anchor.appendTo($heading) : $anchor.insertBefore($span);
+        $heading.hover(function() {
+            $(this).find('a').toggle();
+        });
+    });
 });
 </script>
 </body>

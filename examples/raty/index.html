@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/vendor/bootstrapvalidator/css/bootstrapValidator.min.css">
-    <link rel="stylesheet" href="/vendor/highlight/styles/github.css">
+    <link rel="stylesheet" href="/vendor/pygments/github.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400,700">
     <link rel="stylesheet" href="/asset/css/style.css">
@@ -111,20 +111,7 @@
 
             <div class="col-md-4">
                 <div class="bv-ad">
-                    <div id="carbonads-container">
-    <div class="carbonad">
-        <div id="azcarbon"></div>
-        <script type="text/javascript">
-        var z = document.createElement("script");
-        z.type = "text/javascript";
-        z.async = true;
-        z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(z, s);
-        </script>
-    </div>
-</div>
-
+                    <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script");z.type = "text/javascript";z.async = true;z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z, s);</script></div></div>
                 </div>
             </div>
         </div>
@@ -137,8 +124,12 @@
             <div class="bv-sidebar">
                 
 
-<h2>Compatibility</h2>
+<h4>Compatibility</h4>
 <ul>
+    
+        
+            
+        
     
         
     
@@ -322,6 +313,12 @@
     
         
     
+        
+    
+        
+    
+        
+    
 </ul>
 
             </div>
@@ -371,92 +368,88 @@
                             </div>
 
                             <div class="tab-pane" id="raty-html-tab">
-                                <pre><code class="xml">&lt;form id="ratyForm" method="post" class="form-horizontal">
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Rating&lt;/label>
-        &lt;div class="col-lg-5">
-            <span class="bv-note">&lt;div id="ratyRating">&lt;/div></span>
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Review title&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;input type="text" class="form-control" name="title" />
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;label class="col-lg-3 control-label">Your review&lt;/label>
-        &lt;div class="col-lg-5">
-            &lt;textarea rows="5" class="form-control" name="content">&lt;/textarea>
-        &lt;/div>
-    &lt;/div>
-    &lt;div class="form-group">
-        &lt;div class="col-lg-5 col-lg-offset-3">
-            &lt;button type="submit" class="btn btn-primary">Validate&lt;/button>
-        &lt;/div>
-    &lt;/div>
-&lt;/form></code></pre>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Include Raty JS file --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/vendor/raty/jquery.raty.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;ratyForm&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Rating<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+<span class="hll">            <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;ratyRating&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</span>        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Review title<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Your review<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;textarea</span> <span class="na">rows=</span><span class="s">&quot;5&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5 col-lg-offset-3&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-primary&quot;</span><span class="nt">&gt;</span>Validate<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
                             </div>
 
                             <div class="tab-pane" id="raty-js-tab">
-                                <pre><code class="xml javascript">&lt;!-- Include Raty JS file -->
-&lt;script src="/vendor/raty/jquery.raty.min.js">&lt;/script>
-&lt;script>
-$(document).ready(function() {
-    // Raty example
-    $('#ratyRating').raty({
-        path: '/vendor/raty/img',
-        size: 24,
-        // The name of hidden field generated by Raty
-        <span class="bv-note">scoreName: 'star'</span>,
-        // Re-validate the star rating whenever user change it
-        <span class="bv-note">click: function (score, evt) {
-            $('#ratyForm')
-                .data('bootstrapValidator')             // Return the bootstrapValidator instance
-                .updateStatus('star', 'NOT_VALIDATED')  // Mark the star field as not validated yet
-                .validateField('star');                 // Validate it again
-        }</span>
-    });
-    $('#ratyForm')
-        .bootstrapValidator({
-            // The disabled elements are excluded
-            // Hidden elements (including the rating star) are included
-            <span class="bv-note">excluded: ':disabled'</span>,
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                <span class="bv-note">star</span>: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The rating is required'
-                        }
-                    }
-                },
-                title: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The review title is required'
-                        }
-                    }
-                },
-                content: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The review content is required'
-                        },
-                        stringLength: {
-                            max: 200,
-                            message: 'The review content must be less than 200 characters'
-                        }
-                    }
-                }
-            }
-        });
-});
-&lt;/script></code></pre>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#ratyRating&#39;</span><span class="p">).</span><span class="nx">raty</span><span class="p">({</span>
+        <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/vendor/raty/img&#39;</span><span class="p">,</span>
+        <span class="nx">size</span><span class="o">:</span> <span class="mi">24</span><span class="p">,</span>
+        <span class="c1">// The name of hidden field generated by Raty</span>
+<span class="hll">        <span class="nx">scoreName</span><span class="o">:</span> <span class="s1">&#39;star&#39;</span><span class="p">,</span>
+</span>        <span class="c1">// Revalidate the star rating whenever user change it</span>
+        <span class="nx">click</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">score</span><span class="p">,</span> <span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+<span class="hll">            <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#ratyForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">(</span><span class="s1">&#39;revalidateField&#39;</span><span class="p">,</span> <span class="s1">&#39;star&#39;</span><span class="p">);</span>
+</span>        <span class="p">}</span>
+    <span class="p">});</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#ratyForm&#39;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+            <span class="c1">// The disabled elements are excluded</span>
+            <span class="c1">// Hidden elements (including the rating star) are included</span>
+<span class="hll">            <span class="nx">excluded</span><span class="o">:</span> <span class="s1">&#39;:disabled&#39;</span><span class="p">,</span>
+</span>            <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
+                <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
+                <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
+            <span class="p">},</span>
+            <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+<span class="hll">                <span class="nx">star</span><span class="o">:</span> <span class="p">{</span>
+</span>                    <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">notEmpty</span><span class="o">:</span> <span class="p">{</span>
+                            <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The rating is required&#39;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nx">title</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">notEmpty</span><span class="o">:</span> <span class="p">{</span>
+                            <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The review title is required&#39;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nx">content</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">notEmpty</span><span class="o">:</span> <span class="p">{</span>
+                            <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The review content is required&#39;</span>
+                        <span class="p">},</span>
+                        <span class="nx">stringLength</span><span class="o">:</span> <span class="p">{</span>
+                            <span class="nx">max</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+                            <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The review content must be less than 200 characters&#39;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
                             </div>
                         </div>
                     </div>
@@ -474,12 +467,10 @@ $(document).ready(function() {
         size: 24,
         scoreName: 'star',
         click: function(score, evt) {
-            $('#ratyForm')
-                .data('bootstrapValidator')             // Return the bootstrapValidator instance
-                .updateStatus('star', 'NOT_VALIDATED')  // Mark the score as not validated yet
-                .validateField('star');                 // Validate it again
+            $('#ratyForm').bootstrapValidator('revalidateField', 'star');
         }
     });
+
     $('#ratyForm')
         .bootstrapValidator({
             excluded: ':disabled',
@@ -487,9 +478,6 @@ $(document).ready(function() {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
-            },
-            submitHandler: function(validator, form, submitButton) {
-                // Do nothing
             },
             fields: {
                 star: {
@@ -518,6 +506,10 @@ $(document).ready(function() {
                     }
                 }
             }
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
         });
 });
 </script>
@@ -540,8 +532,8 @@ $(document).ready(function() {
                     <h2 id="comments" class="bv-separator"><span>Comments</span></h2>
 
                     <div class="bv-box bv-box-warning">
-                        If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. Do NOT post the issue here.<br/>
-                        For a general question or feedback, use the form below.
+                        <h5><i></i>Don't submit the issue here</h5>
+                        <p>If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. For a general question or feedback, use the form below.</p>
                     </div>
 
                     <div id="disqus_thread"></div>
@@ -608,13 +600,27 @@ $(document).ready(function() {
 </footer>
 <!-- /footer -->
 
-<script src="/vendor/highlight/highlight.pack.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="/vendor/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
 <script>
 $(document).ready(function() {
-    // Highlight sample code
-    hljs.initHighlightingOnLoad();
+    $('.bv-content, .bv-post').find('h1, h2, h3, h4, h5, h6').each(function() {
+        if (!$(this).attr('id')) {
+            return;
+        }
+
+        var $heading = $(this),
+            $span    =  $heading.find('span'),
+            $anchor  = $('<a/>')
+                            .html('#')
+                            .attr('href', '#' + $heading.attr('id'))
+                            .attr('title', $heading.text())
+                            .hide();
+        ($span.length === 0) ? $anchor.appendTo($heading) : $anchor.insertBefore($span);
+        $heading.hover(function() {
+            $(this).find('a').toggle();
+        });
+    });
 });
 </script>
 </body>
