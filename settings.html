@@ -2779,6 +2779,10 @@ callback: {
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td><code>init.form.bv</code></td>
+                                    <td>Triggered after the form is initialized by the plugin</td>
+                                </tr>
+                                <tr>
                                     <td><code>error.form.bv</code></td>
                                     <td>Triggered when the form is invalid</td>
                                 </tr>
@@ -2800,19 +2804,29 @@ callback: {
                                 <tr>
                                     <td>Listening to event</td>
                                     <td>
-{% highlight javascript hl_lines="4 13" %}
+{% highlight javascript hl_lines="3 4 5 13 15 23" %}
 $(document).ready(function() {
     $(form)
-        .bootstrapValidator(options)
-        .on('error.form.bv', function(e) {
-            // Get the form instance
-            // $(e.target);
-
-            // Get the bootstrapValidator instance
-            // $(e.target).data('bootstrapValidator');
+        // on('init.form.bv') must be declared
+        // before calling .bootstrapValidator(options)
+        .on('init.form.bv', function(e, data) {
+            // $(e.target)  --> The form instance
+            // data.bv      --> The BootstrapValidator instance
+            // data.options --> The form options
 
             // Do something ...
         })
+
+        .bootstrapValidator(options)
+
+        .on('error.form.bv', function(e) {
+            // $(e.target) --> The form instance
+            // $(e.target).data('bootstrapValidator')
+            //             --> The BootstrapValidator instance
+
+            // Do something ...
+        })
+
         .on('success.form.bv', function(e) {
             // The e parameter is the same as one
             // in the error.form.bv event above
@@ -2883,6 +2897,10 @@ $(document).ready(function() {
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td><code>init.field.bv</code></td>
+                                    <td>Triggered after the field is initialized by the plugin</td>
+                                </tr>
+                                <tr>
                                     <td><code>error.field.bv</code></td>
                                     <td>Triggered when any field is invalid</td>
                                 </tr>
@@ -2916,37 +2934,39 @@ $(document).ready(function() {
                                 <tr>
                                     <td>Listening to event</td>
                                     <td>
-{% highlight javascript hl_lines="4 19 25" %}
+{% highlight javascript hl_lines="3 4 5 12 14 21 28" %}
 $(document).ready(function() {
     $(form)
+        // on('init.field.bv') must be declared
+        // before calling .bootstrapValidator(options)
+        .on('init.field.bv', function(e, data) {
+            // $(e.target)  --> The form instance
+            // data.bv      --> The BootstrapValidator instance
+            // data.field   --> The field name
+            // data.element --> The field element
+        })
+
         .bootstrapValidator(options)
+
         .on('error.field.bv', function(e, data) {
-            // Get the form instance
-            // $(e.target)
-
-            // Get the BootstrapValidator instance
-            // $(e.target).data('bootstrapValidator')
-
-            // Get the field name
-            // data.field
-
-            // Get the field element
-            // data.element
+            // The e and data parameters are the same
+            // as one in the init.field.bv event above
 
             // Do something ...
         })
+
         .on('success.field.bv', function(e, data) {
             // The e and data parameters are the same
-            // as one in the error.field.bv event above
+            // as one in the init.field.bv event above
 
             // Do something ...
         })
+
         .on('status.field.bv', function(e, data) {
             // The e and data parameters are the same
-            // as one in the error.field.bv event above
+            // as one in the init.field.bv event above
 
-            // New field status
-            // data.status
+            // data.status --> New field status
 
             // Do something ...
         });
@@ -2969,16 +2989,25 @@ $(document).ready(function() {
                                 <tr>
                                     <td>Listening to event</td>
                                     <td>
-{% highlight javascript hl_lines="4 7 10" %}
+{% highlight javascript hl_lines="3 4 5 9 11 15 19" %}
 $(document).ready(function() {
     $(form)
+        // on('init.field.bv') must be declared
+        // before calling .bootstrapValidator(options)
+        .on('init.field.bv', '[name="email"]', function(e, data) {
+            // Do something ...
+        })
+
         .bootstrapValidator(options)
+
         .on('error.field.bv', '[name="email"]', function(e, data) {
             // Do something ...
         })
+
         .on('success.field.bv', '[name="email"]', function(e, data) {
             // Do something ...
         })
+
         .on('status.field.bv', '[name="email"]', function(e, data) {
             // Do something ...
         });
@@ -3049,6 +3078,11 @@ $(document).ready(function() {
                                 </tr>
                             </tbody>
                         </table>
+
+                        <h4>Examples</h4>
+                        <ul>
+                            <li><a href="/examples/showing-valid-message/">Showing valid message</a></li>
+                        </ul>
                     </section>
 
                     <!-- event-validator -->
@@ -3084,28 +3118,20 @@ $(document).ready(function() {
                                 <tr>
                                     <td>Listening to event</td>
                                     <td>
-{% highlight javascript hl_lines="4 22" %}
+{% highlight javascript hl_lines="3 5 14" %}
 $(document).ready(function() {
     $(form)
         .bootstrapValidator(options)
+
         .on('error.validator.bv', function(e, data) {
-            // Get the form instance
-            // $(e.target)
-
-            // Get the BootstrapValidator instance
-            // $(e.target).data('bootstrapValidator')
-
-            // Get the field name
-            // data.field
-
-            // Get the field element
-            // data.element
-
-            // Get the validator name
-            // data.validator
+            // $(e.target)    --> The form instance
+            // data.field     --> The field name
+            // data.element   --> The field element
+            // data.validator --> The validator name
 
             // Do something ...
         })
+
         .on('success.validator.bv', function(e, data) {
             // The e parameter is the same as one
             // in the error.validator.bv event above
