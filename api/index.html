@@ -229,6 +229,27 @@
                                 </tr>
                             </tbody>
                         </table>
+
+                        <p>If you want to do additional task after adding new field, then trigger the <a href="/settings/#event-form">added.field.bv</a> event:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nx">form</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+<span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;added.field.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span>            <span class="c1">// $(e.target)  --&gt; The form instance</span>
+            <span class="c1">// $(e.target).data(&#39;bootstrapValidator&#39;)</span>
+            <span class="c1">//              --&gt; The BootstrapValidator instance</span>
+
+            <span class="c1">// data.field   --&gt; The field name</span>
+            <span class="c1">// data.element --&gt; The new field element</span>
+            <span class="c1">// data.options --&gt; The new field options</span>
+
+            <span class="c1">// Do something ...</span>
+        <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
+                        <h4>Examples</h4>
+                        <ul>
+                            <li><a href="/examples/adding-dynamic-field/">Adding dynamic field</a></li>
+                        </ul>
                     </section>
 
                     <!-- defaultSubmit() -->
@@ -505,6 +526,26 @@
                                 </tr>
                             </tbody>
                         </table>
+
+                        <p>By triggering the <a href="/settings/#event-form">removed.field.bv</a> event, you can perform additional task after removing given field:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nx">form</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+<span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;removed.field.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span>            <span class="c1">// $(e.target)  --&gt; The form instance</span>
+            <span class="c1">// $(e.target).data(&#39;bootstrapValidator&#39;)</span>
+            <span class="c1">//              --&gt; The BootstrapValidator instance</span>
+
+            <span class="c1">// data.field   --&gt; The field name</span>
+            <span class="c1">// data.element --&gt; The new field element</span>
+
+            <span class="c1">// Do something ...</span>
+        <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
+                        <h4>Examples</h4>
+                        <ul>
+                            <li><a href="/examples/adding-dynamic-field/">Adding dynamic field</a></li>
+                        </ul>
                     </section>
 
                     <!-- resetField() -->

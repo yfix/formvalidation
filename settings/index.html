@@ -2749,6 +2749,14 @@
                                     <td><code>success.form.bv</code></td>
                                     <td>Triggered when the form is valid</td>
                                 </tr>
+                                <tr>
+                                    <td><code>added.field.bv</code></td>
+                                    <td>Triggered after adding dynamic field</td>
+                                </tr>
+                                <tr>
+                                    <td><code>removed.field.bv</code></td>
+                                    <td>Triggered after removing given field</td>
+                                </tr>
                             </tbody>
                         </table>
 
@@ -2786,8 +2794,27 @@
         <span class="p">})</span>
 
 <span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;success.form.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-</span>            <span class="c1">// The e parameter is the same as one</span>
+</span>            <span class="c1">// The e parameter is same as one</span>
             <span class="c1">// in the error.form.bv event above</span>
+
+            <span class="c1">// Do something ...</span>
+        <span class="p">})</span>
+
+<span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;added.field.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span>            <span class="c1">// $(e.target)  --&gt; The form instance</span>
+            <span class="c1">// $(e.target).data(&#39;bootstrapValidator&#39;)</span>
+            <span class="c1">//              --&gt; The BootstrapValidator instance</span>
+
+            <span class="c1">// data.field   --&gt; The field name</span>
+            <span class="c1">// data.element --&gt; The new field element</span>
+            <span class="c1">// data.options --&gt; The new field options</span>
+
+            <span class="c1">// Do something ...</span>
+        <span class="p">})</span>
+
+<span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;removed.field.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span>            <span class="c1">// The e and data parameters are same as one</span>
+            <span class="c1">// in the added.field.bv event above</span>
 
             <span class="c1">// Do something ...</span>
         <span class="p">});</span>
