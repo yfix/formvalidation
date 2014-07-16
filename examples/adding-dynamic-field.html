@@ -1,0 +1,810 @@
+---
+layout:           doc
+title:            Adding dynamic field
+permalink:        /examples/adding-dynamic-field/
+categories:       [Advance]
+previous_section:
+next_section:
+comments:         true
+---
+
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/examples/">Examples</a> / Advance</h1>
+            </div>
+
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                {% include example.html category='Advance' %}
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2>Adding dynamic field<span class="pull-right bv-news"></span></h2>
+                    <p>When working with complex form, the fields might be added to (or remove from) the form dynamically. The newly added fields also need to be validated.</p>
+                    <p>This example demonstrates a sample scenario where you have to solve validating dynamic fields problem.</p>
+                    <p>Before going to the details, there are some methods and events you need to know:</p>
+
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Method/Event</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="/api/#add-field">addField() method</a></td>
+                                <td>Adding new field</td>
+                            </tr>
+                            <tr>
+                                <td><a href="/api/#remove-field">removeField() method</a></td>
+                                <td>Removing given field</td>
+                            </tr>
+                            <tr>
+                                <td><code>added.field.bv</code> event</td>
+                                <td>Called after adding new field</td>
+                            </tr>
+                            <tr>
+                                <td><code>removed.field.bv</code> event</td>
+                                <td>Called after removing given field</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>Assuming that you are managing a survey which consists of a question and some options that user can choose from. The form allows you to add more options but the number of options can't exceed 5.</p>
+
+                    <section>
+                        <h3>Step 1: Writing form</h3>
+                        <p>Initially, our form has two fields for entering the question and option as following:</p>
+
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#survey-step1-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#survey-step1-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#survey-step1-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="survey-step1-form-tab">
+                                    <p>The <i class="fa fa-plus"></i> button does nothing at this step.</p>
+                                    <form id="surveyStep1Form" method="post" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Question</label>
+                                            <div class="col-md-5">
+                                                <input type="text" class="form-control" name="question" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Options</label>
+                                            <div class="col-md-5">
+                                                <input type="text" class="form-control" name="option[]" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-md-5 col-md-offset-3">
+                                                <button type="submit" class="btn btn-default">Validate</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane" id="survey-step1-html-tab">
+{% highlight html hl_lines="5 12 15" %}
+<form id="surveyStep1Form" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-md-3 control-label">Question</label>
+        <div class="col-md-5">
+            <input type="text" class="form-control" name="question" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label">Options</label>
+        <div class="col-md-5">
+            <input type="text" class="form-control" name="option[]" />
+        </div>
+        <div class="col-md-4">
+            <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-5 col-md-offset-3">
+            <button type="submit" class="btn btn-default">Validate</button>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+                                </div>
+
+                                <div class="tab-pane" id="survey-step1-js-tab">
+{% highlight javascript hl_lines="9 16" %}
+$(document).ready(function() {
+    $('#surveyStep1Form').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            question: {
+                validators: {
+                    notEmpty: {
+                        message: 'The question required and cannot be empty'
+                    }
+                }
+            },
+            'option[]': {
+                validators: {
+                    notEmpty: {
+                        message: 'The option required and cannot be empty'
+                    },
+                    stringLength: {
+                        max: 100,
+                        message: 'The option must be less than 100 characters long'
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                                </div>
+                            </div>
+                        </div>
+                        <p>There is nothing special here, expect naming the option field as <code>name="option[]"</code> since the form might have more than one option.</p>
+                    </section>
+
+                    <section>
+                        <h3>Step 2: Adding field</h3>
+                        <p>Next, when clicking the <i class="fa fa-plus"></i> button, we have to add new option to the form. To do that, I simply pre-create a option field template, then clone it after user click the <i class="fa fa-plus"></i> button.</p>
+                        <p>Looking at the JS tab to see how the <a href="/api/#add-field">addField() method</a> and <code>added.field.bv</code> event are used.</p>
+
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#survey-step2-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#survey-step2-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#survey-step2-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="survey-step2-form-tab">
+                                    <p>The <i class="fa fa-minus"></i> button does nothing at this step.</p>
+                                    <p>The <i class="fa fa-plus"></i> button will be disabled after adding up to 5 options.</p>
+
+                                    <form id="surveyStep2Form" method="post" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Question</label>
+                                            <div class="col-md-5">
+                                                <input type="text" class="form-control" name="question" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Options</label>
+                                            <div class="col-md-5">
+                                                <input type="text" class="form-control" name="option[]" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group hide optionTemplate">
+                                            <div class="col-md-offset-3 col-md-5">
+                                                <input class="form-control" type="text" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-md-5 col-md-offset-3">
+                                                <button type="submit" class="btn btn-default">Validate</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane" id="survey-step2-html-tab">
+{% highlight html hl_lines="16 18 21" %}
+<form id="surveyStep2Form" method="post" class="form-horizontal">
+    ...
+    <div class="form-group">
+        <label class="col-md-3 control-label">Options</label>
+        <div class="col-md-5">
+            <input type="text" class="form-control" name="option[]" />
+        </div>
+        <div class="col-md-4">
+            <button type="button" class="btn btn-default addButton">
+                <i class="fa fa-plus"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- The option field template containing an option field and a Remove button -->
+    <div class="form-group hide optionTemplate">
+        <div class="col-md-offset-3 col-md-5">
+            <input class="form-control" type="text" />
+        </div>
+        <div class="col-md-4">
+            <button type="button" class="btn btn-default removeButton">
+                <i class="fa fa-minus"></i>
+            </button>
+        </div>
+    </div>
+    ...
+</form>
+{% endhighlight %}
+                                </div>
+                                <div class="tab-pane" id="survey-step2-js-tab">
+{% highlight javascript hl_lines="8 19 22 27" %}
+$(document).ready(function() {
+    $('#surveyStep2Form')
+        .bootstrapValidator({
+            ...
+        })
+
+        // Add button click handler
+        .on('click', '.addButton', function() {
+            var $template = $('#surveyStep2Form').find('.optionTemplate'),
+                $clone    = $template
+                                .clone()
+                                .removeClass('hide optionTemplate')
+                                .insertBefore($template),
+                $option   = $clone
+                            .find('input')
+                            .attr('name', 'option[]');
+
+            // Add new option field
+            $('#surveyStep2Form').bootstrapValidator('addField', $option);
+        })
+
+        .on('added.field.bv', function(e, data) {
+            // data.field   --> The field name
+            // data.element --> The new field element
+            // data.options --> The new field options
+
+            if (data.field === 'option[]') {
+                // If the number of options exceed 5
+                if ($('#surveyStep2Form').find('[name="option[]"]').length >= 5) {
+                    // Disable the Add button
+                    $('#surveyStep2Form').find('.addButton').attr('disabled', 'disabled');
+                }
+            }
+        });
+});
+{% endhighlight %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>Step 3: Removing field</h3>
+                        <p>Our last mission are that removing the field when user click the <i class="fa fa-minus"></i> button.</p>
+                        <p>Similar to the step 2, this time we will use <a href="/api/#remove-field">removeField() method</a> and <code>removed.field.bv</code> to handle removing field from the form.</p>
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#survey-step3-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#survey-step3-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#survey-step3-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="survey-step3-form-tab">
+                                    <p>The <i class="fa fa-plus"></i> button will be enabled whenever removing an option.</p>
+                                    <form id="surveyStep3Form" method="post" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Question</label>
+                                            <div class="col-md-5">
+                                                <input type="text" class="form-control" name="question" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Options</label>
+                                            <div class="col-md-5">
+                                                <input type="text" class="form-control" name="option[]" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group hide optionTemplate">
+                                            <div class="col-md-offset-3 col-md-5">
+                                                <input class="form-control" type="text" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-md-5 col-md-offset-3">
+                                                <button type="submit" class="btn btn-default">Validate</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane" id="survey-step3-html-tab">
+{% highlight html hl_lines="8" %}
+<form id="surveyStep3Form" method="post" class="form-horizontal">
+    ...
+    <div class="form-group hide optionTemplate">
+        <div class="col-md-offset-3 col-md-5">
+            <input class="form-control" type="text" />
+        </div>
+        <div class="col-md-4">
+            <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+        </div>
+    </div>
+    ...
+</form>
+{% endhighlight %}
+                                </div>
+
+                                <div class="tab-pane" id="survey-step3-js-tab">
+{% highlight javascript hl_lines="19 21 24 32" %}
+$(document).ready(function() {
+    $('#surveyStep3Form')
+        .bootstrapValidator({
+            ...
+        })
+
+        .on('click', '.addButton', function() {
+            var $template = $('#surveyStep3Form').find('.optionTemplate'),
+                $clone    = $template
+                                .clone()
+                                .removeClass('hide optionTemplate')
+                                .insertBefore($template),
+                $option   = $clone
+                            .find('input')
+                            .attr('name', 'option[]');
+            $('#surveyStep3Form').bootstrapValidator('addField', $option);
+
+            // Remove button click handler
+            $clone.on('click', '.removeButton', function() {
+                // Remove element containing the option
+                $clone.remove();
+
+                // Remove field
+                $('#surveyForm').bootstrapValidator('removeField', $option);
+            });
+        })
+
+        .on('added.field.bv', function(e, data) {
+            ...
+        })
+
+        .on('removed.field.bv', function(e, data) {
+           if (data.field === 'option[]') {
+                if ($('#surveyStep3Form').find('[name="option[]"]').length < 5) {
+                    $('#surveyStep3Form').find('.addButton').removeAttr('disabled');
+                }
+            }
+        });
+});
+{% endhighlight %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>Final code</h3>
+                        <p>Below is our final working code.</p>
+
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#survey-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#survey-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#survey-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="survey-form-tab">
+                                    <form id="surveyForm" method="post" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Question</label>
+                                            <div class="col-md-5">
+                                                <input type="text" class="form-control" name="question" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Options</label>
+                                            <div class="col-md-5">
+                                                <input type="text" class="form-control" name="option[]" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group hide optionTemplate">
+                                            <div class="col-md-offset-3 col-md-5">
+                                                <input class="form-control" type="text" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-md-5 col-md-offset-3">
+                                                <button type="submit" class="btn btn-default">Validate</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane" id="survey-html-tab">
+{% highlight html %}
+<form id="surveyForm" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-md-3 control-label">Question</label>
+        <div class="col-md-5">
+            <input type="text" class="form-control" name="question" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label">Options</label>
+        <div class="col-md-5">
+            <input type="text" class="form-control" name="option[]" />
+        </div>
+        <div class="col-md-4">
+            <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+        </div>
+    </div>
+
+    <div class="form-group hide optionTemplate">
+        <div class="col-md-offset-3 col-md-5">
+            <input class="form-control" type="text" />
+        </div>
+        <div class="col-md-4">
+            <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-5 col-md-offset-3">
+            <button type="submit" class="btn btn-default">Validate</button>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+                                </div>
+
+                                <div class="tab-pane" id="survey-js-tab">
+{% highlight javascript hl_lines="3 31 40 43 48 52 60" %}
+$(document).ready(function() {
+    $('#surveyForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                question: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The question required and cannot be empty'
+                        }
+                    }
+                },
+                'option[]': {
+                    validators: {
+                        notEmpty: {
+                            message: 'The option required and cannot be empty'
+                        },
+                        stringLength: {
+                            max: 100,
+                            message: 'The option must be less than 100 characters long'
+                        }
+                    }
+                }
+            }
+        })
+
+        .on('click', '.addButton', function() {
+            var $template = $('#surveyForm').find('.optionTemplate'),
+                $clone    = $template
+                                .clone()
+                                .removeClass('hide optionTemplate')
+                                .insertBefore($template),
+                $option   = $clone
+                            .find('input')
+                            .attr('name', 'option[]');
+            $('#surveyForm').bootstrapValidator('addField', $option);
+
+            // Remove button click handler
+            $clone.on('click', '.removeButton', function() {
+                // Remove element containing the option
+                $clone.remove();
+
+                // Remove field
+                $('#surveyForm').bootstrapValidator('removeField', $option);
+            });
+        })
+
+        .on('added.field.bv', function(e, data) {
+            if (data.field === 'option[]') {
+                if ($('#surveyForm').find('[name="option[]"]').length >= MAX_OPTIONS) {
+                    $('#surveyForm').find('.addButton').attr('disabled', 'disabled');
+                }
+            }
+        })
+
+        .on('removed.field.bv', function(e, data) {
+           if (data.field === 'option[]') {
+                if ($('#surveyForm').find('[name="option[]"]').length < MAX_OPTIONS) {
+                    $('#surveyForm').find('.addButton').removeAttr('disabled');
+                }
+            }
+        });
+});
+{% endhighlight %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    var MAX_OPTIONS = 5;
+
+    // Step 1
+    $('#surveyStep1Form')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                question: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The question required and cannot be empty'
+                        }
+                    }
+                },
+                'option[]': {
+                    validators: {
+                        notEmpty: {
+                            message: 'The option required and cannot be empty'
+                        },
+                        stringLength: {
+                            max: 100,
+                            message: 'The option must be less than 100 characters long'
+                        }
+                    }
+                }
+            }
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+        });
+
+    // Step 2
+    $('#surveyStep2Form')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                question: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The question required and cannot be empty'
+                        }
+                    }
+                },
+                'option[]': {
+                    validators: {
+                        notEmpty: {
+                            message: 'The option required and cannot be empty'
+                        },
+                        stringLength: {
+                            max: 100,
+                            message: 'The option must be less than 100 characters long'
+                        }
+                    }
+                }
+            }
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+        })
+        .on('click', '.addButton', function() {
+            var $template = $('#surveyStep2Form').find('.optionTemplate'),
+                $clone    = $template
+                                .clone()
+                                .removeClass('hide optionTemplate')
+                                .insertBefore($template),
+                $option   = $clone
+                            .find('input')
+                            .attr('name', 'option[]');
+            $('#surveyStep2Form').bootstrapValidator('addField', $option);
+        })
+        .on('added.field.bv', function(e, data) {
+            if (data.field === 'option[]') {
+                if ($('#surveyStep2Form').find('[name="option[]"]').length >= MAX_OPTIONS) {
+                    $('#surveyStep2Form').find('.addButton').attr('disabled', 'disabled');
+                }
+            }
+        });
+
+    // Step 3
+    $('#surveyStep3Form')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                question: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The question required and cannot be empty'
+                        }
+                    }
+                },
+                'option[]': {
+                    validators: {
+                        notEmpty: {
+                            message: 'The option required and cannot be empty'
+                        },
+                        stringLength: {
+                            max: 100,
+                            message: 'The option must be less than 100 characters long'
+                        }
+                    }
+                }
+            }
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+        })
+        .on('click', '.addButton', function() {
+            var $template = $('#surveyStep3Form').find('.optionTemplate'),
+                $clone    = $template
+                                .clone()
+                                .removeClass('hide optionTemplate')
+                                .insertBefore($template),
+                $option   = $clone
+                            .find('input')
+                            .attr('name', 'option[]');
+            $('#surveyStep3Form').bootstrapValidator('addField', $option);
+
+            // Remove button click handler
+            $clone.on('click', '.removeButton', function() {
+                // Remove element containing the option
+                $clone.remove();
+
+                // Remove field
+                $('#surveyForm').bootstrapValidator('removeField', $option);
+            });
+        })
+        .on('added.field.bv', function(e, data) {
+            if (data.field === 'option[]') {
+                if ($('#surveyStep3Form').find('[name="option[]"]').length >= MAX_OPTIONS) {
+                    $('#surveyStep3Form').find('.addButton').attr('disabled', 'disabled');
+                }
+            }
+        })
+        .on('removed.field.bv', function(e, data) {
+           if (data.field === 'option[]') {
+                if ($('#surveyStep3Form').find('[name="option[]"]').length < MAX_OPTIONS) {
+                    $('#surveyStep3Form').find('.addButton').removeAttr('disabled');
+                }
+            }
+        });
+
+    // Finally
+    $('#surveyForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                question: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The question required and cannot be empty'
+                        }
+                    }
+                },
+                'option[]': {
+                    validators: {
+                        notEmpty: {
+                            message: 'The option required and cannot be empty'
+                        },
+                        stringLength: {
+                            max: 100,
+                            message: 'The option must be less than 100 characters long'
+                        }
+                    }
+                }
+            }
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+        })
+        .on('click', '.addButton', function() {
+            var $template = $('#surveyForm').find('.optionTemplate'),
+                $clone    = $template
+                                .clone()
+                                .removeClass('hide optionTemplate')
+                                .insertBefore($template),
+                $option   = $clone
+                            .find('input')
+                            .attr('name', 'option[]');
+            $('#surveyForm').bootstrapValidator('addField', $option);
+
+            // Remove button click handler
+            $clone.on('click', '.removeButton', function() {
+                // Remove element containing the option
+                $clone.remove();
+
+                // Remove field
+                $('#surveyForm').bootstrapValidator('removeField', $option);
+            });
+        })
+        .on('added.field.bv', function(e, data) {
+            if (data.field === 'option[]') {
+                if ($('#surveyForm').find('[name="option[]"]').length >= MAX_OPTIONS) {
+                    $('#surveyForm').find('.addButton').attr('disabled', 'disabled');
+                }
+            }
+        })
+        .on('removed.field.bv', function(e, data) {
+           if (data.field === 'option[]') {
+                if ($('#surveyForm').find('[name="option[]"]').length < MAX_OPTIONS) {
+                    $('#surveyForm').find('.addButton').removeAttr('disabled');
+                }
+            }
+        });
+});
+</script>

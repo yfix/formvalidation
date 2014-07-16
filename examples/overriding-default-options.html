@@ -91,13 +91,13 @@ $(document).ready(function() {
 {% endhighlight %}
                     <div class="bv-example">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#enable-form-tab" data-toggle="tab">Try it</a></li>
-                            <li><a href="#enable-html-tab" data-toggle="tab">HTML</a></li>
-                            <li><a href="#enable-js-tab" data-toggle="tab">JS</a></li>
+                            <li class="active"><a href="#override-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#override-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#override-js-tab" data-toggle="tab">JS</a></li>
                         </ul>
 
                         <div class="tab-content">
-                            <div class="tab-pane active" id="enable-form-tab">
+                            <div class="tab-pane active" id="override-form-tab">
                                 <form id="overrideOptionsForm" method="post" class="form-horizontal">
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Your website</label>
@@ -114,7 +114,7 @@ $(document).ready(function() {
                                 </form>
                             </div>
 
-                            <div class="tab-pane" id="enable-html-tab">
+                            <div class="tab-pane" id="override-html-tab">
 {% highlight html %}
 <form id="overrideOptionsForm" method="post" class="form-horizontal">
     <div class="form-group">
@@ -133,7 +133,7 @@ $(document).ready(function() {
 {% endhighlight %}
                             </div>
 
-                            <div class="tab-pane" id="enable-js-tab">
+                            <div class="tab-pane" id="override-js-tab">
 {% highlight javascript hl_lines="2" %}
 $(document).ready(function() {
     $.fn.bootstrapValidator.DEFAULT_OPTIONS = $.extend({}, $.fn.bootstrapValidator.DEFAULT_OPTIONS, {
