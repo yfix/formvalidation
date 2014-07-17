@@ -30,7 +30,13 @@ comments:         true
             <div class="bv-sidebar">
                 <ul>
                     <li><a href="#options">Options</a></li>
-                    <li><a href="#example">Example</a></li>
+                    <li>
+                        <a href="#example">Example</a>
+                        <ul>
+                            <li><a href="#basic-example">Basic</a></li>
+                            <li><a href="#returning-dynamic-message-example">Returning dynamic message</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -65,43 +71,63 @@ comments:         true
                     </table>
 
                     <p>The callback method must follow the format below:</p>
-{% highlight javascript %}
+{% highlight javascript hl_lines="7" %}
 function(value, validator, $field) {
     // value is the value of field
     // validator is instance of BootstrapValidator
     // $field is the jQuery object representing the field element
 
     // Check the field validity
-    // return true or false
+    return true;    // or false
 }
 {% endhighlight %}
+                    <p>If you want to return a dynamic message, the callback function must return an object containing the <code>valid</code> and <code>message</code> members:</p>
+{% highlight javascript hl_lines="6 12" %}
+function(value, validator, $field) {
+    // ... Do your logic checking
+    if (...) {
+        return {
+            valid: true,    // or false
+            message: 'The error message'
+        }
+    }
+
+    return {
+        valid: false,       // or true
+        message: 'Other error message'
+    }
+}
+{% endhighlight %}
+                    <p>Look at the <a href="#returning-dynamic-message-example">Returning dynamic message</a> example.</p>
                 </section>
 
                 <section>
                     <h2 id="example">Example</h2>
 
-                    <p>In the following form, user is asked to enter a correct answer of simple operation which is generated randomly:</p>
+                    <section>
+                        <h3 id="basic-example">Basic</h3>
+                        <p>In the following form, user is asked to enter a correct answer of simple operation which is generated randomly:</p>
 
-                    <div class="bv-example">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#callback-form-tab" data-toggle="tab">Try it</a></li>
-                            <li><a href="#callback-html-tab" data-toggle="tab">HTML</a></li>
-                            <li><a href="#callback-js-tab" data-toggle="tab">JS</a></li>
-                        </ul>
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#callback-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#callback-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#callback-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
 
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="callback-form-tab">
-                                <form id="captchaForm" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label" id="captchaOperation"></label>
-                                        <div class="col-lg-2">
-                                            <input type="text" class="form-control" name="captcha" />
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="callback-form-tab">
+                                    <form id="captchaForm" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label" id="captchaOperation"></label>
+                                            <div class="col-lg-2">
+                                                <input type="text" class="form-control" name="captcha" />
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
-                            </div>
+                                    </form>
+                                </div>
 
-                            <div class="tab-pane" id="callback-html-tab">
+                                <div class="tab-pane" id="callback-html-tab">
 {% highlight html %}
 <form id="captchaForm" class="form-horizontal">
     <div class="form-group">
@@ -112,9 +138,9 @@ function(value, validator, $field) {
     </div>
 </form>
 {% endhighlight %}
-                            </div>
+                                </div>
 
-                            <div class="tab-pane" id="callback-js-tab">
+                                <div class="tab-pane" id="callback-js-tab">
 {% highlight javascript hl_lines="19" %}
 $(document).ready(function() {
     // Return a random number between min and max
@@ -149,9 +175,178 @@ $(document).ready(function() {
     });
 });
 {% endhighlight %}
+                                </div>
                             </div>
                         </div>
-                    </div>
+
+                        <p>It's possible to use HTML 5 attributes to set the <code>callback</code> as following snippet:</p>
+
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#html5-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#html5-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="html5-html-tab">
+{% highlight html hl_lines="6 7 8" %}
+<form id="callbackForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label" id="captchaOperation"></label>
+        <div class="col-lg-2">
+            <input type="text" class="form-control" name="captcha"
+                data-bv-callback="true"
+                data-bv-callback-message="Wrong answer"
+                data-bv-callback-callback="checkCaptcha" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+                                </div>
+
+                                <div class="tab-pane" id="html5-js-tab">
+{% highlight javascript hl_lines="1 2 3" %}
+// IMPORTANT NOTICE: You have to declare the callback as a global function
+// outside of $(document).ready()
+function checkCaptcha(value, validator) {
+    // Determine the numbers which are generated in captchaOperation
+    var items = $('#captchaOperation').html().split(' '),
+        sum   = parseInt(items[0]) + parseInt(items[2]);
+    return value == sum;
+};
+
+$(document).ready(function() {
+    // Return a random number between min and max
+    function randomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    };
+
+    // Generate a sum of two random numbers
+    $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
+
+    $('#callbackForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        }
+    });
+});
+{% endhighlight %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3 id="returning-dynamic-message-example">Returning dynamic message <span class="pull-right bv-news"></span></h3>
+                        <p>The form below ask to enter a secure password, which must satisfies all the following conditions:</p>
+                        <ul>
+                            <li>Must be more than 8 characters long</li>
+                            <li>Must contain at least one upper case character</li>
+                            <li>Must contain at least one lower case character</li>
+                            <li>Must contain at least one digit</li>
+                        </ul>
+
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#password-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#password-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#password-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="password-form-tab">
+                                    <form id="securePasswordForm" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Password</label>
+                                            <div class="col-lg-5">
+                                                <input type="password" class="form-control" name="pwd" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane" id="password-html-tab">
+{% highlight html %}
+<form id="securePasswordForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Password</label>
+        <div class="col-lg-5">
+            <input type="password" class="form-control" name="pwd" />
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+                                </div>
+
+                                <div class="tab-pane" id="password-js-tab">
+{% highlight javascript hl_lines="25 33 41 49" %}
+$(document).ready(function() {
+    $('#securePasswordForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            pwd: {
+                validators: {
+                    notEmpty: {
+                        message: 'The password is required and cannot be empty'
+                    },
+                    callback: {
+                        message: 'The password is not valid',
+                        callback: function(value, validator, $field) {
+                            if (value === '') {
+                                return true;
+                            }
+
+                            // Check the password strength
+                            if (value.length < 8) {
+                                return {
+                                    valid: false,
+                                    message: 'It must be more than 8 characters long'
+                                };
+                            }
+
+                            // The password doesn't contain any uppercase character
+                            if (value === value.toLowerCase()) {
+                                return {
+                                    valid: false,
+                                    message: 'It must contain at least one upper case character'
+                                }
+                            }
+
+                            // The password doesn't contain any uppercase character
+                            if (value === value.toUpperCase()) {
+                                return {
+                                    valid: false,
+                                    message: 'It must contain at least one lower case character'
+                                }
+                            }
+
+                            // The password doesn't contain any digit
+                            if (value.search(/[0-9]/) < 0) {
+                                return {
+                                    valid: false,
+                                    message: 'It must contain at least one digit'
+                                }
+                            }
+
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </section>
 
                 {% include related.html %}
@@ -184,6 +379,65 @@ $(document).ready(function() {
                             var items = $('#captchaOperation').html().split(' '),
                                 sum   = parseInt(items[0]) + parseInt(items[2]);
                             return value == sum;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    $('#securePasswordForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            pwd: {
+                validators: {
+                    notEmpty: {
+                        message: 'The password is required and cannot be empty'
+                    },
+                    callback: {
+                        message: 'The password is not valid',
+                        callback: function(value, validator, $field) {
+                            if (value === '') {
+                                return true;
+                            }
+
+                            // Check the password strength
+                            if (value.length < 8) {
+                                return {
+                                    valid: false,
+                                    message: 'It must be more than 8 characters long'
+                                };
+                            }
+
+                            // The password doesn't contain any uppercase character
+                            if (value === value.toLowerCase()) {
+                                return {
+                                    valid: false,
+                                    message: 'It must contain at least one upper case character'
+                                }
+                            }
+
+                            // The password doesn't contain any uppercase character
+                            if (value === value.toUpperCase()) {
+                                return {
+                                    valid: false,
+                                    message: 'It must contain at least one lower case character'
+                                }
+                            }
+
+                            // The password doesn't contain any digit
+                            if (value.search(/[0-9]/) < 0) {
+                                return {
+                                    valid: false,
+                                    message: 'It must contain at least one digit'
+                                }
+                            }
+
+                            return true;
                         }
                     }
                 }
