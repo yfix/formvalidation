@@ -461,7 +461,7 @@ $(document).ready(function() {
             var messages = data.bv.getMessages(data.element);
 
             // Remove the field messages if they're already available
-            $('#errors').find('li[data-bv-for="' + data.field + '"]').remove();
+            $('#errors').find('li[data-field="' + data.field + '"]').remove();
 
             // Loop over the messages
             for (var i in messages) {
@@ -611,7 +611,7 @@ $(document).ready(function() {
         })
         .on('error.field.bv', function(e, data) {
             var messages = data.bv.getMessages(data.element);
-            $('#errors').find('li[data-bv-for="' + data.field + '"]').remove();
+            $('#errors').find('li[data-field="' + data.field + '"]').remove();
             for (var i in messages) {
                 $('<li/>')
                     .attr('data-field', data.field)
