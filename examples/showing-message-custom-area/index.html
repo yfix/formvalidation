@@ -758,7 +758,7 @@
 <span class="hll">            <span class="kd">var</span> <span class="nx">messages</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">bv</span><span class="p">.</span><span class="nx">getMessages</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">element</span><span class="p">);</span>
 </span>
             <span class="c1">// Remove the field messages if they&#39;re already available</span>
-            <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#errors&#39;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;li[data-bv-for=&quot;&#39;</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">field</span> <span class="o">+</span> <span class="s1">&#39;&quot;]&#39;</span><span class="p">).</span><span class="nx">remove</span><span class="p">();</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#errors&#39;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;li[data-field=&quot;&#39;</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">field</span> <span class="o">+</span> <span class="s1">&#39;&quot;]&#39;</span><span class="p">).</span><span class="nx">remove</span><span class="p">();</span>
 
             <span class="c1">// Loop over the messages</span>
             <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">messages</span><span class="p">)</span> <span class="p">{</span>
@@ -907,7 +907,7 @@ $(document).ready(function() {
         })
         .on('error.field.bv', function(e, data) {
             var messages = data.bv.getMessages(data.element);
-            $('#errors').find('li[data-bv-for="' + data.field + '"]').remove();
+            $('#errors').find('li[data-field="' + data.field + '"]').remove();
             for (var i in messages) {
                 $('<li/>')
                     .attr('data-field', data.field)
