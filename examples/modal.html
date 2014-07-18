@@ -149,7 +149,7 @@ $(document).ready(function() {
 
                     <p>If you want to reset all the fields in form whenever the modal is shown, the <a href="/api/#reset-form"><code>resetForm()</code> method</a> will help you:</p>
 {% highlight javascript %}
-$('#loginModal').on('show.bs.modal', function() {
+$('#loginModal').on('shown.bs.modal', function() {
     $('#loginForm').bootstrapValidator('resetForm', true);
 });
 {% endhighlight %}
@@ -247,7 +247,7 @@ $(document).ready(function() {
                 .modal('hide');
         });
 
-    $('#loginModal').on('show.bs.modal', function() {
+    $('#loginModal').on('shown.bs.modal', function() {
         $('#loginForm').bootstrapValidator('resetForm', true);
     });
 });
