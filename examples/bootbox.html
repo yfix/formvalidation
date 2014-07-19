@@ -138,6 +138,37 @@ $(document).ready(function() {
                             </div>
                         </div>
                     </div>
+
+                    <p>If you want to use Ajax to <a href="/examples/ajax-submit/">submit</a> the form, and then close the modal, we can use the <a href="/settings/#event-form">success.form.bv</a> event:</p>
+{% highlight javascript hl_lines="6 8 14 18" %}
+$(document).ready(function() {
+    $('#loginForm')
+        .bootstrapValidator({
+            ...
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+
+            var $form = $(e.target),                        // The form instance
+                bv    = $form.data('bootstrapValidator');   // BootstrapValidator instance
+
+            // Use Ajax to submit form data
+            $.post($form.attr('action'), $form.serialize(), function(result) {
+                // ... Process the result ...
+
+                // Hide the modal containing the form
+                $form.parents('.bootbox').modal('hide');
+            }, 'json');
+        });
+
+    // Login button click handler
+    $('#loginButton').on('click', function() {
+        // Same code as above
+        ...
+    });
+});
+{% endhighlight %}
                 </section>
 
                 <section>
