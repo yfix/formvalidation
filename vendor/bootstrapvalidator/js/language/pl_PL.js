@@ -184,6 +184,9 @@
         imei: {
             'default': 'Wprowadź poprawnu numer IMEI'
         },
+        imo: {
+            'default': 'Wprowadź poprawnu numer IMO'
+        },
         integer: {
             'default': 'Wprowadź poprawną liczbę całkowitą'
         },
@@ -211,6 +214,9 @@
         mac: {
             'default': 'Wprowadź poprawny adres MAC'
         },
+        meid: {
+            'default': 'Wprowadź porpawny numer MEID'
+        },
         notEmpty: {
             'default': 'Wprowadź wartość, pole nie może być puste'
         },
@@ -223,6 +229,7 @@
             country: 'Wprowadź poprawny numer telefonu w kraju %s',
             countries: {
                 GB: 'Wielka Brytania',
+                FR: 'Francja',
                 US: 'USA'
             }
         },
@@ -312,14 +319,14 @@
             countryNotSupported: 'Kod kraju %s nie jest obsługiwany',
             country: 'Wprowadź poprawny %s kod pocztowy',
             countries: {
-                'CA': 'kanadyski',
-                'DK': 'duński',
-                'GB': 'brytyjski',
-                'IT': 'włoski',
-                'NL': 'holenderski',
-                'SE': 'szwecki',
-                'SG': 'singapurski',
-                'US': 'w USA'
+                CA: 'kanadyski',
+                DK: 'duński',
+                GB: 'brytyjski',
+                IT: 'włoski',
+                NL: 'holenderski',
+                SE: 'szwecki',
+                SG: 'singapurski',
+                US: 'w USA'
             }
         }
     });

@@ -184,6 +184,9 @@
         imei: {
             'default': '请输入有效的IMEI'
         },
+        imo: {
+            'default': '请输入有效的IMO'
+        },
         integer: {
             'default': '请输入有效的整数'
         },
@@ -211,7 +214,10 @@
         mac: {
             'default': '请输入有效的MAC位址'
         },
-        notEmpty: {
+        meid: {
+            'default': '请输入有效的MEID'
+        },
+        notEmpty: {
             'default': '栏位不能为空'
         },
         numeric: {
@@ -223,7 +229,8 @@
             country: '请输入有效的 %s 电话号码',
             countries: {
                 GB: '英国',
-                US: '美国'
+                FR: '法国',
+                US: '美国'
             }
         },
         regexp: {
@@ -312,14 +319,14 @@
             countryNotSupported: '不支援该国家代码%s',
             country: '请输入有效的 %s',
             countries: {
-                'CA': '加拿大 邮政编码',
-                'DK': '丹麦 邮政编码',
-                'GB': '英国 邮政编码',
-                'IT': '意大利 邮政编码',
-                'NL': '荷兰 邮政编码',
-                'SE': '瑞士 邮政编码',
-                'SG': '新加坡 邮政编码',
-                'US': '美国 邮政编码'
+                CA: '加拿大 邮政编码',
+                DK: '丹麦 邮政编码',
+                GB: '英国 邮政编码',
+                IT: '意大利 邮政编码',
+                NL: '荷兰 邮政编码',
+                SE: '瑞士 邮政编码',
+                SG: '新加坡 邮政编码',
+                US: '美国 邮政编码'
             }
         }
     });

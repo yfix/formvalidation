@@ -184,6 +184,9 @@
         imei: {
             'default': 'Prosím zadejte správné IMEI číslo'
         },
+        imo: {
+            'default': 'Prosím zadejte správné IMO číslo'
+        },
         integer: {
             'default': 'Prosím zadejte celé číslo'
         },
@@ -211,6 +214,9 @@
         mac: {
             'default': 'Prosím zadejte správnou MAC adresu'
         },
+        meid: {
+            'default': 'Prosím zadejte správné MEID číslo'
+        },
         notEmpty: {
             'default': 'Toto pole nesmí být prázdné'
         },
@@ -223,6 +229,7 @@
             country: 'Prosím zadejte správné telefoní číslo pro %s',
             countries: {
                 GB: 'Velkou Británii',
+                FR: 'Francii',
                 US: 'Spojené Státy Americké'
             }
         },
@@ -312,14 +319,14 @@
             countryNotSupported: '%s není podporované',
             country: 'Prosím zadejte správné %s',
             countries: {
-                'CA': 'Kanadské PSČ',
-                'DK': 'Dánské PSČ',
-                'GB': 'PSČ Velké Británie',
-                'IT': 'Italské PSČ',
-                'NL': 'Holandské PSČ',
-                'SE': 'Švýcarské PSČ',
-                'SG': 'Singapurské PSČ',
-                'US': 'Americké PSČ'
+                CA: 'Kanadské PSČ',
+                DK: 'Dánské PSČ',
+                GB: 'PSČ Velké Británie',
+                IT: 'Italské PSČ',
+                NL: 'Holandské PSČ',
+                SE: 'Švýcarské PSČ',
+                SG: 'Singapurské PSČ',
+                US: 'Americké PSČ'
             }
         }
     });
