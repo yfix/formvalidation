@@ -1,7 +1,6 @@
 (function($) {
     /**
-     * Default English package
-     * It's included in the dist, so you do NOT need to include it to your head tag
+     * Default English package. It's included in the dist, so you do NOT need to include it to your head tag
      * The only reason I put it here is that you can clone it, and translate it into your language
      */
     $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
@@ -185,6 +184,9 @@
         imei: {
             'default': 'Please enter a valid IMEI number'
         },
+        imo: {
+            'default': 'Please enter a valid IMO number'
+        },
         integer: {
             'default': 'Please enter a valid number'
         },
@@ -212,6 +214,9 @@
         mac: {
             'default': 'Please enter a valid MAC address'
         },
+        meid: {
+            'default': 'Please enter a valid MEID number'
+        },
         notEmpty: {
             'default': 'Please enter a value'
         },
@@ -224,6 +229,7 @@
             country: 'Please enter a valid phone number in %s',
             countries: {
                 GB: 'United Kingdom',
+                FR: 'France',
                 US: 'USA'
             }
         },
