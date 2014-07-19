@@ -184,6 +184,9 @@
         imei: {
             'default': 'Por favor ingrese un número IMEI válido'
         },
+        imo: {
+            'default': 'Por favor ingrese un número IMO válido'
+        },
         integer: {
             'default': 'Por favor ingrese un número válido'
         },
@@ -211,6 +214,9 @@
         mac: {
             'default': 'Por favor ingrese una dirección MAC válida'
         },
+        meid: {
+            'default': 'Por favor ingrese un número MEID válido'
+        },
         notEmpty: {
             'default': 'Por favor ingrese un valor'
         },
@@ -223,6 +229,7 @@
             country: 'Por favor ingrese un número válido de teléfono en %s',
             countries: {
                 GB: 'Reino Unido',
+                FR: 'Francia',
                 US: 'EE.UU.'
             }
         },

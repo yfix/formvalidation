@@ -184,6 +184,9 @@
         imei: {
             'default': '請輸入有效的IMEI'
         },
+        imo: {
+            'default': '請輸入有效的IMO'
+        },
         integer: {
             'default': '請輸入有效的整數'
         },
@@ -211,6 +214,9 @@
         mac: {
             'default': '請輸入有效的MAC位址'
         },
+        meid: {
+            'default': '請輸入有效的MEID'
+        },
         notEmpty: {
             'default': '欄位不能為空'
         },
@@ -223,6 +229,7 @@
             country: '請輸入有效的 %s 電話號碼',
             countries: {
                 GB: '英國',
+                FR: '法國',
                 US: '美國'
             }
         },

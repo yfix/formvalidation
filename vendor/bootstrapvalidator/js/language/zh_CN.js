@@ -184,6 +184,9 @@
         imei: {
             'default': '请输入有效的IMEI'
         },
+        imo: {
+            'default': '请输入有效的IMO'
+        },
         integer: {
             'default': '请输入有效的整数'
         },
@@ -211,7 +214,10 @@
         mac: {
             'default': '请输入有效的MAC位址'
         },
-        notEmpty: {
+        meid: {
+            'default': '请输入有效的MEID'
+        },
+        notEmpty: {
             'default': '栏位不能为空'
         },
         numeric: {
@@ -223,7 +229,8 @@
             country: '请输入有效的 %s 电话号码',
             countries: {
                 GB: '英国',
-                US: '美国'
+                FR: '法国',
+                US: '美国'
             }
         },
         regexp: {

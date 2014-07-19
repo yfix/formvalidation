@@ -184,6 +184,9 @@
         imei: {
             'default': 'Kérlek, hogy érvényes IMEI számot adj meg'
         },
+        imo: {
+            'default': 'Kérlek, hogy érvényes IMO számot adj meg'
+        },
         integer: {
             'default': 'Kérlek, hogy számot adj meg'
         },
@@ -211,6 +214,9 @@
         mac: {
             'default': 'Kérlek, hogy érvényes MAC címet ajd meg'
         },
+        meid: {
+            'default': 'Kérlek, hogy érvényes MEID számot ajd meg'
+        },
         notEmpty: {
             'default': 'Kérlek, hogy adj értéket a mezőnek'
         },
@@ -223,6 +229,7 @@
             country: 'Kérlek, hogy érvényes %s telefonszámot adj meg',
             countries: {
                 GB: 'Egyesült Királyság beli',
+                FR: 'francia',
                 US: 'Egyesült Államok beli'
             }
         },

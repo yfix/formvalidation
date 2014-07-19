@@ -184,6 +184,9 @@
         imei: {
             'default': 'Veuillez fournir un code IMEI valide'
         },
+        imo: {
+            'default': 'Veuillez fournir un code IMO valide'
+        },
         integer: {
             'default': 'Veuillez fournir un nombre valide'
         },
@@ -211,6 +214,9 @@
         mac: {
             'default': 'Veuillez fournir une adresse MAC valide'
         },
+        meid: {
+            'default': 'Veuillez fournir un code MEID valide'
+        },
         notEmpty: {
             'default': 'Veuillez fournir une valeur'
         },
@@ -223,6 +229,7 @@
             country: 'Veuillez fournir un numéro de téléphone valide pour %s',
             countries: {
                 GB: 'le Royaume Uni',
+                FR: 'la France',
                 US: 'les USA'
             }
         },

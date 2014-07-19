@@ -1,4 +1,8 @@
 (function($) {
+    /**
+     * Vietnamese language package
+     * Translated by @nghuuphuoc
+     */
     $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
         base64: {
             'default': 'Vui lòng nhập chuỗi mã hoá base64 hợp lệ'
@@ -180,6 +184,9 @@
         imei: {
             'default': 'Vui lòng nhập số IMEI hợp lệ'
         },
+        imo: {
+            'default': 'Vui lòng nhập số IMO hợp lệ'
+        },
         integer: {
             'default': 'Vui lòng nhập số hợp lệ'
         },
@@ -207,6 +214,9 @@
         mac: {
             'default': 'Vui lòng nhập địa chỉ MAC hợp lệ'
         },
+        meid: {
+            'default': 'Vui lòng nhập số MEID hợp lệ'
+        },
         notEmpty: {
             'default': 'Vui lòng nhập giá trị'
         },
@@ -219,6 +229,7 @@
             country: 'Vui lòng nhập số điện thoại hợp lệ của %s',
             countries: {
                 GB: 'Vương quốc Anh',
+                FR: 'Pháp',
                 US: 'Mỹ'
             }
         },

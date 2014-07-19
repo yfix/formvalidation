@@ -184,6 +184,9 @@
         imei: {
             'default': 'Geef een geldig IMEI nummer'
         },
+        imo: {
+            'default': 'Geef een geldig IMO nummer'
+        },
         integer: {
             'default': 'Geef een geldig nummer'
         },
@@ -211,6 +214,9 @@
         mac: {
             'default': 'Geef een geldig MAC adres'
         },
+        meid: {
+            'default': 'Geef een geldig MEID nummer'
+        },
         notEmpty: {
             'default': 'Geef een waarde'
         },
@@ -223,6 +229,7 @@
             country: 'Geef een geldig telefoon nummer van %s',
             countries: {
                 GB: 'Verenigd Koninkrijk',
+                FR: 'Frankrijk',
                 US: 'VS'
             }
         },

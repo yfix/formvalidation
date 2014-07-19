@@ -184,6 +184,9 @@
         imei: {
             'default': 'Bitte gültige IMEI Nummer eingeben'
         },
+        imo: {
+            'default': 'Bitte gültige IMO Nummer eingeben'
+        },
         integer: {
             'default': 'Bitte Zahl eingeben'
         },
@@ -211,6 +214,9 @@
         mac: {
             'default': 'Bitte gültige MAC Adresse eingeben'
         },
+        meid: {
+            'default': 'Bitte gültige MEID Nummer eingeben'
+        },
         notEmpty: {
             'default': 'Bitte Wert eingeben'
         },
@@ -222,8 +228,9 @@
             countryNotSupported: 'Der Ländercode %s wird nicht unterstützt',
             country: 'Bitte valide Telefonnummer für %s eingeben',
             countries: {
-                GB: 'United Kingdom',
-                US: 'USA'
+                GB: 'Vereinigtes Königreich',
+                FR: 'Frankreich',
+                US: 'Vereinigte Staaten'
             }
         },
         regexp: {
