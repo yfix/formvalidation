@@ -129,7 +129,7 @@
         <ul>
             <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator"><i class="fa fa-github"></i> <span id="ghStars"></span></a></li>
             <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/network/members"><i class="fa fa-code-fork"></i> <span id="ghForks"></span></a></li>
-            <li><a href="https://twitter.com/bsvalidator"><i class="fa fa-twitter"></i> <span id="twFollowers"></span></a></li>
+            <li><a href="https://twitter.com/bsvalidator"><i class="fa fa-twitter"></i> <span id="twFollowers">112</span></a></li>
         </ul>
     </div>
 </div>
@@ -465,15 +465,6 @@ $(document).ready(function() {
         success: function(response) {
             $('#ghStars').html(response && response.data.watchers_count ? parseInt(response.data.watchers_count) : '568');
             $('#ghForks').html(response && response.data.forks_count    ? parseInt(response.data.forks_count)    : '225');
-        }
-    });
-
-    // Show the number of Twitter followers
-    $.ajax({
-        dataType: 'jsonp',
-        url: 'https://cdn.api.twitter.com/1/users/show.json?screen_name=bsvalidator',
-        success: function(response) {
-            $('#twFollowers').html(response && response.followers_count ? parseInt(response.followers_count) : '101');
         }
     });
 
