@@ -34,7 +34,7 @@ comments:  false
         <ul>
             <li><a href="{{ site.repository.source }}"><i class="fa fa-github"></i> <span id="ghStars"></span></a></li>
             <li><a href="{{ site.repository.source }}/network/members"><i class="fa fa-code-fork"></i> <span id="ghForks"></span></a></li>
-            <li><a href="https://twitter.com/bsvalidator"><i class="fa fa-twitter"></i> <span id="twFollowers"></span></a></li>
+            <li><a href="https://twitter.com/bsvalidator"><i class="fa fa-twitter"></i> <span id="twFollowers">{{ site.twitter_followers }}</span></a></li>
         </ul>
     </div>
 </div>
@@ -174,15 +174,6 @@ $(document).ready(function() {
         success: function(response) {
             $('#ghStars').html(response && response.data.watchers_count ? parseInt(response.data.watchers_count) : '{{ site.github_watchers }}');
             $('#ghForks').html(response && response.data.forks_count    ? parseInt(response.data.forks_count)    : '{{ site.github_forks }}');
-        }
-    });
-
-    // Show the number of Twitter followers
-    $.ajax({
-        dataType: 'jsonp',
-        url: 'https://cdn.api.twitter.com/1/users/show.json?screen_name=bsvalidator',
-        success: function(response) {
-            $('#twFollowers').html(response && response.followers_count ? parseInt(response.followers_count) : '{{ site.twitter_followers }}');
         }
     });
 

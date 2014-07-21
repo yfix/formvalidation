@@ -205,10 +205,10 @@ footer p {
 .bv-follower i {
   color: #2ecc71;
   font-size: 50px;
+  padding-right: 5px;
 }
 .bv-follower span {
-  font-size: 40px;
-  padding-left: 10px;
+  font-size: 50px;
 }
 .bv-features {
   padding: 40px 0;
