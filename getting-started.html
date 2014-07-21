@@ -32,6 +32,7 @@ next_section:     /settings/
                 <ul>
                     <li><a href="#release">Release</a></li>
                     <li><a href="#installing-bower">Installing with Bower</a></li>
+                    <li><a href="#cdn">CDN</a></li>
                     <li><a href="#language-package">Language packages<span class="pull-right bv-news"></span></a></li>
                 </ul>
 
@@ -83,6 +84,28 @@ next_section:     /settings/
 {% highlight bash %}
 $ bower install bootstrapValidator
 {% endhighlight %}
+
+                    <h3 id="cdn">CDN</h3>
+                    <p>You also can use the minified version hosted on the following CDN:</p>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>CDN</th>
+                                <th>Path</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="http://www.jsdelivr.com/#!jquery.bootstrapvalidator">jsdelivr.com</a></td>
+                                <td>
+{% highlight html %}
+<link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css"/>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.0/js/bootstrapValidator.min.js"></script>
+{% endhighlight %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
 
                     <p>BootstrapValidator also can be found on the official <a href="{{ site.jquery_plugin_url }}">jQuery plugins page</a>.</p>
 
