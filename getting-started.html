@@ -114,6 +114,7 @@ $ bower install bootstrapValidator
                     <table class="table table-condensed">
                         <thead>
                             <tr>
+                                <th>No.</th>
                                 <th>Language</th>
                                 <th>File Name</th>
                                 <th>Translated By</th>
@@ -121,85 +122,20 @@ $ bower install bootstrapValidator
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Bulgarian</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/bg_BG.js">bg_BG.js</a></td>
-                                <td><a href="http://github.com/mraiur">@mraiur</a></td>
-                            </tr>
-                            <tr>
-                                <td>Chilean Spanish</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/es_CL.js">es_CL.js</a></td>
-                                <td><a href="http://github.com/marceloampuerop6">@marceloampuerop6</a></td>
-                            </tr>
-                            <tr>
-                                <td>Chinese</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/zh_CN.js">zh_CN.js</a></td>
-                                <td><a href="http://github.com/tureki">@tureki</a></td>
-                            </tr>
-                            <tr>
-                                <td>Czech</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/cs_CZ.js">cs_CZ.js</a></td>
-                                <td><a href="http://github.com/AdwinTrave">@AdwinTrave</a></td>
-                            </tr>
-                            <tr>
-                                <td>Dutch (Belgium)</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/be_NL.js">be_NL.js</a></td>
-                                <td><a href="http://github.com/dokterpasta">@dokterpasta</a></td>
-                            </tr>
-                            <tr>
+                                <td></td>
                                 <td>English <span class="label label-default">built in</span></td>
                                 <td><a href="/vendor/bootstrapvalidator/js/language/en_US.js">en_US.js</a></td>
                                 <td><a href="http://github.com/nghuuphuoc">@nghuuphuoc</a></td>
                             </tr>
+
+                            {% for package in site.data.languages %}
                             <tr>
-                                <td>French</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/fr_FR.js">fr_FR.js</a></td>
-                                <td><a href="http://github.com/dlucazeau">@dlucazeau</a></td>
+                                <td>{{ forloop.index }}</td>
+                                <td>{{ package.name }}</td>
+                                <td><a href="/vendor/bootstrapvalidator/js/language/{{ package.file }}">{{ package.file }}</a></td>
+                                <td><a href="http://github.com/{{ package.author }}">@{{ package.author }}</a></td>
                             </tr>
-                            <tr>
-                                <td>German</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/de_DE.js">de_DE.js</a></td>
-                                <td><a href="http://github.com/logemann">@logemann</a></td>
-                            </tr>
-                            <tr>
-                                <td>Greek</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/gr_EL.js">gr_EL.js</a></td>
-                                <td><a href="http://github.com/pRieStaKos">@pRieStaKos</a></td>
-                            </tr>
-                            <tr>
-                                <td>Hungarian</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/hu_HU.js">hu_HU.js</a></td>
-                                <td><a href="http://github.com/blackfyre">@blackfyre</a></td>
-                            </tr>
-                            <tr>
-                                <td>Polish</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/pl_PL.js">pl_PL.js</a></td>
-                                <td><a href="http://github.com/grzesiek">@grzesiek</a></td>
-                            </tr>
-                            <tr>
-                                <td>Portuguese (Brazil)</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/pt_BR.js">pt_BR.js</a></td>
-                                <td><a href="http://github.com/marcuscarvalho6">@marcuscarvalho6</a></td>
-                            </tr>
-                            <tr>
-                                <td>Spanish</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/es_ES.js">es_ES.js</a></td>
-                                <td><a href="http://github.com/vadail">@vadail</a></td>
-                            </tr>
-                            <tr>
-                                <td>Taiwanese</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/zh_TW.js">zh_TW.js</a></td>
-                                <td><a href="http://github.com/tureki">@tureki</a></td>
-                            </tr>
-                            <tr>
-                                <td>Turkish</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/tr_TR.js">tr_TR.js</a></td>
-                                <td><a href="http://github.com/CeRBeR666">@CeRBeR666</a></td>
-                            </tr>
-                            <tr>
-                                <td>Vietnamese</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/vi_VN.js">vi_VN.js</a></td>
-                                <td><a href="http://github.com/nghuuphuoc">@nghuuphuoc</a></td>
-                            </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
 
