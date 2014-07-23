@@ -1,0 +1,841 @@
+---
+layout:           doc
+title:            Changing default behaviour
+permalink:        /examples/changing-default-behaviour/
+categories:       [Advance]
+previous_section:
+next_section:
+comments:         true
+---
+
+<style type="text/css">
+#hidingSuccessForm .has-feedback .form-control-feedback {
+    top: 35px;
+}
+#reportForm .has-feedback .form-control-feedback {
+    right: -30px;
+}
+</style>
+
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/examples/">Examples</a> / Advance</h1>
+            </div>
+
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                {% include example.html category='Advance' %}
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2>Changing default behaviour <span class="pull-right bv-news"></span></h2>
+                    <p>By triggering <a href="/settings/#events">events</a>, you can adjust a few of the default behaviours as in the following sections.</p>
+
+                    <section>
+                        <h3 id="always-enable-submit-button">Always enable the submit button</h3>
+                        <p>By default, the submit buttons will be disabled if there is at least one invalid field.</p>
+                        <p>If you want to enable the submit buttons all the time, triggering the <a href="/settings/#event-field">status.field.bv</a> event and using the <a href="/api/#disable-submit-buttons">disableSubmitButtons()</a> method:</p>
+
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#enable-button-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#enable-button-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#enable-button-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="enable-button-form-tab">
+                                    <form id="enableButtonForm" method="post" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Task</label>
+                                            <div class="col-md-5">
+                                                <input type="text" class="form-control" name="task" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Description</label>
+                                            <div class="col-md-5">
+                                                <textarea class="form-control" name="description" rows="5"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Priority</label>
+                                            <div class="col-md-5">
+                                                <select class="form-control" name="priority">
+                                                    <option value="">Choose the priority</option>
+                                                    <option value="low">Low</option>
+                                                    <option value="medium">Medium</option>
+                                                    <option value="high">High</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-md-5 col-md-offset-3">
+                                                <button type="submit" class="btn btn-default">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane" id="enable-button-html-tab">
+{% highlight html %}
+<form id="enableButtonForm" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-md-3 control-label">Task</label>
+        <div class="col-md-5">
+            <input type="text" class="form-control" name="task" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label">Description</label>
+        <div class="col-md-5">
+            <textarea class="form-control" name="description" rows="5"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label">Priority</label>
+        <div class="col-md-5">
+            <select class="form-control" name="priority">
+                <option value="">Choose the priority</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-5 col-md-offset-3">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+                                </div>
+
+                                <div class="tab-pane" id="enable-button-js-tab">
+{% highlight javascript hl_lines="3 33 39" %}
+$(document).ready(function() {
+    $('#enableButtonForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                task: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The task is required'
+                        }
+                    }
+                },
+                description: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The description is required'
+                        }
+                    }
+                },
+                priority: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The priority is required'
+                        }
+                    }
+                }
+            }
+        })
+        .on('status.field.bv', function(e, data) {
+            // $(e.target)  --> The field element
+            // data.bv      --> The BootstrapValidator instance
+            // data.field   --> The field name
+            // data.element --> The field element
+
+            data.bv.disableSubmitButtons(false);
+        });
+});
+{% endhighlight %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3 id="hiding-success-class">Hiding success class</h3>
+                        <p>Based on the field status, the field and its container are marked as success or error element. The plugin will add <code>has-success</code> or <code>has-error</code> class to the container element.</p>
+                        <p>If you think that it's better to indicate error status only due to the similarity of these status colors, you can remove <code>has-success</code> class from the container.</p>
+                        <p>It can be done by triggering the <a href="/settings/#event-field">success.field.bv</a> event as below:</p>
+
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#hiding-success-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#hiding-success-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#hiding-success-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="hiding-success-form-tab">
+                                    <div class="row">
+                                        <div class="col-md-8 col-md-offset-2">
+                                            <form id="hidingSuccessForm" method="post">
+                                                <div class="form-group">
+                                                    <label>Proposal title</label>
+                                                    <input type="text" class="form-control" name="title" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Abstract</label>
+                                                    <textarea class="form-control" name="abstract" rows="5"></textarea>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Topics</label>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" name="topics[]" value="angularjs" /> AngularJS
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" name="topics[]" value="backbone" /> Backbone
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" name="topics[]" value="emberjs" /> EmberJS
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" name="topics[]" value="jquery" /> jQuery
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" name="topics[]" value="nodejs" /> NodeJS
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Session type</label>
+                                                    <select class="form-control" name="sessionType" style="width: 200px;">
+                                                        <option value="">Choose the session type</option>
+                                                        <option value="presentation">Presentation</option>
+                                                        <option value="panel">Panel</option>
+                                                        <option value="workshop">Workshop</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn btn-default">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="hiding-success-html-tab">
+{% highlight html %}
+<style type="text/css">
+/* Adjust feedback icon position */
+#hidingSuccessForm .has-feedback .form-control-feedback {
+    top: 35px;
+}
+</style>
+
+<form id="hidingSuccessForm" method="post">
+    <div class="form-group">
+        <label>Proposal title</label>
+        <input type="text" class="form-control" name="title" />
+    </div>
+
+    <div class="form-group">
+        <label>Abstract</label>
+        <textarea class="form-control" name="abstract" rows="5"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Topics</label>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="topics[]" value="angularjs" /> AngularJS
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="topics[]" value="backbone" /> Backbone
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="topics[]" value="emberjs" /> EmberJS
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="topics[]" value="jquery" /> jQuery
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="topics[]" value="nodejs" /> NodeJS
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Session type</label>
+        <select class="form-control" name="sessionType" style="width: 200px;">
+            <option value="">Choose the session type</option>
+            <option value="presentation">Presentation</option>
+            <option value="panel">Panel</option>
+            <option value="workshop">Workshop</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+</form>
+{% endhighlight %}
+                                </div>
+
+                                <div class="tab-pane" id="hiding-success-js-tab">
+{% highlight javascript hl_lines="3 49 58 61" %}
+$(document).ready(function() {
+    $('#hidingSuccessForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                title: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The title is required'
+                        }
+                    }
+                },
+                abstract: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The abstract is required'
+                        },
+                        stringLength: {
+                            max: 400,
+                            message: 'The abstract must be less than 400 characters'
+                        }
+                    }
+                },
+                'topics[]': {
+                    validators: {
+                        notEmpty: {
+                            message: 'The topic is required'
+                        },
+                        choice: {
+                            min: 2,
+                            max: 3,
+                            message: 'Please choose 2 - 3 topics'
+                        }
+                    }
+                },
+                sessionType: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The session type is required'
+                        }
+                    }
+                }
+            }
+        })
+        .on('success.field.bv', function(e, data) {
+            // $(e.target)  --> The field element
+            // data.bv      --> The BootstrapValidator instance
+            // data.field   --> The field name
+            // data.element --> The field element
+
+            var $parent = data.element.parents('.form-group');
+
+            // Remove the has-success class
+            $parent.removeClass('has-success');
+
+            // Hide the success icon
+            $parent.find('.form-control-feedback[data-bv-icon-for="' + data.field + '"]').hide();
+        });
+});
+{% endhighlight %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3 id="hiding-messages">Hiding messages</h3>
+                        <p>In order to archive this, there are two things you need to know:</p>
+                        <ul>
+                            <li>The <a href="/settings/#event-field">error.field.bv</a> event is triggered when the field is invalid</li>
+                            <li>The element containing field messages can be retrieved via <code>$field.data('bv.messages')</code></li>
+                        </ul>
+
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#report-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#report-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#report-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="report-form-tab">
+                                    <form id="reportForm" method="post" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Bug title</label>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" name="title" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Description</label>
+                                            <div class="col-md-6">
+                                                <textarea class="form-control" name="description" rows="8"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Operating system</label>
+                                            <div class="col-md-9">
+                                                <div class="btn-group" data-toggle="buttons">
+                                                    <label class="btn btn-default">
+                                                        <input type="radio" name="os" value="window7" /> Window 7
+                                                    </label>
+                                                    <label class="btn btn-default">
+                                                        <input type="radio" name="os" value="window8" /> Window 8
+                                                    </label>
+                                                    <label class="btn btn-default">
+                                                        <input type="radio" name="os" value="centos" /> Centos
+                                                    </label>
+                                                    <label class="btn btn-default">
+                                                        <input type="radio" name="os" value="fedora" /> Fedora
+                                                    </label>
+                                                    <label class="btn btn-default">
+                                                        <input type="radio" name="os" value="ubuntu" /> Ubuntu
+                                                    </label>
+                                                    <label class="btn btn-default">
+                                                        <input type="radio" name="os" value="macos" /> Mac OS X
+                                                    </label>
+                                                    <label class="btn btn-default">
+                                                        <input type="radio" name="os" value="other" /> Other
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Browser(s)</label>
+                                            <div class="col-md-9">
+                                                <div class="btn-group" data-toggle="buttons">
+                                                    <label class="btn btn-default">
+                                                        <input type="checkbox" name="browser[]" value="ie8" /> IE 8
+                                                    </label>
+                                                    <label class="btn btn-default">
+                                                        <input type="checkbox" name="browser[]" value="ie9" /> IE 9
+                                                    </label>
+                                                    <label class="btn btn-default">
+                                                        <input type="checkbox" name="browser[]" value="ie10" /> IE 10
+                                                    </label>
+                                                    <label class="btn btn-default">
+                                                        <input type="checkbox" name="browser[]" value="chrome" /> Chrome
+                                                    </label>
+                                                    <label class="btn btn-default">
+                                                        <input type="checkbox" name="browser[]" value="firefox"> Firefox
+                                                    </label>
+                                                    <label class="btn btn-default">
+                                                        <input type="checkbox" name="browser[]" value="safari" /> Safari
+                                                    </label>
+                                                    <label class="btn btn-default">
+                                                        <input type="checkbox" name="browser[]" value="opera"> Opera
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Priority</label>
+                                            <div class="col-md-3">
+                                                <select class="form-control" name="priority">
+                                                    <option value="">Choose the priority</option>
+                                                    <option value="low">Low</option>
+                                                    <option value="medium">Medium</option>
+                                                    <option value="high">High</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-md-5 col-md-offset-3">
+                                                <button type="submit" class="btn btn-default">Report issue</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane" id="report-html-tab">
+{% highlight html %}
+<style type="text/css">
+/* Adjust feedback icon position */
+#reportForm .has-feedback .form-control-feedback {
+    right: -30px;
+}
+</style>
+
+<form id="reportForm" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-md-3 control-label">Bug title</label>
+        <div class="col-md-6">
+            <input type="text" class="form-control" name="title" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label">Description</label>
+        <div class="col-md-6">
+            <textarea class="form-control" name="description" rows="8"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label">Operating system</label>
+        <div class="col-md-9">
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-default">
+                    <input type="radio" name="os" value="window7" /> Window 7
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="os" value="window8" /> Window 8
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="os" value="centos" /> Centos
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="os" value="fedora" /> Fedora
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="os" value="ubuntu" /> Ubuntu
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="os" value="macos" /> Mac OS X
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="os" value="other" /> Other
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label">Browser(s)</label>
+        <div class="col-md-9">
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-default">
+                    <input type="checkbox" name="browser[]" value="ie8" /> IE 8
+                </label>
+                <label class="btn btn-default">
+                    <input type="checkbox" name="browser[]" value="ie9" /> IE 9
+                </label>
+                <label class="btn btn-default">
+                    <input type="checkbox" name="browser[]" value="ie10" /> IE 10
+                </label>
+                <label class="btn btn-default">
+                    <input type="checkbox" name="browser[]" value="chrome" /> Chrome
+                </label>
+                <label class="btn btn-default">
+                    <input type="checkbox" name="browser[]" value="firefox"> Firefox
+                </label>
+                <label class="btn btn-default">
+                    <input type="checkbox" name="browser[]" value="safari" /> Safari
+                </label>
+                <label class="btn btn-default">
+                    <input type="checkbox" name="browser[]" value="opera"> Opera
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label">Priority</label>
+        <div class="col-md-3">
+            <select class="form-control" name="priority">
+                <option value="">Choose the priority</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-5 col-md-offset-3">
+            <button type="submit" class="btn btn-default">Report issue</button>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+                                </div>
+
+                                <div class="tab-pane" id="report-js-tab">
+{% highlight javascript hl_lines="3 48 55 56 57" %}
+$(document).ready(function() {
+    $('#reportForm')
+        .bootstrapValidator({
+            excluded: ':disabled',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                title: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The title is required'
+                        }
+                    }
+                },
+                description: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The abstract is required'
+                        }
+                    }
+                },
+                os: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The operating system is required'
+                        }
+                    }
+                },
+                'browser[]': {
+                    validators: {
+                        notEmpty: {
+                            message: 'Choose at least one browser'
+                        }
+                    }
+                },
+                priority: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The priority is required'
+                        }
+                    }
+                }
+            }
+        })
+        .on('error.field.bv', function(e, data) {
+            // $(e.target)  --> The field element
+            // data.bv      --> The BootstrapValidator instance
+            // data.field   --> The field name
+            // data.element --> The field element
+
+            // Hide the messages
+            data.element
+                .data('bv.messages')
+                .find('.help-block[data-bv-for="' + data.field + '"]').hide();
+        });
+});
+{% endhighlight %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    $('#enableButtonForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                task: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The task is required'
+                        }
+                    }
+                },
+                description: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The description is required'
+                        }
+                    }
+                },
+                priority: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The priority is required'
+                        }
+                    }
+                }
+            }
+        })
+        .on('status.field.bv', function(e, data) {
+            data.bv.disableSubmitButtons(false);
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+        });
+
+    $('#hidingSuccessForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                title: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The title is required'
+                        }
+                    }
+                },
+                abstract: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The abstract is required'
+                        },
+                        stringLength: {
+                            max: 400,
+                            message: 'The abstract must be less than 400 characters'
+                        }
+                    }
+                },
+                'topics[]': {
+                    validators: {
+                        notEmpty: {
+                            message: 'The topic is required'
+                        },
+                        choice: {
+                            min: 2,
+                            max: 3,
+                            message: 'Please choose 2 - 3 topics'
+                        }
+                    }
+                },
+                sessionType: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The session type is required'
+                        }
+                    }
+                }
+            }
+        })
+        .on('success.field.bv', function(e, data) {
+            var $parent = data.element.parents('.form-group');
+            $parent.removeClass('has-success');
+
+            // Hide the success icon
+            $parent.find('.form-control-feedback[data-bv-icon-for="' + data.field + '"]').hide();
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+        });
+
+    $('#reportForm')
+        .bootstrapValidator({
+            excluded: ':disabled',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                title: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The title is required'
+                        }
+                    }
+                },
+                description: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The abstract is required'
+                        }
+                    }
+                },
+                os: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The operating system is required'
+                        }
+                    }
+                },
+                'browser[]': {
+                    validators: {
+                        notEmpty: {
+                            message: 'Choose at least one browser'
+                        }
+                    }
+                },
+                priority: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The priority is required'
+                        }
+                    }
+                }
+            }
+        })
+        .on('error.field.bv', function(e, data) {
+            // Hide the message
+            data.element
+                .data('bv.messages')
+                .find('.help-block[data-bv-for="' + data.field + '"]')
+                    .hide();
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+        });
+});
+</script>

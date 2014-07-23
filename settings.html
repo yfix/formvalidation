@@ -2977,7 +2977,7 @@ $(document).ready(function() {
         // on('init.field.bv') must be declared
         // before calling .bootstrapValidator(options)
         .on('init.field.bv', function(e, data) {
-            // $(e.target)  --> The form instance
+            // $(e.target)  --> The field element
             // data.bv      --> The BootstrapValidator instance
             // data.field   --> The field name
             // data.element --> The field element
@@ -3118,6 +3118,7 @@ $(document).ready(function() {
 
                         <h4>Examples</h4>
                         <ul>
+                            <li><a href="/examples/changing-default-behaviour/">Changing default behaviour</a></li>
                             <li><a href="/examples/showing-message-custom-area/#using-events">Showing messages in custom area</a></li>
                             <li><a href="/examples/showing-valid-message/">Showing valid message</a></li>
                         </ul>
