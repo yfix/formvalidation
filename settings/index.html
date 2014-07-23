@@ -2922,7 +2922,7 @@
 <span class="hll">        <span class="c1">// on(&#39;init.field.bv&#39;) must be declared</span>
 </span><span class="hll">        <span class="c1">// before calling .bootstrapValidator(options)</span>
 </span><span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;init.field.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-</span>            <span class="c1">// $(e.target)  --&gt; The form instance</span>
+</span>            <span class="c1">// $(e.target)  --&gt; The field element</span>
             <span class="c1">// data.bv      --&gt; The BootstrapValidator instance</span>
             <span class="c1">// data.field   --&gt; The field name</span>
             <span class="c1">// data.element --&gt; The field element</span>
@@ -3054,6 +3054,7 @@
 
                         <h4>Examples</h4>
                         <ul>
+                            <li><a href="/examples/changing-default-behaviour/">Changing default behaviour</a></li>
                             <li><a href="/examples/showing-message-custom-area/#using-events">Showing messages in custom area</a></li>
                             <li><a href="/examples/showing-valid-message/">Showing valid message</a></li>
                         </ul>
