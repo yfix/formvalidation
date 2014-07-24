@@ -79,7 +79,7 @@ comments:         true
                                         <div class="form-group">
                                             <label class="col-md-3 control-label">Priority</label>
                                             <div class="col-md-5">
-                                                <select class="form-control" name="priority">
+                                                <select class="form-control" name="priority" style="width: 200px;">
                                                     <option value="">Choose the priority</option>
                                                     <option value="low">Low</option>
                                                     <option value="medium">Medium</option>
@@ -116,7 +116,7 @@ comments:         true
     <div class="form-group">
         <label class="col-md-3 control-label">Priority</label>
         <div class="col-md-5">
-            <select class="form-control" name="priority">
+            <select class="form-control" name="priority" style="width: 200px;">
                 <option value="">Choose the priority</option>
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
@@ -181,6 +181,21 @@ $(document).ready(function() {
                                 </div>
                             </div>
                         </div>
+                        <p>If you want the submit button to be enabled only after clicking it, use the <a href="/api/#get-submit-button">getSubmitButton()</a> method to check whether or not the submit button is clicked:</p>
+{% highlight javascript hl_lines="6 7" %}
+$(document).ready(function() {
+    $('#enableButtonForm')
+        .bootstrapValidator({
+            ...
+        })
+        .on('status.field.bv', function(e, data) {
+            if (data.bv.getSubmitButton()) {
+                data.bv.disableSubmitButtons(false);
+            }
+        });
+});
+{% endhighlight %}
+
                     </section>
 
                     <section>
