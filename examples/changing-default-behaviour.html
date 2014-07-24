@@ -195,7 +195,6 @@ $(document).ready(function() {
         });
 });
 {% endhighlight %}
-
                     </section>
 
                     <section>
@@ -689,6 +688,105 @@ $(document).ready(function() {
                             </div>
                         </div>
                     </section>
+
+                    <section>
+                        <h3 id="showing-one-message-each-time">Showing only one message each time</h3>
+                        <p>By default, all messages are shown at the same time. It's also possible if you want only one message to be shown each time by triggering the <a href="/settings/#event-validator">error.validator.bv</a> event.</p>
+                        <p>This event is triggered when the field doesn't pass a particular validator.</p>
+                        <p>In the following registration form, the username field must pass three validators. But there is one message shown each time.</p>
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#registration-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#registration-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#registration-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="registration-form-tab">
+                                    <form id="registrationForm" method="post" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Username</label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" name="username" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-md-5 col-md-offset-3">
+                                                <button type="submit" class="btn btn-default">Validate</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane" id="registration-html-tab">
+{% highlight html %}
+<form id="registrationForm" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-md-3 control-label">Username</label>
+        <div class="col-md-4">
+            <input type="text" class="form-control" name="username" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-5 col-md-offset-3">
+            <button type="submit" class="btn btn-default">Validate</button>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+                                </div>
+
+                                <div class="tab-pane" id="registration-js-tab">
+{% highlight javascript hl_lines="28 38 40" %}
+$(document).ready(function() {
+    $('#registrationForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                username: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The username is required and cannot be empty'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 30,
+                            message: 'The username must be more than 6 and less than 30 characters long'
+                        },
+                        regexp: {
+                            regexp: /^[a-zA-Z0-9]+$/,
+                            message: 'The username can only consist of alphabetical and digits'
+                        }
+                    }
+                }
+            }
+        })
+        .on('error.validator.bv', function(e, data) {
+            // $(e.target)    --> The field element
+            // data.bv        --> The BootstrapValidator instance
+            // data.field     --> The field name
+            // data.element   --> The field element
+            // data.validator --> The current validator name
+
+            data.element
+                .data('bv.messages')
+                // Hide all the messages
+                .find('.help-block[data-bv-for="' + data.field + '"]').hide()
+                // Show only message associated with current validator
+                .filter('[data-bv-validator="' + data.validator + '"]').show();
+        });
+});
+{% endhighlight %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </section>
             </div>
         </div>
@@ -847,6 +945,45 @@ $(document).ready(function() {
                 .data('bv.messages')
                 .find('.help-block[data-bv-for="' + data.field + '"]')
                     .hide();
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+        });
+
+    $('#registrationForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                username: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The username is required and cannot be empty'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 30,
+                            message: 'The username must be more than 6 and less than 30 characters long'
+                        },
+                        regexp: {
+                            regexp: /^[a-zA-Z0-9]+$/,
+                            message: 'The username can only consist of alphabetical and digits'
+                        }
+                    }
+                }
+            }
+        })
+        .on('error.validator.bv', function(e, data) {
+            data.element
+                .data('bv.messages')
+                // Hide all the messages
+                .find('.help-block[data-bv-for="' + data.field + '"]').hide()
+                // Show only message associated with current validator
+                .filter('[data-bv-validator="' + data.validator + '"]').show();
         })
         .on('success.form.bv', function(e) {
             // Prevent form submission
