@@ -509,7 +509,6 @@
             <span class="p">}</span>
         <span class="p">});</span>
 <span class="p">});</span></code></pre></div>
-
                     </section>
 
                     <section>
@@ -995,6 +994,101 @@
                             </div>
                         </div>
                     </section>
+
+                    <section>
+                        <h3 id="showing-one-message-each-time">Showing only one message each time</h3>
+                        <p>By default, all messages are shown at the same time. It's also possible if you want only one message to be shown each time by triggering the <a href="/settings/#event-validator">error.validator.bv</a> event.</p>
+                        <p>This event is triggered when the field doesn't pass a particular validator.</p>
+                        <p>In the following registration form, the username field must pass three validators. But there is one message shown each time.</p>
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#registration-form-tab" data-toggle="tab">Try it</a></li>
+                                <li><a href="#registration-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#registration-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="registration-form-tab">
+                                    <form id="registrationForm" method="post" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Username</label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" name="username" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-md-5 col-md-offset-3">
+                                                <button type="submit" class="btn btn-default">Validate</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="tab-pane" id="registration-html-tab">
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;registrationForm&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-md-3 control-label&quot;</span><span class="nt">&gt;</span>Username<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-4&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-5 col-md-offset-3&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>Validate<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
+                                </div>
+
+                                <div class="tab-pane" id="registration-js-tab">
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#registrationForm&#39;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+            <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
+                <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
+                <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
+            <span class="p">},</span>
+            <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">username</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">notEmpty</span><span class="o">:</span> <span class="p">{</span>
+                            <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The username is required and cannot be empty&#39;</span>
+                        <span class="p">},</span>
+                        <span class="nx">stringLength</span><span class="o">:</span> <span class="p">{</span>
+                            <span class="nx">min</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span>
+                            <span class="nx">max</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span>
+                            <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The username must be more than 6 and less than 30 characters long&#39;</span>
+                        <span class="p">},</span>
+                        <span class="nx">regexp</span><span class="o">:</span> <span class="p">{</span>
+                            <span class="nx">regexp</span><span class="o">:</span> <span class="sr">/^[a-zA-Z0-9]+$/</span><span class="p">,</span>
+                            <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The username can only consist of alphabetical and digits&#39;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+<span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error.validator.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span>            <span class="c1">// $(e.target)    --&gt; The field element</span>
+            <span class="c1">// data.bv        --&gt; The BootstrapValidator instance</span>
+            <span class="c1">// data.field     --&gt; The field name</span>
+            <span class="c1">// data.element   --&gt; The field element</span>
+            <span class="c1">// data.validator --&gt; The current validator name</span>
+
+            <span class="nx">data</span><span class="p">.</span><span class="nx">element</span>
+                <span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;bv.messages&#39;</span><span class="p">)</span>
+                <span class="c1">// Hide all the messages</span>
+<span class="hll">                <span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.help-block[data-bv-for=&quot;&#39;</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">field</span> <span class="o">+</span> <span class="s1">&#39;&quot;]&#39;</span><span class="p">).</span><span class="nx">hide</span><span class="p">()</span>
+</span>                <span class="c1">// Show only message associated with current validator</span>
+<span class="hll">                <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">&#39;[data-bv-validator=&quot;&#39;</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">validator</span> <span class="o">+</span> <span class="s1">&#39;&quot;]&#39;</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+</span>        <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </section>
             </div>
         </div>
@@ -1153,6 +1247,45 @@ $(document).ready(function() {
                 .data('bv.messages')
                 .find('.help-block[data-bv-for="' + data.field + '"]')
                     .hide();
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+        });
+
+    $('#registrationForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                username: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The username is required and cannot be empty'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 30,
+                            message: 'The username must be more than 6 and less than 30 characters long'
+                        },
+                        regexp: {
+                            regexp: /^[a-zA-Z0-9]+$/,
+                            message: 'The username can only consist of alphabetical and digits'
+                        }
+                    }
+                }
+            }
+        })
+        .on('error.validator.bv', function(e, data) {
+            data.element
+                .data('bv.messages')
+                // Hide all the messages
+                .find('.help-block[data-bv-for="' + data.field + '"]').hide()
+                // Show only message associated with current validator
+                .filter('[data-bv-validator="' + data.validator + '"]').show();
         })
         .on('success.form.bv', function(e) {
             // Prevent form submission
