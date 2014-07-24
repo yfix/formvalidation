@@ -399,7 +399,7 @@
                                         <div class="form-group">
                                             <label class="col-md-3 control-label">Priority</label>
                                             <div class="col-md-5">
-                                                <select class="form-control" name="priority">
+                                                <select class="form-control" name="priority" style="width: 200px;">
                                                     <option value="">Choose the priority</option>
                                                     <option value="low">Low</option>
                                                     <option value="medium">Medium</option>
@@ -435,7 +435,7 @@
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-md-3 control-label&quot;</span><span class="nt">&gt;</span>Priority<span class="nt">&lt;/label&gt;</span>
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-5&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;priority&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;priority&quot;</span> <span class="na">style=</span><span class="s">&quot;width: 200px;&quot;</span><span class="nt">&gt;</span>
                 <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>Choose the priority<span class="nt">&lt;/option&gt;</span>
                 <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;low&quot;</span><span class="nt">&gt;</span>Low<span class="nt">&lt;/option&gt;</span>
                 <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;medium&quot;</span><span class="nt">&gt;</span>Medium<span class="nt">&lt;/option&gt;</span>
@@ -497,6 +497,19 @@
                                 </div>
                             </div>
                         </div>
+                        <p>If you want the submit button to be enabled only after clicking it, use the <a href="/api/#get-submit-button">getSubmitButton()</a> method to check whether or not the submit button is clicked:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#enableButtonForm&#39;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+            <span class="p">...</span>
+        <span class="p">})</span>
+<span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;status.field.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="hll">            <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">bv</span><span class="p">.</span><span class="nx">getSubmitButton</span><span class="p">())</span> <span class="p">{</span>
+</span>                <span class="nx">data</span><span class="p">.</span><span class="nx">bv</span><span class="p">.</span><span class="nx">disableSubmitButtons</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
+
                     </section>
 
                     <section>
