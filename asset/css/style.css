@@ -30,21 +30,12 @@ h3,
 h4 {
   font-family: 'Merriweather', serif;
 }
-html,
-body {
-  height: 100%;
-}
-.bv-wrapper {
+html {
+  position: relative;
   min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -400px auto;
 }
-.bv-main {
-  padding-top: 40px;
-}
-.bv-pusher {
-  height: 400px;
+body {
+  margin-bottom: 430px;
 }
 footer {
   background-color: #384452;
@@ -52,6 +43,9 @@ footer {
   border-top: 1px solid #d5d5d5;
   height: 400px;
   padding-top: 30px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 footer .row {
   padding-bottom: 20px;
@@ -170,6 +164,7 @@ footer p {
   background-color: #00b3fe;
   color: #fff;
   padding-top: 80px;
+  margin-top: -20px;
 }
 .bv-heading a,
 .bv-heading a:hover {
