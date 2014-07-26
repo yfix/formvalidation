@@ -1,5 +1,4 @@
-@footer-height: 400px;
-@navbar-height: 40px;
+@footer-height: 430px;
 
 // Reset
 a, a:hover {
@@ -35,28 +34,22 @@ h1, h2, h3, h4 {
 }
 
 // Sticky footer
-html, body {
-  height: 100%;
-}
-
-.bv-wrapper {
+html {
+  position: relative;
   min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -@footer-height auto;
 }
-.bv-main {
-  padding-top: @navbar-height;
-}
-.bv-pusher {
-  height: @footer-height;
+body {
+  margin-bottom: @footer-height;
 }
 footer {
   background-color: #384452;
   color: #bfc9d3;
   border-top: 1px solid #d5d5d5;
-  height: @footer-height;
+  height: @footer-height - 30px;
   padding-top: 30px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   .row {
     padding-bottom: 20px;
   }
@@ -191,6 +184,7 @@ footer {
   background-color: #00b3fe;
   color: #fff;
   padding-top: 80px;
+  margin-top: -20px;
   a, a:hover {
     color: #fff;
   }
