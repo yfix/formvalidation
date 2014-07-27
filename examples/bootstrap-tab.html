@@ -42,10 +42,65 @@ comments:         true
 excluded: [':disabled']
 {% endhighlight %}
 
+                    <h3 id="adding-icon-tab">Adding icon to tab</h3>
+                    <p>Assume that you want to add an icon to tab to indicate the valid or invalid tab. A tab is called valid if all fields inside it are valid. Otherwise, if there is at least one invalid field inside tab, the tab is invalid.</p>
+                    <p>Firstly, we need to prepare the icon placed at the tab title:</p>
+{% highlight html hl_lines="2 3" %}
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#info-tab" data-toggle="tab">Tab title <i class="fa"></i></a></li>
+    <li><a href="#address-tab" data-toggle="tab">Tab title <i class="fa"></i></a></li>
+</ul>
+{% endhighlight %}
+
+                    <p>Lastly, add success/error class to icon when the field is valid/invalid by triggering the <code>error.field.bv</code> and <code>success.field.bv</code> <a href="/settings/#event-field">events</a>:</p>
+{% highlight javascript hl_lines="9 23 35 37" %}
+$(document).ready(function() {
+    $('#accountForm')
+        .bootstrapValidator({
+            excluded: [':disabled'],
+            ...
+        })
+
+        // Called when a field is invalid
+        .on('error.field.bv', function(e, data) {
+            // data.element --> The field element
+
+            var $tabPane = data.element.parents('.tab-pane'),
+                tabId    = $tabPane.attr('id');
+
+            $('a[href="#' + tabId + '"][data-toggle="tab"]')
+                .parent()
+                .find('i')
+                .removeClass('fa-check')
+                .addClass('fa-times');
+        })
+
+        // Called when a field is valid
+        .on('success.field.bv', function(e, data) {
+            // data.bv      --> The BootstrapValidator instance
+            // data.element --> The field element
+
+            var $tabPane = data.element.parents('.tab-pane'),
+                tabId    = $tabPane.attr('id'),
+                $icon    = $('a[href="#' + tabId + '"][data-toggle="tab"]')
+                            .parent()
+                            .find('i')
+                            .removeClass('fa-check fa-times');
+
+            // Check if the submit button is clicked
+            if (data.bv.getSubmitButton()) {
+                // Check if all fields in tab are valid
+                var isValidTab = data.bv.isValidContainer($tabPane);
+                $icon.addClass(isValidTab ? 'fa-check' : 'fa-times');
+            }
+        });
+});
+{% endhighlight %}
+
                     <div class="bv-example">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#info-tab" data-toggle="tab">Information</a></li>
-                            <li><a href="#address-tab" data-toggle="tab">Address</a></li>
+                            <li class="active"><a href="#info-tab" data-toggle="tab">Information <i class="fa"></i></a></li>
+                            <li><a href="#address-tab" data-toggle="tab">Address <i class="fa"></i></a></li>
                         </ul>
 
                         <form id="accountForm" method="post" class="form-horizontal">
@@ -101,9 +156,11 @@ excluded: [':disabled']
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="col-lg-5 col-lg-offset-3">
-                                    <button type="submit" class="btn btn-primary">Validate</button>
+                            <div style="margin: 15px">
+                                <div class="form-group">
+                                    <div class="col-lg-5 col-lg-offset-3">
+                                        <button type="submit" class="btn btn-default">Validate</button>
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -117,7 +174,12 @@ excluded: [':disabled']
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-html-tab">
-{% highlight html %}
+{% highlight html hl_lines="2 3" %}
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#info-tab" data-toggle="tab">Information <i class="fa"></i></a></li>
+    <li><a href="#address-tab" data-toggle="tab">Address <i class="fa"></i></a></li>
+</ul>
+
 <form id="accountForm" method="post" class="form-horizontal">
     <div class="tab-content">
         <div class="tab-pane active" id="info-tab">
@@ -175,7 +237,7 @@ excluded: [':disabled']
 
     <div class="form-group">
         <div class="col-lg-5 col-lg-offset-3">
-            <button type="submit" class="btn btn-primary">Validate</button>
+            <button type="submit" class="btn btn-default">Validate</button>
         </div>
     </div>
 </form>
@@ -183,7 +245,7 @@ excluded: [':disabled']
                             </div>
 
                             <div class="tab-pane" id="tabs-js-tab">
-{% highlight javascript hl_lines="6" %}
+{% highlight javascript hl_lines="6 44 57 69 71" %}
 $(document).ready(function() {
     $('#accountForm')
         .bootstrapValidator({
@@ -224,6 +286,38 @@ $(document).ready(function() {
                         }
                     }
                 }
+            }
+        })
+        // Called when a field is invalid
+        .on('error.field.bv', function(e, data) {
+            // data.element --> The field element
+
+            var $tabPane = data.element.parents('.tab-pane'),
+                tabId    = $tabPane.attr('id');
+
+            $('a[href="#' + tabId + '"][data-toggle="tab"]')
+                .parent()
+                .find('i')
+                .removeClass('fa-check')
+                .addClass('fa-times');
+        })
+        // Called when a field is valid
+        .on('success.field.bv', function(e, data) {
+            // data.bv      --> The BootstrapValidator instance
+            // data.element --> The field element
+
+            var $tabPane = data.element.parents('.tab-pane'),
+                tabId    = $tabPane.attr('id'),
+                $icon    = $('a[href="#' + tabId + '"][data-toggle="tab"]')
+                            .parent()
+                            .find('i')
+                            .removeClass('fa-check fa-times');
+
+            // Check if the submit button is clicked
+            if (data.bv.getSubmitButton()) {
+                // Check if all fields in tab are valid
+                var isValidTab = data.bv.isValidContainer($tabPane);
+                $icon.addClass(isValidTab ? 'fa-check' : 'fa-times');
             }
         });
 });
@@ -276,6 +370,38 @@ $(document).ready(function() {
                         }
                     }
                 }
+            }
+        })
+        // Called when a field is invalid
+        .on('error.field.bv', function(e, data) {
+            // data.element --> The field element
+
+            var $tabPane = data.element.parents('.tab-pane'),
+                tabId    = $tabPane.attr('id');
+
+            $('a[href="#' + tabId + '"][data-toggle="tab"]')
+                .parent()
+                .find('i')
+                .removeClass('fa-check')
+                .addClass('fa-times');
+        })
+        // Called when a field is valid
+        .on('success.field.bv', function(e, data) {
+            // data.bv      --> The BootstrapValidator instance
+            // data.element --> The field element
+
+            var $tabPane = data.element.parents('.tab-pane'),
+                tabId    = $tabPane.attr('id'),
+                $icon    = $('a[href="#' + tabId + '"][data-toggle="tab"]')
+                            .parent()
+                            .find('i')
+                            .removeClass('fa-check fa-times');
+
+            // Check if the submit button is clicked
+            if (data.bv.getSubmitButton()) {
+                // Check if all fields in tab are valid
+                var isValidTab = data.bv.isValidContainer($tabPane);
+                $icon.addClass(isValidTab ? 'fa-check' : 'fa-times');
             }
         })
         .on('success.form.bv', function(e) {
