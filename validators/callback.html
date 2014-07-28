@@ -106,7 +106,8 @@ function(value, validator, $field) {
 
                     <section>
                         <h3 id="basic-example">Basic</h3>
-                        <p>In the following form, user is asked to enter a correct answer of simple operation which is generated randomly:</p>
+                        <p>In the following form, user is asked to enter a correct answer of simple operation which is generated randomly.</p>
+                        <p>The captcha is also generated after form submission by triggering the <a href="/settings/#event-form">error.form.bv</a> event.</p>
 
                         <div class="bv-example">
                             <ul class="nav nav-tabs">
@@ -120,8 +121,14 @@ function(value, validator, $field) {
                                     <form id="captchaForm" class="form-horizontal">
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label" id="captchaOperation"></label>
-                                            <div class="col-lg-2">
+                                            <div class="col-lg-3">
                                                 <input type="text" class="form-control" name="captcha" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-5 col-lg-offset-3">
+                                                <button type="submit" class="btn btn-default">Validate</button>
                                             </div>
                                         </div>
                                     </form>
@@ -132,8 +139,14 @@ function(value, validator, $field) {
 <form id="captchaForm" class="form-horizontal">
     <div class="form-group">
         <label class="col-lg-3 control-label" id="captchaOperation"></label>
-        <div class="col-lg-2">
+        <div class="col-lg-3">
             <input type="text" class="form-control" name="captcha" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-5 col-lg-offset-3">
+            <button type="submit" class="btn btn-default">Validate</button>
         </div>
     </div>
 </form>
@@ -141,7 +154,7 @@ function(value, validator, $field) {
                                 </div>
 
                                 <div class="tab-pane" id="callback-js-tab">
-{% highlight javascript hl_lines="19" %}
+{% highlight javascript hl_lines="13 27 38" %}
 $(document).ready(function() {
     // Return a random number between min and max
     function randomNumber(min, max) {
@@ -149,30 +162,39 @@ $(document).ready(function() {
     };
 
     // Generate a sum of two random numbers
-    $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
+    function generateCaptcha() {
+        $('#captchaOperation')
+            .html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
+    };
 
-    $('#captchaForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            captcha: {
-                validators: {
-                    callback: {
-                        message: 'Wrong answer',
-                        callback: function(value, validator) {
-                            // Determine the numbers which are generated in captchaOperation
-                            var items = $('#captchaOperation').html().split(' '),
-                                sum   = parseInt(items[0]) + parseInt(items[2]);
-                            return value == sum;
+    generateCaptcha();
+
+    $('#captchaForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                captcha: {
+                    validators: {
+                        callback: {
+                            message: 'Wrong answer',
+                            callback: function(value, validator) {
+                                // Determine the numbers which are generated in captchaOperation
+                                var items = $('#captchaOperation').html().split(' '),
+                                    sum   = parseInt(items[0]) + parseInt(items[2]);
+                                return value == sum;
+                            }
                         }
                     }
                 }
             }
-        }
-    });
+        })
+        .on('error.form.bv', function(e) {
+            generateCaptcha();
+        });
 });
 {% endhighlight %}
                                 </div>
@@ -222,7 +244,11 @@ $(document).ready(function() {
     };
 
     // Generate a sum of two random numbers
-    $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
+    function generateCaptcha() {
+        $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
+    };
+
+    generateCaptcha();
 
     $('#callbackForm').bootstrapValidator({
         feedbackIcons: {
@@ -361,30 +387,42 @@ $(document).ready(function() {
         return Math.floor(Math.random() * (max - min + 1) + min);
     };
 
-    $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
+    function generateCaptcha() {
+        $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
+    };
 
-    $('#captchaForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            captcha: {
-                validators: {
-                    callback: {
-                        message: 'Wrong answer',
-                        callback: function(value, validator) {
-                            // Determine the numbers which are generated in captchaOperation
-                            var items = $('#captchaOperation').html().split(' '),
-                                sum   = parseInt(items[0]) + parseInt(items[2]);
-                            return value == sum;
+    generateCaptcha();
+
+    $('#captchaForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                captcha: {
+                    validators: {
+                        callback: {
+                            message: 'Wrong answer',
+                            callback: function(value, validator) {
+                                // Determine the numbers which are generated in captchaOperation
+                                var items = $('#captchaOperation').html().split(' '),
+                                    sum   = parseInt(items[0]) + parseInt(items[2]);
+                                return value == sum;
+                            }
                         }
                     }
                 }
             }
-        }
-    });
+        })
+        .on('error.form.bv', function(e) {
+            generateCaptcha();
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+        });
 
     $('#securePasswordForm').bootstrapValidator({
         feedbackIcons: {
