@@ -110,6 +110,27 @@ related:
                             </tr>
                         </tbody>
                     </table>
+
+                    <div class="bv-box bv-box-info">
+                        <h5 id="4-digits-us-zipcode"><i></i>4 digits US zipcode</h5>
+                        <p>This validator supports 4 digits US zipcode. If you want a valid US zipcode to be 5 digits exactly, use the <a href="/validators/regexp/">regexp</a> validator:</p>
+{% highlight javascript hl_lines="7" %}
+$(document).ready(function() {
+    $('#postcodeForm').bootstrapValidator({
+        fields: {
+            postcode: {
+                validators: {
+                    regexp: {
+                        regexp: /^\d{5}$/,
+                        message: 'The US zipcode must contain 5 digits'
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                    </div>
                 </section>
 
                 <section>
