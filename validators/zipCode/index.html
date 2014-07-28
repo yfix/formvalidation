@@ -203,6 +203,25 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    <div class="bv-box bv-box-info">
+                        <h5 id="4-digits-us-zipcode"><i></i>4 digits US zipcode</h5>
+                        <p>This validator supports 4 digits US zipcode. If you want a valid US zipcode to be 5 digits exactly, use the <a href="/validators/regexp/">regexp</a> validator:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#postcodeForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+        <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">postcode</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">regexp</span><span class="o">:</span> <span class="p">{</span>
+<span class="hll">                        <span class="nx">regexp</span><span class="o">:</span> <span class="sr">/^\d{5}$/</span><span class="p">,</span>
+</span>                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The US zipcode must contain 5 digits&#39;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
+                    </div>
                 </section>
 
                 <section>
