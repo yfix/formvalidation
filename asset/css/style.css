@@ -81,13 +81,13 @@ footer p {
   content: 'upcoming v0.5.0';
 }
 .bv-news {
-  background: #2ecc71;
+  background: #f39c12;
   border-radius: 4px;
   color: #fff;
   padding: 0 5px;
 }
 .bv-news:before {
-  content: 'v0.5.0';
+  content: 'new';
 }
 .bv-separator {
   border-bottom: 1px solid #eee;
