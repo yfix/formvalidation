@@ -10,6 +10,9 @@
 - name:   Czech
   file:   cs_CZ.js
   author: AdwinTrave
+- name:   Danish
+  file:   da_DK.js
+  author: Djarnis
 - name:   Dutch (Belgium)
   file:   be_NL.js
   author: dokterpasta
