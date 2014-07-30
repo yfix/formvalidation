@@ -85,18 +85,6 @@ $(form).bootstrapValidator({
     }
 });{% endhighlight %}
 
-                    <p>For Rails, the input field is constructed from model name and field name. For example, user have email as field, when form helper render
-                        view, the input field name will be <code>'user[email]'</code>. The syntax for these is somewhat different as shown below:</p>
-
-{% highlight javascript %}
-$(form).bootstrapValidator({
-    fields: {
-        'user[email]': {
-            validatorName: validatorOptions
-        }
-    }
-});{% endhighlight %}
-
                     <div class="bv-box bv-box-info">
                         <h5><i></i>How built-in validators are developed</h5>
                         <p>To see how built-in validators are developed, you can look at their sources located at the <a href="{{ site.repository.source }}/tree/master/src/js/validator">src/js/validator</a> directory.</p>

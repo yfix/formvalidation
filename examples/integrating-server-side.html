@@ -1,0 +1,184 @@
+---
+layout:           doc
+title:            Integrating with server side
+permalink:        /examples/integrating-server-side/
+categories:
+previous_section:
+next_section:
+comments:         true
+---
+
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/examples/">Examples</a></h1>
+            </div>
+
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                <ul>
+                    <li><a href="#asp-net">ASP.Net</a></li>
+                    <li><a href="#rails">Rails</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2>Integrating with server side</h2>
+                    <p>This guide shows how to integrate BootstrapValidator with the server side. If you use the plugin with your server side language, please leave the sample code in the <a href="#comments">comments</a>. I then will update the guide.</p>
+
+                    <section>
+                        <h3 id="asp-net">ASP.Net</h3>
+                        <p>Since ASP.Net changes the field name when rendering the controls, you have to use <code><%= control.UniqueID %></code> as the name of fields.</p>
+
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#aspnet-programmatic-tab" data-toggle="tab">Programmatic usage</a></li>
+                                <li><a href="#aspnet-declarative-tab" data-toggle="tab">Declarative usage</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="aspnet-programmatic-tab">
+{% highlight javascript hl_lines="7 19" %}
+<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true"
+    CodeBehind="..." Inherits="..." %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <!-- Fields -->
+    <asp:TextBox runat="server" CssClass="form-control" ID="userNameTextBox" />
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#form1').bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                // There is no single quote
+                <%=userNameTextBox.UniqueID%>: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The username is required and cannot be empty'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 30,
+                            message: 'The username must be more than 6 and less than 30 characters long'
+                        },
+                        regexp: {
+                            regexp: /^[a-zA-Z0-9]+$/,
+                            message: 'The username can only consist of alphabetical and number'
+                        },
+                        different: {
+                            field: 'password',
+                            message: 'The username and password cannot be the same as each other'
+                        }
+                    }
+                }
+            }
+        });
+    });
+    </script>
+</asp:Content>
+{% endhighlight %}
+                                </div>
+
+                                <div class="tab-pane" id="aspnet-declarative-tab">
+{% highlight javascript hl_lines="8 9 11 12 13 14 16 17 18 20 21 22 26" %}
+<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true"
+    CodeBehind="..." Inherits="..." %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <!-- Fields -->
+    <asp:TextBox runat="server" CssClass="form-control" ID="userNameTextBox"
+            data-bv-notempty="true"
+            data-bv-notempty-message="The username is required and cannot be empty"
+
+            data-bv-stringlength="true"
+            data-bv-stringlength-min="6"
+            data-bv-stringlength-max="30"
+            data-bv-stringlength-message="The username must be more than 6 and less than 30 characters long"
+
+            data-bv-regexp="true"
+            data-bv-regexp-regexp="^[a-zA-Z0-9]+$"
+            data-bv-regexp-message="The username can only consist of alphabetical and number"
+
+            data-bv-different="true"
+            data-bv-different-field="password"
+            data-bv-different-message="The username and password cannot be the same as each other" />
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#form1').bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            }
+        });
+    });
+    </script>
+</asp:Content>
+{% endhighlight %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3 id="rails">Rails</h3>
+                        <p>For Rails, the input field is constructed from model name and field name. For example, user have email as field, when form helper render
+                        view, the input field name will be <code>'user[email]'</code>. The syntax for calling the plugin looks like below:</p>
+{% highlight javascript hl_lines="3" %}
+$(form).bootstrapValidator({
+    fields: {
+        'user[email]': {
+            validatorName: validatorOptions
+        }
+    }
+});
+{% endhighlight %}
+
+                        <p>When using BootstrapValidator in a Rails remote form, in order to prevent the form from multiple submissions, trigger the <a href="/settings/#event-form">success.form.bv</a> event as following:</p>
+{% highlight javascript hl_lines="5 8" %}
+$(form)
+    .bootstrapValidator({
+        ...
+    })
+    .on('success.form.bv', function(e) {
+        // Called when the form is valid
+        var $form = $(e.target);
+        if ($form.data('remote') && $.rails !== undefined) {
+            e.preventDefault();
+        }
+    });
+{% endhighlight %}
+
+                        <h4>Resource:</h4>
+                        <ul>
+                            <li><a href="https://rubygems.org/gems/bootstrap-validator-rails">BootstrapValidator gem for Rails</a>, created by Jiří Kaipr (<a href="https://github.com/jkaipr">@jkaipr</a>)</li>
+                        </ul>
+                    </section>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
