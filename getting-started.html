@@ -548,6 +548,7 @@ $(document).ready(function() {
                                 <li class="active"><a href="#example-form-tab" data-toggle="tab">Try it</a></li>
                                 <li><a href="#example-programmatic-tab" data-toggle="tab">Programmatic usage</a></li>
                                 <li><a href="#example-declarative-tab" data-toggle="tab">Declarative usage</a></li>
+                                <li><a href="#example-cdn-tab" data-toggle="tab">CDN usage</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -623,14 +624,14 @@ $(document).ready(function() {
     <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css" />
 
     <!-- BootstrapValidator CSS -->
-    <link rel="stylesheet" href="/vendor/bootstrapvalidator/css/bootstrapValidator.min.css"/>
+    <link rel="stylesheet" href="/vendor/bootstrapvalidator/dist/css/bootstrapValidator.min.css"/>
 
     <!-- jQuery and Bootstrap JS -->
     <script type="text/javascript" src="/vendor/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- BootstrapValidator JS -->
-    <script type="text/javascript" src="/vendor/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
+    <script type="text/javascript" src="/vendor/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -798,14 +799,14 @@ $(document).ready(function() {
     <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css" />
 
     <!-- BootstrapValidator CSS -->
-    <link rel="stylesheet" href="/vendor/bootstrapvalidator/css/bootstrapValidator.min.css"/>
+    <link rel="stylesheet" href="/vendor/bootstrapvalidator/dist/css/bootstrapValidator.min.css"/>
 
     <!-- jQuery and Bootstrap JS -->
     <script type="text/javascript" src="/vendor/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- BootstrapValidator JS -->
-    <script type="text/javascript" src="/vendor/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
+    <script type="text/javascript" src="/vendor/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -927,6 +928,36 @@ $(document).ready(function() {
     $('#registrationForm').bootstrapValidator();
 });
 </script>
+</body>
+</html>
+{% endhighlight %}
+                                </div>
+
+                                <div class="tab-pane" id="example-cdn-tab">
+{% highlight html hl_lines="82 93 94" %}
+<!doctype html>
+<html>
+<head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.min.css"/>
+
+    <!-- Include FontAwesome CSS if you want to use feedback icons provided by FontAwesome -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/fontawesome/4.1.0/css/font-awesome.min.css" />
+
+    <!-- BootstrapValidator CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css"/>
+
+    <!-- jQuery and Bootstrap JS -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <!-- BootstrapValidator JS -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.0/js/bootstrapValidator.min.js"></script>
+</head>
+<body>
+
+    <!-- Same as Programmatic or Declarative usage -->
+
 </body>
 </html>
 {% endhighlight %}
