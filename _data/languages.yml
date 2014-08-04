@@ -33,7 +33,9 @@
   author: maramazza
 - name:   Polish
   file:   pl_PL.js
-  author: grzesiek
+  author:
+    - grzesiek
+    - lukaszbanasiak
 - name:   Portuguese (Brazil)
   file:   pt_BR.js
   author: marcuscarvalho6

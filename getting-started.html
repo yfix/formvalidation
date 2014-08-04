@@ -142,7 +142,7 @@ $ bower install bootstrapValidator
                                 <td>{{ forloop.index }}</td>
                                 <td>{{ package.name }}</td>
                                 <td><a href="/vendor/bootstrapvalidator/js/language/{{ package.file }}">{{ package.file }}</a></td>
-                                <td><a href="http://github.com/{{ package.author }}">@{{ package.author }}</a></td>
+                                <td>{% for author in package.author %}<a href="http://github.com/{{ package.author }}" style="display: block;">@{{ author }}</a>{% endfor %}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
