@@ -116,6 +116,7 @@
                 LT: 'Litwa',
                 LU: 'Luksemburg',
                 LV: 'Łotwa',
+                MA: 'Maroko',
                 MC: 'Monako',
                 MD: 'Mołdawia',
                 ME: 'Czarnogóra',
@@ -232,6 +233,7 @@
                 ES: 'Hiszpania',
                 FR: 'Francja',
                 GB: 'Wielka Brytania',
+                MA: 'Maroko',
                 US: 'USA'
             }
         },
@@ -323,10 +325,12 @@
             countryNotSupported: 'Kod kraju %s nie jest obsługiwany',
             country: 'Wprowadź poprawny %s kod pocztowy',
             countries: {
+                BR: 'brazylijski',
                 CA: 'kanadyski',
                 DK: 'duński',
                 GB: 'brytyjski',
                 IT: 'włoski',
+                MA: 'Maroko',
                 NL: 'holenderski',
                 SE: 'szwecki',
                 SG: 'singapurski',

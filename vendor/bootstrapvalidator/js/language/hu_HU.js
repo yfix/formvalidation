@@ -116,6 +116,7 @@
                 LT: 'litván',
                 LU: 'luxembourgi',
                 LV: 'latviai',
+                MA: 'Marokkó',
                 MC: 'monacoi',
                 MD: 'moldáv',
                 ME: 'montenegroi',
@@ -232,6 +233,7 @@
                 ES: 'spanyol',
                 FR: 'francia',
                 GB: 'Egyesült Királyság beli',
+                MA: 'Marokkó',
                 US: 'Egyesült Államok beli'
             }
         },
@@ -323,10 +325,12 @@
             countryNotSupported: '%s - nem támogatott ország',
             country: 'Kérlek, hogy helyes %s irányítószámot adj meg',
             countries: {
+                BR: 'brazil',
                 CA: 'kanadai',
                 DK: 'dán',
                 GB: 'Egyesült Királyság beli',
                 IT: 'olasz',
+                MA: 'Marokkó',
                 NL: 'holland',
                 SE: 'svájci',
                 SG: 'singaporei',

@@ -116,6 +116,7 @@
                 LT: 'Lituania',
                 LU: 'Luxemburgo',
                 LV: 'Letonia',
+                MA: 'Marruecos',
                 MC: 'Mónaco',
                 MD: 'Moldavia',
                 ME: 'Montenegro',
@@ -232,6 +233,7 @@
                 ES: 'España',
                 FR: 'Francia',
                 GB: 'Reino Unido',
+                MA: 'Marruecos',
                 US: 'EE.UU.'
             }
         },
@@ -323,10 +325,12 @@
             countryNotSupported: 'El código del país %s no está soportado',
             country: 'Por favor ingrese un %s válido',
             countries: {
+                BR: 'código postal Brasileño',
                 CA: 'código postal Canadiense',
                 DK: 'código postal Danés',
                 GB: 'código postal Británico',
                 IT: 'código postal Italiano',
+                MA: 'código postal Marruecos',
                 NL: 'código postal Holandés',
                 SE: 'código postal Suizo',
                 SG: 'código postal Singapurense',
