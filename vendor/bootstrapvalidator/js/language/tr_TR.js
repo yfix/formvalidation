@@ -116,6 +116,7 @@
                 LT: 'Litvanya',
                 LU: 'Lüksemburg',
                 LV: 'Letonya',
+                MA: 'Fas',
                 MC: 'Monako',
                 MD: 'Moldova',
                 ME: 'Karadağ',
@@ -232,6 +233,7 @@
                 ES: 'İspanya',
                 FR: 'Fransa',
                 GB: 'İngiltere',
+                MA: 'Fas',
                 US: 'Amerika'
             }
         },
@@ -323,10 +325,12 @@
             countryNotSupported: '%s ülke kodu desteklenmemektedir',
             country: 'Lütfen geçerli bir %s',
             countries: {
+                BR: 'Brezilyalı posta kodu',
                 CA: 'Kanada posta kodu',
                 DK: 'Danimarka posta kodu',
                 GB: 'İngiltere posta kodu',
                 IT: 'İtalya posta kodu',
+                MA: 'Fas posta kodu',
                 NL: 'Almanya posta kodu',
                 SE: 'İsveç posta kodu',
                 SG: 'Singapur posta kodu',

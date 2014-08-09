@@ -116,6 +116,7 @@
                 LT: 'Litauen',
                 LU: 'Luxembourg',
                 LV: 'Letland',
+                MA: 'Marokko',
                 MC: 'Monaco',
                 MD: 'Moldova',
                 ME: 'Montenegro',
@@ -232,6 +233,7 @@
                 ES: 'Spanien',
                 FR: 'Frankrig',
                 GB: 'England',
+                MA: 'Marokko',
                 US: 'USA'
             }
         },
@@ -323,10 +325,12 @@
             countryNotSupported: 'Landekoden %s understøttes desværre ikke',
             country: 'Udfyld venligst dette felt med et gyldigt %s',
             countries: {
+                BR: 'brasiliansk postnummer',
                 CA: 'canadisk postnummer',
                 DK: 'dansk postnummer',
                 GB: 'engelsk postnummer',
                 IT: 'italiensk postnummer',
+                MA: 'Marokko postnummer',
                 NL: 'hollandsk postnummer',
                 SE: 'svensk postnummer',
                 SG: 'singaporeansk postnummer',
