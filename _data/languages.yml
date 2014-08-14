@@ -1,3 +1,6 @@
+- name:   Belgium (Netherland)
+  file:   be_NL.js
+  author: dokterpasta
 - name:   Bulgarian
   file:   bg_BG.js
   author: mraiur
@@ -13,9 +16,9 @@
 - name:   Danish
   file:   da_DK.js
   author: Djarnis
-- name:   Dutch (Belgium)
-  file:   be_NL.js
-  author: dokterpasta
+- name:   Dutch (Netherland)
+  file:   nl_NL.js
+  author: JvanderHeide
 - name:   French
   file:   fr_FR.js
   author: dlucazeau
