@@ -1,3 +1,6 @@
+- name:   Arabic
+  file:   ar_MA.js
+  author: Arkni
 - name:   Belgium (Netherland)
   file:   be_NL.js
   author: dokterpasta
