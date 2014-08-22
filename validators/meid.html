@@ -1,21 +1,21 @@
 ---
 layout:           doc
-title:            Validate an IMEI (International Mobile Station Equipment Identity)
-permalink:        /validators/imei/
-previous_section: /validators/identical/
-next_section:     /validators/imo/
+title:            Validate a MEID (mobile equipment identifier)
+permalink:        /validators/meid/
+previous_section: /validators/mac/
+next_section:     /validators/notEmpty/
 comments:         true
-examples:         35-209900-176148-1, 35-209900-176148-23, 3568680000414120, 490154203237518, 490154203237517
+examples:         A00000049259B16, A0-000004-9259B1-6, A0 000004 9259B1 6, 2936087365007037100, 29360-87365-0070-3710-0, 29360 87365 0070 3710 0, AF0123450ABCDE, AF-012345-0ABCDE, AF 012345 0ABCDE, 293608736500703710, 29360-87365-0070-3710, 29360 87365 0070 3710, A00000049259B15, A00000049259B, 2936087365007037101, 29360873650070371
 related:
-    - meid
+    - imei
 ---
 
 <div class="bv-heading">
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / imei</h1>
-                <p>Validate an IMEI (International Mobile Station Equipment Identity).</p>
+                <h1><a href="/validators/">Validators</a> / meid</h1>
+                <p>Validate a MEID (mobile equipment identifier)</p>
             </div>
 
             <div class="col-md-4">
@@ -55,7 +55,7 @@ related:
                         <tbody>
                             <tr>
                                 <td><code>message</code></td>
-                                <td><code>data-bv-imei-message</code></td>
+                                <td><code>data-bv-meid-message</code></td>
                                 <td>String</td>
                                 <td>The error message</td>
                             </tr>
@@ -69,15 +69,15 @@ related:
                     <table class="table table-condensed">
                         <thead>
                             <tr>
-                                <th>IMEI</th>
+                                <th>MEID</th>
                                 <th>Result</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% assign examples = page.examples | split: ', ' %}
-                            {% for imei in examples %}
+                            {% for meid in examples %}
                             <tr>
-                                <td><a href="javascript: void(0);" class="sample">{{ imei }}</a></td>
+                                <td><a href="javascript: void(0);" class="sample">{{ meid }}</a></td>
                                 <td><i class="fa"></i></td>
                             </tr>
                             {% endfor %}
@@ -86,50 +86,50 @@ related:
 
                     <div class="bv-example">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#imei-form-tab" data-toggle="tab">Try it</a></li>
-                            <li><a href="#imei-html-tab" data-toggle="tab">HTML</a></li>
-                            <li><a href="#imei-js-tab" data-toggle="tab">JS</a></li>
+                            <li class="active"><a href="#meid-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#meid-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#meid-js-tab" data-toggle="tab">JS</a></li>
                         </ul>
 
                         <div class="tab-content">
-                            <div class="tab-pane active" id="imei-form-tab">
-                                <form id="imeiForm" class="form-horizontal">
+                            <div class="tab-pane active" id="meid-form-tab">
+                                <form id="meidForm" class="form-horizontal">
                                     <div class="form-group">
-                                        <label class="col-lg-3 control-label">IMEI</label>
+                                        <label class="col-lg-3 control-label">MEID</label>
                                         <div class="col-lg-5">
-                                            <input type="text" class="form-control" name="imei" />
+                                            <input type="text" class="form-control" name="meid" />
                                         </div>
                                     </div>
                                 </form>
                             </div>
 
-                            <div class="tab-pane" id="imei-html-tab">
+                            <div class="tab-pane" id="meid-html-tab">
 {% highlight html %}
-<form id="imeiForm" class="form-horizontal">
+<form id="meidForm" class="form-horizontal">
     <div class="form-group">
-        <label class="col-lg-3 control-label">IMEI</label>
+        <label class="col-lg-3 control-label">MEID</label>
         <div class="col-lg-5">
-            <input type="text" class="form-control" name="imei" />
+            <input type="text" class="form-control" name="meid" />
         </div>
     </div>
 </form>
 {% endhighlight %}
                             </div>
 
-                            <div class="tab-pane" id="imei-js-tab">
+                            <div class="tab-pane" id="meid-js-tab">
 {% highlight javascript hl_lines="11" %}
 $(document).ready(function() {
-    $('#imeiForm').bootstrapValidator({
+    $('#meidForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            imei: {
+            meid: {
                 validators: {
-                    imei: {
-                        message: 'The value is not valid IMEI'
+                    meid: {
+                        message: 'The value is not valid MEID'
                     }
                 }
             }
@@ -142,7 +142,7 @@ $(document).ready(function() {
                     </div>
                 </section>
 
-                {% include related.html %}
+                 {% include related.html %}
             </div>
         </div>
     </div>
@@ -151,31 +151,30 @@ $(document).ready(function() {
 <script>
 $(document).ready(function() {
     $('.sample').on('click', function() {
-        $('#imeiForm')
-            .find('input[name="imei"]')
+        $('#meidForm')
+            .find('input[name="meid"]')
                 .val($(this).html())
                 .end()
-            .data('bootstrapValidator')
-                .updateStatus('imei', 'NOT_VALIDATED')
-                .validate();
-        var isValid = $('#imeiForm').data('bootstrapValidator').isValid();
+            .bootstrapValidator('revalidateField', 'meid');
+
+        var isValid = $('#meidForm').data('bootstrapValidator').isValid();
         $(this)
             .parents('tr').find('i')
             .removeClass('fa-check fa-times')
             .addClass(isValid ? 'fa-check' : 'fa-times');
     });
 
-    $('#imeiForm').bootstrapValidator({
+    $('#meidForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            imei: {
+            meid: {
                 validators: {
-                    imei: {
-                        message: 'The value is not valid IMEI'
+                    meid: {
+                        message: 'The value is not valid MEID'
                     }
                 }
             }

@@ -1,21 +1,19 @@
 ---
 layout:           doc
-title:            Validate an IMEI (International Mobile Station Equipment Identity)
-permalink:        /validators/imei/
-previous_section: /validators/identical/
-next_section:     /validators/imo/
+title:            Validate an IMO (International Maritime Organization)
+permalink:        /validators/imo/
+previous_section: /validators/imei/
+next_section:     /validators/integer/
 comments:         true
-examples:         35-209900-176148-1, 35-209900-176148-23, 3568680000414120, 490154203237518, 490154203237517
-related:
-    - meid
+examples:         IMO 9074729, imo 9074729, 9074729, IMO 9074728
 ---
 
 <div class="bv-heading">
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / imei</h1>
-                <p>Validate an IMEI (International Mobile Station Equipment Identity).</p>
+                <h1><a href="/validators/">Validators</a> / imo</h1>
+                <p>Validate an IMO (International Maritime Organization)</p>
             </div>
 
             <div class="col-md-4">
@@ -34,7 +32,6 @@ related:
                 <ul>
                     <li><a href="#options">Options</a></li>
                     <li><a href="#example">Example</a></li>
-                    <li><a href="#related-validators">Related validators</a></li>
                 </ul>
             </div>
         </div>
@@ -55,7 +52,7 @@ related:
                         <tbody>
                             <tr>
                                 <td><code>message</code></td>
-                                <td><code>data-bv-imei-message</code></td>
+                                <td><code>data-bv-imo-message</code></td>
                                 <td>String</td>
                                 <td>The error message</td>
                             </tr>
@@ -69,15 +66,15 @@ related:
                     <table class="table table-condensed">
                         <thead>
                             <tr>
-                                <th>IMEI</th>
+                                <th>IMO</th>
                                 <th>Result</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% assign examples = page.examples | split: ', ' %}
-                            {% for imei in examples %}
+                            {% for imo in examples %}
                             <tr>
-                                <td><a href="javascript: void(0);" class="sample">{{ imei }}</a></td>
+                                <td><a href="javascript: void(0);" class="sample">{{ imo }}</a></td>
                                 <td><i class="fa"></i></td>
                             </tr>
                             {% endfor %}
@@ -86,50 +83,50 @@ related:
 
                     <div class="bv-example">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#imei-form-tab" data-toggle="tab">Try it</a></li>
-                            <li><a href="#imei-html-tab" data-toggle="tab">HTML</a></li>
-                            <li><a href="#imei-js-tab" data-toggle="tab">JS</a></li>
+                            <li class="active"><a href="#imo-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#imo-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#imo-js-tab" data-toggle="tab">JS</a></li>
                         </ul>
 
                         <div class="tab-content">
-                            <div class="tab-pane active" id="imei-form-tab">
-                                <form id="imeiForm" class="form-horizontal">
+                            <div class="tab-pane active" id="imo-form-tab">
+                                <form id="imoForm" class="form-horizontal">
                                     <div class="form-group">
-                                        <label class="col-lg-3 control-label">IMEI</label>
+                                        <label class="col-lg-3 control-label">IMO</label>
                                         <div class="col-lg-5">
-                                            <input type="text" class="form-control" name="imei" />
+                                            <input type="text" class="form-control" name="imo" />
                                         </div>
                                     </div>
                                 </form>
                             </div>
 
-                            <div class="tab-pane" id="imei-html-tab">
+                            <div class="tab-pane" id="imo-html-tab">
 {% highlight html %}
-<form id="imeiForm" class="form-horizontal">
+<form id="imoForm" class="form-horizontal">
     <div class="form-group">
-        <label class="col-lg-3 control-label">IMEI</label>
+        <label class="col-lg-3 control-label">IMO</label>
         <div class="col-lg-5">
-            <input type="text" class="form-control" name="imei" />
+            <input type="text" class="form-control" name="imo" />
         </div>
     </div>
 </form>
 {% endhighlight %}
                             </div>
 
-                            <div class="tab-pane" id="imei-js-tab">
+                            <div class="tab-pane" id="imo-js-tab">
 {% highlight javascript hl_lines="11" %}
 $(document).ready(function() {
-    $('#imeiForm').bootstrapValidator({
+    $('#imoForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            imei: {
+            imo: {
                 validators: {
-                    imei: {
-                        message: 'The value is not valid IMEI'
+                    imo: {
+                        message: 'The value is not valid IMO'
                     }
                 }
             }
@@ -141,8 +138,6 @@ $(document).ready(function() {
                         </div>
                     </div>
                 </section>
-
-                {% include related.html %}
             </div>
         </div>
     </div>
@@ -151,31 +146,30 @@ $(document).ready(function() {
 <script>
 $(document).ready(function() {
     $('.sample').on('click', function() {
-        $('#imeiForm')
-            .find('input[name="imei"]')
+        $('#imoForm')
+            .find('input[name="imo"]')
                 .val($(this).html())
                 .end()
-            .data('bootstrapValidator')
-                .updateStatus('imei', 'NOT_VALIDATED')
-                .validate();
-        var isValid = $('#imeiForm').data('bootstrapValidator').isValid();
+            .bootstrapValidator('revalidateField', 'imo');
+
+        var isValid = $('#imoForm').data('bootstrapValidator').isValid();
         $(this)
             .parents('tr').find('i')
             .removeClass('fa-check fa-times')
             .addClass(isValid ? 'fa-check' : 'fa-times');
     });
 
-    $('#imeiForm').bootstrapValidator({
+    $('#imoForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            imei: {
+            imo: {
                 validators: {
-                    imei: {
-                        message: 'The value is not valid IMEI'
+                    imo: {
+                        message: 'The value is not valid IMO'
                     }
                 }
             }

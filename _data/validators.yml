@@ -82,6 +82,10 @@
   version:      0.4.4
   description:  Validate an IMEI (International Mobile Station Equipment Identity)
 
+- name:         imo
+  version:      0.5.1
+  description:  Validate an IMO (International Maritime Organization)
+
 - name:         integer
   version:      0.4.0
   description:  Validate an integer number
@@ -113,6 +117,10 @@
 - name:         mac
   version:      0.3.2
   description:  Validate a MAC address
+
+- name:         meid
+  version:      0.5.1
+  description:  Validate a MEID (mobile equipment identifier)
 
 - name:         notEmpty
   version:      0.1.0
