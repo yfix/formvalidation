@@ -115,7 +115,7 @@
                 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
             </form> -->
         </p>
-        <p><a href="/news/v0.5.0-released/">v0.5.0</a> &mdash; MIT license</p>
+        <p><a href="/news/v0.5.1-released/">v0.5.1</a> &mdash; MIT license</p>
 
         <div class="bv-ad">
         <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script");z.type = "text/javascript";z.async = true;z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z, s);</script></div></div>
@@ -129,7 +129,7 @@
         <ul>
             <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator"><i class="fa fa-github"></i> <span id="ghStars"></span></a></li>
             <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/network/members"><i class="fa fa-code-fork"></i> <span id="ghForks"></span></a></li>
-            <li><a href="https://twitter.com/bsvalidator"><i class="fa fa-twitter"></i> <span id="twFollowers">133</span></a></li>
+            <li><a href="https://twitter.com/bsvalidator"><i class="fa fa-twitter"></i> <span id="twFollowers">138</span></a></li>
         </ul>
     </div>
 </div>
@@ -145,8 +145,8 @@
                     <li>Written from scratch</li>
                     <li>Very solid and clean</li>
                     <li>Core and validators code are separated</li>
-                    <li>JSHint free <span class="bv-news"></span></li>
-                    <li>Well tested with <a href="http://jasmine.github.io">Jasmine</a> <span class="bv-news"></span></li>
+                    <li>JSHint free</li>
+                    <li>Well tested with <a href="http://jasmine.github.io">Jasmine</a></li>
                 </ul>
                 <p>  </p>
             </div>
@@ -165,7 +165,7 @@
                 <ul>
                     <li>Provide 46 built-in validators and counting!</li>
                     <li>Easy to write a new validator</li>
-                    <li>Internationalization <span class="bv-news"></span></li>
+                    <li>Internationalization</li>
                 </ul>
             </div>
         </div>
@@ -178,7 +178,7 @@
                     <li>Show feedback icons based on field validity</li>
                     <li>Focus on the first invalid field</li>
                     <li>Don't validate until given length</li>
-                    <li>Possible to show errors as <a href="/settings/#form-container">tooltip/popover</a> <span class="bv-news"></span></li>
+                    <li>Possible to show errors as <a href="/settings/#form-container">tooltip/popover</a></li>
                 </ul>
             </div>
             <div class="col-md-4">
@@ -188,9 +188,9 @@
                     <li>Define field by name or CSS selector</li>
                     <li>Possible to indicate excluded fields</li>
                     <li>Enable/disable validators on the fly</li>
-                    <li>Support <a href="/settings/#dynamic-option">dynamic option</a> <span class="bv-news"></span></li>
-                    <li>Support dynamic fields <span class="bv-news"></span></li>
-                    <li>Support <a href="/settings/#dynamic-message">dynamic messages</a> <span class="bv-news"></span></li>
+                    <li>Support <a href="/settings/#dynamic-option">dynamic option</a></li>
+                    <li>Support dynamic fields</li>
+                    <li>Support <a href="/settings/#dynamic-message">dynamic messages</a></li>
                 </ul>
             </div>
             <div class="col-md-4">
@@ -516,8 +516,8 @@ $(document).ready(function() {
         dataType: 'jsonp',
         url: 'https://api.github.com/repos/nghuuphuoc/bootstrapvalidator',
         success: function(response) {
-            $('#ghStars').html(response && response.data.watchers_count ? parseInt(response.data.watchers_count) : '568');
-            $('#ghForks').html(response && response.data.forks_count    ? parseInt(response.data.forks_count)    : '225');
+            $('#ghStars').html(response && response.data.watchers_count ? parseInt(response.data.watchers_count) : '764');
+            $('#ghForks').html(response && response.data.forks_count    ? parseInt(response.data.forks_count)    : '304');
         }
     });
 
@@ -534,7 +534,7 @@ $(document).ready(function() {
                     }
                 }
             }
-            $('#ghDownloads').html((total || '32200').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+            $('#ghDownloads').html((total || '43600').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
         }
     });
 });
