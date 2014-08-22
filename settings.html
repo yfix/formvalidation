@@ -31,10 +31,10 @@ next_section:     /validators/
 
                 <h4><a href="#form-settings">Form settings</a></h4>
                 <ul>
-                    <li><a href="#form-container">container<span class="pull-right bv-news"></span></a></li>
+                    <li><a href="#form-container">container</a></li>
                     <li><a href="#form-excluded">excluded</a></li>
                     <li><a href="#form-feedback-icons">feedbackIcons</a></li>
-                    <li><a href="#form-group">group</a><span class="pull-right bv-news"></span></li>
+                    <li><a href="#form-group">group</a></li>
                     <li><a href="#form-live">live</a></li>
                     <li><a href="#form-message">message</a></li>
                     <li><a href="#form-submit-buttons">submitButtons</a></li>
@@ -47,9 +47,9 @@ next_section:     /validators/
                 <ul>
                     <li><a href="#field-container">container</a></li>
                     <li><a href="#field-enabled">enabled</a></li>
-                    <li><a href="#field-excluded">excluded<span class="pull-right bv-news"></span></a></li>
-                    <li><a href="#field-feedback-icons">feedbackIcons<span class="pull-right bv-news"></span></a></li>
-                    <li><a href="#field-group">group</a><span class="pull-right bv-news"></span></li>
+                    <li><a href="#field-excluded">excluded</a></li>
+                    <li><a href="#field-feedback-icons">feedbackIcons</a></li>
+                    <li><a href="#field-group">group</a></li>
                     <li><a href="#field-message">message</a></li>
                     <li><a href="#field-selector">selector</a></li>
                     <li><a href="#field-threshold">threshold</a></li>
@@ -58,10 +58,10 @@ next_section:     /validators/
 
                 <h4><a href="#validator-settings">Validator settings</a></h4>
                 <ul>
-                    <li><a href="#validator-enabled">enabled<span class="pull-right bv-news"></span></a></li>
+                    <li><a href="#validator-enabled">enabled</a></li>
                     <li><a href="#validator-message">message</a></li>
                     <li>
-                        <a href="#dynamic-option">Dynamic option<span class="pull-right bv-news"></span></a>
+                        <a href="#dynamic-option">Dynamic option</a>
                         <ul>
                             <li><a href="#dynamic-option-validators">Supported validators</a></li>
                             <li><a href="#dynamic-option-string">Using string</a></li>
@@ -70,10 +70,10 @@ next_section:     /validators/
                             <li><a href="#dynamic-option-callback">Using function</a></li>
                         </ul>
                     </li>
-                    <li><a href="#dynamic-message">Dynamic message<span class="pull-right bv-news"></span></a></li>
+                    <li><a href="#dynamic-message">Dynamic message</a></li>
                 </ul>
 
-                <h4><a href="#events">Events<span class="pull-right bv-news"></span></a></h4>
+                <h4><a href="#events">Events</a></h4>
                 <ul>
                     <li><a href="#event-form">Form events</a></li>
                     <li><a href="#event-field">Field events</a></li>
@@ -228,7 +228,7 @@ $(document).ready(function() {
                     
                     <!-- form-container -->
                     <section>
-                        <h3 id="form-container">container: String <span class="pull-right bv-news"></span></h3>
+                        <h3 id="form-container">container: String </h3>
                         <p>Indicate where the error messages are shown.</p>
                         <table class="table table-condensed">
                             <thead>
@@ -492,7 +492,7 @@ feedbackIcons: {
 
                     <!-- form-group -->
                     <section>
-                        <h3 id="form-group">group: String <span class="pull-right bv-news"></span></h3>
+                        <h3 id="form-group">group: String </h3>
                         <p>CSS selector indicates the parent element of field. By default, it is <code>.form-group</code>.</p>
                         <p>Following Bootstrap form structure, each field and its label are wrapped inside <code>.form-group</code> element.</p>
                         <p>This option might be used in the following cases:</p>
@@ -893,7 +893,7 @@ $(document).ready(function() {
                     </section>
 
                     <section>
-                        <h3 id="field-excluded">excluded: Boolean <span class="pull-right bv-news"></span></h3>
+                        <h3 id="field-excluded">excluded: Boolean </h3>
                         <p>Indicate whether or not the field is excluded.</p>
                     </section>
 
@@ -905,7 +905,7 @@ $(document).ready(function() {
 
                     <!-- field-feedback-icons -->
                     <section>
-                        <h3 id="field-feedback-icons">feedbackIcons: Boolean <span class="pull-right bv-news"></span></h3>
+                        <h3 id="field-feedback-icons">feedbackIcons: Boolean </h3>
                         <p>Enable or disable feedback icons.</p>
 
                         <section>
@@ -1034,7 +1034,7 @@ $(document).ready(function() {
 
                     <!-- field-group -->
                     <section>
-                        <h3 id="field-group">group: String <span class="pull-right bv-news"></span></h3>
+                        <h3 id="field-group">group: String </h3>
                         <p>CSS selector indicates the parent element of field. By default, it is <code>.form-group</code>.</p>
                     </section>
 
@@ -1473,7 +1473,7 @@ $(document).ready(function() {
 
                     <!-- validator-enabled -->
                     <section>
-                        <h3 id="validator-enabled">enabled: Boolean<span class="pull-right bv-news"></span></h3>
+                        <h3 id="validator-enabled">enabled: Boolean</h3>
                         <p>Indicate the validator is enabled or disabled. It is <code>true</code>, by default.</p>
                         <p>Look at the field's <a href="#field-enabled">enabled</a> option if you want to enable/disable all validators.</p>
                         <p>The table below shows three equivalent ways to enable or disable given validator:</p>
@@ -1627,7 +1627,7 @@ $(document).ready(function() {
                     </section>
 
                     <section>
-                        <h3 id="dynamic-option">Dynamic option<span class="pull-right bv-news"></span></h3>
+                        <h3 id="dynamic-option">Dynamic option</h3>
                         <p>Some validators have option which its value could be change dynamically.</p>
                         <p>For example, the <a href="/validators/zipCode/">zipCode validator</a> has the <code>country</code> option that can be changed dynamically a select element.</p>
                         <p>The dynamic option can be determined by:</p>
@@ -2202,7 +2202,7 @@ $(document).ready(function() {
 
                     <!-- dynamic-message -->
                     <section>
-                        <h3 id="dynamic-message">Dynamic message<span class="pull-right bv-news"></span></h3>
+                        <h3 id="dynamic-message">Dynamic message</h3>
                         <p>Looking back to the <a href="#dynamic-option-element">zipcode example</a> above, you will realize that the message is static:</p>
 
 {% highlight html hl_lines="2" %}
@@ -2600,7 +2600,7 @@ callback: {
 
                 <!-- events -->
                 <section>
-                    <h2 id="events">Events<span class="pull-right bv-news"></span></h2>
+                    <h2 id="events">Events</h2>
                     <p>Similar to the <a href="#settings-structure">settings</a>, there are also events for form, field and validator. Each event can be set by one of three ways:</p>
                     <ul>
                         <li>Listening to event using jQuery <code>on(eventName, callback)</code></li>
