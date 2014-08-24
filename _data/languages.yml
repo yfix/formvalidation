@@ -48,6 +48,9 @@
 - name:   Spanish
   file:   es_ES.js
   author: vadail
+- name:   Swedish
+  file:   sv_SE.js
+  author: ulsa
 - name:   Taiwanese
   file:   zh_TW.js
   author: tureki
