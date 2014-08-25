@@ -8,10 +8,10 @@ next_section:
 comments:         true
 ---
 
-<link rel="stylesheet" href="/vendor/bootstrap-select/bootstrap-select.min.css" />
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" />
 <style type="text/css">
-#bSelectForm .form-control-feedback {
-    z-index: 100;
+#bootstrapSelectForm .selectContainer .form-control-feedback {
+    right: -15px;
 }
 </style>
 
@@ -42,25 +42,25 @@ comments:         true
         <div class="col-md-9">
             <div class="bv-content">
                 <section>
-                    <h2 id="chosen">Play with Bootstrap-select</h2>
-                    <p>Use with the <a href="http://silviomoreto.github.io/bootstrap-select/">Bootstrap select</a> plugin.</p>
-                    <p>The <i>Favorite color</i> option requires to choose 2-4 colors you like most.</p>
-                    <p>The <i>Language</i> option requires to choose your native language.</p>
+                    <h2 id="chosen">Play with Bootstrap Select</h2>
+                    <p>Use with the <a href="http://silviomoreto.github.io/bootstrap-select/">Bootstrap Select</a> plugin.</p>
+                    <p>The Favorite color option requires to choose 2-4 colors you like most.</p>
+                    <p>The Language option requires to choose your native language.</p>
 
                     <div class="bv-example">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#bSelect-form-tab" data-toggle="tab">Try it</a></li>
-                            <li><a href="#bSelect-html-tab" data-toggle="tab">HTML</a></li>
-                            <li><a href="#bSelect-js-tab" data-toggle="tab">JS</a></li>
+                            <li class="active"><a href="#bootstrapselect-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#bootstrapselect-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#bootstrapselect-js-tab" data-toggle="tab">JS</a></li>
                         </ul>
 
                         <div class="tab-content">
-                            <div class="tab-pane active" id="bSelect-form-tab">
-                                <form id="bSelectForm" method="post" class="form-horizontal">
+                            <div class="tab-pane active" id="bootstrapselect-form-tab">
+                                <form id="bootstrapSelectForm" method="post" class="form-horizontal">
                                     <div class="form-group">
                                         <label class="col-lg-3 control-label">Favorite color</label>
-                                        <div class="col-lg-5">
-                                            <select class="form-control selecpicker" name="colors" multiple title='Choose 2-4 colors'>
+                                        <div class="col-lg-5 selectContainer">
+                                            <select class="form-control" name="colors" multiple title='Choose 2-4 colors'>
                                                 <option value="black">Black</option>
                                                 <option value="blue">Blue</option>
                                                 <option value="green">Green</option>
@@ -73,8 +73,8 @@ comments:         true
                                     </div>
                                     <div class="form-group">
                                         <label class="col-lg-3 control-label">Language</label>
-                                        <div class="col-lg-5">
-                                            <select name="language" class="form-control selectpicker">
+                                        <div class="col-lg-5 selectContainer">
+                                            <select name="language" class="form-control">
                                                 <option value=""></option>
                                                 <option value="arabic">Arabic</option>
                                                 <option value="english">English</option>
@@ -93,27 +93,26 @@ comments:         true
                                 </form>
                             </div>
 
-                            <div class="tab-pane" id="bSelect-html-tab">
-                                {% highlight html %}
+                            <div class="tab-pane" id="bootstrapselect-html-tab">
+{% highlight html %}
 <!-- Include Bootstrap-select CSS -->
-<link rel="stylesheet" href="/vendor/bootstrap-select/bootstrap-select.min.css" />
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" />
 
 <!-- Include Bootstrap-select JS -->
-<script src="/vendor/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
 
 <style type="text/css">
-#bSelectForm .form-control-feedback {
-    /* To make the feedback icon visible */
-    z-index: 100;
+#bootstrapSelectForm .selectContainer .form-control-feedback {
+    /* Adjust feedback icon position */
+    right: -15px;
 }
 </style>
 
-<form id="bSelectForm" method="post" class="form-horizontal">
+<form id="bootstrapSelectForm" method="post" class="form-horizontal">
     <div class="form-group">
         <label class="col-lg-3 control-label">Favorite color</label>
-        <div class="col-lg-5">
-            <select name="colors" class="form-control selectpicker"
-                multiple title="Choose 2-4 colors">
+        <div class="col-lg-5 selectContainer">
+            <select name="colors" class="form-control" multiple title="Choose 2-4 colors">
                 <option value="black">Black</option>
                 <option value="blue">Blue</option>
                 <option value="green">Green</option>
@@ -127,8 +126,8 @@ comments:         true
     
     <div class="form-group">
         <label class="col-lg-3 control-label">Language</label>
-        <div class="col-lg-5">
-            <select name="language" class="form-control selectpicker">
+        <div class="col-lg-5 selectContainer">
+            <select name="language" class="form-control">
                 <option value=""></option>
                 <option value="arabic">Arabic</option>
                 <option value="english">English</option>
@@ -148,22 +147,22 @@ comments:         true
 {% endhighlight %}
                             </div>
 
-                            <div class="tab-pane" id="bSelect-js-tab">
+                            <div class="tab-pane" id="bootstrapselect-js-tab">
 {% highlight javascript hl_lines="7 14 18" %}
 $(document).ready(function() {
-    $('#bSelectForm')
+    $('#bootstrapSelectForm')
         .find('[name="colors"]')
             .selectpicker()
             .change(function(e) {
                 // revalidate the color when it is changed
-                $('#bSelectForm').bootstrapValidator('revalidateField', 'colors');
+                $('#bootstrapSelectForm').bootstrapValidator('revalidateField', 'colors');
             })
             .end()
         .find('[name="language"]')
             .selectpicker()
             .change(function(e) {
                 // revalidate the language when it is changed
-                $('#bSelectForm').bootstrapValidator('revalidateField', 'language');
+                $('#bootstrapSelectForm').bootstrapValidator('revalidateField', 'language');
             })
             .end()
         .bootstrapValidator({
@@ -194,10 +193,6 @@ $(document).ready(function() {
                     }
                 }
             }
-        })
-        .on('success.form.bv', function(e) {
-            // Prevent form submission
-            e.preventDefault();
         });
 });
 {% endhighlight %}
@@ -210,20 +205,20 @@ $(document).ready(function() {
     </div>
 </div>
 
-<script src="/vendor/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
 <script>
 $(document).ready(function() {
-    $('#bSelectForm')
+    $('#bootstrapSelectForm')
         .find('[name="colors"]')
             .selectpicker()
             .change(function(e) {
-                $('#bSelectForm').bootstrapValidator('revalidateField', 'colors');
+                $('#bootstrapSelectForm').bootstrapValidator('revalidateField', 'colors');
             })
             .end()
         .find('[name="language"]')
             .selectpicker()
             .change(function(e) {
-                $('#bSelectForm').bootstrapValidator('revalidateField', 'language');
+                $('#bootstrapSelectForm').bootstrapValidator('revalidateField', 'language');
             })
             .end()
         .bootstrapValidator({
