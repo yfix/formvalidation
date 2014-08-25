@@ -37,6 +37,9 @@
 - name:   Italian
   file:   it_IT.js
   author: maramazza
+- name:   Japanese
+  file:   ja_JP.js
+  author: tsuyoshifujii
 - name:   Polish
   file:   pl_PL.js
   author:
