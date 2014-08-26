@@ -232,6 +232,16 @@ $(document).ready(function() {
                                         </div>
 
                                         <div class="form-group">
+                                            <label class="col-lg-3 control-label">Amount</label>
+                                            <div class="col-lg-3 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">&#8364;</span>
+                                                    <input type="text" class="form-control" name="amount" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label class="col-lg-3 control-label">Color</label>
                                             <div class="col-lg-3 selectContainer">
                                                 <select class="form-control" name="color">
@@ -277,6 +287,16 @@ $(document).ready(function() {
             <div class="input-group">
                 <input type="text" class="form-control" name="price" />
                 <span class="input-group-addon">$</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Amount</label>
+        <div class="col-lg-3 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon">&#8364;</span>
+                <input type="text" class="form-control" name="amount" />
             </div>
         </div>
     </div>
@@ -328,6 +348,16 @@ $(document).ready(function() {
                     },
                     numeric: {
                         message: 'The price must be a number'
+                    }
+                }
+            },
+            amount: {
+                validators: {
+                    notEmpty: {
+                        message: 'The amount is required'
+                    },
+                    numeric: {
+                        message: 'The amount must be a number'
                     }
                 }
             },
@@ -494,6 +524,16 @@ $(document).ready(function() {
                         },
                         numeric: {
                             message: 'The price must be a number'
+                        }
+                    }
+                },
+                amount: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The amount is required'
+                        },
+                        numeric: {
+                            message: 'The amount must be a number'
                         }
                     }
                 },
