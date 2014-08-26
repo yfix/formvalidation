@@ -1,0 +1,219 @@
+---
+layout:           doc
+title:            Play with Bootstrap Tags Input
+permalink:        /examples/bootstrap-tagsinput/
+categories:       [Compatibility]
+previous_section:
+next_section:
+comments:         true
+---
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.css" />
+
+<style type="text/css">
+    .bootstrap-tagsinput {
+        width: 100%;
+    }
+    .label {
+        line-height: 2 !important;
+    }
+</style>
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/examples/">Examples</a> / Compatibility</h1>
+            </div>
+
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                {% include example.html category='Compatibility' %}
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2 id="chosen">Play with Bootstrap Select</h2>
+                    <p>Use with the <a href="http://timschlechter.github.io/bootstrap-tagsinput/examples/">Bootstrap Tags Input</a> plugin.</p>
+                    <p>The Cities field requires to enter at least one city you like most.</p>
+                    <p>The Countries field requires to enter 2-4 countries you like most.</p>
+
+                    <div class="bv-example">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#bootstraptagsinput-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#bootstraptagsinput-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#bootstraptagsinput-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="bootstraptagsinput-form-tab">
+                                <form id="bootstraptagsinputForm" method="post" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Cities</label>
+                                        <div class="col-lg-5">
+                                            <input type="text" name="cities" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-3 control-label">Countries</label>
+                                        <div class="col-lg-5">
+                                            <input type="text" name="countries" value="Australia,Belgium,Morocco,Vietnam" data-role="tagsinput" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-5 col-lg-offset-3">
+                                            <button type="submit" class="btn btn-default">Validate</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane" id="bootstraptagsinput-html-tab">
+{% highlight html hl_lines="11 17" %}
+<!-- Include Bootstrap-tagsinput CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.css" />
+
+<!-- Include Bootstrap-tagsinput JS -->
+<script src="//cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.min.js"></script>
+
+<form id="bootstraptagsinputForm" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Cities</label>
+        <div class="col-lg-5">
+            <input type="text" name="cities" class="form-control" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-3 control-label">Countries</label>
+        <div class="col-lg-5">
+            <input type="text" name="countries" class="form-control" value="Australia,Belgium,Morocco,Vietnam" data-role="tagsinput" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-5 col-lg-offset-3">
+            <button type="submit" class="btn btn-default">Validate</button>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+                            </div>
+
+                            <div class="tab-pane" id="bootstraptagsinput-js-tab">
+{% highlight javascript hl_lines="6 12 16" %}
+$(document).ready(function () {
+    $('#bootstraptagsinputForm')
+        .find('[name="cities"]')
+    // Revalidate the cities field when it is changed
+    .change(function (e) {
+        $('#bootstraptagsinputForm').bootstrapValidator('revalidateField', 'cities');
+    })
+        .end()
+        .find('[name="countries"]')
+    // Revalidate the countries field when it is changed
+    .change(function (e) {
+        $('#bootstraptagsinputForm').bootstrapValidator('revalidateField', 'countries');
+    })
+        .end()
+        .bootstrapValidator({
+        excluded: ':disabled',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            cities: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please enter at least one city you like the most.'
+                    }
+                }
+            },
+            countries: {
+                validators: {
+                    callback: {
+                        message: 'Please enter 2-4 countries you like most.',
+                        callback: function (value, validator) {
+                            // Get the entered elements
+                            var options = validator.getFieldElements('countries').tagsinput('items');
+                            return (options !== null && options.length >= 2 && options.length <= 4);
+                        }
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="//cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.min.js"></script>
+<script>
+$(document).ready(function () {
+    $('#bootstraptagsinputForm')
+        .find('[name="cities"]')
+    // Revalidate the cities field when it is changed
+    .change(function (e) {
+        $('#bootstraptagsinputForm').bootstrapValidator('revalidateField', 'cities');
+    })
+        .end()
+        .find('[name="countries"]')
+    // Revalidate the countries field when it is changed
+    .change(function (e) {
+        $('#bootstraptagsinputForm').bootstrapValidator('revalidateField', 'countries');
+    })
+        .end()
+        .bootstrapValidator({
+        excluded: ':disabled',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            cities: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please enter at least one city you like the most.'
+                    }
+                }
+            },
+            countries: {
+                validators: {
+                    callback: {
+                        message: 'Please enter 2-4 countries you like most.',
+                        callback: function (value, validator) {
+                            // Get the entered elements
+                            var options = validator.getFieldElements('countries').tagsinput('items');
+                            return (options !== null && options.length >= 2 && options.length <= 4);
+                        }
+                    }
+                }
+            }
+        }
+    })
+    .on('success.form.bv', function (e) {
+        // Prevent form submission
+        e.preventDefault();
+    });
+});
+</script>
