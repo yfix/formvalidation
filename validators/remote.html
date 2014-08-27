@@ -100,7 +100,11 @@ url: function(validator) {
 
                     <p>The remote URL has to return an encoded JSON of array containing the <code>valid</code> key:</p>
 {% highlight javascript %}
-{ valid: 'true or false' }
+{ "valid": true }
+{% endhighlight %}
+                    <p>or</p>
+{% highlight javascript %}
+{ "valid": false }
 {% endhighlight %}
                 </section>
 
