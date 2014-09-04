@@ -54,6 +54,9 @@
 - name:   Portuguese (Brazil)
   file:   pt_BR.js
   author: marcuscarvalho6
+- name:   Romanian
+  file:   ro_RO.js
+  author: filipac
 - name:   Spanish
   file:   es_ES.js
   author: vadail
