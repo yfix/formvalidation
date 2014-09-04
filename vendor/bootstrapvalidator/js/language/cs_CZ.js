@@ -94,7 +94,7 @@
                 ES: 'Španělsko',
                 FI: 'Finsko',
                 FO: 'Faerské ostrovy',
-                FR: 'Francii',
+                FR: 'Francie',
                 GB: 'Velkou Británii',
                 GE: 'Gruzii',
                 GI: 'Gibraltar',
@@ -168,7 +168,7 @@
                 LV: 'Lotyšsko',
                 ME: 'Montenegro',
                 MK: 'Makedonii',
-                NL: 'Holansko',
+                NL: 'Nizozemí',
                 RO: 'Rumunsko',
                 RS: 'Srbsko',
                 SE: 'Švédsko',
@@ -229,11 +229,13 @@
             country: 'Prosím zadejte správné telefoní číslo pro %s',
             countries: {
                 BR: 'Brazílii',
+                CN: 'Čína',
                 ES: 'Španělsko',
-                FR: 'Francii',
+                FR: 'Francie',
                 GB: 'Velkou Británii',
                 MA: 'Maroko',
                 PK: 'Pákistán',
+                RO: 'Rumunsko',
                 US: 'Spojené Státy Americké'
             }
         },
@@ -305,7 +307,7 @@
                 LU: 'Lucembursko',
                 LV: 'Lotyšsko',
                 MT: 'Maltu',
-                NL: 'Holandsko',
+                NL: 'Nizozemí',
                 NO: 'Norsko',
                 PL: 'Polsko',
                 PT: 'Portugalsko',
@@ -325,18 +327,19 @@
         zipCode: {
             'default': 'Prosím zadejte správné PSČ číslo',
             countryNotSupported: '%s není podporované',
-            country: 'Prosím zadejte správné %s',
+            country: 'Prosím zadejte správné PSČ číslo pro %s',
             countries: {
-                BR: 'Brazílii PSČ',
-                CA: 'Kanadské PSČ',
-                DK: 'Dánské PSČ',
-                GB: 'PSČ Velké Británie',
-                IT: 'Italské PSČ',
-                MA: 'Maroko PSČ',
-                NL: 'Holandské PSČ',
-                SE: 'Švýcarské PSČ',
-                SG: 'Singapurské PSČ',
-                US: 'Americké PSČ'
+                BR: 'Brazílie',
+                CA: 'Kanada',
+                DK: 'Dánsko',
+                GB: 'Velkou Británii',
+                IT: 'Itálie',
+                MA: 'Maroko',
+                NL: 'Nizozemí',
+                RO: 'Rumunsko',
+                SE: 'Švédsko',
+                SG: 'Singapur',
+                US: 'Spojené Státy Americké'
             }
         }
     });

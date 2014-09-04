@@ -229,11 +229,13 @@
             country: 'Kérlek, hogy érvényes %s telefonszámot adj meg',
             countries: {
                 BR: 'brazil',
+                CN: 'kína',
                 ES: 'spanyol',
                 FR: 'francia',
                 GB: 'Egyesült Királyság beli',
                 MA: 'Marokkó',
                 PK: 'Pakisztán',
+                RO: 'Románia',
                 US: 'Egyesült Államok beli'
             }
         },
@@ -332,8 +334,9 @@
                 DK: 'dán',
                 GB: 'Egyesült Királyság beli',
                 IT: 'olasz',
-                MA: 'Marokkó',
+                MA: 'marokkó',
                 NL: 'holland',
+                RO: 'románia',
                 SE: 'svájci',
                 SG: 'singaporei',
                 US: 'Egyesült Államok beli'
