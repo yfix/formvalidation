@@ -66,6 +66,9 @@
 - name:   Taiwanese
   file:   zh_TW.js
   author: tureki
+- name:   Thai
+  file:   th_TH.js
+  author: figgaro
 - name:   Turkish
   file:   tr_TR.js
   author: CeRBeR666
