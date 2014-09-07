@@ -56,23 +56,23 @@ next_section:     /settings/
 
                     <p>Choose the package you want to download:</p>
                     <div class="row">
-                        <div class="col-sm-4">
-                            <h3 id="release">Release</h3>
+                        <div class="col-sm-6">
+                            <h3>Release</h3>
                             <p>Including the plugin, its validator source and minified versions.<br />It should be used in the production site.</p>
-                            <p><a class="btn btn-lg btn-primary" href="{{ site.download.dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download release']);"><i class="fa fa-download"></i> Download v{{ site.current_version }}</a></p>
+                            <p>
+                                <a class="btn btn-lg btn-primary" href="{{ site.download.dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download release']);">Download v{{ site.current_version }}</a>
+                                <a class="btn btn-lg btn-default" href="https://pledgie.com/campaigns/24885" alt="Click here to lend your support to: BootstrapValidator and make a donation at pledgie.com!">Donate via Paypal</a>
+                            </p>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <h3>Source code</h3>
                             <p>Including the source code, examples and building script. Download if you want to play with or develop new validators.</p>
-                            <p><a class="btn btn-lg btn-primary" href="{{ site.download.tag }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);"><i class="fa fa-code"></i> Download Source</a></p>
-                        </div>
-                        <div class="col-sm-4">
-                            <h3>Older versions</h3>
-                            <p>For older versions, take a look at the <a href="/news/releases/">Releases</a> page.</p>
+                            <p><a class="btn btn-lg btn-default" href="{{ site.download.tag }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download Source</a></p>
                         </div>
                     </div>
 
-                    <p>See <a href="/news/v0.5.1-released/">what's news</a> in v{{ site.current_version }}, released on {{ site.released_date }}</p>
+                    <p>See <a href="/news/v0.5.1-released/">what's news</a> in v{{ site.current_version }}, released on {{ site.released_date }}.</p>
+                    <p>For older versions, take a look at the <a href="/news/releases/">Releases</a> page.</p>
 
                     <div class="bv-box bv-box-warning">
                         <h5><i></i>Upgrading to v0.5.x</h5>
@@ -82,7 +82,7 @@ next_section:     /settings/
                     <h3 id="installing-bower">Installing with Bower</h3>
                     <p>It's also possible to get the latest release from <a href="http://bower.io">bower</a>:</p>
 {% highlight bash %}
-$ bower install bootstrapValidator
+$ bower install bootstrapvalidator
 {% endhighlight %}
 
                     <h3 id="cdn">CDN</h3>
