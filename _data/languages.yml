@@ -57,6 +57,9 @@
 - name:   Romanian
   file:   ro_RO.js
   author: filipac
+- name:   Russian
+  file:   ru_RU.js
+  author: cylon-v
 - name:   Spanish
   file:   es_ES.js
   author: vadail
