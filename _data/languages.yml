@@ -59,7 +59,9 @@
   author: filipac
 - name:   Russian
   file:   ru_RU.js
-  author: cylon-v
+  author:
+    - cylon-v
+    - stepin
 - name:   Spanish
   file:   es_ES.js
   author: vadail
