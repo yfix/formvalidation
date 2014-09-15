@@ -62,6 +62,9 @@
   author:
     - cylon-v
     - stepin
+- name:   Serbian
+  file:   sr_RS.js
+  author: markocrni
 - name:   Spanish
   file:   es_ES.js
   author: vadail
