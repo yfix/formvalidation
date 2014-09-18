@@ -43,6 +43,9 @@
 - name:   Japanese
   file:   ja_JP.js
   author: tsuyoshifujii
+- name:   Norwegian
+  file:   no_NO.js
+  author: trondulseth
 - name:   Persian (Farsi)
   file:   fa_IR.js
   author: i0
