@@ -594,12 +594,11 @@
                                 </div>
 
                                 <div class="tab-pane" id="popover-container-js-tab">
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="err">#</span>
-<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#popoverContainerForm&#39;</span><span class="p">)</span>
-<span class="hll">        <span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
-</span>            <span class="nx">container</span><span class="o">:</span> <span class="s1">&#39;popover&#39;</span><span class="p">,</span>
-            <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
+        <span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+<span class="hll">            <span class="nx">container</span><span class="o">:</span> <span class="s1">&#39;popover&#39;</span><span class="p">,</span>
+</span>            <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
                 <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
                 <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
                 <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
@@ -630,16 +629,16 @@
                     <span class="p">}</span>
                 <span class="p">}</span>
             <span class="p">}</span>
-<span class="hll">        <span class="p">})</span>
-</span>        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error.field.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// Get the popover</span>
+        <span class="p">})</span>
+<span class="hll">        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error.field.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span>            <span class="c1">// Get the popover</span>
             <span class="kd">var</span> <span class="nx">$parent</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">parents</span><span class="p">(</span><span class="s1">&#39;.form-group&#39;</span><span class="p">),</span>
                 <span class="nx">$icon</span>   <span class="o">=</span> <span class="nx">$parent</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.form-control-feedback[data-bv-icon-for=&quot;&#39;</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">field</span> <span class="o">+</span> <span class="s1">&#39;&quot;]&#39;</span><span class="p">),</span>
                 <span class="nx">content</span> <span class="o">=</span> <span class="nx">$icon</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;bs.popover&#39;</span><span class="p">).</span><span class="nx">getContent</span><span class="p">();</span>
 
-<span class="hll">            <span class="c1">// Destroy the old popover and create a new one positioned to the right</span>
-</span>            <span class="nx">$icon</span><span class="p">.</span><span class="nx">popover</span><span class="p">(</span><span class="s1">&#39;destroy&#39;</span><span class="p">).</span><span class="nx">popover</span><span class="p">({</span>
-                <span class="nx">html</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="c1">// Destroy the old popover and create a new one positioned to the right</span>
+<span class="hll">            <span class="nx">$icon</span><span class="p">.</span><span class="nx">popover</span><span class="p">(</span><span class="s1">&#39;destroy&#39;</span><span class="p">).</span><span class="nx">popover</span><span class="p">({</span>
+</span>                <span class="nx">html</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
                 <span class="nx">placement</span><span class="o">:</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span>
                 <span class="nx">content</span><span class="o">:</span> <span class="nx">content</span><span class="p">,</span>
                 <span class="nx">trigger</span><span class="o">:</span> <span class="s1">&#39;hover click&#39;</span><span class="p">,</span>
