@@ -18,7 +18,9 @@
   author: shamiao
 - name:   Czech
   file:   cs_CZ.js
-  author: AdwinTrave
+  author:
+    - AdwinTrave
+    - cuchac
 - name:   Danish
   file:   da_DK.js
   author: Djarnis
@@ -37,6 +39,9 @@
 - name:   Hungarian
   file:   hu_HU.js
   author: blackfyre
+- name:   Indonesian
+  file:   id_ID.js
+  author: egig
 - name:   Italian
   file:   it_IT.js
   author: maramazza
