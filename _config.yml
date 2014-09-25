@@ -15,15 +15,15 @@ timezone:             Asia/Ho_Chi_Minh
 
 # Custom variables
 # not defined by Jekyll
-current_version:      0.5.1
-released_date:        2014-08-22
-github_watchers:      764
-github_forks:         304
+current_version:      0.5.2
+released_date:        2014-09-25
+github_watchers:      980
+github_forks:         382
 github_downloads:     43600
-twitter_followers:    157
+twitter_followers:    159
 download:
-  dist:               https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.5.1/bootstrapvalidator-dist-0.5.1.zip
-  tag:                https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.5.1.zip
+  dist:               https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.5.2/bootstrapvalidator-dist-0.5.2.zip
+  tag:                https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.5.2.zip
 repository:
   source:             https://github.com/nghuuphuoc/bootstrapvalidator
   docs:               https://github.com/nghuuphuoc/bootstrapvalidator/gh-pages
