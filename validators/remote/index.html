@@ -179,7 +179,7 @@
                                 <td><code>type</code></td>
                                 <td><code>data-bv-remote-type</code></td>
                                 <td>String</td>
-                                <td>The method used to send data to back-end. It can be <code>GET</code> or <code>POST</code> <span class="label label-default">default</span></td>
+                                <td>The method used to send data to back-end. It can be <code>GET</code> <span class="label label-default">default</span> or <code>POST</code></td>
                             </tr>
                             <tr>
                                 <td><code>url</code><sup>*</sup></td>
@@ -195,6 +195,8 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    <div class="bv-box bv-box-warning">From v0.5.2, the <code>type</code> option is <code>GET</code>, by default.</div>
 
                     <p>The remote URL has to return an encoded JSON of array containing the <code>valid</code> key:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span> <span class="s2">&quot;valid&quot;</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}</span></code></pre></div>

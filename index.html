@@ -120,7 +120,7 @@
                 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
             </form> -->
         </p>
-        <p><a href="/news/v0.5.1-released/">v0.5.1</a> &mdash; MIT license</p>
+        <p><a href="/news/v0.5.2-released/">v0.5.2</a> &mdash; 2014-09-25 &mdash; MIT license</p>
 
         <div class="bv-ad">
         <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script");z.type = "text/javascript";z.async = true;z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z, s);</script></div></div>
@@ -134,7 +134,7 @@
         <ul>
             <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator"><i class="fa fa-github"></i> <span id="ghStars"></span></a></li>
             <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/network/members"><i class="fa fa-code-fork"></i> <span id="ghForks"></span></a></li>
-            <li><a href="https://twitter.com/bsvalidator"><i class="fa fa-twitter"></i> <span id="twFollowers">157</span></a></li>
+            <li><a href="https://twitter.com/bsvalidator"><i class="fa fa-twitter"></i> <span id="twFollowers">159</span></a></li>
         </ul>
     </div>
 </div>
@@ -633,8 +633,8 @@ $(document).ready(function() {
         dataType: 'jsonp',
         url: 'https://api.github.com/repos/nghuuphuoc/bootstrapvalidator',
         success: function(response) {
-            $('#ghStars').html(response && response.data.watchers_count ? parseInt(response.data.watchers_count) : '764');
-            $('#ghForks').html(response && response.data.forks_count    ? parseInt(response.data.forks_count)    : '304');
+            $('#ghStars').html(response && response.data.watchers_count ? parseInt(response.data.watchers_count) : '980');
+            $('#ghForks').html(response && response.data.forks_count    ? parseInt(response.data.forks_count)    : '382');
         }
     });
 
