@@ -40,6 +40,7 @@ next_section:     /validators/
                     <li><a href="#form-submit-buttons">submitButtons</a></li>
                     <li><a href="#form-threshold">threshold</a></li>
                     <li><a href="#form-trigger">trigger</a></li>
+                    <li><a href="#form-verbose">verbose</a> <span class="bv-news"></span></li>
                     <li><a href="#form-fields">fields</a></li>
                 </ul>
 
@@ -54,6 +55,7 @@ next_section:     /validators/
                     <li><a href="#field-selector">selector</a></li>
                     <li><a href="#field-threshold">threshold</a></li>
                     <li><a href="#field-trigger">trigger</a></li>
+                    <li><a href="#field-verbose">verbose</a> <span class="bv-news"></span></li>
                 </ul>
 
                 <h4><a href="#validator-settings">Validator settings</a></h4>
@@ -217,6 +219,11 @@ $(document).ready(function() {
                                 <td><code>trigger</code></td>
                                 <td><code>data-bv-trigger</code></td>
                                 <td><code>null</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>verbose</code></td>
+                                <td><code>data-bv-verbose</code></td>
+                                <td><code>true</code></td>
                             </tr>
                             <tr>
                                 <td><code>fields</code></td>
@@ -721,6 +728,33 @@ $(document).ready(function() {
                         <p>The event which is fired to validating all fields when the live validating mode is enabled. If you need multiple events are fired, then separate them by a space.</p>
                         <p>It's also possible to set trigger option for each field. Look at the <a href="#field-trigger">field trigger</a> section.</p>
                     </section>
+
+                    <!-- form-verbose -->
+                    <section>
+                        <h3 id="form-verbose">verbose: Boolean</h3>
+                        <p>Whether to be verbose when validating a field or not.</p>
+
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Value</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>true <label class="label label-default">default</label></td>
+                                    <td>When a field has multiple validators, all of them will be checked respectively. If errors occur in multiple validators, all of them will be displayed to the user</td>
+                                </tr>
+                                <tr>
+                                    <td>false</td>
+                                    <td>when a field has multiple validators, validation for this field will be terminated upon the first encountered error. Thus, only the very first error message related to this field will be displayed to the user</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p>It's also possible to set verbose option for each field. Look at the <a href="#field-verbose">field verbose</a> section.</p>
+                    </section>
                 </section>
                 <!-- /form -->
 
@@ -772,6 +806,10 @@ $(document).ready(function() {
                             <tr>
                                 <td><code>trigger</code></td>
                                 <td><code>data-bv-trigger</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>verbose</code></td>
+                                <td><code>data-bv-verbose</code></td>
                             </tr>
                         </tbody>
                     </table>
@@ -1444,6 +1482,13 @@ $(document).ready(function() {
                                 </div>
                             </div>
                         </div>
+                    </section>
+
+                    <!-- field-verbose -->
+                    <section>
+                        <h3 id="field-verbose">verbose: Boolean</h3>
+                        <p>Whether to be verbose when validating a field or not.</p>
+                        <p>Look at the <a href="#form-verbose">form verbose</a> section to see the possible value for the verbose option.</p>
                     </section>
                 </section>
                 <!-- /field -->
