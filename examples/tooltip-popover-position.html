@@ -163,6 +163,39 @@ $(document).ready(function() {
                                 </div>
                             </div>
                         </div>
+                        <p>The code behind the reset button :</p>
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tooltip-container-reset-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#tooltip-container-reset-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tooltip-container-reset-html-tab">
+{% highlight html %}
+<button type="button" class="btn btn-danger" id="resetTooltip">Reset</button>
+{% endhighlight %}
+                                </div>
+                                <div class="tab-pane" id="tooltip-container-reset-js-tab">
+{% highlight javascript %}
+// Reset the Tooltip container form
+$('#resetTooltip').on('click', function (e) {
+    var fields = $('#tooltipContainerForm').data('bootstrapValidator').getOptions().fields,
+        $parent, $icon;
+
+    for (var field in fields) {
+        $parent = $('[name="' + field + '"]').parents('.form-group');
+        $icon = $parent.find('.form-control-feedback[data-bv-icon-for="' + field + '"]');
+        $icon.tooltip('destroy');
+    }
+
+    // Then reset the form
+    $('#tooltipContainerForm').data('bootstrapValidator').resetForm('resetForm', true);
+});
+{% endhighlight %}
+                                </div>
+                            </div>
+                        </div>
                     </section>
                     <section>
                         <h3 id="using-popover">Using the popover as container</h3>
@@ -290,6 +323,39 @@ $(document).ready(function() {
                                 </div>
                             </div>
                         </div>
+                        <p>The code behind the reset button :</p>
+                        <div class="bv-example">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#popover-container-reset-html-tab" data-toggle="tab">HTML</a></li>
+                                <li><a href="#popover-container-reset-js-tab" data-toggle="tab">JS</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="popover-container-reset-html-tab">
+{% highlight html %}
+<button type="button" class="btn btn-danger" id="resetPopover">Reset</button>
+{% endhighlight %}
+                                </div>
+                                <div class="tab-pane" id="popover-container-reset-js-tab">
+{% highlight javascript %}
+// Reset the Popover container form
+$('#resetPopover').on('click', function (e) {
+    var fields = $('#popoverContainerForm').data('bootstrapValidator').getOptions().fields,
+        $parent, $icon;
+
+    for (var field in fields) {
+        $parent = $('[name="' + field + '"]').parents('.form-group');
+        $icon = $parent.find('.form-control-feedback[data-bv-icon-for="' + field + '"]');
+        $icon.popover('destroy');
+    }
+
+    // Then reset the form
+    $('#popoverContainerForm').data('bootstrapValidator').resetForm('resetForm', true);
+});
+{% endhighlight %}
+                                </div>
+                            </div>
+                        </div>
                     </section>
                 </section>
             </div> <!-- bv-content -->
@@ -354,6 +420,16 @@ $(document).ready(function() {
 
     // Reset the Tooltip container form
     $('#resetTooltip').on('click', function (e) {
+        var fields = $('#tooltipContainerForm').data('bootstrapValidator').getOptions().fields,
+            $parent, $icon;
+
+        for (var field in fields) {
+            $parent = $('[name="' + field + '"]').parents('.form-group');
+            $icon = $parent.find('.form-control-feedback[data-bv-icon-for="' + field + '"]');
+            $icon.tooltip('destroy');
+        }
+
+        // Then reset the form
         $('#tooltipContainerForm').data('bootstrapValidator').resetForm('resetForm', true);
     });
 
@@ -412,6 +488,16 @@ $(document).ready(function() {
 
     // Reset the Popover container form
     $('#resetPopover').on('click', function (e) {
+        var fields = $('#popoverContainerForm').data('bootstrapValidator').getOptions().fields,
+            $parent, $icon;
+
+        for (var field in fields) {
+            $parent = $('[name="' + field + '"]').parents('.form-group');
+            $icon = $parent.find('.form-control-feedback[data-bv-icon-for="' + field + '"]');
+            $icon.popover('destroy');
+        }
+
+        // Then reset the form
         $('#popoverContainerForm').data('bootstrapValidator').resetForm('resetForm', true);
     });
 });
