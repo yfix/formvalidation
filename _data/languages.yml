@@ -61,7 +61,9 @@
     - lukaszbanasiak
 - name:   Portuguese (Brazil)
   file:   pt_BR.js
-  author: marcuscarvalho6
+  author:
+    - marcuscarvalho6
+    - dgmike
 - name:   Romanian
   file:   ro_RO.js
   author: filipac
