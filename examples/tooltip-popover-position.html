@@ -163,7 +163,8 @@ $(document).ready(function() {
                                 </div>
                             </div>
                         </div>
-                        <p>The code behind the reset button :</p>
+
+                        <p>The code behind the reset button:</p>
                         <div class="bv-example">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#tooltip-container-reset-html-tab" data-toggle="tab">HTML</a></li>
@@ -185,7 +186,7 @@ $('#resetTooltip').on('click', function (e) {
 
     for (var field in fields) {
         $parent = $('[name="' + field + '"]').parents('.form-group');
-        $icon = $parent.find('.form-control-feedback[data-bv-icon-for="' + field + '"]');
+        $icon   = $parent.find('.form-control-feedback[data-bv-icon-for="' + field + '"]');
         $icon.tooltip('destroy');
     }
 
@@ -197,6 +198,7 @@ $('#resetTooltip').on('click', function (e) {
                             </div>
                         </div>
                     </section>
+
                     <section>
                         <h3 id="using-popover">Using the popover as container</h3>
                         <p>The following form uses <a href="http://getbootstrap.com/javascript/#popovers">Bootstrap Popover</a>, positioned to the right, to show the error message.</p>
@@ -323,7 +325,8 @@ $(document).ready(function() {
                                 </div>
                             </div>
                         </div>
-                        <p>The code behind the reset button :</p>
+
+                        <p>The code behind the reset button:</p>
                         <div class="bv-example">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#popover-container-reset-html-tab" data-toggle="tab">HTML</a></li>
@@ -345,7 +348,7 @@ $('#resetPopover').on('click', function (e) {
 
     for (var field in fields) {
         $parent = $('[name="' + field + '"]').parents('.form-group');
-        $icon = $parent.find('.form-control-feedback[data-bv-icon-for="' + field + '"]');
+        $icon   = $parent.find('.form-control-feedback[data-bv-icon-for="' + field + '"]');
         $icon.popover('destroy');
     }
 
@@ -358,11 +361,10 @@ $('#resetPopover').on('click', function (e) {
                         </div>
                     </section>
                 </section>
-            </div> <!-- bv-content -->
-        </div> <!-- col-md-9 -->
-    </div> <!-- row -->
-</div> <!-- container -->
-
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
 $(document).ready(function() {
@@ -425,7 +427,7 @@ $(document).ready(function() {
 
         for (var field in fields) {
             $parent = $('[name="' + field + '"]').parents('.form-group');
-            $icon = $parent.find('.form-control-feedback[data-bv-icon-for="' + field + '"]');
+            $icon   = $parent.find('.form-control-feedback[data-bv-icon-for="' + field + '"]');
             $icon.tooltip('destroy');
         }
 
@@ -472,7 +474,7 @@ $(document).ready(function() {
         // Get the popover
         var $parent = data.element.parents('.form-group'),
             $icon   = $parent.find('.form-control-feedback[data-bv-icon-for="' + data.field + '"]'),
-            content   = $icon.data('bs.popover').getContent();
+            content = $icon.data('bs.popover').getContent();
 
         $icon.popover('destroy').popover({
             html: true,
@@ -493,7 +495,7 @@ $(document).ready(function() {
 
         for (var field in fields) {
             $parent = $('[name="' + field + '"]').parents('.form-group');
-            $icon = $parent.find('.form-control-feedback[data-bv-icon-for="' + field + '"]');
+            $icon   = $parent.find('.form-control-feedback[data-bv-icon-for="' + field + '"]');
             $icon.popover('destroy');
         }
 
