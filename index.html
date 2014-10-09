@@ -5,145 +5,46 @@ permalink: /
 comments:  false
 ---
 
-<div class="bv-heading">
-    <div class="container text-center">
-        <h1>the best <a href="http://plugins.jquery.com/bootstrapValidator">jQuery plugin</a> to validate form fields</h1>
-        <h2>designed to use with <a href="http://getbootstrap.com">Bootstrap 3</a></h2>
-
-        <p>
-            <a class="btn btn-lg" href="/getting-started/#download">Download</a>
-            <a class="btn btn-lg" href="https://pledgie.com/campaigns/24885" alt="Click here to lend your support to: BootstrapValidator and make a donation at pledgie.com!">Donate via Paypal</a>
-            <!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                <input type="hidden" name="cmd" value="_s-xclick">
-                <input type="hidden" name="hosted_button_id" value="D9K5AMXE87UXJ">
-                <button type="submit" class="btn btn-lg btn-success">Paypal Donation</button>
-                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-            </form> -->
-        </p>
-        <p><a href="/news/v0.5.2-released/">v{{ site.current_version }}</a> &mdash; {{ site.released_date}} &mdash; MIT license</p>
-
-        <div class="bv-ad">
-        {% include ad.html %}
-        </div>
-    </div>
-</div>
-
-<!-- followers -->
-<div class="bv-follower">
+<!-- intro -->
+<section id="intro" class="doc-vertical-center doc-home-intro">
     <div class="container">
-        <ul>
-            <li><a href="{{ site.repository.source }}"><i class="fa fa-github"></i> <span id="ghStars"></span></a></li>
-            <li><a href="{{ site.repository.source }}/network/members"><i class="fa fa-code-fork"></i> <span id="ghForks"></span></a></li>
-            <li><a href="https://twitter.com/bsvalidator"><i class="fa fa-twitter"></i> <span id="twFollowers">{{ site.twitter_followers }}</span></a></li>
-        </ul>
+        <h1>Best jQuery plugin to validate form fields<br/>Designed to use with Bootstrap 3+</h1>
+        <p>
+            <a class="btn" href="/getting-started/#download">Download</a>
+            <!--<a class="btn" href="https://pledgie.com/campaigns/24885" alt="Click here to lend your support to: BootstrapValidator and make a donation at pledgie.com!">Donate via Paypal</a>-->
+        </p>
+        <span>v{{ site.current_version }} &mdash; {{ site.released_date}} &mdash; MIT license</span>
     </div>
-</div>
+    <h3><span id="downloads"></span> downloads so far</h3>
+</section>
 
 <!-- features -->
-<div class="bv-features">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <i class="fa fa-code"></i>
-                <h4>Code</h4>
-                <ul>
-                    <li>Written from scratch</li>
-                    <li>Very solid and clean</li>
-                    <li>Core and validators code are separated</li>
-                    <li>JSHint free</li>
-                    <li>Well tested with <a href="http://jasmine.github.io">Jasmine</a></li>
-                </ul>
-                <p>  </p>
-            </div>
-            <div class="col-md-4">
-                <i class="fa fa-html5"></i>
-                <h4>HTML 5</h4>
-                <ul>
-                    <li>Fully support declarative settings</li>
-                    <li>Support HTML 5 attributes</li>
-                    <li>Support HTML 5 input types</li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <i class="fa fa-flask"></i>
-                <h4>Validators</h4>
-                <ul>
-                    <li>Provide 48 built-in <a href="/validators">validators</a> and counting!</li>
-                    <li>Easy to write a new validator</li>
-                    <li>Internationalization</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
-                <i class="fa fa-heart"></i>
-                <h4>Friendly</h4>
-                <ul>
-                    <li>Show feedback icons based on field validity</li>
-                    <li>Focus on the first invalid field</li>
-                    <li>Don't validate until given length</li>
-                    <li>Possible to show errors as <a href="/settings/#form-container">tooltip/popover</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <i class="fa fa-magic"></i>
-                <h4>Flexible</h4>
-                <ul>
-                    <li>Define field by name or CSS selector</li>
-                    <li>Possible to indicate excluded fields</li>
-                    <li>Enable/disable validators on the fly</li>
-                    <li>Support <a href="/settings/#dynamic-option">dynamic option</a></li>
-                    <li>Support dynamic fields</li>
-                    <li>Support <a href="/settings/#dynamic-message">dynamic messages</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <i class="fa fa-puzzle-piece"></i>
-                <h4>Compatibility</h4>
-                <ul>
-                    <li>Bootstrap Multiselect</li>
-                    <li>Chosen</li>
-                    <li>Color Picker, Date Picker</li>
-                    <li>iCheck</li>
-                    <li>Select2</li>
-                    <li> ... we <a href="/examples/#compatibility">play nice</a> with all of them</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+<section id="features" class="doc-vertical-center">
+    Features
+</section>
 
 <!-- contributors -->
-<div class="bv-contributor">
+<section id="contributors" class="doc-vertical-center doc-home-contributor">
     <div class="container">
-        <h2 id="contributors">{{ site.data.contributors.size }} contributors</h2>
+        <h2>Made better by contributors</h2>
+        <div class="doc-hr"></div>
 
         <ul>
             {% for user in site.data.contributors %}
-            <li>
-                <a href="https://github.com/{{ user.username }}" title="@{{ user.username }}"><img src="https://github.com/{{ user.username }}.png" width="60px" height="60px" /></a>
-            </li>
+            <li><a href="https://github.com/{{ user.username }}" title="@{{ user.username }}"><img src="https://github.com/{{ user.username }}.png" width="60px" height="60px" /></a></li>
             {% endfor %}
         </ul>
 
-        <div class="text-center">
-            <a href="{{ site.repository.source }}/network/members" class="btn btn-default btn-lg">JOIN US</a>
-        </div>
+        <a href="{{ site.repository.source }}/network/members" class="btn">Fork and Contribute</a>
     </div>
-</div>
+</section>
 
-<!-- downloads -->
-<div class="bv-downloads">
+<!-- what people say -->
+<section id="tweet" class="doc-vertical-center doc-home-tweet">
     <div class="container">
-        <h3><span id="ghDownloads"></span> downloads so far</h3>
-        <a class="btn btn-lg" href="/getting-started/#download">DOWNLOAD</a>
-    </div>
-</div>
+        <h2>What people say</h2>
+        <div class="doc-hr"></div>
 
-<!-- tweets -->
-<div class="bv-tweet">
-    <div class="container">
         <div class="row">
             <div class="col-md-3">
                 <blockquote class="twitter-tweet" lang="en"><p><a href="http://t.co/4iQTs4iB4g">http://t.co/4iQTs4iB4g</a>&#10;this is really cool stuff and it works! <a href="https://twitter.com/bsvalidator">@bsvalidator</a> great work</p>&mdash; Bole Roland (@samlinux) <a href="https://twitter.com/samlinux/status/508324990014717952">September 6, 2014</a></blockquote>
@@ -166,20 +67,20 @@ comments:  false
                 <blockquote class="twitter-tweet" lang="en"><p>Thanks again to <a href="https://twitter.com/bsvalidator">@bsvalidator</a> for the quick reply. Be sure to check out Bootstrap Validator. It’s the best I’ve found. <a href="http://t.co/ibkSHfEeEu">http://t.co/ibkSHfEeEu</a></p>&mdash; CurtStaubach (@CurtStaubach) <a href="https://twitter.com/CurtStaubach/statuses/466937857652064256">May 15, 2014</a></blockquote>
             </div>
         </div>
-    </div>
-</div>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+        <p>
+            <a href="http://twitter.com/nghuuphuoc" class="btn" title="Follow @nghuuphuoc">Follow @nghuuphuoc</a>
+            <a href="http://twitter.com/bsvalidator" class="btn" title="Follow @bsvalidator">Follow @bsvalidator</a>
+        </p>
+    </div>
+</section>
+
+<script src="/vendor/onepage-scroll/jquery.onepage-scroll.min.js"></script>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 <script>
-$(document).ready(function() {
-    // Show the number of Github stars/forks
-    $.ajax({
-        dataType: 'jsonp',
-        url: 'https://api.github.com/repos/nghuuphuoc/bootstrapvalidator',
-        success: function(response) {
-            $('#ghStars').html(response && response.data.watchers_count ? parseInt(response.data.watchers_count) : '{{ site.github_watchers }}');
-            $('#ghForks').html(response && response.data.forks_count    ? parseInt(response.data.forks_count)    : '{{ site.github_forks }}');
-        }
+$(function() {
+    $('#main').onepage_scroll({
+        animationTime: 1000
     });
 
     // Show the total of downloads
@@ -195,7 +96,19 @@ $(document).ready(function() {
                     }
                 }
             }
-            $('#ghDownloads').html((total || '{{ site.github_downloads }}').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+            var total = total || '{{ site.github_downloads }}';
+            var count = 0,
+                timer = (function() {
+                    return setTimeout(function() {
+                        count++;
+                        if (count == total) {
+                            clearTimeout(timer);
+                        }
+                        $('#downloads').html(count);
+                        timer();
+                    }, 10);
+                })();
+            //$('#downloads').html((total || '{{ site.github_downloads }}').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
         }
     });
 });
