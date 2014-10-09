@@ -2,8 +2,8 @@
 layout:           doc
 title:            API
 permalink:        /api/
-previous_section: /examples/
-next_section:     /developing/
+previous_section: /validators/
+next_section:     /examples/
 comments:         true
 ---
 
@@ -32,26 +32,26 @@ comments:         true
 
                 <h4><a href="#api">API</a></h4>
                 <ul>
-                    <li><a href="#add-field">addField<span class="pull-right bv-news"></span></a></li>
+                    <li><a href="#add-field">addField</a></li>
                     <li><a href="#default-submit">defaultSubmit</a></li>
-                    <li><a href="#destroy">destroy<span class="pull-right bv-news"></span></a></li>
+                    <li><a href="#destroy">destroy</a></li>
                     <li><a href="#disable-submit-buttons">disableSubmitButtons</a></li>
                     <li><a href="#enable-field-validators">enableFieldValidators</a></li>
-                    <li><a href="#get-dynamic-option">getDynamicOption<span class="pull-right bv-news"></span></a></li>
+                    <li><a href="#get-dynamic-option">getDynamicOption</a></li>
                     <li><a href="#get-field-elements">getFieldElements</a></li>
-                    <li><a href="#get-messages">getMessages<span class="pull-right bv-news"></span></a></li>
-                    <li><a href="#get-options">getOptions<span class="pull-right bv-news"></span></a></li>
-                    <li><a href="#get-invalid-fields">getInvalidFields<span class="pull-right bv-news"></span></a></li>
-                    <li><a href="#get-submit-button">getSubmitButton<span class="pull-right bv-news"></span></a></li>
+                    <li><a href="#get-messages">getMessages</a></li>
+                    <li><a href="#get-options">getOptions</a></li>
+                    <li><a href="#get-invalid-fields">getInvalidFields</a></li>
+                    <li><a href="#get-submit-button">getSubmitButton</a></li>
                     <li><a href="#is-valid">isValid</a></li>
-                    <li><a href="#is-valid-container">isValidContainer<span class="pull-right bv-news"></span></a></li>
-                    <li><a href="#is-valid-field">isValidField<span class="pull-right bv-news"></span></a></li>
-                    <li><a href="#remove-field">removeField<span class="pull-right bv-news"></span></a></li>
-                    <li><a href="#reset-field">resetField<span class="pull-right bv-news"></span></a></li>
+                    <li><a href="#is-valid-container">isValidContainer</a></li>
+                    <li><a href="#is-valid-field">isValidField</a></li>
+                    <li><a href="#remove-field">removeField</a></li>
+                    <li><a href="#reset-field">resetField</a></li>
                     <li><a href="#reset-form">resetForm</a></li>
-                    <li><a href="#revalidate-field">revalidateField<span class="pull-right bv-news"></span></a></li>
-                    <li><a href="#update-message">updateMessage<span class="pull-right bv-news"></span></a></li>
-                    <li><a href="#update-option">updateOption<span class="pull-right bv-news"></span></a></li>
+                    <li><a href="#revalidate-field">revalidateField</a></li>
+                    <li><a href="#update-message">updateMessage</a></li>
+                    <li><a href="#update-option">updateOption</a></li>
                     <li><a href="#update-status">updateStatus</a></li>
                     <li><a href="#validate">validate</a></li>
                     <li><a href="#validate-field">validateField</a></li>
@@ -111,7 +111,7 @@ $(form)
 
                     <!-- addField() -->
                     <section>
-                        <h3 id="add-field">addField(): BootstrapValidator<span class="pull-right bv-news"></span></h3>
+                        <h3 id="add-field">addField(): BootstrapValidator</h3>
                         <p><code>addField(field<sup>*</sup>, options)</code> &mdash; Add a new field.</p>
                         <table class="table table-condensed">
                             <thead>
@@ -140,6 +140,29 @@ $(form)
                                 </tr>
                             </tbody>
                         </table>
+
+                        <p>If you want to do additional task after adding new field, then trigger the <a href="/settings/#event-form">added.field.bv</a> event:</p>
+{% highlight javascript hl_lines="4" %}
+$(document).ready(function() {
+    $(form)
+        .bootstrapValidator(options)
+        .on('added.field.bv', function(e, data) {
+            // $(e.target)  --> The form instance
+            // $(e.target).data('bootstrapValidator')
+            //              --> The BootstrapValidator instance
+
+            // data.field   --> The field name
+            // data.element --> The new field element
+            // data.options --> The new field options
+
+            // Do something ...
+        });
+});
+{% endhighlight %}
+                        <h4>Example</h4>
+                        <ul>
+                            <li><a href="/examples/adding-dynamic-field/">Adding dynamic field</a></li>
+                        </ul>
                     </section>
 
                     <!-- defaultSubmit() -->
@@ -147,12 +170,12 @@ $(form)
                         <h3 id="default-submit">defaultSubmit(): BootstrapValidator</h3>
 
                         <p><code>defaultSubmit()</code> &mdash; Submit the form using default submission.</p>
-                        <p>It also does not perform any validations when submitting the form. It might be used when you want to submit the form right inside the <a href="/settings/#form-submit-handler">custom submit handler</a>.</p>
+                        <p>It also does not perform any validations when submitting the form. It might be used when you want to submit the form right inside the <a href="/examples/ajax-submit/">custom submit handler</a>.</p>
                     </section>
 
                     <!-- destroy() -->
                     <section>
-                        <h3 id="destroy">destroy()<span class="pull-right bv-news"></span></h3>
+                        <h3 id="destroy">destroy()</h3>
                         <p><code>destroy()</code> &mdash; Destroy the plugin.</p>
                         <p>It will remove all error messages, feedback icons as well as turning off the events created by the plugin.</p>
                     </section>
@@ -179,6 +202,11 @@ $(form)
                                 </tr>
                             </tbody>
                         </table>
+
+                        <h4>Example</h4>
+                        <ul>
+                            <li><a href="/examples/changing-default-behaviour/">Changing default behaviour</a></li>
+                        </ul>
                     </section>
 
                     <!-- enableFieldValidators() -->
@@ -213,11 +241,16 @@ $(form)
                                 </tr>
                             </tbody>
                         </table>
+
+                        <h4>Example</h4>
+                        <ul>
+                            <li><a href="/examples/enable-validator/">Enable, disable validators</a></li>
+                        </ul>
                     </section>
 
                     <!-- getDynamicOption() -->
                     <section>
-                        <h3 id="get-dynamic-option">getDynamicOption(): String<span class="pull-right bv-news"></span></h3>
+                        <h3 id="get-dynamic-option">getDynamicOption(): String</h3>
                         <p><code>getDynamicOption(field<sup>*</sup>, option<sup>*</sup>)</code> &mdash; Returns the option value which can be set dynamically.</p>
                         <p>For example, the <a href="/validators/zipCode/">zipCode validator</a> has <code>country</code> option that can be changed dynamically a select element.</p>
 
@@ -273,13 +306,13 @@ $(form)
 
                     <!-- getInvalidFields() -->
                     <section>
-                        <h3 id="get-invalid-fields">getInvalidFields(): jQuery[]<span class="pull-right bv-news"></span></h3>
+                        <h3 id="get-invalid-fields">getInvalidFields(): jQuery[]</h3>
                         <p><code>getInvalidFields()</code> &mdash; Returns the list of invalid fields.</p>
                     </section>
 
                     <!-- getMessages() -->
                     <section>
-                        <h3 id="get-messages">getMessages(): String[]<span class="pull-right bv-news"></span></h3>
+                        <h3 id="get-messages">getMessages(): String[]</h3>
                         <p><code>getMessages(field, validator)</code> &mdash; Get the error messages.</p>
 
                         <table class="table table-condensed">
@@ -303,11 +336,16 @@ $(form)
                                 </tr>
                             </tbody>
                         </table>
+
+                        <h4>Example</h4>
+                        <ul>
+                            <li><a href="/examples/showing-message-custom-area/#using-events">Showing messages in custom area</a></li>
+                        </ul>
                     </section>
 
                     <!-- getOptions() -->
                     <section>
-                        <h3 id="get-options">getOptions(): String|Object<span class="pull-right bv-news"></span></h3>
+                        <h3 id="get-options">getOptions(): String|Object</h3>
                         <p><code>getOptions(field, validator, option)</code> &mdash; Get the field options.</p>
                         <table class="table table-condensed">
                             <thead>
@@ -339,8 +377,8 @@ $(form)
 
                     <!-- getSubmitButton() -->
                     <section>
-                        <h3 id="get-submit-button">getSubmitButton(): jQuery<span class="pull-right bv-news"></span></h3>
-                        <p><code>getSubmitButton()</code> &mdash; Returns a jQuery element presenting the clicked submit button.</p>
+                        <h3 id="get-submit-button">getSubmitButton(): jQuery</h3>
+                        <p><code>getSubmitButton()</code> &mdash; Returns a jQuery element presenting the clicked submit button. Returns <code>null</code> if the submit button isn't clicked.</p>
                     </section>
 
                     <!-- isValid() -->
@@ -353,7 +391,7 @@ $(form)
 
                     <!-- isValidContainer() -->
                     <section>
-                        <h3 id="is-valid-container">isValidContainer(): Boolean<span class="pull-right bv-news"></span></h3>
+                        <h3 id="is-valid-container">isValidContainer(): Boolean</h3>
                         <p><code>isValidContainer(container<sup>*</sup>)</code> &mdash; Returns <code>true</code> if all fields in the container are valid. Otherwise, returns <code>false</code>.</p>
                         <p>It's useful when working with a wizard-like such as tab, collapse.</p>
                         <table class="table table-condensed">
@@ -376,7 +414,7 @@ $(form)
 
                     <!-- isValidField() -->
                     <section>
-                        <h3 id="is-valid-field">isValidField(): Boolean<span class="pull-right bv-news"></span></h3>
+                        <h3 id="is-valid-field">isValidField(): Boolean</h3>
                         <p><code>isValidField(field<sup>*</sup>)</code> &mdash; Check whether the field is valid or not. Returns <code>true</code> if all validators of field pass. Otherwise, returns <code>false</code>.</p>
                         <table class="table table-condensed">
                             <thead>
@@ -398,7 +436,7 @@ $(form)
 
                     <!-- removeField() -->
                     <section>
-                        <h3 id="remove-field">removeField(): BootstrapValidator<span class="pull-right bv-news"></span></h3>
+                        <h3 id="remove-field">removeField(): BootstrapValidator</h3>
                         <p><code>removeField(field<sup>*</sup>)</code> &mdash; Remove given field</p>
                         <table class="table table-condensed">
                             <thead>
@@ -416,11 +454,33 @@ $(form)
                                 </tr>
                             </tbody>
                         </table>
+
+                        <p>By triggering the <a href="/settings/#event-form">removed.field.bv</a> event, you can perform additional task after removing given field:</p>
+{% highlight javascript hl_lines="4" %}
+$(document).ready(function() {
+    $(form)
+        .bootstrapValidator(options)
+        .on('removed.field.bv', function(e, data) {
+            // $(e.target)  --> The form instance
+            // $(e.target).data('bootstrapValidator')
+            //              --> The BootstrapValidator instance
+
+            // data.field   --> The field name
+            // data.element --> The new field element
+
+            // Do something ...
+        });
+});
+{% endhighlight %}
+                        <h4>Example</h4>
+                        <ul>
+                            <li><a href="/examples/adding-dynamic-field/">Adding dynamic field</a></li>
+                        </ul>
                     </section>
 
                     <!-- resetField() -->
                     <section>
-                        <h3 id="reset-field">resetField(): BootstrapValidator<span class="pull-right bv-news"></span></h3>
+                        <h3 id="reset-field">resetField(): BootstrapValidator</h3>
                         <p><code>resetField(field<sup>*</sup>, resetValue)</code> &mdash; Reset given field. It hides the error messages and feedback icons.</p>
                         <table class="table table-condensed">
                             <thead>
@@ -476,7 +536,7 @@ $(form).data('bootstrapValidator').resetForm();
 
                     <!-- revalidateField() -->
                     <section>
-                        <h3 id="revalidate-field">revalidateField(): BootstrapValidator<span class="pull-right bv-news"></span></h3>
+                        <h3 id="revalidate-field">revalidateField(): BootstrapValidator</h3>
                         <p><code>revalidateField(field<sup>*</sup>)</code> &mdash; Revalidate given field.</p>
                         <p>It's used when you need to revalidate the field which its value is updated by other plugin.</p>
                         <p>By default, the plugin doesn't re-validate a field once it is already validated and marked as a valid one.
@@ -518,7 +578,7 @@ $(form).bootstrapValidator('updateStatus', field, 'NOT_VALIDATED')
 
                     <!-- updateMessage() -->
                     <section>
-                        <h3 id="update-message">updateMessage(): BootstrapValidator<span class="pull-right bv-news"></span></h3>
+                        <h3 id="update-message">updateMessage(): BootstrapValidator</h3>
                         <p><code>updateMessage(field<sup>*</sup>, validator<sup>*</sup>, message<sup>*</sup>)</code> &mdash; Update the error message.</p>
                         <table class="table table-condensed">
                             <thead>
@@ -550,7 +610,7 @@ $(form).bootstrapValidator('updateStatus', field, 'NOT_VALIDATED')
 
                     <!-- updateOption() -->
                     <section>
-                        <h3 id="update-option">updateOption(): BootstrapValidator<span class="pull-right bv-news"></span></h3>
+                        <h3 id="update-option">updateOption(): BootstrapValidator</h3>
                         <p><code>updateOption(field<sup>*</sup>, validator<sup>*</sup>, option<sup>*</sup>, value<sup>*</sup>)</code> &mdash; Update the option of a specific validator.</p>
                         <table class="table table-condensed">
                             <thead>
@@ -618,7 +678,7 @@ $(form).bootstrapValidator('updateStatus', field, 'NOT_VALIDATED')
                             </tbody>
                         </table>
 
-                        <h4>Examples</h4>
+                        <h4>Example</h4>
                         <ul>
                             <li><a href="#credit-card-example">Credit card</a></li>
                         </ul>
@@ -707,8 +767,8 @@ $(form).data('bootstrapValidator').validate();
                                 <div class="tab-pane" id="datepicker-html-tab">
 {% highlight html hl_lines="8" %}
 <link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-<script src="/vendor/momentjs/moment.min.js"></script>
-<script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>                                    
+<script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
+<script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 
 <style type="text/css">
 #datetimeForm .has-feedback .form-control-feedback {
@@ -897,7 +957,7 @@ $(document).ready(function() {
     </div>
 </div>
 
-<script src="/vendor/momentjs/moment.min.js"></script>
+<script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
 <script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 <script>
 $(document).ready(function() {

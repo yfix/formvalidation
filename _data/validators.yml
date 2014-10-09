@@ -72,7 +72,7 @@
 
 - name:         id
   version:      0.4.5
-  description:  Validate identification number. Support 25 countries
+  description:  Validate identification number
 
 - name:         identical
   version:      0.1.0
@@ -81,6 +81,10 @@
 - name:         imei
   version:      0.4.4
   description:  Validate an IMEI (International Mobile Station Equipment Identity)
+
+- name:         imo
+  version:      0.5.1
+  description:  Validate an IMO (International Maritime Organization)
 
 - name:         integer
   version:      0.4.0
@@ -113,6 +117,10 @@
 - name:         mac
   version:      0.3.2
   description:  Validate a MAC address
+
+- name:         meid
+  version:      0.5.1
+  description:  Validate a MEID (mobile equipment identifier)
 
 - name:         notEmpty
   version:      0.1.0
@@ -172,7 +180,7 @@
 
 - name:         vat
   version:      0.4.3
-  description:  Validate VAT number. Support 32 countries
+  description:  Validate VAT number
 
 - name:         vin
   version:      0.4.2

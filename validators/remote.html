@@ -59,9 +59,15 @@ comments:         true
                         <tbody>
                             <tr>
                                 <td><code>data</code></td>
-                                <td>n/a</td>
+                                <td><code>data-bv-remote-delay</code></td>
                                 <td>Object</td>
                                 <td>The data sent to remote URL.<br />You don't need to use this option if there is only field, defined as field name, sent to the remote URL.</td>
+                            </tr>
+                            <tr>
+                                <td><code>delay</code> <span class="bv-news"></span></td>
+                                <td>n/a</td>
+                                <td>Number</td>
+                                <td>The Ajax request created by the remote validator is only fired once in the delay duration time.</td>
                             </tr>
                             <tr>
                                 <td><code>message</code></td>
@@ -70,23 +76,23 @@ comments:         true
                                 <td>The error message</td>
                             </tr>
                             <tr>
-                                <td><code>method</code> <span class="bv-news"></span></td>
-                                <td><code>data-bv-remote-method</code></td>
-                                <td>String</td>
-                                <td>The method used to send data to back-end. It can be <code>GET</code> or <code>POST</code> <span class="label label-default">default</span></td>
-                            </tr>
-                            <tr>
                                 <td><code>name</code></td>
                                 <td><code>data-bv-remote-name</code></td>
                                 <td>String</td>
                                 <td>The name of field which need to validate</td>
                             </tr>
                             <tr>
+                                <td><code>type</code></td>
+                                <td><code>data-bv-remote-type</code></td>
+                                <td>String</td>
+                                <td>The method used to send data to back-end. It can be <code>GET</code> <span class="label label-default">default</span> or <code>POST</code></td>
+                            </tr>
+                            <tr>
                                 <td><code>url</code><sup>*</sup></td>
                                 <td><code>data-bv-remote-url</code></td>
                                 <td>String|Function</td>
                                 <td>The remote URL.<br/>
-                                    If you want to use a dynamic URL, then use the callback as following: <span class="bv-news"></span>
+                                    If you want to use a dynamic URL, then use the callback as following:
 {% highlight javascript %}
 url: function(validator) {
     // validator is BootstrapValidator instance
@@ -98,9 +104,15 @@ url: function(validator) {
                         </tbody>
                     </table>
 
+                    <div class="bv-box bv-box-warning">From v0.5.2, the <code>type</code> option is <code>GET</code>, by default.</div>
+
                     <p>The remote URL has to return an encoded JSON of array containing the <code>valid</code> key:</p>
 {% highlight javascript %}
-{ valid: 'true or false' }
+{ "valid": true }
+{% endhighlight %}
+                    <p>or</p>
+{% highlight javascript %}
+{ "valid": false }
 {% endhighlight %}
                 </section>
 

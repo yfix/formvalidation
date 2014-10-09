@@ -2,7 +2,7 @@
 layout:           doc
 title:            Developing
 permalink:        /developing/
-previous_section: /api/
+previous_section: /examples/
 comments:         true
 ---
 
@@ -31,7 +31,7 @@ comments:         true
                     <li>
                         <a href="#writing-new-validator">Writing new validator</a>
                         <ul>
-                            <li><a href="#dynamic-message">Dynamic message<span class="pull-right bv-news"></span></a></li>
+                            <li><a href="#dynamic-message">Dynamic message</a></li>
                             <li><a href="#example">Example</a></li>
                         </ul>
                     </li>
@@ -85,25 +85,13 @@ $(form).bootstrapValidator({
     }
 });{% endhighlight %}
 
-                    <p>For Rails, the input field is constructed from model name and field name. For example, user have email as field, when form helper render
-                        view, the input field name will be <code>'user[email]'</code>. The syntax for these is somewhat different as shown below:</p>
-
-{% highlight javascript %}
-$(form).bootstrapValidator({
-    fields: {
-        'user[email]': {
-            validatorName: validatorOptions
-        }
-    }
-});{% endhighlight %}
-
                     <div class="bv-box bv-box-info">
                         <h5><i></i>How built-in validators are developed</h5>
                         <p>To see how built-in validators are developed, you can look at their sources located at the <a href="{{ site.repository.source }}/tree/master/src/js/validator">src/js/validator</a> directory.</p>
                     </div>
 
                     <section>
-                        <h3 id="dynamic-message">Dynamic message<span class="pull-right bv-news"></span></h3>
+                        <h3 id="dynamic-message">Dynamic message</h3>
                         <p>If you want to set dynamic error message, the validator must return an object that consists of <code>valid</code> and <code>message</code> members:</p>
 {% highlight javascript hl_lines="7 8 13 14" %}
 (function($) {

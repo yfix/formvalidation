@@ -31,15 +31,16 @@ next_section:     /validators/
 
                 <h4><a href="#form-settings">Form settings</a></h4>
                 <ul>
-                    <li><a href="#form-container">container<span class="pull-right bv-news"></span></a></li>
+                    <li><a href="#form-container">container</a></li>
                     <li><a href="#form-excluded">excluded</a></li>
                     <li><a href="#form-feedback-icons">feedbackIcons</a></li>
-                    <li><a href="#form-group">group</a><span class="pull-right bv-news"></span></li>
+                    <li><a href="#form-group">group</a></li>
                     <li><a href="#form-live">live</a></li>
                     <li><a href="#form-message">message</a></li>
                     <li><a href="#form-submit-buttons">submitButtons</a></li>
                     <li><a href="#form-threshold">threshold</a></li>
                     <li><a href="#form-trigger">trigger</a></li>
+                    <li><a href="#form-verbose">verbose</a> <span class="bv-news"></span></li>
                     <li><a href="#form-fields">fields</a></li>
                 </ul>
 
@@ -47,21 +48,22 @@ next_section:     /validators/
                 <ul>
                     <li><a href="#field-container">container</a></li>
                     <li><a href="#field-enabled">enabled</a></li>
-                    <li><a href="#field-excluded">excluded<span class="pull-right bv-news"></span></a></li>
-                    <li><a href="#field-feedback-icons">feedbackIcons<span class="pull-right bv-news"></span></a></li>
-                    <li><a href="#field-group">group</a><span class="pull-right bv-news"></span></li>
+                    <li><a href="#field-excluded">excluded</a></li>
+                    <li><a href="#field-feedback-icons">feedbackIcons</a></li>
+                    <li><a href="#field-group">group</a></li>
                     <li><a href="#field-message">message</a></li>
                     <li><a href="#field-selector">selector</a></li>
                     <li><a href="#field-threshold">threshold</a></li>
                     <li><a href="#field-trigger">trigger</a></li>
+                    <li><a href="#field-verbose">verbose</a> <span class="bv-news"></span></li>
                 </ul>
 
                 <h4><a href="#validator-settings">Validator settings</a></h4>
                 <ul>
-                    <li><a href="#validator-enabled">enabled<span class="pull-right bv-news"></span></a></li>
+                    <li><a href="#validator-enabled">enabled</a></li>
                     <li><a href="#validator-message">message</a></li>
                     <li>
-                        <a href="#dynamic-option">Dynamic option<span class="pull-right bv-news"></span></a>
+                        <a href="#dynamic-option">Dynamic option</a>
                         <ul>
                             <li><a href="#dynamic-option-validators">Supported validators</a></li>
                             <li><a href="#dynamic-option-string">Using string</a></li>
@@ -70,10 +72,10 @@ next_section:     /validators/
                             <li><a href="#dynamic-option-callback">Using function</a></li>
                         </ul>
                     </li>
-                    <li><a href="#dynamic-message">Dynamic message<span class="pull-right bv-news"></span></a></li>
+                    <li><a href="#dynamic-message">Dynamic message</a></li>
                 </ul>
 
-                <h4><a href="#events">Events<span class="pull-right bv-news"></span></a></h4>
+                <h4><a href="#events">Events</a></h4>
                 <ul>
                     <li><a href="#event-form">Form events</a></li>
                     <li><a href="#event-field">Field events</a></li>
@@ -144,6 +146,11 @@ $(document).ready(function() {
 {% endhighlight %}
 
                     <p>In the next sections, you will see the full list of options for each level.</p>
+
+                    <h4>Examples</h4>
+                    <ul>
+                        <li><a href="/examples/overriding-default-options/">Overriding default options</a></li>
+                    </ul>
                 </section>
 
                 <!-- form -->
@@ -161,7 +168,7 @@ $(document).ready(function() {
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>container</code> <span class="bv-news"></span></td>
+                                <td><code>container</code></td>
                                 <td><code>data-bv-container</code></td>
                                 <td>n/a</td>
                             </tr>
@@ -184,7 +191,7 @@ $(document).ready(function() {
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>group</code> <span class="bv-news"></span></td>
+                                <td><code>group</code></td>
                                 <td><code>data-bv-group</code></td>
                                 <td><code>'.form-group'</code></td>
                             </tr>
@@ -214,6 +221,11 @@ $(document).ready(function() {
                                 <td><code>null</code></td>
                             </tr>
                             <tr>
+                                <td><code>verbose</code></td>
+                                <td><code>data-bv-verbose</code></td>
+                                <td><code>true</code></td>
+                            </tr>
+                            <tr>
                                 <td><code>fields</code></td>
                                 <td>n/a</td>
                                 <td><code>null</code></td>
@@ -223,7 +235,7 @@ $(document).ready(function() {
                     
                     <!-- form-container -->
                     <section>
-                        <h3 id="form-container">container: String <span class="pull-right bv-news"></span></h3>
+                        <h3 id="form-container">container: String </h3>
                         <p>Indicate where the error messages are shown.</p>
                         <table class="table table-condensed">
                             <thead>
@@ -359,6 +371,11 @@ $(document).ready(function() {
                                 </div>
                             </div>
                         </section>
+
+                        <ul>
+                            <li><a href="/examples/showing-message-custom-area/#using-container-option">Showing messages in custom area</a></li>
+                            <li><a href="/examples/tooltip-popover-position">Changing tooltip, popover's position</a> <span class="bv-news"></span></li>
+                        </ul>
                     </section>
 
                     <!-- form-excluded -->
@@ -475,188 +492,15 @@ feedbackIcons: {
 {% endhighlight %}
                         </div>
 
-                        <div class="bv-box bv-box-info">
-                            <h5 id="adjusting-feedback-icon-position"><i></i>Adjusting feedback icon position</h5>
-                            <p>The feedback icons aren't shown properly for some elements such as select box or when using with other element such as <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Bootstrap Datetime Picker</a>, <a href="http://mjolnic.github.io/bootstrap-colorpicker/">Bootstrap Color Picker</a>, etc.</p>
-                            <p>Bootstrap defines feedback icon position as following:</p>
-{% highlight css hl_lines="3" %}
-.form-horizontal .has-feedback .form-control-feedback {
-    top: 0;
-    right: 15px;
-}
-{% endhighlight %}
-                            <p>You can override this to adjust feedback icon position:</p>
-{% highlight css hl_lines="3 7" %}
-.form-horizontal .has-feedback .form-control-feedback {
-    top: 0;
-    right: -15px;
-}
-.form-horizontal .has-feedback .input-group .form-control-feedback {
-    top: 0;
-    right: -30px;
-}
-{% endhighlight %}
-                            <link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-                            <style type="text/css">
-                            #feedbackIconForm .has-feedback .form-control-feedback {
-                                top: 0;
-                                right: -15px;
-                            }
-                            #feedbackIconForm .has-feedback .input-group .form-control-feedback {
-                                top: 0;
-                                right: -30px;
-                            }
-                            </style>
-
-                            <div class="bv-example">
-                                <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#feedbackicon-form-tab" data-toggle="tab">Try it</a></li>
-                                    <li><a href="#feedbackicon-html-tab" data-toggle="tab">HTML</a></li>
-                                    <li><a href="#feedbackicon-js-tab" data-toggle="tab">JS</a></li>
-                                </ul>
-
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="feedbackicon-form-tab">
-                                        <form id="feedbackIconForm" class="form-horizontal">
-                                            <div class="form-group">
-                                                <label class="col-lg-3 control-label">Full name</label>
-                                                <div class="col-lg-5">
-                                                    <input type="text" class="form-control" name="fullName" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-lg-3 control-label">Gender</label>
-                                                <div class="col-lg-5">
-                                                    <select class="form-control" name="gender">
-                                                        <option value="">Choose gender</option>
-                                                        <option value="male">Male</option>
-                                                        <option value="female">Female</option>
-                                                        <option value="other">Other</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-lg-3 control-label">Date of birth</label>
-                                                <div class="col-lg-5">
-                                                    <div class="input-group date" id="dobPicker" data-date-format="YYYY/DD/MM">
-                                                        <input type="text" class="form-control" name="dob" />
-                                                        <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-
-                                    <div class="tab-pane" id="feedbackicon-html-tab">
-{% highlight html %}
-<!-- Include CSS required by Bootstrap Datetime Picker -->
-<link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-
-<!-- Include JS required by Bootstrap Datetime Picker -->
-<script src="/vendor/momentjs/moment.min.js"></script>
-<script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-
-<!-- Override feedback icon position -->
-<style type="text/css">
-#feedbackIconForm .has-feedback .form-control-feedback {
-    top: 0;
-    right: -15px;
-}
-#feedbackIconForm .has-feedback .input-group .form-control-feedback {
-    top: 0;
-    right: -30px;
-}
-</style>
-
-<form id="feedbackIconForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Full name</label>
-        <div class="col-lg-5">
-            <input type="text" class="form-control" name="fullName" />
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Gender</label>
-        <div class="col-lg-5">
-            <select class="form-control" name="gender">
-                <option value="">Choose gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-            </select>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Date of birth</label>
-        <div class="col-lg-5">
-            <div class="input-group date" id="dobPicker" data-date-format="YYYY/DD/MM">
-                <input type="text" class="form-control" name="dob" />
-                <span class="input-group-addon">
-                    <span class="glyphicon-calendar glyphicon"></span>
-                </span>
-            </div>
-        </div>
-    </div>
-</form>
-{% endhighlight %}
-                                    </div>
-
-                                    <div class="tab-pane" id="feedbackicon-js-tab">
-{% highlight javascript %}
-$(document).ready(function() {
-    $('#dobPicker')
-        .datetimepicker({
-            pickTime: false
-        })
-        .on('dp.change dp.show', function(e) {
-            $('#feedbackIconForm').bootstrapValidator('revalidateField', 'dob');
-        });
-    $('#feedbackIconForm').bootstrapValidator({
-        message: 'This value is not valid',
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            fullName: {
-                validators: {
-                    notEmpty: {
-                        message: 'The full name is required and cannot be empty'
-                    }
-                }
-            },
-            gender: {
-                validators: {
-                    notEmpty: {
-                        message: 'The gender is required and cannot be empty'
-                    }
-                }
-            },
-            dob: {
-                validators: {
-                    notEmpty: {
-                        message: 'The date of birth is required and cannot be empty'
-                    },
-                    date: {
-                        format: 'YYYY/DD/MM',
-                        message: 'The value is not a valid date'
-                    }
-                }
-            }
-        }
-    });
-});
-{% endhighlight %}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <h4>Example</h4>
+                        <ul>
+                            <li><a href="/examples/adjusting-feedback-icon-position/">Adjusting feedback icon position</a></li>
+                        </ul>
                     </section>
 
                     <!-- form-group -->
                     <section>
-                        <h3 id="form-group">group: String <span class="pull-right bv-news"></span></h3>
+                        <h3 id="form-group">group: String </h3>
                         <p>CSS selector indicates the parent element of field. By default, it is <code>.form-group</code>.</p>
                         <p>Following Bootstrap form structure, each field and its label are wrapped inside <code>.form-group</code> element.</p>
                         <p>This option might be used in the following cases:</p>
@@ -824,6 +668,11 @@ $(document).ready(function() {
                                     </div>
                                 </div>
                             </div>
+
+                            <p>More example:</p>
+                            <ul>
+                                <li><a href="/examples/complex-form/">Complex form</a></li>
+                            </ul>
                         </section>
                     </section>
 
@@ -879,6 +728,33 @@ $(document).ready(function() {
                         <p>The event which is fired to validating all fields when the live validating mode is enabled. If you need multiple events are fired, then separate them by a space.</p>
                         <p>It's also possible to set trigger option for each field. Look at the <a href="#field-trigger">field trigger</a> section.</p>
                     </section>
+
+                    <!-- form-verbose -->
+                    <section>
+                        <h3 id="form-verbose">verbose: Boolean</h3>
+                        <p>Whether to be verbose when validating a field or not.</p>
+
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Value</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>true <label class="label label-default">default</label></td>
+                                    <td>When a field has multiple validators, all of them will be checked respectively. If errors occur in multiple validators, all of them will be displayed to the user</td>
+                                </tr>
+                                <tr>
+                                    <td>false</td>
+                                    <td>when a field has multiple validators, validation for this field will be terminated upon the first encountered error. Thus, only the very first error message related to this field will be displayed to the user</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p>It's also possible to set verbose option for each field. Look at the <a href="#field-verbose">field verbose</a> section.</p>
+                    </section>
                 </section>
                 <!-- /form -->
 
@@ -901,18 +777,18 @@ $(document).ready(function() {
                             </tr>
                             <tr>
                                 <td><code>enabled</code></td>
-                                <td><code>data-bv-enabled</code> <span class="bv-news"></span></td>
+                                <td><code>data-bv-enabled</code></td>
                             </tr>
                             <tr>
-                                <td><code>excluded</code> <span class="bv-news"></span></td>
+                                <td><code>excluded</code></td>
                                 <td><code>data-bv-excluded</code></td>
                             </tr>
                             <tr>
-                                <td><code>feedbackIcons</code> <span class="bv-news"></span></td>
+                                <td><code>feedbackIcons</code></td>
                                 <td><code>data-bv-feedbackicons</code></td>
                             </tr>
                             <tr>
-                                <td><code>group</code> <span class="bv-news"></span></td>
+                                <td><code>group</code></td>
                                 <td><code>data-bv-group</code></td>
                             </tr>
                             <tr>
@@ -930,6 +806,10 @@ $(document).ready(function() {
                             <tr>
                                 <td><code>trigger</code></td>
                                 <td><code>data-bv-trigger</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>verbose</code></td>
+                                <td><code>data-bv-verbose</code></td>
                             </tr>
                         </tbody>
                     </table>
@@ -951,11 +831,11 @@ $(document).ready(function() {
                                     <td>Error messages are placed in element defined by this CSS selector</td>
                                 </tr>
                                 <tr>
-                                    <td><code>tooltip</code> <span class="bv-news"></span></td>
+                                    <td><code>tooltip</code></td>
                                     <td>Error messages are placed inside a <a href="http://getbootstrap.com/javascript/#tooltips">Bootstrap tooltip</a>.</td>
                                 </tr>
                                 <tr>
-                                    <td><code>popover</code> <span class="bv-news"></span></td>
+                                    <td><code>popover</code></td>
                                     <td>Error messages are placed inside a <a href="http://getbootstrap.com/javascript/#popovers">Bootstrap popover</a>.</td>
                                 </tr>
                             </tbody>
@@ -1052,7 +932,7 @@ $(document).ready(function() {
                     </section>
 
                     <section>
-                        <h3 id="field-excluded">excluded: Boolean <span class="pull-right bv-news"></span></h3>
+                        <h3 id="field-excluded">excluded: Boolean </h3>
                         <p>Indicate whether or not the field is excluded.</p>
                     </section>
 
@@ -1064,7 +944,7 @@ $(document).ready(function() {
 
                     <!-- field-feedback-icons -->
                     <section>
-                        <h3 id="field-feedback-icons">feedbackIcons: Boolean <span class="pull-right bv-news"></span></h3>
+                        <h3 id="field-feedback-icons">feedbackIcons: Boolean </h3>
                         <p>Enable or disable feedback icons.</p>
 
                         <section>
@@ -1193,7 +1073,7 @@ $(document).ready(function() {
 
                     <!-- field-group -->
                     <section>
-                        <h3 id="field-group">group: String <span class="pull-right bv-news"></span></h3>
+                        <h3 id="field-group">group: String </h3>
                         <p>CSS selector indicates the parent element of field. By default, it is <code>.form-group</code>.</p>
                     </section>
 
@@ -1603,6 +1483,13 @@ $(document).ready(function() {
                             </div>
                         </div>
                     </section>
+
+                    <!-- field-verbose -->
+                    <section>
+                        <h3 id="field-verbose">verbose: Boolean</h3>
+                        <p>Whether to be verbose when validating a field or not.</p>
+                        <p>Look at the <a href="#form-verbose">form verbose</a> section to see the possible value for the verbose option.</p>
+                    </section>
                 </section>
                 <!-- /field -->
 
@@ -1632,7 +1519,7 @@ $(document).ready(function() {
 
                     <!-- validator-enabled -->
                     <section>
-                        <h3 id="validator-enabled">enabled: Boolean<span class="pull-right bv-news"></span></h3>
+                        <h3 id="validator-enabled">enabled: Boolean</h3>
                         <p>Indicate the validator is enabled or disabled. It is <code>true</code>, by default.</p>
                         <p>Look at the field's <a href="#field-enabled">enabled</a> option if you want to enable/disable all validators.</p>
                         <p>The table below shows three equivalent ways to enable or disable given validator:</p>
@@ -1786,7 +1673,7 @@ $(document).ready(function() {
                     </section>
 
                     <section>
-                        <h3 id="dynamic-option">Dynamic option<span class="pull-right bv-news"></span></h3>
+                        <h3 id="dynamic-option">Dynamic option</h3>
                         <p>Some validators have option which its value could be change dynamically.</p>
                         <p>For example, the <a href="/validators/zipCode/">zipCode validator</a> has the <code>country</code> option that can be changed dynamically a select element.</p>
                         <p>The dynamic option can be determined by:</p>
@@ -2361,7 +2248,7 @@ $(document).ready(function() {
 
                     <!-- dynamic-message -->
                     <section>
-                        <h3 id="dynamic-message">Dynamic message<span class="pull-right bv-news"></span></h3>
+                        <h3 id="dynamic-message">Dynamic message</h3>
                         <p>Looking back to the <a href="#dynamic-option-element">zipcode example</a> above, you will realize that the message is static:</p>
 
 {% highlight html hl_lines="2" %}
@@ -2759,7 +2646,7 @@ callback: {
 
                 <!-- events -->
                 <section>
-                    <h2 id="events">Events<span class="pull-right bv-news"></span></h2>
+                    <h2 id="events">Events</h2>
                     <p>Similar to the <a href="#settings-structure">settings</a>, there are also events for form, field and validator. Each event can be set by one of three ways:</p>
                     <ul>
                         <li>Listening to event using jQuery <code>on(eventName, callback)</code></li>
@@ -2779,12 +2666,24 @@ callback: {
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td><code>init.form.bv</code></td>
+                                    <td>Triggered after the form is initialized by the plugin</td>
+                                </tr>
+                                <tr>
                                     <td><code>error.form.bv</code></td>
                                     <td>Triggered when the form is invalid</td>
                                 </tr>
                                 <tr>
                                     <td><code>success.form.bv</code></td>
                                     <td>Triggered when the form is valid</td>
+                                </tr>
+                                <tr>
+                                    <td><code>added.field.bv</code></td>
+                                    <td>Triggered after adding dynamic field</td>
+                                </tr>
+                                <tr>
+                                    <td><code>removed.field.bv</code></td>
+                                    <td>Triggered after removing given field</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -2800,22 +2699,51 @@ callback: {
                                 <tr>
                                     <td>Listening to event</td>
                                     <td>
-{% highlight javascript hl_lines="4 13" %}
+{% highlight javascript hl_lines="3 4 5 13 15 23 30 42" %}
 $(document).ready(function() {
     $(form)
-        .bootstrapValidator(options)
-        .on('error.form.bv', function(e) {
-            // Get the form instance
-            // $(e.target);
-
-            // Get the bootstrapValidator instance
-            // $(e.target).data('bootstrapValidator');
+        // on('init.form.bv') must be declared
+        // before calling .bootstrapValidator(options)
+        .on('init.form.bv', function(e, data) {
+            // $(e.target)  --> The form instance
+            // data.bv      --> The BootstrapValidator instance
+            // data.options --> The form options
 
             // Do something ...
         })
+
+        .bootstrapValidator(options)
+
+        .on('error.form.bv', function(e) {
+            // $(e.target) --> The form instance
+            // $(e.target).data('bootstrapValidator')
+            //             --> The BootstrapValidator instance
+
+            // Do something ...
+        })
+
         .on('success.form.bv', function(e) {
-            // The e parameter is the same as one
+            // The e parameter is same as one
             // in the error.form.bv event above
+
+            // Do something ...
+        })
+
+        .on('added.field.bv', function(e, data) {
+            // $(e.target)  --> The form instance
+            // $(e.target).data('bootstrapValidator')
+            //              --> The BootstrapValidator instance
+
+            // data.field   --> The field name
+            // data.element --> The new field element
+            // data.options --> The new field options
+
+            // Do something ...
+        })
+
+        .on('removed.field.bv', function(e, data) {
+            // The e and data parameters are same as one
+            // in the added.field.bv event above
 
             // Do something ...
         });
@@ -2868,6 +2796,7 @@ $(document).ready(function() {
                         <h4>Examples</h4>
                         <ul>
                             <li><a href="/examples/ajax-submit/">Using Ajax to submit the form</a></li>
+                            <li><a href="/examples/showing-message-custom-area/#using-events">Showing messages in custom area</a></li>
                         </ul>
                     </section>
 
@@ -2882,6 +2811,10 @@ $(document).ready(function() {
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr>
+                                    <td><code>init.field.bv</code></td>
+                                    <td>Triggered after the field is initialized by the plugin</td>
+                                </tr>
                                 <tr>
                                     <td><code>error.field.bv</code></td>
                                     <td>Triggered when any field is invalid</td>
@@ -2916,37 +2849,39 @@ $(document).ready(function() {
                                 <tr>
                                     <td>Listening to event</td>
                                     <td>
-{% highlight javascript hl_lines="4 19 25" %}
+{% highlight javascript hl_lines="3 4 5 12 14 21 28" %}
 $(document).ready(function() {
     $(form)
+        // on('init.field.bv') must be declared
+        // before calling .bootstrapValidator(options)
+        .on('init.field.bv', function(e, data) {
+            // $(e.target)  --> The field element
+            // data.bv      --> The BootstrapValidator instance
+            // data.field   --> The field name
+            // data.element --> The field element
+        })
+
         .bootstrapValidator(options)
+
         .on('error.field.bv', function(e, data) {
-            // Get the form instance
-            // $(e.target)
-
-            // Get the BootstrapValidator instance
-            // $(e.target).data('bootstrapValidator')
-
-            // Get the field name
-            // data.field
-
-            // Get the field element
-            // data.element
+            // The e and data parameters are the same
+            // as one in the init.field.bv event above
 
             // Do something ...
         })
+
         .on('success.field.bv', function(e, data) {
             // The e and data parameters are the same
-            // as one in the error.field.bv event above
+            // as one in the init.field.bv event above
 
             // Do something ...
         })
+
         .on('status.field.bv', function(e, data) {
             // The e and data parameters are the same
-            // as one in the error.field.bv event above
+            // as one in the init.field.bv event above
 
-            // New field status
-            // data.status
+            // data.status --> New field status
 
             // Do something ...
         });
@@ -2969,16 +2904,25 @@ $(document).ready(function() {
                                 <tr>
                                     <td>Listening to event</td>
                                     <td>
-{% highlight javascript hl_lines="4 7 10" %}
+{% highlight javascript hl_lines="3 4 5 9 11 15 19" %}
 $(document).ready(function() {
     $(form)
+        // on('init.field.bv') must be declared
+        // before calling .bootstrapValidator(options)
+        .on('init.field.bv', '[name="email"]', function(e, data) {
+            // Do something ...
+        })
+
         .bootstrapValidator(options)
+
         .on('error.field.bv', '[name="email"]', function(e, data) {
             // Do something ...
         })
+
         .on('success.field.bv', '[name="email"]', function(e, data) {
             // Do something ...
         })
+
         .on('status.field.bv', '[name="email"]', function(e, data) {
             // Do something ...
         });
@@ -3049,6 +2993,13 @@ $(document).ready(function() {
                                 </tr>
                             </tbody>
                         </table>
+
+                        <h4>Examples</h4>
+                        <ul>
+                            <li><a href="/examples/changing-default-behaviour/">Changing default behaviour</a></li>
+                            <li><a href="/examples/showing-message-custom-area/#using-events">Showing messages in custom area</a></li>
+                            <li><a href="/examples/showing-valid-message/">Showing valid message</a></li>
+                        </ul>
                     </section>
 
                     <!-- event-validator -->
@@ -3084,28 +3035,20 @@ $(document).ready(function() {
                                 <tr>
                                     <td>Listening to event</td>
                                     <td>
-{% highlight javascript hl_lines="4 22" %}
+{% highlight javascript hl_lines="3 5 14" %}
 $(document).ready(function() {
     $(form)
         .bootstrapValidator(options)
+
         .on('error.validator.bv', function(e, data) {
-            // Get the form instance
-            // $(e.target)
-
-            // Get the BootstrapValidator instance
-            // $(e.target).data('bootstrapValidator')
-
-            // Get the field name
-            // data.field
-
-            // Get the field element
-            // data.element
-
-            // Get the validator name
-            // data.validator
+            // $(e.target)    --> The form instance
+            // data.field     --> The field name
+            // data.element   --> The field element
+            // data.validator --> The validator name
 
             // Do something ...
         })
+
         .on('success.validator.bv', function(e, data) {
             // The e parameter is the same as one
             // in the error.validator.bv event above
@@ -3173,6 +3116,11 @@ $(document).ready(function() {
                                 </tr>
                             </tbody>
                         </table>
+
+                        <h4>Example</h4>
+                        <ul>
+                            <li><a href="/examples/changing-default-behaviour/#showing-one-message-each-time">Showing only one message each time</a></li>
+                        </ul>
                     </section>
                 </section>
                 <!-- /events -->
@@ -3181,7 +3129,7 @@ $(document).ready(function() {
     </div>
 </div>
 
-<script src="/vendor/momentjs/moment.min.js"></script>
+<script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
 <script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 <script>
 function getCountryCode(value, validator, $field) {

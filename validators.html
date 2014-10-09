@@ -3,7 +3,7 @@ layout:           doc
 title:            Validators
 permalink:        /validators/
 previous_section: /settings/
-next_section:     /examples/
+next_section:     /api/
 comments:         true
 ---
 
@@ -46,7 +46,7 @@ comments:         true
                             {% for validator in site.data.validators %}
                             <tr>
                                 <td>{{ forloop.index }}</td>
-                                <td><a href="/validators/{{ validator.name }}/">{{ validator.name }}</a>{% if validator.version == site.current_version %} <label class="label label-success pull-right">new</label>{% endif %}</td>
+                                <td><a href="/validators/{{ validator.name }}/">{{ validator.name }}</a>{% if validator.version == site.current_version %} <span class="pull-right bv-news"></span>{% endif %}</td>
                                 <td>{{ validator.version }}</td>
                                 <td>{{ validator.description }}</td>
                             </tr>
