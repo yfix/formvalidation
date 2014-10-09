@@ -201,6 +201,29 @@ h4 {
   font-size: 60px;
   margin-bottom: 40px;
 }
+.doc-home-tweet .col-md-3 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.doc-home-tweet .col-md-3 img {
+  border-radius: 30px;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.doc-home-tweet .col-md-3 blockquote {
+  border-left: none;
+  font-size: 14px;
+  margin: 0 0 10px 60px;
+  padding: 0;
+  text-align: left;
+}
+.doc-home-tweet .col-md-3 span {
+  display: block;
+  text-align: right;
+}
 .doc-home-tweet p {
   margin-top: 30px;
 }
