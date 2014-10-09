@@ -15,7 +15,7 @@ comments:  false
         </p>
         <span>v{{ site.current_version }} &mdash; {{ site.released_date}} &mdash; MIT license</span>
     </div>
-    <h3><span id="downloads"></span> downloads so far</h3>
+    <h3 class="hide"><span id="downloads"></span> downloads so far</h3>
 </section>
 
 <!-- features -->
@@ -96,19 +96,20 @@ $(function() {
                     }
                 }
             }
-            var total = total || '{{ site.github_downloads }}';
-            var count = 0,
-                timer = (function() {
-                    return setTimeout(function() {
-                        count++;
-                        if (count == total) {
-                            clearTimeout(timer);
-                        }
-                        $('#downloads').html(count);
+            var count = Math.floor(total / 1000) * 1000;
+            $('#downloads').html(count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')).parent().removeClass('hide');
+
+            (function timer() {
+                return setTimeout(function() {
+                    count++;
+                    if (count > total) {
+                        clearTimeout(timer);
+                    } else {
+                        $('#downloads').html(count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
                         timer();
-                    }, 10);
-                })();
-            //$('#downloads').html((total || '{{ site.github_downloads }}').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+                    }
+                }, 0.5);
+            })();
         }
     });
 });

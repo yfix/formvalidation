@@ -1,12 +1,10 @@
 name:                 BootstrapValidator
 highlighter:          pygments
-#highlighter:          rouge
 relative_permalinks:  false
 
 source:               .
 destination:          ../bootstrapvalidator.com
 markdown:             kramdown
-#markdown:             redcarpet
 exclude:              ['node_modules', '*.less']
 url:                  http://bootstrapvalidator.com/
 paginate:             5
