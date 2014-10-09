@@ -30,21 +30,12 @@ h3,
 h4 {
   font-family: 'Merriweather', serif;
 }
-html,
-body {
-  height: 100%;
-}
-.bv-wrapper {
+html {
+  position: relative;
   min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -400px auto;
 }
-.bv-main {
-  padding-top: 40px;
-}
-.bv-pusher {
-  height: 400px;
+body {
+  margin-bottom: 430px;
 }
 footer {
   background-color: #384452;
@@ -52,6 +43,9 @@ footer {
   border-top: 1px solid #d5d5d5;
   height: 400px;
   padding-top: 30px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 footer .row {
   padding-bottom: 20px;
@@ -78,6 +72,19 @@ footer p {
   font-size: 16px;
   line-height: 1.5;
 }
+.bv-notification {
+  text-align: center;
+  padding: 5px 0;
+  background-color: #fefe00;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+  font-weight: 400;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 40px;
+  z-index: 90;
+}
 .bv-upcoming {
   background-color: #f1c40f;
   border-radius: 4px;
@@ -87,13 +94,13 @@ footer p {
   content: 'upcoming v0.5.0';
 }
 .bv-news {
-  background: #2ecc71;
+  background: #f39c12;
   border-radius: 4px;
   color: #fff;
   padding: 0 5px;
 }
 .bv-news:before {
-  content: 'v0.5.0';
+  content: 'new';
 }
 .bv-separator {
   border-bottom: 1px solid #eee;
@@ -139,10 +146,15 @@ footer p {
 .bv-box-warning h5 i:before {
   content: '\f12a\f12a';
 }
+.bv-header {
+  margin-top: 40px;
+}
 .bv-header .navbar-default {
   background-color: #354b60;
   border-color: transparent;
+  border-radius: 0;
   height: 53px;
+  margin-bottom: 0;
 }
 .bv-header .navbar-nav > li > a {
   color: #fff;
@@ -169,7 +181,7 @@ footer p {
 .bv-heading {
   background-color: #00b3fe;
   color: #fff;
-  padding-top: 80px;
+  padding: 50px 0;
 }
 .bv-heading a,
 .bv-heading a:hover {
@@ -205,10 +217,10 @@ footer p {
 .bv-follower i {
   color: #2ecc71;
   font-size: 50px;
+  padding-right: 5px;
 }
 .bv-follower span {
-  font-size: 40px;
-  padding-left: 10px;
+  font-size: 50px;
 }
 .bv-features {
   padding: 40px 0;
@@ -298,7 +310,7 @@ footer p {
 .bv-sidebar li.active {
   border-left: 3px solid #00b3fe;
   margin-left: -20px;
-  padding-left: 20px;
+  padding-left: 17px;
 }
 .bv-content section h2 {
   border-bottom: 1px solid #ccc;

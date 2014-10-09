@@ -1,5 +1,4 @@
-@footer-height: 400px;
-@navbar-height: 40px;
+@footer-height: 430px;
 
 // Reset
 a, a:hover {
@@ -35,28 +34,22 @@ h1, h2, h3, h4 {
 }
 
 // Sticky footer
-html, body {
-  height: 100%;
-}
-
-.bv-wrapper {
+html {
+  position: relative;
   min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -@footer-height auto;
 }
-.bv-main {
-  padding-top: @navbar-height;
-}
-.bv-pusher {
-  height: @footer-height;
+body {
+  margin-bottom: @footer-height;
 }
 footer {
   background-color: #384452;
   color: #bfc9d3;
   border-top: 1px solid #d5d5d5;
-  height: @footer-height;
+  height: @footer-height - 30px;
   padding-top: 30px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   .row {
     padding-bottom: 20px;
   }
@@ -88,6 +81,20 @@ footer {
   }
 }
 
+.bv-notification {
+  text-align: center;
+  padding: 5px 0;
+  background-color: #fefe00;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+  font-weight: 400;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 40px;
+  z-index: 90;
+}
+
 // Helpers
 .bv-upcoming {
   background-color: #f1c40f;
@@ -98,12 +105,12 @@ footer {
   }
 }
 .bv-news {
-  background: #2ecc71;
+  background: #f39c12;
   border-radius: 4px;
   color: #fff;
   padding: 0 5px;
   &:before {
-    content: 'v0.5.0'
+    content: 'new'
   }
 }
 .bv-separator {
@@ -157,10 +164,13 @@ footer {
 
 // Header
 .bv-header {
+  margin-top: 40px;
   .navbar-default {
     background-color: #354b60;
     border-color: transparent;
+    border-radius: 0;
     height: 53px;
+    margin-bottom: 0;
   }
   .navbar-nav>li>a {
     color: #fff;
@@ -190,7 +200,7 @@ footer {
 .bv-heading {
   background-color: #00b3fe;
   color: #fff;
-  padding-top: 80px;
+  padding: 50px 0;
   a, a:hover {
     color: #fff;
   }
@@ -225,10 +235,10 @@ footer {
   i {
     color: #2ecc71;
     font-size: 50px;
+    padding-right: 5px;
   }
   span {
-    font-size: 40px;
-    padding-left: 10px;
+    font-size: 50px;
   }
   a {
     &:hover {
@@ -333,7 +343,7 @@ footer {
     &.active {
       border-left: 3px solid #00b3fe;
       margin-left: -20px;
-      padding-left: 20px;
+      padding-left: 17px;
     }
   }
 }

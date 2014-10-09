@@ -1,0 +1,202 @@
+---
+layout:           doc
+title:            Overriding default options
+permalink:        /examples/overriding-default-options/
+categories:       [Advance]
+previous_section:
+next_section:
+comments:         true
+---
+
+<div class="bv-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="/examples/">Examples</a> / Advance</h1>
+            </div>
+
+            <div class="col-md-4">
+                <div class="bv-ad">
+                    {% include ad.html %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bv-sidebar">
+                {% include example.html category='Advance' %}
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="bv-content">
+                <section>
+                    <h2>Overriding default options</h2>
+                    <p>Assume that your page consists of many forms that need to be validated. These forms might use same options, such as feedbackIcons, default error message, etc.</p>
+                    <p>As a natural approach, you have to repeat initializing the options as following:</p>
+{% highlight javascript %}
+$(document).ready(function() {
+    $(firstForm).bootstrapValidator({
+        message: 'The field is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        }
+        ...
+    });
+
+    $(secondForm).bootstrapValidator({
+        message: 'The field is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        }
+        ...
+    });
+});
+{% endhighlight %}
+
+                    <p>From v0.5.0, you can override the default options as below:</p>
+{% highlight javascript %}
+$(document).ready(function() {
+    $.fn.bootstrapValidator.DEFAULT_OPTIONS = $.extend({}, $.fn.bootstrapValidator.DEFAULT_OPTIONS, {
+        message: 'The field is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        }
+    });
+});
+{% endhighlight %}
+                    <p>By overriding the default options, you don't need to repeat setting these options when calling the plugin:</p>
+{% highlight javascript %}
+$(document).ready(function() {
+    $(firstForm).bootstrapValidator({
+        // Don't need to set the feedbackIcons, message options anymore
+        ...
+    });
+
+    $(secondForm).bootstrapValidator({
+        // Don't need to set the feedbackIcons, message options anymore
+        ...
+    });
+});
+{% endhighlight %}
+                    <div class="bv-example">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#override-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#override-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#override-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="override-form-tab">
+                                <form id="overrideOptionsForm" method="post" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Your website</label>
+                                        <div class="col-md-5">
+                                            <input type="text" class="form-control" name="website" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-5 col-md-offset-3">
+                                            <button type="submit" class="btn btn-default">Validate</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane" id="override-html-tab">
+{% highlight html %}
+<form id="overrideOptionsForm" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-md-3 control-label">Your website</label>
+        <div class="col-md-5">
+            <input type="text" class="form-control" name="website" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-5 col-md-offset-3">
+            <button type="submit" class="btn btn-default">Validate</button>
+        </div>
+    </div>
+</form>
+{% endhighlight %}
+                            </div>
+
+                            <div class="tab-pane" id="override-js-tab">
+{% highlight javascript hl_lines="2" %}
+$(document).ready(function() {
+    $.fn.bootstrapValidator.DEFAULT_OPTIONS = $.extend({}, $.fn.bootstrapValidator.DEFAULT_OPTIONS, {
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        }
+    });
+
+    $('#overrideOptionsForm').bootstrapValidator({
+        fields: {
+            website: {
+                validators: {
+                    notEmpty: {
+                        message: 'The website address is required'
+                    },
+                    uri: {
+                        message: 'The website address is not valid'
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    $.fn.bootstrapValidator.DEFAULT_OPTIONS = $.extend({}, $.fn.bootstrapValidator.DEFAULT_OPTIONS, {
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        }
+    });
+
+    $('#overrideOptionsForm')
+        .bootstrapValidator({
+            fields: {
+                website: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The website address is required'
+                        },
+                        uri: {
+                            message: 'The website address is not valid'
+                        }
+                    }
+                }
+            }
+        })
+        .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+        });
+});
+</script>

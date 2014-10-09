@@ -56,7 +56,7 @@ related:
                                 <td><code>country</code></td>
                                 <td><code>data-bv-zipcode-country</code></td>
                                 <td>String</td>
-                                <td>An ISO-3166 country code.<br/>It's <a href="/settings/#dynamic-option">dynamic option</a> <span class="bv-news"></span></td>
+                                <td>An ISO-3166 country code.<br/>It's <a href="/settings/#dynamic-option">dynamic option</a></td>
                             </tr>
                             <tr>
                                 <td><code>message</code></td>
@@ -81,8 +81,16 @@ related:
                                 <td>US <label class="label label-default">default</label></td>
                             </tr>
                             <tr>
+                                <td>Brazil</td>
+                                <td>BR</td>
+                            </tr>
+                            <tr>
                                 <td>Canada</td>
                                 <td>CA</td>
+                            </tr>
+                            <tr>
+                                <td>Czech Republic</td>
+                                <td>CZ <span class="bv-news"></span></td>
                             </tr>
                             <tr>
                                 <td>Denmark</td>
@@ -93,16 +101,32 @@ related:
                                 <td>IT</td>
                             </tr>
                             <tr>
+                                <td>Morocco</td>
+                                <td>MA</td>
+                            </tr>
+                            <tr>
                                 <td>Netherlands</td>
                                 <td>NL</td>
                             </tr>
                             <tr>
-                                <td>Sweden</td>
-                                <td>SE</td>
+                                <td>Romania</td>
+                                <td>RO <span class="bv-news"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Russia</td>
+                                <td>RU <span class="bv-news"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Slovakia</td>
+                                <td>SK <span class="bv-news"></span></td>
                             </tr>
                             <tr>
                                 <td>Singapore</td>
-                                <td>SG <span class="bv-news"></span></td>
+                                <td>SG</td>
+                            </tr>
+                            <tr>
+                                <td>Sweden</td>
+                                <td>SE</td>
                             </tr>
                             <tr>
                                 <td>United Kingdom</td>
@@ -110,6 +134,27 @@ related:
                             </tr>
                         </tbody>
                     </table>
+
+                    <div class="bv-box bv-box-info">
+                        <h5 id="4-digits-us-zipcode"><i></i>4 digits US zipcode</h5>
+                        <p>This validator supports 4 digits US zipcode. If you want a valid US zipcode to be 5 digits exactly, use the <a href="/validators/regexp/">regexp</a> validator:</p>
+{% highlight javascript hl_lines="7" %}
+$(document).ready(function() {
+    $('#postcodeForm').bootstrapValidator({
+        fields: {
+            postcode: {
+                validators: {
+                    regexp: {
+                        regexp: /^\d{5}$/,
+                        message: 'The US zipcode must contain 5 digits'
+                    }
+                }
+            }
+        }
+    });
+});
+{% endhighlight %}
+                    </div>
                 </section>
 
                 <section>

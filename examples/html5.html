@@ -146,7 +146,7 @@ data-bv-between-max="..."
                                             <input type="text" class="form-control" name="username"
                                                    data-bv-message="The username is not valid"
                                                    required data-bv-notempty-message="The username is required and cannot be empty"
-                                                   pattern="[a-zA-Z0-9]+" data-bv-regexp-message="The username can only consist of alphabetical, number" />
+                                                   pattern="^[a-zA-Z0-9]+$" data-bv-regexp-message="The username can only consist of alphabetical, number" />
                                         </div>
                                     </div>
 
@@ -176,8 +176,8 @@ data-bv-between-max="..."
                                         <div class="col-lg-2">
                                             <input type="text" class="form-control" name="age"
                                                    required
-                                                   min="10" data-bv-greaterthan-inclusive="false" data-bv-greaterthan-message="The input must be greater than or equal to 10"
-                                                   max="100" data-bv-lessthan-inclusive="true" data-bv-lessthan-message="The input must be less than 100" />
+                                                   min="10" data-bv-greaterthan-inclusive="true" data-bv-greaterthan-message="The input must be greater than or equal to 10"
+                                                   max="100" data-bv-lessthan-inclusive="false" data-bv-lessthan-message="The input must be less than 100" />
                                         </div>
                                     </div>
                                 </form>
@@ -199,7 +199,7 @@ data-bv-between-max="..."
                 required
                 data-bv-notempty-message="The username is required and cannot be empty"
 
-                pattern="[a-zA-Z0-9]+"
+                pattern="^[a-zA-Z0-9]+$"
                 data-bv-regexp-message="The username can only consist of alphabetical, number" />
         </div>
     </div>
@@ -237,11 +237,11 @@ data-bv-between-max="..."
             <input type="text" class="form-control" name="age"
                 required
                 min="10"
-                data-bv-greaterthan-inclusive="false"
+                data-bv-greaterthan-inclusive="true"
                 data-bv-greaterthan-message="The input must be greater than or equal to 10"
 
                 max="100"
-                data-bv-lessthan-inclusive="true"
+                data-bv-lessthan-inclusive="false"
                 data-bv-lessthan-message="The input must be less than 100" />
         </div>
     </div>

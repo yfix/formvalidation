@@ -56,7 +56,7 @@ related:
                                 <td><code>max</code></td>
                                 <td><code>data-bv-stringlength-max</code> or <code>maxlength</code></td>
                                 <td>Number</td>
-                                <td>The maximum length.<br/>It's <a href="/settings/#dynamic-option">dynamic option</a> <span class="bv-news"></span></td>
+                                <td>The maximum length.<br/>It's <a href="/settings/#dynamic-option">dynamic option</a></td>
                             </tr>
                             <tr>
                                 <td><code>message</code></td>
@@ -66,14 +66,17 @@ related:
                             </tr>
                             <tr>
                                 <td><code>min</code></td>
-                                <td><code>data-bv-stringlength-min</code></td>
+                                <td><code>data-bv-stringlength-min</code> or <code>minlength</code></td>
                                 <td>Number</td>
-                                <td>The minimum length.<br/>It's <a href="/settings/#dynamic-option">dynamic option</a> <span class="bv-news"></span></td>
+                                <td>The minimum length.<br/>It's <a href="/settings/#dynamic-option">dynamic option</a></td>
                             </tr>
                         </tbody>
                     </table>
                     <p>At least one of <code>min</code> and <code>max</code> options is required.</p>
-                    <p>Note: If you're setting this via data attributes, you will also need to set data-bv-stringlength="true"</p>
+
+                    <div class="bv-box bv-box-info">
+                        If you're setting this via <code>data-bv-</code> attributes, you will also need to set <code>data-bv-stringlength="true"</code>
+                    </div>
                 </section>
 
                 <section>
