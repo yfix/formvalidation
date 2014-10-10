@@ -80,13 +80,16 @@ h1, h2, h3, h4 {
   .doc-content-wrapper {
     margin-left: @nav-width;
   }
+  #carbonads {
+    visibility: hidden;
+  }
 }
 .doc-nav {
   bottom: 0;
   height: 100%;
   display: none;
   overflow: scroll;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   ul {
@@ -329,14 +332,42 @@ h1, h2, h3, h4 {
 /* --- Page --- */
 .doc-page-content {
   padding-bottom: 40px;
+  h2 {
+    font-weight: bold;
+    padding-bottom: 15px;
+    text-align: center;
+  }
+}
+blockquote {
+  border-left: 5px solid #1ABC9C;
+  font-family: 'cardo';
+  font-size: 18px;
+  font-style: italic;
+  margin-left: -20px;
+  padding-left: 15px;
+  &.doc-alert-warning {
+    border-left-color: #c0392b;
+  }
+  &.doc-alert-info {
+    border-left-color: #1ABC9C;
+  }
 }
 .doc-page-heading {
+  border-bottom: 2px solid #ecf0f1;
   text-align: center;
   h1 {
-    border-bottom: 1px solid #ecf0f1;
     font-size: 50px;
     font-weight: 700;
     padding: 50px 0 20px 0;
+  }
+}
+.doc-page-edit {
+  background: #3498db;
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 15px;
+  &:hover {
+    color: #fff;
   }
 }
 .doc-page-warning {
@@ -345,5 +376,28 @@ h1, h2, h3, h4 {
   padding-left: 15px;
   h4 {
     font-size: 25px;
+  }
+}
+
+.doc-demo {
+  margin-bottom: 15px;
+  .tab-pane {
+    padding: 10px 15px;
+  }
+  .tab-content>.active {
+    border: 1px solid #ddd;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top: none;
+  }
+  pre {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    &:before {
+      content: '';
+    }
   }
 }

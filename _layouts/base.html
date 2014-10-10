@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/vendor/pygments/github.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Cardo:400,400italic,700">
     <link rel="stylesheet" href="/asset/css/style.css">
 
     <!--[if lt IE 9]>
@@ -84,8 +85,15 @@
 <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
 <script>
 $(function() {
+    $('[data-toggle="tooltip"]').tooltip();
     $('.doc-logo').on('click', function() {
         $('body').toggleClass('doc-nav-shown');
+    });
+
+    $('form').each(function() {
+        $(this).on('success.form.bv', function(e) {
+            e.preventDefault();
+        });
     });
 });
 </script>

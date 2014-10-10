@@ -13,17 +13,18 @@ next_section:     /settings/
             <div class="col-sm-12 col-sm-8 col-sm-offset-2">
                 <div class="doc-page-heading">
                     <h1>Getting Started</h1>
+                    {% include edit-button.html %}
                 </div>
 
                 {% include getting-started/download.html %}
 
-                <section>
-                    <h2>What's included</h2>
-                </section>
+                <div class="doc-hr"></div>
 
-                <section>
-                    <h2>Usage</h2>
-                </section>
+                {% include getting-started/what-included.html %}
+
+                <div class="doc-hr"></div>
+
+                {% include getting-started/usage.html %}
             </div>
         </div>
     </div>

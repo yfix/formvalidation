@@ -25,7 +25,7 @@ download:
 repository:
   source:             https://github.com/nghuuphuoc/bootstrapvalidator
   docs:               https://github.com/nghuuphuoc/bootstrapvalidator/gh-pages
-  docs_edit:          https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages
+  docs_edit:          https://github.com/nghuuphuoc/bootstrapvalidator/edit/docs
 ga_code:              UA-44786951-2
 jquery_plugin_url:    http://plugins.jquery.com/bootstrapValidator
 disqus:               bootstrapvalidator

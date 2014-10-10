@@ -355,26 +355,6 @@ footer p {
 .bv-content dt {
   font-weight: 300;
 }
-.bv-example {
-  margin-bottom: 15px;
-}
-.bv-example .tab-pane {
-  padding: 10px 15px;
-}
-.bv-example .tab-content > .active {
-  border: 1px solid #ddd;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-top: none;
-}
-.bv-example pre {
-  border: none;
-  margin: 0;
-  padding: 0;
-}
-.bv-example li:before {
-  content: '';
-}
 .bv-pager .previous a:hover,
 .bv-pager .next a:hover {
   background-color: #00b3fe;
