@@ -1,0 +1,111 @@
+<section>
+    <h2>Download</h2>
+
+    <p>Choose the package you want to download:</p>
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Release</h3>
+            <p>Including the plugin, its validator source and minified versions.<br />It should be used in the production site.</p>
+            <p>
+                <a class="btn btn-lg btn-primary" href="{{ site.download.dist }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download release']);">Download v{{ site.current_version }}</a>
+                <a class="btn btn-lg btn-default" href="https://pledgie.com/campaigns/24885" alt="Click here to lend your support to: BootstrapValidator and make a donation at pledgie.com!">Donate via Paypal</a>
+            </p>
+        </div>
+        <div class="col-sm-6">
+            <h3>Source code</h3>
+            <p>Including the source code, examples and building script. Download if you want to play with or develop new validators.</p>
+            <p><a class="btn btn-lg btn-default" href="{{ site.download.tag }}" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download Source</a></p>
+        </div>
+    </div>
+
+    <p>See <a href="/news/v0.5.2-released/">what's news</a> in v{{ site.current_version }}, released on {{ site.released_date }}.</p>
+    <p>For older versions, take a look at the <a href="/news/releases/">Releases</a> page.</p>
+
+    <div class="doc-page-warning">
+        <h4>Upgrading to v0.5.x</h4>
+        <p>If you upgrade from v0.4.5 or older versions to v0.5.x, please follow this <a href="/news/upgrading-to-v0.5.0/">guide</a>.</p>
+        <p>If you upgrade from v0.5.0, v0.5.1 to v0.5.2, check this <a href="/news/v0.5.2-released/#upgrade">guide</a>.</p>
+    </div>
+
+    <h3 id="installing-bower">Installing with Bower</h3>
+    <p>It's also possible to get the latest release from <a href="http://bower.io">bower</a>:</p>
+{% highlight bash %}
+$ bower install bootstrapvalidator
+{% endhighlight %}
+
+    <h3 id="cdn">CDN</h3>
+    <p>You also can use the minified version hosted on the following CDN:</p>
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>CDN</th>
+                <th>Path</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="http://cdnjs.com">cdnjs</a></td>
+                <td>
+{% highlight html %}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
+{% endhighlight %}
+                </td>
+            </tr>
+            <tr>
+                <td><a href="http://www.jsdelivr.com/#!jquery.bootstrapvalidator">jsdelivr</a></td>
+                <td>
+{% highlight html %}
+<link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
+{% endhighlight %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>BootstrapValidator also can be found on the official <a href="{{ site.jquery_plugin_url }}">jQuery plugins page</a>.</p>
+
+    <h3 id="language-package">Language packages</h3>
+    <p>BootstrapValidator has been translated into the following languages:</p>
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Language</th>
+                <th>File Name</th>
+                <th>Translated By</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>English <span class="label label-default">built in</span></td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/en_US.js">en_US.js</a></td>
+                <td><a href="http://github.com/nghuuphuoc">@nghuuphuoc</a></td>
+            </tr>
+
+            {% for package in site.data.languages %}
+            <tr>
+                <td>{{ forloop.index }}</td>
+                <td>{{ package.name }}</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/{{ package.file }}">{{ package.file }}</a></td>
+                <td>{% for author in package.author %}<a href="http://github.com/{{ package.author }}" style="display: block;">@{{ author }}</a>{% endfor %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h4 id="translate">Translate to other language</h4>
+    <p>It is very easy to translate default English package into your language. Follow the steps below:</p>
+    <ol>
+        <li>Fork the <a href="{{ site.repository.source }}">project</a></li>
+        <li>
+            Create new language file in the <a href="{{ site.repository.source }}/tree/master/src/js/language">language</a> directory.<br/>
+            The file must be named as <strong>countrycode_LANGUAGECODE.js</strong>, where <strong>countrycode</strong> and <strong>LANGUAGECODE</strong> are the ISO 3166 country and language codes in lowercase and uppercase respectively.<br/>
+            The <strong>File Name</strong> column in the table above are some examples of valid language file name.
+        </li>
+        <li>Translate the <a href="/vendor/bootstrapvalidator/js/language/en_US.js">English language package</a> into your language file created above</li>
+        <li>Make a pull request</li>
+    </ol>
+</section>

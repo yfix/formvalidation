@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css">
-    <link rel="stylesheet" href="/vendor/onepage-scroll/onepage-scroll.css">
     <link rel="stylesheet" href="/vendor/pygments/github.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
@@ -43,6 +42,7 @@
 <body>
     <nav class="doc-nav" tabindex="-1">
         <ul>
+            <li{% if page.url == '/' %} class="doc-nav-active"{% endif %}><a href="/">Home</a></li>
         {% for nav in site.data.nav %}
             {% if page.url contains nav.permalink %}
                 {% assign c = "doc-nav-active" %}
@@ -84,9 +84,9 @@
 <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
 <script>
 $(function() {
-   $('.doc-logo').on('click', function() {
-       $('body').toggleClass('doc-nav-shown');
-   });
+    $('.doc-logo').on('click', function() {
+        $('body').toggleClass('doc-nav-shown');
+    });
 });
 </script>
 </body>

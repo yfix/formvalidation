@@ -5,6 +5,8 @@ permalink: /
 comments:  false
 ---
 
+<link rel="stylesheet" href="/vendor/onepage-scroll/onepage-scroll.css">
+
 <!-- intro -->
 <section id="intro" class="doc-center-wrapper doc-home-intro">
     <div class="container doc-center-container">
@@ -187,8 +189,8 @@ $(function() {
         dataType: 'jsonp',
         url: 'https://api.github.com/repos/nghuuphuoc/bootstrapvalidator',
         success: function(response) {
-            $('#ghStars').html(response && response.data.watchers_count ? parseInt(response.data.watchers_count) : '{{ site.github_watchers }}');
-            $('#ghForks').html(response && response.data.forks_count    ? parseInt(response.data.forks_count)    : '{{ site.github_forks }}');
+            $('#ghStars').html((response && response.data.watchers_count ? parseInt(response.data.watchers_count) : '{{ site.github_watchers }}').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+            $('#ghForks').html((response && response.data.forks_count    ? parseInt(response.data.forks_count)    : '{{ site.github_forks }}').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
         }
     });
 
