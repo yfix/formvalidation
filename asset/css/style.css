@@ -33,7 +33,7 @@ h4 {
 .doc-hr {
   background: #e5e5e5;
   height: 1px;
-  margin: 30px auto;
+  margin: 50px auto;
   max-width: 300px;
 }
 /* --- Header --- */
@@ -105,16 +105,16 @@ h4 {
   color: #333;
 }
 /* --- Home --- */
-.doc-vertical-center {
+.doc-center-wrapper {
   text-align: center;
 }
-.doc-vertical-center:before {
+.doc-center-wrapper:before {
   content: '';
   display: inline-block;
   height: 100%;
   vertical-align: middle;
 }
-.doc-vertical-center .container {
+.doc-center-container {
   display: inline-block;
   vertical-align: middle;
 }
@@ -127,14 +127,20 @@ h4 {
   line-height: 1.6;
   margin-bottom: 30px;
 }
-.doc-home-intro a {
+.doc-home-intro h1 span {
+  color: #f1c40f;
+}
+.doc-home-intro .btn {
   background: #3498db;
   color: #fff;
   font-size: 40px;
   text-transform: uppercase;
 }
-.doc-home-intro a:hover {
+.doc-home-intro .btn:hover {
   color: #fff;
+}
+.doc-home-intro a {
+  color: #ccc;
 }
 .doc-home-intro h3 {
   color: #ccc;
@@ -144,31 +150,32 @@ h4 {
   font-size: 40px;
   width: 100%;
 }
+.doc-home-feature h2 {
+  font-size: 60px;
+  margin-bottom: 40px;
+}
+.doc-home-feature .col-md-4 {
+  margin-bottom: 40px;
+}
+.doc-home-feature i {
+  background: #bdc3c7;
+  border-radius: 75px;
+  color: #ecf0f1;
+  font-size: 90px;
+  line-height: 150px;
+  height: 150px;
+  width: 150px;
+}
+.doc-home-feature h4 {
+  font-size: 40px;
+  text-transform: uppercase;
+}
+.doc-home-feature p {
+  margin: 0 auto;
+  width: 75%;
+}
 .doc-home-contributor {
   background-color: #111;
-  /*
-  h2 {
-    top: 50%;
-    margin-top: -120px;
-    position: absolute;
-    width: 100%;
-    z-index: 1;
-    span {
-      display: block;
-      font-size: 80px;
-      margin-bottom: 15px;
-    }
-    a {
-      border-color: #fff;
-      color: #fff;
-      font-size: 40px;
-      text-transform: uppercase;
-      &:hover {
-        color: #fff;
-      }
-    }
-  }
-  */
 }
 .doc-home-contributor h2 {
   color: #fff;
@@ -178,6 +185,13 @@ h4 {
 .doc-home-contributor .doc-hr {
   background: #666;
 }
+.doc-home-contributor p {
+  font-size: 50px;
+}
+.doc-home-contributor p a {
+  color: #fff;
+  padding: 0 20px;
+}
 .doc-home-contributor .btn {
   font-size: 20px;
   text-transform: uppercase;
@@ -185,8 +199,10 @@ h4 {
   color: #fff;
 }
 .doc-home-contributor ul {
-  opacity: 0.5;
+  height: 300px;
   margin: 40px 0;
+  opacity: 0.5;
+  overflow: hidden;
 }
 .doc-home-contributor li {
   display: inline-block;

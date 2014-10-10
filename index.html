@@ -6,30 +6,76 @@ comments:  false
 ---
 
 <!-- intro -->
-<section id="intro" class="doc-vertical-center doc-home-intro">
-    <div class="container">
-        <h1>Best jQuery plugin to validate form fields<br/>Designed to use with Bootstrap 3+</h1>
+<section id="intro" class="doc-center-wrapper doc-home-intro">
+    <div class="container doc-center-container">
+        <h1>Best <span>jQuery</span> plugin to validate form fields<br/>Designed to use with <span>Bootstrap 3+</span></h1>
         <p>
             <a class="btn" href="/getting-started/#download">Download</a>
             <!--<a class="btn" href="https://pledgie.com/campaigns/24885" alt="Click here to lend your support to: BootstrapValidator and make a donation at pledgie.com!">Donate via Paypal</a>-->
         </p>
-        <span>v{{ site.current_version }} &mdash; {{ site.released_date}} &mdash; MIT license</span>
+        <span>v{{ site.current_version }} &middot; {{ site.released_date}} &middot; MIT license &middot; by <a href="http://twitter.com/nghuuphuoc">@nghuuphuoc</a></span>
     </div>
     <h3 class="hide"><span id="downloads"></span> downloads so far</h3>
 </section>
 
 <!-- features -->
-<section id="features" class="doc-vertical-center">
-    Features
+<section id="features" class="doc-center-wrapper doc-home-feature">
+    <div class="container doc-center-container">
+        <h2>Features</h2>
+        <div class="doc-hr"></div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <i class="fa fa-code"></i>
+                <h4>Code</h4>
+                <p>written from scratch &middot; <a href="http://jshint.com">JSHint</a> free &middot; well tested with <a href="http://jasmine.github.io">Jasmine</a></p>
+            </div>
+
+            <div class="col-md-4">
+                <i class="fa fa-html5"></i>
+                <h4>HTML 5</h4>
+                <p>support declarative settings &middot; HTML 5 attributes &middot; HTML 5 input types</p>
+            </div>
+
+            <div class="col-md-4">
+                <i class="fa fa-flask"></i>
+                <h4>Validators</h4>
+                <p>48 <a href="/validators">validators</a> &middot; Easy to write a new one &middot; 30 language packs</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <i class="fa fa-heart"></i>
+                <h4>Friendly</h4>
+                <p>feedback icons &middot; threshold option &middot; <a href="/settings/#form-container">tooltip/popover</a> error</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fa fa-magic"></i>
+                <h4>Flexible</h4>
+                <p>dynamic <a href="/settings/#dynamic-option">option</a> &middot; dynamic field &middot; dynamic <a href="/settings/#dynamic-message">messages</a></p>
+            </div>
+            <div class="col-md-4">
+                <i class="fa fa-puzzle-piece"></i>
+                <h4>Compatibility</h4>
+                <p><a href="/examples/#compatibility">play nice</a> with other</p>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- contributors -->
-<section id="contributors" class="doc-vertical-center doc-home-contributor">
-    <div class="container">
-        <h2>Made better by contributors</h2>
+<section id="contributors" class="doc-center-wrapper doc-home-contributor">
+    <div class="container doc-center-container">
+        <h2>Made better by {{ site.data.contributors.size }} contributors</h2>
         <div class="doc-hr"></div>
 
-        <ul>
+        <p>
+            <a href="{{ site.repository.source }}"><i class="fa fa-github"></i> <span id="ghStars"></span></a>
+            <a href="{{ site.repository.source }}/network/members"><i class="fa fa-code-fork"></i> <span id="ghForks"></span></a>
+        </p>
+
+        <ul id="contributorList">
             {% for user in site.data.contributors %}
             <li><a href="https://github.com/{{ user.username }}" title="@{{ user.username }}"><img src="https://github.com/{{ user.username }}.png" width="60px" height="60px" /></a></li>
             {% endfor %}
@@ -40,8 +86,8 @@ comments:  false
 </section>
 
 <!-- what people say -->
-<section id="tweet" class="doc-vertical-center doc-home-tweet">
-    <div class="container">
+<section id="tweet" class="doc-center-wrapper doc-home-tweet">
+    <div class="container doc-center-container">
         <h2>What people say</h2>
         <div class="doc-hr"></div>
 
@@ -128,6 +174,42 @@ $(function() {
         animationTime: 1000
     });
 
+    $('.doc-flip-wrapper').on('touchstart', function() {
+        $(this).toggleClass('doc-flip-hover');
+    });
+
+    // Show the number of Github stars/forks
+    $.ajax({
+        dataType: 'jsonp',
+        url: 'https://api.github.com/repos/nghuuphuoc/bootstrapvalidator',
+        success: function(response) {
+            $('#ghStars').html(response && response.data.watchers_count ? parseInt(response.data.watchers_count) : '{{ site.github_watchers }}');
+            $('#ghForks').html(response && response.data.forks_count    ? parseInt(response.data.forks_count)    : '{{ site.github_forks }}');
+        }
+    });
+
+    $(window).on('load', function() {
+        var $contributors   = $('#contributorList').find('li'),
+            numContributors = $contributors.length,
+            random          = function(a, b) {
+                return Math.floor(Math.random() * (b - a + 1) + a);
+            },
+            swapContributor = function(i, j) {
+                var $tmp = $('<span>').hide(),
+                    $a   = $contributors.eq(i),
+                    $b   = $contributors.eq(j);
+                $a.before($tmp);
+                $b.before($a);
+                $tmp.replaceWith($b);
+            };
+
+        setInterval(function() {
+            var i = random(0, numContributors / 2),
+                j = random(numContributors / 2, numContributors);
+            swapContributor(i, j);
+        }, 300);
+    });
+
     // Show the total of downloads
     $.ajax({
         dataType: 'jsonp',
@@ -144,17 +226,14 @@ $(function() {
             var count = Math.floor(total / 1000) * 1000;
             $('#downloads').html(count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')).parent().removeClass('hide');
 
-            (function timer() {
-                return setTimeout(function() {
-                    count++;
-                    if (count > total) {
-                        clearTimeout(timer);
-                    } else {
-                        $('#downloads').html(count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
-                        timer();
-                    }
-                }, 0.5);
-            })();
+            var counter = setInterval(function() {
+                count++;
+                if (count > total) {
+                    clearInterval(counter);
+                } else {
+                    $('#downloads').html(count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+                }
+            }, 0.5);
         }
     });
 });

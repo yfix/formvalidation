@@ -34,7 +34,7 @@ h1, h2, h3, h4 {
 .doc-hr {
   background: #e5e5e5;
   height: 1px;
-  margin: 30px auto;
+  margin: 50px auto;
   max-width: 300px;
 }
 
@@ -114,7 +114,7 @@ h1, h2, h3, h4 {
 }
 
 /* --- Home --- */
-.doc-vertical-center {
+.doc-center-wrapper {
   text-align: center;
   &:before {
     content: '';
@@ -122,10 +122,10 @@ h1, h2, h3, h4 {
     height: 100%;
     vertical-align: middle;
   }
-  .container {
-    display: inline-block;
-    vertical-align: middle;
-  }
+}
+.doc-center-container {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .doc-home-intro {
@@ -135,8 +135,11 @@ h1, h2, h3, h4 {
     font-size: 60px;
     line-height: 1.6;
     margin-bottom: 30px;
+    span {
+      color: #f1c40f;
+    }
   }
-  a {
+  .btn {
     background: #3498db;
     color: #fff;
     font-size: 40px;
@@ -145,6 +148,9 @@ h1, h2, h3, h4 {
       color: #fff;
     }
   }
+  a {
+    color: #ccc;
+  }
   h3 {
     color: #ccc;
     position: absolute;
@@ -152,6 +158,32 @@ h1, h2, h3, h4 {
     text-align: center;
     font-size: 40px;
     width: 100%;
+  }
+}
+.doc-home-feature {
+  h2 {
+    font-size: 60px;
+    margin-bottom: 40px;
+  }
+  .col-md-4 {
+    margin-bottom: 40px;
+  }
+  i {
+    background: #bdc3c7;
+    border-radius: 75px;
+    color: #ecf0f1;
+    font-size: 90px;
+    line-height: 150px;
+    height: 150px;
+    width: 150px;
+  }
+  h4 {
+    font-size: 40px;
+    text-transform: uppercase;
+  }
+  p {
+    margin: 0 auto;
+    width: 75%;
   }
 }
 .doc-home-contributor {
@@ -164,38 +196,24 @@ h1, h2, h3, h4 {
   .doc-hr {
     background: #666;
   }
+  p {
+    font-size: 50px;
+    a {
+      color: #fff;
+      padding: 0 20px;
+    }
+  }
   .btn {
     font-size: 20px;
     text-transform: uppercase;
     border-color: #fff;
     color: #fff;
   }
-  /*
-  h2 {
-    top: 50%;
-    margin-top: -120px;
-    position: absolute;
-    width: 100%;
-    z-index: 1;
-    span {
-      display: block;
-      font-size: 80px;
-      margin-bottom: 15px;
-    }
-    a {
-      border-color: #fff;
-      color: #fff;
-      font-size: 40px;
-      text-transform: uppercase;
-      &:hover {
-        color: #fff;
-      }
-    }
-  }
-  */
   ul {
-    opacity: 0.5;
+    height: 300px;
     margin: 40px 0;
+    opacity: 0.5;
+    overflow: hidden;
   }
   li {
     display: inline-block;
