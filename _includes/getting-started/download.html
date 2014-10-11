@@ -8,23 +8,23 @@
         <a class="btn btn-lg btn-default" href="https://pledgie.com/campaigns/24885" alt="Click here to lend your support to: BootstrapValidator and make a donation at pledgie.com!">Donate via Paypal</a>
     </p>
     <p class="text-center">
-        <span id="downloads"></span> downloads so far
+        <span id="downloadCounter"></span> downloads so far
     </p>
 
     <p>See <a href="/news/v0.5.2-released/">what's news</a> in v{{ site.current_version }}, released on {{ site.released_date }}.</p>
     <p>For older versions, take a look at the <a href="/news/releases/">Releases</a> page.</p>
 
-    <blockquote class="doc-alert-warning">
+    <div class="doc-alert doc-alert-warning">
         You should take a look at the upgrading guides: <a href="/news/upgrading-to-v0.5.0/">v0.4.5 &rarr; v0.5.0</a> and <a href="/news/v0.5.2-released/#upgrade">v0.5.0/v0.5.1 &rarr; v0.5.2</a>
-    </blockquote>
+    </div>
 
-    <h3 id="installing-bower">Installing with Bower</h3>
+    <h3>Installing with Bower</h3>
     <p>It's also possible to get the latest release from <a href="http://bower.io">Bower</a>:</p>
 {% highlight bash %}
 $ bower install bootstrapvalidator
 {% endhighlight %}
 
-    <h3 id="cdn">CDN</h3>
+    <h3>CDN</h3>
     <p>You also can use the minified version hosted on the following CDN:</p>
     <ol>
         <li>
@@ -46,7 +46,7 @@ $ bower install bootstrapvalidator
 
     <p>BootstrapValidator also can be found on the official <a href="{{ site.jquery_plugin_url }}">jQuery plugins page</a>.</p>
 
-    <h3 id="language-package">Language packages</h3>
+    <h3>Language packages</h3>
     <p>BootstrapValidator has been translated into the following languages:</p>
     <table class="table table-condensed">
         <thead>
@@ -76,7 +76,7 @@ $ bower install bootstrapvalidator
         </tbody>
     </table>
 
-    <h4 id="translate">Translate to other language</h4>
+    <h4>Translate to other language</h4>
     <p>It is very easy to translate default English package into your language. Follow the steps below:</p>
     <ol>
         <li>Fork the <a href="{{ site.repository.source }}">project</a></li>
@@ -104,17 +104,7 @@ $(function() {
                     }
                 }
             }
-            var count = Math.floor(total / 1000 - 1) * 1000;
-            $('#downloads').html(count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
-
-            var counter = setInterval(function() {
-                count++;
-                if (count > total) {
-                    clearInterval(counter);
-                } else {
-                    $('#downloads').html(count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
-                }
-            }, 0.5);
+            $('#downloadCounter').html(total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
         }
     });
 });

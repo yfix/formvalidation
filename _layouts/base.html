@@ -14,10 +14,10 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css">
-    <link rel="stylesheet" href="/vendor/pygments/github.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Cardo:400,400italic,700">
+    <link rel="stylesheet" href="/vendor/pygments/github.css">
     <link rel="stylesheet" href="/asset/css/style.css">
 
     <!--[if lt IE 9]>
@@ -83,6 +83,7 @@
 
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
+<script src="/vendor/tocjs/js/toc.min.js"></script>
 <script>
 $(function() {
     $('[data-toggle="tooltip"]').tooltip();
@@ -95,6 +96,40 @@ $(function() {
             e.preventDefault();
         });
     });
+
+    // Create table of contents
+    if ($('#toc').length) {
+        $('#toc')
+            .css('max-width', $('#toc').width())
+            .toc({
+                selector: '#main h2, #main h3, #main h4, #main h5, #main h6',
+                elementClass: 'toc',
+                ulClass: 'nav',
+                indexingFormats: '______'
+            });
+
+        var $window = $(window),
+            $body   = $(document.body);
+        $body.scrollspy({
+            target: '#toc',
+            offset: $('#main').offset().top + $('.doc-page-heading').height()
+        });
+
+        $window.on('load', function () {
+            $body.scrollspy('refresh');
+        });
+
+        setTimeout(function () {
+            var $sideBar = $('#toc');
+            $sideBar.affix({
+                offset: {
+                    top: function () {
+                        return (this.top = $sideBar.offset().top);
+                    }
+                }
+            });
+        }, 100);
+    }
 });
 </script>
 </body>

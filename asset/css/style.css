@@ -325,22 +325,24 @@ h4 {
   padding-bottom: 15px;
   text-align: center;
 }
-blockquote {
+.doc-alert {
   border-left: 5px solid #1ABC9C;
   font-family: 'cardo';
   font-size: 18px;
   font-style: italic;
-  margin-left: -20px;
+  margin: 20px 0 20px -20px;
   padding-left: 15px;
 }
-blockquote.doc-alert-warning {
+.doc-alert.doc-alert-warning {
   border-left-color: #c0392b;
 }
-blockquote.doc-alert-info {
+.doc-alert.doc-alert-info {
   border-left-color: #1ABC9C;
 }
 .doc-page-heading {
-  border-bottom: 2px solid #ecf0f1;
+  border-bottom: 1px solid #ecf0f1;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
   text-align: center;
 }
 .doc-page-heading h1 {
@@ -384,4 +386,67 @@ blockquote.doc-alert-info {
 }
 .doc-demo li:before {
   content: '';
+}
+/* --- TOC --- */
+.doc-page-content h2,
+.doc-page-content h3,
+.doc-page-content h4,
+.doc-page-content h5,
+.doc-page-content h6 {
+  position: relative;
+}
+.doc-page-content h2 .toc-anchor,
+.doc-page-content h3 .toc-anchor,
+.doc-page-content h4 .toc-anchor,
+.doc-page-content h5 .toc-anchor,
+.doc-page-content h6 .toc-anchor {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.doc-toc {
+  margin-top: 20px;
+}
+.doc-toc .nav > .active > a,
+.doc-toc .nav > .active:hover > a,
+.doc-toc .nav > .active :focus > a {
+  border-left: 2px solid #3498db;
+}
+.doc-toc .nav .nav {
+  display: none;
+}
+.doc-toc .nav > .active > ul {
+  display: block;
+}
+.doc-toc .nav > li > a {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+.doc-toc .nav .nav > li > a {
+  font-size: 90%;
+}
+.doc-toc a.toc-link-2 {
+  padding-left: 25px;
+}
+.doc-toc .toc-link-3 {
+  padding-left: 50px;
+}
+.doc-toc .toc-link-4 {
+  padding-left: 75px;
+}
+@media (min-width: 992px) {
+  .doc-toc.affix {
+    position: fixed;
+    top: 0;
+  }
+  .doc-toc.affix,
+  .doc-toc.affix-bottom {
+    width: 213px;
+  }
+}
+@media (min-width: 1200px) {
+  .doc-toc.affix,
+  .doc-toc.affix-bottom {
+    width: 263px;
+  }
 }
