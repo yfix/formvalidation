@@ -1,5 +1,5 @@
 ---
-layout:           doc
+layout:           base
 title:            Validate a base64 encoded string
 permalink:        /validators/base64/
 previous_section: /validators/
@@ -7,58 +7,43 @@ next_section:     /validators/between/
 comments:         true
 ---
 
-<div class="bv-heading">
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>base64 validator</h1>
+        <p>Validate a base64 encoded string</p>
+        <p>&larr; <a href="/validators/">Validators</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / base64</h1>
-                <p>Validate a base64 encoded string.</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#options">Options</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="options">Options</h2>
+                    <h2>Options</h2>
+
                     <table class="table table-condensed">
                         <thead>
-                        <tr>
-                            <th>Option</th>
-                            <th>HTML attribute</th>
-                            <th>Type</th>
-                            <th>Description</th>
-                        </tr>
+                            <tr>
+                                <th>Option</th>
+                                <th>HTML attribute</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td><code>message</code></td>
-                            <td><code>data-bv-base64-message</code></td>
-                            <td>String</td>
-                            <td>The error message</td>
-                        </tr>
+                            <tr>
+                                <td><code>message</code></td>
+                                <td><code>data-bv-base64-message</code></td>
+                                <td>String</td>
+                                <td>The error message</td>
+                            </tr>
                         </tbody>
                     </table>
                 </section>
+            </div>
 
-                {% include related.html %}
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>
