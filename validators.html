@@ -1,5 +1,5 @@
 ---
-layout:           doc
+layout:           base
 title:            Validators
 permalink:        /validators/
 previous_section: /settings/
@@ -7,54 +7,33 @@ next_section:     /api/
 comments:         true
 ---
 
-<div class="bv-heading">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <h1>Validators</h1>
-                <p>The richest validators in the class</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>Validators</h1>
+        {% include edit-button.html %}
     </div>
-</div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-9 col-md-offset-3">
-            <div class="bv-content">
-                <section>
-                    <h2 id="validators">Validators</h2>
+    <div class="container">
+        <p>BootstrapValidator comes with various built-in validators listed in the alphabetical order as following:</p>
 
-                    <p>BootstrapValidator comes with various built-in validators listed in the alphabetical order as following:</p>
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
 
-                    <table class="table table-condensed">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Name</th>
-                                <th>From</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for validator in site.data.validators %}
-                            <tr>
-                                <td>{{ forloop.index }}</td>
-                                <td><a href="/validators/{{ validator.name }}/">{{ validator.name }}</a>{% if validator.version == site.current_version %} <span class="pull-right bv-news"></span>{% endif %}</td>
-                                <td>{{ validator.version }}</td>
-                                <td>{{ validator.description }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </section>
-            </div>
-        </div>
+            <tbody>
+                {% for validator in site.data.validators %}
+                <tr>
+                    <td>{{ forloop.index }}</td>
+                    <td><a href="/validators/{{ validator.name }}/">{{ validator.name }}</a></td>
+                    <td>{{ validator.description }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
