@@ -10,11 +10,14 @@ comments:         true
 <div class="doc-page-content">
     <div class="doc-page-heading">
         <h1>Adjusting feedback icon position</h1>
+        <p>&larr; <a href="/examples/">Examples</a></p>
         {% include edit-button.html %}
     </div>
 
     <div class="container">
-        <p>In some cases, the <a href="/settings/#form-feedback-icons">feedback icons</a> aren't shown properly. By default, Bootstrap defines feedback icon position as following:</p>
+        <div class="row">
+            <div class="col-md-9">
+                <p>In some cases, the <a href="/settings/#form-feedback-icons">feedback icons</a> aren't shown properly. By default, Bootstrap defines feedback icon position as following:</p>
 {% highlight css %}
 .has-feedback .form-control-feedback {
     top: 25px;
@@ -25,98 +28,104 @@ comments:         true
     right: 15px;
 }
 {% endhighlight %}
-        <p>By customizing the value of <code>top</code> and <code>right</code> properties, you can adjust the feedback icon to deserved position.</p>
-        <p>Below is some popular usages.</p>
+                <p>By customizing the value of <code>top</code> and <code>right</code> properties, you can adjust the feedback icon to deserved position.</p>
+                <p>Below is some popular usages.</p>
 
-        <section>
-            <h3>Button group</h3>
+                <section>
+                    <h3>Button group</h3>
 
-            <div class="doc-demo">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#button-form-tab" data-toggle="tab">Try it</a></li>
-                    <li><a href="#button-html-tab" data-toggle="tab">HTML</a></li>
-                    <li><a href="#button-js-tab" data-toggle="tab">JS</a></li>
-                </ul>
+                    <div class="doc-demo">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#button-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#button-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#button-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
 
-                <div class="tab-content">
-                    <div class="tab-pane active" id="button-form-tab">
-                    {% include examples/basic/button-group.html %}
-                    </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="button-form-tab">
+                            {% include examples/basic/button-group.html %}
+                            </div>
 
-                    <div class="tab-pane" id="button-html-tab">
+                            <div class="tab-pane" id="button-html-tab">
 {% highlight html %}
 {% include examples/basic/button-group.html %}
 {% endhighlight %}
-                    </div>
+                            </div>
 
-                    <div class="tab-pane" id="button-js-tab">
+                            <div class="tab-pane" id="button-js-tab">
 {% highlight javascript %}
 {% include examples/basic/button-group.js %}
 {% endhighlight %}
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </section>
+                </section>
 
-        <section>
-            <h3>Input group</h3>
+                <section>
+                    <h3>Input group</h3>
 
-            <div class="doc-demo">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#inputgroup-form-tab" data-toggle="tab">Try it</a></li>
-                    <li><a href="#inputgroup-html-tab" data-toggle="tab">HTML</a></li>
-                    <li><a href="#inputgroup-js-tab" data-toggle="tab">JS</a></li>
-                </ul>
+                    <div class="doc-demo">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#inputgroup-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#inputgroup-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#inputgroup-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
 
-                <div class="tab-content">
-                    <div class="tab-pane active" id="inputgroup-form-tab">
-                    {% include examples/basic/input-group.html %}
-                    </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="inputgroup-form-tab">
+                            {% include examples/basic/input-group.html %}
+                            </div>
 
-                    <div class="tab-pane" id="inputgroup-html-tab">
+                            <div class="tab-pane" id="inputgroup-html-tab">
 {% highlight html %}
 {% include examples/basic/input-group.html %}
 {% endhighlight %}
-                    </div>
+                            </div>
 
-                    <div class="tab-pane" id="inputgroup-js-tab">
+                            <div class="tab-pane" id="inputgroup-js-tab">
 {% highlight javascript %}
 {% include examples/basic/input-group.js %}
 {% endhighlight %}
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </section>
+                </section>
 
-        <section>
-            <h3>Vertical form</h3>
+                <section>
+                    <h3>Vertical form</h3>
 
-            <div class="doc-demo">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#vertical-form-tab" data-toggle="tab">Try it</a></li>
-                    <li><a href="#vertical-html-tab" data-toggle="tab">HTML</a></li>
-                    <li><a href="#vertical-js-tab" data-toggle="tab">JS</a></li>
-                </ul>
+                    <div class="doc-demo">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#vertical-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#vertical-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#vertical-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
 
-                <div class="tab-content">
-                    <div class="tab-pane active" id="vertical-form-tab">
-                    {% include examples/basic/vertical-form.html %}
-                    </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="vertical-form-tab">
+                            {% include examples/basic/vertical-form.html %}
+                            </div>
 
-                    <div class="tab-pane" id="vertical-html-tab">
+                            <div class="tab-pane" id="vertical-html-tab">
 {% highlight html %}
 {% include examples/basic/vertical-form.html %}
 {% endhighlight %}
-                    </div>
+                            </div>
 
-                    <div class="tab-pane" id="vertical-js-tab">
+                            <div class="tab-pane" id="vertical-js-tab">
 {% highlight javascript %}
 {% include examples/basic/vertical-form.js %}
 {% endhighlight %}
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </section>
             </div>
-        </section>
+
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
+            </div>
+        </div>
     </div>
 </div>
 
