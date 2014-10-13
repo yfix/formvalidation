@@ -1,5 +1,5 @@
 ---
-layout:           doc
+layout:           base
 title:            Validate an IMEI (International Mobile Station Equipment Identity)
 permalink:        /validators/imei/
 previous_section: /validators/identical/
@@ -10,39 +10,20 @@ related:
     - meid
 ---
 
-<div class="bv-heading">
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>imei validator</h1>
+        <p>Validate an IMEI (International Mobile Station Equipment Identity)</p>
+        <p>&larr; <a href="/validators/">Validators</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / imei</h1>
-                <p>Validate an IMEI (International Mobile Station Equipment Identity).</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#options">Options</a></li>
-                    <li><a href="#example">Example</a></li>
-                    <li><a href="#related-validators">Related validators</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="options">Options</h2>
+                    <h2>Options</h2>
+
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -63,8 +44,10 @@ related:
                     </table>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 <section>
-                    <h2 id="example">Example</h2>
+                    <h2>Example</h2>
 
                     <table class="table table-condensed">
                         <thead>
@@ -84,7 +67,7 @@ related:
                         </tbody>
                     </table>
 
-                    <div class="bv-example">
+                    <div class="doc-demo">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#imei-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#imei-html-tab" data-toggle="tab">HTML</a></li>
@@ -93,93 +76,49 @@ related:
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="imei-form-tab">
-                                <form id="imeiForm" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">IMEI</label>
-                                        <div class="col-lg-5">
-                                            <input type="text" class="form-control" name="imei" />
-                                        </div>
-                                    </div>
-                                </form>
+                            {% include validators/imei/example.html %}
                             </div>
 
                             <div class="tab-pane" id="imei-html-tab">
-{% highlight html %}
-<form id="imeiForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">IMEI</label>
-        <div class="col-lg-5">
-            <input type="text" class="form-control" name="imei" />
-        </div>
-    </div>
-</form>
-{% endhighlight %}
+                            {% highlight html %}
+                            {% include validators/imei/example.html %}
+                            {% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="imei-js-tab">
-{% highlight javascript hl_lines="11" %}
-$(document).ready(function() {
-    $('#imeiForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            imei: {
-                validators: {
-                    imei: {
-                        message: 'The value is not valid IMEI'
-                    }
-                }
-            }
-        }
-    });
-});
-{% endhighlight %}
+                            {% highlight javascript %}
+                            {% include validators/imei/example.js %}
+                            {% endhighlight %}
                             </div>
                         </div>
                     </div>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 {% include related.html %}
+            </div>
+
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
+{% include validators/imei/example.js %}
 $(document).ready(function() {
     $('.sample').on('click', function() {
-        $('#imeiForm')
-            .find('input[name="imei"]')
-                .val($(this).html())
-                .end()
-            .data('bootstrapValidator')
-                .updateStatus('imei', 'NOT_VALIDATED')
-                .validate();
+        $('#imeiForm').find('input[name="imei"]').val($(this).html());
+
+        $('#imeiForm').bootstrapValidator('revalidateField', 'imei');
+
         var isValid = $('#imeiForm').data('bootstrapValidator').isValid();
         $(this)
             .parents('tr').find('i')
             .removeClass('fa-check fa-times')
             .addClass(isValid ? 'fa-check' : 'fa-times');
-    });
-
-    $('#imeiForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            imei: {
-                validators: {
-                    imei: {
-                        message: 'The value is not valid IMEI'
-                    }
-                }
-            }
-        }
     });
 });
 </script>

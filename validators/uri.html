@@ -1,5 +1,5 @@
 ---
-layout:           doc
+layout:           base
 title:            Validate an URL address
 permalink:        /validators/uri/
 previous_section: /validators/stringLength/
@@ -88,45 +88,20 @@ related:
     - mac
 ---
 
-<div class="bv-heading">
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>uri validator</h1>
+        <p>Validate an URL address</p>
+        <p>&larr; <a href="/validators/">Validators</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / uri</h1>
-                <p>Validate an URL address.</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#options">Options</a></li>
-                    <li>
-                        <a href="#example">Example</a>
-                        <ul>
-                            <li><a href="#basic-example">Basic</a></li>
-                            <li><a href="#html5-example">HTML 5</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#related-validators">Related validators</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="options">Options</h2>
+                    <h2>Options</h2>
+
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -161,201 +136,129 @@ related:
                     <p>You can use <code>type="url"</code> attribute to <a href="#html5-example">enable</a> this validator.</p>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 <section>
-                    <h2 id="example">Example</h2>
+                    <h2>Examples</h2>
 
-                    <section>
-                        <h3 id="basic-example">Basic</h3>
-                        <div class="bv-box bv-box-info">
-                            <h5><i></i>Sample URLs for testing</h5>
-                            <p>Thank to <a href="http://mathiasbynens.be/">Mathias Bynens</a> for providing this amazing collection of <a href="http://mathiasbynens.be/demo/url-regex">URL examples</a>.</p>
-                        </div>
+                    <h3>Basic example</h3>
 
-                        <table class="table table-condensed">
-                            <thead>
-                                <tr>
-                                    <th>URL</th>
-                                    <th>Result</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td colspan="2" class="text-center"><strong>Valid URL examples</strong></td>
-                                </tr>
-                                {% for url in page.examples.valid %}
-                                <tr>
-                                    <td><a href="javascript: void(0);" class="sample">{{ url }}</a></td>
-                                    <td><i class="fa"></i></td>
-                                </tr>
-                                {% endfor %}
+                    <div class="doc-alert doc-alert-info">
+                        Thank to <a href="http://mathiasbynens.be/">Mathias Bynens</a> for providing this amazing collection of <a href="http://mathiasbynens.be/demo/url-regex">URL examples</a>.
+                    </div>
 
-                                <tr>
-                                    <td colspan="2" class="text-center"><strong>Invalid URL examples</strong></td>
-                                </tr>
-                                {% for url in page.examples.invalid %}
-                                <tr>
-                                    <td><a href="javascript: void(0);" class="sample">{{ url }}</a></td>
-                                    <td><i class="fa"></i></td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>URL</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="2" class="text-center"><strong>Valid URL examples</strong></td>
+                            </tr>
+                            {% for url in page.examples.valid %}
+                            <tr>
+                                <td><a href="javascript: void(0);" class="sample">{{ url }}</a></td>
+                                <td><i class="fa"></i></td>
+                            </tr>
+                            {% endfor %}
 
-                        <div class="bv-example">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#uri-form-tab" data-toggle="tab">Try it</a></li>
-                                <li><a href="#uri-html-tab" data-toggle="tab">HTML</a></li>
-                                <li><a href="#uri-js-tab" data-toggle="tab">JS</a></li>
-                            </ul>
+                            <tr>
+                                <td colspan="2" class="text-center"><strong>Invalid URL examples</strong></td>
+                            </tr>
+                            {% for url in page.examples.invalid %}
+                            <tr>
+                                <td><a href="javascript: void(0);" class="sample">{{ url }}</a></td>
+                                <td><i class="fa"></i></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
 
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="uri-form-tab">
-                                    <form id="urlForm" class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="col-lg-3 control-label">Your website</label>
-                                            <div class="col-lg-6">
-                                                <input type="text" class="form-control" name="website" />
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                    <div class="doc-demo">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#uri-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#uri-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#uri-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
 
-                                <div class="tab-pane" id="uri-html-tab">
-{% highlight html %}
-<form id="urlForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Your website</label>
-        <div class="col-lg-6">
-            <input type="text" class="form-control" name="website" />
-        </div>
-    </div>
-</form>
-{% endhighlight %}
-                                </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="uri-form-tab">
+                            {% include validators/uri/basic-example.html %}
+                            </div>
 
-                                <div class="tab-pane" id="uri-js-tab">
-{% highlight javascript hl_lines="11" %}
-$(document).ready(function() {
-    $('#urlForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            website: {
-                validators: {
-                    uri: {
-                        message: 'The website address is not valid'
-                    }
-                }
-            }
-        }
-    });
-});
-{% endhighlight %}
-                                </div>
+                            <div class="tab-pane" id="uri-html-tab">
+                            {% highlight html %}
+                            {% include validators/uri/basic-example.html %}
+                            {% endhighlight %}
+                            </div>
+
+                            <div class="tab-pane" id="uri-js-tab">
+                            {% highlight javascript %}
+                            {% include validators/uri/basic-example.js %}
+                            {% endhighlight %}
                             </div>
                         </div>
-                    </section>
+                    </div>
 
-                    <section>
-                        <h3 id="html5-example">HTML 5</h3>
-                        <p>The following form uses HTML 5 <code>type="url"</code> attribute to enable the uri validator.</p>
-                        <div class="bv-example">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#html5-form-tab" data-toggle="tab">Try it</a></li>
-                                <li><a href="#html5-html-tab" data-toggle="tab">HTML</a></li>
-                                <li><a href="#html5-js-tab" data-toggle="tab">JS</a></li>
-                            </ul>
+                    <h3>HTML 5 example</h3>
 
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="html5-form-tab">
-                                    <form id="html5Form" class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="col-lg-3 control-label">Your website</label>
-                                            <div class="col-lg-6">
-                                                <input class="form-control" name="website"
-                                                    type="url" data-bv-uri-message="The website address is not valid" />
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                    <p>The following form uses HTML 5 <code>type="url"</code> attribute to enable the uri validator.</p>
+                    <div class="doc-demo">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#html5-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#html5-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#html5-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
 
-                                <div class="tab-pane" id="html5-html-tab">
-{% highlight html hl_lines="6" %}
-<form id="html5Form" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Your website</label>
-        <div class="col-lg-6">
-            <input class="form-control" name="website"
-                type="url" data-bv-uri-message="The website address is not valid" />
-        </div>
-    </div>
-</form>
-{% endhighlight %}
-                                </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="html5-form-tab">
+                            {% include validators/uri/html5-example.html %}
+                            </div>
 
-                                <div class="tab-pane" id="html5-js-tab">
-{% highlight javascript hl_lines="11" %}
-$(document).ready(function() {
-    $('#html5Form').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        }
-    });
-});
-{% endhighlight %}
-                                </div>
+                            <div class="tab-pane" id="html5-html-tab">
+                            {% highlight html %}
+                            {% include validators/uri/html5-example.html %}
+                            {% endhighlight %}
+                            </div>
+
+                            <div class="tab-pane" id="html5-js-tab">
+                            {% highlight javascript %}
+                            {% include validators/uri/html5-example.js %}
+                            {% endhighlight %}
                             </div>
                         </div>
-                    </section>
+                    </div>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 {% include related.html %}
+            </div>
+
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
+{% include validators/uri/basic-example.js %}
+{% include validators/uri/html5-example.js %}
 $(document).ready(function() {
     $('.sample').on('click', function() {
-        var validator = $('#urlForm').data('bootstrapValidator');
+        $('#uriForm').find('input[name="website"]').val($(this).html());
 
-        $('#urlForm').find('input[name="website"]').val($(this).html());
-       validator.updateStatus('website', 'NOT_VALIDATED').validate();
+        $('#uriForm').bootstrapValidator('revalidateField', 'website');
+
+        var isValid = $('#uriForm').data('bootstrapValidator').isValid();
         $(this)
             .parents('tr').find('i')
             .removeClass('fa-check fa-times')
-            .addClass(validator.isValid() ? 'fa-check' : 'fa-times');
-    });    
-    
-    $('#urlForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            website: {
-                validators: {
-                    uri: {
-                        message: 'The website address is not valid'
-                    }
-                }
-            }
-        }
-    });
-
-    $('#html5Form').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        }
+            .addClass(isValid ? 'fa-check' : 'fa-times');
     });
 });
 </script>

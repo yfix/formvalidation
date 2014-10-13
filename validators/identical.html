@@ -1,5 +1,5 @@
 ---
-layout:           doc
+layout:           base
 title:            identical validator
 permalink:        /validators/identical/
 previous_section: /validators/id/
@@ -9,39 +9,20 @@ related:
     - different
 ---
 
-<div class="bv-heading">
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>identical validator</h1>
+        <p>Check if the value is the same as one of particular field</p>
+        <p>&larr; <a href="/validators/">Validators</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / identical</h1>
-                <p>Check if the value is the same as one of particular field.</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#options">Options</a></li>
-                    <li><a href="#example">Example</a></li>
-                    <li><a href="#related-validators">Related validators</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="options">Options</h2>
+                    <h2>Options</h2>
+
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -68,11 +49,13 @@ related:
                     </table>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 <section>
-                    <h2 id="example">Example</h2>
+                    <h2>Example</h2>
                     <p>The following form requires the password and confirmation one to be the same using <code>identical</code> validator.</p>
 
-                    <div class="bv-example">
+                    <div class="doc-demo">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#identical-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#identical-html-tab" data-toggle="tab">HTML</a></li>
@@ -81,110 +64,36 @@ related:
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="identical-form-tab">
-                                <form id="registerForm" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Password</label>
-                                        <div class="col-lg-5">
-                                            <input type="password" class="form-control" name="password" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Retype password</label>
-                                        <div class="col-lg-5">
-                                            <input type="password" class="form-control" name="confirmPassword" />
-                                        </div>
-                                    </div>
-                                </form>
+                            {% include validators/identical/example.html %}
                             </div>
 
                             <div class="tab-pane" id="identical-html-tab">
-{% highlight html %}
-<form id="registerForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Password</label>
-        <div class="col-lg-5">
-            <input type="password" class="form-control" name="password" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Retype password</label>
-        <div class="col-lg-5">
-            <input type="password" class="form-control" name="confirmPassword" />
-        </div>
-    </div>
-</form>
-{% endhighlight %}
+                            {% highlight html %}
+                            {% include validators/identical/example.html %}
+                            {% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="identical-js-tab">
-{% highlight javascript hl_lines="11 19" %}
-$(document).ready(function() {
-    $('#registerForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            password: {
-                validators: {
-                    identical: {
-                        field: 'confirmPassword',
-                        message: 'The password and its confirm are not the same'
-                    }
-                }
-            },
-            confirmPassword: {
-                validators: {
-                    identical: {
-                        field: 'password',
-                        message: 'The password and its confirm are not the same'
-                    }
-                }
-            }
-        }
-    });
-});
-{% endhighlight %}
+                            {% highlight javascript %}
+                            {% include validators/identical/example.js %}
+                            {% endhighlight %}
                             </div>
                         </div>
                     </div>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 {% include related.html %}
+            </div>
+
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-$(document).ready(function() {
-    $('#registerForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            password: {
-                validators: {
-                    identical: {
-                        field: 'confirmPassword',
-                        message: 'The password and its confirm are not the same'
-                    }
-                }
-            },
-            confirmPassword: {
-                validators: {
-                    identical: {
-                        field: 'password',
-                        message: 'The password and its confirm are not the same'
-                    }
-                }
-            }
-        }
-    });
-});
+{% include validators/identical/example.js %}
 </script>

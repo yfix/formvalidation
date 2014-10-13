@@ -1,5 +1,5 @@
 ---
-layout:           doc
+layout:           base
 title:            Validate identification number
 permalink:        /validators/id/
 previous_section: /validators/iban/
@@ -9,39 +9,20 @@ related:
     - vat
 ---
 
-<div class="bv-heading">
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>id validator</h1>
+        <p>Validate identification number</p>
+        <p>&larr; <a href="/validators/">Validators</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / id</h1>
-                <p>Validate identification number</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#options">Options</a></li>
-                    <li><a href="#example">Example</a></li>
-                    <li><a href="#related-validators">Related validators</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="options">Options</h2>
+                    <h2>Options</h2>
+
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -103,10 +84,12 @@ related:
                     </table>
                 </section>
 
-                <section>
-                    <h2 id="example">Example</h2>
+                <div class="doc-hr"></div>
 
-                    <div class="bv-example">
+                <section>
+                    <h2>Example</h2>
+
+                    <div class="doc-demo">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#id-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#id-html-tab" data-toggle="tab">HTML</a></li>
@@ -115,84 +98,38 @@ related:
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="id-form-tab">
-                                <form id="idForm" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Country</label>
-                                        <div class="col-lg-5">
-                                            <select class="form-control" name="countrySelectBox">
-                                            {% for item in site.data.id %}
-                                                {% assign data = item | split: '|' %}
-                                                <option value="{{ data[2] }}">{{ data[0] }}</option>
-                                            {% endfor %}
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">ID</label>
-                                        <div class="col-lg-5">
-                                            <input type="text" class="form-control" name="id" />
-                                        </div>
-                                    </div>
-                                </form>
+                            {% include validators/id/example.html %}
                             </div>
 
                             <div class="tab-pane" id="id-html-tab">
-{% highlight html hl_lines="5" %}
-<form id="idForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Country</label>
-        <div class="col-lg-5">
-            <select class="form-control" name="countrySelectBox">{% for item in site.data.id %}
-                {% assign data = item | split: '|' %}<option value="{{ data[2] }}">{{ data[0] }}</option>{% endfor %}
-            </select>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-lg-3 control-label">ID</label>
-        <div class="col-lg-5">
-            <input type="text" class="form-control" name="id" />
-        </div>
-    </div>
-</form>
-{% endhighlight %}
+                            {% highlight html %}
+                            {% include validators/id/example.html %}
+                            {% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="id-js-tab">
-{% highlight javascript hl_lines="13 14" %}
-$(document).ready(function() {
-    $('#idForm')
-        .bootstrapValidator({
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                id: {
-                    validators: {
-                        id: {
-                            country: 'countrySelectBox',
-                            message: 'The value is not valid %s ID'
-                        }
-                    }
-                }
-            }
-        });
-});
-{% endhighlight %}
+                            {% highlight javascript %}
+                            {% include validators/id/example.js %}
+                            {% endhighlight %}
                             </div>
                         </div>
                     </div>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 {% include related.html %}
+            </div>
+
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
+{% include validators/id/example.js %}
 $(document).ready(function() {
     $('.sample').on('click', function() {
         var validator = $('#idForm').data('bootstrapValidator'),
@@ -216,24 +153,5 @@ $(document).ready(function() {
                 .addClass(isValid ? 'fa-check' : 'fa-times')
                 .show();
     });
-
-    $('#idForm')
-        .bootstrapValidator({
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                id: {
-                    validators: {
-                        id: {
-                            country: 'countrySelectBox',
-                            message: 'The value is not valid %s ID'
-                        }
-                    }
-                }
-            }
-        });
 });
 </script>

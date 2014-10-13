@@ -1,5 +1,5 @@
 ---
-layout:           doc
+layout:           base
 title:            Validate file
 permalink:        /validators/file/
 previous_section: /validators/emailAddress/
@@ -7,39 +7,20 @@ next_section:     /validators/greaterThan/
 comments:         true
 ---
 
-<div class="bv-heading">
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>file validator</h1>
+        <p>Validate file</p>
+        <p>&larr; <a href="/validators/">Validators</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / file</h1>
-                <p>Validate file.</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#options">Options</a></li>
-                    <li><a href="#mime-types">Popular MIME type</a></li>
-                    <li><a href="#example">Example</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="options">Options</h2>
+                    <h2>Options</h2>
+
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -90,8 +71,10 @@ comments:         true
                     <p>The <code>maxSize</code> and <code>type</code> are only used if the browser supports HTML 5 File API.</p>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 <section>
-                    <h2 id="mime-types">Popular MIME types</h2>
+                    <h2>Popular MIME types</h2>
                     <p>The following table shows popular MIME types. For other MIME type, you can refer to the <a href="https://www.sitepoint.com/web-foundations/mime-types-complete-list/">complete list</a>.</p>
 
                     <table class="table table-condensed">
@@ -113,12 +96,14 @@ comments:         true
                     </table>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 <section>
-                    <h2 id="example">Example</h2>
+                    <h2>Example</h2>
 
                     <p>The following form allows to upload JPEG, PNG image which is smaller than 2 MB in size.</p>
 
-                    <div class="bv-example">
+                    <div class="doc-demo">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#file-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#file-html-tab" data-toggle="tab">HTML</a></li>
@@ -127,84 +112,32 @@ comments:         true
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="file-form-tab">
-                                <form id="uploadForm" class="form-horizontal" enctype="multipart/form-data">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Avatar</label>
-                                        <div class="col-lg-4">
-                                            <input type="file" class="form-control" name="avatar" />
-                                        </div>
-                                    </div>
-                                </form>
+                            {% include validators/file/example.html %}
                             </div>
 
                             <div class="tab-pane" id="file-html-tab">
-{% highlight html hl_lines="1" %}
-<form id="uploadForm" class="form-horizontal" enctype="multipart/form-data">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Avatar</label>
-        <div class="col-lg-4">
-            <input type="file" class="form-control" name="avatar" />
-        </div>
-    </div>
-</form>
-{% endhighlight %}
+                            {% highlight html %}
+                            {% include validators/file/example.html %}
+                            {% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="file-js-tab">
-{% highlight javascript hl_lines="11" %}
-$(document).ready(function() {
-    $('#uploadForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            avatar: {
-                validators: {
-                    file: {
-                        extension: 'jpeg,png',
-                        type: 'image/jpeg,image/png',
-                        maxSize: 2048 * 1024,   // 2 MB
-                        message: 'The selected file is not valid'
-                    }
-                }
-            }
-        }
-    });
-});
-{% endhighlight %}
+                            {% highlight javascript %}
+                            {% include validators/file/example.js %}
+                            {% endhighlight %}
                             </div>
                         </div>
                     </div>
                 </section>
+            </div>
 
-                {% include related.html %}
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-$(document).ready(function() {
-    $('#uploadForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            avatar: {
-                validators: {
-                    file: {
-                        extension: 'jpeg,png',
-                        type: 'image/jpeg,image/png',
-                        maxSize: 2048 * 1024,
-                        message: 'The selected file is not valid'
-                    }
-                }
-            }
-        }
-    });
-});
+{% include validators/file/example.js %}
 </script>

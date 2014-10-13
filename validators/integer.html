@@ -1,5 +1,5 @@
 ---
-layout:           doc
+layout:           base
 title:            Validate an integer number
 permalink:        /validators/integer/
 previous_section: /validators/imo/
@@ -10,39 +10,20 @@ related:
     - numeric
 ---
 
-<div class="bv-heading">
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>integer validator</h1>
+        <p>Validate an integer number. Accept both positive and negative number</p>
+        <p>&larr; <a href="/validators/">Validators</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / integer</h1>
-                <p>Validate an integer number. Accept both positive and negative number.</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#options">Options</a></li>
-                    <li><a href="#example">Example</a></li>
-                    <li><a href="#related-validators">Related validators</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="options">Options</h2>
+                    <h2>Options</h2>
+
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -65,10 +46,12 @@ related:
                     <p>You can use HTML 5 <code>type="number"</code> attribute to enable this validator.</p>
                 </section>
 
-                <section>
-                    <h2 id="example">Example</h2>
+                <div class="doc-hr"></div>
 
-                    <div class="bv-example">
+                <section>
+                    <h2>Example</h2>
+
+                    <div class="doc-demo">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#integer-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#integer-html-tab" data-toggle="tab">HTML</a></li>
@@ -78,58 +61,27 @@ related:
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="integer-form-tab">
-                                <form id="integerForm" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-4 control-label">Type an integer number</label>
-                                        <div class="col-lg-3">
-                                            <input type="text" class="form-control" name="number" />
-                                        </div>
-                                    </div>
-                                </form>
+                            {% include validators/integer/example.html %}
                             </div>
 
                             <div class="tab-pane" id="integer-html-tab">
-{% highlight html %}
-<form id="integerForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-4 control-label">Type a number</label>
-        <div class="col-lg-3">
-            <input type="text" class="form-control" name="number" />
-        </div>
-    </div>
-</form>
-{% endhighlight %}
+                            {% highlight html %}
+                            {% include validators/integer/example.html %}
+                            {% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="integer-js-tab">
-{% highlight javascript hl_lines="11" %}
-$(document).ready(function() {
-    $('#integerForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            number: {
-                validators: {
-                    integer: {
-                        message: 'The value is not an integer'
-                    }
-                }
-            }
-        }
-    });
-});
+{% highlight javascript %}
+{% include validators/integer/example.js %}
 {% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="integer-html5-tab">
-{% highlight html hl_lines="6" %}
+{% highlight html %}
 <form id="integerForm" class="form-horizontal">
     <div class="form-group">
-        <label class="col-lg-4 control-label">Type an integer number</label>
-        <div class="col-lg-3">
+        <label class="col-md-4 control-label">Type an integer number</label>
+        <div class="col-md-3">
             <input class="form-control" name="number"
                 type="number" step="1" data-bv-integer-message="The value is not an integer" />
         </div>
@@ -152,29 +104,18 @@ $(document).ready(function() {
                     </div>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 {% include related.html %}
+            </div>
+
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-$(document).ready(function() {
-    $('#integerForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            number: {
-                validators: {
-                    integer: {
-                        message: 'The value is not an integer'
-                    }
-                }
-            }
-        }
-    });
-});
+{% include validators/integer/example.js %}
 </script>

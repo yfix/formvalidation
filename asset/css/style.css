@@ -325,6 +325,9 @@ h4 {
   padding-bottom: 15px;
   text-align: center;
 }
+.doc-page-content code {
+  background: #fff;
+}
 .doc-alert {
   border-left: 5px solid #1ABC9C;
   font-family: 'cardo';

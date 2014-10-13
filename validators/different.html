@@ -1,5 +1,5 @@
 ---
-layout:           doc
+layout:           base
 title:            different validator
 permalink:        /validators/different/
 previous_section: /validators/date/
@@ -9,39 +9,20 @@ related:
     - identical
 ---
 
-<div class="bv-heading">
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>different validator</h1>
+        <p>Return true if the input value is different with given field's value</p>
+        <p>&larr; <a href="/validators/">Validators</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / different</h1>
-                <p>Return true if the input value is different with given field's value.</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#options">Options</a></li>
-                    <li><a href="#example">Example</a></li>
-                    <li><a href="#related-validators">Related validators</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="options">Options</h2>
+                    <h2>Options</h2>
+
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -68,11 +49,13 @@ related:
                     </table>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 <section>
-                    <h2 id="example">Example</h2>
+                    <h2>Example</h2>
                     <p>The registration form below doesn't allow the username and password to be the same:</p>
 
-                    <div class="bv-example">
+                    <div class="doc-demo">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#different-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#different-html-tab" data-toggle="tab">HTML</a></li>
@@ -81,110 +64,36 @@ related:
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="different-form-tab">
-                                <form id="registerForm" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Username</label>
-                                        <div class="col-lg-5">
-                                            <input type="text" class="form-control" name="username" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Password</label>
-                                        <div class="col-lg-5">
-                                            <input type="password" class="form-control" name="password" />
-                                        </div>
-                                    </div>
-                                </form>
+                            {% include validators/different/example.html %}
                             </div>
 
                             <div class="tab-pane" id="different-html-tab">
-{% highlight html %}
-<form id="registerForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Username</label>
-        <div class="col-lg-5">
-            <input type="text" class="form-control" name="username" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Password</label>
-        <div class="col-lg-5">
-            <input type="password" class="form-control" name="password" />
-        </div>
-    </div>
-</form>
-{% endhighlight %}
+                            {% highlight html %}
+                            {% include validators/different/example.html %}
+                            {% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="different-js-tab">
-{% highlight javascript hl_lines="11 19" %}
-$(document).ready(function() {
-    $('#registerForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            username: {
-                validators: {
-                    different: {
-                        field: 'password',
-                        message: 'The username and password cannot be the same as each other'
-                    }
-                }
-            },
-            password: {
-                validators: {
-                    different: {
-                        field: 'username',
-                        message: 'The password cannot be the same as username'
-                    }
-                }
-            }
-        }
-    });
-});
-{% endhighlight %}
+                            {% highlight javascript %}
+                            {% include validators/different/example.js %}
+                            {% endhighlight %}
                             </div>
                         </div>
                     </div>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 {% include related.html %}
+            </div>
+
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-$(document).ready(function() {
-    $('#registerForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            username: {
-                validators: {
-                    different: {
-                        field: 'password',
-                        message: 'The username and password cannot be the same as each other'
-                    }
-                }
-            },
-            password: {
-                validators: {
-                    different: {
-                        field: 'username',
-                        message: 'The password cannot be the same as username'
-                    }
-                }
-            }
-        }
-    });
-});
+{% include validators/different/example.js %}
 </script>

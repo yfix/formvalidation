@@ -1,5 +1,5 @@
 ---
-layout:           doc
+layout:           base
 title:            Validate a SEDOL (Stock Exchange Daily Official List)
 permalink:        /validators/sedol/
 previous_section: /validators/rtn/
@@ -11,39 +11,20 @@ related:
     - isin
 ---
 
-<div class="bv-heading">
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>sedol validator</h1>
+        <p>Validate a SEDOL (Stock Exchange Daily Official List)</p>
+        <p>&larr; <a href="/validators/">Validators</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / sedol</h1>
-                <p>Validate a SEDOL (Stock Exchange Daily Official List).</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#options">Options</a></li>
-                    <li><a href="#example">Example</a></li>
-                    <li><a href="#related-validators">Related validators</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="options">Options</h2>
+                    <h2>Options</h2>
+
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -64,8 +45,10 @@ related:
                     </table>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 <section>
-                    <h2 id="example">Example</h2>
+                    <h2>Example</h2>
 
                     <table class="table table-condensed">
                         <thead>
@@ -85,7 +68,7 @@ related:
                         </tbody>
                     </table>
 
-                    <div class="bv-example">
+                    <div class="doc-demo">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#sedol-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#sedol-html-tab" data-toggle="tab">HTML</a></li>
@@ -94,93 +77,49 @@ related:
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="sedol-form-tab">
-                                <form id="sedolForm" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">SEDOL</label>
-                                        <div class="col-lg-5">
-                                            <input type="text" class="form-control" name="sedol" />
-                                        </div>
-                                    </div>
-                                </form>
+                            {% include validators/sedol/example.html %}
                             </div>
 
                             <div class="tab-pane" id="sedol-html-tab">
-{% highlight html %}
-<form id="sedolForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">SEDOL</label>
-        <div class="col-lg-5">
-            <input type="text" class="form-control" name="sedol" />
-        </div>
-    </div>
-</form>
-{% endhighlight %}
+                            {% highlight html %}
+                            {% include validators/sedol/example.html %}
+                            {% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="sedol-js-tab">
-{% highlight javascript hl_lines="11" %}
-$(document).ready(function() {
-    $('#sedolForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            sedol: {
-                validators: {
-                    sedol: {
-                        message: 'The value is not valid SEDOL'
-                    }
-                }
-            }
-        }
-    });
-});
-{% endhighlight %}
+                            {% highlight javascript %}
+                            {% include validators/sedol/example.js %}
+                            {% endhighlight %}
                             </div>
                         </div>
                     </div>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 {% include related.html %}
+            </div>
+
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
+{% include validators/sedol/example.js %}
 $(document).ready(function() {
     $('.sample').on('click', function() {
-        $('#sedolForm')
-            .find('input[name="sedol"]')
-                .val($(this).html())
-                .end()
-            .data('bootstrapValidator')
-                .updateStatus('sedol', 'NOT_VALIDATED')
-                .validate();
+        $('#sedolForm').find('input[name="sedol"]').val($(this).html());
+
+        $('#sedolForm').bootstrapValidator('revalidateField', 'sedol');
+
         var isValid = $('#sedolForm').data('bootstrapValidator').isValid();
         $(this)
             .parents('tr').find('i')
             .removeClass('fa-check fa-times')
             .addClass(isValid ? 'fa-check' : 'fa-times');
-    });
-
-    $('#sedolForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            sedol: {
-                validators: {
-                    sedol: {
-                        message: 'The value is not valid SEDOL'
-                    }
-                }
-            }
-        }
     });
 });
 </script>

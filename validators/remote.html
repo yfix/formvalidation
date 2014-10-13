@@ -1,5 +1,5 @@
 ---
-layout:           doc
+layout:           base
 title:            remote validator
 permalink:        /validators/remote/
 previous_section: /validators/regexp/
@@ -7,46 +7,20 @@ next_section:     /validators/rtn/
 comments:         true
 ---
 
-<div class="bv-heading">
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>remote validator</h1>
+        <p>Perform remote checking via Ajax request</p>
+        <p>&larr; <a href="/validators/">Validators</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / remote</h1>
-                <p>Perform remote checking via Ajax request.</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#options">Options</a></li>
-                    <li>
-                        <a href="#example">Example</a>
-                        <ul>
-                            <li><a href="#basic-example">Basic</a></li>
-                            <li><a href="#sending-static-data">Sending static data</a></li>
-                            <li><a href="#sending-dynamic-data">Sending dynamic data</a></li>
-                            <li><a href="#overriding-name">Overriding name</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="options">Options</h2>
+                    <h2>Options</h2>
+
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -104,7 +78,7 @@ url: function(validator) {
                         </tbody>
                     </table>
 
-                    <div class="bv-box bv-box-warning">From v0.5.2, the <code>type</code> option is <code>GET</code>, by default.</div>
+                    <div class="doc-alert doc-alert-info">From v0.5.2, the type option is GET, by default.</div>
 
                     <p>The remote URL has to return an encoded JSON of array containing the <code>valid</code> key:</p>
 {% highlight javascript %}
@@ -116,22 +90,22 @@ url: function(validator) {
 {% endhighlight %}
                 </section>
 
+                <div class="doc-hr"></div>
+
                 <section>
-                    <h2 id="example">Example</h2>
+                    <h2>Examples</h2>
 
-                    <!-- basic example -->
-                    <section>
-                        <h3 id="basic-example">Basic</h3>
-                        <p>The following example shows how to use a remote back-end to check if a given username is already taken or not.</p>
-                        <div class="bv-example">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#example-html-tab" data-toggle="tab">HTML</a></li>
-                                <li><a href="#example-js-tab" data-toggle="tab">JS</a></li>
-                                <li><a href="#example-php-tab" data-toggle="tab">Back-end</a></li>
-                            </ul>
+                    <h3>Basic example</h3>
+                    <p>The following example shows how to use a remote back-end to check if a given username is already taken or not.</p>
+                    <div class="doc-demo">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#example-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#example-js-tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#example-php-tab" data-toggle="tab">Back-end</a></li>
+                        </ul>
 
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="example-html-tab">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="example-html-tab">
 {% highlight html %}
 <form id="registrationForm" class="form-horizontal">
     <div class="form-group">
@@ -142,9 +116,9 @@ url: function(validator) {
     </div>
 </form>
 {% endhighlight %}
-                                </div>
+                            </div>
 
-                                <div class="tab-pane" id="example-js-tab">
+                            <div class="tab-pane" id="example-js-tab">
 {% highlight javascript hl_lines="9" %}
 $(document).ready(function() {
     $('#registrationForm').bootstrapValidator({
@@ -164,9 +138,9 @@ $(document).ready(function() {
     });
 });
 {% endhighlight %}
-                                </div>
+                            </div>
 
-                                <div class="tab-pane" id="example-php-tab">
+                            <div class="tab-pane" id="example-php-tab">
 {% highlight php %}
 <?php
 // The back-end then will determine if the username is available or not,
@@ -184,24 +158,21 @@ echo json_encode(array(
     'valid' => $isAvailable,
 ));
 {% endhighlight %}
-                                </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
 
-                    <!-- sending static data example -->
-                    <section>
-                        <h3 id="sending-static-data">Sending static data</h3>
-                        <p>For example, there is same back-end for validating both username and email address. The back-end uses additional parameter named <code>type</code> to determine which field is going to be validated.</p>
-                        <div class="bv-example">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#staticdata-html-tab" data-toggle="tab">HTML</a></li>
-                                <li><a href="#staticdata-js-tab" data-toggle="tab">JS</a></li>
-                                <li><a href="#staticdata-php-tab" data-toggle="tab">Back-end</a></li>
-                            </ul>
+                    <h3>Sending static data example</h3>
+                    <p>For example, there is same back-end for validating both username and email address. The back-end uses additional parameter named <code>type</code> to determine which field is going to be validated.</p>
+                    <div class="doc-demo">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#staticdata-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#staticdata-js-tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#staticdata-php-tab" data-toggle="tab">Back-end</a></li>
+                        </ul>
 
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="staticdata-html-tab">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="staticdata-html-tab">
 {% highlight html %}
 <form id="registrationForm" class="form-horizontal">
     <div class="form-group">
@@ -219,9 +190,9 @@ echo json_encode(array(
     </div>
 </form>
 {% endhighlight %}
-                                </div>
+                            </div>
 
-                                <div class="tab-pane" id="staticdata-js-tab">
+                            <div class="tab-pane" id="staticdata-js-tab">
 {% highlight javascript hl_lines="11 24" %}
 $(document).ready(function() {
     $('#registrationForm').bootstrapValidator({
@@ -256,9 +227,9 @@ $(document).ready(function() {
     });
 });
 {% endhighlight %}
-                                </div>
+                            </div>
 
-                                <div class="tab-pane" id="staticdata-php-tab">
+                            <div class="tab-pane" id="staticdata-php-tab">
 {% highlight php hl_lines="6" %}
 <?php
 // The code bellow demonstrates a simple back-end written in PHP
@@ -285,23 +256,20 @@ echo json_encode(array(
     'valid' => $isAvailable,
 ));
 {% endhighlight %}
-                                </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
 
-                    <!-- sending dynamic data example -->
-                    <section>
-                        <h3 id="sending-dynamic-data">Sending dynamic data</h3>
-                        <p>For instance, the registration form need to validate both the username and emails.</p>
-                        <div class="bv-example">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#data-html-tab" data-toggle="tab">HTML</a></li>
-                                <li><a href="#data-js-tab" data-toggle="tab">JS</a></li>
-                            </ul>
+                    <h3>Sending dynamic data example</h3>
+                    <p>For instance, the registration form need to validate both the username and emails.</p>
+                    <div class="doc-demo">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#data-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#data-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
 
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="data-html-tab">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="data-html-tab">
 {% highlight html %}
 <form id="registrationForm" class="form-horizontal">
     <div class="form-group">
@@ -324,9 +292,9 @@ echo json_encode(array(
     </div>
 </form>
 {% endhighlight %}
-                                </div>
+                            </div>
 
-                                <div class="tab-pane" id="data-js-tab">
+                            <div class="tab-pane" id="data-js-tab">
 {% highlight javascript hl_lines="10 24" %}
 $(document).ready(function() {
     $('#registrationForm').bootstrapValidator({
@@ -364,22 +332,18 @@ $(document).ready(function() {
     });
 });
 {% endhighlight %}
-                                </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
 
-                    <!-- different names example -->
-                    <section>
-                        <h3 id="overriding-name">Overriding name</h3>
+                    <h3>Overriding name example</h3>
 
-                        <p>By default, it will be set as the name of field. You can override the name option by using the <code>data-bv-remote-name</code> attribute.Here are two cases which you might need to use this attribute.</p>
+                    <p>By default, it will be set as the name of field. You can override the name option by using the <code>data-bv-remote-name</code> attribute.Here are two cases which you might need to use this attribute.</p>
 
-                        <section>
-                            <h4 id="using-different-name">Using different names for same field</h4>
-                            <p>For example, the <i>Sign up</i> and <i>Profile</i> forms use the same back-end URL to validate the email address which is declared with different name.</p>
-                            <p>In this case, use the same <code>data-bv-remote-name</code> attribute and the back-end will get the same data key.</p>
-{% highlight html hl_lines="6" %}
+                    <h4>Using different names for same field</h4>
+                    <p>For example, the <i>Sign up</i> and <i>Profile</i> forms use the same back-end URL to validate the email address which is declared with different name.</p>
+                    <p>In this case, use the same <code>data-bv-remote-name</code> attribute and the back-end will get the same data key.</p>
+{% highlight html %}
 <!-- In the signup form, the email address field is named as "login" -->
 <form id="signupForm" class="form-horizontal">
     <div class="form-group">
@@ -391,7 +355,7 @@ $(document).ready(function() {
 </form>
 {% endhighlight %}
 
-{% highlight html hl_lines="6" %}
+{% highlight html %}
 <!-- In the edit profile form, the email address field is named as "email" -->
 <form id="profileForm" class="form-horizontal">
     <div class="form-group">
@@ -402,14 +366,12 @@ $(document).ready(function() {
     </div>
 </form>
 {% endhighlight %}
-                        </section>
 
-                        <section>
-                            <h4 id="using-same-backend">Using same backend for different fields</h4>
-                            <p>Assume that the profile form asks you to update multiple email address (primary, secondary, for example).
-                            These emails will be validated by the same backend.</p>
-                            <p>In this case, just use the same <code>data-bv-remote-name</code> attribute for these email address fields.</p>
-{% highlight html hl_lines="6 12" %}
+                    <h4>Using same backend for different fields</h4>
+                    <p>Assume that the profile form asks you to update multiple email address (primary, secondary, for example).
+                    These emails will be validated by the same backend.</p>
+                    <p>In this case, just use the same <code>data-bv-remote-name</code> attribute for these email address fields.</p>
+{% highlight html %}
 <form id="profileForm" class="form-horizontal">
     <div class="form-group">
         <label class="col-lg-3 control-label">Primary email</label>
@@ -426,11 +388,11 @@ $(document).ready(function() {
     </div>
 </form>
 {% endhighlight %}
-                        </section>
-                    </section>
                 </section>
+            </div>
 
-                {% include related.html %}
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>

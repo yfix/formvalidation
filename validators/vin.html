@@ -1,5 +1,5 @@
 ---
-layout:           doc
+layout:           base
 title:            Validate an US VIN (Vehicle Identification Number)
 permalink:        /validators/vin/
 previous_section: /validators/vat/
@@ -8,38 +8,20 @@ comments:         true
 examples:         1FAHP26W49G252740, 2FTRX07W53C371582, WP0CA29863U153381, JTMKF4DV5B5309254
 ---
 
-<div class="bv-heading">
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>vin validator</h1>
+        <p>Validate an US VIN (Vehicle Identification Number)</p>
+        <p>&larr; <a href="/validators/">Validators</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / vin</h1>
-                <p>Validate an US VIN (Vehicle Identification Number).</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#options">Options</a></li>
-                    <li><a href="#example">Example</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="options">Options</h2>
+                    <h2>Options</h2>
+
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -60,12 +42,13 @@ examples:         1FAHP26W49G252740, 2FTRX07W53C371582, WP0CA29863U153381, JTMKF
                     </table>
                 </section>
 
-                <section>
-                    <h2 id="example">Example</h2>
+                <div class="doc-hr"></div>
 
-                    <div class="bv-box bv-box-info">
-                        <h5><i></i>Sample VIN for testing</h5>
-                        <p><a href="http://randomvin.com/">randomvin.com</a> helps you generate a random vin.</p>
+                <section>
+                    <h2>Example</h2>
+
+                    <div class="doc-alert doc-alert-info">
+                        <a href="http://randomvin.com/">randomvin.com</a> helps you generate a random vin for testing
                     </div>
 
                     <table class="table table-condensed">
@@ -86,7 +69,7 @@ examples:         1FAHP26W49G252740, 2FTRX07W53C371582, WP0CA29863U153381, JTMKF
                         </tbody>
                     </table>
 
-                    <div class="bv-example">
+                    <div class="doc-demo">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#vin-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#vin-html-tab" data-toggle="tab">HTML</a></li>
@@ -95,93 +78,45 @@ examples:         1FAHP26W49G252740, 2FTRX07W53C371582, WP0CA29863U153381, JTMKF
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="vin-form-tab">
-                                <form id="vinForm" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">VIN</label>
-                                        <div class="col-lg-5">
-                                            <input type="text" class="form-control" name="vin" />
-                                        </div>
-                                    </div>
-                                </form>
+                            {% include validators/vin/example.html %}
                             </div>
 
                             <div class="tab-pane" id="vin-html-tab">
-{% highlight html %}
-<form id="vinForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">VIN</label>
-        <div class="col-lg-5">
-            <input type="text" class="form-control" name="vin" />
-        </div>
-    </div>
-</form>
-{% endhighlight %}
+                            {% highlight html %}
+                            {% include validators/vin/example.html %}
+                            {% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="vin-js-tab">
-{% highlight javascript hl_lines="11" %}
-$(document).ready(function() {
-    $('#vinForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            vin: {
-                validators: {
-                    vin: {
-                        message: 'The VIN number is not valid'
-                    }
-                }
-            }
-        }
-    });
-});
-{% endhighlight %}
+                            {% highlight javascript %}
+                            {% include validators/vin/example.js %}
+                            {% endhighlight %}
                             </div>
                         </div>
                     </div>
                 </section>
+            </div>
 
-                {% include related.html %}
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
+{% include validators/vin/example.js %}
 $(document).ready(function() {
     $('.sample').on('click', function() {
-        $('#vinForm')
-            .find('input[name="vin"]')
-                .val($(this).html())
-                .end()
-            .data('bootstrapValidator')
-                .updateStatus('vin', 'NOT_VALIDATED')
-                .validate();
+        $('#vinForm').find('input[name="vin"]').val($(this).html());
+
+        $('#vinForm').bootstrapValidator('revalidateField', 'vin');
+
         var isValid = $('#vinForm').data('bootstrapValidator').isValid();
         $(this)
             .parents('tr').find('i')
             .removeClass('fa-check fa-times')
             .addClass(isValid ? 'fa-check' : 'fa-times');
-    });
-
-    $('#vinForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            vin: {
-                validators: {
-                    vin: {
-                        message: 'The VIN number is not valid'
-                    }
-                }
-            }
-        }
     });
 });
 </script>

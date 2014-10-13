@@ -1,5 +1,5 @@
 ---
-layout:           doc
+layout:           base
 title:            Validate a zip code
 permalink:        /validators/zipCode/
 previous_section: /validators/vin/
@@ -9,39 +9,20 @@ related:
     - phone
 ---
 
-<div class="bv-heading">
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>zipCode validator</h1>
+        <p>Validate a zip code</p>
+        <p>&larr; <a href="/validators/">Validators</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / zipCode</h1>
-                <p>Validate a zip code by a country code.</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#options">Options</a></li>
-                    <li><a href="#example">Example</a></li>
-                    <li><a href="#related-validators">Related validators</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="options">Options</h2>
+                    <h2>Options</h2>
+
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -90,7 +71,7 @@ related:
                             </tr>
                             <tr>
                                 <td>Czech Republic</td>
-                                <td>CZ <span class="bv-news"></span></td>
+                                <td>CZ</td>
                             </tr>
                             <tr>
                                 <td>Denmark</td>
@@ -110,15 +91,15 @@ related:
                             </tr>
                             <tr>
                                 <td>Romania</td>
-                                <td>RO <span class="bv-news"></span></td>
+                                <td>RO</td>
                             </tr>
                             <tr>
                                 <td>Russia</td>
-                                <td>RU <span class="bv-news"></span></td>
+                                <td>RU</td>
                             </tr>
                             <tr>
                                 <td>Slovakia</td>
-                                <td>SK <span class="bv-news"></span></td>
+                                <td>SK</td>
                             </tr>
                             <tr>
                                 <td>Singapore</td>
@@ -135,10 +116,9 @@ related:
                         </tbody>
                     </table>
 
-                    <div class="bv-box bv-box-info">
-                        <h5 id="4-digits-us-zipcode"><i></i>4 digits US zipcode</h5>
-                        <p>This validator supports 4 digits US zipcode. If you want a valid US zipcode to be 5 digits exactly, use the <a href="/validators/regexp/">regexp</a> validator:</p>
-{% highlight javascript hl_lines="7" %}
+                    <h3>US zipcode</h3>
+                    <p>This validator supports 4 digits US zipcode. If you want a valid US zipcode to be 5 digits exactly, use the <a href="/validators/regexp/">regexp</a> validator:</p>
+{% highlight javascript %}
 $(document).ready(function() {
     $('#postcodeForm').bootstrapValidator({
         fields: {
@@ -154,11 +134,12 @@ $(document).ready(function() {
     });
 });
 {% endhighlight %}
-                    </div>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 <section>
-                    <h2 id="example">Example</h2>
+                    <h2>Example</h2>
 
                     <table class="table table-condensed">
                         <thead>
@@ -178,7 +159,7 @@ $(document).ready(function() {
                         </tbody>
                     </table>
 
-                    <div class="bv-example">
+                    <div class="doc-demo">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#postcode-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#postcode-html-tab" data-toggle="tab">HTML</a></li>
@@ -187,95 +168,49 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="postcode-form-tab">
-                                <form id="postcodeForm" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">UK postcode</label>
-                                        <div class="col-lg-5">
-                                            <input type="text" class="form-control" name="postcode" />
-                                        </div>
-                                    </div>
-                                </form>
+                            {% include validators/zipCode/example.html %}
                             </div>
 
                             <div class="tab-pane" id="postcode-html-tab">
-{% highlight html %}
-<form id="postcodeForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">UK postcode</label>
-        <div class="col-lg-5">
-            <input type="text" class="form-control" name="postcode" />
-        </div>
-    </div>
-</form>
-{% endhighlight %}
+                            {% highlight html %}
+                            {% include validators/zipCode/example.html %}
+                            {% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="postcode-js-tab">
-{% highlight javascript hl_lines="11" %}
-$(document).ready(function() {
-    $('#postcodeForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            postcode: {
-                validators: {
-                    zipCode: {
-                        country: 'GB',
-                        message: 'The value is not valid UK postcode'
-                    }
-                }
-            }
-        }
-    });
-});
-{% endhighlight %}
+                            {% highlight javascript %}
+                            {% include validators/zipCode/example.js %}
+                            {% endhighlight %}
                             </div>
                         </div>
                     </div>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 {% include related.html %}
+            </div>
+
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
+{% include validators/zipCode/example.js %}
 $(document).ready(function() {
     $('.sample').on('click', function() {
-        $('#postcodeForm')
-            .find('input[name="postcode"]')
-                .val($(this).html())
-                .end()
-            .data('bootstrapValidator')
-                .updateStatus('postcode', 'NOT_VALIDATED')
-                .validate();
-        var isValid = $('#postcodeForm').data('bootstrapValidator').isValid();
+        $('#zipCodeForm').find('input[name="postcode"]').val($(this).html());
+
+        $('#zipCodeForm').bootstrapValidator('revalidateField', 'postcode');
+
+        var isValid = $('#zipCodeForm').data('bootstrapValidator').isValid();
         $(this)
             .parents('tr').find('i')
             .removeClass('fa-check fa-times')
             .addClass(isValid ? 'fa-check' : 'fa-times');
-    });
-
-    $('#postcodeForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            postcode: {
-                validators: {
-                    zipCode: {
-                        country: 'GB',
-                        message: 'The value is not valid UK postcode'
-                    }
-                }
-            }
-        }
     });
 });
 </script>

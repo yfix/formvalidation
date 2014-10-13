@@ -1,5 +1,5 @@
 ---
-layout:           doc
+layout:           base
 title:            Validate a CUSIP
 permalink:        /validators/cusip/
 previous_section: /validators/creditCard/
@@ -11,39 +11,20 @@ related:
     - sedol
 ---
 
-<div class="bv-heading">
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>cusip validator</h1>
+        <p>Validate a CUSIP number</p>
+        <p>&larr; <a href="/validators/">Validators</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / cusip</h1>
-                <p>Validate a CUSIP number.</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#options">Options</a></li>
-                    <li><a href="#example">Example</a></li>
-                    <li><a href="#related-validators">Related validators</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="options">Options</h2>
+                    <h2>Options</h2>
+
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -64,8 +45,10 @@ related:
                     </table>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 <section>
-                    <h2 id="example">Example</h2>
+                    <h2>Example</h2>
 
                     <table class="table table-condensed">
                         <thead>
@@ -85,7 +68,7 @@ related:
                         </tbody>
                     </table>
 
-                    <div class="bv-example">
+                    <div class="doc-demo">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#cusip-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#cusip-html-tab" data-toggle="tab">HTML</a></li>
@@ -94,62 +77,38 @@ related:
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="cusip-form-tab">
-                                <form id="cusipForm" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">CUSIP</label>
-                                        <div class="col-lg-5">
-                                            <input type="text" class="form-control" name="cusip" />
-                                        </div>
-                                    </div>
-                                </form>
+                            {% include validators/cusip/example.html %}
                             </div>
 
                             <div class="tab-pane" id="cusip-html-tab">
 {% highlight html %}
-<form id="cusipForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">CUSIP</label>
-        <div class="col-lg-5">
-            <input type="text" class="form-control" name="cusip" />
-        </div>
-    </div>
-</form>
+{% include validators/cusip/example.html %}
 {% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="cusip-js-tab">
-{% highlight javascript hl_lines="11" %}
-$(document).ready(function() {
-    $('#cusipForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            cusip: {
-                validators: {
-                    cusip: {
-                        message: 'The value is not valid CUSIP'
-                    }
-                }
-            }
-        }
-    });
-});
+{% highlight javascript %}
+{% include validators/cusip/example.js %}
 {% endhighlight %}
                             </div>
                         </div>
                     </div>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 {% include related.html %}
+            </div>
+
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
+{% include validators/cusip/example.js %}
 $(document).ready(function() {
     $('.sample').on('click', function() {
         $('#cusipForm')
@@ -159,28 +118,12 @@ $(document).ready(function() {
             .data('bootstrapValidator')
                 .updateStatus('cusip', 'NOT_VALIDATED')
                 .validate();
+
         var isValid = $('#cusipForm').data('bootstrapValidator').isValid();
         $(this)
             .parents('tr').find('i')
             .removeClass('fa-check fa-times')
             .addClass(isValid ? 'fa-check' : 'fa-times');
-    });
-
-    $('#cusipForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            cusip: {
-                validators: {
-                    cusip: {
-                        message: 'The value is not valid CUSIP'
-                    }
-                }
-            }
-        }
     });
 });
 </script>

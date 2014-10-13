@@ -1,5 +1,5 @@
 ---
-layout:           doc
+layout:           base
 title:            Validate an email address
 permalink:        /validators/emailAddress/
 previous_section: /validators/ean/
@@ -29,39 +29,21 @@ examples:
     - this\ still\"not\\allowed@example.com
 ---
 
-<div class="bv-heading">
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>emailAddress validator</h1>
+        <p>Validate an email address</p>
+        <p>&larr; <a href="/validators/">Validators</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / emailAddress</h1>
-                <p>Validate an email address.</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#options">Options</a></li>
-                    <li><a href="#example">Example</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="options">Options</h2>
-                        <table class="table table-condensed">
+                    <h2>Options</h2>
+
+                    <table class="table table-condensed">
                         <thead>
                             <tr>
                                 <th>Option</th>
@@ -94,14 +76,15 @@ examples:
 
                     <p>You can use <code>type="email"</code> attribute to enable this validator.</p>
 
-                    <div class="bv-box bv-box-warning">
-                        <h5><i></i>Why does empty email address still pass?</h5>
-                        <p>This validator passes an empty field since the field might be optional. If the field is required, then use the <a href="/validators/notEmpty/"><code>notEmpty</code> validator</a>.</p>
+                    <div class="doc-alert doc-alert-info">
+                        This validator passes an empty field since the field might be optional. If the field is required, then use the <a href="/validators/notEmpty/">notEmpty validator</a>.
                     </div>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 <section>
-                    <h2 id="example">Example</h2>
+                    <h2>Example</h2>
 
                     <table class="table table-condensed">
                         <thead>
@@ -120,7 +103,7 @@ examples:
                         </tbody>
                     </table>
 
-                    <div class="bv-example">
+                    <div class="doc-demo">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#email-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#email-html-tab" data-toggle="tab">HTML</a></li>
@@ -130,54 +113,23 @@ examples:
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="email-form-tab">
-                                <form id="emailForm" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Email address</label>
-                                        <div class="col-lg-7">
-                                            <input type="text" class="form-control" name="email" />
-                                        </div>
-                                    </div>
-                                </form>
+                            {% include validators/emailAddress/example.html %}
                             </div>
 
                             <div class="tab-pane" id="email-html-tab">
-{% highlight html %}
-<form id="emailForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Email address</label>
-        <div class="col-lg-7">
-            <input type="text" class="form-control" name="email" />
-        </div>
-    </div>
-</form>
-{% endhighlight %}
+                            {% highlight html %}
+                            {% include validators/emailAddress/example.html %}
+                            {% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="email-js-tab">
-{% highlight javascript hl_lines="11" %}
-$(document).ready(function() {
-    $('#emailForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            email: {
-                validators: {
-                    emailAddress: {
-                        message: 'The value is not a valid email address'
-                    }
-                }
-            }
-        }
-    });
-});
-{% endhighlight %}
+                            {% highlight javascript %}
+                            {% include validators/emailAddress/example.js %}
+                            {% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="email-html5-tab">
-{% highlight html hl_lines="6" %}
+{% highlight html %}
 <form id="emailForm" class="form-horizontal">
     <div class="form-group">
         <label class="col-lg-3 control-label">Email address</label>
@@ -204,45 +156,30 @@ $(document).ready(function() {
                         </div>
                     </div>
                 </section>
+            </div>
 
-                {% include related.html %}
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
+{% include validators/emailAddress/example.js %}
 $(document).ready(function() {
     $('.sample').on('click', function() {
         $('#emailForm')
             .find('input[name="email"]')
                 .val($(this).html())
                 .end()
-            .data('bootstrapValidator')
-                .updateStatus('email', 'NOT_VALIDATED')
-                .validate();
+            .bootstrapValidator('revalidateField', 'email');
+
         var isValid = $('#emailForm').data('bootstrapValidator').isValid();
         $(this)
             .parents('tr').find('i')
             .removeClass('fa-check fa-times')
             .addClass(isValid ? 'fa-check' : 'fa-times');
-    });
-
-    $('#emailForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            email: {
-                validators: {
-                    emailAddress: {
-                        message: 'The value is not a valid email address'
-                    }
-                }
-            }
-        }
     });
 });
 </script>
