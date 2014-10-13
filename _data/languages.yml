@@ -36,6 +36,9 @@
 - name:   Greek
   file:   gr_EL.js
   author: pRieStaKos
+- name:   Hebrew
+  file:   he_IL.js
+  author: yakidahan
 - name:   Hungarian
   file:   hu_HU.js
   author: blackfyre
