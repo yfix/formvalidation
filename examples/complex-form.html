@@ -1,474 +1,63 @@
 ---
-layout:           doc
-title:            Complex form
-permalink:        /examples/complex-form/
-categories:       [Advance]
-previous_section:
-next_section:
-comments:         true
+layout: base
+title: Complex form
+permalink: /examples/complex-form/
+comments: true
 ---
 
-<style type="text/css">
-#movieForm .form-control-feedback {
-    top: 35px;
-    right: 15px;
-}
-#movieForm .selectContainer .form-control-feedback {
-    top: 35px;
-    right: 25px;
-}
-</style>
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>Complex form</h1>
+        <p>&larr; <a href="/examples/">Examples</a></p>
+        {% include edit-button.html %}
+    </div>
 
-<div class="bv-heading">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/examples/">Examples</a> / Advance</h1>
-            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <p>In <a href="/getting-started/#writing-form">most cases</a>, the form is structured by pair of label and field which are placed inside a <code>.form-group</code> element.</p>
+                <p>In fact, you might use more complex forms such as</p>
+                <ul class="doc-list">
+                    <li>There are many fields in the same row</li>
+                    <li>Using another element that differs than <code>class=".form-group"</code> to place the fields.</li>
+                </ul>
+                <p>Fortunately, with the <a href="/settings/#form-group">group</a> option, you can create any custom form as you would.</p>
 
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
+                <div class="doc-alert doc-alert-info">
+                    <p>If there are more than one fields in the same row and the group option isn't used, the row might have the success color even if it contains at least one invalid field.</p>
+                    <p>Defining the group option for all fields in row also fix this issue.</p>
+                </div>
+
+                <div class="doc-demo">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#group-form-tab" data-toggle="tab">Try it</a></li>
+                        <li><a href="#group-html-tab" data-toggle="tab">HTML</a></li>
+                        <li><a href="#group-js-tab" data-toggle="tab">JS</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="group-form-tab">
+                        {% include examples/complex-form/example.html %}
+                        </div>
+
+                        <div class="tab-pane" id="group-html-tab">
+{% highlight html %}
+{% include examples/complex-form/example.html %}
+{% endhighlight %}
+                        </div>
+
+                        <div class="tab-pane" id="group-js-tab">
+{% highlight javascript %}
+{% include examples/complex-form/example.js %}
+{% endhighlight %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                {% include example.html category='Advance' %}
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
-                <section>
-                    <h2>Complex form</h2>
-                    <p>In <a href="/getting-started/#writing-form">most cases</a>, the form is structured by pair of label and field which are placed inside a <code>.form-group</code> element.</p>
-                    <p>In fact, you might use more complex forms such as</p>
-                    <ul>
-                        <li>There are many fields in the same row</li>
-                        <li>Using another element that differs than <code>class=".form-group"</code> to place the fields.</li>
-                    </ul>
-                    <p>Fortunately, with the <a href="/settings/#form-group">group</a> option, you can create any custom form as you would.</p>
-
-                    <div class="bv-box bv-box-warning">
-                        <h5 id="color-issue"><i></i>Color issue</h5>
-                        <p>If there are more than one fields in the same row and the <code>group</code> option isn't used, the row might have the success color even if it contains at least one invalid field.</p>
-                        <p>Defining the <code>group</code> option for all fields in row also fix this issue.</p>
-                    </div>
-
-                    <div class="bv-example">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#group-form-tab" data-toggle="tab">Try it</a></li>
-                            <li><a href="#group-html-tab" data-toggle="tab">HTML</a></li>
-                            <li><a href="#group-js-tab" data-toggle="tab">JS</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="group-form-tab">
-                                <form id="movieForm" method="post">
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <label class="control-label">Movie title</label>
-                                                <input type="text" class="form-control" name="title" />
-                                            </div>
-
-                                            <div class="col-md-4 selectContainer">
-                                                <label class="control-label">Genre</label>
-                                                <select class="form-control" name="genre">
-                                                    <option value="">Choose a genre</option>
-                                                    <option value="action">Action</option>
-                                                    <option value="comedy">Comedy</option>
-                                                    <option value="horror">Horror</option>
-                                                    <option value="romance">Romance</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <label class="control-label">Director</label>
-                                                <input type="text" class="form-control" name="director" />
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <label class="control-label">Writer</label>
-                                                <input type="text" class="form-control" name="writer" />
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <label class="control-label">Producer</label>
-                                                <input type="text" class="form-control" name="producer" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label class="control-label">Website</label>
-                                                <input type="text" class="form-control" name="website" />
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <label class="control-label">Youtube trailer</label>
-                                                <input type="text" class="form-control" name="trailer" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label">Review</label>
-                                        <textarea class="form-control" name="review" rows="8"></textarea>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label">Rating</label>
-                                        <div>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="rating" value="terrible" /> Terrible
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="rating" value="watchable" /> Watchable
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="rating" value="best" /> Best ever
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <button type="submit" class="btn btn-default">Validate</button>
-                                </form>
-                            </div>
-
-                            <div class="tab-pane" id="group-html-tab">
-{% highlight html hl_lines="3 7" %}
-<style type="text/css">
-/* Adjust feedback icon position */
-#movieForm .form-control-feedback {
-    top: 35px;
-    right: 15px;
-}
-#movieForm .selectContainer .form-control-feedback {
-    top: 35px;
-    right: 25px;
-}
-</style>
-
-<form id="movieForm" method="post">
-    <div class="form-group">
-        <div class="row">
-            <div class="col-md-8">
-                <label class="control-label">Movie title</label>
-                <input type="text" class="form-control" name="title" />
-            </div>
-
-            <div class="col-md-4 selectContainer">
-                <label class="control-label">Genre</label>
-                <select class="form-control" name="genre">
-                    <option value="">Choose a genre</option>
-                    <option value="action">Action</option>
-                    <option value="comedy">Comedy</option>
-                    <option value="horror">Horror</option>
-                    <option value="romance">Romance</option>
-                </select>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="row">
-            <div class="col-md-4">
-                <label class="control-label">Director</label>
-                <input type="text" class="form-control" name="director" />
-            </div>
-
-            <div class="col-md-4">
-                <label class="control-label">Writer</label>
-                <input type="text" class="form-control" name="writer" />
-            </div>
-
-            <div class="col-md-4">
-                <label class="control-label">Producer</label>
-                <input type="text" class="form-control" name="producer" />
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="row">
-            <div class="col-md-6">
-                <label class="control-label">Website</label>
-                <input type="text" class="form-control" name="website" />
-            </div>
-
-            <div class="col-md-6">
-                <label class="control-label">Youtube trailer</label>
-                <input type="text" class="form-control" name="trailer" />
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label">Review</label>
-        <textarea class="form-control" name="review" rows="8"></textarea>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label">Rating</label>
-        <div>
-            <label class="radio-inline">
-                <input type="radio" name="rating" value="terrible" /> Terrible
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="rating" value="watchable" /> Watchable
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="rating" value="best" /> Best ever
-            </label>
-        </div>
-    </div>
-
-    <button type="submit" class="btn btn-default">Validate</button>
-</form>
-{% endhighlight %}
-                            </div>
-
-                            <div class="tab-pane" id="group-js-tab">
-{% highlight javascript hl_lines="10 22 30 42 54 66 77 88 97" %}
-$(document).ready(function() {
-    $('#movieForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            title: {
-                group: '.col-md-8',
-                validators: {
-                    notEmpty: {
-                        message: 'The title is required'
-                    },
-                    stringLength: {
-                        max: 200,
-                        message: 'The title must be less than 200 characters long'
-                    }
-                }
-            },
-            genre: {
-                group: '.col-md-4',
-                validators: {
-                    notEmpty: {
-                        message: 'The genre is required'
-                    }
-                }
-            },
-            director: {
-                group: '.col-md-4',
-                validators: {
-                    notEmpty: {
-                        message: 'The director name is required'
-                    },
-                    stringLength: {
-                        max: 80,
-                        message: 'The director name must be less than 80 characters long'
-                    }
-                }
-            },
-            writer: {
-                group: '.col-md-4',
-                validators: {
-                    notEmpty: {
-                        message: 'The writer name is required'
-                    },
-                    stringLength: {
-                        max: 80,
-                        message: 'The writer name must be less than 80 characters long'
-                    }
-                }
-            },
-            producer: {
-                group: '.col-md-4',
-                validators: {
-                    notEmpty: {
-                        message: 'The producer name is required'
-                    },
-                    stringLength: {
-                        max: 80,
-                        message: 'The producer name must be less than 80 characters long'
-                    }
-                }
-            },
-            website: {
-                group: '.col-md-6',
-                validators: {
-                    notEmpty: {
-                        message: 'The website address is required'
-                    },
-                    uri: {
-                        message: 'The website address is not valid'
-                    }
-                }
-            },
-            trailer: {
-                group: '.col-md-6',
-                validators: {
-                    notEmpty: {
-                        message: 'The trailer link is required'
-                    },
-                    uri: {
-                        message: 'The trailer link is not valid'
-                    }
-                }
-            },
-            review: {
-                // The group will be set as default (.form-group)
-                validators: {
-                    stringLength: {
-                        max: 500,
-                        message: 'The review must be less than 500 characters long'
-                    }
-                }
-            },
-            rating: {
-                // The group will be set as default (.form-group)
-                validators: {
-                    notEmpty: {
-                        message: 'The rating is required'
-                    }
-                }
-            }
-        }
-    });
-});
-{% endhighlight %}
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script>
-$(document).ready(function() {
-    $('#movieForm')
-        .bootstrapValidator({
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                title: {
-                    group: '.col-md-8',
-                    validators: {
-                        notEmpty: {
-                            message: 'The title is required'
-                        },
-                        stringLength: {
-                            max: 200,
-                            message: 'The title must be less than 200 characters long'
-                        }
-                    }
-                },
-                genre: {
-                    group: '.col-md-4',
-                    validators: {
-                        notEmpty: {
-                            message: 'The genre is required'
-                        }
-                    }
-                },
-                director: {
-                    group: '.col-md-4',
-                    validators: {
-                        notEmpty: {
-                            message: 'The director name is required'
-                        },
-                        stringLength: {
-                            max: 80,
-                            message: 'The director name must be less than 80 characters long'
-                        }
-                    }
-                },
-                writer: {
-                    group: '.col-md-4',
-                    validators: {
-                        notEmpty: {
-                            message: 'The writer name is required'
-                        },
-                        stringLength: {
-                            max: 80,
-                            message: 'The writer name must be less than 80 characters long'
-                        }
-                    }
-                },
-                producer: {
-                    group: '.col-md-4',
-                    validators: {
-                        notEmpty: {
-                            message: 'The producer name is required'
-                        },
-                        stringLength: {
-                            max: 80,
-                            message: 'The producer name must be less than 80 characters long'
-                        }
-                    }
-                },
-                website: {
-                    group: '.col-md-6',
-                    validators: {
-                        notEmpty: {
-                            message: 'The website address is required'
-                        },
-                        uri: {
-                            message: 'The website address is not valid'
-                        }
-                    }
-                },
-                trailer: {
-                    group: '.col-md-6',
-                    validators: {
-                        notEmpty: {
-                            message: 'The trailer link is required'
-                        },
-                        uri: {
-                            message: 'The trailer link is not valid'
-                        }
-                    }
-                },
-                review: {
-                    // The group will be set as default (.form-group)
-                    validators: {
-                        stringLength: {
-                            max: 500,
-                            message: 'The review must be less than 500 characters long'
-                        }
-                    }
-                },
-                rating: {
-                    // The group will be set as default (.form-group)
-                    validators: {
-                        notEmpty: {
-                            message: 'The rating is required'
-                        }
-                    }
-                }
-            }
-        })
-        .on('success.form.bv', function(e) {
-            // Prevent form submission
-            e.preventDefault();
-        });
-});
+{% include examples/complex-form/example.js %}
 </script>

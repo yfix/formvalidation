@@ -1,130 +1,52 @@
 ---
-layout:           doc
-title:            Play with Mask
-permalink:        /examples/mask/
-categories:       [Compatibility]
-previous_section:
-next_section:
-comments:         true
+layout: base
+title: Playing with Mask
+permalink: /examples/mask/
+comments: true
 ---
 
-<div class="bv-heading">
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>Playing with Mask</h1>
+        <p>&larr; <a href="/examples/">Examples</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/examples/">Examples</a> / Compatibility</h1>
-            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <p>Use with the <a href="http://igorescobar.github.io/jQuery-Mask-Plugin/">Mask</a> plugin.</p>
 
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
+                <div class="doc-demo">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#mask-form-tab" data-toggle="tab">Try it</a></li>
+                        <li><a href="#mask-html-tab" data-toggle="tab">HTML</a></li>
+                        <li><a href="#mask-js-tab" data-toggle="tab">JS</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="mask-form-tab">
+                        {% include examples/mask/example.html %}
+                        </div>
+
+                        <div class="tab-pane" id="mask-html-tab">
+{% highlight html %}
+{% include examples/mask/example.html %}
+{% endhighlight %}
+                        </div>
+
+                        <div class="tab-pane" id="mask-js-tab">
+{% highlight javascript %}
+{% include examples/mask/example.js %}
+{% endhighlight %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                {% include example.html category='Compatibility' %}
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
-                <section>
-                    <h2 id="mask">Play with Mask</h2>
-                    <p>Use with the <a href="http://igorescobar.github.io/jQuery-Mask-Plugin/">Mask</a> plugin.</p>
-
-                    <div class="bv-example">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#mask-form-tab" data-toggle="tab">Try it</a></li>
-                            <li><a href="#mask-html-tab" data-toggle="tab">HTML</a></li>
-                            <li><a href="#mask-js-tab" data-toggle="tab">JS</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="mask-form-tab">
-                                <form id="maskForm" method="post" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">IP address</label>
-                                        <div class="col-lg-5">
-                                            <input type="text" class="form-control" name="ipAddress" />
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="tab-pane" id="mask-html-tab">
-{% highlight html %}
-<!-- Include Mask plugin -->
-<script src="//oss.maxcdn.com/jquery.mask/1.6.0/jquery.mask.min.js"></script>
-
-<form id="maskForm" method="post" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">IP address</label>
-        <div class="col-lg-5">
-            <input type="text" class="form-control" name="ipAddress" />
-        </div>
-    </div>
-</form>
-{% endhighlight %}
-                            </div>
-
-                            <div class="tab-pane" id="mask-js-tab">
-{% highlight javascript hl_lines="19" %}
-$(document).ready(function() {
-    $('#maskForm')
-        .bootstrapValidator({
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                ipAddress: {
-                    validators: {
-                        ip: {
-                            message: 'The IP address is not valid'
-                        }
-                    }
-                }
-            }
-        })
-        .find('[name="ipAddress"]').mask('099.099.099.099');
-});
-{% endhighlight %}
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="//oss.maxcdn.com/jquery.mask/1.6.0/jquery.mask.min.js"></script>
 <script>
-$(document).ready(function() {
-    $('#maskForm')
-        .bootstrapValidator({
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                ipAddress: {
-                    validators: {
-                        ip: {
-                            message: 'The IP address is not valid'
-                        }
-                    }
-                }
-            }
-        })
-        .find('[name="ipAddress"]').mask('099.099.099.099');
-});
+{% include examples/mask/example.js %}
 </script>

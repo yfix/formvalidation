@@ -1,59 +1,40 @@
 ---
-layout:           doc
-title:            Play with Bootstrap Tabs
-permalink:        /examples/bootstrap-tab/
-categories:       [Compatibility]
-previous_section:
-next_section:
-comments:         true
+layout: base
+title: Playing with Bootstrap Tabs
+permalink: /examples/bootstrap-tab/
+comments: true
 ---
 
-<div class="bv-heading">
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>Playing with Bootstrap Tabs</h1>
+        <p>&larr; <a href="/examples/">Examples</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/examples/">Examples</a> / Compatibility</h1>
-            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <p>The following example shows that the plugin works perfectly with <a href="http://getbootstrap.com/javascript/#tabs">Bootstrap Tabs</a>.</p>
+                <p>By default, the fields in inactive tabs will not be validated because they are not visible. In order to validate them, we need to use the <a href="/settings/#excluded">excluded</a> option:</p>
 
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                {% include example.html category='Compatibility' %}
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
-                <section>
-                    <h2 id="bootstrap-tab">Play with Bootstrap Tabs</h2>
-                    <p>The following example shows that the plugin works perfectly with <a href="http://getbootstrap.com/javascript/#tabs">Bootstrap Tabs</a>.</p>
-                    <p>By default, the fields in inactive tabs will not be validated because they are not visible. In order to validate them, we need to use the <a href="/settings/#excluded">excluded</a> option:</p>
 {% highlight javascript %}
 excluded: [':disabled']
 {% endhighlight %}
 
-                    <h3 id="adding-icon-tab">Adding icon to tab</h3>
-                    <p>Assume that you want to add an icon to tab to indicate the valid or invalid tab. A tab is called valid if all fields inside it are valid. Otherwise, if there is at least one invalid field inside tab, the tab is invalid.</p>
-                    <p>Firstly, we need to prepare the icon placed at the tab title:</p>
-{% highlight html hl_lines="2 3" %}
+                <p>Assume that you want to add an icon to tab to indicate the valid or invalid tab. A tab is called valid if all fields inside it are valid. Otherwise, if there is at least one invalid field inside tab, the tab is invalid.</p>
+                <p>Firstly, we need to prepare the icon placed at the tab title:</p>
+
+{% highlight html %}
 <ul class="nav nav-tabs">
     <li class="active"><a href="#info-tab" data-toggle="tab">Tab title <i class="fa"></i></a></li>
     <li><a href="#address-tab" data-toggle="tab">Tab title <i class="fa"></i></a></li>
 </ul>
 {% endhighlight %}
 
-                    <p>Lastly, add success/error class to icon when the field is valid/invalid by triggering the <code>error.field.bv</code> and <code>success.field.bv</code> <a href="/settings/#event-field">events</a>:</p>
-{% highlight javascript hl_lines="9 23 35 37" %}
+                <p>Lastly, add success/error class to icon when the field is valid/invalid by triggering the <code>error.field.bv</code> and <code>success.field.bv</code> <a href="/settings/#event-field">events</a>:</p>
+
+{% highlight javascript %}
 $(document).ready(function() {
     $('#accountForm')
         .bootstrapValidator({
@@ -97,316 +78,35 @@ $(document).ready(function() {
 });
 {% endhighlight %}
 
-                    <div class="bv-example">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#info-tab" data-toggle="tab">Information <i class="fa"></i></a></li>
-                            <li><a href="#address-tab" data-toggle="tab">Address <i class="fa"></i></a></li>
-                        </ul>
-
-                        <form id="accountForm" method="post" class="form-horizontal">
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="info-tab">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Full name</label>
-                                        <div class="col-lg-5">
-                                            <input type="text" class="form-control" name="fullName" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Company</label>
-                                        <div class="col-lg-5">
-                                            <input type="text" class="form-control" name="company" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Job title</label>
-                                        <div class="col-lg-5">
-                                            <input type="text" class="form-control" name="jobTitle" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="address-tab">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Address</label>
-                                        <div class="col-lg-5">
-                                            <input type="text" class="form-control" name="address" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">City</label>
-                                        <div class="col-lg-5">
-                                            <input type="text" class="form-control" name="city" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Country</label>
-                                        <div class="col-lg-5">
-                                            <select class="form-control" name="country">
-                                                <option value="">Select a country</option>
-                                                <option value="FR">France</option>
-                                                <option value="DE">Germany</option>
-                                                <option value="IT">Italy</option>
-                                                <option value="JP">Japan</option>
-                                                <option value="RU">Russian</option>
-                                                <option value="US">United State</option>
-                                                <option value="GB">United Kingdom</option>
-                                                <option value="other">Other</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="margin: 15px">
-                                <div class="form-group">
-                                    <div class="col-lg-5 col-lg-offset-3">
-                                        <button type="submit" class="btn btn-default">Validate</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="bv-example">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#tabs-html-tab" data-toggle="tab">HTML</a></li>
-                            <li><a href="#tabs-js-tab" data-toggle="tab">JS</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="tabs-html-tab">
-{% highlight html hl_lines="2 3" %}
-<ul class="nav nav-tabs">
-    <li class="active"><a href="#info-tab" data-toggle="tab">Information <i class="fa"></i></a></li>
-    <li><a href="#address-tab" data-toggle="tab">Address <i class="fa"></i></a></li>
-</ul>
-
-<form id="accountForm" method="post" class="form-horizontal">
-    <div class="tab-content">
-        <div class="tab-pane active" id="info-tab">
-            <div class="form-group">
-                <label class="col-lg-3 control-label">Full name</label>
-                <div class="col-lg-5">
-                    <input type="text" class="form-control" name="fullName" />
+                <div class="doc-demo">
+                    {% include examples/bootstrap-tab/example.html %}
                 </div>
-            </div>
-            <div class="form-group">
-                <label class="col-lg-3 control-label">Company</label>
-                <div class="col-lg-5">
-                    <input type="text" class="form-control" name="company" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-lg-3 control-label">Job title</label>
-                <div class="col-lg-5">
-                    <input type="text" class="form-control" name="jobTitle" />
-                </div>
-            </div>
-        </div>
 
-        <div class="tab-pane" id="address-tab">
-            <div class="form-group">
-                <label class="col-lg-3 control-label">Address</label>
-                <div class="col-lg-5">
-                    <input type="text" class="form-control" name="address" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-lg-3 control-label">City</label>
-                <div class="col-lg-5">
-                    <input type="text" class="form-control" name="city" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-lg-3 control-label">Country</label>
-                <div class="col-lg-5">
-                    <select class="form-control" name="country">
-                        <option value="">Select a country</option>
-                        <option value="FR">France</option>
-                        <option value="DE">Germany</option>
-                        <option value="IT">Italy</option>
-                        <option value="JP">Japan</option>
-                        <option value="RU">Russian</option>
-                        <option value="US">United State</option>
-                        <option value="GB">United Kingdom</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </div>
+                <div class="doc-demo">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tabs-html-tab" data-toggle="tab">HTML</a></li>
+                        <li><a href="#tabs-js-tab" data-toggle="tab">JS</a></li>
+                    </ul>
 
-    <div class="form-group">
-        <div class="col-lg-5 col-lg-offset-3">
-            <button type="submit" class="btn btn-default">Validate</button>
-        </div>
-    </div>
-</form>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tabs-html-tab">
+{% highlight html %}
+{% include examples/bootstrap-tab/example.html %}
 {% endhighlight %}
-                            </div>
+                        </div>
 
-                            <div class="tab-pane" id="tabs-js-tab">
-{% highlight javascript hl_lines="6 44 57 69 71" %}
-$(document).ready(function() {
-    $('#accountForm')
-        .bootstrapValidator({
-            // Only disabled elements are excluded
-            // The invisible elements belonging to inactive tabs must be validated
-            excluded: [':disabled'],
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                fullName: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The full name is required'
-                        }
-                    }
-                },
-                company: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The company name is required'
-                        }
-                    }
-                },
-                address: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The address is required'
-                        }
-                    }
-                },
-                city: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The city is required'
-                        }
-                    }
-                }
-            }
-        })
-        // Called when a field is invalid
-        .on('error.field.bv', function(e, data) {
-            // data.element --> The field element
-
-            var $tabPane = data.element.parents('.tab-pane'),
-                tabId    = $tabPane.attr('id');
-
-            $('a[href="#' + tabId + '"][data-toggle="tab"]')
-                .parent()
-                .find('i')
-                .removeClass('fa-check')
-                .addClass('fa-times');
-        })
-        // Called when a field is valid
-        .on('success.field.bv', function(e, data) {
-            // data.bv      --> The BootstrapValidator instance
-            // data.element --> The field element
-
-            var $tabPane = data.element.parents('.tab-pane'),
-                tabId    = $tabPane.attr('id'),
-                $icon    = $('a[href="#' + tabId + '"][data-toggle="tab"]')
-                            .parent()
-                            .find('i')
-                            .removeClass('fa-check fa-times');
-
-            // Check if the submit button is clicked
-            if (data.bv.getSubmitButton()) {
-                // Check if all fields in tab are valid
-                var isValidTab = data.bv.isValidContainer($tabPane);
-                $icon.addClass(isValidTab ? 'fa-check' : 'fa-times');
-            }
-        });
-});
+                        <div class="tab-pane" id="tabs-js-tab">
+{% highlight javascript %}
+{% include examples/bootstrap-tab/example.js %}
 {% endhighlight %}
-                            </div>
                         </div>
                     </div>
-                </section>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-$(document).ready(function() {
-    $('#accountForm')
-        .bootstrapValidator({
-            excluded: [':disabled'],
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                fullName: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The full name is required'
-                        }
-                    }
-                },
-                company: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The company name is required'
-                        }
-                    }
-                },
-                address: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The address is required'
-                        }
-                    }
-                },
-                city: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The city is required'
-                        }
-                    }
-                }
-            }
-        })
-        // Called when a field is invalid
-        .on('error.field.bv', function(e, data) {
-            // data.element --> The field element
-
-            var $tabPane = data.element.parents('.tab-pane'),
-                tabId    = $tabPane.attr('id');
-
-            $('a[href="#' + tabId + '"][data-toggle="tab"]')
-                .parent()
-                .find('i')
-                .removeClass('fa-check')
-                .addClass('fa-times');
-        })
-        // Called when a field is valid
-        .on('success.field.bv', function(e, data) {
-            // data.bv      --> The BootstrapValidator instance
-            // data.element --> The field element
-
-            var $tabPane = data.element.parents('.tab-pane'),
-                tabId    = $tabPane.attr('id'),
-                $icon    = $('a[href="#' + tabId + '"][data-toggle="tab"]')
-                            .parent()
-                            .find('i')
-                            .removeClass('fa-check fa-times');
-
-            // Check if the submit button is clicked
-            if (data.bv.getSubmitButton()) {
-                // Check if all fields in tab are valid
-                var isValidTab = data.bv.isValidContainer($tabPane);
-                $icon.addClass(isValidTab ? 'fa-check' : 'fa-times');
-            }
-        })
-        .on('success.form.bv', function(e) {
-            // Prevent form submission
-            e.preventDefault();
-        });
-});
+{% include examples/bootstrap-tab/example.js %}
 </script>

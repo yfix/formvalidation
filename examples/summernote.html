@@ -1,215 +1,52 @@
 ---
-layout:           doc
-title:            Play with Summernote
-permalink:        /examples/summernote/
-categories:       [Compatibility]
-previous_section:
-next_section:
-comments:         true
+layout: base
+title: Playing with Summernote
+permalink: /examples/summernote/
+comments: true
 ---
 
-<link href="//oss.maxcdn.com/summernote/0.5.1/summernote.css" rel="stylesheet">
-<link href="//oss.maxcdn.com/summernote/0.5.1/summernote-bs3.css" rel="stylesheet">
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>Playing with Summernote</h1>
+        <p>&larr; <a href="/examples/">Examples</a></p>
+        {% include edit-button.html %}
+    </div>
 
-<div class="bv-heading">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/examples/">Examples</a> / Compatibility</h1>
-            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <p>This example shows how to use BootstrapValidator with <a href="http://hackerwins.github.io/summernote/">Summernote</a> plugin.</p>
 
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
+                <div class="doc-demo">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#summernote-form-tab" data-toggle="tab">Try it</a></li>
+                        <li><a href="#summernote-html-tab" data-toggle="tab">HTML</a></li>
+                        <li><a href="#summernote-js-tab" data-toggle="tab">JS</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="summernote-form-tab">
+                        {% include examples/summernote/example.html %}
+                        </div>
+
+                        <div class="tab-pane" id="summernote-html-tab">
+{% highlight html %}
+{% include examples/summernote/example.html %}
+{% endhighlight %}
+                        </div>
+
+                        <div class="tab-pane" id="summernote-js-tab">
+{% highlight javascript %}
+{% include examples/summernote/example.js %}
+{% endhighlight %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                {% include example.html category='Compatibility' %}
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
-                <section>
-                    <h2 id="summernote">Play with Summernote</h2>
-                    <p>This example shows how to use BootstrapValidator with <a href="http://hackerwins.github.io/summernote/">Summernote</a> plugin.</p>
-
-                    <div class="bv-example">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#summernote-form-tab" data-toggle="tab">Try it</a></li>
-                            <li><a href="#summernote-html-tab" data-toggle="tab">HTML</a></li>
-                            <li><a href="#summernote-js-tab" data-toggle="tab">JS</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="summernote-form-tab">
-                                <form id="summernoteForm" method="post" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Post title</label>
-                                        <div class="col-md-5">
-                                            <input type="text" class="form-control" name="title" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Post content</label>
-                                        <div class="col-md-9">
-                                            <textarea class="form-control" name="content" style="height: 400px;"></textarea>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-5 col-md-offset-3">
-                                            <button type="submit" class="btn btn-default">Validate</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="tab-pane" id="summernote-html-tab">
-{% highlight html %}
-<!-- Include Summernote CSS files -->
-<link href="//oss.maxcdn.com/summernote/0.5.1/summernote.css" rel="stylesheet">
-<link href="//oss.maxcdn.com/summernote/0.5.1/summernote-bs3.css" rel="stylesheet">
-
-<!-- Include Summernote JS file -->
-<script src="//oss.maxcdn.com/summernote/0.5.1/summernote.min.js"></script>
-
-<form id="summernoteForm" method="post" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-md-3 control-label">Post title</label>
-        <div class="col-md-5">
-            <input type="text" class="form-control" name="title" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-md-3 control-label">Post content</label>
-        <div class="col-md-9">
-            <textarea class="form-control" name="content" style="height: 400px;"></textarea>
-        </div>
-    </div>
-</form>
-{% endhighlight %}
-                            </div>
-
-                            <div class="tab-pane" id="summernote-js-tab">
-{% highlight javascript hl_lines="2 27 41 44" %}
-$(document).ready(function() {
-    function validateEditor() {
-        // Revalidate the content when its value is changed by Summernote
-        $('#summernoteForm').bootstrapValidator('revalidateField', 'content');
-    };
-
-    $('#summernoteForm')
-        .bootstrapValidator({
-            excluded: [':disabled'],
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                title: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The title is required and cannot be empty'
-                        }
-                    }
-                },
-                content: {
-                    validators: {
-                        callback: {
-                            message: 'The content is required and cannot be empty',
-                            callback: function(value, validator) {
-                                var code = $('[name="content"]').code();
-                                // <p><br></p> is code generated by Summernote for empty content
-                                return (code !== '' && code !== '<p><br></p>');
-                            }
-                        }
-                    }
-                }
-            }
-        })
-        .find('[name="content"]')
-            .summernote({
-                height: 400,
-                onkeyup: function() {
-                    validateEditor();
-                },
-                onpaste: function() {
-                    validateEditor();
-                }
-            });
-});
-{% endhighlight %}
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="//oss.maxcdn.com/summernote/0.5.1/summernote.min.js"></script>
 <script>
-$(document).ready(function() {
-    function validateEditor() {
-        $('#summernoteForm').bootstrapValidator('revalidateField', 'content');
-    };
-
-    $('#summernoteForm')
-        .bootstrapValidator({
-            excluded: [':disabled'],
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                title: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The title is required and cannot be empty'
-                        }
-                    }
-                },
-                content: {
-                    validators: {
-                        callback: {
-                            message: 'The content is required and cannot be empty',
-                            callback: function(value, validator) {
-                                var code = $('[name="content"]').code();
-
-                                // <p><br></p> is code generated by Summernote for empty content
-                                return (code !== '' && code !== '<p><br></p>');
-                            }
-                        }
-                    }
-                }
-            }
-        })
-        .on('success.form.bv', function(e) {
-            // Prevent form submission
-            e.preventDefault();
-        })
-        .find('[name="content"]')
-            .summernote({
-                height: 400,
-                onkeyup: function() {
-                    validateEditor();
-                },
-                onpaste: function() {
-                    validateEditor();
-                }
-            });
-});
+{% include examples/summernote/example.js %}
 </script>

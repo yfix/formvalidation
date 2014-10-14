@@ -1,249 +1,61 @@
 ---
-layout:           doc
-title:            Enable, disable validator
-permalink:        /examples/enable-validator/
-categories:       [Advance]
-previous_section:
-next_section:
-comments:         true
+layout: base
+title: Enabling validators
+permalink: /examples/enable-validator/
+comments: true
 ---
 
-<div class="bv-heading">
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>Enabling validators</h1>
+        <p>&larr; <a href="/examples/">Examples</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/examples/">Examples</a> / Advance</h1>
-            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <p>This example demonstrates how to enable/disable validators on the fly.</p>
 
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
+                <p>You might need two things:</p>
+
+                <ul class="doc-list">
+                    <li>The <a href="/settings/#field-enabled">enabled</a> option: This option is used to enable/disable the field validators initially.</li>
+                    <li>The <a href="/api/#enable-field-validators">enableFieldValidators()</a> method: This method enables/disables the field validators.</li>
+                </ul>
+
+                <p>In the following form, the new password is not required. Its validators are disabled. When user set the password, the validators will be enabled.</p>
+
+                <div class="doc-demo">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#enable-form-tab" data-toggle="tab">Try it</a></li>
+                        <li><a href="#enable-html-tab" data-toggle="tab">HTML</a></li>
+                        <li><a href="#enable-js-tab" data-toggle="tab">JS</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="enable-form-tab">
+                        {% include examples/enable-validator/example.html %}
+                        </div>
+
+                        <div class="tab-pane" id="enable-html-tab">
+{% highlight html %}
+{% include examples/enable-validator/example.html %}
+{% endhighlight %}
+                        </div>
+
+                        <div class="tab-pane" id="enable-js-tab">
+{% highlight javascript %}
+{% include examples/enable-validator/example.js %}
+{% endhighlight %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                {% include example.html category='Advance' %}
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
-                <section>
-                    <h2 id="enable-validator">Enable, disable validator</h2>
-                    <p>This example demonstrates how to enable/disable validators on the fly.</p>
-
-                    <p>You might need two things:</p>
-                    <ul>
-                        <li>The <a href="/settings/#field-enabled">enabled</a> option: This option is used to enable/disable the field validators initially.</li>
-                        <li>The <a href="/api/#enable-field-validators">enableFieldValidators()</a> method: This method enables/disables the field validators.</li>
-                    </ul>
-
-                    <p>In the following form, the new password is not required. Its validators are disabled. When user set the password, the validators will be enabled.</p>
-
-                    <div class="bv-example">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#enable-form-tab" data-toggle="tab">Try it</a></li>
-                            <li><a href="#enable-html-tab" data-toggle="tab">HTML</a></li>
-                            <li><a href="#enable-js-tab" data-toggle="tab">JS</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="enable-form-tab">
-                                <form id="enableForm" method="post" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Full name (*)</label>
-                                        <div class="col-md-5">
-                                            <input type="text" class="form-control" name="full_name" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">New password</label>
-                                        <div class="col-md-5">
-                                            <input type="password" class="form-control" name="password" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Confirm password</label>
-                                        <div class="col-md-5">
-                                            <input type="password" class="form-control" name="confirm_password" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-5 col-md-offset-3">
-                                            <button type="submit" class="btn btn-default">Validate</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="tab-pane" id="enable-html-tab">
-{% highlight html %}
-<form id="enableForm" method="post" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-md-3 control-label">Full name (*)</label>
-        <div class="col-md-5">
-            <input type="text" class="form-control" name="full_name" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-md-3 control-label">New password</label>
-        <div class="col-md-5">
-            <input type="password" class="form-control" name="password" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-md-3 control-label">Confirm password</label>
-        <div class="col-md-5">
-            <input type="password" class="form-control" name="confirm_password" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-5 col-md-offset-3">
-            <button type="submit" class="btn btn-default">Validate</button>
-        </div>
-    </div>
-</form>
-{% endhighlight %}
-                            </div>
-
-                            <div class="tab-pane" id="enable-js-tab">
-{% highlight javascript hl_lines="18 30 47 48 52 53" %}
-$(document).ready(function() {
-    $('#enableForm')
-        .bootstrapValidator({
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                full_name: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The full name is required and cannot be empty'
-                        }
-                    }
-                },
-                password: {
-                    enabled: false,
-                    validators: {
-                        notEmpty: {
-                            message: 'The password is required and cannot be empty'
-                        },
-                        identical: {
-                            field: 'confirm_password',
-                            message: 'The password and its confirm must be the same'
-                        }
-                    }
-                },
-                confirm_password: {
-                    enabled: false,
-                    validators: {
-                        notEmpty: {
-                            message: 'The confirm password is required and cannot be empty'
-                        },
-                        identical: {
-                            field: 'password',
-                            message: 'The password and its confirm must be the same'
-                        }
-                    }
-                }
-            }
-        })
-        // Enable the password/confirm password validators if the password is not empty
-        .on('keyup', '[name="password"]', function() {
-            var isEmpty = $(this).val() == '';
-            $('#enableForm')
-                    .bootstrapValidator('enableFieldValidators', 'password', !isEmpty)
-                    .bootstrapValidator('enableFieldValidators', 'confirm_password', !isEmpty);
-
-            // Revalidate the field when user start typing in the password field
-            if ($(this).val().length == 1) {
-                $('#enableForm').bootstrapValidator('validateField', 'password')
-                                .bootstrapValidator('validateField', 'confirm_password');
-            }
-        });
-});
-{% endhighlight %}
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script>
-$(document).ready(function() {
-    $('#enableForm')
-        .bootstrapValidator({
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                full_name: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The full name is required and cannot be empty'
-                        }
-                    }
-                },
-                password: {
-                    enabled: false,
-                    validators: {
-                        notEmpty: {
-                            message: 'The password is required and cannot be empty'
-                        },
-                        identical: {
-                            field: 'confirm_password',
-                            message: 'The password and its confirm must be the same'
-                        }
-                    }
-                },
-                confirm_password: {
-                    enabled: false,
-                    validators: {
-                        notEmpty: {
-                            message: 'The confirm password is required and cannot be empty'
-                        },
-                        identical: {
-                            field: 'password',
-                            message: 'The password and its confirm must be the same'
-                        }
-                    }
-                }
-            }
-        })
-        .on('success.form.bv', function(e) {
-            // Prevent form submission
-            e.preventDefault();
-        })
-        // Enable the password/confirm password validators if the password is not empty
-        .on('keyup', '[name="password"]', function() {
-            var isEmpty = $(this).val() == '';
-            $('#enableForm')
-                    .bootstrapValidator('enableFieldValidators', 'password', !isEmpty)
-                    .bootstrapValidator('enableFieldValidators', 'confirm_password', !isEmpty);
-
-            if ($(this).val().length == 1) {
-                $('#enableForm').bootstrapValidator('validateField', 'password')
-                                .bootstrapValidator('validateField', 'confirm_password');
-            }
-        });
-});
+{% include examples/enable-validator/example.js %}
 </script>

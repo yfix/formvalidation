@@ -2,16 +2,19 @@
     <h2>Compatibility</h2>
 
     <p>In order to make BootstrapValidator work together with other plugin, you should follow two rules below:</p>
-    <div>
-        <p><strong>1 &mdash; Don't exclude the field if the plugin changes the field visibility</strong></p>
-        <p>Some plugins hide your field and create new elements to change how the field looks like. By default, the hidden, invisible fields will not be validated. Therefore, you need to set <code>excluded: ':disabled'</code>. See the <a href="/settings/#form-excluded">excluded</a> option for more information.</p>
-        <p>Example: <a href="/examples/bootstrap-button/">Bootstrap Button</a></p>
-    </div>
 
-    <div>
-        <p><strong>2 &mdash; Revalidate the field if the plugin changes its value dynamically:</strong></p>
-        <p>Most plugins trigger an event after changing the field value. By using this kind of event handler, you need to ask BootstrapValidator to revalidate the field.</p>
-    </div>
+    <ol>
+        <li>
+            <p><strong>Don't exclude the field if the plugin changes the field visibility</strong></p>
+            <p>Some plugins hide your field and create new elements to change how the field looks like. By default, the hidden, invisible fields will not be validated. Therefore, you need to set <code>excluded: ':disabled'</code>. See the <a href="/settings/#form-excluded">excluded</a> option for more information.</p>
+            <p>Example: <a href="/examples/bootstrap-button/">Bootstrap Button</a></p>
+        </li>
+
+        <li>
+            <p><strong>Revalidate the field if the plugin changes its value dynamically:</strong></p>
+            <p>Most plugins trigger an event after changing the field value. By using this kind of event handler, you need to ask BootstrapValidator to revalidate the field.</p>
+        </li>
+    </ol>
 
 {% highlight javascript %}
 $(field)
@@ -30,7 +33,8 @@ $(field)
     <p>Example: <a href="/examples/chosen/">Chosen</a></p>
 
     <p>These examples show how you can use BootstrapValidator with other Javascript plugins.</p>
-    <ul>
+
+    <ul class="doc-list">
         <li><a href="/examples/bootbox/">Bootbox</a></li>
         <li><a href="/examples/bootstrap-button/">Bootstrap Button</a></li>
         <li><a href="/examples/bootstrap-multiselect/">Bootstrap Multiselect</a></li>

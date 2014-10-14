@@ -1,22 +1,20 @@
 ---
-layout:           base
-title:            Set validator options via HTML attributes
-permalink:        /examples/attribute/
-previous_section:
-next_section:
-comments:         true
+layout: base
+title: Setting validator options via HTML attributes
+permalink: /examples/attribute/
+comments: true
 ---
 
 <div class="doc-page-content">
     <div class="doc-page-heading">
-        <h1>Set validator options via HTML attributes</h1>
+        <h1>Setting validator options via HTML attributes</h1>
         <p>&larr; <a href="/examples/">Examples</a></p>
         {% include edit-button.html %}
     </div>
 
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8 col-md-offset-2">
                 <section>
                     <p>This example illustrates the ability of setting validator options via HTML attributes.</p>
                     <p>In order to set a specific validator to given field, you have to declare additional attributes for the field. For example:</p>
@@ -40,8 +38,8 @@ comments:         true
 
 {% highlight html %}
 <div class="form-group">
-    <label class="col-md-3 control-label">Gender</label>
-    <div class="col-md-5">
+    <label class="col-sm-3 control-label">Gender</label>
+    <div class="col-sm-5">
         <div class="radio">
             <label>
                 <input type="radio" name="gender" value="male"
@@ -88,10 +86,6 @@ comments:         true
                         </div>
                     </div>
                 </section>
-            </div>
-
-            <div class="col-md-3">
-                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>

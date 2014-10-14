@@ -1,44 +1,24 @@
 ---
-layout:           doc
-title:            Play with Bootbox
-permalink:        /examples/bootbox/
-categories:       [Compatibility]
-previous_section:
-next_section:
-comments:         true
+layout: base
+title: Playing with Bootbox
+permalink: /examples/bootbox/
+comments: true
 ---
 
-<div class="bv-heading">
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>Playing with Bootbox</h1>
+        <p>&larr; <a href="/examples/">Examples</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/examples/">Examples</a> / Basic</h1>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                {% include example.html category='Compatibility' %}
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-8 col-md-offset-2">
                 <section>
-                    <h2 id="bootbox">Play with Bootbox</h2>
                     <p>Use with the <a href="http://bootboxjs.com/">Bootbox.js</a> plugin.</p>
 
-                    <div class="bv-example">
+                    <div class="doc-demo">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#bootbox-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#bootbox-html-tab" data-toggle="tab">HTML</a></li>
@@ -48,99 +28,27 @@ comments:         true
                         <div class="tab-content">
                             <div class="tab-pane active" id="bootbox-form-tab">
                                 <div class="text-center" style="margin-top: 20px;">
-                                    <button class="btn btn-default" id="loginButton">Login</button>
+                                {% include examples/bootbox/example.html %}
                                 </div>
                             </div>
 
                             <div class="tab-pane" id="bootbox-html-tab">
-{% highlight html hl_lines="2 7" %}
-<!-- Include bootbox.js -->
-<script src="//oss.maxcdn.com/bootbox/4.2.0/bootbox.min.js"></script>
-
-<button class="btn btn-default" id="loginButton">Login</button>
-
-<!-- The login modal. Don't display it initially -->
-<form id="loginForm" method="post" class="form-horizontal" style="display: none;">
-    <div class="form-group">
-        <label class="col-md-3 control-label">Username</label>
-        <div class="col-md-5">
-            <input type="text" class="form-control" name="username" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-md-3 control-label">Password</label>
-        <div class="col-md-5">
-            <input type="password" class="form-control" name="password" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-5 col-md-offset-3">
-            <button type="submit" class="btn btn-default">Login</button>
-        </div>
-    </div>
-</form>
+{% highlight html %}
+{% include examples/bootbox/example.html %}
 {% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="bootbox-js-tab">
-{% highlight javascript hl_lines="28 30 35 40 46" %}
-$(document).ready(function() {
-    $('#loginForm')
-        .bootstrapValidator({
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                username: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The username is required'
-                        }
-                    }
-                },
-                password: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The password is required'
-                        }
-                    }
-                }
-            }
-        });
-
-    // Login button click handler
-    $('#loginButton').on('click', function() {
-        bootbox
-            .dialog({
-                title: 'Login',
-                message: $('#loginForm'),
-                show: false // We will show it manually later
-            })
-            .on('shown.bs.modal', function() {
-                $('#loginForm')
-                    .show()                                 // Show the login form
-                    .bootstrapValidator('resetForm', true); // Reset form
-            })
-            .on('hide.bs.modal', function(e) {
-                // Bootbox will remove the modal (including the body which contains the login form)
-                // after hiding the modal
-                // Therefor, we need to backup the form
-                $('#loginForm').hide().appendTo('body');
-            })
-            .modal('show');
-    });
-});
+{% highlight javascript %}
+{% include examples/bootbox/example.js %}
 {% endhighlight %}
                             </div>
                         </div>
                     </div>
 
                     <p>If you want to use Ajax to <a href="/examples/ajax-submit/">submit</a> the form, and then close the modal, we can use the <a href="/settings/#event-form">success.form.bv</a> event:</p>
-{% highlight javascript hl_lines="6 8 14 18" %}
+
+{% highlight javascript %}
 $(document).ready(function() {
     $('#loginForm')
         .bootstrapValidator({
@@ -171,8 +79,10 @@ $(document).ready(function() {
 {% endhighlight %}
                 </section>
 
+                <div class="doc-hr"></div>
+
                 <section>
-                    <h3 id="related-example">Related example</h3>
+                    <h2>Related examples</h2>
                     <ul>
                         <li><a href="/examples/modal/">Validate a form placed inside a Bootstrap modal</a></li>
                     </ul>
@@ -182,84 +92,22 @@ $(document).ready(function() {
     </div>
 </div>
 
-<form id="loginForm" method="post" class="form-horizontal" style="display: none;">
-    <div class="form-group">
-        <label class="col-md-3 control-label">Username</label>
-        <div class="col-md-5">
-            <input type="text" class="form-control" name="username" />
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">Password</label>
-        <div class="col-md-5">
-            <input type="password" class="form-control" name="password" />
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-5 col-md-offset-3">
-            <button type="submit" class="btn btn-default">Login</button>
-        </div>
-    </div>
-</form>
-
-<script src="//oss.maxcdn.com/bootbox/4.2.0/bootbox.min.js"></script>
 <script>
+{% include examples/bootbox/example.js %}
 $(document).ready(function() {
-    $('#loginButton').on('click', function() {
-        bootbox
-            .dialog({
-                title: 'Login',
-                message: $('#loginForm'),
-                show: false
-            })
-            .on('shown.bs.modal', function() {
-                $('#loginForm')
-                    .show()                                 // Show the login form
-                    .bootstrapValidator('resetForm', true); // Reset form
-            })
-            .on('hide.bs.modal', function(e) {
-                $('#loginForm').hide().appendTo('body');
-            })
-            .modal('show');
+    $('#loginForm').on('success.form.bv', function(e) {
+        // Prevent form submission
+        e.preventDefault();
+
+        var $form     = $(e.target),
+            validator = $form.data('bootstrapValidator'),
+            username  = validator.getFieldElements('username').val();
+
+        // Hide the modal containing the form
+        $form.parents('.bootbox').modal('hide');
+
+        // Show the welcome dialog
+        bootbox.alert('Welcome back, ' + username);
     });
-
-    $('#loginForm')
-        .bootstrapValidator({
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                username: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The username is required'
-                        }
-                    }
-                },
-                password: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The password is required'
-                        }
-                    }
-                }
-            }
-        })
-        .on('success.form.bv', function(e) {
-            // Prevent form submission
-            e.preventDefault();
-
-            var $form     = $(e.target),
-                validator = $form.data('bootstrapValidator'),
-                username  = validator.getFieldElements('username').val();
-
-            // Hide the modal containing the form
-            $form.parents('.bootbox').modal('hide');
-
-            // Show the welcome dialog
-            bootbox.alert('Welcome back, ' + username);
-        });
 });
 </script>

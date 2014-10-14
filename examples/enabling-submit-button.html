@@ -1,0 +1,69 @@
+---
+layout: base
+title: Enabling the submit button all the time
+permalink: /examples/enabling-submit-button/
+comments: true
+---
+
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>Enabling the submit button all the time</h1>
+        <p>&larr; <a href="/examples/">Examples</a></p>
+        {% include edit-button.html %}
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <p>By default, the submit buttons will be disabled if there is at least one invalid field.</p>
+                <p>If you want to enable the submit buttons all the time, triggering the <a href="/settings/#event-field">status.field.bv</a> event and using the <a href="/api/#disable-submit-buttons">disableSubmitButtons()</a> method:</p>
+
+                <div class="doc-demo">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#enable-button-form-tab" data-toggle="tab">Try it</a></li>
+                        <li><a href="#enable-button-html-tab" data-toggle="tab">HTML</a></li>
+                        <li><a href="#enable-button-js-tab" data-toggle="tab">JS</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="enable-button-form-tab">
+                        {% include examples/enabling-submit-button/example.html %}
+                        </div>
+
+                        <div class="tab-pane" id="enable-button-html-tab">
+                        {% highlight html %}
+                        {% include examples/enabling-submit-button/example.html %}
+                        {% endhighlight %}
+                        </div>
+
+                        <div class="tab-pane" id="enable-button-js-tab">
+                        {% highlight javascript %}
+                        {% include examples/enabling-submit-button/example.js %}
+                        {% endhighlight %}
+                        </div>
+                    </div>
+                </div>
+
+                <p>If you want the submit button to be enabled only after clicking it, use the <a href="/api/#get-submit-button">getSubmitButton()</a> method to check whether or not the submit button is clicked:</p>
+
+{% highlight javascript  %}
+$(document).ready(function() {
+    $('#enableButtonForm')
+        .bootstrapValidator({
+            ...
+        })
+        .on('status.field.bv', function(e, data) {
+            if (data.bv.getSubmitButton()) {
+                data.bv.disableSubmitButtons(false);
+            }
+        });
+});
+{% endhighlight %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+{% include examples/enabling-submit-button/example.js %}
+</script>

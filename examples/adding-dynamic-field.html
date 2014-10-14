@@ -1,327 +1,83 @@
 ---
-layout:           doc
-title:            Adding dynamic field
-permalink:        /examples/adding-dynamic-field/
-categories:       [Advance]
-previous_section:
-next_section:
-comments:         true
+layout: base
+title: Adding dynamic field
+permalink: /examples/adding-dynamic-field/
+comments: true
 ---
 
-<div class="bv-heading">
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>Adding dynamic field</h1>
+        <p>&larr; <a href="/examples/">Examples</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/examples/">Examples</a> / Advance</h1>
-            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <p>When working with complex form, the fields might be added to (or remove from) the form dynamically. The newly added fields also need to be validated.</p>
+                <p>This example demonstrates a sample scenario where you have to solve validating dynamic fields problem.</p>
+                <p>Before going to the details, there are some methods and events you need to know:</p>
 
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Method/Event</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="/api/#add-field">addField()</a> method</td>
+                            <td>Adding new field</td>
+                        </tr>
+                        <tr>
+                            <td><a href="/api/#remove-field">removeField()</a> method</td>
+                            <td>Removing given field</td>
+                        </tr>
+                        <tr>
+                            <td><a href="/settings/#event-form">added.field.bv</a> event</td>
+                            <td>Called after adding new field</td>
+                        </tr>
+                        <tr>
+                            <td><a href="/settings/#event-form">removed.field.bv</a> event</td>
+                            <td>Called after removing given field</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Assuming that you are managing a survey which consists of a question and some options that user can choose from. The form allows you to add more options but the number of options can't exceed 5.</p>
+
+                <div class="doc-demo">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#survey-form-tab" data-toggle="tab">Try it</a></li>
+                        <li><a href="#survey-html-tab" data-toggle="tab">HTML</a></li>
+                        <li><a href="#survey-js-tab" data-toggle="tab">JS</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="survey-form-tab">
+                        {% include examples/adding-dynamic-field/example.html %}
+                        </div>
+
+                        <div class="tab-pane" id="survey-html-tab">
+                        {% highlight html %}
+                        {% include examples/adding-dynamic-field/example.html %}
+                        {% endhighlight %}
+                        </div>
+
+                        <div class="tab-pane" id="survey-js-tab">
+                        {% highlight javascript %}
+                        {% include examples/adding-dynamic-field/example.js %}
+                        {% endhighlight %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                {% include example.html category='Advance' %}
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
-                <section>
-                    <h2>Adding dynamic field</h2>
-                    <p>When working with complex form, the fields might be added to (or remove from) the form dynamically. The newly added fields also need to be validated.</p>
-                    <p>This example demonstrates a sample scenario where you have to solve validating dynamic fields problem.</p>
-                    <p>Before going to the details, there are some methods and events you need to know:</p>
-
-                    <table class="table table-condensed">
-                        <thead>
-                            <tr>
-                                <th>Method/Event</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><a href="/api/#add-field">addField()</a> method</td>
-                                <td>Adding new field</td>
-                            </tr>
-                            <tr>
-                                <td><a href="/api/#remove-field">removeField()</a> method</td>
-                                <td>Removing given field</td>
-                            </tr>
-                            <tr>
-                                <td><a href="/settings/#event-form">added.field.bv</a> event</td>
-                                <td>Called after adding new field</td>
-                            </tr>
-                            <tr>
-                                <td><a href="/settings/#event-form">removed.field.bv</a> event</td>
-                                <td>Called after removing given field</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <p>Assuming that you are managing a survey which consists of a question and some options that user can choose from. The form allows you to add more options but the number of options can't exceed 5.</p>
-
-                    <div class="bv-example">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#survey-form-tab" data-toggle="tab">Try it</a></li>
-                            <li><a href="#survey-html-tab" data-toggle="tab">HTML</a></li>
-                            <li><a href="#survey-js-tab" data-toggle="tab">JS</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="survey-form-tab">
-                                <form id="surveyForm" method="post" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Question</label>
-                                        <div class="col-md-5">
-                                            <input type="text" class="form-control" name="question" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">Options</label>
-                                        <div class="col-md-5">
-                                            <input type="text" class="form-control" name="option[]" />
-                                        </div>
-                                        <div class="col-md-4">
-                                            <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group hide" id="optionTemplate">
-                                        <div class="col-md-offset-3 col-md-5">
-                                            <input class="form-control" type="text" name="option[]" />
-                                        </div>
-                                        <div class="col-md-4">
-                                            <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-5 col-md-offset-3">
-                                            <button type="submit" class="btn btn-default">Validate</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="tab-pane" id="survey-html-tab">
-{% highlight html hl_lines="12 15 22 24 27" %}
-<form id="surveyForm" method="post" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-md-3 control-label">Question</label>
-        <div class="col-md-5">
-            <input type="text" class="form-control" name="question" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-md-3 control-label">Options</label>
-        <div class="col-md-5">
-            <input type="text" class="form-control" name="option[]" />
-        </div>
-        <div class="col-md-4">
-            <button type="button" class="btn btn-default addButton">
-                <i class="fa fa-plus"></i>
-            </button>
-        </div>
-    </div>
-
-    <!-- The option field template containing an option field and a Remove button -->
-    <div class="form-group hide" id="optionTemplate">
-        <div class="col-md-offset-3 col-md-5">
-            <input type="text" class="form-control" name="option[]" />
-        </div>
-        <div class="col-md-4">
-            <button type="button" class="btn btn-default removeButton">
-                <i class="fa fa-minus"></i>
-            </button>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-5 col-md-offset-3">
-            <button type="submit" class="btn btn-default">Validate</button>
-        </div>
-    </div>
-</form>
-{% endhighlight %}
-                            </div>
-
-                            <div class="tab-pane" id="survey-js-tab">
-{% highlight javascript hl_lines="3 20 35 45 49 57 61 74" %}
-$(document).ready(function() {
-    // The maximum number of options
-    var MAX_OPTIONS = 5;
-
-    $('#surveyForm')
-        .bootstrapValidator({
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                question: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The question required and cannot be empty'
-                        }
-                    }
-                },
-                'option[]': {
-                    validators: {
-                        notEmpty: {
-                            message: 'The option required and cannot be empty'
-                        },
-                        stringLength: {
-                            max: 100,
-                            message: 'The option must be less than 100 characters long'
-                        }
-                    }
-                }
-            }
-        })
-
-        // Add button click handler
-        .on('click', '.addButton', function() {
-            var $template = $('#optionTemplate'),
-                $clone    = $template
-                                .clone()
-                                .removeClass('hide')
-                                .removeAttr('id')
-                                .insertBefore($template),
-                $option   = $clone.find('[name="option[]"]');
-
-            // Add new field
-            $('#surveyForm').bootstrapValidator('addField', $option);
-        })
-
-        // Remove button click handler
-        .on('click', '.removeButton', function() {
-            var $row    = $(this).parents('.form-group'),
-                $option = $row.find('[name="option[]"]');
-
-            // Remove element containing the option
-            $row.remove();
-
-            // Remove field
-            $('#surveyForm').bootstrapValidator('removeField', $option);
-        })
-
-        // Called after adding new field
-        .on('added.field.bv', function(e, data) {
-            // data.field   --> The field name
-            // data.element --> The new field element
-            // data.options --> The new field options
-
-            if (data.field === 'option[]') {
-                if ($('#surveyForm').find(':visible[name="option[]"]').length >= MAX_OPTIONS) {
-                    $('#surveyForm').find('.addButton').attr('disabled', 'disabled');
-                }
-            }
-        })
-
-        // Called after removing the field
-        .on('removed.field.bv', function(e, data) {
-           if (data.field === 'option[]') {
-                if ($('#surveyForm').find(':visible[name="option[]"]').length < MAX_OPTIONS) {
-                    $('#surveyForm').find('.addButton').removeAttr('disabled');
-                }
-            }
-        });
-});
-{% endhighlight %}
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script>
-$(document).ready(function() {
-    var MAX_OPTIONS = 5;
-
-    $('#surveyForm')
-        .bootstrapValidator({
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                question: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The question required and cannot be empty'
-                        }
-                    }
-                },
-                'option[]': {
-                    validators: {
-                        notEmpty: {
-                            message: 'The option required and cannot be empty'
-                        },
-                        stringLength: {
-                            max: 100,
-                            message: 'The option must be less than 100 characters long'
-                        }
-                    }
-                }
-            }
-        })
-        // Add button click handler
-        .on('click', '.addButton', function() {
-            var $template = $('#optionTemplate'),
-                $clone    = $template
-                                .clone()
-                                .removeClass('hide')
-                                .removeAttr('id')
-                                .insertBefore($template),
-                $option   = $clone.find('[name="option[]"]');
-
-            // Add new field
-            $('#surveyForm').bootstrapValidator('addField', $option);
-        })
-        // Remove button click handler
-        .on('click', '.removeButton', function() {
-            var $row    = $(this).parents('.form-group'),
-                $option = $row.find('[name="option[]"]');
-
-            // Remove element containing the option
-            $row.remove();
-
-            // Remove field
-            $('#surveyForm').bootstrapValidator('removeField', $option);
-        })
-        .on('added.field.bv', function(e, data) {
-            // data.field   --> The field name
-            // data.element --> The new field element
-            // data.options --> The new field options
-
-            if (data.field === 'option[]') {
-                if ($('#surveyForm').find(':visible[name="option[]"]').length >= MAX_OPTIONS) {
-                    $('#surveyForm').find('.addButton').attr('disabled', 'disabled');
-                }
-            }
-        })
-        .on('removed.field.bv', function(e, data) {
-           if (data.field === 'option[]') {
-                if ($('#surveyForm').find(':visible[name="option[]"]').length < MAX_OPTIONS) {
-                    $('#surveyForm').find('.addButton').removeAttr('disabled');
-                }
-            }
-        });
-});
+{% include examples/adding-dynamic-field/example.js %}
 </script>

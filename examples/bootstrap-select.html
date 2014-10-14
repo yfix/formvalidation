@@ -1,258 +1,54 @@
 ---
-layout:           doc
-title:            Play with Bootstrap Select
-permalink:        /examples/bootstrap-select/
-categories:       [Compatibility]
-previous_section:
-next_section:
-comments:         true
+layout: base
+title: Playing with Bootstrap Select
+permalink: /examples/bootstrap-select/
+comments: true
 ---
 
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" />
-<style type="text/css">
-#bootstrapSelectForm .selectContainer .form-control-feedback {
-    right: -15px;
-}
-</style>
+<div class="doc-page-content">
+    <div class="doc-page-heading">
+        <h1>Playing with Bootstrap Select</h1>
+        <p>&larr; <a href="/examples/">Examples</a></p>
+        {% include edit-button.html %}
+    </div>
 
-<div class="bv-heading">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/examples/">Examples</a> / Compatibility</h1>
-            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <p>Use with the <a href="http://silviomoreto.github.io/bootstrap-select/">Bootstrap Select</a> plugin.</p>
+                <p>The <strong>Favorite color</strong> option requires to choose 2-4 colors you like most.</p>
+                <p>The <strong>Language</strong> option requires to choose your native language.</p>
 
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
+                <div class="doc-demo">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#bootstrapselect-form-tab" data-toggle="tab">Try it</a></li>
+                        <li><a href="#bootstrapselect-html-tab" data-toggle="tab">HTML</a></li>
+                        <li><a href="#bootstrapselect-js-tab" data-toggle="tab">JS</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="bootstrapselect-form-tab">
+                        {% include examples/bootstrap-select/example.html %}
+                        </div>
+
+                        <div class="tab-pane" id="bootstrapselect-html-tab">
+{% highlight html %}
+{% include examples/bootstrap-select/example.html %}
+{% endhighlight %}
+                        </div>
+
+                        <div class="tab-pane" id="bootstrapselect-js-tab">
+{% highlight javascript %}
+{% include examples/bootstrap-select/example.js %}
+{% endhighlight %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                {% include example.html category='Compatibility' %}
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
-                <section>
-                    <h2 id="chosen">Play with Bootstrap Select</h2>
-                    <p>Use with the <a href="http://silviomoreto.github.io/bootstrap-select/">Bootstrap Select</a> plugin.</p>
-                    <p>The Favorite color option requires to choose 2-4 colors you like most.</p>
-                    <p>The Language option requires to choose your native language.</p>
-
-                    <div class="bv-example">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#bootstrapselect-form-tab" data-toggle="tab">Try it</a></li>
-                            <li><a href="#bootstrapselect-html-tab" data-toggle="tab">HTML</a></li>
-                            <li><a href="#bootstrapselect-js-tab" data-toggle="tab">JS</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="bootstrapselect-form-tab">
-                                <form id="bootstrapSelectForm" method="post" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Favorite color</label>
-                                        <div class="col-lg-5 selectContainer">
-                                            <select class="form-control" name="colors" multiple title='Choose 2-4 colors'>
-                                                <option value="black">Black</option>
-                                                <option value="blue">Blue</option>
-                                                <option value="green">Green</option>
-                                                <option value="orange">Orange</option>
-                                                <option value="red">Red</option>
-                                                <option value="yellow">Yellow</option>
-                                                <option value="white">White</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Language</label>
-                                        <div class="col-lg-5 selectContainer">
-                                            <select name="language" class="form-control">
-                                                <option value=""></option>
-                                                <option value="arabic">Arabic</option>
-                                                <option value="english">English</option>
-                                                <option value="french">French</option>
-                                                <option value="german">German</option>
-                                                <option value="other">Other</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <div class="col-lg-5 col-lg-offset-3">
-                                            <button type="submit" class="btn btn-default">Validate</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="tab-pane" id="bootstrapselect-html-tab">
-{% highlight html %}
-<!-- Include Bootstrap-select CSS -->
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" />
-
-<!-- Include Bootstrap-select JS -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
-
-<style type="text/css">
-#bootstrapSelectForm .selectContainer .form-control-feedback {
-    /* Adjust feedback icon position */
-    right: -15px;
-}
-</style>
-
-<form id="bootstrapSelectForm" method="post" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Favorite color</label>
-        <div class="col-lg-5 selectContainer">
-            <select name="colors" class="form-control" multiple title="Choose 2-4 colors">
-                <option value="black">Black</option>
-                <option value="blue">Blue</option>
-                <option value="green">Green</option>
-                <option value="orange">Orange</option>
-                <option value="red">Red</option>
-                <option value="yellow">Yellow</option>
-                <option value="white">White</option>
-            </select>
-        </div>
-    </div>
-    
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Language</label>
-        <div class="col-lg-5 selectContainer">
-            <select name="language" class="form-control">
-                <option value=""></option>
-                <option value="arabic">Arabic</option>
-                <option value="english">English</option>
-                <option value="french">French</option>
-                <option value="german">German</option>
-                <option value="other">Other</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-lg-5 col-lg-offset-3">
-            <button type="submit" class="btn btn-default">Validate</button>
-        </div>
-    </div>
-</form>
-{% endhighlight %}
-                            </div>
-
-                            <div class="tab-pane" id="bootstrapselect-js-tab">
-{% highlight javascript hl_lines="7 14 18" %}
-$(document).ready(function() {
-    $('#bootstrapSelectForm')
-        .find('[name="colors"]')
-            .selectpicker()
-            .change(function(e) {
-                // revalidate the color when it is changed
-                $('#bootstrapSelectForm').bootstrapValidator('revalidateField', 'colors');
-            })
-            .end()
-        .find('[name="language"]')
-            .selectpicker()
-            .change(function(e) {
-                // revalidate the language when it is changed
-                $('#bootstrapSelectForm').bootstrapValidator('revalidateField', 'language');
-            })
-            .end()
-        .bootstrapValidator({
-            excluded: ':disabled',
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                colors: {
-                    validators: {
-                        callback: {
-                            message: 'Please choose 2-4 colors you like most',
-                            callback: function(value, validator) {
-                                // Get the selected options
-                                var options = validator.getFieldElements('colors').val();
-                                return (options != null && options.length >= 2 && options.length <= 4);
-                            }
-                        }
-                    }
-                },
-                language: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Please select your native language.'
-                        }
-                    }
-                }
-            }
-        });
-});
-{% endhighlight %}
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
 <script>
-$(document).ready(function() {
-    $('#bootstrapSelectForm')
-        .find('[name="colors"]')
-            .selectpicker()
-            .change(function(e) {
-                $('#bootstrapSelectForm').bootstrapValidator('revalidateField', 'colors');
-            })
-            .end()
-        .find('[name="language"]')
-            .selectpicker()
-            .change(function(e) {
-                $('#bootstrapSelectForm').bootstrapValidator('revalidateField', 'language');
-            })
-            .end()
-        .bootstrapValidator({
-            excluded: ':disabled',
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                colors: {
-                    validators: {
-                        callback: {
-                            message: 'Please choose 2-4 colors you like most',
-                            callback: function(value, validator) {
-                                // Get the selected options
-                                var options = validator.getFieldElements('colors').val();
-                                return (options != null && options.length >= 2 && options.length <= 4);
-                            }
-                        }
-                    }
-                },
-                language: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Please select your native language.'
-                        }
-                    }
-                }
-            }
-        })
-        .on('success.form.bv', function(e) {
-            // Prevent form submission
-            e.preventDefault();
-        });
-});
+{% include examples/bootstrap-select/example.js %}
 </script>
