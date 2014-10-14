@@ -198,7 +198,7 @@ h1, h2, h3, h4 {
     font-size: 40px;
     line-height: 1.2;
     margin: 60px 0 30px 0;
-    span {
+    a {
       color: #f1c40f;
     }
   }
@@ -206,6 +206,7 @@ h1, h2, h3, h4 {
     background: #3498db;
     color: #fff;
     font-size: 30px;
+    margin: 5px;
     text-transform: uppercase;
     &:hover {
       color: #fff;
@@ -339,7 +340,7 @@ h1, h2, h3, h4 {
     }
   }
   .onepage-wrapper .section {
-    height: auto;
+    height: auto !important;
   }
   .doc-home-intro {
     h3 {
@@ -349,7 +350,7 @@ h1, h2, h3, h4 {
 }
 
 /* --- Page --- */
-.doc-page-content {
+.doc-content-container {
   padding-bottom: 40px;
   h2 {
     font-weight: bold;
@@ -382,7 +383,7 @@ h1, h2, h3, h4 {
     border-left-color: #1ABC9C;
   }
 }
-.doc-page-heading {
+.doc-heading {
   border-bottom: 1px solid #ecf0f1;
   margin-bottom: 30px;
   padding-bottom: 30px;
@@ -393,7 +394,7 @@ h1, h2, h3, h4 {
     padding: 50px 0 20px 0;
   }
 }
-.doc-page-edit {
+.doc-edit-btn {
   background: #3498db;
   color: #fff;
   font-size: 20px;
@@ -402,15 +403,6 @@ h1, h2, h3, h4 {
     color: #fff;
   }
 }
-.doc-page-warning {
-  border-left: 5px solid #c0392b;
-  margin-left: -20px;
-  padding-left: 15px;
-  h4 {
-    font-size: 25px;
-  }
-}
-
 .doc-demo {
   margin-bottom: 15px;
   .tab-pane {
@@ -435,7 +427,7 @@ h1, h2, h3, h4 {
 }
 
 /* --- TOC --- */
-.doc-page-content {
+.doc-content {
   h2, h3, h4, h5, h6 {
     position: relative;
     .toc-anchor {

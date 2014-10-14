@@ -44,18 +44,18 @@ $(function() {
             $body   = $(document.body);
         $body.scrollspy({
             target: '#toc',
-            offset: $('#main').offset().top + $('.doc-page-heading').height()
+            offset: $('#main').offset().top + $('.doc-heading').height()
         });
 
-        $window.on('load', function () {
+        $window.on('load', function() {
             $body.scrollspy('refresh');
         });
 
-        setTimeout(function () {
+        setTimeout(function() {
             var $sideBar = $('#toc');
             $sideBar.affix({
                 offset: {
-                    top: function () {
+                    top: function() {
                         return (this.top = $sideBar.offset().top);
                     }
                 }

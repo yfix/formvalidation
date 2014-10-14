@@ -196,13 +196,14 @@ h4 {
   line-height: 1.2;
   margin: 60px 0 30px 0;
 }
-.doc-home-intro h1 span {
+.doc-home-intro h1 a {
   color: #f1c40f;
 }
 .doc-home-intro .btn {
   background: #3498db;
   color: #fff;
   font-size: 30px;
+  margin: 5px;
   text-transform: uppercase;
 }
 .doc-home-intro .btn:hover {
@@ -328,27 +329,27 @@ h4 {
     height: auto;
   }
   .onepage-wrapper .section {
-    height: auto;
+    height: auto !important;
   }
   .doc-home-intro h3 {
     position: static;
   }
 }
 /* --- Page --- */
-.doc-page-content {
+.doc-content-container {
   padding-bottom: 40px;
 }
-.doc-page-content h2 {
+.doc-content-container h2 {
   font-weight: bold;
   padding-bottom: 15px;
 }
-.doc-page-content code {
+.doc-content-container code {
   background: #fff;
 }
-.doc-page-content pre {
+.doc-content-container pre {
   word-wrap: normal;
 }
-.doc-page-content pre code {
+.doc-content-container pre code {
   white-space: pre;
 }
 .doc-list {
@@ -368,33 +369,25 @@ h4 {
 .doc-alert.doc-alert-info {
   border-left-color: #1ABC9C;
 }
-.doc-page-heading {
+.doc-heading {
   border-bottom: 1px solid #ecf0f1;
   margin-bottom: 30px;
   padding-bottom: 30px;
   text-align: center;
 }
-.doc-page-heading h1 {
+.doc-heading h1 {
   font-size: 50px;
   font-weight: 700;
   padding: 50px 0 20px 0;
 }
-.doc-page-edit {
+.doc-edit-btn {
   background: #3498db;
   color: #fff;
   font-size: 20px;
   margin-bottom: 15px;
 }
-.doc-page-edit:hover {
+.doc-edit-btn:hover {
   color: #fff;
-}
-.doc-page-warning {
-  border-left: 5px solid #c0392b;
-  margin-left: -20px;
-  padding-left: 15px;
-}
-.doc-page-warning h4 {
-  font-size: 25px;
 }
 .doc-demo {
   margin-bottom: 15px;
@@ -417,18 +410,18 @@ h4 {
   content: '';
 }
 /* --- TOC --- */
-.doc-page-content h2,
-.doc-page-content h3,
-.doc-page-content h4,
-.doc-page-content h5,
-.doc-page-content h6 {
+.doc-content h2,
+.doc-content h3,
+.doc-content h4,
+.doc-content h5,
+.doc-content h6 {
   position: relative;
 }
-.doc-page-content h2 .toc-anchor,
-.doc-page-content h3 .toc-anchor,
-.doc-page-content h4 .toc-anchor,
-.doc-page-content h5 .toc-anchor,
-.doc-page-content h6 .toc-anchor {
+.doc-content h2 .toc-anchor,
+.doc-content h3 .toc-anchor,
+.doc-content h4 .toc-anchor,
+.doc-content h5 .toc-anchor,
+.doc-content h6 .toc-anchor {
   position: absolute;
   top: 0;
   right: 0;

@@ -4,16 +4,16 @@
 
 <style type="text/css">
 /* Override feedback icon position */
-#meetingForm .has-feedback .input-group .form-control-feedback {
+#meetingForm .dateContainer .form-control-feedback {
     top: 0;
-    right: -30px;
+    right: -15px;
 }
 </style>
 
 <form id="meetingForm" class="form-horizontal">
     <div class="form-group">
         <label class="col-sm-3 control-label">Meeting time</label>
-        <div class="col-sm-4">
+        <div class="col-sm-6 dateContainer">
             <div class="input-group date" id="datetimePicker">
                 <input type="text" class="form-control" name="meeting" placeholder="MM/DD/YYYY h:m A" />
                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
