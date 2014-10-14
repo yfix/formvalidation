@@ -1,7 +1,6 @@
 ---
 layout: default
 title: News
-permalink: /news/
 comment: false
 ---
 
@@ -23,16 +22,16 @@ comment: false
 
                 <div class="doc-pagination">
                     {% if paginator.next_page %}
-                        <a href="/news/page/{{paginator.next_page}}" class="doc-pagination-older">Older</a>
+                        <a href="/news/page{{ paginator.next_page }}" class="doc-pagination-older">Older</a>
                     {% else %}
                         <span class="doc-pagination-older">Older</span>
                     {% endif %}
 
                     {% if paginator.previous_page %}
                         {% if paginator.page == 2 %}
-                            <a href="/" class="doc-pagination-newer">Newer</a>
+                            <a href="/news/" class="doc-pagination-newer">Newer</a>
                         {% else %}
-                            <a href="/news/page/{{paginator.previous_page}}" class="doc-pagination-newer">Newer</a>
+                            <a href="/news/page{{ paginator.previous_page }}" class="doc-pagination-newer">Newer</a>
                         {% endif %}
                     {% else %}
                         <span class="doc-pagination-newer">Newer</span>
