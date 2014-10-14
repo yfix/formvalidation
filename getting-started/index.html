@@ -1,471 +1,448 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Getting Started - BootstrapValidator</title>
+<title>Getting Started - BootstrapValidator</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="BootstrapValidator, a jQuery plugin to validate form fields">
+<meta name="keywords" content="Bootstrap, jQuery, validate, plugin, validator, form">
+<meta name="author" content="Nguyen Huu Phuoc">
+<meta name="google-site-verification" content="uzi08FxE8yqb9q-PlBzFxZeuUGalNFp3gX2haopVWBc" />
 
-    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="BootstrapValidator, a jQuery plugin to validate form fields">
-    <meta name="keywords" content="Bootstrap, jQuery, validate, plugin, validator, form">
-    <meta name="author" content="Nguyen Huu Phuoc">
-    <meta name="google-site-verification" content="uzi08FxE8yqb9q-PlBzFxZeuUGalNFp3gX2haopVWBc" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Cardo:400,400italic,700">
+<link rel="stylesheet" href="/vendor/pygments/github.css">
+<link rel="stylesheet" href="/asset/css/style.css">
 
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css">
-    <link rel="stylesheet" href="/vendor/pygments/github.css">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400,700">
-    <link rel="stylesheet" href="/asset/css/style.css">
+<!--[if lt IE 9]>
+<script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
 
-    <!--[if lt IE 9]>
-    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<script src="//oss.maxcdn.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-    <script src="//oss.maxcdn.com/jquery/1.11.1/jquery.min.js"></script>
-    
-    <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-44786951-2']);
-        _gaq.push(['_trackPageview']);
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-44786951-2']);
+_gaq.push(['_trackPageview']);
 
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
-    
+(function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
 </head>
 <body>
-<!-- Fork ribbon -->
-<a href="https://github.com/nghuuphuoc/bootstrapvalidator"><img style="position: fixed; top: 0; right: 0; border: 0; z-index: 100;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+    <nav class="doc-nav" tabindex="-1">
+    <ul>
+        <li><a href="/">Home</a></li>
+    
+        
+            
+        
+        <li class="doc-nav-active"><a href="/getting-started/">Getting Started</a></li>
+    
+        
+            
+        
+        <li class=""><a href="/settings/">Settings</a></li>
+    
+        
+            
+        
+        <li class=""><a href="/validators/">Validators</a></li>
+    
+        
+            
+        
+        <li class=""><a href="/api/">API</a></li>
+    
+        
+            
+        
+        <li class=""><a href="/examples/">Examples</a></li>
+    
+        
+            
+        
+        <li class=""><a href="/developing/">Developing</a></li>
+    
+        
+            
+        
+        <li class=""><a href="/news/">News</a></li>
+    
+    </ul>
 
-<div class="bv-wrapper">
-    <div class="bv-notification"><i class="fa fa-bell-o"></i> <a href="http://programer.tips" title="Daily tips, tricks and best practices for programmers" target="_blank">programer.tips</a>, another cool thing from <a href="http://twitter.com/nghuuphuoc" target="_blank">@nghuuphuoc</a>!</div>
+    <div class="doc-hr"></div>
 
-    <!-- navbar -->
-    <header class="bv-header">
-        <div class="navbar navbar-default">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/">BootstrapValidator</a>
-                </div>
+    <ul>
+        <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator"><i class="fa fa-github"></i> Github</a></li>
+        <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues"><i class="fa fa-bug"></i> Report issues</a></li>
+        <li><a href="http://twitter.com/bsvalidator"><i class="fa fa-twitter"></i> @bsvalidator</a></li>
+        <li><a href="https://plus.google.com/u/0/communities/114931136856987817254"><i class="fa fa-google-plus"></i> Google+ community</a></li>
+    </ul>
 
-                <div class="navbar-collapse collapse navbar-right">
-                    <ul class="nav navbar-nav">
-                    
-                        
-                            
-                        
-                        <li class="active"><a href="/getting-started/">Getting Started</a></li>
-                    
-                        
-                            
-                        
-                        <li class=""><a href="/settings/">Settings</a></li>
-                    
-                        
-                            
-                        
-                        <li class=""><a href="/validators/">Validators</a></li>
-                    
-                        
-                            
-                        
-                        <li class=""><a href="/api/">API</a></li>
-                    
-                        
-                            
-                        
-                        <li class=""><a href="/examples/">Examples</a></li>
-                    
-                        
-                            
-                        
-                        <li class=""><a href="/developing/">Developing</a></li>
-                    
-                        
-                            
-                        
-                        <li class=""><a href="/news/">News</a></li>
-                    
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
+    <div class="doc-hr"></div>
 
-    <!-- main -->
-<div class="bv-main">
-    <div class="bv-heading">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <h1>Getting Started</h1>
-                <p>Getting used with BootstrapValidator</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script");z.type = "text/javascript";z.async = true;z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z, s);</script></div></div>
-                </div>
-            </div>
-        </div>
+    <div class="doc-creator">
+        <p>
+            Handcrafted with <i class="fa fa-heart"></i> in Vietnam<br />
+            by <a href="http://twitter.com/nghuuphuoc">@nghuuphuoc</a><br/>
+            <img src="http://github.com/nghuuphuoc.png" />
+        </p>
+        <p><a href="mailto: phuoc@huuphuoc.me" class="btn">Hire me</a></p>
     </div>
+</nav>
+<button class="btn doc-logo">BV</button>
+
+    <div id="main" class="doc-content-wrapper">
+        <div class="doc-notification">
+    <i class="fa fa-bell-o"></i> <a href="http://programer.tips" title="Daily tips, tricks and best practices for programmers" target="_blank">programer.tips</a>, another cool thing from <a href="http://twitter.com/nghuuphuoc" target="_blank">@nghuuphuoc</a>!
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <h4><a href="#download">Download</a></h4>
-                <ul>
-                    <li><a href="#release">Release</a></li>
-                    <li><a href="#installing-bower">Installing with Bower</a></li>
-                    <li><a href="#cdn">CDN</a></li>
-                    <li><a href="#language-package">Language packages</a></li>
-                </ul>
+        <div class="doc-content-container">
+    <div class="doc-heading">
+        <h1>Getting Started</h1>
+        <p>Getting used with BootstrapValidator</p>
+        <a class="btn doc-edit-btn" href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/docs/getting-started.html">Improve it on Github</a>
+    </div>
 
-                <h4><a href="#whats-included">What's included</a></h4>
-
-                <h4><a href="#usage">Usage</a></h4>
-                <ul>
-                    <li><a href="#including-library">Including library</a></li>
-                    <li><a href="#writing-form">Writing form</a></li>
-                    <li><a href="#calling-plugin">Calling plugin</a></li>
-                    <li><a href="#example">Example</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
-                <!-- download -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="download">Download</h2>
+    <h2>Download</h2>
 
-                    <p>Choose the package you want to download:</p>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h3>Release</h3>
-                            <p>Including the plugin, its validator source and minified versions.<br />It should be used in the production site.</p>
-                            <p>
-                                <a class="btn btn-lg btn-primary" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.5.2/bootstrapvalidator-dist-0.5.2.zip" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download release']);">Download v0.5.2</a>
-                                <a class="btn btn-lg btn-default" href="https://pledgie.com/campaigns/24885" alt="Click here to lend your support to: BootstrapValidator and make a donation at pledgie.com!">Donate via Paypal</a>
-                            </p>
-                        </div>
-                        <div class="col-sm-6">
-                            <h3>Source code</h3>
-                            <p>Including the source code, examples and building script. Download if you want to play with or develop new validators.</p>
-                            <p><a class="btn btn-lg btn-default" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.5.2.zip" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download source']);">Download Source</a></p>
-                        </div>
-                    </div>
+    <p>Choose the package you want to download:</p>
+    <p class="text-center">
+        <a class="btn btn-lg btn-primary" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.5.2/bootstrapvalidator-dist-0.5.2.zip" data-toggle="tooltip" title="Including the plugin, its validator source and minified versions. It should be used in the production site">Download v0.5.2</a>
+        <a class="btn btn-lg btn-default" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.5.2.zip" data-toggle="tooltip" title="Including the source code, examples and building script. Download if you want to play with or develop new validators">Download Source</a>
+        <a class="btn btn-lg btn-default" href="https://pledgie.com/campaigns/24885" alt="Click here to lend your support to: BootstrapValidator and make a donation at pledgie.com!">Donate via Paypal</a>
+    </p>
+    <p class="text-center">
+        <span id="downloadCounter"></span> downloads so far
+    </p>
 
-                    <p>See <a href="/news/v0.5.2-released/">what's news</a> in v0.5.2, released on 2014-09-25.</p>
-                    <p>For older versions, take a look at the <a href="/news/releases/">Releases</a> page.</p>
+    <p>See <a href="/news/v0.5.2-released/">what's news</a> in v0.5.2, released on 2014.09.25.</p>
+    <p>For older versions, take a look at the <a href="/news/">News</a> page.</p>
 
-                    <div class="bv-box bv-box-warning">
-                        <h5><i></i>Upgrading to v0.5.x</h5>
-                        <p>If you upgrade from v0.4.5 or older versions to v0.5.x, please follow this <a href="/news/upgrading-to-v0.5.0/">guide</a>.</p>
-                        <p>If you upgrade from v0.5.0, v0.5.1 to v0.5.2, check this <a href="/news/v0.5.2-released/#upgrade">guide</a>.</p>
-                    </div>
+    <div class="doc-alert doc-alert-warning">
+        You should take a look at the upgrading guides: <a href="/news/upgrading-to-v0.5.0/">v0.4.5 &rarr; v0.5.0</a> and <a href="/news/v0.5.2-released/#upgrade">v0.5.0/v0.5.1 &rarr; v0.5.2</a>
+    </div>
 
-                    <h3 id="installing-bower">Installing with Bower</h3>
-                    <p>It's also possible to get the latest release from <a href="http://bower.io">bower</a>:</p>
+    <h3>Installing with Bower</h3>
+    <p>It's also possible to get the latest release from <a href="http://bower.io">Bower</a>:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>bower install bootstrapvalidator</code></pre></div>
 
-                    <h3 id="cdn">CDN</h3>
-                    <p>You also can use the minified version hosted on the following CDN:</p>
-                    <table class="table table-condensed">
-                        <thead>
-                            <tr>
-                                <th>CDN</th>
-                                <th>Path</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><a href="http://cdnjs.com">cdnjs</a></td>
-                                <td>
+    <h3>CDN</h3>
+    <p>You also can use the minified version hosted on the following CDN:</p>
+    <ol>
+        <li>
+            <p><a href="http://cdnjs.com">cdnjs</a></p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="http://www.jsdelivr.com/#!jquery.bootstrapvalidator">jsdelivr</a></td>
-                                <td>
+        </li>
+
+        <li>
+            <p><a href="http://www.jsdelivr.com/#!jquery.bootstrapvalidator">jsdelivr</a></p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+        </li>
+    </ol>
 
-                    <p>BootstrapValidator also can be found on the official <a href="http://plugins.jquery.com/bootstrapValidator">jQuery plugins page</a>.</p>
+    <p>BootstrapValidator also can be found on the official <a href="http://plugins.jquery.com/bootstrapValidator">jQuery plugins page</a>.</p>
 
-                    <h3 id="language-package">Language packages</h3>
-                    <p>BootstrapValidator has been translated into the following languages:</p>
-                    <table class="table table-condensed">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Language</th>
-                                <th>File Name</th>
-                                <th>Translated By</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td></td>
-                                <td>English <span class="label label-default">built in</span></td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/en_US.js">en_US.js</a></td>
-                                <td><a href="http://github.com/nghuuphuoc">@nghuuphuoc</a></td>
-                            </tr>
+    <h3>Language packages</h3>
+    <p>BootstrapValidator has been translated into the following languages:</p>
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Language</th>
+                <th>File Name</th>
+                <th>Translated By</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>English <span class="label label-default">built in</span></td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/en_US.js">en_US.js</a></td>
+                <td><a href="http://github.com/nghuuphuoc">@nghuuphuoc</a></td>
+            </tr>
 
-                            
-                            <tr>
-                                <td>1</td>
-                                <td>Arabic</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/ar_MA.js">ar_MA.js</a></td>
-                                <td><a href="http://github.com/Arkni" style="display: block;">@Arkni</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>2</td>
-                                <td>Belgium (French)</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/be_FR.js">be_FR.js</a></td>
-                                <td><a href="http://github.com/neilime" style="display: block;">@neilime</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>3</td>
-                                <td>Belgium (Netherland)</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/be_NL.js">be_NL.js</a></td>
-                                <td><a href="http://github.com/dokterpasta" style="display: block;">@dokterpasta</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>4</td>
-                                <td>Bulgarian</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/bg_BG.js">bg_BG.js</a></td>
-                                <td><a href="http://github.com/mraiur" style="display: block;">@mraiur</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>5</td>
-                                <td>Chilean Spanish</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/es_CL.js">es_CL.js</a></td>
-                                <td><a href="http://github.com/marceloampuerop6" style="display: block;">@marceloampuerop6</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>6</td>
-                                <td>Chinese</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/zh_CN.js">zh_CN.js</a></td>
-                                <td><a href="http://github.com/shamiao" style="display: block;">@shamiao</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>7</td>
-                                <td>Czech</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/cs_CZ.js">cs_CZ.js</a></td>
-                                <td><a href="http://github.com/AdwinTravecuchac" style="display: block;">@AdwinTrave</a><a href="http://github.com/AdwinTravecuchac" style="display: block;">@cuchac</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>8</td>
-                                <td>Danish</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/da_DK.js">da_DK.js</a></td>
-                                <td><a href="http://github.com/Djarnis" style="display: block;">@Djarnis</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>9</td>
-                                <td>Dutch (Netherland)</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/nl_NL.js">nl_NL.js</a></td>
-                                <td><a href="http://github.com/JvanderHeide" style="display: block;">@JvanderHeide</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>10</td>
-                                <td>French</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/fr_FR.js">fr_FR.js</a></td>
-                                <td><a href="http://github.com/dlucazeau" style="display: block;">@dlucazeau</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>11</td>
-                                <td>German</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/de_DE.js">de_DE.js</a></td>
-                                <td><a href="http://github.com/logemann" style="display: block;">@logemann</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>12</td>
-                                <td>Greek</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/gr_EL.js">gr_EL.js</a></td>
-                                <td><a href="http://github.com/pRieStaKos" style="display: block;">@pRieStaKos</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>13</td>
-                                <td>Hungarian</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/hu_HU.js">hu_HU.js</a></td>
-                                <td><a href="http://github.com/blackfyre" style="display: block;">@blackfyre</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>14</td>
-                                <td>Indonesian</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/id_ID.js">id_ID.js</a></td>
-                                <td><a href="http://github.com/egig" style="display: block;">@egig</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>15</td>
-                                <td>Italian</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/it_IT.js">it_IT.js</a></td>
-                                <td><a href="http://github.com/maramazza" style="display: block;">@maramazza</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>16</td>
-                                <td>Japanese</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/ja_JP.js">ja_JP.js</a></td>
-                                <td><a href="http://github.com/tsuyoshifujii" style="display: block;">@tsuyoshifujii</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>17</td>
-                                <td>Norwegian</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/no_NO.js">no_NO.js</a></td>
-                                <td><a href="http://github.com/trondulseth" style="display: block;">@trondulseth</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>18</td>
-                                <td>Persian (Farsi)</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/fa_IR.js">fa_IR.js</a></td>
-                                <td><a href="http://github.com/i0" style="display: block;">@i0</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>19</td>
-                                <td>Polish</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/pl_PL.js">pl_PL.js</a></td>
-                                <td><a href="http://github.com/grzesieklukaszbanasiak" style="display: block;">@grzesiek</a><a href="http://github.com/grzesieklukaszbanasiak" style="display: block;">@lukaszbanasiak</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>20</td>
-                                <td>Portuguese (Brazil)</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/pt_BR.js">pt_BR.js</a></td>
-                                <td><a href="http://github.com/marcuscarvalho6dgmike" style="display: block;">@marcuscarvalho6</a><a href="http://github.com/marcuscarvalho6dgmike" style="display: block;">@dgmike</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>21</td>
-                                <td>Romanian</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/ro_RO.js">ro_RO.js</a></td>
-                                <td><a href="http://github.com/filipac" style="display: block;">@filipac</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>22</td>
-                                <td>Russian</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/ru_RU.js">ru_RU.js</a></td>
-                                <td><a href="http://github.com/cylon-vstepin" style="display: block;">@cylon-v</a><a href="http://github.com/cylon-vstepin" style="display: block;">@stepin</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>23</td>
-                                <td>Serbian</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/sr_RS.js">sr_RS.js</a></td>
-                                <td><a href="http://github.com/markocrni" style="display: block;">@markocrni</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>24</td>
-                                <td>Spanish</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/es_ES.js">es_ES.js</a></td>
-                                <td><a href="http://github.com/vadail" style="display: block;">@vadail</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>25</td>
-                                <td>Swedish</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/sv_SE.js">sv_SE.js</a></td>
-                                <td><a href="http://github.com/ulsa" style="display: block;">@ulsa</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>26</td>
-                                <td>Taiwanese</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/zh_TW.js">zh_TW.js</a></td>
-                                <td><a href="http://github.com/tureki" style="display: block;">@tureki</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>27</td>
-                                <td>Thai</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/th_TH.js">th_TH.js</a></td>
-                                <td><a href="http://github.com/figgaro" style="display: block;">@figgaro</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>28</td>
-                                <td>Turkish</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/tr_TR.js">tr_TR.js</a></td>
-                                <td><a href="http://github.com/CeRBeR666" style="display: block;">@CeRBeR666</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>29</td>
-                                <td>Ukrainian</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/ua_UA.js">ua_UA.js</a></td>
-                                <td><a href="http://github.com/oleg-voloshyn" style="display: block;">@oleg-voloshyn</a></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>30</td>
-                                <td>Vietnamese</td>
-                                <td><a href="/vendor/bootstrapvalidator/js/language/vi_VN.js">vi_VN.js</a></td>
-                                <td><a href="http://github.com/nghuuphuoc" style="display: block;">@nghuuphuoc</a></td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
+            
+            <tr>
+                <td>1</td>
+                <td>Arabic</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/ar_MA.js">ar_MA.js</a></td>
+                <td><a href="http://github.com/Arkni" style="display: block;">@Arkni</a></td>
+            </tr>
+            
+            <tr>
+                <td>2</td>
+                <td>Belgium (French)</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/be_FR.js">be_FR.js</a></td>
+                <td><a href="http://github.com/neilime" style="display: block;">@neilime</a></td>
+            </tr>
+            
+            <tr>
+                <td>3</td>
+                <td>Belgium (Netherland)</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/be_NL.js">be_NL.js</a></td>
+                <td><a href="http://github.com/dokterpasta" style="display: block;">@dokterpasta</a></td>
+            </tr>
+            
+            <tr>
+                <td>4</td>
+                <td>Bulgarian</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/bg_BG.js">bg_BG.js</a></td>
+                <td><a href="http://github.com/mraiur" style="display: block;">@mraiur</a></td>
+            </tr>
+            
+            <tr>
+                <td>5</td>
+                <td>Chilean Spanish</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/es_CL.js">es_CL.js</a></td>
+                <td><a href="http://github.com/marceloampuerop6" style="display: block;">@marceloampuerop6</a></td>
+            </tr>
+            
+            <tr>
+                <td>6</td>
+                <td>Chinese</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/zh_CN.js">zh_CN.js</a></td>
+                <td><a href="http://github.com/shamiao" style="display: block;">@shamiao</a></td>
+            </tr>
+            
+            <tr>
+                <td>7</td>
+                <td>Czech</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/cs_CZ.js">cs_CZ.js</a></td>
+                <td><a href="http://github.com/AdwinTravecuchac" style="display: block;">@AdwinTrave</a><a href="http://github.com/AdwinTravecuchac" style="display: block;">@cuchac</a></td>
+            </tr>
+            
+            <tr>
+                <td>8</td>
+                <td>Danish</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/da_DK.js">da_DK.js</a></td>
+                <td><a href="http://github.com/Djarnis" style="display: block;">@Djarnis</a></td>
+            </tr>
+            
+            <tr>
+                <td>9</td>
+                <td>Dutch (Netherland)</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/nl_NL.js">nl_NL.js</a></td>
+                <td><a href="http://github.com/JvanderHeide" style="display: block;">@JvanderHeide</a></td>
+            </tr>
+            
+            <tr>
+                <td>10</td>
+                <td>French</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/fr_FR.js">fr_FR.js</a></td>
+                <td><a href="http://github.com/dlucazeau" style="display: block;">@dlucazeau</a></td>
+            </tr>
+            
+            <tr>
+                <td>11</td>
+                <td>German</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/de_DE.js">de_DE.js</a></td>
+                <td><a href="http://github.com/logemann" style="display: block;">@logemann</a></td>
+            </tr>
+            
+            <tr>
+                <td>12</td>
+                <td>Greek</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/gr_EL.js">gr_EL.js</a></td>
+                <td><a href="http://github.com/pRieStaKos" style="display: block;">@pRieStaKos</a></td>
+            </tr>
+            
+            <tr>
+                <td>13</td>
+                <td>Hebrew</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/he_IL.js">he_IL.js</a></td>
+                <td><a href="http://github.com/yakidahan" style="display: block;">@yakidahan</a></td>
+            </tr>
+            
+            <tr>
+                <td>14</td>
+                <td>Hungarian</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/hu_HU.js">hu_HU.js</a></td>
+                <td><a href="http://github.com/blackfyre" style="display: block;">@blackfyre</a></td>
+            </tr>
+            
+            <tr>
+                <td>15</td>
+                <td>Indonesian</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/id_ID.js">id_ID.js</a></td>
+                <td><a href="http://github.com/egig" style="display: block;">@egig</a></td>
+            </tr>
+            
+            <tr>
+                <td>16</td>
+                <td>Italian</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/it_IT.js">it_IT.js</a></td>
+                <td><a href="http://github.com/maramazza" style="display: block;">@maramazza</a></td>
+            </tr>
+            
+            <tr>
+                <td>17</td>
+                <td>Japanese</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/ja_JP.js">ja_JP.js</a></td>
+                <td><a href="http://github.com/tsuyoshifujii" style="display: block;">@tsuyoshifujii</a></td>
+            </tr>
+            
+            <tr>
+                <td>18</td>
+                <td>Norwegian</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/no_NO.js">no_NO.js</a></td>
+                <td><a href="http://github.com/trondulseth" style="display: block;">@trondulseth</a></td>
+            </tr>
+            
+            <tr>
+                <td>19</td>
+                <td>Persian (Farsi)</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/fa_IR.js">fa_IR.js</a></td>
+                <td><a href="http://github.com/i0" style="display: block;">@i0</a></td>
+            </tr>
+            
+            <tr>
+                <td>20</td>
+                <td>Polish</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/pl_PL.js">pl_PL.js</a></td>
+                <td><a href="http://github.com/grzesieklukaszbanasiak" style="display: block;">@grzesiek</a><a href="http://github.com/grzesieklukaszbanasiak" style="display: block;">@lukaszbanasiak</a></td>
+            </tr>
+            
+            <tr>
+                <td>21</td>
+                <td>Portuguese (Brazil)</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/pt_BR.js">pt_BR.js</a></td>
+                <td><a href="http://github.com/marcuscarvalho6dgmike" style="display: block;">@marcuscarvalho6</a><a href="http://github.com/marcuscarvalho6dgmike" style="display: block;">@dgmike</a></td>
+            </tr>
+            
+            <tr>
+                <td>22</td>
+                <td>Romanian</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/ro_RO.js">ro_RO.js</a></td>
+                <td><a href="http://github.com/filipac" style="display: block;">@filipac</a></td>
+            </tr>
+            
+            <tr>
+                <td>23</td>
+                <td>Russian</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/ru_RU.js">ru_RU.js</a></td>
+                <td><a href="http://github.com/cylon-vstepin" style="display: block;">@cylon-v</a><a href="http://github.com/cylon-vstepin" style="display: block;">@stepin</a></td>
+            </tr>
+            
+            <tr>
+                <td>24</td>
+                <td>Serbian</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/sr_RS.js">sr_RS.js</a></td>
+                <td><a href="http://github.com/markocrni" style="display: block;">@markocrni</a></td>
+            </tr>
+            
+            <tr>
+                <td>25</td>
+                <td>Spanish</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/es_ES.js">es_ES.js</a></td>
+                <td><a href="http://github.com/vadail" style="display: block;">@vadail</a></td>
+            </tr>
+            
+            <tr>
+                <td>26</td>
+                <td>Swedish</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/sv_SE.js">sv_SE.js</a></td>
+                <td><a href="http://github.com/ulsa" style="display: block;">@ulsa</a></td>
+            </tr>
+            
+            <tr>
+                <td>27</td>
+                <td>Taiwanese</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/zh_TW.js">zh_TW.js</a></td>
+                <td><a href="http://github.com/tureki" style="display: block;">@tureki</a></td>
+            </tr>
+            
+            <tr>
+                <td>28</td>
+                <td>Thai</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/th_TH.js">th_TH.js</a></td>
+                <td><a href="http://github.com/figgaro" style="display: block;">@figgaro</a></td>
+            </tr>
+            
+            <tr>
+                <td>29</td>
+                <td>Turkish</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/tr_TR.js">tr_TR.js</a></td>
+                <td><a href="http://github.com/CeRBeR666" style="display: block;">@CeRBeR666</a></td>
+            </tr>
+            
+            <tr>
+                <td>30</td>
+                <td>Ukrainian</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/ua_UA.js">ua_UA.js</a></td>
+                <td><a href="http://github.com/oleg-voloshyn" style="display: block;">@oleg-voloshyn</a></td>
+            </tr>
+            
+            <tr>
+                <td>31</td>
+                <td>Vietnamese</td>
+                <td><a href="/vendor/bootstrapvalidator/js/language/vi_VN.js">vi_VN.js</a></td>
+                <td><a href="http://github.com/nghuuphuoc" style="display: block;">@nghuuphuoc</a></td>
+            </tr>
+            
+        </tbody>
+    </table>
 
-                    <div class="bv-box bv-box-info">
-                        <h5 id="translate"><i></i>Translate to other language</h5>
-                        <p>It is very easy to translate default English package into your language. Follow the steps below:</p>
-                        <ul>
-                            <li>Fork the <a href="https://github.com/nghuuphuoc/bootstrapvalidator">project</a></li>
-                            <li>
-                                Create new language file in the <a href="https://github.com/nghuuphuoc/bootstrapvalidator/tree/master/src/js/language">language</a> directory.<br/>
-                                The file must be named as <code>countrycode_LANGUAGECODE.js</code>, where <code>countrycode</code> and <code>LANGUAGECODE</code> are the ISO 3166 country and language codes in lowercase and uppercase respectively.<br/>
-                                The <strong>File Name</strong> column in the table above are some examples of valid language file name.
-                            </li>
-                            <li>Translate the <a href="/vendor/bootstrapvalidator/js/language/en_US.js">English language package</a> into your language file created above</li>
-                            <li>Make a pull request</li>
-                        </ul>
-                    </div>
-                </section>
+    <h4>Translate to other language</h4>
+    <p>It is very easy to translate default English package into your language. Follow the steps below:</p>
+    <ol>
+        <li>Fork the <a href="https://github.com/nghuuphuoc/bootstrapvalidator">project</a></li>
+        <li>
+            Create new language file in the <a href="https://github.com/nghuuphuoc/bootstrapvalidator/tree/master/src/js/language">language</a> directory.<br/>
+            The file must be named as <strong>countrycode_LANGUAGECODE.js</strong>, where <strong>countrycode</strong> and <strong>LANGUAGECODE</strong> are the ISO 3166 country and language codes in lowercase and uppercase respectively.<br/>
+            The <strong>File Name</strong> column in the table above are some examples of valid language file name.
+        </li>
+        <li>Translate the <a href="https://github.com/nghuuphuoc/bootstrapvalidator/blob/master/src/js/language/en_US.js">English language package</a> into your language file created above</li>
+        <li><a href="https://help.github.com/articles/creating-a-pull-request/">Make a pull request</a></li>
+    </ol>
+</section>
 
-                <!-- included -->
+<script>
+$(function() {
+    $.ajax({
+        dataType: 'jsonp',
+        url: 'https://api.github.com/repos/nghuuphuoc/bootstrapvalidator/releases',
+        success: function(response) {
+            var total = 0;
+            if (response.data) {
+                for (var i in response.data) {
+                    for (var j in response.data[i].assets) {
+                        total += (response.data[i].assets[j].download_count || 0);
+                    }
+                }
+            }
+            $('#downloadCounter').html(total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+        }
+    });
+});
+</script>
+
+                <div class="doc-hr"></div>
+
                 <section>
-                    <h2 id="whats-included">What's included?</h2>
-                    <p>The package consists of the following files:</p>
+    <h2 id="whats-included">What's included?</h2>
+
+    <p>The package consists of the following files:</p>
+
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">bootstrapvalidator/
 ├── dist
 │   ├── css
@@ -494,23 +471,24 @@
         │   └── ...
         └── bootstrapValidator.js</code></pre></div>
 
-                    <p>The <code>src</code> directory consists of the original source files. <code>src/js/bootstrapValidator.js</code> is not compressed and doesn't include any validators.</p>
+    <p>The <strong>src</strong> directory consists of the original source files. <strong>src/js/bootstrapValidator.js</strong> is not compressed and doesn't include any validators.</p>
 
-                    <p>The <code>dist</code> directory consists of files which is combined and compressed.
-                    <code>dist/js/bootstrapValidator(.min).js</code> includes all validators. It should be used in the production site.</p>
+    <p>The <strong>dist</strong> directory consists of files which is combined and compressed.
+    <strong>dist/js/bootstrapValidator(.min).js</strong> includes all validators. It should be used in the production site.</p>
 
-                    <p>The language packages are placed inside both <code>dist/js/language</code> and <code>src/js/language</code> directories.</p>
-                </section>
+    <p>The language packages are placed inside both <strong>dist/js/language</strong> and <strong>src/js/language</strong> directories.</p>
+</section>
 
-                <!-- usage -->
+                <div class="doc-hr"></div>
+
                 <section>
-                    <h2 id="usage">Usage</h2>
-                    <p>It takes only 3 steps to use the plugin:</p>
+    <h2>Usage</h2>
+    <p>It takes only 3 steps to use the plugin:</p>
 
-                    <!-- including -->
-                    <section>
-                        <h3 id="including-library">Including library</h3>
-                        <p>Since the BootstrapValidator plugin requires jQuery and Bootstrap 3, you have to include the required CSS and JS files to your page:</p>
+    <!-- including -->
+    <section>
+        <h3>Including library</h3>
+        <p>Since the BootstrapValidator plugin requires jQuery and Bootstrap 3, you have to include the required CSS and JS files to your page:</p>
 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;/path/to/bootstrap/css/bootstrap.css&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;/path/to/dist/css/bootstrapValidator.min.css&quot;</span><span class="nt">/&gt;</span>
@@ -518,7 +496,7 @@
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/path/to/jquery/jquery-1.10.2.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/path/to/bootstrap/js/bootstrap.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
 
-                        <p>Next, requires the plugin javascript file:</p>
+        <p>Next, requires the plugin javascript file:</p>
 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Either use the compressed version (recommended in the production site) --&gt;</span>
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/path/to/dist/js/bootstrapValidator.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
@@ -530,230 +508,283 @@
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/path/to/src/js/bootstrapValidator.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/path/to/src/js/validator/...validator...&quot;</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
 
-                        <p>If you want to use the default message translated in the <a href="#language-package">language package</a>, then finally include it:</p>
+        <p>If you want to use the default message translated in the <a href="#language-package">language package</a>, then finally include it:</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/path/to/src/js/language/languagecode_COUNTRYCODE.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
-                        <div class="bv-box bv-box-info">
-                            <h5 id="default-english-message"><i></i>Default English message</h5>
-                            <p>You don't need to require the <a href="#language-package">English package</a> because it is already included in the plugin. The package is available here just for translating into other languages.</p>
-                        </div>
-                    </section>
 
-                    <!-- writing-form -->
-                    <section>
-                        <h3 id="writing-form">Writing form</h3>
-                        <p>Since BootstrapValidator is designed to use with Bootstrap, your form must be structured using Bootstrap classes.</p>
+        <div class="doc-alert doc-alert-info">
+            <p>You don't need to require the <a href="#language-package">English package</a> because it is already included in the plugin. The package is available here just for translating into other languages.</p>
+        </div>
+    </section>
 
-                        <div class="bv-box bv-box-warning">
-                            <h5 id="maximum-call-stack-error"><i></i>Maximum call stack size exceeded error</h5>
-                            <h5 id="too-much-recursion-error"><i></i>Too much recursion error</h5>
-                            <p>If your form is NOT structured by Bootstrap classes (the element containing field and associated label does NOT have <code>form-group</code> class), you will see the following error in the Console:</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html">Uncaught RangeError: Maximum call stack size exceeded</code></pre></div>
-                        </div>
+    <!-- writing-form -->
+    <section>
+        <h3>Writing form</h3>
+        <p>Since BootstrapValidator is designed to use with Bootstrap, your form must be structured using Bootstrap classes.</p>
 
-                        <div class="bv-box bv-box-info">
-                            <h5 id="using-complex-form"><i></i>Using complex form</h5>
-                            <p>If your form is complex and uses custom CSS class for each group instead of <code>form-group</code>, use the <a href="/settings/#form-group">group option</a>.</p>
-                        </div>
+        <p>If your form is NOT structured by Bootstrap classes (the element containing field and associated label does NOT have form-group class), you will see the following error in the Console:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html">// Chrome
+Uncaught RangeError: Maximum call stack size exceeded
 
-                        <div class="bv-box bv-box-warning">
-                            <h5 id="name-conflict"><i></i>Name conflict</h5>
-                            <p>Do not use the properties of a form, such as <code>submit</code>, <code>reset</code>, <code>length</code>, <code>method</code> to set the <code>name</code> or <code>id</code> attribute of form, field elements. Name conflicts can cause the problem.</p>
-                            <p>For example, you cannot submit the form after validating if use <code>submit</code> to name the Submit button:</p>
+// Firefox
+Too much recursion error</code></pre></div>
+
+        <div class="doc-alert doc-alert-info">
+            If your form is complex and uses custom CSS class for each group instead of .form-group, use the <a href="/settings/#form-group">group option</a>
+        </div>
+
+        <h4>Name conflict</h4>
+        <p>Do not use the properties of a form, such as <code>submit</code>, <code>reset</code>, <code>length</code>, <code>method</code> to set the <code>name</code> or <code>id</code> attribute of form, field elements. Name conflicts can cause the problem.</p>
+        <p>For example, you cannot submit the form after validating if use <code>submit</code> to name the Submit button:</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">name=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-primary&quot;</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span></code></pre></div>
-                            <a href="http://kangax.github.com/domlint/">DOMLint</a> has a complete list of rules to check the markup for these kind of problems.
-                        </div>
+        <p><a href="http://kangax.github.com/domlint/">DOMLint</a> has a complete list of rules to check the markup for these kind of problems.</p>
 
-                        <p>The plugin supports all possible kind of Bootstrap form, including:</p>
+        <p>The plugin supports all possible kind of Bootstrap form, including:</p>
 
-                        <h4 id="basic-form">Basic form</h4>
-                        <div class="bv-example">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#basic-form-tab" data-toggle="tab">Try it</a></li>
-                                <li><a href="#basic-html-tab" data-toggle="tab">HTML</a></li>
-                            </ul>
+        <h4>Basic form</h4>
+        <div class="doc-demo">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#basic-form-tab" data-toggle="tab">Try it</a></li>
+                <li><a href="#basic-html-tab" data-toggle="tab">HTML</a></li>
+                <li><a href="#basic-js-tab" data-toggle="tab">JS</a></li>
+            </ul>
 
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="basic-form-tab">
-                                    <form class="registerForm">
-                                        <div class="form-group">
-                                            <label>Username</label>
-                                            <input type="text" class="form-control" name="username" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Email address</label>
-                                            <input type="text" class="form-control" name="email" />
-                                        </div>
-                                    </form>
-                                </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="basic-form-tab">
+                    <form class="registerForm">
+    <div class="form-group">
+        <label>Username</label>
+        <input type="text" class="form-control" name="username" />
+    </div>
 
-                                <div class="tab-pane" id="basic-html-tab">
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="hll"><span class="nt">&lt;form&gt;</span>
-</span><span class="hll">    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-</span>        <span class="nt">&lt;label&gt;</span>Username<span class="nt">&lt;/label&gt;</span>
+    <div class="form-group">
+        <label>Email address</label>
+        <input type="text" class="form-control" name="email" />
+    </div>
+</form>
+                </div>
+
+                <div class="tab-pane" id="basic-html-tab">
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;registerForm&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label&gt;</span>Username<span class="nt">&lt;/label&gt;</span>
         <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
-<span class="hll">    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-</span>        <span class="nt">&lt;label&gt;</span>Email address<span class="nt">&lt;/label&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label&gt;</span>Email address<span class="nt">&lt;/label&gt;</span>
         <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;email&quot;</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/form&gt;</span></code></pre></div>
-                                </div>
-                            </div>
-                        </div>
+                </div>
 
-                        <h4 id="basic-form-without-labels">Basic form without labels</h4>
-                        <div class="bv-example">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#basicwlabel-form-tab" data-toggle="tab">Try it</a></li>
-                                <li><a href="#basicwlabel-html-tab" data-toggle="tab">HTML</a></li>
-                            </ul>
+                <div class="tab-pane" id="basic-js-tab">
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.registerForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;This value is not valid&#39;</span><span class="p">,</span>
+        <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
+            <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
+            <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
+        <span class="p">},</span>
+        <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">username</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The username is not valid&#39;</span><span class="p">,</span>
+                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">notEmpty</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The username is required and cannot be empty&#39;</span>
+                    <span class="p">},</span>
+                    <span class="nx">stringLength</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">min</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span>
+                        <span class="nx">max</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The username must be more than 6 and less than 30 characters long&#39;</span>
+                    <span class="p">},</span>
+                    <span class="nx">regexp</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">regexp</span><span class="o">:</span> <span class="sr">/^[a-zA-Z0-9_]+$/</span><span class="p">,</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The username can only consist of alphabetical, number and underscore&#39;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nx">email</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">notEmpty</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The email is required and cannot be empty&#39;</span>
+                    <span class="p">},</span>
+                    <span class="nx">emailAddress</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The input is not a valid email address&#39;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
+                </div>
+            </div>
+        </div>
 
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="basicwlabel-form-tab">
-                                    <form class="registerForm">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="username" placeholder="Username" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="email" placeholder="Email address" />
-                                        </div>
-                                    </form>
-                                </div>
+        <h4>Basic form without labels</h4>
+        <div class="doc-demo">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#basicwlabel-form-tab" data-toggle="tab">Try it</a></li>
+                <li><a href="#basicwlabel-html-tab" data-toggle="tab">HTML</a></li>
+            </ul>
 
-                                <div class="tab-pane" id="basicwlabel-html-tab">
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="hll"><span class="nt">&lt;form&gt;</span>
-</span><span class="hll">    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-</span>        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Username&quot;</span> <span class="nt">/&gt;</span>
+            <div class="tab-content">
+                <div class="tab-pane active" id="basicwlabel-form-tab">
+                    <form class="registerForm">
+    <div class="form-group">
+        <input type="text" class="form-control" name="username" placeholder="Username" />
+    </div>
+
+    <div class="form-group">
+        <input type="text" class="form-control" name="email" placeholder="Email address" />
+    </div>
+</form>
+                </div>
+
+                <div class="tab-pane" id="basicwlabel-html-tab">
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;registerForm&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Username&quot;</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
-<span class="hll">    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-</span>        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;email&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Email address&quot;</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;email&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Email address&quot;</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/form&gt;</span></code></pre></div>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+            </div>
+        </div>
 
-                        <h4 id="inline-form">Inline form</h4>
-                        <div class="bv-example">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#inline-form-tab" data-toggle="tab">Try it</a></li>
-                                <li><a href="#inline-html-tab" data-toggle="tab">HTML</a></li>
-                            </ul>
+        <h4>Inline form</h4>
+        <div class="doc-demo">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#inline-form-tab" data-toggle="tab">Try it</a></li>
+                <li><a href="#inline-html-tab" data-toggle="tab">HTML</a></li>
+            </ul>
 
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="inline-form-tab">
-                                    <form class="form-inline registerForm">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="username" placeholder="Username" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="email" placeholder="Email address" />
-                                        </div>
-                                    </form>
-                                </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="inline-form-tab">
+                    <form class="form-inline registerForm">
+    <div class="form-group">
+        <input type="text" class="form-control" name="username" placeholder="Username" />
+    </div>
 
-                                <div class="tab-pane" id="inline-html-tab">
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="hll"><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;form-inline&quot;</span><span class="nt">&gt;</span>
-</span><span class="hll">    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-</span>        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Username&quot;</span> <span class="nt">/&gt;</span>
+    <div class="form-group">
+        <input type="text" class="form-control" name="email" placeholder="Email address" />
+    </div>
+</form>
+                </div>
+
+                <div class="tab-pane" id="inline-html-tab">
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;form-inline registerForm&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Username&quot;</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
-<span class="hll">    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-</span>        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;email&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Email address&quot;</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;email&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Email address&quot;</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/form&gt;</span></code></pre></div>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+            </div>
+        </div>
 
-                        <h4 id="horizontal-form">Horizontal form</h4>
-                        <div class="bv-example">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#horizontal-form-tab" data-toggle="tab">Try it</a></li>
-                                <li><a href="#horizontal-html-tab" data-toggle="tab">HTML</a></li>
-                            </ul>
+        <h4>Horizontal form</h4>
+        <div class="doc-demo">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#horizontal-form-tab" data-toggle="tab">Try it</a></li>
+                <li><a href="#horizontal-html-tab" data-toggle="tab">HTML</a></li>
+            </ul>
 
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="horizontal-form-tab">
-                                    <form class="form-horizontal registerForm">
-                                        <div class="form-group">
-                                            <label class="col-lg-3 control-label">Username</label>
-                                            <div class="col-lg-6">
-                                                <input type="text" class="form-control" name="username" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-lg-3 control-label">Email address</label>
-                                            <div class="col-lg-6">
-                                                <input type="text" class="form-control" name="email" />
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="horizontal-form-tab">
+                    <form class="form-horizontal registerForm">
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Username</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="username" />
+        </div>
+    </div>
 
-                                <div class="tab-pane" id="horizontal-html-tab">
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="hll"><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
-</span><span class="hll">    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-</span>        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Username<span class="nt">&lt;/label&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-6&quot;</span><span class="nt">&gt;</span>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Email address</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="email" />
+        </div>
+    </div>
+</form>
+                </div>
+
+                <div class="tab-pane" id="horizontal-html-tab">
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;form-horizontal registerForm&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-3 control-label&quot;</span><span class="nt">&gt;</span>Username<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-6&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span> <span class="nt">/&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
-<span class="hll">    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-</span>        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Email address<span class="nt">&lt;/label&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-6&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-3 control-label&quot;</span><span class="nt">&gt;</span>Email address<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-6&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;email&quot;</span> <span class="nt">/&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/form&gt;</span></code></pre></div>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+            </div>
+        </div>
 
-                        <p>It also supports multiple fields on the same row:</p>
+        <p>It also supports multiple fields on the same row:</p>
 
-                        <div class="bv-example">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#row-form-tab" data-toggle="tab">Try it</a></li>
-                                <li><a href="#row-html-tab" data-toggle="tab">HTML</a></li>
-                            </ul>
+        <div class="doc-demo">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#row-form-tab" data-toggle="tab">Try it</a></li>
+                <li><a href="#row-html-tab" data-toggle="tab">HTML</a></li>
+            </ul>
 
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="row-form-tab">
-                                    <form class="form-horizontal registerForm">
-                                        <div class="form-group">
-                                            <label class="col-lg-2 control-label">Account</label>
-                                            <div class="col-lg-4">
-                                                <input type="text" class="form-control" name="username" placeholder="Username" />
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <input type="text" class="form-control" name="email" placeholder="Email address" />
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="row-form-tab">
+                 <form class="form-horizontal registerForm">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Account</label>
 
-                                <div class="tab-pane" id="row-html-tab">
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="hll"><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
-</span><span class="hll">    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-</span>        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-2 control-label&quot;</span><span class="nt">&gt;</span>Account<span class="nt">&lt;/label&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-4&quot;</span><span class="nt">&gt;</span>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" name="username" placeholder="Username" />
+        </div>
+
+        <div class="col-sm-4">
+            <input type="text" class="form-control" name="email" placeholder="Email address" />
+        </div>
+    </div>
+</form>
+                </div>
+
+                <div class="tab-pane" id="row-html-tab">
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">&quot;form-horizontal registerForm&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-2 control-label&quot;</span><span class="nt">&gt;</span>Account<span class="nt">&lt;/label&gt;</span>
+
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-4&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Username&quot;</span> <span class="nt">/&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-4&quot;</span><span class="nt">&gt;</span>
+
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-4&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;email&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Email address&quot;</span> <span class="nt">/&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/form&gt;</span></code></pre></div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    <!-- calling -->
-                    <section>
-                        <h3 id="calling-plugin">Calling plugin</h3>
+    <!-- calling -->
+    <section>
+        <h3>Calling plugin</h3>
 
-                            <p>Call the plugin to validate the form as following:</p>
+        <p>Call the plugin to validate the form as following:</p>
+
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">$</span><span class="p">(</span><span class="nx">formSelector</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
         <span class="nx">excluded</span><span class="o">:</span> <span class="p">...,</span>
@@ -766,7 +797,8 @@
     <span class="p">});</span>
 <span class="p">});</span></code></pre></div>
 
-                        <p>For example, to validate the sample registration form above, the plugin might be called as:</p>
+        <p>For example, to validate the sample registration form above, the plugin might be called as:</p>
+
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.registerForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
         <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;This value is not valid&#39;</span><span class="p">,</span>
@@ -807,84 +839,129 @@
     <span class="p">});</span>
 <span class="p">});</span></code></pre></div>
 
-                        <p>Look at the <a href="/settings/">Settings</a> page to see the meaning of plugin options.</p>
-                    </section>
+        <p>Look at the <a href="/settings/">Settings</a> page to see the meaning of plugin options.</p>
+    </section>
+</section>
 
-                    <!-- example -->
-                    <section>
-                        <h3 id="example">Example</h3>
-                        <p>Below is a classical registration form covering all the steps you've just seen above:</p>
+<script>
+$(document).ready(function() {
+    $('.registerForm').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            username: {
+                message: 'The username is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The username is required and cannot be empty'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 30,
+                        message: 'The username must be more than 6 and less than 30 characters long'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_]+$/,
+                        message: 'The username can only consist of alphabetical, number and underscore'
+                    }
+                }
+            },
+            email: {
+                validators: {
+                    notEmpty: {
+                        message: 'The email is required and cannot be empty'
+                    },
+                    emailAddress: {
+                        message: 'The input is not a valid email address'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
 
-                        <div class="bv-example">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#example-form-tab" data-toggle="tab">Try it</a></li>
-                                <li><a href="#example-programmatic-tab" data-toggle="tab">Programmatic usage</a></li>
-                                <li><a href="#example-declarative-tab" data-toggle="tab">Declarative usage</a></li>
-                                <li><a href="#example-cdn-tab" data-toggle="tab">CDN usage</a></li>
-                            </ul>
+                <div class="doc-hr"></div>
 
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="example-form-tab">
-                                    <form id="registrationForm" method="post" class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="col-lg-3 control-label">Username</label>
-                                            <div class="col-lg-5">
-                                                <input type="text" class="form-control" name="username" />
-                                            </div>
-                                        </div>
+                <section>
+    <h2>Example</h2>
 
-                                        <div class="form-group">
-                                            <label class="col-lg-3 control-label">Email address</label>
-                                            <div class="col-lg-5">
-                                                <input type="text" class="form-control" name="email" />
-                                            </div>
-                                        </div>
+    <p>Below is a classical registration form covering all the steps you've just seen above:</p>
 
-                                        <div class="form-group">
-                                            <label class="col-lg-3 control-label">Password</label>
-                                            <div class="col-lg-5">
-                                                <input type="password" class="form-control" name="password" />
-                                            </div>
-                                        </div>
+    <div class="doc-demo">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#example-form-tab" data-toggle="tab">Try it</a></li>
+            <li><a href="#example-programmatic-tab" data-toggle="tab">Programmatic usage</a></li>
+            <li><a href="#example-declarative-tab" data-toggle="tab">Declarative usage</a></li>
+            <li><a href="#example-cdn-tab" data-toggle="tab">CDN usage</a></li>
+        </ul>
 
-                                        <div class="form-group">
-                                            <label class="col-lg-3 control-label">Gender</label>
-                                            <div class="col-lg-5">
-                                                <div class="radio">
-                                                    <label>
-                                                        <input type="radio" name="gender" value="male" /> Male
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label>
-                                                        <input type="radio" name="gender" value="female" /> Female
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label>
-                                                        <input type="radio" name="gender" value="other" /> Other
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
+        <div class="tab-content">
+            <div class="tab-pane active" id="example-form-tab">
+                            <form id="registrationForm" method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Username</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="username" />
+                        </div>
+                    </div>
 
-                                        <div class="form-group">
-                                            <label class="col-lg-3 control-label">Date of birth</label>
-                                            <div class="col-lg-5">
-                                                <input type="text" class="form-control" name="birthday" placeholder="YYYY/MM/DD" />
-                                            </div>
-                                        </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Email address</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="email" />
+                        </div>
+                    </div>
 
-                                        <div class="form-group">
-                                            <div class="col-lg-9 col-lg-offset-3">
-                                                <!-- Do NOT use name="submit" or id="submit" for the Submit button -->
-                                                <button type="submit" class="btn btn-default">Sign up</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Password</label>
+                        <div class="col-sm-5">
+                            <input type="password" class="form-control" name="password" />
+                        </div>
+                    </div>
 
-                                <div class="tab-pane" id="example-programmatic-tab">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Gender</label>
+                        <div class="col-sm-5">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="gender" value="male" /> Male
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="gender" value="female" /> Female
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="gender" value="other" /> Other
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Date of birth</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="birthday" placeholder="YYYY/MM/DD" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-9 col-sm-offset-3">
+                            <!-- Do NOT use name="submit" or id="submit" for the Submit button -->
+                            <button type="submit" class="btn btn-default">Sign up</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="tab-pane" id="example-programmatic-tab">
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!doctype html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;</span>
@@ -907,37 +984,36 @@
 <span class="nt">&lt;body&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-8 col-lg-offset-2&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-8 col-md-offset-2&quot;</span><span class="nt">&gt;</span>
                 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;page-header&quot;</span><span class="nt">&gt;</span>
                     <span class="nt">&lt;h2&gt;</span>Sign up<span class="nt">&lt;/h2&gt;</span>
                 <span class="nt">&lt;/div&gt;</span>
 
-                <span class="c">&lt;!-- Change the &quot;action&quot; attribute to your back-end URL --&gt;</span>
-                <span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;registrationForm&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span> <span class="na">action=</span><span class="s">&quot;...&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;registrationForm&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Username<span class="nt">&lt;/label&gt;</span>
-                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-3 control-label&quot;</span><span class="nt">&gt;</span>Username<span class="nt">&lt;/label&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-5&quot;</span><span class="nt">&gt;</span>
                             <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span> <span class="nt">/&gt;</span>
                         <span class="nt">&lt;/div&gt;</span>
                     <span class="nt">&lt;/div&gt;</span>
 
                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Email address<span class="nt">&lt;/label&gt;</span>
-                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-3 control-label&quot;</span><span class="nt">&gt;</span>Email address<span class="nt">&lt;/label&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-5&quot;</span><span class="nt">&gt;</span>
                             <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;email&quot;</span> <span class="nt">/&gt;</span>
                         <span class="nt">&lt;/div&gt;</span>
                     <span class="nt">&lt;/div&gt;</span>
 
                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Password<span class="nt">&lt;/label&gt;</span>
-                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-3 control-label&quot;</span><span class="nt">&gt;</span>Password<span class="nt">&lt;/label&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-5&quot;</span><span class="nt">&gt;</span>
                             <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;password&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;password&quot;</span> <span class="nt">/&gt;</span>
                         <span class="nt">&lt;/div&gt;</span>
                     <span class="nt">&lt;/div&gt;</span>
 
                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Gender<span class="nt">&lt;/label&gt;</span>
-                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-3 control-label&quot;</span><span class="nt">&gt;</span>Gender<span class="nt">&lt;/label&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-5&quot;</span><span class="nt">&gt;</span>
                             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;radio&quot;</span><span class="nt">&gt;</span>
                                 <span class="nt">&lt;label&gt;</span>
                                     <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;gender&quot;</span> <span class="na">value=</span><span class="s">&quot;male&quot;</span> <span class="nt">/&gt;</span> Male
@@ -957,17 +1033,16 @@
                     <span class="nt">&lt;/div&gt;</span>
 
                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Date of birth<span class="nt">&lt;/label&gt;</span>
-                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
-                            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;birthday&quot;</span>
-                                <span class="na">placeholder=</span><span class="s">&quot;YYYY/MM/DD&quot;</span> <span class="nt">/&gt;</span>
+                        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-3 control-label&quot;</span><span class="nt">&gt;</span>Date of birth<span class="nt">&lt;/label&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-5&quot;</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;birthday&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;YYYY/MM/DD&quot;</span> <span class="nt">/&gt;</span>
                         <span class="nt">&lt;/div&gt;</span>
                     <span class="nt">&lt;/div&gt;</span>
 
                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-9 col-lg-offset-3&quot;</span><span class="nt">&gt;</span>
-<span class="hll">                            <span class="c">&lt;!-- Do NOT use name=&quot;submit&quot; or id=&quot;submit&quot; for the Submit button --&gt;</span>
-</span>                            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>Sign up<span class="nt">&lt;/button&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-9 col-sm-offset-3&quot;</span><span class="nt">&gt;</span>
+                            <span class="c">&lt;!-- Do NOT use name=&quot;submit&quot; or id=&quot;submit&quot; for the Submit button --&gt;</span>
+                            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>Sign up<span class="nt">&lt;/button&gt;</span>
                         <span class="nt">&lt;/div&gt;</span>
                     <span class="nt">&lt;/div&gt;</span>
                 <span class="nt">&lt;/form&gt;</span>
@@ -977,9 +1052,9 @@
 
 <span class="nt">&lt;script&gt;</span>
 <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<span class="hll">    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#registrationForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
-</span><span class="hll">        <span class="c1">// To use feedback icons, ensure that you use Bootstrap v3.1.0 or later</span>
-</span>        <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#registrationForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+        <span class="c1">// To use feedback icons, ensure that you use Bootstrap v3.1.0 or later</span>
+        <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
             <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
             <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
             <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
@@ -1055,9 +1130,9 @@
 <span class="nt">&lt;/script&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></div>
-                                </div>
+            </div>
 
-                                <div class="tab-pane" id="example-declarative-tab">
+            <div class="tab-pane" id="example-declarative-tab">
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!doctype html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;</span>
@@ -1080,80 +1155,77 @@
 <span class="nt">&lt;body&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-8 col-lg-offset-2&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-8 col-md-offset-2&quot;</span><span class="nt">&gt;</span>
                 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;page-header&quot;</span><span class="nt">&gt;</span>
                     <span class="nt">&lt;h2&gt;</span>Sign up<span class="nt">&lt;/h2&gt;</span>
                 <span class="nt">&lt;/div&gt;</span>
 
-                <span class="c">&lt;!--</span>
-<span class="c">                Change the &quot;action&quot; attribute to your back-end URL</span>
-<span class="hll"><span class="c">                To use feedback icons, ensure that you use Bootstrap v3.1.0 or later</span>
-</span><span class="c">                --&gt;</span>
-                <span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;registrationForm&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span> <span class="na">action=</span><span class="s">&quot;...&quot;</span>
-<span class="hll">                    <span class="na">data-bv-feedbackicons-valid=</span><span class="s">&quot;glyphicon glyphicon-ok&quot;</span>
-</span><span class="hll">                    <span class="na">data-bv-feedbackicons-invalid=</span><span class="s">&quot;glyphicon glyphicon-remove&quot;</span>
-</span><span class="hll">                    <span class="na">data-bv-feedbackicons-validating=</span><span class="s">&quot;glyphicon glyphicon-refresh&quot;</span><span class="nt">&gt;</span>
-</span>
+                <span class="c">&lt;!-- To use feedback icons, ensure that you use Bootstrap v3.1.0 or later --&gt;</span>
+                <span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;registrationForm&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span>
+                    <span class="na">data-bv-feedbackicons-valid=</span><span class="s">&quot;glyphicon glyphicon-ok&quot;</span>
+                    <span class="na">data-bv-feedbackicons-invalid=</span><span class="s">&quot;glyphicon glyphicon-remove&quot;</span>
+                    <span class="na">data-bv-feedbackicons-validating=</span><span class="s">&quot;glyphicon glyphicon-refresh&quot;</span><span class="nt">&gt;</span>
+
                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Username<span class="nt">&lt;/label&gt;</span>
-                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-3 control-label&quot;</span><span class="nt">&gt;</span>Username<span class="nt">&lt;/label&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-5&quot;</span><span class="nt">&gt;</span>
                             <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span>
-<span class="hll">                                <span class="na">data-bv-notempty=</span><span class="s">&quot;true&quot;</span>
-</span><span class="hll">                                <span class="na">data-bv-notempty-message=</span><span class="s">&quot;The username is required and cannot be empty&quot;</span>
-</span>
-<span class="hll">                                <span class="na">data-bv-stringlength=</span><span class="s">&quot;true&quot;</span>
-</span><span class="hll">                                <span class="na">data-bv-stringlength-min=</span><span class="s">&quot;6&quot;</span>
-</span><span class="hll">                                <span class="na">data-bv-stringlength-max=</span><span class="s">&quot;30&quot;</span>
-</span><span class="hll">                                <span class="na">data-bv-stringlength-message=</span><span class="s">&quot;The username must be more than 6 and less than 30 characters long&quot;</span>
-</span>
-<span class="hll">                                <span class="na">data-bv-regexp=</span><span class="s">&quot;true&quot;</span>
-</span><span class="hll">                                <span class="na">data-bv-regexp-regexp=</span><span class="s">&quot;^[a-zA-Z0-9]+$&quot;</span>
-</span><span class="hll">                                <span class="na">data-bv-regexp-message=</span><span class="s">&quot;The username can only consist of alphabetical and number&quot;</span>
-</span>
-<span class="hll">                                <span class="na">data-bv-different=</span><span class="s">&quot;true&quot;</span>
-</span><span class="hll">                                <span class="na">data-bv-different-field=</span><span class="s">&quot;password&quot;</span>
-</span><span class="hll">                                <span class="na">data-bv-different-message=</span><span class="s">&quot;The username and password cannot be the same as each other&quot;</span> <span class="nt">/&gt;</span>
-</span>                        <span class="nt">&lt;/div&gt;</span>
+                                <span class="na">data-bv-notempty=</span><span class="s">&quot;true&quot;</span>
+                                <span class="na">data-bv-notempty-message=</span><span class="s">&quot;The username is required and cannot be empty&quot;</span>
+
+                                <span class="na">data-bv-stringlength=</span><span class="s">&quot;true&quot;</span>
+                                <span class="na">data-bv-stringlength-min=</span><span class="s">&quot;6&quot;</span>
+                                <span class="na">data-bv-stringlength-max=</span><span class="s">&quot;30&quot;</span>
+                                <span class="na">data-bv-stringlength-message=</span><span class="s">&quot;The username must be more than 6 and less than 30 characters long&quot;</span>
+
+                                <span class="na">data-bv-regexp=</span><span class="s">&quot;true&quot;</span>
+                                <span class="na">data-bv-regexp-regexp=</span><span class="s">&quot;^[a-zA-Z0-9]+$&quot;</span>
+                                <span class="na">data-bv-regexp-message=</span><span class="s">&quot;The username can only consist of alphabetical and number&quot;</span>
+
+                                <span class="na">data-bv-different=</span><span class="s">&quot;true&quot;</span>
+                                <span class="na">data-bv-different-field=</span><span class="s">&quot;password&quot;</span>
+                                <span class="na">data-bv-different-message=</span><span class="s">&quot;The username and password cannot be the same as each other&quot;</span> <span class="nt">/&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
                     <span class="nt">&lt;/div&gt;</span>
 
                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Email address<span class="nt">&lt;/label&gt;</span>
-                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-3 control-label&quot;</span><span class="nt">&gt;</span>Email address<span class="nt">&lt;/label&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-5&quot;</span><span class="nt">&gt;</span>
                             <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;email&quot;</span>
-<span class="hll">                                <span class="na">data-bv-notempty=</span><span class="s">&quot;true&quot;</span>
-</span><span class="hll">                                <span class="na">data-bv-notempty-message=</span><span class="s">&quot;The email address is required and cannot be empty&quot;</span>
-</span>
-<span class="hll">                                <span class="na">data-bv-emailaddress=</span><span class="s">&quot;true&quot;</span>
-</span><span class="hll">                                <span class="na">data-bv-emailaddress-message=</span><span class="s">&quot;The email address is not a valid&quot;</span> <span class="nt">/&gt;</span>
-</span>                        <span class="nt">&lt;/div&gt;</span>
+                                <span class="na">data-bv-notempty=</span><span class="s">&quot;true&quot;</span>
+                                <span class="na">data-bv-notempty-message=</span><span class="s">&quot;The email address is required and cannot be empty&quot;</span>
+
+                                <span class="na">data-bv-emailaddress=</span><span class="s">&quot;true&quot;</span>
+                                <span class="na">data-bv-emailaddress-message=</span><span class="s">&quot;The email address is not a valid&quot;</span> <span class="nt">/&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
                     <span class="nt">&lt;/div&gt;</span>
 
                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Password<span class="nt">&lt;/label&gt;</span>
-                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-3 control-label&quot;</span><span class="nt">&gt;</span>Password<span class="nt">&lt;/label&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-5&quot;</span><span class="nt">&gt;</span>
                             <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;password&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;password&quot;</span>
-<span class="hll">                                <span class="na">data-bv-notempty=</span><span class="s">&quot;true&quot;</span>
-</span><span class="hll">                                <span class="na">data-bv-notempty-message=</span><span class="s">&quot;The password is required and cannot be empty&quot;</span>
-</span>
-<span class="hll">                                <span class="na">data-bv-stringlength=</span><span class="s">&quot;true&quot;</span>
-</span><span class="hll">                                <span class="na">data-bv-stringlength-min=</span><span class="s">&quot;8&quot;</span>
-</span><span class="hll">                                <span class="na">data-bv-stringlength-message=</span><span class="s">&quot;The password must have at least 8 characters&quot;</span>
-</span>
-<span class="hll">                                <span class="na">data-bv-different=</span><span class="s">&quot;true&quot;</span>
-</span><span class="hll">                                <span class="na">data-bv-different-field=</span><span class="s">&quot;username&quot;</span>
-</span><span class="hll">                                <span class="na">data-bv-different-message=</span><span class="s">&quot;The password cannot be the same as username&quot;</span> <span class="nt">/&gt;</span>
-</span>                        <span class="nt">&lt;/div&gt;</span>
+                                <span class="na">data-bv-notempty=</span><span class="s">&quot;true&quot;</span>
+                                <span class="na">data-bv-notempty-message=</span><span class="s">&quot;The password is required and cannot be empty&quot;</span>
+
+                                <span class="na">data-bv-stringlength=</span><span class="s">&quot;true&quot;</span>
+                                <span class="na">data-bv-stringlength-min=</span><span class="s">&quot;8&quot;</span>
+                                <span class="na">data-bv-stringlength-message=</span><span class="s">&quot;The password must have at least 8 characters&quot;</span>
+
+                                <span class="na">data-bv-different=</span><span class="s">&quot;true&quot;</span>
+                                <span class="na">data-bv-different-field=</span><span class="s">&quot;username&quot;</span>
+                                <span class="na">data-bv-different-message=</span><span class="s">&quot;The password cannot be the same as username&quot;</span> <span class="nt">/&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
                     <span class="nt">&lt;/div&gt;</span>
 
                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Gender<span class="nt">&lt;/label&gt;</span>
-                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-3 control-label&quot;</span><span class="nt">&gt;</span>Gender<span class="nt">&lt;/label&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-5&quot;</span><span class="nt">&gt;</span>
                             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;radio&quot;</span><span class="nt">&gt;</span>
                                 <span class="nt">&lt;label&gt;</span>
                                     <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;gender&quot;</span> <span class="na">value=</span><span class="s">&quot;male&quot;</span>
-<span class="hll">                                        <span class="na">data-bv-notempty=</span><span class="s">&quot;true&quot;</span>
-</span><span class="hll">                                        <span class="na">data-bv-notempty-message=</span><span class="s">&quot;The gender is required&quot;</span> <span class="nt">/&gt;</span> Male
-</span>                                <span class="nt">&lt;/label&gt;</span>
+                                        <span class="na">data-bv-notempty=</span><span class="s">&quot;true&quot;</span>
+                                        <span class="na">data-bv-notempty-message=</span><span class="s">&quot;The gender is required&quot;</span> <span class="nt">/&gt;</span> Male
+                                <span class="nt">&lt;/label&gt;</span>
                             <span class="nt">&lt;/div&gt;</span>
                             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;radio&quot;</span><span class="nt">&gt;</span>
                                 <span class="nt">&lt;label&gt;</span>
@@ -1169,22 +1241,22 @@
                     <span class="nt">&lt;/div&gt;</span>
 
                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span><span class="nt">&gt;</span>Date of birth<span class="nt">&lt;/label&gt;</span>
-                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-5&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-3 control-label&quot;</span><span class="nt">&gt;</span>Date of birth<span class="nt">&lt;/label&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-5&quot;</span><span class="nt">&gt;</span>
                             <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;birthday&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;YYYY/MM/DD&quot;</span>
-<span class="hll">                                <span class="na">data-bv-notempty=</span><span class="s">&quot;true&quot;</span>
-</span><span class="hll">                                <span class="na">data-bv-notempty-message=</span><span class="s">&quot;The date of birth is required&quot;</span>
-</span>
-<span class="hll">                                <span class="na">data-bv-date=</span><span class="s">&quot;true&quot;</span>
-</span><span class="hll">                                <span class="na">data-bv-date-format=</span><span class="s">&quot;YYYY/MM/DD&quot;</span>
-</span><span class="hll">                                <span class="na">data-bv-date-message=</span><span class="s">&quot;The date of birth is not valid&quot;</span> <span class="nt">/&gt;</span>
-</span>                        <span class="nt">&lt;/div&gt;</span>
+                                <span class="na">data-bv-notempty=</span><span class="s">&quot;true&quot;</span>
+                                <span class="na">data-bv-notempty-message=</span><span class="s">&quot;The date of birth is required&quot;</span>
+
+                                <span class="na">data-bv-date=</span><span class="s">&quot;true&quot;</span>
+                                <span class="na">data-bv-date-format=</span><span class="s">&quot;YYYY/MM/DD&quot;</span>
+                                <span class="na">data-bv-date-message=</span><span class="s">&quot;The date of birth is not valid&quot;</span> <span class="nt">/&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
                     <span class="nt">&lt;/div&gt;</span>
 
                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-9 col-lg-offset-3&quot;</span><span class="nt">&gt;</span>
-<span class="hll">                            <span class="c">&lt;!-- Do NOT use name=&quot;submit&quot; or id=&quot;submit&quot; for the Submit button --&gt;</span>
-</span>                            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>Sign up<span class="nt">&lt;/button&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-9 col-sm-offset-3&quot;</span><span class="nt">&gt;</span>
+                            <span class="c">&lt;!-- Do NOT use name=&quot;submit&quot; or id=&quot;submit&quot; for the Submit button --&gt;</span>
+                            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span><span class="nt">&gt;</span>Sign up<span class="nt">&lt;/button&gt;</span>
                         <span class="nt">&lt;/div&gt;</span>
                     <span class="nt">&lt;/div&gt;</span>
                 <span class="nt">&lt;/form&gt;</span>
@@ -1194,14 +1266,14 @@
 
 <span class="nt">&lt;script&gt;</span>
 <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<span class="hll">    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#registrationForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">();</span>
-</span><span class="p">});</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#registrationForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">();</span>
+<span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></div>
-                                </div>
+            </div>
 
-                                <div class="tab-pane" id="example-cdn-tab">
+            <div class="tab-pane" id="example-cdn-tab">
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!doctype html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;</span>
@@ -1227,20 +1299,15 @@
 
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </section>
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <script>
 $(document).ready(function() {
-    $('.registerForm').bootstrapValidator({
-        message: 'This value is not valid',
+    $('#registrationForm').bootstrapValidator({
+        // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
@@ -1259,209 +1326,135 @@ $(document).ready(function() {
                         message: 'The username must be more than 6 and less than 30 characters long'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z0-9_]+$/,
-                        message: 'The username can only consist of alphabetical, number and underscore'
+                        regexp: /^[a-zA-Z0-9]+$/,
+                        message: 'The username can only consist of alphabetical and number'
+                    },
+                    different: {
+                        field: 'password',
+                        message: 'The username and password cannot be the same as each other'
                     }
                 }
             },
             email: {
                 validators: {
                     notEmpty: {
-                        message: 'The email is required and cannot be empty'
+                        message: 'The email address is required and cannot be empty'
                     },
                     emailAddress: {
-                        message: 'The input is not a valid email address'
+                        message: 'The email address is not a valid'
+                    }
+                }
+            },
+            password: {
+                validators: {
+                    notEmpty: {
+                        message: 'The password is required and cannot be empty'
+                    },
+                    different: {
+                        field: 'username',
+                        message: 'The password cannot be the same as username'
+                    },
+                    stringLength: {
+                        min: 8,
+                        message: 'The password must have at least 8 characters'
+                    }
+                }
+            },
+            birthday: {
+                validators: {
+                    notEmpty: {
+                        message: 'The date of birth is required'
+                    },
+                    date: {
+                        format: 'YYYY/MM/DD',
+                        message: 'The date of birth is not valid'
+                    }
+                }
+            },
+            gender: {
+                validators: {
+                    notEmpty: {
+                        message: 'The gender is required'
                     }
                 }
             }
         }
     });
-
-    $('#registrationForm')
-        .bootstrapValidator({
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                username: {
-                    message: 'The username is not valid',
-                    validators: {
-                        notEmpty: {
-                            message: 'The username is required and cannot be empty'
-                        },
-                        stringLength: {
-                            min: 6,
-                            max: 30,
-                            message: 'The username must be more than 6 and less than 30 characters long'
-                        },
-                        regexp: {
-                            regexp: /^[a-zA-Z0-9]+$/,
-                            message: 'The username can only consist of alphabetical and number'
-                        },
-                        different: {
-                            field: 'password',
-                            message: 'The username and password cannot be the same as each other'
-                        }
-                    }
-                },
-                email: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The email address is required and cannot be empty'
-                        },
-                        emailAddress: {
-                            message: 'The email address is not a valid'
-                        }
-                    }
-                },
-                password: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The password is required and cannot be empty'
-                        },
-                        different: {
-                            field: 'username',
-                            message: 'The password cannot be the same as username'
-                        },
-                        stringLength: {
-                            min: 8,
-                            message: 'The password must have at least 8 characters'
-                        }
-                    }
-                },
-                birthday: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The date of birth is required'
-                        },
-                        date: {
-                            format: 'YYYY/MM/DD',
-                            message: 'The date of birth is not valid'
-                        }
-                    }
-                },
-                gender: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The gender is required'
-                        }
-                    }
-                }
-            }
-        })
-        .on('success.form.bv', function(e) {
-            e.preventDefault();
-        });
 });
 </script>
+            </div>
 
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-9 col-md-offset-3">
-            <section class="bv-pager">
-                <ul class="pager">
-                    <li class="previous"><a href="/">PREVIOUS</a></li>
-                    <li class="next"><a href="/settings/">NEXT</a></li>
-                </ul>
-            </section>
-
-            <!-- Disqus comment -->
-            
-            <section>
-                <div class="bv-comments">
-                    <h2 id="comments" class="bv-separator"><span>Comments</span></h2>
-
-                    <div class="bv-box bv-box-warning">
-                        <h5><i></i>Don't submit the issue here</h5>
-                        <p>If you want to report a bug, please submit the issue on <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues?state=open">Github</a>. For a general question or feedback, use the form below.</p>
-                    </div>
-
-                    <div id="disqus_thread"></div>
-                    <script type="text/javascript">
-                    var disqus_shortname = 'bootstrapvalidator';
-                    (function() {
-                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                    })();
-                    </script>
-                </div>
-            </section>
-            
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
+            </div>
         </div>
     </div>
 </div>
 
-</div>
-<!-- /main -->
-
-</div>
-
-<!-- footer -->
-<footer class="bv-footer">
+        <footer class="doc-footer">
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <h4>Hire me</h4>
-                <img src="https://avatars.githubusercontent.com/u/4226036?s=50" />
-                <div>If you are looking for a Javascript, <a href="http://jquery.com/">jQuery</a>, <a href="https://angularjs.org/">AngularJS</a>, <a href="http://expressjs.com/">ExpressJS</a>, PHP or <a href="http://framework.zend.com/">Zend Framework</a> guru, feel free to drop me <a href="mailto:phuoc@huuphuoc.me">an email</a> or give me <a href="http://twitter.com/nghuuphuoc">a tweet</a>.</div>
-            </div>
-
-            <div class="col-md-4">
-                <h4>Follow me</h4>
-                <ul>
-                    <li><a href="http://github.com/nghuuphuoc"><i class="fa fa-github"></i> @nghuuphuoc</a></li>
-                    <li><a href="http://twitter.com/nghuuphuoc"><i class="fa fa-twitter"></i> @nghuuphuoc</a></li>
-                    <li><a href="http://twitter.com/bsvalidator"><i class="fa fa-twitter"></i> @bsvalidator</a></li>
-                    <li><a href="https://plus.google.com/u/0/communities/114931136856987817254"><i class="fa fa-google-plus"></i> Google+ community</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-4">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator">Github</a></li>
-                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues">Issues</a></li>
-                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/blob/master/CHANGELOG.md">Change Log</a></li>
-                    <li><a href="/news/releases/">Releases</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <p class="text-center">
-            &copy; 2013 - 2014 Nguyen Huu Phuoc<br/>
-            Code licensed under <a href="http://opensource.org/licenses/mit-license.html">MIT</a>, documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>
+        <p>
+            <a class="btn" href="https://github.com/nghuuphuoc/bootstrapvalidator/issues">Report an issue</a>
+            <a class="btn" href="mailto: phuoc@huuphuoc.me?subject=Commercial support for BootstrapValidator">Commercial support</a>
         </p>
-
-        <p class="text-center">handcrafted with <i class="fa fa-heart"></i> in Vietnam</p>
+        <p>
+            &copy; 2013 - 2014 <a href="http://twitter.com/nghuuphuoc">Nguyen Huu Phuoc</a><br>
+            <a href="https://github.com/nghuuphuoc/bootstrapvalidator">Code</a> licensed under <a href="http://opensource.org/licenses/mit-license.html">MIT</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/tree/docs">documentation</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>
+        </p>
+        <p>handcrafted with <i class="fa fa-heart"></i> in Vietnam</p>
     </div>
 </footer>
-<!-- /footer -->
+    </div>
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=bootstrapvalidatorcom" id="_carbonads_js"></script>
 
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
+<script src="/vendor/tocjs/js/toc.min.js"></script>
 <script>
-$(document).ready(function() {
-    $('.bv-content, .bv-post').find('h1, h2, h3, h4, h5, h6').each(function() {
-        if (!$(this).attr('id')) {
-            return;
-        }
+$(function() {
+    $('[data-toggle="tooltip"]').tooltip();
 
-        var $heading = $(this),
-            $span    =  $heading.find('span'),
-            $anchor  = $('<a/>')
-                            .html('#')
-                            .attr('href', '#' + $heading.attr('id'))
-                            .attr('title', $heading.text())
-                            .hide();
-        ($span.length === 0) ? $anchor.appendTo($heading) : $anchor.insertBefore($span);
-        $heading.hover(function() {
-            $(this).find('a').toggle();
+    $('.doc-logo').on('click', function() {
+        $('body').toggleClass('doc-nav-shown');
+    });
+
+    $('form').each(function() {
+        $(this).on('success.form.bv', function(e) {
+            e.preventDefault();
         });
     });
+
+    // Create table of contents
+    if ($('#toc').length) {
+        $('#toc')
+            .css('max-width', $('#toc').width())
+            .toc({
+                selector: '#main h2, #main h3, #main h4, #main h5, #main h6',
+                elementClass: 'toc',
+                ulClass: 'nav',
+                indexingFormats: '______'
+            });
+
+        var $window = $(window),
+            $body   = $(document.body);
+        $body.scrollspy({
+            target: '#toc'
+        });
+
+        $window.on('load', function() {
+            $body.scrollspy('refresh');
+        });
+
+        setTimeout(function() {
+            var $sideBar = $('#toc');
+            $sideBar.affix({
+                offset: {
+                    top: function() {
+                        return (this.top = $sideBar.offset().top);
+                    }
+                }
+            });
+        }, 100);
+    }
 });
 </script>
 </body>

@@ -1,150 +1,139 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>News - BootstrapValidator</title>
+<title>News - BootstrapValidator</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="BootstrapValidator, a jQuery plugin to validate form fields">
+<meta name="keywords" content="Bootstrap, jQuery, validate, plugin, validator, form">
+<meta name="author" content="Nguyen Huu Phuoc">
+<meta name="google-site-verification" content="uzi08FxE8yqb9q-PlBzFxZeuUGalNFp3gX2haopVWBc" />
 
-    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="BootstrapValidator, a jQuery plugin to validate form fields">
-    <meta name="keywords" content="Bootstrap, jQuery, validate, plugin, validator, form">
-    <meta name="author" content="Nguyen Huu Phuoc">
-    <meta name="google-site-verification" content="uzi08FxE8yqb9q-PlBzFxZeuUGalNFp3gX2haopVWBc" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Cardo:400,400italic,700">
+<link rel="stylesheet" href="/vendor/pygments/github.css">
+<link rel="stylesheet" href="/asset/css/style.css">
 
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css">
-    <link rel="stylesheet" href="/vendor/pygments/github.css">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Merriweather:400,700">
-    <link rel="stylesheet" href="/asset/css/style.css">
+<!--[if lt IE 9]>
+<script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
 
-    <!--[if lt IE 9]>
-    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<script src="//oss.maxcdn.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-    <script src="//oss.maxcdn.com/jquery/1.11.1/jquery.min.js"></script>
-    
-    <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-44786951-2']);
-        _gaq.push(['_trackPageview']);
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-44786951-2']);
+_gaq.push(['_trackPageview']);
 
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
-    
+(function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
 </head>
 <body>
-<!-- Fork ribbon -->
-<a href="https://github.com/nghuuphuoc/bootstrapvalidator"><img style="position: fixed; top: 0; right: 0; border: 0; z-index: 100;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+    <nav class="doc-nav" tabindex="-1">
+    <ul>
+        <li><a href="/">Home</a></li>
+    
+        
+            
+        
+        <li class=""><a href="/getting-started/">Getting Started</a></li>
+    
+        
+            
+        
+        <li class=""><a href="/settings/">Settings</a></li>
+    
+        
+            
+        
+        <li class=""><a href="/validators/">Validators</a></li>
+    
+        
+            
+        
+        <li class=""><a href="/api/">API</a></li>
+    
+        
+            
+        
+        <li class=""><a href="/examples/">Examples</a></li>
+    
+        
+            
+        
+        <li class=""><a href="/developing/">Developing</a></li>
+    
+        
+            
+        
+        <li class="doc-nav-active"><a href="/news/">News</a></li>
+    
+    </ul>
 
-<div class="bv-wrapper">
-    <div class="bv-notification"><i class="fa fa-bell-o"></i> <a href="http://programer.tips" title="Daily tips, tricks and best practices for programmers" target="_blank">programer.tips</a>, another cool thing from <a href="http://twitter.com/nghuuphuoc" target="_blank">@nghuuphuoc</a>!</div>
+    <div class="doc-hr"></div>
 
-    <!-- navbar -->
-    <header class="bv-header">
-        <div class="navbar navbar-default">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/">BootstrapValidator</a>
-                </div>
+    <ul>
+        <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator"><i class="fa fa-github"></i> Github</a></li>
+        <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues"><i class="fa fa-bug"></i> Report issues</a></li>
+        <li><a href="http://twitter.com/bsvalidator"><i class="fa fa-twitter"></i> @bsvalidator</a></li>
+        <li><a href="https://plus.google.com/u/0/communities/114931136856987817254"><i class="fa fa-google-plus"></i> Google+ community</a></li>
+    </ul>
 
-                <div class="navbar-collapse collapse navbar-right">
-                    <ul class="nav navbar-nav">
-                    
-                        
-                            
-                        
-                        <li class=""><a href="/getting-started/">Getting Started</a></li>
-                    
-                        
-                            
-                        
-                        <li class=""><a href="/settings/">Settings</a></li>
-                    
-                        
-                            
-                        
-                        <li class=""><a href="/validators/">Validators</a></li>
-                    
-                        
-                            
-                        
-                        <li class=""><a href="/api/">API</a></li>
-                    
-                        
-                            
-                        
-                        <li class=""><a href="/examples/">Examples</a></li>
-                    
-                        
-                            
-                        
-                        <li class=""><a href="/developing/">Developing</a></li>
-                    
-                        
-                            
-                        
-                        <li class="active"><a href="/news/">News</a></li>
-                    
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
+    <div class="doc-hr"></div>
 
-    <!-- main -->
-<div class="bv-main">
-    <div class="bv-heading">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <h1>News</h1>
-                <p>The latest news about BootstrapValidator</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script");z.type = "text/javascript";z.async = true;z.src = "http://engine.carbonads.com/z/60126/azcarbon_2_1_0_HORIZ";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z, s);</script></div></div>
-                </div>
-            </div>
-        </div>
+    <div class="doc-creator">
+        <p>
+            Handcrafted with <i class="fa fa-heart"></i> in Vietnam<br />
+            by <a href="http://twitter.com/nghuuphuoc">@nghuuphuoc</a><br/>
+            <img src="http://github.com/nghuuphuoc.png" />
+        </p>
+        <p><a href="mailto: phuoc@huuphuoc.me" class="btn">Hire me</a></p>
     </div>
+</nav>
+<button class="btn doc-logo">BV</button>
+
+    <div id="main" class="doc-content-wrapper">
+        <div class="doc-notification">
+    <i class="fa fa-bell-o"></i> <a href="http://programer.tips" title="Daily tips, tricks and best practices for programmers" target="_blank">programer.tips</a>, another cool thing from <a href="http://twitter.com/nghuuphuoc" target="_blank">@nghuuphuoc</a>!
 </div>
 
-<div class="container">
-    
-        <div class="bv-post">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-post-meta">
-                <p><a href="https://github.com/nghuuphuoc" title="@nghuuphuoc"><img src="https://github.com/nghuuphuoc.png" width="80px" height="80px" /></a></p>
-                <p>25 Sep 2014</p>
-                <p>
-                    
-                    <a href="/news/releases/">releases</a>
-                    
-                </p>
-            </div>
-        </div>
+        <div class="doc-content-container">
+    <div class="doc-heading">
+        <h1>News</h1>
+        <p>The latest news about BootstrapValidator</p>
+        <a class="btn doc-edit-btn" href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/docs/news/index.html">Improve it on Github</a>
+    </div>
 
-        <div class="col-md-9">
-            <div class="bv-post-content">
-                <h2><a href="/news/v0.5.2-released/">BootstrapValidator v0.5.2 Released</a></h2>
-                <h3 id="new-features">New features</h3>
-<ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                
+                    <div class="doc-post">
+    <h2><a href="/news/v0.5.2-released/">BootstrapValidator v0.5.2 Released</a></h2>
+
+    <div class="doc-post-meta">
+        <a href="https://github.com/nghuuphuoc" title="@nghuuphuoc">
+            <img src="https://github.com/nghuuphuoc.png" />
+        </a>
+        <p>25 Sep 2014</p>
+    </div>
+
+    <div class="doc-post-content">
+        <h3>New features</h3>
+<ul class="doc-list">
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/480">#480</a>: Add <code>verbose</code> option, thanks to <a href="https://github.com/mbezhanov">@mbezhanov</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/542">#542</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/666">#666</a>: Add blank validator, thanks to <a href="https://github.com/bermo">@bermo</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/617">#617</a>: Add <code>init</code> and <code>destroy</code> methods to validator</li>
@@ -161,13 +150,13 @@
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/867">#867</a>: Add Czech and Slovakia phone number and postal code validators, thanks to <a href="https://github.com/cuchac">@cuchac</a></li>
 </ul>
 
-<h3 id="changes">Changes</h3>
-<ul>
+<h3>Changes</h3>
+<ul class="doc-list">
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/753">#753</a>: Change the default type of <a href="/validators/remote/">remote</a> validator to GET</li>
 </ul>
 
-<h3 id="improvements">Improvements</h3>
-<ul>
+<h3>Improvements</h3>
+<ul class="doc-list">
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/249">#249</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/574">#574</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/669">#669</a>: Add <code>delay</code> option to the <a href="/validators/remote/">remote</a> validator, thanks to <a href="https://github.com/q-state">@q-state</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/345">#345</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/454">#454</a>: The <a href="/validators/different/">different</a> validator allows more than a 2-way comparison, thanks to <a href="https://github.com/AlaskanShade">@AlaskanShade</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/557">#557</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/569">#569</a>: The <a href="/settings/#form-container">container</a> option can be defined by a callback, thanks to <a href="https://github.com/mattrick">@mattrick</a></li>
@@ -184,8 +173,8 @@
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/824">#824</a>: Add <a href="/validators/phone/">phone</a> number validator test suite</li>
 </ul>
 
-<h3 id="bug-fixes">Bug fixes</h3>
-<ul>
+<h3>Bug fixes</h3>
+<ul class="doc-list">
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/611">#611</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/703">#703</a>: Tabs get red even form is valid</li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/612">#612</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/740">#740</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/741">#741</a>: Fix the <a href="/validators/emailAddress/">emailAddress</a> issue which email@server is not valid email address, thanks to <a href="https://github.com/kromit">@kromit</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/687">#687</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/711">#711</a>: Keep disabled validators VALID, thanks to <a href="https://github.com/talberti">@talberti</a></li>
@@ -200,15 +189,15 @@
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/832">#832</a>: The form won't be validated if the submit button contains a HTML tag</li>
 </ul>
 
-<h3 id="document">Document</h3>
-<ul>
+<h3>Document</h3>
+<ul class="doc-list">
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/709">#709</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/715">#715</a>: Add <a href="/examples/bootstrap-select/">Bootstrap Select</a> and <a href="/examples/select2/">Select2</a> examples, thanks to <a href="https://github.com/Arkni">@Arkni</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/855">#855</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/858">#858</a>: Add <a href="/examples/tinymce/">TinyMCE</a> example, thanks to <a href="https://github.com/Arkni">@Arkni</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/859">#859</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/862">#862</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/865">#865</a>: Add <a href="/examples/tooltip-popover-position/">Changing tooltip/popover position</a> example, thanks to <a href="https://github.com/Arkni">@Arkni</a></li>
 </ul>
 
-<h3 id="language-packages">Language Packages</h3>
-<ul>
+<h3>Language packages</h3>
+<ul class="doc-list">
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/706">#706</a>: Japanese language package, thanks to <a href="https://github.com/tsuyoshifujii">@tsuyoshifujii</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/712">#712</a>: Swedish language package, thanks to <a href="https://github.com/ulsa">@ulsa</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/727">#727</a>: Belgium (French) language package, thanks to <a href="https://github.com/neilime">@neilime</a></li>
@@ -224,9 +213,10 @@
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/868">#868</a>: Indonesian language package, thanks to <a href="https://github.com/egig">@egig</a></li>
 </ul>
 
-<h3 id="upgrade">Upgrade from v0.5.x to v0.5.2</h3>
+<h3>Upgrade from v0.5.x to v0.5.2</h3>
 <p>If you don't use the <a href="/validators/remote/">remote</a> validator, just download v0.5.2 package and override the CSS/JS bundle.</p>
 <p>Otherwise, please indicate the <code>type</code> option when using <a href="/validators/remote/">remote</a> validator:</p>
+
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nx">form</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
     <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
         <span class="nx">username</span><span class="o">:</span> <span class="p">{</span>
@@ -237,16 +227,16 @@
                 <span class="nx">remote</span><span class="o">:</span> <span class="p">{</span>
                     <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The username is not available&#39;</span><span class="p">,</span>
                     <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/path/to/backend/&#39;</span><span class="p">,</span>
-<span class="hll">                    <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span>     <span class="c1">// or &#39;POST&#39;</span>
-</span>                <span class="p">}</span>
+                    <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span>     <span class="c1">// or &#39;POST&#39;</span>
+                <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span></code></pre></div>
 
-<h3 id="contributors">Contributors</h3>
+<h3>Contributors</h3>
 <p>Thanks to 30 contributors:</p>
-<ul>
+<ul class="doc-list">
     <li><a href="https://github.com/adrian-dks">@adrian-dks</a></li>
     <li><a href="https://github.com/AlaskanShade">@AlaskanShade</a></li>
     <li><a href="https://github.com/Arkni">@Arkni</a></li>
@@ -279,37 +269,29 @@
     <li><a href="https://github.com/ulsa">@ulsa</a></li>
 </ul>
 
-<h3 id="download">Download</h3>
+<h3>Download</h3>
 <div>
-    <a class="btn btn-primary btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.5.2/bootstrapvalidator-dist-0.5.2.zip">bootstrapvalidator-dist-0.5.2.zip</a>
-    <a class="btn btn-default btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.5.2.zip">v0.5.2 Source Code</a>
+    <a class="btn btn-primary" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.5.2/bootstrapvalidator-dist-0.5.2.zip">bootstrapvalidator-dist-0.5.2.zip</a>
+    <a class="btn btn-default" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.5.2.zip">v0.5.2 Source Code</a>
 </div>
-
-            </div>
-        </div>
     </div>
 </div>
 
-    
-        <div class="bv-post">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-post-meta">
-                <p><a href="https://github.com/nghuuphuoc" title="@nghuuphuoc"><img src="https://github.com/nghuuphuoc.png" width="80px" height="80px" /></a></p>
-                <p>22 Aug 2014</p>
-                <p>
-                    
-                    <a href="/news/releases/">releases</a>
-                    
-                </p>
-            </div>
-        </div>
+                    <div class="doc-hr"></div>
+                
+                    <div class="doc-post">
+    <h2><a href="/news/v0.5.1-released/">BootstrapValidator v0.5.1 Released</a></h2>
 
-        <div class="col-md-9">
-            <div class="bv-post-content">
-                <h2><a href="/news/v0.5.1-released/">BootstrapValidator v0.5.1 Released</a></h2>
-                <h3 id="new-features">New features</h3>
-<ul>
+    <div class="doc-post-meta">
+        <a href="https://github.com/nghuuphuoc" title="@nghuuphuoc">
+            <img src="https://github.com/nghuuphuoc.png" />
+        </a>
+        <p>22 Aug 2014</p>
+    </div>
+
+    <div class="doc-post-content">
+        <h3>New features</h3>
+<ul class="doc-list">
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/218">#218</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/531">#531</a>: Add meid validator, thanks to <a href="https://github.com/troymccabe">@troymccabe</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/267">#267</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/532">#532</a>: Add imo validator, thanks to <a href="https://github.com/troymccabe">@troymccabe</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/510">#510</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/646">#646</a>: Add French <a href="/validators/phone/">phone number</a> validator, thanks to <a href="https://github.com/dlucazeau">@dlucazeau</a></li>
@@ -323,8 +305,8 @@
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/650">#650</a>: Add Brazilian <a href="/validators/vat/">VAT</a> number validator, thanks to <a href="https://github.com/fhferreira">@fhferreira</a></li>
 </ul>
 
-<h3 id="improvements">Improvements</h3>
-<ul>
+<h3>Improvements</h3>
+<ul class="doc-list">
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/502">#502</a>: Allowing sites without TLD to pass URI validation, thanks to <a href="https://github.com/troymccabe">@troymccabe</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/549">#549</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/600">#600</a>: Change the CSS/JS path in <code>demo/remote.html</code> and <code>demo/message.html</code>, thanks to <a href="https://github.com/leegtang">@leegtang</a>, <a href="https://github.com/Arkni">@Arkni</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/604">#604</a>: Fix the <code>demo/date.html</code> and <code>demo/tab.html</code> examples, thanks to <a href="https://github.com/Arkni">@Arkni</a></li>
@@ -335,8 +317,8 @@
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/698">#698</a>: Ignore type checking if the file type is empty</li>
 </ul>
 
-<h3 id="bug-fixes">Bug fixes</h3>
-<ul>
+<h3>Bug fixes</h3>
+<ul class="doc-list">
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/284">#284</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/294">#294</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/441">#441</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/516">#516</a>: The HTML 5 <code>&lt;input type="number" /&gt;</code> input allows to input non-digits characters</li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/548">#548</a>: Fix the issue when using <a href="/validators/different/">different</a> validator to compare with not existing field</li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/550">#550</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/551">#551</a>: Cannot validate against both ipv4 and ipv6 at the same time, thanks to <a href="https://github.com/beeglebug">@beeglebug</a></li>
@@ -348,16 +330,13 @@
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/700">#700</a>: The <a href="/validators/between/">between</a>, <a href="/validators/greaterThan/">greaterThan</a>, <a href="/validators/lessThan/">lessThan</a> validators accept param which isn't number</li>
 </ul>
 
-<h3 id="language-packages">Language Packages</h3>
-<ul>
+<h3>Language packages</h3>
+<ul class="doc-list">
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/396">#396</a>: German language package, thanks to <a href="https://github.com/logemann">@logemann</a></li>
+    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/400">#400</a>: Italian language package, thanks to <a href="https://github.com/maramazza">@maramazza</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/474">#474</a>: Hungarian language package, thanks to <a href="https://github.com/blackfyre">@blackfyre</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/478">#478</a>: Simplified and traditional Chinese language package, thanks to <a href="https://github.com/tureki">@tureki</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/494">#494</a>: Chilean Spanish language package, thanks to <a href="https://github.com/marceloampuerop6">@marceloampuerop6</a></li>
-</ul>
-
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/400">#400</a>: Italian language package, thanks to <a href="https://github.com/maramazza">@maramazza</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/503">#503</a>: French language package, thanks to <a href="https://github.com/dlucazeau">@dlucazeau</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/505">#505</a>: Czech language package, thanks to <a href="https://github.com/AdwinTrave">@AdwinTrave</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/507">#507</a>: Polish language package, thanks to <a href="https://github.com/grzesiek">@grzesiek</a>. <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/624">#624</a>: Typos fixed by <a href="https://github.com/lukaszbanasiak">@lukaszbanasiak</a></li>
@@ -372,9 +351,9 @@
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/679">#679</a>: Add Arabic language package, thanks to <a href="https://github.com/Arkni">@Arkni</a></li>
 </ul>
 
-<h3 id="contributors">Contributors</h3>
+<h3>Contributors</h3>
 <p>Thank to the contributor:</p>
-<ul>
+<ul class="doc-list">
     <li><a href="https://github.com/abuzer">@abuzer</a></li>
     <li><a href="https://github.com/AdwinTrave">@AdwinTrave</a></li>
     <li><a href="https://github.com/Arkni">@Arkni</a></li>
@@ -401,50 +380,44 @@
     <li><a href="https://github.com/vadail">@vadail</a></li>
 </ul>
 
-<h3 id="download">Download</h3>
+<h3>Download</h3>
 <div>
-    <a class="btn btn-primary btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.5.1/bootstrapvalidator-dist-0.5.1.zip">bootstrapvalidator-dist-0.5.1.zip</a>
-    <a class="btn btn-default btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.5.1.zip">v0.5.1 Source Code</a>
+    <a class="btn btn-primary" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.5.1/bootstrapvalidator-dist-0.5.1.zip">bootstrapvalidator-dist-0.5.1.zip</a>
+    <a class="btn btn-default" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.5.1.zip">v0.5.1 Source Code</a>
 </div>
-
-            </div>
-        </div>
     </div>
 </div>
 
-    
-        <div class="bv-post">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-post-meta">
-                <p><a href="https://github.com/nghuuphuoc" title="@nghuuphuoc"><img src="https://github.com/nghuuphuoc.png" width="80px" height="80px" /></a></p>
-                <p>14 Jul 2014</p>
-                <p>
-                    
-                    <a href="/news/releases/">releases</a>
-                    
-                </p>
-            </div>
-        </div>
+                    <div class="doc-hr"></div>
+                
+                    <div class="doc-post">
+    <h2><a href="/news/upgrading-to-v0.5.0/">Upgrading to v0.5.0</a></h2>
 
-        <div class="col-md-9">
-            <div class="bv-post-content">
-                <h2><a href="/news/upgrading-to-v0.5.0/">Upgrading to v0.5.0</a></h2>
-                <p>From v0.5.0, we remove the <code>submitHandler</code> option. In v0.5.0, use the <a href="/settings/#event-form">success.form.bv</a> event instead.</p>
+    <div class="doc-post-meta">
+        <a href="https://github.com/nghuuphuoc" title="@nghuuphuoc">
+            <img src="https://github.com/nghuuphuoc.png" />
+        </a>
+        <p>14 Jul 2014</p>
+    </div>
+
+    <div class="doc-post-content">
+        <p>From v0.5.0, we remove the <code>submitHandler</code> option. In v0.5.0, use the <a href="/settings/#event-form">success.form.bv</a> event instead.</p>
 <p>In v0.4.5 and earlier versions:</p>
+
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nx">form</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
-<span class="hll">    <span class="nx">submitHandler</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">form</span><span class="p">,</span> <span class="nx">validator</span><span class="p">,</span> <span class="nx">submitButton</span><span class="p">)</span> <span class="p">{</span>
-</span>        <span class="p">...</span>
+    <span class="nx">submitHandler</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">form</span><span class="p">,</span> <span class="nx">validator</span><span class="p">,</span> <span class="nx">submitButton</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">...</span>
     <span class="p">}</span>
 <span class="p">});</span></code></pre></div>
 
 <p>In v0.5.0:</p>
+
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nx">form</span><span class="p">)</span>
     <span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
-<span class="hll">        <span class="c1">// Removing submitHandler option</span>
-</span>    <span class="p">})</span>
-<span class="hll">    <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;success.form.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-</span>        <span class="c1">// Prevent form submission</span>
+        <span class="c1">// Removing submitHandler option</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;success.form.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Prevent form submission</span>
         <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
 
         <span class="kd">var</span> <span class="nx">$form</span>        <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">),</span>
@@ -454,64 +427,56 @@
         <span class="c1">// Do whatever you want here ...</span>
     <span class="p">});</span></code></pre></div>
 
-<h3 id="download">Download</h3>
+<h3>Download</h3>
 <div>
-    <a class="btn btn-primary btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.5.0/bootstrapvalidator-dist-0.5.0.zip">bootstrapvalidator-dist-0.5.0.zip</a>
-    <a class="btn btn-default btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.5.0.zip">v0.5.0 Source Code</a>
+    <a class="btn btn-primary" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.5.0/bootstrapvalidator-dist-0.5.0.zip">bootstrapvalidator-dist-0.5.0.zip</a>
+    <a class="btn btn-default" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.5.0.zip">v0.5.0 Source Code</a>
 </div>
-
-            </div>
-        </div>
     </div>
 </div>
 
-    
-        <div class="bv-post">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-post-meta">
-                <p><a href="https://github.com/nghuuphuoc" title="@nghuuphuoc"><img src="https://github.com/nghuuphuoc.png" width="80px" height="80px" /></a></p>
-                <p>14 Jul 2014</p>
-                <p>
-                    
-                    <a href="/news/releases/">releases</a>
-                    
-                </p>
-            </div>
-        </div>
+                    <div class="doc-hr"></div>
+                
+                    <div class="doc-post">
+    <h2><a href="/news/v0.5.0-released/">BootstrapValidator v0.5.0 Released</a></h2>
 
-        <div class="col-md-9">
-            <div class="bv-post-content">
-                <h2><a href="/news/v0.5.0-released/">BootstrapValidator v0.5.0 Released</a></h2>
-                <h3 id="new-features">New features</h3>
+    <div class="doc-post-meta">
+        <a href="https://github.com/nghuuphuoc" title="@nghuuphuoc">
+            <img src="https://github.com/nghuuphuoc.png" />
+        </a>
+        <p>14 Jul 2014</p>
+    </div>
+
+    <div class="doc-post-content">
+        <h3>New features</h3>
 <p><i class="fa fa-star"></i> <strong>Error message</strong></p>
-<ul>
+<ul class="doc-list">
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/2">#2</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/387">#387</a>: Provide the default message</li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/93">#93</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/385">#385</a>: Support translating error messages</li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/282">#282</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/347">#347</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/465">#465</a>: Support <a href="/settings/#dynamic-message">dynamic message</a></li>
 </ul>
 
 <p><i class="fa fa-star"></i> <strong>Events</strong></p>
-<ul>
+<ul class="doc-list">
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/121">#121</a>: Add events for <a href="/settings/#event-form">form</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/195">#195</a>: Add events for <a href="/settings/#event-field">field</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/324">#324</a>: Add events for <a href="/settings/#validator-field">validator</a></li>
 </ul>
 
 <p><i class="fa fa-star"></i> <strong>Support <a href="/settings/#dynamic-option">dynamic option</a></strong></p>
-<ul>
+<ul class="doc-list">
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/430">#430</a>: <a href="/validators/between/">between</a>, <a href="/validators/greaterThan/">greaterThan</a>, <a href="/validators/lessThan/">lessThan</a> add support for comparing to other field, return value of a callback function</li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/447">#447</a>: <a href="/validators/zipCode/">zipCode validator</a> allow to set the country code via another field or callback, thanks to <a href="https://github.com/AlaskanShade">@AlaskanShade</a></li>
 </ul>
 
 <p><i class="fa fa-star"></i> <strong>Support dynamic fields</strong></p>
-<ul>
+<ul class="doc-list">
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/125">#125</a>: Support dynamic fields</li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/130">#130</a>: Add <a href="/api/#add-field">addField()</a> and <a href="/api/#remove-field">removeField()</a> methods for managing dynamic fields, thanks to <a href="https://github.com/jcnmulio">@jcnmulio</a></li>
 </ul>
 
 <p><strong>New options</strong></p>
-<ul>
+<ul class="doc-list">
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/164">#164</a>: Add <a href="/settings/#form-container">container</a> option for indicating the element showing all errors</li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/175">#175</a>: Showing errors in <a href="/settings/#form-container">tooltip or popover</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/297">#297</a>: Add <a href="/settings/#field-feedback-icons">feedbackIcons</a> option to enabled/disable feedback icons for particular fields</li>
@@ -521,7 +486,7 @@
 </ul>
 
 <p><strong>New APIs</strong></p>
-<ul>
+<ul class="doc-list">
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/211">#211</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/235">#235</a>: Add <a href="/api/#get-invalid-fields">getInvalidFields()</a> method that returns all invalid fields</li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/275">#275</a>: Add <a href="/api/#destroy">destroy()</a> method</li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/316">#316</a>: Add <a href="/api/#is-valid-container">isValidContainer()</a> method</li>
@@ -533,21 +498,21 @@
 </ul>
 
 <p><strong>Misc</strong></p>
-<ul>
+<ul class="doc-list">
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/320">#320</a>: Add <code>separator</code> option for the <a href="/validators/date/">date validator</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/332">#332</a>: Add UK phone number support for the <a href="/validators/phone/">phone validator</a>, thanks to <a href="https://github.com/aca02djr">@aca02djr</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/336">#336</a>: Add <code>$field</code> instance to the <a href="/validators/callback/">callback validator</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/374">#374</a>: Add Singapore postal code for the <a href="/validators/zipCode/">zipCode validator</a>, thanks to <a href="https://github.com/thisisclement">@thisisclement</a></li>
 </ul>
 
-<h3 id="changes">Changes</h3>
-<ul>
+<h3>Changes</h3>
+<ul class="doc-list">
     <li><code>$.fn.bootstrapValidator.helpers</code> renames <code>mod_11_10</code> to <code>mod11And10</code>, <code>mod_37_36</code> to <code>mod37And36</code></li>
     <li>Remove <code>submitHandler</code> option. See <a href="/news/upgrading-to-v0.5.0/">upgrading to v0.5.0</a> guide.</li>
 </ul>
 
-<h3 id="improvements">Improvements</h3>
-<ul>
+<h3>Improvements</h3>
+<ul class="doc-list">
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/244">#244</a>: Only enable the submit buttons if all fields are valid, thanks to <a href="https://github.com/smeagol74">@smeagol74</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/262">#262</a>: Improve the <a href="/api/#update-status">updateStatus()</a> method. The plugin now doesn't show the errors, feedback icons of given field if there are uncompleted validators</li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/274">#274</a>: Fix feedback icons in <code>input-group</code>, thanks to <a href="https://github.com/tiagofontella">@tiagofontella</a></li>
@@ -565,8 +530,8 @@
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/456">#456</a>: Adjust the feedback icon position for <code>.input-group</code> element</li>
 </ul>
 
-<h3 id="bug-fixes">Bug fixes</h3>
-<ul>
+<h3>Bug fixes</h3>
+<ul class="doc-list">
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/288">#288</a>: Fix <a href="/validators/date/">date validator</a> issue on IE8</li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/292">#292</a>: Fix identical validator issue with not clearing <code>has-error</code> class, thanks to <a href="https://github.com/alavers">@alavers</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/305">#305</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/306">#306</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/307">#307</a>: Fix <code>inclusive</code> option in the <a href="/validators/between/">between</a>, <a href="/validators/greaterThan/">greaterThan</a> and <a href="/validators/lessThan/">lessThan</a> validators, thanks to <a href="https://github.com/johanronn77">@johanronn77</a></li>
@@ -590,16 +555,16 @@
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/492">#492</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/493">#493</a>: Fixed Chilean ID (RUT/RUN) finished in 'K' or 'k', thanks to <a href="https://github.com/marceloampuerop6">@marceloampuerop6</a></li>
 </ul>
 
-<h3 id="language-packages"><i class="fa fa-star"></i> Language Packages</h3>
-<ul>
+<h3><i class="fa fa-star"></i> Language packages</h3>
+<ul class="doc-list">
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/396">#396</a>: German language package, thanks to <a href="https://github.com/logemann">@logemann</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/474">#474</a>: Hungarian language package, thanks to <a href="https://github.com/blackfyre">@blackfyre</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/478">#478</a>: Simplified and traditional Chinese language package, thanks to <a href="https://github.com/tureki">@tureki</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/494">#494</a>: Chilean Spanish language package, thanks to <a href="https://github.com/marceloampuerop6">@marceloampuerop6</a></li>
 </ul>
 
-<h3 id="document">Document</h3>
-<ul>
+<h3>Document</h3>
+<ul class="doc-list">
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/259">#259</a>: Typo "Support almost Bootstrap forms", thanks to <a href="https://github.com/lloydde">@lloydde</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/261">#261</a>: English fix to 'amazing contributors' section, thanks to <a href="https://github.com/lloydde">@lloydde</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/278">#278</a>: Update the <a href="/validators/choice/">choice validator</a> document, thanks to <a href="https://github.com/MrC0mm0n">@MrC0mm0n</a></li>
@@ -612,9 +577,9 @@
 <h3 id="upgrading">Upgrading to v0.5.0</h3>
 <p>See <a href="/news/upgrading-to-v0.5.0/">upgrading to v0.5.0</a> guide.</p>
 
-<h3 id="contributors">Contributors</h3>
+<h3>Contributors</h3>
 <p>Thank to the contributor:</p>
-<ul>
+<ul class="doc-list">
     <li><a href="https://github.com/aca02djr">@aca02djr</a></li>
     <li><a href="https://github.com/AlaskanShade">@AlaskanShade</a></li>
     <li><a href="https://github.com/alavers">@alavers</a></li>
@@ -639,37 +604,29 @@
     <li><a href="https://github.com/tureki">@tureki</a></li>
 </ul>
 
-<h3 id="download">Download</h3>
+<h3>Download</h3>
 <div>
-    <a class="btn btn-primary btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.5.0/bootstrapvalidator-dist-0.5.0.zip">bootstrapvalidator-dist-0.5.0.zip</a>
-    <a class="btn btn-default btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.5.0.zip">v0.5.0 Source Code</a>
+    <a class="btn btn-primary" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.5.0/bootstrapvalidator-dist-0.5.0.zip">bootstrapvalidator-dist-0.5.0.zip</a>
+    <a class="btn btn-default" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.5.0.zip">v0.5.0 Source Code</a>
 </div>
-
-            </div>
-        </div>
     </div>
 </div>
 
-    
-        <div class="bv-post">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-post-meta">
-                <p><a href="https://github.com/nghuuphuoc" title="@nghuuphuoc"><img src="https://github.com/nghuuphuoc.png" width="80px" height="80px" /></a></p>
-                <p>15 May 2014</p>
-                <p>
-                    
-                    <a href="/news/releases/">releases</a>
-                    
-                </p>
-            </div>
-        </div>
+                    <div class="doc-hr"></div>
+                
+                    <div class="doc-post">
+    <h2><a href="/news/v0.4.5-released/">BootstrapValidator v0.4.5 Released</a></h2>
 
-        <div class="col-md-9">
-            <div class="bv-post-content">
-                <h2><a href="/news/v0.4.5-released/">BootstrapValidator v0.4.5 Released</a></h2>
-                <h3 id="new-features">New features</h3>
-<ul>
+    <div class="doc-post-meta">
+        <a href="https://github.com/nghuuphuoc" title="@nghuuphuoc">
+            <img src="https://github.com/nghuuphuoc.png" />
+        </a>
+        <p>15 May 2014</p>
+    </div>
+
+    <div class="doc-post-content">
+        <h3>New features</h3>
+<ul class="doc-list">
     <li>Add <code>$.fn.bootstrapValidator.helpers.date</code> for validating a date, re-used in <a href="/validators/date/">date</a>, <a href="/validators/id/">id</a>, <a href="/validators/vat/">vat</a> validators</li>
     <li><i class="fa fa-star"></i> <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/232">#232</a>: Add <a href="/validators/id/">id validator</a>, support 25 countries</li>
     <li><i class="fa fa-star"></i> <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/233">#233</a>: Add <a href="/settings/#form-threshold"><code>threshold</code> option</a></li>
@@ -680,15 +637,15 @@
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/252">#252</a>: Add <a href="/validators/sedol/">sedol (Stock Exchange Daily Official List) validator</a></li>
 </ul>
 
-<h3 id="improvements">Improvements</h3>
-<ul>
+<h3>Improvements</h3>
+<ul class="doc-list">
     <li>The <a href="/validators/zipCode/">zipCode validator</a> adds support for Italian, Dutch postcodes</li>
     <li>Change default <code>submitButtons</code> to <code>[type="submit"]</code> to support <code>input type="submit"</code></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/245">#245</a>: The <a href="/validators/cvv/">cvv validator</a> should support spaces in credit card, thanks to <a href="https://github.com/evilchili">@evilchili</a></li>
 </ul>
 
-<h3 id="bug-fixes">Bug fixes</h3>
-<ul>
+<h3>Bug fixes</h3>
+<ul class="doc-list">
     <li>Fix the issue that the hidden fields generated by other plugins might not be validated</li>
     <li>When parsing options from HTML attributes, don't add the field which hasn't validators. It improves fixes for <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/191">#191</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/223">#223</a></li>
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/226">#226</a>: Fix the conflict issue with MooTools</li>
@@ -697,913 +654,101 @@
     <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/257">#257</a>: Plugin method invocation don't work</li>
 </ul>
 
-<h3 id="contributors">Contributors</h3>
+<h3>Contributors</h3>
 <p>Thank to the contributor:</p>
-<ul>
+<ul class="doc-list">
     <li><a href="https://github.com/evilchili">@evilchili</a></li>
 </ul>
 
-<h3 id="download">Download</h3>
+<h3>Download</h3>
 <div>
-    <a class="btn btn-primary btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.4.5/bootstrapvalidator-dist-0.4.5.zip">bootstrapvalidator-dist-0.4.5.zip</a>
-    <a class="btn btn-default btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.4.5.zip">v0.4.5 Source Code</a>
+    <a class="btn btn-primary" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.4.5/bootstrapvalidator-dist-0.4.5.zip">bootstrapvalidator-dist-0.4.5.zip</a>
+    <a class="btn btn-default" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.4.5.zip">v0.4.5 Source Code</a>
+</div>
+    </div>
 </div>
 
+                    <div class="doc-hr"></div>
+                
+
+                <div class="doc-pagination">
+                    
+                        <a href="/news/page2" class="doc-pagination-older">Older</a>
+                    
+
+                    
+                        <span class="doc-pagination-newer">Newer</span>
+                    
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-    
-        <div class="bv-post">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-post-meta">
-                <p><a href="https://github.com/nghuuphuoc" title="@nghuuphuoc"><img src="https://github.com/nghuuphuoc.png" width="80px" height="80px" /></a></p>
-                <p>05 May 2014</p>
-                <p>
-                    
-                    <a href="/news/releases/">releases</a>
-                    
-                </p>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-post-content">
-                <h2><a href="/news/v0.4.4-released/">BootstrapValidator v0.4.4 Released</a></h2>
-                <h3 id="new-features">New features</h3>
-<ul>
-    <li>Add <code>$.fn.bootstrapValidator.helpers.mod_11_10</code> method that implements modulus 11, 10 (ISO 7064) algorithm. The helper is then reused in validating <a href="/validators/vat/">German and Croatian VAT</a> numbers</li>
-    <li>Add <code>$.fn.bootstrapValidator.helpers.mod_37_36</code> method that implements modulus 37, 36 (ISO 7064) algorithm, used in <a href="/validators/grid/">GRid</a> validator</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/213">#213</a>: Add <a href="/validators/ean/">ean (International Article Number)</a> validator</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/214">#214</a>: Add <a href="/validators/grid/">grid (Global Release Identifier)</a> validator</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/215">#215</a>: Add <a href="/validators/imei/">imei (International Mobile Station Equipment Identity)</a> validator</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/216">#216</a>: Add <a href="/validators/ismn/">ismn (International Standard Music Number)</a> validator</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/217">#217</a>: Add <a href="/validators/issn/">issn (International Standard Serial Number)</a> validator</li>
-</ul>
-
-<h3 id="improvements">Improvements</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/191">#191</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/223">#223</a>: Support using both the <code>name</code> attribute and <code>selector</code> option for field</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/206">#206</a>: Indicate success/error tab</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/220">#220</a>: Add UK postcode support for the <a href="/validators/zipCode/">zipCode validator</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/229">#229</a>: The <a href="/validators/date/">date validator</a> supports seconds</li>
-</ul>
-
-<h3 id="bug-fixes">Bug fixes</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/231">#231</a>: Wrong prefix of Laser credit card number</li>
-</ul>
-
-<h3 id="download">Download</h3>
-<div>
-    <a class="btn btn-primary btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.4.4/bootstrapvalidator-dist-0.4.4.zip">bootstrapvalidator-dist-0.4.4.zip</a>
-    <a class="btn btn-default btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.4.4.zip">v0.4.4 Source Code</a>
-</div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-        <div class="bv-post">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-post-meta">
-                <p><a href="https://github.com/nghuuphuoc" title="@nghuuphuoc"><img src="https://github.com/nghuuphuoc.png" width="80px" height="80px" /></a></p>
-                <p>26 Apr 2014</p>
-                <p>
-                    
-                    <a href="/news/releases/">releases</a>
-                    
-                </p>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-post-content">
-                <h2><a href="/news/v0.4.3-released/">BootstrapValidator v0.4.3 Released</a></h2>
-                <h3 id="new-features">New features</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/77">#77</a>: Add <a href="/validators/file/">file validator</a></li>
-    <li><i class="fa fa-star"></i> <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/179">#179</a>: Add <a href="/validators/vat/">vat validator</a>, support 32 countries</li>
-</ul>
-
-<h3 id="improvements">Improvements</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/198">#198</a>: Add Canadian Postal Code support for the <a href="/validators/zipCode/">zipCode validator</a>, thanks to <a href="https://github.com/Francismori7">@Francismori7</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/201">#201</a>: The <a href="/validators/choice/">choice validator</a> supports <code>select</code> element</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/202">#202</a>: Activate tab containing the first invalid field</li>
-</ul>
-
-<h3 id="bug-fixes">Bug fixes</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/205">#205</a>: Plugin method invocation</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/207">#207</a>: IE8 error</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/209">#209</a>: The <a href="/settings/#form-excluded"><code>excluded: ':disabled'</code> setting</a> does not work on IE 8, thanks to <a href="https://github.com/adgrafik">@adgrafik</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/210">#210</a>: The <a href="/validators/isbn/">isbn validator</a> accepts letters and special characters</li>
-</ul>
-
-<h3 id="document">Document</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/199">#199</a>: Update the <a href="/validators/zipCode/">zipCode validator</a> document, thanks to <a href="https://github.com/Francismori7">@Francismori7</a></li>
-</ul>
-
-<h3 id="contributors">Contributors</h3>
-<p>Thank to the contributors:</p>
-<ul>
-    <li><a href="https://github.com/adgrafik">@adgrafik</a></li>
-    <li><a href="https://github.com/Francismori7">@Francismori7</a></li>
-</ul>
-
-<h3 id="download">Download</h3>
-<div>
-    <a class="btn btn-primary btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.4.3/bootstrapvalidator-dist-0.4.3.zip">bootstrapvalidator-dist-0.4.3.zip</a>
-    <a class="btn btn-default btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.4.3.zip">v0.4.3 Source Code</a>
-</div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-        <div class="bv-post">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-post-meta">
-                <p><a href="https://github.com/nghuuphuoc" title="@nghuuphuoc"><img src="https://github.com/nghuuphuoc.png" width="80px" height="80px" /></a></p>
-                <p>19 Apr 2014</p>
-                <p>
-                    
-                    <a href="/news/releases/">releases</a>
-                    
-                </p>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-post-content">
-                <h2><a href="/news/v0.4.2-released/">BootstrapValidator v0.4.2 Released</a></h2>
-                <h3 id="new-features">New features</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/168">#168</a>: Add <a href="/validators/siren/">siren</a> and <a href="/validators/siret/">siret</a> validators, thanks to <a href="https://github.com/jswale">@jswale</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/177">#177</a>: Add <a href="/validators/vin/">vin validator</a></li>
-    <li><i class="fa fa-star"></i> <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/184">#184</a>: Add <a href="/settings/#form-excluded"><code>excluded</code> option</a></li>
-</ul>
-
-<h3 id="improvements">Improvements</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/171">#171</a>: The <a href="/validators/phone/">phone validator</a> now supports +1 country code and area code for US phone number, thanks to <a href="https://github.com/tomByrer">@tomByrer</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/173">#173</a>: The <a href="/validators/remote/">remote validator</a> allows to override <code>name</code> option, thanks to <a href="https://github.com/jswale">@jswale</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/182">#182</a>: Improve <a href="/validators/zipCode/">zipCode validator</a>, thanks to <a href="https://github.com/gercheq">@gercheq</a></li>
-</ul>
-
-<h3 id="bug-fixes">Bug fixes</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/178">#178</a>: Do not validate fields that <code>enabled</code> is set to <code>false</code>, thanks to <a href="https://github.com/henningda">@henningda</a></li>
-</ul>
-
-<h3 id="document">Document</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/169">#169</a>: Better to say: <code>{validatorname}</code> and <code>{validatoroption}</code> must be lowercase, thanks to <a href="https://github.com/tomByrer">@tomByrer</a></li>
-</ul>
-
-<h3 id="contributors">Contributors</h3>
-<p>Thank to the contributors:</p>
-<ul>
-    <li><a href="https://github.com/gercheq">@gercheq</a></li>
-    <li><a href="https://github.com/henningda">@henningda</a></li>
-    <li><a href="https://github.com/jswale">@jswale</a></li>
-    <li><a href="https://github.com/tomByrer">@tomByrer</a></li>
-</ul>
-
-<h3 id="download">Download</h3>
-<div>
-    <a class="btn btn-primary btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.4.2/bootstrapvalidator-dist-0.4.2.zip">bootstrapvalidator-dist-0.4.2.zip</a>
-    <a class="btn btn-default btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.4.2.zip">v0.4.2 Source Code</a>
-</div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-        <div class="bv-post">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-post-meta">
-                <p><a href="https://github.com/nghuuphuoc" title="@nghuuphuoc"><img src="https://github.com/nghuuphuoc.png" width="80px" height="80px" /></a></p>
-                <p>12 Apr 2014</p>
-                <p>
-                    
-                    <a href="/news/releases/">releases</a>
-                    
-                </p>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-post-content">
-                <h2><a href="/news/v0.4.1-released/">BootstrapValidator v0.4.1 Released</a></h2>
-                <p>From this version, the plugin is <a href="http://plugins.jquery.com/bootstrapValidator/">available</a> on <a href="http://plugins.jquery.com/">jQuery plugins site</a>.</p>
-
-<h3 id="improvements">Improvements</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/106">#106</a>: Prevent the <a href="/api/#validate"><code>validate()</code> method</a> from submit the form automatically. So we can call <a href="/api/#validate"><code>validate()</code> method</a> to validate the form</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/131">#131</a>: Doesn't trigger validation on the first focus</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/145">#145</a>: The row state is now only marked as success if all fields on it are valid</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/157">#157</a>: Added support for element outside of form using the <a href="/settings/#field-selector"><code>selector</code> option</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/159">#159</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/163">#163</a>: User doesn't need to submit the form twice when remote validator complete, thanks to <a href="https://github.com/jswale">@jswale</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/166">#166</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/167">#167</a>: The <a href="/validators/phone/">phone validator</a> now also checks the length of US phone number, thanks to <a href="https://github.com/gercheq">@gercheq</a></li>
-</ul>
-
-<h3 id="bug-fixes">Bug fixes</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/144">#144</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/158">#158</a>: Fixed an issue that the <a href="/settings/#form-submit-handler">custom submit handler</a> is not fired from the second time</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/162">#162</a>: Fix errors in IE 8, thanks to <a href="https://github.com/adgrafik">@adgrafik</a></li>
-</ul>
-
-<h3 id="contributors">Contributors</h3>
-<p>Thank to the contributors:</p>
-<ul>
-    <li><a href="https://github.com/adgrafik">@adgrafik</a></li>
-    <li><a href="https://github.com/gercheq">@gercheq</a></li>
-    <li><a href="https://github.com/jswale">@jswale</a></li>
-</ul>
-
-<h3 id="download">Download</h3>
-<div>
-    <a class="btn btn-primary btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.4.1/bootstrapvalidator-dist-0.4.1.zip">bootstrapvalidator-dist-0.4.1.zip</a>
-    <a class="btn btn-default btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.4.1.zip">v0.4.1 Source Code</a>
-</div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-        <div class="bv-post">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-post-meta">
-                <p><a href="https://github.com/nghuuphuoc" title="@nghuuphuoc"><img src="https://github.com/nghuuphuoc.png" width="80px" height="80px" /></a></p>
-                <p>03 Apr 2014</p>
-                <p>
-                    
-                    <a href="/news/releases/">releases</a>
-                    
-                </p>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-post-content">
-                <h2><a href="/news/v0.4.0-released/">BootstrapValidator v0.4.0 Released</a></h2>
-                <h3 id="new-features">New features</h3>
-<ul>
-    <li><i class="fa fa-star"></i> <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/14">#14</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/57">#57</a>: Set validator option by using <a href="/examples/#attribute">HTML 5 attributes</a></li>
-    <li><i class="fa fa-star"></i> Support <a href="/examples/#html5">HTML 5 input types</a>:</li>
-</ul>
-
-<table class="table table-condensed">
-    <thead>
-        <tr>
-            <th>HTML 5 attribute</th>
-            <th>Equivalent validator</th>
-            <th>Equivalent HTML attribute</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><code>min="..."</code></td>
-            <td><a href="/validators/greaterThan/">greaterThan validator</a></td>
-            <td>
-                <pre><code class="xml">data-bv-greaterthan="true"
-data-bv-greaterthan-value="..."</code></pre></td>
-        </tr>
-        <tr>
-            <td><code>max="..."</code></td>
-            <td><a href="/validators/lessThan/">lessThan validator</a></td>
-            <td>
-                <pre><code class="xml">data-bv-lessthan="true"
-data-bv-lessthan-value="..."</code></pre>
-            </td>
-        </tr>
-        <tr>
-            <td><code>maxlength="..."</code></td>
-            <td><a href="/validators/stringLength/">stringLength validator</a></td>
-            <td>
-                <pre><code class="xml">data-bv-stringlength="true"
-data-bv-stringlength-max="..."</code></pre>
-            </td>
-        </tr>
-        <tr>
-            <td><code>pattern="..."</code></td>
-            <td><a href="/validators/regexp/">regexp validator</a></td>
-            <td>
-                <pre><code class="xml">data-bv-regexp="true"
-data-bv-regexp-regexp="..."</code></pre>
-            </td>
-        </tr>
-        <tr>
-            <td><code>required</code></td>
-            <td><a href="/validators/notEmpty/">notEmpty validator</a></td>
-            <td><code>data-bv-notempty="true"</code></td>
-        </tr>
-        <tr>
-            <td><code>type="color"</code></td>
-            <td><a href="/validators/hexColor/">hexColor validator</a></td>
-            <td><code>data-bv-hexcolor="true"</code></td>
-        </tr>
-        <tr>
-            <td><code>type="email"</code></td>
-            <td><a href="/validators/emailAddress/">emailAddress validator</a></td>
-            <td><code>data-bv-emailaddress="true"</code></td>
-        </tr>
-        <tr>
-            <td><pre><code class="xml">type="range"
-min="..."
-max="..."</code></pre></td>
-            <td><a href="/validators/between/">between validator</a></td>
-            <td><pre><code class="xml">data-bv-between="true"
-data-bv-between-min="..."
-data-bv-between-max="..."</code></pre></td>
-        </tr>
-        <tr>
-            <td><code>type="url"</code></td>
-            <td><a href="/validators/uri/">uri validator</a></td>
-            <td><code>data-bv-uri="true"</code></td>
-        </tr>
-    </tbody>
-</table>
-
-<ul>
-    <li><i class="fa fa-star"></i> <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/74">#74</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/103">#103</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/122">#122</a>: Set the custom <a href="/settings/#trigger">trigger event</a>. It's possible to use <code>data-bv-trigger</code> attribute or <code>trigger</code> option.</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/109">#109</a>: Add <a href="/api/#set-live-mode"><code>setLiveMode()</code> method</a> to turn on/off the live validating mode</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/114">#114</a>: Add <a href="/validators/iban/">iban validator</a> for validating IBAN (International Bank Account Number)</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/116">#116</a>: Add <a href="/validators/uuid/">uuid validator</a>, support UUID v3, v4, v5</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/128">#128</a>: Add <a href="/validators/numeric/">numeric validator</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/135">#135</a>: Add <a href="/validators/integer/">integer validator</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/138">#138</a>: Add <a href="/validators/hex/">hex validator</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/139">#139</a>: Add <a href="/validators/stringCase/">stringCase validator</a> to check a string is lower or upper case</li>
-</ul>
-
-<h3 id="changes">Changes</h3>
-<ul>
-    <li><a href="/api/#disable-submit-buttons"><code>disableSubmitButtons()</code></a> is now marked as a public API</li>
-    <li>The first parameter of <a href="/api/#update-status"><code>updateStatus()</code> method</a> now accepts the field name only</li>
-</ul>
-
-<h3 id="improvements">Improvements</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/133">#133</a>: The <a href="/validators/regexp/">regexp validator</a> allows to pass a string</li>
-    <li><i class="fa fa-star"></i> <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/136">#136</a>: Support multiple elements with the <a href="/examples/multiple/">same name</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/140">#140</a>: Do not validate hidden (<code>type="hidden"</code>) and invisible element, thanks to <a href="https://github.com/easonhan007">@easonhan007</a></li>
-</ul>
-
-<h3 id="bug-fixes">Bug fixes</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/126">#126</a>: Submit button remains disabled after calling custom <code>submitHandler</code> and the form is valid</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/132">#132</a>: The <code>fields.[fieldName].message</code> option is not used when showing the error message</li>
-</ul>
-
-<h3 id="contributors">Contributors</h3>
-<p>Thank to the contributors:</p>
-<ul>
-    <li><a href="https://github.com/easonhan007">@easonhan007</a></li>
-</ul>
-
-<h3 id="download">Download</h3>
-<div>
-    <a class="btn btn-primary btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.4.0/bootstrapvalidator-dist-0.4.0.zip">bootstrapvalidator-dist-0.4.0.zip</a>
-    <a class="btn btn-default btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.4.0.zip">v0.4.0 Source Code</a>
-</div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-        <div class="bv-post">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-post-meta">
-                <p><a href="https://github.com/nghuuphuoc" title="@nghuuphuoc"><img src="https://github.com/nghuuphuoc.png" width="80px" height="80px" /></a></p>
-                <p>27 Mar 2014</p>
-                <p>
-                    
-                    <a href="/news/releases/">releases</a>
-                    
-                </p>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-post-content">
-                <h2><a href="/news/v0.3.3-released/">BootstrapValidator v0.3.3 Released</a></h2>
-                <h3 id="improvements">Improvements</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/50">#50</a>: Don't validate disabled element</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/120">#120</a>: Handle case where a field is removed after the bootstrap validation, thanks to <a href="https://github.com/patmoore">@patmoore</a></li>
-</ul>
-
-<h3 id="bug-fixes">Bug fixes</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/34">#34</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/105">#105</a>: Cannot call <code>form.submit()</code> inside <a href="/settings/#form-submit-handler"><code>submitHandler</code></a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/77">#77</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/117">#117</a>: The <a href="/validators/notEmpty/">notEmpty validator</a> doesn't work on file input</li>
-</ul>
-
-<h3 id="contributors">Contributors</h3>
-<p>Thank to the contributor:</p>
-<ul>
-    <li><a href="https://github.com/patmoore">@patmoore</a></li>
-</ul>
-
-<h3 id="download">Download</h3>
-<div>
-    <a class="btn btn-primary btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.3.3/bootstrapvalidator-dist-0.3.3.zip">bootstrapvalidator-dist-0.3.3.zip</a>
-    <a class="btn btn-default btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.3.3.zip">v0.3.3 Source Code</a>
-</div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-        <div class="bv-post">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-post-meta">
-                <p><a href="https://github.com/nghuuphuoc" title="@nghuuphuoc"><img src="https://github.com/nghuuphuoc.png" width="80px" height="80px" /></a></p>
-                <p>21 Mar 2014</p>
-                <p>
-                    
-                    <a href="/news/releases/">releases</a>
-                    
-                </p>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-post-content">
-                <h2><a href="/news/v0.3.2-released/">BootstrapValidator v0.3.2 Released</a></h2>
-                <h3 id="new-features">New features</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/5">#5</a>: Add <a href="/validators/ip/">ip validator</a>. Support both IPv4 and IPv6</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/6">#6</a>: Add <a href="/validators/isbn/">isbn validator</a>, support both ISBN 10 and ISBN 13</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/7">#7</a>: Add <a href="/validators/step/">step validator</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/56">#56</a>: Add <a href="/settings/#field-selector"><code>selector</code> option</a> for each field. The field can be defined by CSS validator instead of the <code>name</code> attribute</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/95">#95</a>: Add <a href="/validators/mac/">mac validator</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/96">#96</a>: Add <a href="/validators/base64/">base64 validator</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/97">#97</a>: Add <a href="/validators/cvv/">cvv validator</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/99">#99</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/100">#100</a>: Add <a href="/validators/phone/">phone validator</a>. Support US phone number only, thanks to <a href="https://github.com/gercheq">@gercheq</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/107">#107</a>: Add <a href="/settings/#field-container"><code>container</code> option</a> for each field to indicate where the error messages are shown</li>
-</ul>
-
-<h3 id="improvements">Improvements</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/112">#112</a>: <a href="/validators/creditCard/">creditCard validator</a> now validates both IIN ranges and length</li>
-</ul>
-
-<h3 id="contributors">Contributors</h3>
-<p>Thank to the contributor:</p>
-<ul>
-    <li><a href="https://github.com/gercheq">@gercheq</a></li>
-</ul>
-
-<h3 id="download">Download</h3>
-<div>
-    <a class="btn btn-primary btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.3.2/bootstrapvalidator-dist-0.3.2.zip">bootstrapvalidator-dist-0.3.2.zip</a>
-    <a class="btn btn-default btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.3.2.zip">v0.3.2 Source Code</a>
-</div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-        <div class="bv-post">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-post-meta">
-                <p><a href="https://github.com/nghuuphuoc" title="@nghuuphuoc"><img src="https://github.com/nghuuphuoc.png" width="80px" height="80px" /></a></p>
-                <p>17 Mar 2014</p>
-                <p>
-                    
-                    <a href="/news/releases/">releases</a>
-                    
-                </p>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-post-content">
-                <h2><a href="/news/v0.3.1-released/">BootstrapValidator v0.3.1 Released</a></h2>
-                <h3 id="new-features">New features</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/4">#4</a>: Add <a href="/validators/date/"><code>date</code> validator</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/80">#80</a>: Add <a href="/settings/#field-enabled"><code>enabled</code> option</a> and <a href="/api/#enable-field-validators"><code>enableFieldValidators()</code> method</a> to enable/disable all validators to given field</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/90">#90</a>: Add <code>bower.json</code> file, thanks to <a href="https://github.com/ikanedo">@ikanedo</a></li>
-</ul>
-
-<h3 id="changes">Changes</h3>
-<ul>
-    <li>Remove the <code>columns</code> option. Now the plugin works normally no matter how many columns the form uses</li>
-</ul>
-
-<h3 id="improvements">Improvements</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/3">#3</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/92">#92</a>: Support more form controls on the same row</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/72">#72</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/79">#79</a>: Improve <a href="/api/#update-status"><code>updateStatus()</code> method</a> to make the plugin play well with another</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/102">#102</a>: The <a href="/api/#reset-form"><code>resetForm</code> method</a> now only resets fields with validator rules</li>
-</ul>
-
-<h3 id="bug-fixes">Bug fixes</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/82">#82</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/84">#84</a>: The error messages aren't shown if the form field doesn't have label</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/89">#89</a>: <a href="/settings/#form-submit-handler"><code>submitHandler</code></a> or default submission isn't called after <a href="/validators/remote/">remote validation</a> completes</li>
-</ul>
-
-<h3 id="contributors">Contributors</h3>
-<p>Thank to the contributors:</p>
-<ul>
-    <li><a href="https://github.com/ikanedo">@ikanedo</a></li>
-</ul>
-
-<h3 id="download">Download</h3>
-<div>
-    <a class="btn btn-primary btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.3.1/bootstrapvalidator-dist-0.3.1.zip">bootstrapvalidator-dist-0.3.1.zip</a>
-    <a class="btn btn-default btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.3.1.zip">v0.3.1 Source Code</a>
-</div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-        <div class="bv-post">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-post-meta">
-                <p><a href="https://github.com/nghuuphuoc" title="@nghuuphuoc"><img src="https://github.com/nghuuphuoc.png" width="80px" height="80px" /></a></p>
-                <p>10 Mar 2014</p>
-                <p>
-                    
-                    <a href="/news/releases/">releases</a>
-                    
-                </p>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-post-content">
-                <h2><a href="/news/v0.3.0-released/">BootstrapValidator v0.3.0 Released</a></h2>
-                <h3 id="new-features">New features</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/26">#26</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/27">#27</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/67">#67</a>: Add <a href="/validators/choice/"><code>choice</code> validator</a>, thanks to <a href="https://github.com/emilchristensen">@emilchristensen</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/36">#36</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/58">#58</a>: Add method to <a href="/api/#validate">validate form</a> manually</li>
-    <li><i class="fa fa-star"></i> <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/44">#44</a>: Rewrite entirely using Deferred</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/48">#48</a>: Add optional <a href="/settings/#form-feedback-icons">feedback icons</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/76">#76</a>: Add <a href="/api/#reset-form"><code>resetForm()</code> method</a></li>
-</ul>
-
-<h3 id="improvements">Improvements</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/31">#31</a>: The <a href="/validators/remote/">remote validator</a> supports dynamic data</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/41">#41</a>: Disable submit button on successful form submit</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/42">#42</a>: Add submit button to <a href="/settings/#form-submit-handler"><code>submitHandler()</code></a> parameter</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/50">#50</a>: Don't validate disabled element</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/59">#59</a>: Add example for Rail field convention, thanks to <a href="https://github.com/narutosanjiv">@narutosanjiv</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/60">#60</a>: Update the installation guide, thanks to <a href="https://github.com/vaz">@vaz</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/64">#64</a>: Support <a href="/validators/zipCode/">Danish zip code</a>, thanks to <a href="https://github.com/emilchristensen">@emilchristensen</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/65">#65</a>: Support <a href="/validators/zipCode/">Sweden zip code</a>, thanks to <a href="https://github.com/emilchristensen">@emilchristensen</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/70">#70</a>: Support custom grid columns</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/71">#71</a>: Show all errors</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/73">#73</a>: Describe which version should be <a href="/getting-started/#including-library">included</a> in the Usage section</li>
-</ul>
-
-<h3 id="bug-fixes">Bug fixes</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/51">#51</a>: Submit after submit doesn't work</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/53">#53</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/54">#54</a>: Fix <a href="/validators/notEmpty/">notEmpty validator</a> for radios and checkboxes, thanks to <a href="https://github.com/kristian-puccio">@kristian-puccio</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/55">#55</a>: The plugin doesn't validate other fields if the <a href="/validators/remote/">remote validator</a> returns <code>true</code></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/62">#62</a>: The <a href="/validators/callback/">callback validator</a> passes wrong parameter, thanks to <a href="https://github.com/iplus">@iplus</a></li>
-</ul>
-
-<h3 id="contributors">Contributors</h3>
-<p>Thank to the contributors:</p>
-<ul>
-    <li><a href="https://github.com/emilchristensen">@emilchristensen</a></li>
-    <li><a href="https://github.com/iplus">@iplus</a></li>
-    <li><a href="https://github.com/kristian-puccio">@kristian-puccio</a></li>
-    <li><a href="https://github.com/narutosanjiv">@narutosanjiv</a></li>
-</ul>
-
-<h3 id="download">Download</h3>
-<div>
-    <a class="btn btn-primary btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.3.0/bootstrapvalidator-dist-0.3.0.zip">bootstrapvalidator-dist-0.3.0.zip</a>
-    <a class="btn btn-default btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.3.0.zip">v0.3.0 Source Code</a>
-</div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-        <div class="bv-post">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-post-meta">
-                <p><a href="https://github.com/nghuuphuoc" title="@nghuuphuoc"><img src="https://github.com/nghuuphuoc.png" width="80px" height="80px" /></a></p>
-                <p>07 Jan 2014</p>
-                <p>
-                    
-                    <a href="/news/releases/">releases</a>
-                    
-                </p>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-post-content">
-                <h2><a href="/news/v0.2.2-released/">BootstrapValidator v0.2.2 Released</a></h2>
-                <h3 id="improvements">Improvements</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/15">#15</a>: Focus to the first invalid element</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/31">#31</a>: <a href="/validators/remote/">remote validator</a>: Allow to set additional data to remote URL</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/32">#32</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/43">#43</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/47">#47</a>: Only validate not empty field</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/39">#39</a>: Validate existing fields only</li>
-</ul>
-
-<h3 id="bug-fixes">Bug fixes</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/34">#34</a>: Avoid from calling form submit recursively</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/40">#40</a>: Fix the issue when the form label doesn't have class</li>
-</ul>
-
-<h3 id="download">Download</h3>
-<div>
-    <a class="btn btn-primary btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.2.2/bootstrapvalidator-dist-0.2.2.zip">bootstrapvalidator-dist-0.2.2.zip</a>
-    <a class="btn btn-default btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.2.2.zip">v0.2.2 Source Code</a>
-</div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-        <div class="bv-post">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-post-meta">
-                <p><a href="https://github.com/nghuuphuoc" title="@nghuuphuoc"><img src="https://github.com/nghuuphuoc.png" width="80px" height="80px" /></a></p>
-                <p>08 Nov 2013</p>
-                <p>
-                    
-                    <a href="/news/releases/">releases</a>
-                    
-                </p>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-post-content">
-                <h2><a href="/news/v0.2.1-released/">BootstrapValidator v0.2.1 Released</a></h2>
-                <h3 id="improvements">Improvements</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/29">#29</a>: Upgrade Bootstrap to v3.0.2</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/30">#30</a>: Hide the error block containers before validating</li>
-</ul>
-
-<h3 id="download">Download</h3>
-<div>
-    <a class="btn btn-primary btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.2.1/bootstrapvalidator-dist-0.2.1.zip">bootstrapvalidator-dist-0.2.1.zip</a>
-    <a class="btn btn-default btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.2.1.zip">v0.2.1 Source Code</a>
-</div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-        <div class="bv-post">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-post-meta">
-                <p><a href="https://github.com/nghuuphuoc" title="@nghuuphuoc"><img src="https://github.com/nghuuphuoc.png" width="80px" height="80px" /></a></p>
-                <p>21 Oct 2013</p>
-                <p>
-                    
-                    <a href="/news/releases/">releases</a>
-                    
-                </p>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-post-content">
-                <h2><a href="/news/v0.2.0-released/">BootstrapValidator v0.2.0 Released</a></h2>
-                <h3 id="new-features">New features</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/9">#9</a>: Add <a href="/validators/creditCard/">creditCard validator</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/18">#18</a>: Add <a href="/validators/different/">different validator</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/20">#20</a>: Add custom submit handler using <a href="/settings/#submit-handler"><code>submitHandler</code> option</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/21">#21</a>: Add <a href="/validators/callback/">callback validator</a></li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/24">#24</a>: Add <a href="/settings/#form-live"><code>live</code> option</a></li>
-</ul>
-
-<h3 id="improvements">Improvements</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/22">#22</a>: Support form that labels are placed in extra small (<code>col-xs-</code>), small (<code>col-sm-</code>), medium (<code>col-md-</code>) elements</li>
-</ul>
-
-<h3 id="bug-fixes">Bug fixes</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/25">#25</a>: The <a href="/validators/regexp/">regexp validator</a> does not work</li>
-</ul>
-
-<h3 id="download">Download</h3>
-<div>
-    <a class="btn btn-primary btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.2.0/bootstrapvalidator-dist-0.2.0.zip">bootstrapvalidator-dist-0.2.0.zip</a>
-    <a class="btn btn-default btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.2.0.zip">v0.2.0 Source Code</a>
-</div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-        <div class="bv-post">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-post-meta">
-                <p><a href="https://github.com/nghuuphuoc" title="@nghuuphuoc"><img src="https://github.com/nghuuphuoc.png" width="80px" height="80px" /></a></p>
-                <p>17 Oct 2013</p>
-                <p>
-                    
-                    <a href="/news/releases/">releases</a>
-                    
-                </p>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-post-content">
-                <h2><a href="/news/v0.1.1-released/">BootstrapValidator v0.1.1 Released</a></h2>
-                <h3 id="new-features">New features</h3>
-<ul>
-    <li>Added <a href="/settings/#form-submit-buttons"><code>submitButtons</code> option</a></li>
-</ul>
-
-<h3 id="improvements">Improvements</h3>
-<ul>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/16">#16</a>: Added disabling client side validation in HTML 5</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/17">#17</a>: Added support for default Bootstrap form without labels</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/19">#19</a>: Added support for select box validator</li>
-</ul>
-
-<h3 id="download">Download</h3>
-<div>
-    <a class="btn btn-primary btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.1.1/bootstrapvalidator-dist-0.1.1.zip">bootstrapvalidator-dist-0.1.1.zip</a>
-    <a class="btn btn-default btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.1.1.zip">v0.1.1 Source Code</a>
-</div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-        <div class="bv-post">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-post-meta">
-                <p><a href="https://github.com/nghuuphuoc" title="@nghuuphuoc"><img src="https://github.com/nghuuphuoc.png" width="80px" height="80px" /></a></p>
-                <p>14 Oct 2013</p>
-                <p>
-                    
-                    <a href="/news/releases/">releases</a>
-                    
-                </p>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-post-content">
-                <h2><a href="/news/v0.1.0-released/">BootstrapValidator v0.1.0 Released</a></h2>
-                <p>I'm proud that the first release of BootstrapValidator is out today.</p>
-
-<h3 id="built-in-validators">Built-in Validators</h3>
-<ul>
-    <li><a href="/validators/between/">between validator</a></li>
-    <li><a href="/validators/digits/">digits validator</a></li>
-    <li><a href="/validators/emailAddress/">emailAddress validator</a></li>
-    <li><a href="/validators/greaterThan/">greaterThan validator</a></li>
-    <li><a href="/validators/hexColor/">hexColor validator</a></li>
-    <li><a href="/validators/identical/">identical validator</a></li>
-    <li><a href="/validators/lessThan/">lessThan validator</a></li>
-    <li><a href="/validators/notEmpty/">notEmpty validator</a></li>
-    <li><a href="/validators/regexp/">regexp validator</a></li>
-    <li><a href="/validators/remote/">remote validator</a></li>
-    <li><a href="/validators/stringLength/">stringLength validator</a></li>
-    <li><a href="/validators/uri/">uri validator</a></li>
-    <li><a href="/validators/zipCode/">zipCode validator</a></li>
-</ul>
-
-<h3 id="download">Download</h3>
-<div>
-    <a class="btn btn-primary btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.1.0/bootstrapvalidator-dist-0.1.0.zip">bootstrapvalidator-dist-0.1.0.zip</a>
-    <a class="btn btn-default btn-lg" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.1.0.zip">v0.1.0 Source Code</a>
-</div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-</div>
-
-</div>
-<!-- /main -->
-
-</div>
-
-<!-- footer -->
-<footer class="bv-footer">
+        <footer class="doc-footer">
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <h4>Hire me</h4>
-                <img src="https://avatars.githubusercontent.com/u/4226036?s=50" />
-                <div>If you are looking for a Javascript, <a href="http://jquery.com/">jQuery</a>, <a href="https://angularjs.org/">AngularJS</a>, <a href="http://expressjs.com/">ExpressJS</a>, PHP or <a href="http://framework.zend.com/">Zend Framework</a> guru, feel free to drop me <a href="mailto:phuoc@huuphuoc.me">an email</a> or give me <a href="http://twitter.com/nghuuphuoc">a tweet</a>.</div>
-            </div>
-
-            <div class="col-md-4">
-                <h4>Follow me</h4>
-                <ul>
-                    <li><a href="http://github.com/nghuuphuoc"><i class="fa fa-github"></i> @nghuuphuoc</a></li>
-                    <li><a href="http://twitter.com/nghuuphuoc"><i class="fa fa-twitter"></i> @nghuuphuoc</a></li>
-                    <li><a href="http://twitter.com/bsvalidator"><i class="fa fa-twitter"></i> @bsvalidator</a></li>
-                    <li><a href="https://plus.google.com/u/0/communities/114931136856987817254"><i class="fa fa-google-plus"></i> Google+ community</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-4">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator">Github</a></li>
-                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues">Issues</a></li>
-                    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/blob/master/CHANGELOG.md">Change Log</a></li>
-                    <li><a href="/news/releases/">Releases</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <p class="text-center">
-            &copy; 2013 - 2014 Nguyen Huu Phuoc<br/>
-            Code licensed under <a href="http://opensource.org/licenses/mit-license.html">MIT</a>, documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>
+        <p>
+            <a class="btn" href="https://github.com/nghuuphuoc/bootstrapvalidator/issues">Report an issue</a>
+            <a class="btn" href="mailto: phuoc@huuphuoc.me?subject=Commercial support for BootstrapValidator">Commercial support</a>
         </p>
-
-        <p class="text-center">handcrafted with <i class="fa fa-heart"></i> in Vietnam</p>
+        <p>
+            &copy; 2013 - 2014 <a href="http://twitter.com/nghuuphuoc">Nguyen Huu Phuoc</a><br>
+            <a href="https://github.com/nghuuphuoc/bootstrapvalidator">Code</a> licensed under <a href="http://opensource.org/licenses/mit-license.html">MIT</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/tree/docs">documentation</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>
+        </p>
+        <p>handcrafted with <i class="fa fa-heart"></i> in Vietnam</p>
     </div>
 </footer>
-<!-- /footer -->
+    </div>
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=bootstrapvalidatorcom" id="_carbonads_js"></script>
 
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
+<script src="/vendor/tocjs/js/toc.min.js"></script>
 <script>
-$(document).ready(function() {
-    $('.bv-content, .bv-post').find('h1, h2, h3, h4, h5, h6').each(function() {
-        if (!$(this).attr('id')) {
-            return;
-        }
+$(function() {
+    $('[data-toggle="tooltip"]').tooltip();
 
-        var $heading = $(this),
-            $span    =  $heading.find('span'),
-            $anchor  = $('<a/>')
-                            .html('#')
-                            .attr('href', '#' + $heading.attr('id'))
-                            .attr('title', $heading.text())
-                            .hide();
-        ($span.length === 0) ? $anchor.appendTo($heading) : $anchor.insertBefore($span);
-        $heading.hover(function() {
-            $(this).find('a').toggle();
+    $('.doc-logo').on('click', function() {
+        $('body').toggleClass('doc-nav-shown');
+    });
+
+    $('form').each(function() {
+        $(this).on('success.form.bv', function(e) {
+            e.preventDefault();
         });
     });
+
+    // Create table of contents
+    if ($('#toc').length) {
+        $('#toc')
+            .css('max-width', $('#toc').width())
+            .toc({
+                selector: '#main h2, #main h3, #main h4, #main h5, #main h6',
+                elementClass: 'toc',
+                ulClass: 'nav',
+                indexingFormats: '______'
+            });
+
+        var $window = $(window),
+            $body   = $(document.body);
+        $body.scrollspy({
+            target: '#toc'
+        });
+
+        $window.on('load', function() {
+            $body.scrollspy('refresh');
+        });
+
+        setTimeout(function() {
+            var $sideBar = $('#toc');
+            $sideBar.affix({
+                offset: {
+                    top: function() {
+                        return (this.top = $sideBar.offset().top);
+                    }
+                }
+            });
+        }, 100);
+    }
 });
 </script>
 </body>
