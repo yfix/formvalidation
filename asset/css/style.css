@@ -410,18 +410,18 @@ h4 {
   content: '';
 }
 /* --- TOC --- */
-.doc-content h2,
-.doc-content h3,
-.doc-content h4,
-.doc-content h5,
-.doc-content h6 {
+.doc-content-container h2,
+.doc-content-container h3,
+.doc-content-container h4,
+.doc-content-container h5,
+.doc-content-container h6 {
   position: relative;
 }
-.doc-content h2 .toc-anchor,
-.doc-content h3 .toc-anchor,
-.doc-content h4 .toc-anchor,
-.doc-content h5 .toc-anchor,
-.doc-content h6 .toc-anchor {
+.doc-content-container h2 .toc-anchor,
+.doc-content-container h3 .toc-anchor,
+.doc-content-container h4 .toc-anchor,
+.doc-content-container h5 .toc-anchor,
+.doc-content-container h6 .toc-anchor {
   position: absolute;
   top: 0;
   right: 0;
