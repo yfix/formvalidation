@@ -1,10 +1,10 @@
 <section>
-    <h2 id="usage">Usage</h2>
+    <h2>Usage</h2>
     <p>It takes only 3 steps to use the plugin:</p>
 
     <!-- including -->
     <section>
-        <h3 id="including-library">Including library</h3>
+        <h3>Including library</h3>
         <p>Since the BootstrapValidator plugin requires jQuery and Bootstrap 3, you have to include the required CSS and JS files to your page:</p>
 
 {% highlight html %}
@@ -41,7 +41,7 @@
 
     <!-- writing-form -->
     <section>
-        <h3 id="writing-form">Writing form</h3>
+        <h3>Writing form</h3>
         <p>Since BootstrapValidator is designed to use with Bootstrap, your form must be structured using Bootstrap classes.</p>
 
         <p>If your form is NOT structured by Bootstrap classes (the element containing field and associated label does NOT have form-group class), you will see the following error in the Console:</p>
@@ -57,7 +57,7 @@ Too much recursion error
             If your form is complex and uses custom CSS class for each group instead of .form-group, use the <a href="/settings/#form-group">group option</a>
         </div>
 
-        <h4 id="name-conflict">Name conflict</h4>
+        <h4>Name conflict</h4>
         <p>Do not use the properties of a form, such as <code>submit</code>, <code>reset</code>, <code>length</code>, <code>method</code> to set the <code>name</code> or <code>id</code> attribute of form, field elements. Name conflicts can cause the problem.</p>
         <p>For example, you cannot submit the form after validating if use <code>submit</code> to name the Submit button:</p>
 {% highlight html %}
@@ -67,7 +67,7 @@ Too much recursion error
 
         <p>The plugin supports all possible kind of Bootstrap form, including:</p>
 
-        <h4 id="basic-form">Basic form</h4>
+        <h4>Basic form</h4>
         <div class="doc-demo">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#basic-form-tab" data-toggle="tab">Try it</a></li>
@@ -77,24 +77,24 @@ Too much recursion error
 
             <div class="tab-content">
                 <div class="tab-pane active" id="basic-form-tab">
-                    {% include getting-started/form-basic.html %}
+                    {% include getting-started/usage/form-basic.html %}
                 </div>
 
                 <div class="tab-pane" id="basic-html-tab">
 {% highlight html %}
-{% include getting-started/form-basic.html %}
+{% include getting-started/usage/form-basic.html %}
 {% endhighlight %}
                 </div>
 
                 <div class="tab-pane" id="basic-js-tab">
 {% highlight javascript %}
-{% include getting-started/form-basic.js %}
+{% include getting-started/usage/form-basic.js %}
 {% endhighlight %}
                 </div>
             </div>
         </div>
 
-        <h4 id="basic-form-without-labels">Basic form without labels</h4>
+        <h4>Basic form without labels</h4>
         <div class="doc-demo">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#basicwlabel-form-tab" data-toggle="tab">Try it</a></li>
@@ -103,18 +103,18 @@ Too much recursion error
 
             <div class="tab-content">
                 <div class="tab-pane active" id="basicwlabel-form-tab">
-                    {% include getting-started/form-without-label.html %}
+                    {% include getting-started/usage/form-without-label.html %}
                 </div>
 
                 <div class="tab-pane" id="basicwlabel-html-tab">
 {% highlight html %}
-{% include getting-started/form-without-label.html %}
+{% include getting-started/usage/form-without-label.html %}
 {% endhighlight %}
                 </div>
             </div>
         </div>
 
-        <h4 id="inline-form">Inline form</h4>
+        <h4>Inline form</h4>
         <div class="doc-demo">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#inline-form-tab" data-toggle="tab">Try it</a></li>
@@ -123,18 +123,18 @@ Too much recursion error
 
             <div class="tab-content">
                 <div class="tab-pane active" id="inline-form-tab">
-                    {% include getting-started/form-inline.html %}
+                    {% include getting-started/usage/form-inline.html %}
                 </div>
 
                 <div class="tab-pane" id="inline-html-tab">
 {% highlight html %}
-{% include getting-started/form-inline.html %}
+{% include getting-started/usage/form-inline.html %}
 {% endhighlight %}
                 </div>
             </div>
         </div>
 
-        <h4 id="horizontal-form">Horizontal form</h4>
+        <h4>Horizontal form</h4>
         <div class="doc-demo">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#horizontal-form-tab" data-toggle="tab">Try it</a></li>
@@ -143,12 +143,12 @@ Too much recursion error
 
             <div class="tab-content">
                 <div class="tab-pane active" id="horizontal-form-tab">
-                    {% include getting-started/form-horizontal.html %}
+                    {% include getting-started/usage/form-horizontal.html %}
                 </div>
 
                 <div class="tab-pane" id="horizontal-html-tab">
 {% highlight html %}
-{% include getting-started/form-horizontal.html %}
+{% include getting-started/usage/form-horizontal.html %}
 {% endhighlight %}
                 </div>
             </div>
@@ -164,12 +164,12 @@ Too much recursion error
 
             <div class="tab-content">
                 <div class="tab-pane active" id="row-form-tab">
-                {% include getting-started/form-row.html %}
+                {% include getting-started/usage/form-row.html %}
                 </div>
 
                 <div class="tab-pane" id="row-html-tab">
 {% highlight html %}
-{% include getting-started/form-row.html %}
+{% include getting-started/usage/form-row.html %}
 {% endhighlight %}
                 </div>
             </div>
@@ -178,7 +178,7 @@ Too much recursion error
 
     <!-- calling -->
     <section>
-        <h3 id="calling-plugin">Calling plugin</h3>
+        <h3>Calling plugin</h3>
 
         <p>Call the plugin to validate the form as following:</p>
 
@@ -199,53 +199,13 @@ $(document).ready(function() {
         <p>For example, to validate the sample registration form above, the plugin might be called as:</p>
 
 {% highlight javascript %}
-{% include getting-started/form-basic.js %}
+{% include getting-started/usage/form-basic.js %}
 {% endhighlight %}
 
         <p>Look at the <a href="/settings/">Settings</a> page to see the meaning of plugin options.</p>
     </section>
-
-    <!-- example -->
-    <section>
-        <h3 id="example">Example</h3>
-        <p>Below is a classical registration form covering all the steps you've just seen above:</p>
-
-        <div class="doc-demo">
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#example-form-tab" data-toggle="tab">Try it</a></li>
-                <li><a href="#example-programmatic-tab" data-toggle="tab">Programmatic usage</a></li>
-                <li><a href="#example-declarative-tab" data-toggle="tab">Declarative usage</a></li>
-                <li><a href="#example-cdn-tab" data-toggle="tab">CDN usage</a></li>
-            </ul>
-
-            <div class="tab-content">
-                <div class="tab-pane active" id="example-form-tab">
-                {% include getting-started/form-example.html %}
-                </div>
-
-                <div class="tab-pane" id="example-programmatic-tab">
-{% highlight html %}
-{% include getting-started/form-example-programmatic.html %}
-{% endhighlight %}
-                </div>
-
-                <div class="tab-pane" id="example-declarative-tab">
-{% highlight html %}
-{% include getting-started/form-example-declarative.html %}
-{% endhighlight %}
-                </div>
-
-                <div class="tab-pane" id="example-cdn-tab">
-{% highlight html %}
-{% include getting-started/form-example-cdn.html %}
-{% endhighlight %}
-                </div>
-            </div>
-        </div>
-    </section>
 </section>
 
 <script>
-{% include getting-started/form-basic.js %}
-{% include getting-started/form-example.js %}
+{% include getting-started/usage/form-basic.js %}
 </script>

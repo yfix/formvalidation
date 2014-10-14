@@ -1,13 +1,17 @@
 <section>
     <h3 id="form-excluded">excluded: Boolean</h3>
+
     <p>Indicate fields which won't be validated.</p>
     <p>By default, the plugin will not validate the following kind of fields:</p>
-    <ul>
+
+    <ul class="doc-list">
         <li>disabled</li>
         <li>hidden</li>
         <li>invisible</li>
     </ul>
+
     <p>The setting consists of jQuery filters. Accept 3 formats:</p>
+
     <table class="table table-condensed">
         <thead>
             <tr>
@@ -38,6 +42,7 @@
                 <td>Array of strings and callback functions</td>
                 <td>
                     <p>The callback function has format as below:</p>
+
 {% highlight javascript %}
 function($field, validator) {
     // $field is jQuery object representing the field element
@@ -45,7 +50,9 @@ function($field, validator) {
     // return true or false;
 }
 {% endhighlight %}
+
                     <p>For example:</p>
+
 {% highlight javascript %}
 [':disabled', ':hidden', function($field, validator) {
     // Do not validate invisible element

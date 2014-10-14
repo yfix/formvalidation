@@ -5,13 +5,15 @@
     <p>For example, the <a href="/validators/zipCode/">zipCode validator</a> has the <code>country</code> option that can be changed dynamically a select element.</p>
 
     <p>The dynamic option can be determined by:</p>
-    <ul>
+    <ul class="doc-list">
         <li>A string</li>
         <li>Name of field which defines the value</li>
         <li>Name of function which returns the value</li>
         <li>A function returns the value</li>
     </ul>
+
     <p>In the third and fourth cases, the callback function must follow the format:</p>
+
 {% highlight javascript %}
 function(value, validator, $field) {
     // value is the value of field
@@ -21,6 +23,7 @@ function(value, validator, $field) {
 {% endhighlight %}
 
     <h4 id="dynamic-option-validators">Supported validators</h4>
+
     <p>Below is the list of validators supporting dynamic option. Refer to specific validator document to see the full list of options.</p>
     <table class="table table-condensed">
         <thead>
@@ -105,7 +108,9 @@ function(value, validator, $field) {
     </table>
 
     <h4 id="dynamic-option-string">Using string as usual</h4>
+
     <p>It's easy for you if the country code option is set initially and can't be changed:</p>
+
 {% highlight javascript %}
 $(document).ready(function() {
     $('#zipcodeForm').bootstrapValidator({
@@ -209,6 +214,7 @@ $(document).ready(function() {
     </div>
 
     <h4 id="dynamic-option-function-name">Using name of function returning the option value</h4>
+
 {% highlight html %}
 <!-- The element for choosing a country -->
 <select class="form-control" name="countrySelectBox">
@@ -274,6 +280,7 @@ $(document).ready(function() {
     </div>
 
     <h4 id="dynamic-option-callback">Using function returning the option value</h4>
+
 {% highlight javascript %}
 $(document).ready(function() {
     $('#zipcodeElementForm').bootstrapValidator({

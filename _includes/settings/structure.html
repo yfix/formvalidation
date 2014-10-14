@@ -1,7 +1,9 @@
 <section>
     <h2>Settings structure</h2>
+
     <p>There are three levels of settings which are form, field, and validators.</p>
     <p>The BootstrapValidator plugin can be called as following:</p>
+
 {% highlight javascript %}
 $(formSelector).bootstrapValidator({
     ... Form settings go here ...
@@ -23,6 +25,7 @@ $(formSelector).bootstrapValidator({
 
     <p>Most of settings can be set via HTML 5 attributes prefixed with <code>data-bv</code>.</p>
     <p>For example, the following call:</p>
+
 {% highlight javascript %}
 $(formSelector).bootstrapValidator({
     excluded: [':disabled', ':hidden', ':not(:visible)'],
@@ -38,7 +41,9 @@ $(formSelector).bootstrapValidator({
     fields: ...
 });
 {% endhighlight %}
+
     <p>is equivalent with the one below:</p>
+
 {% highlight html %}
 <form data-bv-message="This value is not valid"
       data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
@@ -49,6 +54,7 @@ $(formSelector).bootstrapValidator({
     ...
 </form>
 {% endhighlight %}
+
 {% highlight javascript %}
 $(document).ready(function() {
     $(formSelector).bootstrapValidator({
@@ -60,7 +66,7 @@ $(document).ready(function() {
     <p>In the next sections, you will see the full list of options for each level.</p>
 
     <h4 id="structure-examples">Examples</h4>
-    <ul>
+    <ul class="doc-list">
         <li><a href="/examples/overriding-default-options/">Overriding default options</a></li>
     </ul>
 </section>
