@@ -7,6 +7,8 @@
     {% include nav.html %}
 
     <div id="main" class="doc-content-wrapper">
+        {% include notification.html %}
+
         {{ content }}
 
         {% include footer.html %}
@@ -43,8 +45,7 @@ $(function() {
         var $window = $(window),
             $body   = $(document.body);
         $body.scrollspy({
-            target: '#toc',
-            offset: $('#main').offset().top + $('.doc-heading').height()
+            target: '#toc'
         });
 
         $window.on('load', function() {

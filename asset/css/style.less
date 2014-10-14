@@ -65,6 +65,17 @@ h1, h2, h3, h4 {
   margin: 30px auto;
   max-width: 300px;
 }
+.doc-notification {
+  background-color: #ecf0f1;
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+  text-align: center;
+}
+@media (max-width: 767px) {
+  .doc-notification {
+    display: none;
+  }
+}
 
 /* --- Header --- */
 .doc-nav-shown {
@@ -170,6 +181,9 @@ h1, h2, h3, h4 {
     &:hover {
       color: #fff;
     }
+  }
+  i {
+    color: #c0392b;
   }
 }
 
