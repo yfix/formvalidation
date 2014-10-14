@@ -1,44 +1,24 @@
 ---
-layout:           doc
-title:            stringCase validator
-permalink:        /validators/stringCase/
-previous_section: /validators/step/
-next_section:     /validators/stringLength/
-comments:         true
+layout: default
+title: stringCase validator
+permalink: /validators/stringCase/
+comments: true
 ---
 
-<div class="bv-heading">
+<div class="doc-content-container">
+    <div class="doc-heading">
+        <h1>stringCase validator</h1>
+        <p>Check if a string is a lower or upper case one</p>
+        <p>&larr; <a href="/validators/">Validators</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / stringCase</h1>
-                <p>Check if a string is a lower or upper case one.</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#options">Options</a></li>
-                    <li><a href="#example">Example</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="options">Options</h2>
+                    <h2>Options</h2>
+
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -65,11 +45,13 @@ comments:         true
                     </table>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 <section>
-                    <h2 id="example">Example</h2>
+                    <h2>Example</h2>
                     <p>The following form asks user to enter a credit card holder in uppercase:</p>
 
-                    <div class="bv-example">
+                    <div class="doc-demo">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#stringcase-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#stringcase-html-tab" data-toggle="tab">HTML</a></li>
@@ -78,83 +60,32 @@ comments:         true
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="stringcase-form-tab">
-                                <form id="cardHolderForm" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-4 control-label">Credit card holder</label>
-                                        <div class="col-lg-4">
-                                            <input type="text" class="form-control" name="name" />
-                                        </div>
-                                    </div>
-                                </form>
+                            {% include validators/stringCase/example.html %}
                             </div>
 
                             <div class="tab-pane" id="stringcase-html-tab">
-{% highlight html %}
-<form id="cardHolderForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-4 control-label">Credit card holder</label>
-        <div class="col-lg-4">
-            <input type="text" class="form-control" name="name" />
-        </div>
-    </div>
-</form>
-{% endhighlight %}
+                            {% highlight html %}
+                            {% include validators/stringCase/example.html %}
+                            {% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="stringcase-js-tab">
-{% highlight javascript hl_lines="14" %}
-$(document).ready(function() {
-    $('#cardHolderForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            name: {
-                validators: {
-                    // Since case is a Javascript keyword,
-                    // you should place it between quotes (like 'case' or "case")
-                    // to make it work in all browsers
-                    stringCase: {
-                        message: 'The card holder must be in uppercase',
-                        'case': 'upper'
-                    }
-                }
-            }
-        }
-    });
-});
-{% endhighlight %}
+                            {% highlight javascript %}
+                            {% include validators/stringCase/example.js %}
+                            {% endhighlight %}
                             </div>
                         </div>
                     </div>
                 </section>
+            </div>
 
-                {% include related.html %}
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-$(document).ready(function() {
-    $('#cardHolderForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            name: {
-                validators: {
-                    stringCase: {
-                        message: 'The card holder must be in uppercase',
-                        'case': 'upper'
-                    }
-                }
-            }
-        }
-    });
-});
+{% include validators/stringCase/example.js %}
 </script>

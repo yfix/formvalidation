@@ -1,62 +1,43 @@
 ---
-layout:           doc
-title:            Showing valid message
-permalink:        /examples/showing-valid-message/
-categories:       [Advance]
-previous_section:
-next_section:
-comments:         true
+layout: default
+title: Showing valid message
+permalink: /examples/showing-valid-message/
+comments: true
 ---
 
-<div class="bv-heading">
+<div class="doc-content-container">
+    <div class="doc-heading">
+        <h1>Showing valid message</h1>
+        <p>&larr; <a href="/examples/">Examples</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/examples/">Examples</a> / Advance</h1>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                {% include example.html category='Advance' %}
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-8 col-md-offset-2">
                 <section>
-                    <h2 id="showing-valid-message">Showing valid message</h2>
                     <p>The plugin only provides <a href="/settings/#field-message">error message</a> option which is shown when the field is invalid. Is it possible to add a valid message option shown if the field is valid?</p>
                     <p>The quick answer is YES. This example shows you how to implement this feature.</p>
                     <p>Assuming that our form has two text boxes which are username and password.</p>
-{% highlight html hl_lines="5 12" %}
+
+{% highlight html %}
 <form id="signupForm" method="post" class="form-horizontal">
     <div class="form-group">
-        <label class="col-lg-3 control-label">Username</label>
-        <div class="col-lg-5">
+        <label class="col-sm-3 control-label">Username</label>
+        <div class="col-sm-5">
             <input type="text" class="form-control" name="username" />
         </div>
     </div>
 
     <div class="form-group">
-        <label class="col-lg-3 control-label">Password</label>
-        <div class="col-lg-5">
+        <label class="col-sm-3 control-label">Password</label>
+        <div class="col-sm-5">
             <input type="password" class="form-control" name="password" />
         </div>
     </div>
 
     <div class="form-group">
-        <div class="col-lg-5 col-lg-offset-3">
+        <div class="col-sm-5 col-sm-offset-3">
             <button type="submit" class="btn btn-default">Signup</button>
         </div>
     </div>
@@ -64,6 +45,7 @@ comments:         true
 {% endhighlight %}
 
                     <p>As usual, the plugin is called by following snippet code:</p>
+
 {% highlight javascript %}
 $(document).ready(function() {
     $('#signupForm').bootstrapValidator({
@@ -86,10 +68,17 @@ $(document).ready(function() {
 });
 {% endhighlight %}
 
-                    <p>The implementation idea consists of four steps:</p>
-                    <h4>Step 1: Adding valid message option</h4>
+                    <p>The implementation idea consists of four steps as following.</p>
+                </section>
+
+                <div class="doc-hr"></div>
+
+                <section>
+                    <h2>Adding valid message option</h2>
+
                     <p>I add an option named <code>validMessage</code> for each field. As the name suggests, the plugin will show the valid message when the field is valid.</p>
-{% highlight javascript hl_lines="8 14" %}
+
+{% highlight javascript %}
 $(document).ready(function() {
     $('#signupForm').bootstrapValidator({
         feedbackIcons: {
@@ -112,25 +101,32 @@ $(document).ready(function() {
     });
 });
 {% endhighlight %}
-                    <p>We can get the option value later via the <a href="/api/#get-options"><code>getOptions()</code> method</a>.</p>
 
-                    <h4>Step 2: Creating an element that shows the invalid message</h4>
+                    <p>We can get the option value later via the <a href="/api/#get-options"><code>getOptions()</code> method</a>.</p>
+                </section>
+
+                <div class="doc-hr"></div>
+
+                <section>
+                    <h2>Creating an element that shows the invalid message</h2>
+
                     <p>Basically, you can place the valid message anywhere you want as long as you can retrieve it later.</p>
                     <p>Behind the scenes, BootstrapValidator places each error message in a <code>span</code> element. The field error messages are placed inside an element which can be retrieved by <code>$field.data('bv.messages')</code>.</p>
                     <p>To make the example easily to follow, I simply create a <code>span</code> element right after each field for showing the valid message:</p>
-{% highlight html hl_lines="6 14" %}
+
+{% highlight html %}
 <form id="signupForm" method="post" class="form-horizontal">
     <div class="form-group">
-        <label class="col-lg-3 control-label">Username</label>
-        <div class="col-lg-5">
+        <label class="col-sm-3 control-label">Username</label>
+        <div class="col-sm-5">
             <input type="text" class="form-control" name="username" />
             <span class="help-block validMessage"></span>
         </div>
     </div>
 
     <div class="form-group">
-        <label class="col-lg-3 control-label">Password</label>
-        <div class="col-lg-5">
+        <label class="col-sm-3 control-label">Password</label>
+        <div class="col-sm-5">
             <input type="password" class="form-control" name="password" />
             <span class="help-block validMessage"></span>
         </div>
@@ -139,8 +135,10 @@ $(document).ready(function() {
     ...
 </form>
 {% endhighlight %}
+
                     <p>In fact, the number of fields might be greater than two as in our example. Therefore, it is much better if these valid message elements are created dynamically. It's quite easy to do it by triggering the <a href="/settings/#event-field"><code>init.field.bv</code> event</a>:</p>
-{% highlight javascript hl_lines="3" %}
+
+{% highlight javascript %}
 $(document).ready(function() {
     $('#signupForm')
         .on('init.field.bv', function(e, data) {
@@ -168,16 +166,21 @@ $(document).ready(function() {
         });
 });
 {% endhighlight %}
-                    <div class="bv-box bv-box-info">
-                        <h5><i></i>Notice</h5>
-                        <p>The <code>init.field.bv</code> event is triggered after the field is initialized by the plugin. In order to trigger the event, you must declare <code>.on('init.field.bv')</code> before calling <code>bootstrapValidator(options)</code>.</p>
+                    <div class="doc-alert doc-alert-info">
+                        The init.field.bv event is triggered after the field is initialized by the plugin. In order to trigger the event, you must declare .on('init.field.bv') before calling bootstrapValidator(options).
                     </div>
 
                     <p>In step 2 above, the custom option <code>validMessage</code> is determined by using the <a href="/api/#get-options"><code>getOptions()</code> method</a>.</p>
+                </section>
 
-                    <h4>Step 3: Showing the valid message when the field is valid</h4>
+                <div class="doc-hr"></div>
+
+                <section>
+                    <h2>Showing the valid message when the field is valid</h2>
+
                     <p>Triggering the <a href="/settings/#event-field"><code>success.field.bv</code> event</a> to do that:</p>
-{% highlight javascript hl_lines="9" %}
+
+{% highlight javascript %}
 $(document).ready(function() {
     $('#signupForm')
         .on('init.field.bv', function(e, data) {
@@ -197,9 +200,16 @@ $(document).ready(function() {
         });
 });
 {% endhighlight %}
-                    <h4>Step 4: Hiding the valid message when the field is invalid</h4>
+                </section>
+
+                <div class="doc-hr"></div>
+
+                <section>
+                    <h2>Hiding the valid message when the field is invalid</h2>
+
                     <p>Finally, being similar to the step 3, the valid message must be hidden when the field turns to be invalid. It can be done via the <a href="/settings/#event-field"><code>error.field.bv</code> event</a>:</p>
-{% highlight javascript hl_lines="12" %}
+
+{% highlight javascript %}
 $(document).ready(function() {
     $('#signupForm')
         .on('init.field.bv', function(e, data) {
@@ -222,9 +232,15 @@ $(document).ready(function() {
         });
 });
 {% endhighlight %}
+                </section>
+
+                <div class="doc-hr"></div>
+
+                <section>
+                    <h2>Final result</h2>
 
                     <p>Below is the final working example:</p>
-                    <div class="bv-example">
+                    <div class="doc-demo">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#example-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#example-html-tab" data-toggle="tab">HTML</a></li>
@@ -233,130 +249,18 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="example-form-tab">
-                                <form id="signupForm" method="post" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Username</label>
-                                        <div class="col-lg-5">
-                                            <input type="text" class="form-control" name="username" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Password</label>
-                                        <div class="col-lg-5">
-                                            <input type="password" class="form-control" name="password" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-lg-5 col-lg-offset-3">
-                                            <button type="submit" class="btn btn-default">Signup</button>
-                                        </div>
-                                    </div>
-                                </form>
+                            {% include examples/showing-valid-message/example.html %}
                             </div>
 
                             <div class="tab-pane" id="example-html-tab">
-{% highlight html hl_lines="5 12" %}
-<form id="signupForm" method="post" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Username</label>
-        <div class="col-lg-5">
-            <input type="text" class="form-control" name="username" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Password</label>
-        <div class="col-lg-5">
-            <input type="password" class="form-control" name="password" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-lg-5 col-lg-offset-3">
-            <button type="submit" class="btn btn-default">Signup</button>
-        </div>
-    </div>
-</form>
+{% highlight html %}
+{% include examples/showing-valid-message/example.html %}
 {% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="example-js-tab">
-{% highlight javascript hl_lines="3 30 46 59 66" %}
-$(document).ready(function() {
-    $('#signupForm')
-        .on('init.field.bv', function(e, data) {
-            var field  = data.field,        // Get the field name
-                $field = data.element,      // Get the field element
-                bv     = data.bv;           // BootstrapValidator instance
-
-            // Create a span element to show valid message
-            // and place it right before the field
-            var $span = $('<small/>')
-                            .addClass('help-block validMessage')
-                            .attr('data-field', field)
-                            .insertAfter($field)
-                            .hide();
-
-            // Retrieve the valid message via getOptions()
-            var message = bv.getOptions(field).validMessage;
-            if (message) {
-                $span.html(message);
-            }
-        })
-        .bootstrapValidator({
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                username: {
-                    validMessage: 'The username looks great',
-                    validators: {
-                        notEmpty: {
-                            message: 'The username is required'
-                        },
-                        different: {
-                            field: 'password',
-                            message: 'The username cannot be same as password'
-                        },
-                        regexp: {
-                            regexp: /^[a-zA-Z0-9]+$/i,
-                            message: 'The username can only consist of alphabetical, number'
-                        }
-                    }
-                },
-                password: {
-                    validMessage: 'The password is good',
-                    validators: {
-                        notEmpty: {
-                            message: 'The password is required'
-                        },
-                        different: {
-                            field: 'username',
-                            message: 'The password cannot be same as username'
-                        }
-                    }
-                }
-            }
-        })
-        .on('success.field.bv', function(e, data) {
-            var field  = data.field,        // Get the field name
-                $field = data.element;      // Get the field element
-
-            // Show the valid message element
-            $field.next('.validMessage[data-field="' + field + '"]').show();
-        })
-        .on('error.field.bv', function(e, data) {
-            var field  = data.field,        // Get the field name
-                $field = data.element;      // Get the field element
-
-            // Show the valid message element
-            $field.next('.validMessage[data-field="' + field + '"]').hide();
-        });
-});
+{% highlight javascript %}
+{% include examples/showing-valid-message/example.js %}
 {% endhighlight %}
                             </div>
                         </div>
@@ -368,81 +272,5 @@ $(document).ready(function() {
 </div>
 
 <script>
-$(document).ready(function() {
-    $('#signupForm')
-        .on('init.field.bv', function(e, data) {
-            var field  = data.field,        // Get the field name
-                $field = data.element,      // Get the field element
-                bv     = data.bv;           // BootstrapValidator instance
-
-            // Create a span element to show valid message
-            // and place it right before the field
-            var $span = $('<small/>')
-                            .addClass('help-block validMessage')
-                            .attr('data-field', field)
-                            .insertAfter($field)
-                            .hide();
-
-            // Retrieve the valid message via getOptions()
-            var message = bv.getOptions(field).validMessage;
-            if (message) {
-                $span.html(message);
-            }
-        })
-        .bootstrapValidator({
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                username: {
-                    validMessage: 'The username looks great',
-                    validators: {
-                        notEmpty: {
-                            message: 'The username is required'
-                        },
-                        different: {
-                            field: 'password',
-                            message: 'The username cannot be same as password'
-                        },
-                        regexp: {
-                            regexp: /^[a-zA-Z0-9]+$/i,
-                            message: 'The username can only consist of alphabetical, number'
-                        }
-                    }
-                },
-                password: {
-                    validMessage: 'The password is good',
-                    validators: {
-                        notEmpty: {
-                            message: 'The password is required'
-                        },
-                        different: {
-                            field: 'username',
-                            message: 'The password cannot be same as username'
-                        }
-                    }
-                }
-            }
-        })
-        .on('success.field.bv', function(e, data) {
-            var field  = data.field,        // Get the field name
-                $field = data.element;      // Get the field element
-
-            // Show the valid message element
-            $field.next('.validMessage[data-field="' + field + '"]').show();
-        })
-        .on('error.field.bv', function(e, data) {
-            var field  = data.field,        // Get the field name
-                $field = data.element;      // Get the field element
-
-            // Show the valid message element
-            $field.next('.validMessage[data-field="' + field + '"]').hide();
-        })
-        .on('success.form.bv', function(e) {
-            // Prevent form submission
-            e.preventDefault();
-        });
-});
+{% include examples/showing-valid-message/example.js %}
 </script>

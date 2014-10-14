@@ -1,49 +1,28 @@
 ---
-layout:           doc
-title:            Validate an ISIN (International Securities Identification Number)
-permalink:        /validators/isin/
-previous_section: /validators/isbn/
-next_section:     /validators/ismn/
-comments:         true
-examples:         US0378331005, AU0000XVGZA3, GB0002634946, US0378331004, AA0000XVGZA3
+layout: default
+title: Validate an ISIN (International Securities Identification Number)
+permalink: /validators/isin/
+comments: true
+examples: US0378331005, AU0000XVGZA3, GB0002634946, US0378331004, AA0000XVGZA3
 related:
     - cusip
     - sedol
 ---
 
-<div class="bv-heading">
+<div class="doc-content-container">
+    <div class="doc-heading">
+        <h1>isin validator</h1>
+        <p>Validate an ISIN (International Securities Identification Number)</p>
+        <p>&larr; <a href="/validators/">Validators</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / isin</h1>
-                <p>Validate an ISIN (International Securities Identification Number).</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#options">Options</a></li>
-                    <li><a href="#example">Example</a></li>
-                    <li><a href="#related-validators">Related validators</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="options">Options</h2>
+                    <h2>Options</h2>
+
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -64,8 +43,10 @@ related:
                     </table>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 <section>
-                    <h2 id="example">Example</h2>
+                    <h2>Example</h2>
 
                     <table class="table table-condensed">
                         <thead>
@@ -85,7 +66,7 @@ related:
                         </tbody>
                     </table>
 
-                    <div class="bv-example">
+                    <div class="doc-demo">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#isin-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#isin-html-tab" data-toggle="tab">HTML</a></li>
@@ -94,92 +75,49 @@ related:
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="isin-form-tab">
-                                <form id="isinForm" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">ISIN</label>
-                                        <div class="col-lg-5">
-                                            <input type="text" class="form-control" name="isin" />
-                                        </div>
-                                    </div>
-                                </form>
+                            {% include validators/isin/example.html %}
                             </div>
 
                             <div class="tab-pane" id="isin-html-tab">
-{% highlight html %}
-<form id="isinForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">ISIN</label>
-        <div class="col-lg-5">
-            <input type="text" class="form-control" name="isin" />
-        </div>
-    </div>
-</form>
-{% endhighlight %}
+                            {% highlight html %}
+                            {% include validators/isin/example.html %}
+                            {% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="isin-js-tab">
-{% highlight javascript hl_lines="11" %}
-$(document).ready(function() {
-    $('#isinForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            isin: {
-                validators: {
-                    isin: {
-                        message: 'The value is not valid ISIN'
-                    }
-                }
-            }
-        }
-    });
-});
-{% endhighlight %}
+                            {% highlight javascript %}
+                            {% include validators/isin/example.js %}
+                            {% endhighlight %}
                             </div>
                         </div>
                     </div>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 {% include related.html %}
+            </div>
+
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
+{% include validators/isin/example.js %}
 $(document).ready(function() {
     $('.sample').on('click', function() {
-        $('#isinForm')
-            .find('input[name="isin"]')
-                .val($(this).html())
-                .end()
-            .bootstrapValidator('revalidateField', 'isin');
+        $('#isinForm').find('input[name="isin"]').val($(this).html());
+
+        $('#isinForm').bootstrapValidator('revalidateField', 'isin');
 
         var isValid = $('#isinForm').data('bootstrapValidator').isValid();
         $(this)
             .parents('tr').find('i')
             .removeClass('fa-check fa-times')
             .addClass(isValid ? 'fa-check' : 'fa-times');
-    });
-
-    $('#isinForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            isin: {
-                validators: {
-                    isin: {
-                        message: 'The value is not valid ISIN'
-                    }
-                }
-            }
-        }
     });
 });
 </script>

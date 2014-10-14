@@ -1,242 +1,52 @@
 ---
-layout:           doc
-title:            Play with Bootstrap Button
-permalink:        /examples/bootstrap-button/
-categories:       [Compatibility]
-previous_section:
-next_section:
-comments:         true
+layout: default
+title: Playing with Bootstrap Button
+permalink: /examples/bootstrap-button/
+comments: true
 ---
 
-<style type="text/css">
-#buttonGroupForm .btn-group .form-control-feedback {
-    top: 0;
-    right: -30px;
-}
-</style>
+<div class="doc-content-container">
+    <div class="doc-heading">
+        <h1>Playing with Bootstrap Button</h1>
+        <p>&larr; <a href="/examples/">Examples</a></p>
+        {% include edit-button.html %}
+    </div>
 
-<div class="bv-heading">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/examples/">Examples</a> / Compatibility</h1>
-            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <p>Use with the <a href="http://getbootstrap.com/javascript/#buttons">Bootstrap Button</a> component.</p>
 
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
+                <div class="doc-demo">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#button-form-tab" data-toggle="tab">Try it</a></li>
+                        <li><a href="#button-html-tab" data-toggle="tab">HTML</a></li>
+                        <li><a href="#button-js-tab" data-toggle="tab">JS</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="button-form-tab">
+                        {% include examples/bootstrap-button/example.html %}
+                        </div>
+
+                        <div class="tab-pane" id="button-html-tab">
+{% highlight html %}
+{% include examples/bootstrap-button/example.html %}
+{% endhighlight %}
+                        </div>
+
+                        <div class="tab-pane" id="button-js-tab">
+{% highlight javascript %}
+{% include examples/bootstrap-button/example.js %}
+{% endhighlight %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                {% include example.html category='Compatibility' %}
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
-                <section>
-                    <h2 id="bootstrap-button">Play with Bootstrap Button</h2>
-                    <p>Use with the <a href="http://getbootstrap.com/javascript/#buttons">Bootstrap Button</a> component.</p>
-
-                    <div class="bv-example">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#button-form-tab" data-toggle="tab">Try it</a></li>
-                            <li><a href="#button-html-tab" data-toggle="tab">HTML</a></li>
-                            <li><a href="#button-js-tab" data-toggle="tab">JS</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="button-form-tab">
-                                <form id="buttonGroupForm" method="post" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Gender</label>
-                                        <div class="col-lg-9">
-                                            <div class="btn-group" data-toggle="buttons">
-                                                <label class="btn btn-default">
-                                                    <input type="radio" name="gender" value="male" /> Male
-                                                </label>
-                                                <label class="btn btn-default">
-                                                    <input type="radio" name="gender" value="female" /> Female
-                                                </label>
-                                                <label class="btn btn-default">
-                                                    <input type="radio" name="gender" value="other" /> Other
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Languages</label>
-                                        <div class="col-lg-9">
-                                            <div class="btn-group" data-toggle="buttons">
-                                                <label class="btn btn-default">
-                                                    <input type="checkbox" name="languages[]" value="english" /> English
-                                                </label>
-                                                <label class="btn btn-default">
-                                                    <input type="checkbox" name="languages[]" value="german" /> German
-                                                </label>
-                                                <label class="btn btn-default">
-                                                    <input type="checkbox" name="languages[]" value="french" /> French
-                                                </label>
-                                                <label class="btn btn-default">
-                                                    <input type="checkbox" name="languages[]" value="russian" /> Russian
-                                                </label>
-                                                <label class="btn btn-default">
-                                                    <input type="checkbox" name="languages[]" value="italian"> Italian
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-lg-9 col-lg-offset-3">
-                                            <button type="submit" class="btn btn-default">Validate</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="tab-pane" id="button-html-tab">
-{% highlight html hl_lines="5" %}
-<!-- Override the feedback icons position -->
-<style type="text/css">
-#buttonGroupForm .btn-group .form-control-feedback {
-    top: 0;
-    right: -30px;
-}
-</style>
-
-<form id="buttonGroupForm" method="post" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Gender</label>
-        <div class="col-lg-9">
-            <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-default">
-                    <input type="radio" name="gender" value="male" /> Male
-                </label>
-                <label class="btn btn-default">
-                    <input type="radio" name="gender" value="female" /> Female
-                </label>
-                <label class="btn btn-default">
-                    <input type="radio" name="gender" value="other" /> Other
-                </label>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Languages</label>
-        <div class="col-lg-9">
-            <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-default">
-                    <input type="checkbox" name="languages[]" value="english" /> English
-                </label>
-                <label class="btn btn-default">
-                    <input type="checkbox" name="languages[]" value="german" /> German
-                </label>
-                <label class="btn btn-default">
-                    <input type="checkbox" name="languages[]" value="french" /> French
-                </label>
-                <label class="btn btn-default">
-                    <input type="checkbox" name="languages[]" value="russian" /> Russian
-                </label>
-                <label class="btn btn-default">
-                    <input type="checkbox" name="languages[]" value="italian"> Italian
-                </label>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-lg-9 col-lg-offset-3">
-            <button type="submit" class="btn btn-default">Validate</button>
-        </div>
-    </div>
-</form>
-{% endhighlight %}
-                            </div>
-
-                            <div class="tab-pane" id="button-js-tab">
-{% highlight javascript hl_lines="10" %}
-$(document).ready(function() {
-    $('#buttonGroupForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        // Since the Bootstrap Button hides the radio and checkbox
-        // We exclude the disabled elements only
-        excluded: ':disabled',
-        fields: {
-            gender: {
-                validators: {
-                    notEmpty: {
-                        message: 'The gender is required'
-                    }
-                }
-            },
-            'languages[]': {
-                validators: {
-                    choice: {
-                        min: 1,
-                        max: 2,
-                        message: 'Please choose 1 - 2 languages you can speak'
-                    }
-                }
-            }
-        }
-    });
-});
-{% endhighlight %}
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script>
-$(document).ready(function() {
-    $('#buttonGroupForm')
-        .bootstrapValidator({
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            excluded: ':disabled',
-            fields: {
-                gender: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The gender is required'
-                        }
-                    }
-                },
-                'languages[]': {
-                    validators: {
-                        choice: {
-                            min: 1,
-                            max: 2,
-                            message: 'Please choose 1 - 2 languages you can speak'
-                        }
-                    }
-                }
-            }
-        })
-        .on('success.form.bv', function(e) {
-            // Prevent form submission
-            e.preventDefault();
-        });
-});
+{% include examples/bootstrap-button/example.js %}
 </script>

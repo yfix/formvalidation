@@ -1,185 +1,234 @@
 ---
-layout:    base
-title:     The best jQuery plugin to validate form fields. Designed to use with Bootstrap 3
+title: The best jQuery plugin to validate form fields. Designed to use with Bootstrap 3+
 permalink: /
-comments:  false
 ---
+<!doctype html>
+<html>
+<head>
+    {% include head.html %}
+    <link rel="stylesheet" href="/vendor/onepage-scroll/onepage-scroll.css">
+</head>
+<body>
+    {% include nav.html %}
 
-<div class="bv-heading">
-    <div class="container text-center">
-        <h1>the best <a href="http://plugins.jquery.com/bootstrapValidator">jQuery plugin</a> to validate form fields</h1>
-        <h2>designed to use with <a href="http://getbootstrap.com">Bootstrap 3</a></h2>
+    <div id="main" class="doc-content-wrapper">
+        <!-- intro -->
+        <section id="intro" class="doc-center-wrapper doc-home-intro">
+            <div class="container doc-center-container">
+                <h1>
+                    Best <a href="http://jquery.com">jQuery</a> plugin to validate form fields<br/>
+                    <span class="hidden-xs hidden-sm">Designed to use with <a href="http://getbootstrap.com">Bootstrap 3+</a></span>
+                </h1>
+                <p>
+                    <a class="btn" href="/getting-started/">Download</a>
+                    <a class="btn" href="https://pledgie.com/campaigns/24885" alt="Click here to lend your support to: BootstrapValidator and make a donation at pledgie.com!">Donate</a>
+                </p>
+                <span>v{{ site.current_version }} &middot; {{ site.released_date}} &middot; MIT license &middot; by <a href="http://twitter.com/nghuuphuoc">@nghuuphuoc</a></span>
+            </div>
+            <h3 class="hide"><span id="downloads" class="doc-home-counter"></span> downloads so far</h3>
+        </section>
 
-        <p>
-            <a class="btn btn-lg" href="/getting-started/#download">Download</a>
-            <a class="btn btn-lg" href="https://pledgie.com/campaigns/24885" alt="Click here to lend your support to: BootstrapValidator and make a donation at pledgie.com!">Donate via Paypal</a>
-            <!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                <input type="hidden" name="cmd" value="_s-xclick">
-                <input type="hidden" name="hosted_button_id" value="D9K5AMXE87UXJ">
-                <button type="submit" class="btn btn-lg btn-success">Paypal Donation</button>
-                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-            </form> -->
-        </p>
-        <p><a href="/news/v0.5.2-released/">v{{ site.current_version }}</a> &mdash; {{ site.released_date}} &mdash; MIT license</p>
+        <!-- features -->
+        <section id="features" class="doc-center-wrapper doc-home-feature">
+            <div class="container doc-center-container">
+                <h2>Features</h2>
+                <div class="doc-hr"></div>
 
-        <div class="bv-ad">
-        {% include ad.html %}
-        </div>
-    </div>
-</div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <i class="fa fa-code"></i>
+                        <h4>Code</h4>
+                        <p>written from scratch &middot; <a href="http://jshint.com">JSHint</a> free &middot; well tested with <a href="http://jasmine.github.io">Jasmine</a></p>
+                    </div>
 
-<!-- followers -->
-<div class="bv-follower">
-    <div class="container">
-        <ul>
-            <li><a href="{{ site.repository.source }}"><i class="fa fa-github"></i> <span id="ghStars"></span></a></li>
-            <li><a href="{{ site.repository.source }}/network/members"><i class="fa fa-code-fork"></i> <span id="ghForks"></span></a></li>
-            <li><a href="https://twitter.com/bsvalidator"><i class="fa fa-twitter"></i> <span id="twFollowers">{{ site.twitter_followers }}</span></a></li>
-        </ul>
-    </div>
-</div>
+                    <div class="col-sm-4">
+                        <i class="fa fa-html5"></i>
+                        <h4>HTML 5</h4>
+                        <p>support declarative settings &middot; HTML 5 attributes &middot; HTML 5 input types</p>
+                    </div>
 
-<!-- features -->
-<div class="bv-features">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <i class="fa fa-code"></i>
-                <h4>Code</h4>
-                <ul>
-                    <li>Written from scratch</li>
-                    <li>Very solid and clean</li>
-                    <li>Core and validators code are separated</li>
-                    <li>JSHint free</li>
-                    <li>Well tested with <a href="http://jasmine.github.io">Jasmine</a></li>
+                    <div class="col-sm-4">
+                        <i class="fa fa-flask"></i>
+                        <h4>Validators</h4>
+                        <p>{{ site.data.validators.size }} <a href="/validators/">validators</a> &middot; Easy to write a new one &middot; {{ site.data.languages.size }} language packs</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <i class="fa fa-heart"></i>
+                        <h4>Friendly</h4>
+                        <p>feedback icons &middot; threshold option &middot; <a href="/settings/#form-container">tooltip/popover</a> error</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <i class="fa fa-magic"></i>
+                        <h4>Flexible</h4>
+                        <p>dynamic <a href="/settings/#dynamic-option">option</a> &middot; dynamic field &middot; dynamic <a href="/settings/#dynamic-message">messages</a></p>
+                    </div>
+                    <div class="col-sm-4">
+                        <i class="fa fa-puzzle-piece"></i>
+                        <h4>Compatibility</h4>
+                        <p><a href="/examples/#compatibility">play nice</a> with other</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- contributors -->
+        <section id="contributors" class="doc-center-wrapper doc-home-contributor">
+            <div class="container doc-center-container">
+                <h2>Made better by <span class="doc-home-counter">{{ site.data.contributors.size }}</span> contributors</h2>
+                <div class="doc-hr"></div>
+
+                <p>
+                    <a href="{{ site.repository.source }}"><i class="fa fa-github"></i> <span id="ghStars" class="doc-home-counter"></span> stars</a>
+                    <a href="{{ site.repository.source }}/network/members"><i class="fa fa-code-fork"></i> <span id="ghForks" class="doc-home-counter"></span> forks</a>
+                </p>
+
+                <ul id="contributorList">
+                    {% for user in site.data.contributors %}
+                    <li><a href="https://github.com/{{ user.username }}" title="@{{ user.username }}"><img src="https://github.com/{{ user.username }}.png" width="60px" height="60px" /></a></li>
+                    {% endfor %}
                 </ul>
-                <p>  </p>
-            </div>
-            <div class="col-md-4">
-                <i class="fa fa-html5"></i>
-                <h4>HTML 5</h4>
-                <ul>
-                    <li>Fully support declarative settings</li>
-                    <li>Support HTML 5 attributes</li>
-                    <li>Support HTML 5 input types</li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <i class="fa fa-flask"></i>
-                <h4>Validators</h4>
-                <ul>
-                    <li>Provide 48 built-in <a href="/validators">validators</a> and counting!</li>
-                    <li>Easy to write a new validator</li>
-                    <li>Internationalization</li>
-                </ul>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-4">
-                <i class="fa fa-heart"></i>
-                <h4>Friendly</h4>
-                <ul>
-                    <li>Show feedback icons based on field validity</li>
-                    <li>Focus on the first invalid field</li>
-                    <li>Don't validate until given length</li>
-                    <li>Possible to show errors as <a href="/settings/#form-container">tooltip/popover</a></li>
-                </ul>
+                <a href="{{ site.repository.source }}/network/members" class="btn">Fork and Contribute</a>
             </div>
-            <div class="col-md-4">
-                <i class="fa fa-magic"></i>
-                <h4>Flexible</h4>
-                <ul>
-                    <li>Define field by name or CSS selector</li>
-                    <li>Possible to indicate excluded fields</li>
-                    <li>Enable/disable validators on the fly</li>
-                    <li>Support <a href="/settings/#dynamic-option">dynamic option</a></li>
-                    <li>Support dynamic fields</li>
-                    <li>Support <a href="/settings/#dynamic-message">dynamic messages</a></li>
-                </ul>
+        </section>
+
+        <!-- what people say -->
+        <section id="tweet" class="doc-center-wrapper doc-home-tweet">
+            <div class="container doc-center-container">
+                <h2>What people say</h2>
+                <div class="doc-hr"></div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <img src="https://pbs.twimg.com/profile_images/486400018396368896/gjhMYZEX_normal.jpeg" />
+                        <blockquote>this is really cool stuff and it works! <a href="https://twitter.com/bsvalidator">@bsvalidator</a> great work</blockquote>
+                        <span>&mdash; <a href="https://twitter.com/samlinux/status/508324990014717952">@samlinux</a></span>
+                    </div>
+                    <div class="col-sm-4">
+                        <img src="https://pbs.twimg.com/profile_images/428888773468762112/0ajZwXXW_normal.jpeg" />
+                        <blockquote>such a lifesaver, thanks! <a href="https://twitter.com/nghuuphuoc">@nghuuphuoc</a> now I can validate my HTML form in no time, and beautifully! :D</blockquote>
+                        <span>&mdash; <a href="https://twitter.com/andikamri/statuses/502011686086123520">@andikamri</a></span>
+                    </div>
+                    <div class="col-sm-4">
+                        <img src="https://pbs.twimg.com/profile_images/473566833488830464/bgHodkxx_normal.jpeg" />
+                        <blockquote><a href="https://twitter.com/bsvalidator">@bsvalidator</a> Great work! BootstrapValidator is exactly what I needed.</blockquote>
+                        <span>&mdash; <a href="https://twitter.com/butchewing/statuses/492733411400744961">@butchewing</a></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <img src="https://pbs.twimg.com/profile_images/508086259307134976/ahrh4FBp_normal.jpeg" />
+                        <blockquote><a href="https://twitter.com/bsvalidator">@bsvalidator</a> been searching and looking high and low, now the search is over, sticking to this :D</blockquote>
+                        <span>&mdash; <a href="https://twitter.com/tomexsans/statuses/491985972767113217">@tomexsans</a></span>
+                    </div>
+                    <div class="col-sm-4">
+                        <img src="https://pbs.twimg.com/profile_images/436179968347734017/BcB3ZBgK_normal.png" />
+                        <blockquote>Validation plugin for Bootstrap: <a href="http://t.co/q4JQ6vfzMp">http://t.co/q4JQ6vfzMp</a> from <a href="https://twitter.com/bsvalidator">@bsvalidator</a>. Give it a try, looks great!</blockquote>
+                        <span>&mdash; <a href="https://twitter.com/CreativeTim/statuses/491460220120743936">@CreativeTim</a></span>
+                    </div>
+                    <div class="col-sm-4">
+                        <img src="https://pbs.twimg.com/profile_images/490575346329079811/Uk-LiXQK_normal.jpeg" />
+                        <blockquote><a href="https://twitter.com/bsvalidator">@bsvalidator</a> great lib - thx for the work <a href="https://twitter.com/tipdoge">@tipdoge</a> tip 1000</blockquote>
+                        <span>&mdash; <a href="https://twitter.com/Kim_Jong_Skill/statuses/489041056479346688">@Kim_Jong_Skill</a></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <img src="https://pbs.twimg.com/profile_images/519254613195649024/W9ETtNeJ_normal.png" />
+                        <blockquote>Great combination of web toolkits making frontend easy... <a href="https://twitter.com/twbootstrap">@twbootstrap</a> <a href="https://twitter.com/bsvalidator">@bsvalidator</a> <a href="https://twitter.com/jquery">@jquery</a> <a href="https://twitter.com/fontawesome">@fontawesome</a> <a href="https://twitter.com/gulpjs">@gulpjs</a> if you can use them all!</blockquote>
+                        <span>&mdash; <a href="https://twitter.com/aandrewdixon/statuses/485521144142123008">@aandrewdixon</a></span>
+                    </div>
+                    <div class="col-sm-4">
+                        <img src="https://pbs.twimg.com/profile_images/1089022619/yoo_normal.png" />
+                        <blockquote>i love <a href="https://twitter.com/bsvalidator">@bsvalidator</a> … the jquery plugin… not the guy behind the code ;-)</blockquote>
+                        <span>&mdash; <a href="https://twitter.com/logemann/statuses/484266215050080256">@logemann</a></span>
+                    </div>
+                    <div class="col-sm-4">
+                        <img src="https://pbs.twimg.com/profile_images/431221224727793666/Uuq7N79-_normal.jpeg" />
+                        <blockquote><a href="https://twitter.com/bsvalidator">@bsvalidator</a> Thank you, Thank you, Thank you for this amazing script!!!!!</blockquote>
+                        <span>&mdash; <a href="https://twitter.com/Arelowo/statuses/483417620993941505">@Arelowo</a></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <img src="https://pbs.twimg.com/profile_images/459864257182449664/uLHuUQoI_normal.jpeg" />
+                        <blockquote>You saved my day <a href="https://twitter.com/bsvalidator">@bsvalidator</a></blockquote>
+                        <span>&mdash; <a href="https://twitter.com/scokmen/statuses/475145281412288512">@scokmen</a></span>
+                    </div>
+                    <div class="col-sm-4">
+                        <img src="https://pbs.twimg.com/profile_images/476492598253592578/ssYSap9L_normal.jpeg" />
+                        <blockquote><a href="https://twitter.com/bsvalidator">@bsvalidator</a> haha thanks for the plugin you rock.</blockquote>
+                        <span>&mdash; <a href="https://twitter.com/mrpollo/statuses/472018708076838912">@mrpollo</a></span>
+                    </div>
+                    <div class="col-sm-4">
+                        <img src="https://pbs.twimg.com/profile_images/478563131413643264/VCb27D1k_normal.jpeg" />
+                        <blockquote>Thanks again to <a href="https://twitter.com/bsvalidator">@bsvalidator</a> for the quick reply. Be sure to check out Bootstrap Validator. It's the best I've found.</blockquote>
+                        <span>&mdash; <a href="https://twitter.com/CurtStaubach/statuses/466937857652064256">@CurtStaubach</a></span>
+                    </div>
+                </div>
+
+                <p>
+                    <a href="http://twitter.com/nghuuphuoc" class="btn" title="Follow @nghuuphuoc">Follow @nghuuphuoc</a>
+                    <a href="http://twitter.com/bsvalidator" class="btn" title="Follow @bsvalidator">Follow @bsvalidator</a>
+                </p>
             </div>
-            <div class="col-md-4">
-                <i class="fa fa-puzzle-piece"></i>
-                <h4>Compatibility</h4>
-                <ul>
-                    <li>Bootstrap Multiselect</li>
-                    <li>Chosen</li>
-                    <li>Color Picker, Date Picker</li>
-                    <li>iCheck</li>
-                    <li>Select2</li>
-                    <li> ... we <a href="/examples/#compatibility">play nice</a> with all of them</li>
-                </ul>
-            </div>
-        </div>
+        </section>
     </div>
-</div>
 
-<!-- contributors -->
-<div class="bv-contributor">
-    <div class="container">
-        <h2 id="contributors">{{ site.data.contributors.size }} contributors</h2>
+    {% include ad.html %}
 
-        <ul>
-            {% for user in site.data.contributors %}
-            <li>
-                <a href="https://github.com/{{ user.username }}" title="@{{ user.username }}"><img src="https://github.com/{{ user.username }}.png" width="60px" height="60px" /></a>
-            </li>
-            {% endfor %}
-        </ul>
-
-        <div class="text-center">
-            <a href="{{ site.repository.source }}/network/members" class="btn btn-default btn-lg">JOIN US</a>
-        </div>
-    </div>
-</div>
-
-<!-- downloads -->
-<div class="bv-downloads">
-    <div class="container">
-        <h3><span id="ghDownloads"></span> downloads so far</h3>
-        <a class="btn btn-lg" href="/getting-started/#download">DOWNLOAD</a>
-    </div>
-</div>
-
-<!-- tweets -->
-<div class="bv-tweet">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <blockquote class="twitter-tweet" lang="en"><p><a href="http://t.co/4iQTs4iB4g">http://t.co/4iQTs4iB4g</a>&#10;this is really cool stuff and it works! <a href="https://twitter.com/bsvalidator">@bsvalidator</a> great work</p>&mdash; Bole Roland (@samlinux) <a href="https://twitter.com/samlinux/status/508324990014717952">September 6, 2014</a></blockquote>
-                <blockquote class="twitter-tweet" lang="en"><p>such a lifesaver, thanks! <a href="https://twitter.com/nghuuphuoc">@nghuuphuoc</a> now I can validate my HTML form in no time, and beautifully! :D <a href="http://t.co/tfHRFAz324">http://t.co/tfHRFAz324</a></p>&mdash; Andika Amri (@andikamri) <a href="https://twitter.com/andikamri/statuses/502011686086123520">August 20, 2014</a></blockquote>
-                <blockquote class="twitter-tweet" lang="en"><p><a href="https://twitter.com/bsvalidator">@bsvalidator</a> Great work! BootstrapValidator is exactly what I needed.</p>&mdash; Butch Ewing (@butchewing) <a href="https://twitter.com/butchewing/statuses/492733411400744961">July 25, 2014</a></blockquote>
-            </div>
-            <div class="col-md-3">
-                <blockquote class="twitter-tweet" lang="en"><p><a href="https://twitter.com/bsvalidator">@bsvalidator</a> been searching and looking high and low, now the search is over, sticking to this :D</p>&mdash; tomex evaristo (@tomexsans) <a href="https://twitter.com/tomexsans/statuses/491985972767113217">July 23, 2014</a></blockquote>
-                <blockquote class="twitter-tweet" lang="en"><p>Validation plugin for Bootstrap: <a href="http://t.co/q4JQ6vfzMp">http://t.co/q4JQ6vfzMp</a> from <a href="https://twitter.com/bsvalidator">@bsvalidator</a> . Give it a try, looks great!</p>&mdash; Creative Tim (@CreativeTim) <a href="https://twitter.com/CreativeTim/statuses/491460220120743936">July 22, 2014</a></blockquote>
-                <blockquote class="twitter-tweet" lang="en"><p><a href="https://twitter.com/bsvalidator">@bsvalidator</a> great lib - thx for the work <a href="https://twitter.com/tipdoge">@tipdoge</a> tip 1000</p>&mdash; Kim Jong Skill (@Kim_Jong_Skill) <a href="https://twitter.com/Kim_Jong_Skill/statuses/489041056479346688">July 15, 2014</a></blockquote>
-            </div>
-            <div class="col-md-3">
-                <blockquote class="twitter-tweet" lang="en"><p>Great combination of web toolkits making frontend easy… <a href="https://twitter.com/twbootstrap">@twbootstrap</a> <a href="https://twitter.com/bsvalidator">@bsvalidator</a> <a href="https://twitter.com/jquery">@jquery</a> <a href="https://twitter.com/fontawesome">@fontawesome</a> <a href="https://twitter.com/gulpjs">@gulpjs</a> if you can use them all!</p>&mdash; Andrew Dixon (@aandrewdixon) <a href="https://twitter.com/aandrewdixon/statuses/485521144142123008">July 5, 2014</a></blockquote>
-                <blockquote class="twitter-tweet" lang="en"><p>i love <a href="https://twitter.com/bsvalidator">@bsvalidator</a> … the jquery plugin… not the guy behind the code ;-)</p>&mdash; Marc Logemann (@logemann) <a href="https://twitter.com/logemann/statuses/484266215050080256">July 2, 2014</a></blockquote>
-                <blockquote class="twitter-tweet" lang="en"><p><a href="https://twitter.com/bsvalidator">@bsvalidator</a> Thank you, Thank you, Thank you for this amazing script!!!!!</p>&mdash; Arelowo (@Arelowo) <a href="https://twitter.com/Arelowo/statuses/483417620993941505">June 30, 2014</a></blockquote>
-            </div>
-            <div class="col-md-3">
-                <blockquote class="twitter-tweet" lang="en"><p>You saved my day <a href="https://twitter.com/bsvalidator">@bsvalidator</a></p>&mdash; Soner Çökmen (@scokmen) <a href="https://twitter.com/scokmen/statuses/475145281412288512">June 7, 2014</a></blockquote>
-                <blockquote class="twitter-tweet" data-conversation="none" lang="en"><p><a href="https://twitter.com/bsvalidator">@bsvalidator</a> haha thanks for the plugin you rock.</p>&mdash; Ramon Roche  (@mrpollo) <a href="https://twitter.com/mrpollo/statuses/472018708076838912">May 29, 2014</a></blockquote>
-                <blockquote class="twitter-tweet" lang="en"><p>Thanks again to <a href="https://twitter.com/bsvalidator">@bsvalidator</a> for the quick reply. Be sure to check out Bootstrap Validator. It’s the best I’ve found. <a href="http://t.co/ibkSHfEeEu">http://t.co/ibkSHfEeEu</a></p>&mdash; CurtStaubach (@CurtStaubach) <a href="https://twitter.com/CurtStaubach/statuses/466937857652064256">May 15, 2014</a></blockquote>
-            </div>
-        </div>
-    </div>
-</div>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
+<script src="/vendor/onepage-scroll/jquery.onepage-scroll.min.js"></script>
 <script>
-$(document).ready(function() {
+$(function() {
+    $('.doc-logo').on('click', function() {
+        $('body').toggleClass('doc-nav-shown');
+    });
+
+    $('#main').onepage_scroll({
+        animationTime: 1000,
+        responsiveFallback: 767
+    });
+
+    $('.doc-flip-wrapper').on('touchstart', function() {
+        $(this).toggleClass('doc-flip-hover');
+    });
+
     // Show the number of Github stars/forks
     $.ajax({
         dataType: 'jsonp',
         url: 'https://api.github.com/repos/nghuuphuoc/bootstrapvalidator',
         success: function(response) {
-            $('#ghStars').html(response && response.data.watchers_count ? parseInt(response.data.watchers_count) : '{{ site.github_watchers }}');
-            $('#ghForks').html(response && response.data.forks_count    ? parseInt(response.data.forks_count)    : '{{ site.github_forks }}');
+            $('#ghStars').html((response && response.data.watchers_count ? parseInt(response.data.watchers_count) : '{{ site.github_watchers }}').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+            $('#ghForks').html((response && response.data.forks_count    ? parseInt(response.data.forks_count)    : '{{ site.github_forks }}').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
         }
+    });
+
+    $(window).on('load', function() {
+        var $contributors   = $('#contributorList').find('li'),
+            numContributors = $contributors.length,
+            random          = function(a, b) {
+                return Math.floor(Math.random() * (b - a + 1) + a);
+            },
+            swapContributor = function(i, j) {
+                var $tmp = $('<span>').hide(),
+                    $a   = $contributors.eq(i),
+                    $b   = $contributors.eq(j);
+                $a.before($tmp);
+                $b.before($a);
+                $tmp.replaceWith($b);
+            };
+
+        setInterval(function() {
+            var i = random(0, numContributors / 2),
+                j = random(numContributors / 2, numContributors);
+            swapContributor(i, j);
+        }, 300);
     });
 
     // Show the total of downloads
@@ -195,8 +244,20 @@ $(document).ready(function() {
                     }
                 }
             }
-            $('#ghDownloads').html((total || '{{ site.github_downloads }}').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+            var count = Math.floor(total / 1000 - 1) * 1000;
+            $('#downloads').html(count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')).parent().removeClass('hide');
+
+            var counter = setInterval(function() {
+                count++;
+                if (count > total) {
+                    clearInterval(counter);
+                } else {
+                    $('#downloads').html(count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+                }
+            }, 0.5);
         }
     });
 });
 </script>
+</body>
+</html>

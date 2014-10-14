@@ -1,338 +1,52 @@
 ---
-layout:           doc
-title:            Play with iCheck
-permalink:        /examples/icheck/
-categories:       [Compatibility]
-previous_section:
-next_section:
-comments:         true
+layout: default
+title: Playing with iCheck
+permalink: /examples/icheck/
+comments: true
 ---
 
-<link rel="stylesheet" href="//oss.maxcdn.com/icheck/1.0.2/skins/square/red.min.css" />
-<style type="text/css">
-#icheckForm .radio label, #icheckForm .checkbox label {
-    padding-left: 0;
-}
-</style>
+<div class="doc-content-container">
+    <div class="doc-heading">
+        <h1>Playing with iCheck</h1>
+        <p>&larr; <a href="/examples/">Examples</a></p>
+        {% include edit-button.html %}
+    </div>
 
-<div class="bv-heading">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/examples/">Examples</a> / Compatibility</h1>
-            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <p>Use with the <a href="http://fronteed.com/iCheck/">iCheck</a> plugin.</p>
 
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
+                <div class="doc-demo">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#icheck-form-tab" data-toggle="tab">Try it</a></li>
+                        <li><a href="#icheck-html-tab" data-toggle="tab">HTML</a></li>
+                        <li><a href="#icheck-js-tab" data-toggle="tab">JS</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="icheck-form-tab">
+                        {% include examples/icheck/example.html %}
+                        </div>
+
+                        <div class="tab-pane" id="icheck-html-tab">
+{% highlight html %}
+{% include examples/icheck/example.html %}
+{% endhighlight %}
+                        </div>
+
+                        <div class="tab-pane" id="icheck-js-tab">
+{% highlight javascript %}
+{% include examples/icheck/example.js %}
+{% endhighlight %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                {% include example.html category='Compatibility' %}
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
-                <section>
-                    <h2 id="icheck">Play with iCheck</h2>
-                    <p>Use with the <a href="http://fronteed.com/iCheck/">iCheck</a> plugin.</p>
-
-                    <div class="bv-example">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#icheck-form-tab" data-toggle="tab">Try it</a></li>
-                            <li><a href="#icheck-html-tab" data-toggle="tab">HTML</a></li>
-                            <li><a href="#icheck-js-tab" data-toggle="tab">JS</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="icheck-form-tab">
-                                <form id="icheckForm" method="post" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Job position</label>
-                                        <div class="col-lg-5">
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="job" value="designer" /> Designer
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="job" value="frontend" /> Front-end Developer
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="job" value="backend" /> Back-end Developer
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="job" value="dba" /> Database Administrator
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="job" value="sys" /> System Engineer
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Programming Languages</label>
-                                        <div class="col-lg-5">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="languages[]" value="net" /> .Net
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="languages[]" value="java" /> Java
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="languages[]" value="c" /> C/C++
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="languages[]" value="php" /> PHP
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="languages[]" value="perl" /> Perl
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="languages[]" value="ruby" /> Ruby
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="languages[]" value="python" /> Python
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="languages[]" value="javascript" /> Javascript
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-lg-5 col-lg-offset-3">
-                                            <button type="submit" class="btn btn-default">Validate</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="tab-pane" id="icheck-html-tab">
-{% highlight html hl_lines="10" %}
-<!-- Include iCheck skin -->
-<link rel="stylesheet" href="//oss.maxcdn.com/icheck/1.0.2/skins/square/red.min.css" />
-
-<!-- Include iCheck plugin -->
-<script src="//oss.maxcdn.com/icheck/1.0.2/icheck.min.js"></script>
-
-<!-- Set the radio/checkbox position properly -->
-<style type="text/css">
-#icheckForm .radio label, #icheckForm .checkbox label {
-    padding-left: 0;
-}
-</style>
-
-<form id="icheckForm" method="post" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Job position</label>
-        <div class="col-lg-5">
-            <div class="radio">
-                <label>
-                    <input type="radio" name="job" value="designer" /> Designer
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="job" value="frontend" /> Front-end Developer
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="job" value="backend" /> Back-end Developer
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="job" value="dba" /> Database Administrator
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="job" value="sys" /> System Engineer
-                </label>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Programming Languages</label>
-        <div class="col-lg-5">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="languages[]" value="net" /> .Net
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="languages[]" value="java" /> Java
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="languages[]" value="c" /> C/C++
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="languages[]" value="php" /> PHP
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="languages[]" value="perl" /> Perl
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="languages[]" value="ruby" /> Ruby
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="languages[]" value="python" /> Python
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="languages[]" value="javascript" /> Javascript
-                </label>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-lg-5 col-lg-offset-3">
-            <button type="submit" class="btn btn-default">Validate</button>
-        </div>
-    </div>
-</form>
-{% endhighlight %}
-                            </div>
-
-                            <div class="tab-pane" id="icheck-js-tab">
-{% highlight javascript hl_lines="30 38" %}
-$(document).ready(function() {
-    $('#icheckForm')
-        .bootstrapValidator({
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                job: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The job position is required'
-                        }
-                    }
-                },
-                'languages[]': {
-                    validators: {
-                        choice: {
-                            min: 2,
-                            max: 4,
-                            message: 'Please choose 2 - 4 programming languages you are good at'
-                        }
-                    }
-                }
-            }
-        })
-        .find('input[name="job"], input[name="languages[]"]')
-            // Init iCheck elements
-            .iCheck({
-                checkboxClass: 'icheckbox_square-red',
-                radioClass: 'iradio_square-red'
-            })
-            // Called when the radios/checkboxes are changed
-            .on('ifChanged', function(e) {
-                // Get the field name
-                var field = $(this).attr('name');
-                $('#icheckForm').bootstrapValidator('revalidateField', field);
-            });
-});
-{% endhighlight %}
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="//oss.maxcdn.com/icheck/1.0.2/icheck.min.js"></script>
 <script>
-$(document).ready(function() {
-    // iCheck example
-    $('#icheckForm')
-        .bootstrapValidator({
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                job: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The job position is required'
-                        }
-                    }
-                },
-                'languages[]': {
-                    validators: {
-                        choice: {
-                            min: 2,
-                            max: 4,
-                            message: 'Please choose 2 - 4 programming languages you are good at'
-                        }
-                    }
-                }
-            }
-        })
-        .on('success.form.bv', function(e) {
-            // Prevent form submission
-            e.preventDefault();
-        })
-        .find('input[name="job"], input[name="languages[]"]')
-            .iCheck({
-                checkboxClass: 'icheckbox_square-red',
-                radioClass: 'iradio_square-red'
-            })
-            .on('ifChanged', function(e) {
-                $('#icheckForm').bootstrapValidator('revalidateField', $(this).attr('name'));
-            });
-});
+{% include examples/icheck/example.js %}
 </script>

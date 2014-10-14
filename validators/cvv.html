@@ -1,49 +1,28 @@
 ---
-layout:           doc
-title:            Validate a CVV number
-permalink:        /validators/cvv/
-previous_section: /validators/cusip/
-next_section:     /validators/date/
-comments:         true
+layout: default
+title: Validate a CVV number
+permalink: /validators/cvv/
+comments: true
 related:
     - creditCard
     - iban
     - rtn
 ---
 
-<div class="bv-heading">
+<div class="doc-content-container">
+    <div class="doc-heading">
+        <h1>cvv validator</h1>
+        <p>Validate a CVV number</p>
+        <p>&larr; <a href="/validators/">Validators</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / cvv</h1>
-                <p>Validate a CVV number.</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#options">Options</a></li>
-                    <li><a href="#example">Example</a></li>
-                    <li><a href="#related-validators">Related validators</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="options">Options</h2>
+                    <h2>Options</h2>
+
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -73,17 +52,18 @@ related:
                     <p>In the details, the American Express card only accepts 4 digits CVV number, while other cards only accept 3 digits CVV number.</p>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 <section>
-                    <h2 id="example">Example</h2>
+                    <h2>Example</h2>
 
                     <p>The following form also validates the CVV number based on the credit card number.</p>
 
-                    <div class="bv-box bv-box-info">
-                        <h5><i></i>Sample credit card numbers for testing</h5>
-                        <p>You can use <a href="http://www.getcreditcardnumbers.com">www.getcreditcardnumbers.com</a> to generate fake credit card numbers.</p>
+                    <div class="doc-alert doc-alert-info">
+                        You can use <a href="http://www.getcreditcardnumbers.com">www.getcreditcardnumbers.com</a> to generate fake credit card numbers.
                     </div>
 
-                    <div class="bv-example">
+                    <div class="doc-demo">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#cvv-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#cvv-html-tab" data-toggle="tab">HTML</a></li>
@@ -92,108 +72,36 @@ related:
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="cvv-form-tab">
-                                <form id="paymentForm" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Credit card number</label>
-                                        <div class="col-lg-5">
-                                            <input type="text" class="form-control" name="ccNumber" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">CVV</label>
-                                        <div class="col-lg-2">
-                                            <input type="text" class="form-control" name="cvvNumber" />
-                                        </div>
-                                    </div>
-                                </form>
+                            {% include validators/cvv/example.html %}
                             </div>
 
                             <div class="tab-pane" id="cvv-html-tab">
 {% highlight html %}
-<form id="paymentForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Credit card number</label>
-        <div class="col-lg-5">
-            <input type="text" class="form-control" name="ccNumber" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-lg-3 control-label">CVV</label>
-        <div class="col-lg-2">
-            <input type="text" class="form-control" name="cvvNumber" />
-        </div>
-    </div>
-</form>
+{% include validators/cvv/example.html %}
 {% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="cvv-js-tab">
-{% highlight javascript hl_lines="18" %}
-$(document).ready(function() {
-    $('#paymentForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            ccNumber: {
-                validators: {
-                    creditCard: {
-                        message: 'The credit card number is not valid'
-                    }
-                }
-            },
-            cvvNumber: {
-                validators: {
-                    cvv: {
-                        creditCardField: 'ccNumber',
-                        message: 'The CVV number is not valid'
-                    }
-                }
-            }
-        }
-    });
-});
+{% highlight javascript %}
+{% include validators/cvv/example.js %}
 {% endhighlight %}
                             </div>
                         </div>
                     </div>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 {% include related.html %}
+            </div>
+
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-$(document).ready(function() {
-    $('#paymentForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            ccNumber: {
-                validators: {
-                    creditCard: {
-                        message: 'The credit card number is not valid'
-                    }
-                }
-            },
-            cvvNumber: {
-                validators: {
-                    cvv: {
-                        creditCardField: 'ccNumber',
-                        message: 'The CVV number is not valid'
-                    }
-                }
-            }
-        }
-    });
-});
+{% include validators/cvv/example.js %}
 </script>

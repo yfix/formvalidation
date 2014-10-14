@@ -1,52 +1,24 @@
 ---
-layout:           doc
-title:            Validate a date
-permalink:        /validators/date/
-previous_section: /validators/cvv/
-next_section:     /validators/different/
-comments:         true
+layout: default
+title: Validate a date
+permalink: /validators/date/
+comments: true
 ---
 
-<div class="bv-heading">
+<div class="doc-content-container">
+    <div class="doc-heading">
+        <h1>date validator</h1>
+        <p>Validate a date</p>
+        <p>&larr; <a href="/validators/">Validators</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / date</h1>
-                <p>Validate a date.</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#options">Options</a></li>
-                    <li>
-                        <a href="#example">Example</a>
-                        <ul>
-                            <li><a href="#basic-example">Basic</a></li>
-                            <li><a href="#date-picker-example">Datetime picker</a></li>
-                            <li><a href="#custom-format-example">Custom format</a></li>
-                            <li><a href="#date-range-example">Date range</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="options">Options</h2>
+                    <h2>Options</h2>
+
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -176,446 +148,152 @@ comments:         true
 
                     <p>It's possible to support other date format by using <a href="/validators/callback/">callback</a> validator as shown in the <a href="#custom-format-example">Custom format example</a>.</p>
 
-                    <div class="bv-box bv-box-info">
-                        <h5><i></i>Leap year</h5>
-                        <p>The date validator also checks the number of days in February of leap year. For example, 02/29/2000 is valid date, while 02/29/2001 is invalid one.</p>
+                    <div class="doc-alert doc-alert-info">
+                        The date validator also checks the number of days in February of leap year. For example, 02/29/2000 is valid date, while 02/29/2001 is invalid one
                     </div>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 <section>
-                    <h2 id="example">Example</h2>
+                    <h2>Examples</h2>
 
-                    <section>
-                        <h3 id="basic-example">Basic</h3>
-                        <p>The following form might be used in a profile setting page:</p>
+                    <h3>Basic example</h3>
+                    <p>The following form might be used in a profile setting page:</p>
 
-                        <div class="bv-example">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#example-form-tab" data-toggle="tab">Try it</a></li>
-                                <li><a href="#example-html-tab" data-toggle="tab">HTML</a></li>
-                                <li><a href="#example-js-tab" data-toggle="tab">JS</a></li>
-                            </ul>
+                    <div class="doc-demo">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#example-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#example-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#example-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
 
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="example-form-tab">
-                                    <form id="profileForm" class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="col-lg-3 control-label">Birthday</label>
-                                            <div class="col-lg-3">
-                                                <input type="text" class="form-control" name="birthday" />
-                                                <span class="help-block">YYYY/MM/DD</span>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="example-form-tab">
+                            {% include validators/date/basic-example.html %}
+                            </div>
 
-                                <div class="tab-pane" id="example-html-tab">
+                            <div class="tab-pane" id="example-html-tab">
 {% highlight html %}
-<form id="profileForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Birthday</label>
-        <div class="col-lg-3">
-            <input type="text" class="form-control" name="birthday" />
-            <span class="help-block">YYYY/MM/DD</span>
-        </div>
-    </div>
-</form>
+{% include validators/date/basic-example.html %}
 {% endhighlight %}
-                                </div>
+                            </div>
 
-                                <div class="tab-pane" id="example-js-tab">
-{% highlight javascript hl_lines="11" %}
-$(document).ready(function() {
-    $('#profileForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            birthday: {
-                validators: {
-                    date: {
-                        format: 'YYYY/MM/DD',
-                        message: 'The value is not a valid date'
-                    }
-                }
-            }
-        }
-    });
-});
+                            <div class="tab-pane" id="example-js-tab">
+{% highlight javascript %}
+{% include validators/date/basic-example.js %}
 {% endhighlight %}
-                                </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
 
+                    <h3>Datetime picker example</h3>
+                    <p>The form below is an example of using the date validator with <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Bootstrap Datetime Picker</a>:</p>
 
-                    <section>
-                        <h3 id="date-picker-example">Datetime picker</h3>
+                    <div class="doc-demo">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#datepicker-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#datepicker-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#datepicker-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
 
-                        <p>The form below is an example of using the date validator with <a href="http://eonasdan.github.io/bootstrap-datetimepicker/">Bootstrap Datetime Picker</a>:</p>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="datepicker-form-tab">
+                            {% include validators/date/date-picker-example.html %}
+                            </div>
 
-                        <link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-                        <style type="text/css">
-                        .form-horizontal .has-feedback .input-group .form-control-feedback {
-                            top: 0;
-                            right: -30px;
-                        }
-                        </style>
-
-                        <div class="bv-example">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#datepicker-form-tab" data-toggle="tab">Try it</a></li>
-                                <li><a href="#datepicker-html-tab" data-toggle="tab">HTML</a></li>
-                                <li><a href="#datepicker-js-tab" data-toggle="tab">JS</a></li>
-                            </ul>
-
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="datepicker-form-tab">
-                                    <form id="meetingForm" class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="col-lg-3 control-label">Meeting time</label>
-                                            <div class="col-lg-4">
-                                                <div class="input-group date" id="datetimePicker">
-                                                    <input type="text" class="form-control" name="meeting" />
-                                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                                </div>
-                                                <span class="help-block">MM/DD/YYYY h:m A</span>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-
-                                <div class="tab-pane" id="datepicker-html-tab">
-{% highlight html hl_lines="10" %}
-<!-- Required CSS and JS -->
-<link href="/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-<script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
-<script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-
-<style type="text/css">
-/* Override feedback icon position */
-.form-horizontal .has-feedback .input-group .form-control-feedback {
-    top: 0;
-    right: -30px;
-}
-</style>
-
-<form id="meetingForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Meeting time</label>
-        <div class="col-lg-4">
-            <div class="input-group date" id="datetimePicker">
-                <input type="text" class="form-control" name="meeting" />
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-            </div>
-            <span class="help-block">MM/DD/YYYY h:m A</span>
-        </div>
-    </div>
-</form>
+                            <div class="tab-pane" id="datepicker-html-tab">
+{% highlight html %}
+{% include validators/date/date-picker-example.html %}
 {% endhighlight %}
-                                </div>
+                            </div>
 
-                                <div class="tab-pane" id="datepicker-js-tab">
-{% highlight javascript hl_lines="13 25" %}
-$(document).ready(function() {
-    $('#datetimePicker').datetimepicker();
-
-    $('#meetingForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            meeting: {
-                validators: {
-                    date: {
-                        format: 'MM/DD/YYYY h:m A',
-                        message: 'The value is not a valid date'
-                    }
-                }
-            }
-        }
-    });
-
-    $('#datetimePicker')
-        .on('dp.change dp.show', function(e) {
-            // Validate the date when user change it
-            $('#meetingForm').bootstrapValidator('revalidateField', 'meeting');
-        });
-});
+                            <div class="tab-pane" id="datepicker-js-tab">
+{% highlight javascript %}
+{% include validators/date/date-picker-example.js %}
 {% endhighlight %}
-                                </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
 
-                    <section>
-                        <h3 id="custom-format-example">Custom format</h3>
+                    <h3>Custom format example</h3>
 
-                        <p>This example illustrates the ability of validating date in custom format by using the <a href="/validators/callback/">callback</a> validator and <a href="http://momentjs.com/">momentjs</a> to parse/validate.</p>
+                    <p>This example illustrates the ability of validating date in custom format by using the <a href="/validators/callback/">callback</a> validator and <a href="http://momentjs.com/">momentjs</a> to parse/validate.</p>
+                    <div class="doc-demo">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#custom-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#custom-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#custom-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
 
-                        <div class="bv-example">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#custom-form-tab" data-toggle="tab">Try it</a></li>
-                                <li><a href="#custom-html-tab" data-toggle="tab">HTML</a></li>
-                                <li><a href="#custom-js-tab" data-toggle="tab">JS</a></li>
-                            </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="custom-form-tab">
+                            {% include validators/date/custom-format-example.html %}
+                            </div>
 
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="custom-form-tab">
-                                    <form id="customFormatForm" class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="col-lg-5 control-label">What's US independence day?</label>
-                                            <div class="col-lg-3">
-                                                <input type="text" class="form-control" name="independenceDay" />
-                                                <span class="help-block">MMM D (Sep 6, for example)</span>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-
-                                <div class="tab-pane" id="custom-html-tab">
+                            <div class="tab-pane" id="custom-html-tab">
 {% highlight html %}
 <!-- Include the momentjs library to use later -->
 <script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
 
-<form id="customFormatForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-5 control-label">What's US independence day?</label>
-        <div class="col-lg-3">
-            <input type="text" class="form-control" name="independenceDay" />
-            <span class="help-block">MMM D (Sep 6, for example)</span>
-        </div>
-    </div>
-</form>
+{% include validators/date/custom-format-example.html %}
 {% endhighlight %}
-                                </div>
+                            </div>
 
-                                <div class="tab-pane" id="custom-js-tab">
-{% highlight javascript hl_lines="13" %}
-$(document).ready(function() {
-    $('#customFormatForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            independenceDay: {
-                validators: {
-                    callback: {
-                        message: 'Wrong answer',
-                        callback: function(value, validator) {
-                            var m = new moment(value, 'MMMM D', true);
-                            // Check if the input value follows the MMMM D format
-                            if (!m.isValid()) {
-                                return false;
-                            }
-                            // US independence day is July 4
-                            return (m.months() == 6 && m.date() == 4);
-                        }
-                    }
-                }
-            }
-        }
-    });
-});
+                            <div class="tab-pane" id="custom-js-tab">
+{% highlight javascript %}
+{% include validators/date/custom-format-example.js %}
 {% endhighlight %}
-                                </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
 
-                    <section>
-                        <h3 id="date-range-example">Date range</h3>
+                    <h3>Date range example</h3>
 
-                        <p>One more example illustrates how to use the <a href="/validators/callback/">callback</a> validator and <a href="http://momentjs.com/">momentjs</a> to check whether or not a date is in given range.</p>
-                        <p><a href="http://momentjs.com/">momentjs</a> provides <a href="http://momentjs.com/docs/#/query/is-before/"><code>isBefore()</code></a> and <a href="http://momentjs.com/docs/#/query/is-after/"><code>isAfter()</code></a> methods which are exactly what we need.</p>
+                    <p>One more example illustrates how to use the <a href="/validators/callback/">callback</a> validator and <a href="http://momentjs.com/">momentjs</a> to check whether or not a date is in given range.</p>
+                    <p><a href="http://momentjs.com/">momentjs</a> provides <a href="http://momentjs.com/docs/#/query/is-before/"><code>isBefore()</code></a> and <a href="http://momentjs.com/docs/#/query/is-after/"><code>isAfter()</code></a> methods which are exactly what we need.</p>
 
-                        <div class="bv-example">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#range-form-tab" data-toggle="tab">Try it</a></li>
-                                <li><a href="#range-html-tab" data-toggle="tab">HTML</a></li>
-                                <li><a href="#range-js-tab" data-toggle="tab">JS</a></li>
-                            </ul>
+                    <div class="doc-demo">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#range-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#range-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#range-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
 
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="range-form-tab">
-                                    <form id="rangeForm" class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="col-md-6 control-label">Enter a date between 2000/01/01 and 2020/12/30</label>
-                                            <div class="col-md-3">
-                                                <input type="text" class="form-control" name="date" />
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="range-form-tab">
+                            {% include validators/date/range-example.html %}
+                            </div>
 
-                                <div class="tab-pane" id="range-html-tab">
+                            <div class="tab-pane" id="range-html-tab">
 {% highlight html %}
 <!-- Include the momentjs library to use later -->
 <script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
 
-<form id="rangeForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-md-6 control-label">Enter a date between 2000/01/01 and 2020/12/30</label>
-        <div class="col-md-3">
-            <input type="text" class="form-control" name="date" />
-        </div>
-    </div>
-</form>
+{% include validators/date/range-example.html %}
 {% endhighlight %}
                                 </div>
 
                                 <div class="tab-pane" id="range-js-tab">
-{% highlight javascript hl_lines="15" %}
-$(document).ready(function() {
-    $('#rangeForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            date: {
-                validators: {
-                    date: {
-                        message: 'The date is not valid',
-                        format: 'YYYY/MM/DD'
-                    },
-                    callback: {
-                        message: 'The date is not in the range',
-                        callback: function(value, validator) {
-                            var m = new moment(value, 'YYYY/MM/DD', true);
-                            if (!m.isValid()) {
-                                return false;
-                            }
-                            // Check if the date in our range
-                            return m.isAfter('2000/01/01') && m.isBefore('2020/12/30');
-                        }
-                    }
-                }
-            }
-        }
-    });
-});
+{% highlight javascript %}
+{% include validators/date/range-example.js %}
 {% endhighlight %}
                                 </div>
                             </div>
                         </div>
-                    </section>
                 </section>
+            </div>
 
-                {% include related.html %}
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>
 </div>
 
-<script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
-<script src="/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 <script>
-$(document).ready(function() {
-    $('#profileForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            birthday: {
-                validators: {
-                    date: {
-                        format: 'YYYY/MM/DD',
-                        message: 'The value is not a valid date'
-                    }
-                }
-            }
-        }
-    });
-
-    $('#datetimePicker').datetimepicker();
-
-    $('#meetingForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            meeting: {
-                validators: {
-                    date: {
-                        format: 'MM/DD/YYYY h:m A',
-                        message: 'The value is not a valid date'
-                    }
-                }
-            }
-        }
-    });
-
-    $('#datetimePicker').on('dp.change dp.show', function(e) {
-        $('#meetingForm')
-            .data('bootstrapValidator')
-            .updateStatus('meeting', 'NOT_VALIDATED', null)
-            .validateField('meeting');
-    });
-
-    $('#customFormatForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            independenceDay: {
-                validators: {
-                    callback: {
-                        message: 'Wrong answer',
-                        callback: function(value, validator) {
-                            var m = new moment(value, 'MMMM D', true);
-                            if (!m.isValid()) {
-                                return false;
-                            }
-                            return (m.months() == 6 && m.date() == 4);
-                        }
-                    }
-                }
-            }
-        }
-    });
-
-    $('#rangeForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            date: {
-                validators: {
-                    date: {
-                        message: 'The date is not valid',
-                        format: 'YYYY/MM/DD'
-                    },
-                    callback: {
-                        message: 'The date is not in the range',
-                        callback: function(value, validator) {
-                            var m = new moment(value, 'YYYY/MM/DD', true);
-                            if (!m.isValid()) {
-                                return false;
-                            }
-                            return m.isAfter('2000/01/01') && m.isBefore('2020/12/30');
-                        }
-                    }
-                }
-            }
-        }
-    });
-});
+{% include validators/date/basic-example.js %}
+{% include validators/date/date-picker-example.js %}
+{% include validators/date/custom-format-example.js %}
+{% include validators/date/range-example.js %}
 </script>

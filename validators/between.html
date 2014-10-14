@@ -1,54 +1,26 @@
 ---
-layout:           doc
-title:            between validator
-permalink:        /validators/between/
-previous_section: /validators/base64/
-next_section:     /validators/callback/
-comments:         true
+layout: default
+title: between validator
+permalink: /validators/between/
+comments: true
 related:
     - greaterThan
     - lessThan
 ---
 
-<div class="bv-heading">
+<div class="doc-content-container">
+    <div class="doc-heading">
+        <h1>between validator</h1>
+        <p>Check if the input value is between (strictly or not) two given numbers</p>
+        <p>&larr; <a href="/validators/">Validators</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / between</h1>
-                <p>Check if the input value is between (strictly or not) two given numbers.</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#options">Options</a></li>
-                    <li>
-                        <a href="#example">Example</a>
-                        <ul>
-                            <li><a href="#basic-example">Basic</a></li>
-                            <li><a href="#dynamic-option-example">Dynamic option</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#related-validators">Related validators</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="options">Options</h2>
+                    <h2>Options</h2>
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -88,97 +60,42 @@ related:
                     <p>If you use <code>min</code> and <code>max</code> attributes, please set <code>type="range"</code>.</p>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 <section>
-                    <h2 id="example">Example</h2>
+                    <h2>Example</h2>
 
-                    <section>
-                        <h3 id="basic-example">Basic</h3>
-                        <p>The following example validates latitude and longitude values.</p>
-                        <p>A valid latitude must be between -90.0 and 90.0, and valid longitude may range from -180.0 to 180.0.</p>
+                    <h3>Basic example</h3>
+                    <p>The following example validates latitude and longitude values.</p>
+                    <p>A valid latitude must be between -90.0 and 90.0, and valid longitude may range from -180.0 to 180.0.</p>
 
-                        <div class="bv-example">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#latlong-form-tab" data-toggle="tab">Try it</a></li>
-                                <li><a href="#latlong-html-tab" data-toggle="tab">HTML</a></li>
-                                <li><a href="#latlong-js-tab" data-toggle="tab">JS</a></li>
-                                <li><a href="#latlong-html5-tab" data-toggle="tab">HTML 5</a></li>
-                            </ul>
+                    <div class="doc-demo">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#latlong-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#latlong-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#latlong-js-tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#latlong-html5-tab" data-toggle="tab">HTML 5</a></li>
+                        </ul>
 
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="latlong-form-tab">
-                                    <form id="latlongForm" class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="col-lg-3 control-label">Latitude</label>
-                                            <div class="col-lg-5">
-                                                <input type="text" class="form-control" name="latitude" />
-                                            </div>
-                                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="latlong-form-tab">
+                            {% include validators/between/basic-example.html %}
+                            </div>
 
-                                        <div class="form-group">
-                                            <label class="col-lg-3 control-label">Longitude</label>
-                                            <div class="col-lg-5">
-                                                <input type="text" class="form-control" name="longitude" />
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-
-                                <div class="tab-pane" id="latlong-html-tab">
+                            <div class="tab-pane" id="latlong-html-tab">
 {% highlight html %}
-<form id="latlongForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Latitude</label>
-        <div class="col-lg-5">
-            <input type="text" class="form-control" name="latitude" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Longitude</label>
-        <div class="col-lg-5">
-            <input type="text" class="form-control" name="longitude" />
-        </div>
-    </div>
-</form>
+{% include validators/between/basic-example.html %}
 {% endhighlight %}
-                                </div>
+                            </div>
 
-                                <div class="tab-pane" id="latlong-js-tab">
-{% highlight javascript hl_lines="11 20" %}
-$(document).ready(function() {
-    $('#latlongForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            latitude: {
-                validators: {
-                    between: {
-                        min: -90,
-                        max: 90,
-                        message: 'The latitude must be between -90.0 and 90.0'
-                    }
-                }
-            },
-            longitude: {
-                validators: {
-                    between: {
-                        min: -180,
-                        max: 180,
-                        message: 'The longitude must be between -180.0 and 180.0'
-                    }
-                }
-            }
-        }
-    });
-});
+                            <div class="tab-pane" id="latlong-js-tab">
+{% highlight javascript %}
+{% include validators/between/basic-example.js %}
 {% endhighlight %}
-                                </div>
+                            </div>
 
-                                <div class="tab-pane" id="latlong-html5-tab">
-{% highlight html hl_lines="6 15" %}
+                            <div class="tab-pane" id="latlong-html5-tab">
+{% highlight html %}
 <form id="latlongForm" class="form-horizontal">
     <div class="form-group">
         <label class="col-lg-3 control-label">Latitude</label>
@@ -210,161 +127,53 @@ $(document).ready(function() {
     });
 });
 {% endhighlight %}
-                                </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
 
-                    <section>
-                        <h3 id="dynamic-option-example">Dynamic option</h3>
-                        <p>The following form asks you to enter the number of floors of building and the your floor number. Your floor number must be between 1 and the number of floors.</p>
+                    <h3>Dynamic option example</h3>
+                    <p>The following form asks you to enter the number of floors of building and the your floor number. Your floor number must be between 1 and the number of floors.</p>
 
-                        <div class="bv-example">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#dynamic-form-tab" data-toggle="tab">Try it</a></li>
-                                <li><a href="#dynamic-html-tab" data-toggle="tab">HTML</a></li>
-                                <li><a href="#dynamic-js-tab" data-toggle="tab">JS</a></li>
-                            </ul>
+                    <div class="doc-demo">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#dynamic-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#dynamic-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#dynamic-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
 
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="dynamic-form-tab">
-                                    <form id="dynamicOptionForm" class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="col-lg-3 control-label">Number of floors</label>
-                                            <div class="col-lg-5">
-                                                <input type="text" class="form-control" name="numFloors" />
-                                            </div>
-                                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="dynamic-form-tab">
+                            {% include validators/between/dynamic-option-example.html %}
+                            </div>
 
-                                        <div class="form-group">
-                                            <label class="col-lg-3 control-label">Your floor</label>
-                                            <div class="col-lg-5">
-                                                <input type="text" class="form-control" name="floor" />
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-
-                                <div class="tab-pane" id="dynamic-html-tab">
+                            <div class="tab-pane" id="dynamic-html-tab">
 {% highlight html %}
-<form id="dynamicOptionForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Number of floors</label>
-        <div class="col-lg-5">
-            <input type="text" class="form-control" name="numFloors" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Your floor</label>
-        <div class="col-lg-5">
-            <input type="text" class="form-control" name="floor" />
-        </div>
-    </div>
-</form>
+{% include validators/between/dynamic-option-example.html %}
 {% endhighlight %}
-                                </div>
+                            </div>
 
-                                <div class="tab-pane" id="dynamic-js-tab">
-{% highlight javascript hl_lines="21 22 23" %}
-$(document).ready(function() {
-    $('#dynamicOptionForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            numFloors: {
-                validators: {
-                    between: {
-                        min: 2,
-                        max: 100,
-                        message: 'The number of floors must be between 2 and 100'
-                    }
-                }
-            },
-            floor: {
-                validators: {
-                    between: {
-                        min: 1,
-                        max: 'numFloors',
-                        message: 'The number of floors must be between %s and %s'
-                    }
-                }
-            }
-        }
-    });
-});
+                            <div class="tab-pane" id="dynamic-js-tab">
+{% highlight javascript %}
+{% include validators/between/dynamic-option-example.js %}
 {% endhighlight %}
-                                </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 {% include related.html %}
+            </div>
+
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-$(document).ready(function() {
-    $('#latlongForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            latitude: {
-                validators: {
-                    between: {
-                        min: -90,
-                        max: 90,
-                        message: 'The latitude must be between -90.0 and 90.0'
-                    }
-                }
-            },
-            longitude: {
-                validators: {
-                    between: {
-                        min: -180,
-                        max: 180,
-                        message: 'The longitude must be between -180.0 and 180.0'
-                    }
-                }
-            }
-        }
-    });
-
-    $('#dynamicOptionForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            numFloors: {
-                validators: {
-                    between: {
-                        min: 2,
-                        max: 100,
-                        message: 'The number of floors must be between 2 and 100'
-                    }
-                }
-            },
-            floor: {
-                validators: {
-                    between: {
-                        min: 1,
-                        max: 'numFloors',
-                        message: 'The number of floors must be between %s and %s'
-                    }
-                }
-            }
-        }
-    });
-});
+{% include validators/between/basic-example.js %}
+{% include validators/between/dynamic-option-example.js %}
 </script>

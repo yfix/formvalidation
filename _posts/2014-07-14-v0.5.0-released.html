@@ -1,41 +1,40 @@
 ---
-layout:     post
-title:      BootstrapValidator v0.5.0 Released
-date:       2014-07-14 13:00:00 +0700
-categories: [releases]
-author:     nghuuphuoc
-comments:   true
+layout: post
+title: BootstrapValidator v0.5.0 Released
+date: 2014-07-14 13:00:00 +0700
+author: nghuuphuoc
+comments: true
 ---
 
-<h3 id="new-features">New features</h3>
+<h3>New features</h3>
 <p><i class="fa fa-star"></i> <strong>Error message</strong></p>
-<ul>
+<ul class="doc-list">
     <li><a href="{{ site.repository.source }}/issues/2">#2</a>, <a href="{{ site.repository.source }}/issues/387">#387</a>: Provide the default message</li>
     <li><a href="{{ site.repository.source }}/issues/93">#93</a>, <a href="{{ site.repository.source }}/issues/385">#385</a>: Support translating error messages</li>
     <li><a href="{{ site.repository.source }}/issues/282">#282</a>, <a href="{{ site.repository.source }}/issues/347">#347</a>, <a href="{{ site.repository.source }}/issues/465">#465</a>: Support <a href="/settings/#dynamic-message">dynamic message</a></li>
 </ul>
 
 <p><i class="fa fa-star"></i> <strong>Events</strong></p>
-<ul>
+<ul class="doc-list">
     <li><a href="{{ site.repository.source }}/issues/121">#121</a>: Add events for <a href="/settings/#event-form">form</a></li>
     <li><a href="{{ site.repository.source }}/issues/195">#195</a>: Add events for <a href="/settings/#event-field">field</a></li>
     <li><a href="{{ site.repository.source }}/issues/324">#324</a>: Add events for <a href="/settings/#validator-field">validator</a></li>
 </ul>
 
 <p><i class="fa fa-star"></i> <strong>Support <a href="/settings/#dynamic-option">dynamic option</a></strong></p>
-<ul>
+<ul class="doc-list">
     <li><a href="{{ site.repository.source }}/issues/430">#430</a>: <a href="/validators/between/">between</a>, <a href="/validators/greaterThan/">greaterThan</a>, <a href="/validators/lessThan/">lessThan</a> add support for comparing to other field, return value of a callback function</li>
     <li><a href="{{ site.repository.source }}/pull/447">#447</a>: <a href="/validators/zipCode/">zipCode validator</a> allow to set the country code via another field or callback, thanks to <a href="https://github.com/AlaskanShade">@AlaskanShade</a></li>
 </ul>
 
 <p><i class="fa fa-star"></i> <strong>Support dynamic fields</strong></p>
-<ul>
+<ul class="doc-list">
     <li><a href="{{ site.repository.source }}/issues/125">#125</a>: Support dynamic fields</li>
     <li><a href="{{ site.repository.source }}/pull/130">#130</a>: Add <a href="/api/#add-field">addField()</a> and <a href="/api/#remove-field">removeField()</a> methods for managing dynamic fields, thanks to <a href="https://github.com/jcnmulio">@jcnmulio</a></li>
 </ul>
 
 <p><strong>New options</strong></p>
-<ul>
+<ul class="doc-list">
     <li><a href="{{ site.repository.source }}/issues/164">#164</a>: Add <a href="/settings/#form-container">container</a> option for indicating the element showing all errors</li>
     <li><a href="{{ site.repository.source }}/issues/175">#175</a>: Showing errors in <a href="/settings/#form-container">tooltip or popover</a></li>
     <li><a href="{{ site.repository.source }}/issues/297">#297</a>: Add <a href="/settings/#field-feedback-icons">feedbackIcons</a> option to enabled/disable feedback icons for particular fields</li>
@@ -45,7 +44,7 @@ comments:   true
 </ul>
 
 <p><strong>New APIs</strong></p>
-<ul>
+<ul class="doc-list">
     <li><a href="{{ site.repository.source }}/issues/211">#211</a>, <a href="{{ site.repository.source }}/issues/235">#235</a>: Add <a href="/api/#get-invalid-fields">getInvalidFields()</a> method that returns all invalid fields</li>
     <li><a href="{{ site.repository.source }}/issues/275">#275</a>: Add <a href="/api/#destroy">destroy()</a> method</li>
     <li><a href="{{ site.repository.source }}/issues/316">#316</a>: Add <a href="/api/#is-valid-container">isValidContainer()</a> method</li>
@@ -57,21 +56,21 @@ comments:   true
 </ul>
 
 <p><strong>Misc</strong></p>
-<ul>
+<ul class="doc-list">
     <li><a href="{{ site.repository.source }}/issues/320">#320</a>: Add <code>separator</code> option for the <a href="/validators/date/">date validator</a></li>
     <li><a href="{{ site.repository.source }}/issues/332">#332</a>: Add UK phone number support for the <a href="/validators/phone/">phone validator</a>, thanks to <a href="https://github.com/aca02djr">@aca02djr</a></li>
     <li><a href="{{ site.repository.source }}/issues/336">#336</a>: Add <code>$field</code> instance to the <a href="/validators/callback/">callback validator</a></li>
     <li><a href="{{ site.repository.source }}/issues/374">#374</a>: Add Singapore postal code for the <a href="/validators/zipCode/">zipCode validator</a>, thanks to <a href="https://github.com/thisisclement">@thisisclement</a></li>
 </ul>
 
-<h3 id="changes">Changes</h3>
-<ul>
+<h3>Changes</h3>
+<ul class="doc-list">
     <li><code>$.fn.bootstrapValidator.helpers</code> renames <code>mod_11_10</code> to <code>mod11And10</code>, <code>mod_37_36</code> to <code>mod37And36</code></li>
     <li>Remove <code>submitHandler</code> option. See <a href="/news/upgrading-to-v0.5.0/">upgrading to v0.5.0</a> guide.</li>
 </ul>
 
-<h3 id="improvements">Improvements</h3>
-<ul>
+<h3>Improvements</h3>
+<ul class="doc-list">
     <li><a href="{{ site.repository.source }}/pull/244">#244</a>: Only enable the submit buttons if all fields are valid, thanks to <a href="https://github.com/smeagol74">@smeagol74</a></li>
     <li><a href="{{ site.repository.source }}/issues/262">#262</a>: Improve the <a href="/api/#update-status">updateStatus()</a> method. The plugin now doesn't show the errors, feedback icons of given field if there are uncompleted validators</li>
     <li><a href="{{ site.repository.source }}/issues/274">#274</a>: Fix feedback icons in <code>input-group</code>, thanks to <a href="https://github.com/tiagofontella">@tiagofontella</a></li>
@@ -89,8 +88,8 @@ comments:   true
     <li><a href="{{ site.repository.source }}/issues/456">#456</a>: Adjust the feedback icon position for <code>.input-group</code> element</li>
 </ul>
 
-<h3 id="bug-fixes">Bug fixes</h3>
-<ul>
+<h3>Bug fixes</h3>
+<ul class="doc-list">
     <li><a href="{{ site.repository.source }}/issues/288">#288</a>: Fix <a href="/validators/date/">date validator</a> issue on IE8</li>
     <li><a href="{{ site.repository.source }}/pull/292">#292</a>: Fix identical validator issue with not clearing <code>has-error</code> class, thanks to <a href="https://github.com/alavers">@alavers</a></li>
     <li><a href="{{ site.repository.source }}/pull/305">#305</a>, <a href="{{ site.repository.source }}/pull/306">#306</a>, <a href="{{ site.repository.source }}/pull/307">#307</a>: Fix <code>inclusive</code> option in the <a href="/validators/between/">between</a>, <a href="/validators/greaterThan/">greaterThan</a> and <a href="/validators/lessThan/">lessThan</a> validators, thanks to <a href="https://github.com/johanronn77">@johanronn77</a></li>
@@ -114,16 +113,16 @@ comments:   true
     <li><a href="{{ site.repository.source }}/issues/492">#492</a>, <a href="{{ site.repository.source }}/pull/493">#493</a>: Fixed Chilean ID (RUT/RUN) finished in 'K' or 'k', thanks to <a href="https://github.com/marceloampuerop6">@marceloampuerop6</a></li>
 </ul>
 
-<h3 id="language-packages"><i class="fa fa-star"></i> Language Packages</h3>
-<ul>
+<h3><i class="fa fa-star"></i> Language packages</h3>
+<ul class="doc-list">
     <li><a href="{{ site.repository.source }}/pull/396">#396</a>: German language package, thanks to <a href="https://github.com/logemann">@logemann</a></li>
     <li><a href="{{ site.repository.source }}/pull/474">#474</a>: Hungarian language package, thanks to <a href="https://github.com/blackfyre">@blackfyre</a></li>
     <li><a href="{{ site.repository.source }}/pull/478">#478</a>: Simplified and traditional Chinese language package, thanks to <a href="https://github.com/tureki">@tureki</a></li>
     <li><a href="{{ site.repository.source }}/pull/494">#494</a>: Chilean Spanish language package, thanks to <a href="https://github.com/marceloampuerop6">@marceloampuerop6</a></li>
 </ul>
 
-<h3 id="document">Document</h3>
-<ul>
+<h3>Document</h3>
+<ul class="doc-list">
     <li><a href="{{ site.repository.source }}/issues/259">#259</a>: Typo "Support almost Bootstrap forms", thanks to <a href="https://github.com/lloydde">@lloydde</a></li>
     <li><a href="{{ site.repository.source }}/pull/261">#261</a>: English fix to 'amazing contributors' section, thanks to <a href="https://github.com/lloydde">@lloydde</a></li>
     <li><a href="{{ site.repository.source }}/pull/278">#278</a>: Update the <a href="/validators/choice/">choice validator</a> document, thanks to <a href="https://github.com/MrC0mm0n">@MrC0mm0n</a></li>
@@ -136,9 +135,9 @@ comments:   true
 <h3 id="upgrading">Upgrading to v0.5.0</h3>
 <p>See <a href="/news/upgrading-to-v0.5.0/">upgrading to v0.5.0</a> guide.</p>
 
-<h3 id="contributors">Contributors</h3>
+<h3>Contributors</h3>
 <p>Thank to the contributor:</p>
-<ul>
+<ul class="doc-list">
     <li><a href="https://github.com/aca02djr">@aca02djr</a></li>
     <li><a href="https://github.com/AlaskanShade">@AlaskanShade</a></li>
     <li><a href="https://github.com/alavers">@alavers</a></li>
@@ -163,8 +162,8 @@ comments:   true
     <li><a href="https://github.com/tureki">@tureki</a></li>
 </ul>
 
-<h3 id="download">Download</h3>
+<h3>Download</h3>
 <div>
-    <a class="btn btn-primary btn-lg" href="{{ site.repository.source }}/releases/download/v0.5.0/bootstrapvalidator-dist-0.5.0.zip">bootstrapvalidator-dist-0.5.0.zip</a>
-    <a class="btn btn-default btn-lg" href="{{ site.repository.source }}/archive/v0.5.0.zip">v0.5.0 Source Code</a>
+    <a class="btn btn-primary" href="{{ site.repository.source }}/releases/download/v0.5.0/bootstrapvalidator-dist-0.5.0.zip">bootstrapvalidator-dist-0.5.0.zip</a>
+    <a class="btn btn-default" href="{{ site.repository.source }}/archive/v0.5.0.zip">v0.5.0 Source Code</a>
 </div>

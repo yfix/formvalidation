@@ -1,43 +1,23 @@
 ---
-layout:           doc
-title:            Using Ajax to submit the form
-permalink:        /examples/ajax-submit/
-categories:       [Advance]
-previous_section:
-next_section:
-comments:         true
+layout: default
+title: Using Ajax to submit the form
+permalink: /examples/ajax-submit/
+comments: true
 ---
 
-<div class="bv-heading">
+<div class="doc-content-container">
+    <div class="doc-heading">
+        <h1>Using Ajax to submit the form</h1>
+        <p>&larr; <a href="/examples/">Examples</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/examples/">Examples</a> / Advance</h1>
-            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <p>By triggering the <a href="/settings/#event-form">success.form.bv</a> event, we can use Ajax to submit the form data.</p>
 
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                {% include example.html category='Advance' %}
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
-                <section>
-                    <h2 id="using-ajax-submit-form">Using Ajax to submit the form</h2>
-                    <p>By triggering the <a href="/settings/#event-form">success.form.bv</a> event, we can use Ajax to submit the form data.</p>
-{% highlight javascript hl_lines="6 8" %}
+{% highlight javascript %}
 $(document).ready(function() {
     $(form)
         .bootstrapValidator({
@@ -60,11 +40,12 @@ $(document).ready(function() {
         });
 });
 {% endhighlight %}
+
                     <p>In the example above, you can see the form is prevented from doing default submission by using</p>
+
 {% highlight javascript %}
 e.preventDefault();
 {% endhighlight %}
-                </section>
             </div>
         </div>
     </div>

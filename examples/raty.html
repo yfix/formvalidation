@@ -1,227 +1,52 @@
 ---
-layout:           doc
-title:            Play with Raty
-permalink:        /examples/raty/
-categories:       [Compatibility]
-previous_section:
-next_section:
-comments:         true
+layout: default
+title: Playing with Raty
+permalink: /examples/raty/
+comments: true
 ---
 
-<div class="bv-heading">
+<div class="doc-content-container">
+    <div class="doc-heading">
+        <h1>Playing with Raty</h1>
+        <p>&larr; <a href="/examples/">Examples</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/examples/">Examples</a> / Compatibility</h1>
-            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <p>Use with the <a href="http://wbotelhos.com/raty">Raty</a> plugin.</p>
 
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
+                <div class="doc-demo">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#raty-form-tab" data-toggle="tab">Try it</a></li>
+                        <li><a href="#raty-html-tab" data-toggle="tab">HTML</a></li>
+                        <li><a href="#raty-js-tab" data-toggle="tab">JS</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="raty-form-tab">
+                        {% include examples/raty/example.html %}
+                        </div>
+
+                        <div class="tab-pane" id="raty-html-tab">
+{% highlight html %}
+{% include examples/raty/example.html %}
+{% endhighlight %}
+                        </div>
+
+                        <div class="tab-pane" id="raty-js-tab">
+{% highlight javascript %}
+{% include examples/raty/example.js %}
+{% endhighlight %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                {% include example.html category='Compatibility' %}
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
-                <section>
-                    <h2 id="raty">Play with Raty</h2>
-                    <p>Use with the <a href="http://wbotelhos.com/raty">Raty</a> plugin. At first, try to click the <i>Validate</i> button to validate the form. Then click the <i>Rating</i>, fill in other fields, and click the <i>Validate</i> button again to
-                    see that the <i>Rating</i> is validated.</p>
-
-                    <div class="bv-example">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#raty-form-tab" data-toggle="tab">Try it</a></li>
-                            <li><a href="#raty-html-tab" data-toggle="tab">HTML</a></li>
-                            <li><a href="#raty-js-tab" data-toggle="tab">JS</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="raty-form-tab">
-                                <form id="ratyForm" method="post" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Rating</label>
-                                        <div class="col-lg-5">
-                                            <div id="ratyRating"></div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Review title</label>
-                                        <div class="col-lg-5">
-                                            <input type="text" class="form-control" name="title" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Your review</label>
-                                        <div class="col-lg-5">
-                                            <textarea rows="5" class="form-control" name="content"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-lg-5 col-lg-offset-3">
-                                            <button type="submit" class="btn btn-default">Validate</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="tab-pane" id="raty-html-tab">
-{% highlight html hl_lines="8" %}
-<!-- Include Raty JS file -->
-<script src="/vendor/raty/jquery.raty.min.js"></script>
-
-<form id="ratyForm" method="post" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Rating</label>
-        <div class="col-lg-5">
-            <div id="ratyRating"></div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Review title</label>
-        <div class="col-lg-5">
-            <input type="text" class="form-control" name="title" />
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Your review</label>
-        <div class="col-lg-5">
-            <textarea rows="5" class="form-control" name="content"></textarea>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-lg-5 col-lg-offset-3">
-            <button type="submit" class="btn btn-default">Validate</button>
-        </div>
-    </div>
-</form>
-{% endhighlight %}
-                            </div>
-
-                            <div class="tab-pane" id="raty-js-tab">
-{% highlight javascript hl_lines="6 9 17 24" %}
-$(document).ready(function() {
-    $('#ratyRating').raty({
-        path: '/vendor/raty/img',
-        size: 24,
-        // The name of hidden field generated by Raty
-        scoreName: 'star',
-        // Revalidate the star rating whenever user change it
-        click: function (score, evt) {
-            $('#ratyForm').bootstrapValidator('revalidateField', 'star');
-        }
-    });
-
-    $('#ratyForm')
-        .bootstrapValidator({
-            // The disabled elements are excluded
-            // Hidden elements (including the rating star) are included
-            excluded: ':disabled',
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                star: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The rating is required'
-                        }
-                    }
-                },
-                title: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The review title is required'
-                        }
-                    }
-                },
-                content: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The review content is required'
-                        },
-                        stringLength: {
-                            max: 200,
-                            message: 'The review content must be less than 200 characters'
-                        }
-                    }
-                }
-            }
-        });
-});
-{% endhighlight %}
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="/vendor/raty/jquery.raty.min.js"></script>
 <script>
-$(document).ready(function() {
-    $('#ratyRating').raty({
-        path: '/vendor/raty/img',
-        size: 24,
-        scoreName: 'star',
-        click: function(score, evt) {
-            $('#ratyForm').bootstrapValidator('revalidateField', 'star');
-        }
-    });
-
-    $('#ratyForm')
-        .bootstrapValidator({
-            excluded: ':disabled',
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                star: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The rating is required'
-                        }
-                    }
-                },
-                title: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The review title is required'
-                        }
-                    }
-                },
-                content: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The review content is required'
-                        },
-                        stringLength: {
-                            max: 200,
-                            message: 'The review content must be less than 200 characters'
-                        }
-                    }
-                }
-            }
-        })
-        .on('success.form.bv', function(e) {
-            // Prevent form submission
-            e.preventDefault();
-        });
-});
+{% include examples/raty/example.js %}
 </script>

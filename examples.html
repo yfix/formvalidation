@@ -1,136 +1,37 @@
 ---
-layout:           doc
-title:            Examples
-permalink:        /examples/
-previous_section: /api/
-next_section:     /developing/
-comments:         true
+layout: default
+title: Examples
+permalink: /examples/
+comments: true
 ---
 
-<div class="bv-heading">
+<div class="doc-content-container">
+    <div class="doc-heading">
+        <h1>Examples</h1>
+        <p>A collection of usage examples you can play with</p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1>Examples</h1>
-                <p>A collection of usage examples you can play with</p>
+            <div class="col-md-9">
+                {% include examples/basic.html %}
+
+                <div class="doc-hr"></div>
+
+                {% include examples/advance.html %}
+
+                <div class="doc-hr"></div>
+
+                {% include examples/server-side.html %}
+
+                <div class="doc-hr"></div>
+
+                {% include examples/compatibility.html %}
             </div>
 
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#basic">Basic</a></li>
-                    <li><a href="#advance">Advance</a></li>
-                    <li><a href="#compatibility">Compatibility</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
-                <!-- basic -->
-                <section>
-                    <h2 id="basic">Basic</h2>
-                    <ul>
-                        <li><a href="/examples/adjusting-feedback-icon-position/">Adjusting feedback icon position</a></li>
-                        <li><a href="/examples/attribute/">Set validator options via HTML 5 attributes</a></li>
-                        <li><a href="/examples/html5/">Play with HTML 5 input types and attributes</a></li>
-                        <li><a href="/examples/modal/">Validate a form placed inside a Bootstrap modal</a></li>
-                        <li><a href="/examples/multiple/">Use multiple elements with the same name</a></li>
-                        <li><a href="/examples/toggle/">Toggle field</a></li>
-                    </ul>
-                </section>
-
-                <!-- advance -->
-                <section>
-                    <h2 id="advance">Advance</h2>
-                    <ul>
-                        <li><a href="/examples/adding-dynamic-field/">Adding dynamic field</a></li>
-                        <li><a href="/examples/ajax-submit/">Using Ajax to submit the form</a></li>
-                        <li><a href="/examples/changing-default-behaviour/">Changing default behaviour</a></li>
-                        <li><a href="/examples/tooltip-popover-position">Changing tooltip, popover's position <span class="bv-news"></span></a></li>
-                        <li><a href="/examples/complex-form/">Complex form</a></li>
-                        <li><a href="/examples/enable-validator/">Enable/disable validator</a></li>
-                        <li><a href="/examples/overriding-default-options/">Overriding default options</a></li>
-                        <li><a href="/examples/showing-message-custom-area/">Showing messages in custom area</a></li>
-                        <li><a href="/examples/showing-required-icon/">Showing required icon for the mandatory fields </a></li>
-                        <li><a href="/examples/showing-valid-message/">Showing valid message</a></li>
-                    </ul>
-                </section>
-
-                <!-- server side -->
-                <section>
-                    <h2 id="integrating-server-side">Integrating with server side</h2>
-                    <p>This guide demonstrates integrating BootstrapValidator with the server side:</p>
-                    <ul>
-                        <li><a href="/examples/integrating-server-side#asp-net">ASP.Net</a></li>
-                        <li><a href="/examples/integrating-server-side#rails">Rails</a></li>
-                    </ul>
-                </section>
-
-                <!-- compatibility -->
-                <section>
-                    <h2 id="compatibility">Compatibility</h2>
-                    <p>In order to make BootstrapValidator work together with other plugin, you should follow two rules below:</p>
-                    <div>
-                        <p><strong>1 &mdash; Don't exclude the field if the plugin changes the field visibility</strong></p>
-                        <p>Some plugins hide your field and create new elements to change how the field looks like. By default, the hidden, invisible fields will not be validated. Therefore, you need to set <code>excluded: ':disabled'</code>. See the <a href="/settings/#form-excluded">excluded</a> option for more information.</p>
-                        <p>Example: <a href="/examples/bootstrap-button/">Bootstrap Button</a></p>
-                    </div>
-
-                    <div>
-                        <p><strong>2 &mdash; Revalidate the field if the plugin changes its value dynamically:</strong></p>
-                        <p>Most plugins trigger an event after changing the field value. By using this kind of event handler, you need to ask BootstrapValidator to revalidate the field.</p>
-{% highlight javascript hl_lines="9" %}
-$(field)
-    .nameOfPlugin(pluginOptions)
-    .on(pluginChangedEvent, function() {
-        $(form)
-            .data('bootstrapValidator')             // Get the validator instance
-            .revalidateField(field);                // Revalidate it
-
-        // It is equivalent to use
-        $(form).bootstrapValidator('revalidateField', field);
-    });
-{% endhighlight %}
-                    </div>
-                    <p>Look at the <a href="/api/#revalidate-field"><code>revalidateField()</code></a> method for more details.</p>
-                    <p>Example: <a href="/examples/chosen/">Chosen</a></p>
-
-                    <p>These examples show how you can use BootstrapValidator with other Javascript plugins.</p>
-                    <ul>
-                        <li><a href="/examples/bootbox/">Bootbox</a></li>
-                        <li><a href="/examples/bootstrap-button/">Bootstrap Button</a></li>
-                        <li><a href="/examples/bootstrap-multiselect/">Bootstrap Multiselect</a></li>
-                        <li><a href="/examples/bootstrap-select/">Bootstrap Select</a> <span class="bv-news"></span></li>
-                        <li><a href="/examples/bootstrap-tab/">Bootstrap Tabs</a></li>
-                        <li><a href="/examples/bootstrap-tagsinput/">Bootstrap Tags Input</a> <span class="bv-news"></span></li>
-                        <li><a href="/examples/chosen/">Chosen</a></li>
-                        <li><a href="/examples/ckeditor/">CKEditor</a></li>
-                        <li><a href="/examples/icheck/">iCheck</a></li>
-                        <li><a href="/examples/mask/">Mask</a></li>
-                        <li><a href="/examples/raty/">Raty</a></li>
-                        <li><a href="/examples/select2/">Select2</a> <span class="bv-news"></span></li>
-                        <li><a href="/examples/summernote/">Summernote</a></li>
-                        <li><a href="/examples/tinymce/">TinyMCE</a> <span class="bv-news"></span></li>
-                    </ul>
-
-                    <p>More examples that are demonstrated in other pages:</p>
-                    <ul>
-                        <li><a href="/validators/hexColor/#color-picker-example">Bootstrap Color Picker</a></li>
-                        <li><a href="/api/#datepicker-example">Bootstrap Datetime Picker</a></li>
-                    </ul>
-                </section>
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>

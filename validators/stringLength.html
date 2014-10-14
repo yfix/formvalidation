@@ -1,47 +1,26 @@
 ---
-layout:           doc
-title:            Validate length of a string
-permalink:        /validators/stringLength/
-previous_section: /validators/stringCase/
-next_section:     /validators/uri/
-comments:         true
+layout: default
+title: Validate length of a string
+permalink: /validators/stringLength/
+comments: true
 related:
     - notEmpty
 ---
 
-<div class="bv-heading">
+<div class="doc-content-container">
+    <div class="doc-heading">
+        <h1>stringLength validator</h1>
+        <p>Validate the length of a string</p>
+        <p>&larr; <a href="/validators/">Validators</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / stringLength</h1>
-                <p>Validate the length of a string.</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#options">Options</a></li>
-                    <li><a href="#example">Example</a></li>
-                    <li><a href="#related-validators">Related validators</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="options">Options</h2>
+                    <h2>Options</h2>
+
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -72,19 +51,18 @@ related:
                             </tr>
                         </tbody>
                     </table>
-                    <p>At least one of <code>min</code> and <code>max</code> options is required.</p>
 
-                    <div class="bv-box bv-box-info">
-                        If you're setting this via <code>data-bv-</code> attributes, you will also need to set <code>data-bv-stringlength="true"</code>
-                    </div>
+                    <p>At least one of <code>min</code> and <code>max</code> options is required.</p>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 <section>
-                    <h2 id="example">Example</h2>
+                    <h2>Example</h2>
 
                     <p>In the following form, the <i>Full name</i> and <i>Bio</i> fields must be less than 50 and 200 characters respectively.</p>
 
-                    <div class="bv-example">
+                    <div class="doc-demo">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#stringlength-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#stringlength-html-tab" data-toggle="tab">HTML</a></li>
@@ -93,108 +71,36 @@ related:
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="stringlength-form-tab">
-                                <form id="profileForm" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Full name</label>
-                                        <div class="col-lg-6">
-                                            <input type="text" class="form-control" name="fullName" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Bio</label>
-                                        <div class="col-lg-6">
-                                            <textarea rows="5" class="form-control" name="bio"></textarea>
-                                        </div>
-                                    </div>
-                                </form>
+                            {% include validators/stringLength/example.html %}
                             </div>
 
                             <div class="tab-pane" id="stringlength-html-tab">
-{% highlight html %}
-<form id="profileForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Full name</label>
-        <div class="col-lg-6">
-            <input type="text" class="form-control" name="fullName" />
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Bio</label>
-        <div class="col-lg-6">
-            <textarea rows="5" class="form-control" name="bio"></textarea>
-        </div>
-    </div>
-</form>
-{% endhighlight %}
+                            {% highlight html %}
+                            {% include validators/stringLength/example.html %}
+                            {% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="stringlength-js-tab">
-{% highlight javascript hl_lines="11 19" %}
-$(document).ready(function() {
-    $('#profileForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            fullName: {
-                validators: {
-                    stringLength: {
-                        max: 50,
-                        message: 'The full name must be less than 50 characters'
-                    }
-                }
-            },
-            bio: {
-                validators: {
-                    stringLength: {
-                        max: 200,
-                        message: 'The bio must be less than 200 characters'
-                    }
-                }
-            }
-        }
-    });
-});
-{% endhighlight %}
+                            {% highlight javascript %}
+                            {% include validators/stringLength/example.js %}
+                            {% endhighlight %}
                             </div>
                         </div>
                     </div>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 {% include related.html %}
+            </div>
+
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-$(document).ready(function() {
-    $('#profileForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            fullName: {
-                validators: {
-                    stringLength: {
-                        max: 50,
-                        message: 'The full name must be less than 50 characters'
-                    }
-                }
-            },
-            bio: {
-                validators: {
-                    stringLength: {
-                        max: 200,
-                        message: 'The bio must be less than 200 characters'
-                    }
-                }
-            }
-        }
-    });
-});
+{% include validators/stringLength/example.js %}
 </script>

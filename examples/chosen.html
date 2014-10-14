@@ -1,216 +1,53 @@
 ---
-layout:           doc
-title:            Play with Chosen
-permalink:        /examples/chosen/
-categories:       [Compatibility]
-previous_section:
-next_section:
-comments:         true
+layout: default
+title: Playing with Chosen
+permalink: /examples/chosen/
+comments: true
 ---
 
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.min.css" />
-<style type="text/css">
-#chosenForm .chosen-choices {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    min-height: 34px;
-    padding: 6px 12px;
-}
-#chosenForm .form-control-feedback {
-    z-index: 100;
-}
-</style>
+<div class="doc-content-container">
+    <div class="doc-heading">
+        <h1>Playing with Chosen</h1>
+        <p>&larr; <a href="/examples/">Examples</a></p>
+        {% include edit-button.html %}
+    </div>
 
-<div class="bv-heading">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/examples/">Examples</a> / Compatibility</h1>
-            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <p>Use with the <a href="http://harvesthq.github.io/chosen/">Chosen</a> plugin.</p>
+                <p>The <strong>Favorite color</strong> option requires to choose 2-4 colors you like most.</p>
 
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
+                <div class="doc-demo">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#chosen-form-tab" data-toggle="tab">Try it</a></li>
+                        <li><a href="#chosen-html-tab" data-toggle="tab">HTML</a></li>
+                        <li><a href="#chosen-js-tab" data-toggle="tab">JS</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="chosen-form-tab">
+                        {% include examples/chosen/example.html %}
+                        </div>
+
+                        <div class="tab-pane" id="chosen-html-tab">
+{% highlight html %}
+{% include examples/chosen/example.html %}
+{% endhighlight %}
+                        </div>
+
+                        <div class="tab-pane" id="chosen-js-tab">
+{% highlight javascript %}
+{% include examples/chosen/example.js %}
+{% endhighlight %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                {% include example.html category='Compatibility' %}
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
-                <section>
-                    <h2 id="chosen">Play with Chosen</h2>
-                    <p>Use with the <a href="http://harvesthq.github.io/chosen/">Chosen</a> plugin.</p>
-                    <p>The <i>Favorite color</i> option requires to choose 2-4 colors you like most.</p>
-
-                    <div class="bv-example">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#chosen-form-tab" data-toggle="tab">Try it</a></li>
-                            <li><a href="#chosen-html-tab" data-toggle="tab">HTML</a></li>
-                            <li><a href="#chosen-js-tab" data-toggle="tab">JS</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="chosen-form-tab">
-                                <form id="chosenForm" method="post" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">Favorite color</label>
-                                        <div class="col-lg-5">
-                                            <select class="form-control chosen-select" name="colors" multiple data-placeholder="Choose 2-4 colors">
-                                                <option value="black">Black</option>
-                                                <option value="blue">Blue</option>
-                                                <option value="green">Green</option>
-                                                <option value="orange">Orange</option>
-                                                <option value="red">Red</option>
-                                                <option value="yellow">Yellow</option>
-                                                <option value="white">White</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-lg-5 col-lg-offset-3">
-                                            <button type="submit" class="btn btn-default">Validate</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="tab-pane" id="chosen-html-tab">
-                                {% highlight html hl_lines="16" %}
-<!-- Include chosen CSS -->
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.min.css" />
-
-<!-- Include choosen JS -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.jquery.min.js"></script>
-
-<style type="text/css">
-#chosenForm .chosen-choices {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    min-height: 34px;
-    padding: 6px 12px;
-}
-#chosenForm .form-control-feedback {
-    /* To make the feedback icon visible */
-    z-index: 100;
-}
-</style>
-
-<form id="chosenForm" method="post" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">Favorite color</label>
-        <div class="col-lg-5">
-            <select name="colors" class="form-control chosen-select"
-                multiple data-placeholder="Choose 2-4 colors">
-
-                <option value="black">Black</option>
-                <option value="blue">Blue</option>
-                <option value="green">Green</option>
-                <option value="orange">Orange</option>
-                <option value="red">Red</option>
-                <option value="yellow">Yellow</option>
-                <option value="white">White</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-lg-5 col-lg-offset-3">
-            <button type="submit" class="btn btn-default">Validate</button>
-        </div>
-    </div>
-</form>
-{% endhighlight %}
-                            </div>
-
-                            <div class="tab-pane" id="chosen-js-tab">
-{% highlight javascript hl_lines="7 11" %}
-$(document).ready(function() {
-    $('#chosenForm')
-        .find('[name="colors"]')
-            .chosen()
-            // Revalidate the color when it is changed
-            .change(function(e) {
-                $('#chosenForm').bootstrapValidator('revalidateField', 'colors');
-            })
-            .end()
-        .bootstrapValidator({
-            excluded: ':disabled',
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                colors: {
-                    validators: {
-                        callback: {
-                            message: 'Please choose 2-4 color you like most',
-                            callback: function(value, validator) {
-                                // Get the selected options
-                                var options = validator.getFieldElements('colors').val();
-                                return (options != null && options.length >= 2 && options.length <= 4);
-                            }
-                        }
-                    }
-                }
-            }
-        });
-});
-{% endhighlight %}
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.jquery.min.js"></script>
 <script>
-$(document).ready(function() {
-    $('#chosenForm')
-        .find('[name="colors"]')
-            .chosen()
-            .change(function(e) {
-                $('#chosenForm').bootstrapValidator('revalidateField', 'colors');
-            })
-            .end()
-        .bootstrapValidator({
-            excluded: ':disabled',
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                colors: {
-                    validators: {
-                        callback: {
-                            message: 'Please choose 2-4 color you like most',
-                            callback: function(value, validator) {
-                                // Get the selected options
-                                var options = validator.getFieldElements('colors').val();
-                                return (options != null && options.length >= 2 && options.length <= 4);
-                            }
-                        }
-                    }
-                }
-            }
-        })
-        .on('success.form.bv', function(e) {
-            // Prevent form submission
-            e.preventDefault();
-        });
-});
+{% include examples/chosen/example.js %}
 </script>

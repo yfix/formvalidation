@@ -1,50 +1,29 @@
 ---
-layout:           doc
-title:            Validate a RTN (Routing transit number)
-permalink:        /validators/rtn/
-previous_section: /validators/remote/
-next_section:     /validators/sedol/
-comments:         true
-examples:         011103093, 067014822, 211274450, 211370545, 054001725, 011400071, 031201360, 026013673, 021302567, 053902197, 036001808, 011600033
+layout: default
+title: Validate a RTN (Routing transit number)
+permalink: /validators/rtn/
+comments: true
+examples: 011103093, 067014822, 211274450, 211370545, 054001725, 011400071, 031201360, 026013673, 021302567, 053902197, 036001808, 011600033
 related:
     - creditCard
     - cvv
     - iban
 ---
 
-<div class="bv-heading">
+<div class="doc-content-container">
+    <div class="doc-heading">
+        <h1>rtn validator</h1>
+        <p>Validate a RTN (Routing transit number)</p>
+        <p>&larr; <a href="/validators/">Validators</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / rtn</h1>
-                <p>Validate a RTN (Routing transit number).</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#options">Options</a></li>
-                    <li><a href="#example">Example</a></li>
-                    <li><a href="#related-validators">Related validators</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="options">Options</h2>
+                    <h2>Options</h2>
+
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -65,8 +44,10 @@ related:
                     </table>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 <section>
-                    <h2 id="example">Example</h2>
+                    <h2>Example</h2>
 
                     <table class="table table-condensed">
                         <thead>
@@ -86,7 +67,7 @@ related:
                         </tbody>
                     </table>
 
-                    <div class="bv-example">
+                    <div class="doc-demo">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#rtn-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#rtn-html-tab" data-toggle="tab">HTML</a></li>
@@ -95,93 +76,49 @@ related:
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="rtn-form-tab">
-                                <form id="rtnForm" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">RTN</label>
-                                        <div class="col-lg-5">
-                                            <input type="text" class="form-control" name="rtn" />
-                                        </div>
-                                    </div>
-                                </form>
+                            {% include validators/rtn/example.html %}
                             </div>
 
                             <div class="tab-pane" id="rtn-html-tab">
-{% highlight html %}
-<form id="rtnForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">RTN</label>
-        <div class="col-lg-5">
-            <input type="text" class="form-control" name="rtn" />
-        </div>
-    </div>
-</form>
-{% endhighlight %}
+                            {% highlight html %}
+                            {% include validators/rtn/example.html %}
+                            {% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="rtn-js-tab">
-{% highlight javascript hl_lines="11" %}
-$(document).ready(function() {
-    $('#rtnForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            rtn: {
-                validators: {
-                    rtn: {
-                        message: 'The value is not valid RTN'
-                    }
-                }
-            }
-        }
-    });
-});
-{% endhighlight %}
+                            {% highlight javascript %}
+                            {% include validators/rtn/example.js %}
+                            {% endhighlight %}
                             </div>
                         </div>
                     </div>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 {% include related.html %}
+            </div>
+
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
+{% include validators/rtn/example.js %}
 $(document).ready(function() {
     $('.sample').on('click', function() {
-        $('#rtnForm')
-            .find('input[name="rtn"]')
-                .val($(this).html())
-                .end()
-            .data('bootstrapValidator')
-                .updateStatus('rtn', 'NOT_VALIDATED')
-                .validate();
+        $('#rtnForm').find('input[name="rtn"]').val($(this).html());
+
+        $('#rtnForm').bootstrapValidator('revalidateField', 'rtn');
+
         var isValid = $('#rtnForm').data('bootstrapValidator').isValid();
         $(this)
             .parents('tr').find('i')
             .removeClass('fa-check fa-times')
             .addClass(isValid ? 'fa-check' : 'fa-times');
-    });
-
-    $('#rtnForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            rtn: {
-                validators: {
-                    rtn: {
-                        message: 'The value is not valid RTN'
-                    }
-                }
-            }
-        }
     });
 });
 </script>

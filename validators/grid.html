@@ -1,48 +1,27 @@
 ---
-layout:           doc
-title:            Validate a GRId (Global Release Identifier)
-permalink:        /validators/grid/
-previous_section: /validators/greaterThan/
-next_section:     /validators/hex/
-comments:         true
-examples:         A12425GABC1234002M, A1-2425G-ABC1234002-M, A1 2425G ABC1234002 M, Grid:A1-2425G-ABC1234002-M, A1-2425G-ABC1234002-Q
+layout: default
+title: Validate a GRId (Global Release Identifier)
+permalink: /validators/grid/
+comments: true
+examples: A12425GABC1234002M, A1-2425G-ABC1234002-M, A1 2425G ABC1234002 M, Grid:A1-2425G-ABC1234002-M, A1-2425G-ABC1234002-Q
 related:
     - ismn
 ---
 
-<div class="bv-heading">
+<div class="doc-content-container">
+    <div class="doc-heading">
+        <h1>grid validator</h1>
+        <p>Validate a GRId (Global Release Identifier)</p>
+        <p>&larr; <a href="/validators/">Validators</a></p>
+        {% include edit-button.html %}
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1><a href="/validators/">Validators</a> / grid</h1>
-                <p>Validate a GRId (Global Release Identifier).</p>
-            </div>
-
-            <div class="col-md-4">
-                <div class="bv-ad">
-                    {% include ad.html %}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="bv-sidebar">
-                <ul>
-                    <li><a href="#options">Options</a></li>
-                    <li><a href="#example">Example</a></li>
-                    <li><a href="#related-validators">Related validators</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="bv-content">
+            <div class="col-md-9">
                 <section>
-                    <h2 id="options">Options</h2>
+                    <h2>Options</h2>
+
                     <table class="table table-condensed">
                         <thead>
                             <tr>
@@ -63,8 +42,10 @@ related:
                     </table>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 <section>
-                    <h2 id="example">Example</h2>
+                    <h2>Example</h2>
 
                     <table class="table table-condensed">
                         <thead>
@@ -84,7 +65,7 @@ related:
                         </tbody>
                     </table>
 
-                    <div class="bv-example">
+                    <div class="doc-demo">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#grid-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#grid-html-tab" data-toggle="tab">HTML</a></li>
@@ -93,93 +74,51 @@ related:
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="grid-form-tab">
-                                <form id="gridForm" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-3 control-label">GRId</label>
-                                        <div class="col-lg-5">
-                                            <input type="text" class="form-control" name="grid" />
-                                        </div>
-                                    </div>
-                                </form>
+                            {% include validators/grid/example.html %}
                             </div>
 
                             <div class="tab-pane" id="grid-html-tab">
-{% highlight html %}
-<form id="gridForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label">GRId</label>
-        <div class="col-lg-5">
-            <input type="text" class="form-control" name="grid" />
-        </div>
-    </div>
-</form>
-{% endhighlight %}
+                            {% highlight html %}
+                            {% include validators/grid/example.html %}
+                            {% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="grid-js-tab">
-{% highlight javascript hl_lines="11" %}
-$(document).ready(function() {
-    $('#gridForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            grid: {
-                validators: {
-                    grid: {
-                        message: 'The value is not valid GRId'
-                    }
-                }
-            }
-        }
-    });
-});
-{% endhighlight %}
+                            {% highlight javascript %}
+                            {% include validators/grid/example.js %}
+                            {% endhighlight %}
                             </div>
                         </div>
                     </div>
                 </section>
 
+                <div class="doc-hr"></div>
+
                 {% include related.html %}
+            </div>
+
+            <div class="col-md-3">
+                <div id="toc" class="doc-toc hidden-print hidden-xs hidden-sm"></div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
+{% include validators/grid/example.js %}
 $(document).ready(function() {
     $('.sample').on('click', function() {
         $('#gridForm')
             .find('input[name="grid"]')
                 .val($(this).html())
                 .end()
-            .data('bootstrapValidator')
-                .updateStatus('grid', 'NOT_VALIDATED')
-                .validate();
+            .bootstrapValidator('revalidateField', 'grid');
+
         var isValid = $('#gridForm').data('bootstrapValidator').isValid();
         $(this)
             .parents('tr').find('i')
             .removeClass('fa-check fa-times')
             .addClass(isValid ? 'fa-check' : 'fa-times');
-    });
-
-    $('#gridForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            grid: {
-                validators: {
-                    grid: {
-                        message: 'The value is not valid GRId'
-                    }
-                }
-            }
-        }
     });
 });
 </script>

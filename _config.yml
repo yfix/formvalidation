@@ -1,22 +1,23 @@
 name:                 BootstrapValidator
 highlighter:          pygments
-#highlighter:          rouge
-relative_permalinks:  false
 
 source:               .
 destination:          ../bootstrapvalidator.com
 markdown:             kramdown
-#markdown:             redcarpet
 exclude:              ['node_modules', '*.less']
 url:                  http://bootstrapvalidator.com/
+
 paginate:             5
+paginate_path:        /news/page:num
+encoding:             UTF-8
+relative_permalinks:  false
 permalink:            /news/:title/
 timezone:             Asia/Ho_Chi_Minh
 
 # Custom variables
 # not defined by Jekyll
 current_version:      0.5.2
-released_date:        2014-09-25
+released_date:        2014.09.25
 github_watchers:      980
 github_forks:         382
 github_downloads:     43600
@@ -27,7 +28,7 @@ download:
 repository:
   source:             https://github.com/nghuuphuoc/bootstrapvalidator
   docs:               https://github.com/nghuuphuoc/bootstrapvalidator/gh-pages
-  docs_edit:          https://github.com/nghuuphuoc/bootstrapvalidator/edit/gh-pages
+  docs_edit:          https://github.com/nghuuphuoc/bootstrapvalidator/edit/docs
 ga_code:              UA-44786951-2
 jquery_plugin_url:    http://plugins.jquery.com/bootstrapValidator
 disqus:               bootstrapvalidator

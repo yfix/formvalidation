@@ -1,0 +1,42 @@
+<section>
+    <h2 id="whats-included">What's included?</h2>
+
+    <p>The package consists of the following files:</p>
+
+{% highlight bash %}
+bootstrapvalidator/
+├── dist
+│   ├── css
+│   │   ├── bootstrapValidator.css
+│   │   └── bootstrapValidator.min.css
+│   └── js
+│       ├──language
+│       │   ├── de_DE.js
+│       │   ├── en_US.js
+│       │   └── ...
+│       ├── bootstrapValidator.js
+│       └── bootstrapValidator.min.js
+└── src
+    ├── css
+    │   ├── bootstrapValidator.css
+    │   └── bootstrapValidator.min.css
+    └── js
+        ├──language
+        │   ├── de_DE.js
+        │   ├── en_US.js
+        │   └── ...
+        ├── validator
+        │   ├── base64.js
+        │   ├── between.js
+        │   ├── callback.js
+        │   └── ...
+        └── bootstrapValidator.js
+{% endhighlight %}
+
+    <p>The <strong>src</strong> directory consists of the original source files. <strong>src/js/bootstrapValidator.js</strong> is not compressed and doesn't include any validators.</p>
+
+    <p>The <strong>dist</strong> directory consists of files which is combined and compressed.
+    <strong>dist/js/bootstrapValidator(.min).js</strong> includes all validators. It should be used in the production site.</p>
+
+    <p>The language packages are placed inside both <strong>dist/js/language</strong> and <strong>src/js/language</strong> directories.</p>
+</section>
