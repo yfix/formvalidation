@@ -151,6 +151,24 @@ h4 {
 .doc-logo:hover {
   color: #fff;
 }
+/* --- Footer --- */
+.doc-footer {
+  border-top: 1px solid #ecf0f1;
+  padding: 50px 0;
+  text-align: center;
+}
+.doc-footer p {
+  margin-bottom: 15px;
+}
+.doc-footer .btn {
+  background: #3498db;
+  color: #fff;
+  font-size: 20px;
+  margin: 0 15px;
+}
+.doc-footer .btn:hover {
+  color: #fff;
+}
 /* --- Home --- */
 .doc-center-wrapper {
   text-align: center;
