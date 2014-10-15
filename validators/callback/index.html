@@ -149,7 +149,12 @@ _gaq.push(['_trackPageview']);
                         </tbody>
                     </table>
 
+                    <div class="doc-alert doc-alert-info">
+                        When setting options via HTML attributes, remember to enable the validator by setting data-bv-callback="true".
+                    </div>
+
                     <p>The callback method must follow the format below:</p>
+
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">validator</span><span class="p">,</span> <span class="nx">$field</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// value is the value of field</span>
     <span class="c1">// validator is instance of BootstrapValidator</span>
@@ -160,6 +165,7 @@ _gaq.push(['_trackPageview']);
 <span class="p">}</span></code></pre></div>
 
                     <p>If you want to return a dynamic message, the callback function must return an object containing the <code>valid</code> and <code>message</code> members:</p>
+
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">validator</span><span class="p">,</span> <span class="nx">$field</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// ... Do your logic checking</span>
     <span class="k">if</span> <span class="p">(...)</span> <span class="p">{</span>
