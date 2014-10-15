@@ -50,6 +50,11 @@ comments: true
                         </tbody>
                     </table>
 
+                    <div class="doc-alert doc-alert-info">
+                        When setting options via HTML attributes, remember to enable the validator by setting data-bv-date="true".<br/>
+                        You don't need to do that when using HTML 5 type="date" attribute (the format then will be forced to be YYYY/MM/DD).
+                    </div>
+
                     <p>The <code>format</code> can combine date, time, and AM/PM indicator sections:</p>
 
                     <table class="table table-condensed">
@@ -78,6 +83,11 @@ comments: true
                             </tr>
                         </tbody>
                     </table>
+
+                    <div class="doc-alert doc-alert-info">
+                        The date validator requires day, month and year. If you are looking for hour and time validator, HH:mm, for example, you should use the <a href="/validators/regexp/">regexp</a> validator.
+                        See the <a href="/validators/regexp/#html-5-example">time</a> example.
+                    </div>
 
                     <p>The following table describes the token meanings, defined by <a href="http://momentjs.com/docs/#/displaying/format/">momentjs</a>, one of most popular Javascript datetime library:</p>
                     <table class="table table-condensed">
@@ -149,7 +159,7 @@ comments: true
                     <p>It's possible to support other date format by using <a href="/validators/callback/">callback</a> validator as shown in the <a href="#custom-format-example">Custom format example</a>.</p>
 
                     <div class="doc-alert doc-alert-info">
-                        The date validator also checks the number of days in February of leap year. For example, 02/29/2000 is valid date, while 02/29/2001 is invalid one
+                        The date validator also checks the number of days in February of leap year. For example, 2000/02/29 is a valid date, while 2001/02/29 is invalid one.
                     </div>
                 </section>
 
@@ -166,6 +176,7 @@ comments: true
                             <li class="active"><a href="#example-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#example-html-tab" data-toggle="tab">HTML</a></li>
                             <li><a href="#example-js-tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#example-declarative-tab" data-toggle="tab">Declarative usage</a></li>
                         </ul>
 
                         <div class="tab-content">
@@ -182,6 +193,16 @@ comments: true
                             <div class="tab-pane" id="example-js-tab">
 {% highlight javascript %}
 {% include validators/date/basic-example.js %}
+{% endhighlight %}
+                            </div>
+
+                            <div class="tab-pane" id="example-declarative-tab">
+{% highlight html %}
+{% include validators/date/declarative-example.html %}
+
+<script>
+{% include validators/date/declarative-example.js %}
+</script>
 {% endhighlight %}
                             </div>
                         </div>
