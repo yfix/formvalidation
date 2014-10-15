@@ -1,3 +1,6 @@
+- name:   Albanian
+  file:   sq_AL.js
+  author: desaretiuss
 - name:   Arabic
   file:   ar_MA.js
   author: Arkni
