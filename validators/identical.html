@@ -45,6 +45,10 @@ related:
                             </tr>
                         </tbody>
                     </table>
+
+                    <div class="doc-alert doc-alert-warning">
+                        When using the identical validator, you have to use it for both fields. The plugin will update the message, icon, status of fields properly when you change value of one of two fields.
+                    </div>
                 </section>
 
                 <div class="doc-hr"></div>
@@ -58,6 +62,7 @@ related:
                             <li class="active"><a href="#identical-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#identical-html-tab" data-toggle="tab">HTML</a></li>
                             <li><a href="#identical-js-tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#identical-declarative-tab" data-toggle="tab">Declarative usage</a></li>
                         </ul>
 
                         <div class="tab-content">
@@ -66,15 +71,25 @@ related:
                             </div>
 
                             <div class="tab-pane" id="identical-html-tab">
-                            {% highlight html %}
-                            {% include validators/identical/example.html %}
-                            {% endhighlight %}
+{% highlight html %}
+{% include validators/identical/example.html %}
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="identical-js-tab">
-                            {% highlight javascript %}
-                            {% include validators/identical/example.js %}
-                            {% endhighlight %}
+{% highlight javascript %}
+{% include validators/identical/example.js %}
+{% endhighlight %}
+                            </div>
+
+                            <div class="tab-pane" id="identical-declarative-tab">
+{% highlight html %}
+{% include validators/identical/declarative-example.html %}
+
+<script>
+{% include validators/identical/declarative-example.js %}
+</script>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>
