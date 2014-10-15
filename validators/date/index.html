@@ -155,6 +155,11 @@ _gaq.push(['_trackPageview']);
                         </tbody>
                     </table>
 
+                    <div class="doc-alert doc-alert-info">
+                        When setting options via HTML attributes, remember to enable the validator by setting data-bv-date="true".<br/>
+                        You don't need to do that when using HTML 5 type="date" attribute (the format then will be forced to be YYYY/MM/DD).
+                    </div>
+
                     <p>The <code>format</code> can combine date, time, and AM/PM indicator sections:</p>
 
                     <table class="table table-condensed">
@@ -183,6 +188,11 @@ _gaq.push(['_trackPageview']);
                             </tr>
                         </tbody>
                     </table>
+
+                    <div class="doc-alert doc-alert-info">
+                        The date validator requires day, month and year. If you are looking for hour and time validator, HH:mm, for example, you should use the <a href="/validators/regexp/">regexp</a> validator.
+                        See the <a href="/validators/regexp/#html-5-example">time</a> example.
+                    </div>
 
                     <p>The following table describes the token meanings, defined by <a href="http://momentjs.com/docs/#/displaying/format/">momentjs</a>, one of most popular Javascript datetime library:</p>
                     <table class="table table-condensed">
@@ -254,7 +264,7 @@ _gaq.push(['_trackPageview']);
                     <p>It's possible to support other date format by using <a href="/validators/callback/">callback</a> validator as shown in the <a href="#custom-format-example">Custom format example</a>.</p>
 
                     <div class="doc-alert doc-alert-info">
-                        The date validator also checks the number of days in February of leap year. For example, 02/29/2000 is valid date, while 02/29/2001 is invalid one
+                        The date validator also checks the number of days in February of leap year. For example, 2000/02/29 is a valid date, while 2001/02/29 is invalid one.
                     </div>
                 </section>
 
@@ -271,6 +281,7 @@ _gaq.push(['_trackPageview']);
                             <li class="active"><a href="#example-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#example-html-tab" data-toggle="tab">HTML</a></li>
                             <li><a href="#example-js-tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#example-declarative-tab" data-toggle="tab">Declarative usage</a></li>
                         </ul>
 
                         <div class="tab-content">
@@ -316,6 +327,30 @@ _gaq.push(['_trackPageview']);
         <span class="p">}</span>
     <span class="p">});</span>
 <span class="p">});</span></code></pre></div>
+                            </div>
+
+                            <div class="tab-pane" id="example-declarative-tab">
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;profileForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span>
+    <span class="na">data-bv-feedbackicons-valid=</span><span class="s">&quot;glyphicon glyphicon-ok&quot;</span>
+    <span class="na">data-bv-feedbackicons-invalid=</span><span class="s">&quot;glyphicon glyphicon-remove&quot;</span>
+    <span class="na">data-bv-feedbackicons-validating=</span><span class="s">&quot;glyphicon glyphicon-refresh&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-3 control-label&quot;</span><span class="nt">&gt;</span>Birthday<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-3&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;birthday&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;YYYY/MM/DD&quot;</span>
+                <span class="na">data-bv-date=</span><span class="s">&quot;true&quot;</span>
+                <span class="na">data-bv-date-format=</span><span class="s">&quot;YYYY/MM/DD&quot;</span>
+                <span class="na">data-bv-date-message=</span><span class="s">&quot;The value is not a valid date&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#profileForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">();</span>
+<span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span></code></pre></div>
                             </div>
                         </div>
                     </div>
