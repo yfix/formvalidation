@@ -44,7 +44,12 @@ comments: true
                         </tbody>
                     </table>
 
+                    <div class="doc-alert doc-alert-info">
+                        When setting options via HTML attributes, remember to enable the validator by setting data-bv-callback="true".
+                    </div>
+
                     <p>The callback method must follow the format below:</p>
+
 {% highlight javascript %}
 function(value, validator, $field) {
     // value is the value of field
@@ -57,6 +62,7 @@ function(value, validator, $field) {
 {% endhighlight %}
 
                     <p>If you want to return a dynamic message, the callback function must return an object containing the <code>valid</code> and <code>message</code> members:</p>
+
 {% highlight javascript %}
 function(value, validator, $field) {
     // ... Do your logic checking
