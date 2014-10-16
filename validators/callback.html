@@ -128,52 +128,13 @@ function(value, validator, $field) {
                         <div class="tab-content">
                             <div class="tab-pane active" id="html5-html-tab">
 {% highlight html %}
-<form id="callbackForm" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-lg-3 control-label" id="captchaOperation"></label>
-        <div class="col-lg-2">
-            <input type="text" class="form-control" name="captcha"
-                data-bv-callback="true"
-                data-bv-callback-message="Wrong answer"
-                data-bv-callback-callback="checkCaptcha" />
-        </div>
-    </div>
-</form>
+{% include validators/callback/declarative-example.html %}
 {% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="html5-js-tab">
 {% highlight javascript %}
-// IMPORTANT NOTICE: You have to declare the callback as a global function
-// outside of $(document).ready()
-function checkCaptcha(value, validator) {
-    // Determine the numbers which are generated in captchaOperation
-    var items = $('#captchaOperation').html().split(' '),
-        sum   = parseInt(items[0]) + parseInt(items[2]);
-    return value == sum;
-};
-
-$(document).ready(function() {
-    // Return a random number between min and max
-    function randomNumber(min, max) {
-        return Math.floor(Math.random() * (max - min + 1) + min);
-    };
-
-    // Generate a sum of two random numbers
-    function generateCaptcha() {
-        $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
-    };
-
-    generateCaptcha();
-
-    $('#callbackForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        }
-    });
-});
+{% include validators/callback/declarative-example.js %}
 {% endhighlight %}
                             </div>
                         </div>
