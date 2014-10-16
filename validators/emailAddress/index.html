@@ -155,7 +155,10 @@ _gaq.push(['_trackPageview']);
                         </tbody>
                     </table>
 
-                    <p>You can use <code>type="email"</code> attribute to enable this validator.</p>
+                    <div class="doc-alert doc-alert-info">
+                        When setting options via HTML attributes, remember to enable the validator by setting data-bv-emailaddress="true".<br/>
+                        You don't need to do that when using HTML 5 type="email" attribute.
+                    </div>
 
                     <div class="doc-alert doc-alert-info">
                         This validator passes an empty field since the field might be optional. If the field is required, then use the <a href="/validators/notEmpty/">notEmpty validator</a>.
