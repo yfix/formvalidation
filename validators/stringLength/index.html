@@ -156,6 +156,53 @@ _gaq.push(['_trackPageview']);
                     </table>
 
                     <p>At least one of <code>min</code> and <code>max</code> options is required.</p>
+
+                    <h3>Using with Rails form</h3>
+                    <p>Rails' forms count new lines as two characters (<code>\r\n</code>). Meanwhile, the stringLength validator counts new lines as one character.
+                        So the user can input more than number of allowed characters as long as they enter a new line.</p>
+                    <p>This problem can be solved by using the <a href="/settings/#dynamic-option">dynamic option</a> feature which is provided by the <code>max</code> option:</p>
+
+                    <div class="doc-demo">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#rails-form-tab" data-toggle="tab">Form</a></li>
+                            <li><a href="#rails-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="rails-form-tab">
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;post&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="sx">%= form_for @post do |f| %&gt;</span>
+<span class="sx">        &lt;div class=</span><span class="s2">&quot;form-group&quot;</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="sx">%= f.label :body %&gt;</span>
+<span class="sx">            &lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">text_area</span> <span class="ss">:body</span><span class="p">,</span> <span class="ss">class</span><span class="p">:</span> <span class="s1">&#39;form-control&#39;</span><span class="p">,</span> <span class="ss">rows</span><span class="p">:</span> <span class="mi">3</span> <span class="sx">%&gt;</span>
+<span class="sx">        &lt;/div&gt;</span>
+        <span class="o">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">submit</span> <span class="s1">&#39;Save&#39;</span><span class="p">,</span> <span class="ss">class</span><span class="p">:</span> <span class="s1">&#39;btn btn-default&#39;</span> <span class="sx">%&gt;</span>
+<span class="sx">    &lt;% end %&gt;</span>
+<span class="o">&lt;</span><span class="sr">/div&gt;</span></code></pre></div>
+                            </div>
+
+
+                            <div class="tab-pane" id="rails-js-tab">
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.post form&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+    <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;post[body]&#39;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">notEmpty</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Post content is required&#39;</span>
+                <span class="p">},</span>
+                <span class="nx">stringLength</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Post content must be less than 120 characters&#39;</span><span class="p">,</span>
+                    <span class="nx">max</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">validator</span><span class="p">,</span> <span class="nx">$field</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="k">return</span> <span class="mi">120</span> <span class="o">-</span> <span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/\r/g</span><span class="p">)</span> <span class="o">||</span> <span class="p">[]).</span><span class="nx">length</span><span class="p">;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span></code></pre></div>
+                            </div>
+                        </div>
+                    </div>
                 </section>
 
                 <div class="doc-hr"></div>
@@ -192,7 +239,7 @@ _gaq.push(['_trackPageview']);
                             </div>
 
                             <div class="tab-pane" id="stringlength-html-tab">
-                            <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;stringLengthForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;stringLengthForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-3 control-label&quot;</span><span class="nt">&gt;</span>Full name<span class="nt">&lt;/label&gt;</span>
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-6&quot;</span><span class="nt">&gt;</span>
@@ -210,7 +257,7 @@ _gaq.push(['_trackPageview']);
                             </div>
 
                             <div class="tab-pane" id="stringlength-js-tab">
-                            <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#stringLengthForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
         <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
             <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
