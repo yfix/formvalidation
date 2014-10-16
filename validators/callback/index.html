@@ -287,7 +287,11 @@ _gaq.push(['_trackPageview']);
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="html5-html-tab">
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;callbackForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;callbackForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span>
+    <span class="na">data-bv-feedbackicons-valid=</span><span class="s">&quot;glyphicon glyphicon-ok&quot;</span>
+    <span class="na">data-bv-feedbackicons-invalid=</span><span class="s">&quot;glyphicon glyphicon-remove&quot;</span>
+    <span class="na">data-bv-feedbackicons-validating=</span><span class="s">&quot;glyphicon glyphicon-refresh&quot;</span><span class="nt">&gt;</span>
+
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-lg-3 control-label&quot;</span> <span class="na">id=</span><span class="s">&quot;captchaOperation&quot;</span><span class="nt">&gt;&lt;/label&gt;</span>
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-lg-2&quot;</span><span class="nt">&gt;</span>
@@ -323,13 +327,7 @@ _gaq.push(['_trackPageview']);
 
     <span class="nx">generateCaptcha</span><span class="p">();</span>
 
-    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#callbackForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
-        <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
-            <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
-            <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
-        <span class="p">}</span>
-    <span class="p">});</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#callbackForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">();</span>
 <span class="p">});</span></code></pre></div>
                             </div>
                         </div>
