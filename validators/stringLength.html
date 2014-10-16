@@ -53,6 +53,33 @@ related:
                     </table>
 
                     <p>At least one of <code>min</code> and <code>max</code> options is required.</p>
+
+                    <h3>Using with Rails form</h3>
+                    <p>Rails' forms count new lines as two characters (<code>\r\n</code>). Meanwhile, the stringLength validator counts new lines as one character.
+                        So the user can input more than number of allowed characters as long as they enter a new line.</p>
+                    <p>This problem can be solved by using the <a href="/settings/#dynamic-option">dynamic option</a> feature which is provided by the <code>max</code> option:</p>
+
+                    <div class="doc-demo">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#rails-form-tab" data-toggle="tab">Form</a></li>
+                            <li><a href="#rails-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="rails-form-tab">
+{% highlight ruby %}
+{% include validators/stringLength/rails-example.html %}
+{% endhighlight %}
+                            </div>
+
+
+                            <div class="tab-pane" id="rails-js-tab">
+{% highlight javascript %}
+{% include validators/stringLength/rails-example.js %}
+{% endhighlight %}
+                            </div>
+                        </div>
+                    </div>
                 </section>
 
                 <div class="doc-hr"></div>
@@ -75,15 +102,15 @@ related:
                             </div>
 
                             <div class="tab-pane" id="stringlength-html-tab">
-                            {% highlight html %}
-                            {% include validators/stringLength/example.html %}
-                            {% endhighlight %}
+{% highlight html %}
+{% include validators/stringLength/example.html %}
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="stringlength-js-tab">
-                            {% highlight javascript %}
-                            {% include validators/stringLength/example.js %}
-                            {% endhighlight %}
+{% highlight javascript %}
+{% include validators/stringLength/example.js %}
+{% endhighlight %}
                             </div>
                         </div>
                     </div>
