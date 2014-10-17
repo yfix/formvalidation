@@ -138,6 +138,7 @@ related:
                             <li class="active"><a href="#cc-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#cc-html-tab" data-toggle="tab">HTML</a></li>
                             <li><a href="#cc-js-tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#cc-declarative-tab" data-toggle="tab">Declarative usage</a></li>
                         </ul>
 
                         <div class="tab-content">
@@ -154,6 +155,16 @@ related:
                             <div class="tab-pane" id="cc-js-tab">
 {% highlight javascript %}
 {% include validators/creditCard/example.js %}
+{% endhighlight %}
+                            </div>
+
+                            <div class="tab-pane" id="cc-declarative-tab">
+{% highlight html %}
+{% include validators/creditCard/declarative-example.html %}
+
+<script>
+{% include validators/creditCard/declarative-example.js %}
+</script>
 {% endhighlight %}
                             </div>
                         </div>
@@ -176,13 +187,9 @@ related:
 {% include validators/creditCard/example.js %}
 $(document).ready(function() {
     $('.sample').on('click', function() {
-        $('#creditCardForm')
-            .find('input[name="cc"]')
-                .val($(this).html())
-                .end()
-            .data('bootstrapValidator')
-                .updateStatus('cc', 'NOT_VALIDATED')
-                .validate();
+        $('#creditCardForm').find('input[name="cc"]').val($(this).html());
+
+        $('#creditCardForm').bootstrapValidator('revalidateField', 'cc');
 
         var isValid = $('#creditCardForm').data('bootstrapValidator').isValid();
         $(this)
