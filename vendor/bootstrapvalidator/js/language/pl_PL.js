@@ -20,6 +20,9 @@
             more: 'Wybierz maksymalnie %s opcji',
             between: 'Wybierz przynajmniej %s i maksymalnie %s opcji'
         },
+        color: {
+            'default': 'Wprowadź poprawny kolor w formacie'
+        },
         creditCard: {
             'default': 'Wprowadź poprawny numer karty kredytowej'
         },
@@ -344,7 +347,9 @@
                 CA: 'Kanada',
                 CZ: 'Czechy',
                 DK: 'Dania',
+                FR: 'Francja',
                 GB: 'Wielka Brytania',
+                IE: 'Irlandia',
                 IT: 'Włochy',
                 MA: 'Maroko',
                 NL: 'Holandia',

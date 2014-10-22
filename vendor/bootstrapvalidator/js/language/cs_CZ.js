@@ -20,6 +20,9 @@
             more: 'Hodnota nesmí být více jak %s',
             between: 'Prosím vyberte mezi %s a %s'
         },
+        color: {
+            'default': 'Prosím zadejte správnou barvu'
+        },
         creditCard: {
             'default': 'Prosím zadejte správné číslo kreditní karty'
         },
@@ -344,7 +347,9 @@
                 CA: 'Kanada',
                 CZ: 'Českou Republiku',
                 DK: 'Dánsko',
+                FR: 'Francie',
                 GB: 'Velkou Británii',
+                IE: 'Irsko',
                 IT: 'Itálie',
                 MA: 'Maroko',
                 NL: 'Nizozemí',

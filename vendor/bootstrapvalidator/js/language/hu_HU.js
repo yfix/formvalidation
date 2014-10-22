@@ -20,6 +20,9 @@
             more: 'Kérlek, hogy maximum %s lehetőséget válassz ki',
             between: 'Kérlek, hogy válassz %s - %s lehetőséget'
         },
+        color: {
+            'default': 'Kérlek, hogy érvényes színt ajd meg'
+        },
         creditCard: {
             'default': 'Kérlek, hogy érvényes bankkártya számot adj meg'
         },
@@ -344,7 +347,9 @@
                 CA: 'Kanadában',
                 CZ: 'Csehországban',
                 DK: 'Dániában',
+                FR: 'Franciaországban',
                 GB: 'az Egyesült Királyságban',
+                IE: 'Írországban',
                 IT: 'Olaszországban',
                 MA: 'Marokkóban',
                 NL: 'Hollandiában',

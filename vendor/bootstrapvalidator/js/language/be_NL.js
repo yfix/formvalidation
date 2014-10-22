@@ -20,6 +20,9 @@
             more: 'Kies maximum %s opties',
             between: 'Kies %s - %s opties'
         },
+        color: {
+            'default': 'Geef een geldige kleur'
+        },
         creditCard: {
             'default': 'Geef een geldig creditkaart nummer'
         },
@@ -344,7 +347,9 @@
                 CA: 'Canada',
                 CZ: 'Tsjechische',
                 DK: 'Denemarken',
+                FR: 'Frankrijk',
                 GB: 'Verenigd Koninkrijk',
+                IE: 'Ierland',
                 IT: 'Italië',
                 MA: 'Marokko',
                 NL: 'Nederland',

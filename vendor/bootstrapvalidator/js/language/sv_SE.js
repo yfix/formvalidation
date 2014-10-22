@@ -20,6 +20,9 @@
             more: 'Vänligen välj max %s alternativ',
             between: 'Vänligen välj %s - %s alternativ'
         },
+        color: {
+            'default': 'Vänligen mata in en giltig färg'
+        },
         creditCard: {
             'default': 'Vänligen mata in ett giltigt kredikortsnummer'
         },
@@ -344,7 +347,9 @@
                 CA: 'Kanada',
                 CZ: 'Tjeckien',
                 DK: 'Danmark',
+                FR: 'Frankrike',
                 GB: 'Förenade Kungariket',
+                IE: 'Irland',
                 IT: 'Italien',
                 MA: 'Marocko',
                 NL: 'Nederländerna',
