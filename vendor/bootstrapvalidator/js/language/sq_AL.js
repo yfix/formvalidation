@@ -20,6 +20,9 @@
             more: 'Ju lutem përzgjidhni së shumti %s mundësi ',
             between: 'Ju lutem përzgjidhni %s - %s mundësi'
         },
+        color: {
+            'default': 'Ju lutem vendosni një ngjyrë të vlefshme'
+        },
         creditCard: {   
             'default': 'Ju lutem vendosni një numër karte krediti të vlefshëm'
         },
@@ -344,7 +347,9 @@
                 CA: 'Kanada',
                 CZ: 'Republika Çeke',
                 DK: 'Danimarkë',
+                FR: 'Francë',
                 GB: 'Mbretëria e Bashkuar',
+                IE: 'Irlandë',
                 IT: 'Itali',
                 MA: 'Marok',
                 NL: 'Hollandë',

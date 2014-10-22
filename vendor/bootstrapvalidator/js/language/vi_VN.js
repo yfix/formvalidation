@@ -20,6 +20,9 @@
             more: 'Vui lòng chọn nhiều nhất %s lựa chọn',
             between: 'Vui lòng chọn %s - %s lựa chọn'
         },
+        color: {
+            'default': 'Vui lòng nhập mã màu hợp lệ'
+        },
         creditCard: {
             'default': 'Vui lòng nhập số thẻ tín dụng hợp lệ'
         },
@@ -344,7 +347,9 @@
                 CA: 'Canada',
                 CZ: 'Séc',
                 DK: 'Đan Mạch',
+                FR: 'Pháp',
                 GB: 'Vương quốc Anh',
+                IE: 'Ireland',
                 IT: 'Ý',
                 MA: 'Maroc',
                 NL: 'Hà Lan',

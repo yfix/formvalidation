@@ -20,6 +20,9 @@
             more: 'Please choose %s options at maximum',
             between: 'Please choose %s - %s options'
         },
+        color: {
+            'default': 'Please enter a valid color'
+        },
         creditCard: {
             'default': 'Please enter a valid credit card number'
         },
@@ -344,7 +347,9 @@
                 CA: 'Canada',
                 CZ: 'Czech Republic',
                 DK: 'Denmark',
+                FR: 'France',
                 GB: 'United Kingdom',
+                IE: 'Ireland',
                 IT: 'Italy',
                 MA: 'Morocco',
                 NL: 'Netherlands',
