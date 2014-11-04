@@ -19,19 +19,19 @@ timezone:             Asia/Ho_Chi_Minh
 license:
   developer:
     price:            20$
-    url:              /
+    url:              https://gum.co/bv-developer-license
   organization:
     price:            60$
-    url:              /
-current_version:      0.5.2
-released_date:        2014.09.25
+    url:              https://gum.co/bv-organization-license
+current_version:      0.5.3
+released_date:        2014.11.05
 github_watchers:      980
 github_forks:         382
 github_downloads:     77250
-twitter_followers:    167
+twitter_followers:    185
 download:
-  dist:               https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.5.2/bootstrapvalidator-dist-0.5.2.zip
-  tag:                https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.5.2.zip
+  dist:               https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.5.3/bootstrapvalidator-dist-0.5.3.zip
+  tag:                https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.5.3.zip
 repository:
   source:             https://github.com/nghuuphuoc/bootstrapvalidator
   docs:               https://github.com/nghuuphuoc/bootstrapvalidator/gh-pages
