@@ -58,13 +58,13 @@ examples:
                                 <td>The error message</td>
                             </tr>
                             <tr>
-                                <td><code>multiple</code> <span class="bv-news"></span></td>
+                                <td><code>multiple</code></td>
                                 <td><code>data-bv-emailaddress-multiple</code></td>
                                 <td>String</td>
                                 <td>Allow multiple email addresses, separated by a comma or semicolon. The default value is <code>false</code></td>
                             </tr>
                             <tr>
-                                <td><code>separator</code> <span class="bv-news"></span></td>
+                                <td><code>separator</code></td>
                                 <td><code>data-bv-emailaddress-separator</code></td>
                                 <td>String</td>
                                 <td>Regex for character or characters expected as separator between addresses. By default, it is /[,;]/, i.e. comma or semicolon</td>
@@ -72,7 +72,10 @@ examples:
                         </tbody>
                     </table>
 
-                    <p>You can use <code>type="email"</code> attribute to enable this validator.</p>
+                    <div class="doc-alert doc-alert-info">
+                        When setting options via HTML attributes, remember to enable the validator by setting data-bv-emailaddress="true".<br/>
+                        You don't need to do that when using HTML 5 type="email" attribute.
+                    </div>
 
                     <div class="doc-alert doc-alert-info">
                         This validator passes an empty field since the field might be optional. If the field is required, then use the <a href="/validators/notEmpty/">notEmpty validator</a>.

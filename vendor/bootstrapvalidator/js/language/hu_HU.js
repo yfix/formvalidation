@@ -20,6 +20,9 @@
             more: 'Kérlek, hogy maximum %s lehetőséget válassz ki',
             between: 'Kérlek, hogy válassz %s - %s lehetőséget'
         },
+        color: {
+            'default': 'Kérlek, hogy érvényes színt ajd meg'
+        },
         creditCard: {
             'default': 'Kérlek, hogy érvényes bankkártya számot adj meg'
         },
@@ -236,6 +239,7 @@
                 BR: 'Brazíliában',
                 CN: 'Kínában',
                 CZ: 'Csehországban',
+                DE: 'Németországban',
                 DK: 'Dániában',
                 ES: 'Spanyolországban',
                 FR: 'Franciaországban',
@@ -340,14 +344,20 @@
             countryNotSupported: '%s - nem támogatott ország',
             country: 'Kérlek, hogy %s érvényes irányítószámot adj meg',
             countries: {
+                AT: 'Ausztriában',
                 BR: 'Brazíliában',
                 CA: 'Kanadában',
+                CH: 'Svájcban',
                 CZ: 'Csehországban',
+                DE: 'Németországban',
                 DK: 'Dániában',
+                FR: 'Franciaországban',
                 GB: 'az Egyesült Királyságban',
+                IE: 'Írországban',
                 IT: 'Olaszországban',
                 MA: 'Marokkóban',
                 NL: 'Hollandiában',
+                PT: 'Portugáliában',
                 RO: 'Romániában',
                 RU: 'Oroszországban',
                 SE: 'Svájcban',

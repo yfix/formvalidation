@@ -53,11 +53,11 @@ $(document).ready(function() {
 {% highlight javascript %}
 // Enable validator
 $(form)
-    .bootstrapValidator('enableFieldValidators', fullName, 'notEmpty', true);
+    .bootstrapValidator('enableFieldValidators', fullName, true, 'notEmpty');
 
 // Disable validator
 $(form)
-    .bootstrapValidator('enableFieldValidators', fullName, 'notEmpty', false);
+    .bootstrapValidator('enableFieldValidators', fullName, false, 'notEmpty');
 {% endhighlight %}
                 </td>
             </tr>

@@ -7,13 +7,14 @@
     {% include nav.html %}
 
     <div id="main" class="doc-content-wrapper">
+        {% include notification.html %}
+
         {{ content }}
 
         {% include footer.html %}
     </div>
     {% include ad.html %}
 
-<script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
 <script src="/vendor/tocjs/js/toc.min.js"></script>
 <script>
 $(function() {
@@ -43,8 +44,7 @@ $(function() {
         var $window = $(window),
             $body   = $(document.body);
         $body.scrollspy({
-            target: '#toc',
-            offset: $('#main').offset().top + $('.doc-heading').height()
+            target: '#toc'
         });
 
         $window.on('load', function() {

@@ -51,6 +51,10 @@ comments: true
                         </tbody>
                     </table>
                     <p>At least one of <code>min</code> and <code>max</code> option is required.</p>
+
+                    <div class="doc-alert doc-alert-info">
+                        When setting options via HTML attributes, remember to enable the validator by setting data-bv-choice="true".
+                    </div>
                 </section>
 
                 <div class="doc-hr"></div>
@@ -104,6 +108,7 @@ comments: true
                             <li class="active"><a href="#choice-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#choice-html-tab" data-toggle="tab">HTML</a></li>
                             <li><a href="#choice-js-tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#choice-declarative-tab" data-toggle="tab">Declarative usage</a></li>
                         </ul>
 
                         <div class="tab-content">
@@ -120,6 +125,16 @@ comments: true
                             <div class="tab-pane" id="choice-js-tab">
 {% highlight javascript %}
 {% include validators/choice/example.js %}
+{% endhighlight %}
+                            </div>
+
+                            <div class="tab-pane" id="choice-declarative-tab">
+{% highlight html %}
+{% include validators/choice/declarative-example.html %}
+
+<script>
+{% include validators/choice/declarative-example.js %}
+</script>
 {% endhighlight %}
                             </div>
                         </div>

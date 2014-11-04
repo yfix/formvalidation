@@ -31,13 +31,13 @@ comments: true
                         <tbody>
                             <tr>
                                 <td><code>data</code></td>
-                                <td><code>data-bv-remote-delay</code></td>
+                                <td><code>n/a</code></td>
                                 <td>Object</td>
                                 <td>The data sent to remote URL.<br />You don't need to use this option if there is only field, defined as field name, sent to the remote URL.</td>
                             </tr>
                             <tr>
-                                <td><code>delay</code> <span class="bv-news"></span></td>
-                                <td>n/a</td>
+                                <td><code>delay</code></td>
+                                <td><code>data-bv-remote-delay</code></td>
                                 <td>Number</td>
                                 <td>The Ajax request created by the remote validator is only fired once in the delay duration time.</td>
                             </tr>
@@ -75,6 +75,10 @@ url: function(validator) {
                             </tr>
                         </tbody>
                     </table>
+
+                    <div class="doc-alert doc-alert-info">
+                        When setting options via HTML attributes, remember to enable the validator by setting data-bv-remote="true".
+                    </div>
 
                     <div class="doc-alert doc-alert-info">From v0.5.2, the type option is GET, by default.</div>
 

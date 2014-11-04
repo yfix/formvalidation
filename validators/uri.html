@@ -123,7 +123,7 @@ related:
                                 <td>The error message</td>
                             </tr>
                             <tr>
-                                <td><code>protocol</code> <span class="bv-news"></span></td>
+                                <td><code>protocol</code></td>
                                 <td><code>data-bv-uri-protocol</code></td>
                                 <td>String</td>
                                 <td>The protocols, separated by a comma. By default, it is set to <code>http, https, ftp</code></td>
@@ -131,7 +131,10 @@ related:
                         </tbody>
                     </table>
 
-                    <p>You can use <code>type="url"</code> attribute to <a href="#html5-example">enable</a> this validator.</p>
+                    <div class="doc-alert doc-alert-info">
+                        When setting options via HTML attributes, remember to enable the validator by setting data-bv-uri="true".<br/>
+                        You don't need to do that when using HTML 5 type="url" attribute.
+                    </div>
                 </section>
 
                 <div class="doc-hr"></div>

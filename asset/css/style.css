@@ -65,6 +65,17 @@ h4 {
   margin: 30px auto;
   max-width: 300px;
 }
+.doc-notification {
+  background-color: #ecf0f1;
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+  text-align: center;
+}
+@media (max-width: 767px) {
+  .doc-notification {
+    display: none;
+  }
+}
 /* --- Header --- */
 .doc-nav-shown .doc-nav {
   background-color: #191919;
@@ -168,6 +179,9 @@ h4 {
 }
 .doc-footer .btn:hover {
   color: #fff;
+}
+.doc-footer i {
+  color: #c0392b;
 }
 /* --- Home --- */
 .doc-center-wrapper {

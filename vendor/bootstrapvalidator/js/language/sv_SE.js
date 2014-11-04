@@ -20,6 +20,9 @@
             more: 'Vänligen välj max %s alternativ',
             between: 'Vänligen välj %s - %s alternativ'
         },
+        color: {
+            'default': 'Vänligen mata in en giltig färg'
+        },
         creditCard: {
             'default': 'Vänligen mata in ett giltigt kredikortsnummer'
         },
@@ -236,6 +239,7 @@
                 BR: 'Brasilien',
                 CN: 'Kina',
                 CZ: 'Tjeckien',
+                DE: 'Tyskland',
                 DK: 'Danmark',
                 ES: 'Spanien',
                 FR: 'Frankrike',
@@ -340,14 +344,20 @@
             countryNotSupported: 'Landskoden %s stöds inte',
             country: 'Vänligen mata in ett giltigt postnummer i %s',
             countries: {
+                AT: 'Österrike',
                 BR: 'Brasilien',
                 CA: 'Kanada',
+                CH: 'Schweiz',
                 CZ: 'Tjeckien',
+                DE: 'Tyskland',
                 DK: 'Danmark',
+                FR: 'Frankrike',
                 GB: 'Förenade Kungariket',
+                IE: 'Irland',
                 IT: 'Italien',
                 MA: 'Marocko',
                 NL: 'Nederländerna',
+                PT: 'Portugal',
                 RO: 'Rumänien',
                 RU: 'Ryssland',
                 SE: 'Sverige',

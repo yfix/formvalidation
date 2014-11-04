@@ -20,6 +20,9 @@
             more: 'Te rog alege maxim %s optiuni',
             between: 'Te rog alege %s - %s optiuni'
         },
+        color: {
+            'default': 'Te rog sa introduci o culoare valida'
+        },
         creditCard: {
             'default': 'Te rog introdu un numar de card valid'
         },
@@ -91,7 +94,7 @@
                 CZ: 'Republica Cehia',
                 DE: 'Germania',
                 DK: 'Danemarca',
-                DO: 'Dominica',
+                DO: 'Republica Dominicană',
                 DZ: 'Algeria',
                 EE: 'Estonia',
                 ES: 'Spania',
@@ -236,6 +239,7 @@
                 BR: 'Brazilia',
                 CN: 'China',
                 CZ: 'Republica Cehia',
+                DE: 'Germania',
                 DK: 'Danemarca',
                 ES: 'Spania',
                 FR: 'Franta',
@@ -340,14 +344,20 @@
             countryNotSupported: 'Tara %s nu este acceptata',
             country: 'Te rog sa introduci un cod postal valid din %s',
             countries: {
+                AT: 'Austria',
                 BR: 'Brazilia',
                 CA: 'Canada',
+                CH: 'Elvetia',
                 CZ: 'Republica Cehia',
+                DE: 'Germania',
                 DK: 'Danemarca',
+                FR: 'Franta',
                 GB: 'Regatul Unit',
+                IE: 'Irlanda',
                 IT: 'Italia',
                 MA: 'Maroc',
                 NL: 'Olanda',
+                PT: 'Portugalia',
                 RO: 'Romania',
                 RU: 'Rusia',
                 SE: 'Suedia',

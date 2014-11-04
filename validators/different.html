@@ -35,7 +35,7 @@ related:
                                 <td><code>field</code><sup>*</sup></td>
                                 <td><code>data-bv-different-field</code></td>
                                 <td>String</td>
-                                <td>The name of field that will be used to compare with current one.<br/><span class="bv-news"></span> You also can indicate many fields which names are separated by a comma.</td>
+                                <td>The name of field that will be used to compare with current one.<br/>You also can indicate many fields which names are separated by a comma.</td>
                             </tr>
                             <tr>
                                 <td><code>message</code></td>
@@ -45,6 +45,14 @@ related:
                             </tr>
                         </tbody>
                     </table>
+
+                    <div class="doc-alert doc-alert-info">
+                        When setting options via HTML attributes, remember to enable the validator by setting data-bv-different="true".
+                    </div>
+
+                     <div class="doc-alert doc-alert-warning">
+                        When using the different validator, you have to use it for all fields. The plugin will update the message, icon, status of fields properly when you change value of one of any field.
+                    </div>
                 </section>
 
                 <div class="doc-hr"></div>
@@ -58,6 +66,7 @@ related:
                             <li class="active"><a href="#different-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#different-html-tab" data-toggle="tab">HTML</a></li>
                             <li><a href="#different-js-tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#different-declarative-tab" data-toggle="tab">Declarative usage</a></li>
                         </ul>
 
                         <div class="tab-content">
@@ -66,15 +75,25 @@ related:
                             </div>
 
                             <div class="tab-pane" id="different-html-tab">
-                            {% highlight html %}
-                            {% include validators/different/example.html %}
-                            {% endhighlight %}
+{% highlight html %}
+{% include validators/different/example.html %}
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="different-js-tab">
-                            {% highlight javascript %}
-                            {% include validators/different/example.js %}
-                            {% endhighlight %}
+{% highlight javascript %}
+{% include validators/different/example.js %}
+{% endhighlight %}
+                            </div>
+
+                            <div class="tab-pane" id="different-declarative-tab">
+{% highlight html %}
+{% include validators/different/declarative-example.html %}
+
+<script>
+{% include validators/different/declarative-example.js %}
+</script>
+{% endhighlight %}
                             </div>
                         </div>
                     </div>

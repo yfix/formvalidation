@@ -20,6 +20,9 @@
             more: 'Please choose %s options at maximum',
             between: 'Please choose %s - %s options'
         },
+        color: {
+            'default': 'Please enter a valid color'
+        },
         creditCard: {
             'default': 'Please enter a valid credit card number'
         },
@@ -91,7 +94,7 @@
                 CZ: 'Czech Republic',
                 DE: 'Germany',
                 DK: 'Denmark',
-                DO: 'Dominica',
+                DO: 'Dominican Republic',
                 DZ: 'Algeria',
                 EE: 'Estonia',
                 ES: 'Spain',
@@ -236,6 +239,7 @@
                 BR: 'Brazil',
                 CN: 'China',
                 CZ: 'Czech Republic',
+                DE: 'Germany',
                 DK: 'Denmark',
                 ES: 'Spain',
                 FR: 'France',
@@ -340,14 +344,20 @@
             countryNotSupported: 'The country code %s is not supported',
             country: 'Please enter a valid postal code in %s',
             countries: {
+                AT: 'Austria',
                 BR: 'Brazil',
                 CA: 'Canada',
+                CH: 'Switzerland',
                 CZ: 'Czech Republic',
+                DE: 'Germany',
                 DK: 'Denmark',
+                FR: 'France',
                 GB: 'United Kingdom',
+                IE: 'Ireland',
                 IT: 'Italy',
                 MA: 'Morocco',
                 NL: 'Netherlands',
+                PT: 'Portugal',
                 RO: 'Romania',
                 RU: 'Russia',
                 SE: 'Sweden',

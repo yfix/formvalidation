@@ -20,6 +20,9 @@
             more: 'Si prega di scegliere al massimo l\'opzione %s',
             between: 'Si prega di scegliere l\'opzione tra %s e %s'
         },
+        color: {
+            'default': 'Si prega di inserire un colore valido'
+        },
         creditCard: {
             'default': 'Si prega di inserire un numero di carta di credito valido'
         },
@@ -236,6 +239,7 @@
                 BR: 'Brasile',
                 CN: 'Cina',
                 CZ: 'Republica Ceca',
+                DE: 'Germania',
                 DK: 'Danimarca',
                 ES: 'Spagna',
                 FR: 'Francia',
@@ -340,14 +344,20 @@
             countryNotSupported: 'Il codice nazione %s non e supportato',
             country: 'Si prega di inserire un codice postale valido per %s',
             countries: {
+                AT: 'Austria',
                 BR: 'Brasile',
                 CA: 'Canada',
+                CH: 'Svizzera',
                 CZ: 'Republica Ceca',
+                DE: 'Germania',
                 DK: 'Danimarca',
+                FR: 'Francia',
                 GB: 'Regno Unito',
+                IE: 'Irlanda',
                 IT: 'Italia',
                 MA: 'Marocco',
                 NL: 'Paesi Bassi',
+                PT: 'Portogallo',
                 RO: 'Romania',
                 RU: 'Russia',
                 SE: 'Svezia',

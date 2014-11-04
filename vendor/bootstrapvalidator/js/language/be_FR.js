@@ -20,6 +20,9 @@
             more: 'Veuillez choisir au maximum %s options',
             between: 'Veuillez choisir de %s à %s options'
         },
+        color: {
+            'default': 'Veuillez fournir une couleur valide'
+        },
         creditCard: {
             'default': 'Veuillez fournir un numéro de carte de crédit valide'
         },
@@ -45,7 +48,7 @@
             'default': 'Veuillez fournir un code-barre EAN valide'
         },
         emailAddress: {
-            'default': 'Veuillez fournir une adresse mail valide'
+            'default': 'Veuillez fournir une adresse e-mail valide'
         },
         file: {
             'default': 'Veuillez choisir un fichier valide'
@@ -61,7 +64,7 @@
             'default': 'Veuillez fournir un nombre hexadécimal valide'
         },
         hexColor: {
-            'default': 'Veuillez fournir une couleur hexadécimale valide1'
+            'default': 'Veuillez fournir une couleur hexadécimale valide'
         },
         iban: {
             'default': 'Veuillez fournir un code IBAN valide',
@@ -236,6 +239,7 @@
                 BR: 'Brésil',
                 CN: 'Chine',
                 CZ: 'Tchèque',
+                DE: 'Allemagne',
                 DK: 'Danemark',
                 ES: 'Espagne',
                 FR: 'France',
@@ -340,14 +344,20 @@
             countryNotSupported: 'Le code de pays %s n\'est pas accepté',
             country: 'Veuillez fournir un code postal valide pour %s',
             countries: {
+                AT: 'Autriche',
                 BR: 'Brésil',
                 CA: 'Canada',
+                CH: 'Suisse',
                 CZ: 'Tchèque',
+                DE: 'Allemagne',
                 DK: 'Danemark',
+                FR: 'France',
                 GB: 'Royaume-Uni',
+                IE: 'Irlande',
                 IT: 'Italie',
                 MA: 'Maroc',
                 NL: 'Pays-Bas',
+                PT: 'Portugal',
                 RO: 'Roumanie',
                 RU: 'Russie',
                 SE: 'Suède',

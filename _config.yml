@@ -20,8 +20,8 @@ current_version:      0.5.2
 released_date:        2014.09.25
 github_watchers:      980
 github_forks:         382
-github_downloads:     43600
-twitter_followers:    159
+github_downloads:     77250
+twitter_followers:    167
 download:
   dist:               https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.5.2/bootstrapvalidator-dist-0.5.2.zip
   tag:                https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.5.2.zip

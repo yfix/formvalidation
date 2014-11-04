@@ -20,6 +20,9 @@
             more: 'Hodnota nesmí být více jak %s',
             between: 'Prosím vyberte mezi %s a %s'
         },
+        color: {
+            'default': 'Prosím zadejte správnou barvu'
+        },
         creditCard: {
             'default': 'Prosím zadejte správné číslo kreditní karty'
         },
@@ -236,6 +239,7 @@
                 BR: 'Brazílii',
                 CN: 'Čína',
                 CZ: 'Českou Republiku',
+                DE: 'Německo',
                 DK: 'Dánsko',
                 ES: 'Španělsko',
                 FR: 'Francie',
@@ -340,14 +344,20 @@
             countryNotSupported: '%s není podporované',
             country: 'Prosím zadejte správné PSČ pro %s',
             countries: {
+                AT: 'Rakousko',
                 BR: 'Brazílie',
                 CA: 'Kanada',
+                CH: 'Švýcarsko',
                 CZ: 'Českou Republiku',
+                DE: 'Německo',
                 DK: 'Dánsko',
+                FR: 'Francie',
                 GB: 'Velkou Británii',
+                IE: 'Irsko',
                 IT: 'Itálie',
                 MA: 'Maroko',
                 NL: 'Nizozemí',
+                PT: 'Portugalsko',
                 RO: 'Rumunsko',
                 RU: 'Rusko',
                 SE: 'Švédsko',
