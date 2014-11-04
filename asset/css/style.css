@@ -76,6 +76,16 @@ h4 {
     display: none;
   }
 }
+.doc-buy-btn {
+  background: #3498db;
+  color: #fff;
+  font-size: 30px;
+  margin: 5px;
+  text-transform: uppercase;
+}
+.doc-buy-btn:hover {
+  color: #fff;
+}
 /* --- Header --- */
 .doc-nav-shown .doc-nav {
   background-color: #191919;

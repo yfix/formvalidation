@@ -1,3 +1,5 @@
+- title:     Download
+  permalink: /download/
 - title:     Getting Started
   permalink: /getting-started/
 - title:     Settings
@@ -12,3 +14,5 @@
   permalink: /developing/
 - title:     News
   permalink: /news/
+- title:     License
+  permalink: /license/

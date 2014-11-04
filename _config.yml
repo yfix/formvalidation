@@ -16,6 +16,13 @@ timezone:             Asia/Ho_Chi_Minh
 
 # Custom variables
 # not defined by Jekyll
+license:
+  developer:
+    price:            20$
+    url:              /
+  organization:
+    price:            60$
+    url:              /
 current_version:      0.5.2
 released_date:        2014.09.25
 github_watchers:      980
