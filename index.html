@@ -51,6 +51,11 @@ _gaq.push(['_trackPageview']);
         
             
         
+        <li class=""><a href="/download/">Download</a></li>
+    
+        
+            
+        
         <li class=""><a href="/getting-started/">Getting Started</a></li>
     
         
@@ -83,6 +88,11 @@ _gaq.push(['_trackPageview']);
         
         <li class=""><a href="/news/">News</a></li>
     
+        
+            
+        
+        <li class=""><a href="/license/">License</a></li>
+    
     </ul>
 
     <div class="doc-hr"></div>
@@ -98,14 +108,14 @@ _gaq.push(['_trackPageview']);
 
     <div class="doc-creator">
         <p>
-            Handcrafted with <i class="fa fa-heart"></i> in Vietnam<br />
+            Handcrafted with <span class="doc-heart"><i class="fa fa-heart"></i></span> in Vietnam<br />
             by <a href="http://twitter.com/nghuuphuoc">@nghuuphuoc</a><br/>
             <img src="http://github.com/nghuuphuoc.png" />
         </p>
         <p><a href="mailto: phuoc@huuphuoc.me" class="btn">Hire me</a></p>
     </div>
 </nav>
-<button class="btn doc-logo">BV</button>
+<button class="btn doc-logo" title="Toggle the navigation"><i class="fa fa-bars"></i></button>
 
     <div id="main" class="doc-content-wrapper">
         <!-- intro -->
@@ -116,10 +126,9 @@ _gaq.push(['_trackPageview']);
                     <span class="hidden-xs hidden-sm">Designed to use with <a href="http://getbootstrap.com">Bootstrap 3+</a></span>
                 </h1>
                 <p>
-                    <a class="btn" href="/getting-started/">Download</a>
-                    <a class="btn" href="https://pledgie.com/campaigns/24885" alt="Click here to lend your support to: BootstrapValidator and make a donation at pledgie.com!">Donate</a>
+                    <a class="btn" href="/download/">Download</a>
                 </p>
-                <span>v0.5.2 &middot; 2014.09.25 &middot; MIT license &middot; by <a href="http://twitter.com/nghuuphuoc">@nghuuphuoc</a></span>
+                <span>v0.5.3 &middot; 2014.11.05 &middot; by <a href="http://twitter.com/nghuuphuoc">@nghuuphuoc</a></span>
             </div>
             <h3 class="hide"><span id="downloads" class="doc-home-counter"></span> downloads so far</h3>
         </section>
@@ -173,7 +182,7 @@ _gaq.push(['_trackPageview']);
         <!-- contributors -->
         <section id="contributors" class="doc-center-wrapper doc-home-contributor">
             <div class="container doc-center-container">
-                <h2>Made better by <span class="doc-home-counter">103</span> contributors</h2>
+                <h2>Made better by <span class="doc-home-counter">105</span> contributors</h2>
                 <div class="doc-hr"></div>
 
                 <p>
@@ -355,6 +364,8 @@ _gaq.push(['_trackPageview']);
                     
                     <li><a href="https://github.com/shamiao" title="@shamiao"><img src="https://github.com/shamiao.png" width="60px" height="60px" /></a></li>
                     
+                    <li><a href="https://github.com/shineability" title="@shineability"><img src="https://github.com/shineability.png" width="60px" height="60px" /></a></li>
+                    
                     <li><a href="https://github.com/smeagol74" title="@smeagol74"><img src="https://github.com/smeagol74.png" width="60px" height="60px" /></a></li>
                     
                     <li><a href="https://github.com/stephengreentree" title="@stephengreentree"><img src="https://github.com/stephengreentree.png" width="60px" height="60px" /></a></li>
@@ -364,6 +375,8 @@ _gaq.push(['_trackPageview']);
                     <li><a href="https://github.com/talberti" title="@talberti"><img src="https://github.com/talberti.png" width="60px" height="60px" /></a></li>
                     
                     <li><a href="https://github.com/thisisclement" title="@thisisclement"><img src="https://github.com/thisisclement.png" width="60px" height="60px" /></a></li>
+                    
+                    <li><a href="https://github.com/thomaslhotta" title="@thomaslhotta"><img src="https://github.com/thomaslhotta.png" width="60px" height="60px" /></a></li>
                     
                     <li><a href="https://github.com/thx2001r" title="@thx2001r"><img src="https://github.com/thx2001r.png" width="60px" height="60px" /></a></li>
                     
@@ -481,8 +494,6 @@ _gaq.push(['_trackPageview']);
         </section>
     </div>
 
-    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=bootstrapvalidatorcom" id="_carbonads_js"></script>
-
 <script src="/vendor/onepage-scroll/jquery.onepage-scroll.min.js"></script>
 <script>
 $(function() {
@@ -504,8 +515,8 @@ $(function() {
         dataType: 'jsonp',
         url: 'https://api.github.com/repos/nghuuphuoc/bootstrapvalidator',
         success: function(response) {
-            $('#ghStars').html((response && response.data.watchers_count ? parseInt(response.data.watchers_count) : '980').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
-            $('#ghForks').html((response && response.data.forks_count    ? parseInt(response.data.forks_count)    : '382').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+            $('#ghStars').html((response && response.data.watchers_count ? parseInt(response.data.watchers_count) : '1294').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+            $('#ghForks').html((response && response.data.forks_count    ? parseInt(response.data.forks_count)    : '631').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
         }
     });
 

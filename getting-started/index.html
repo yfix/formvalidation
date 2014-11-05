@@ -50,6 +50,11 @@ _gaq.push(['_trackPageview']);
         
             
         
+        <li class=""><a href="/download/">Download</a></li>
+    
+        
+            
+        
         <li class="doc-nav-active"><a href="/getting-started/">Getting Started</a></li>
     
         
@@ -82,6 +87,11 @@ _gaq.push(['_trackPageview']);
         
         <li class=""><a href="/news/">News</a></li>
     
+        
+            
+        
+        <li class=""><a href="/license/">License</a></li>
+    
     </ul>
 
     <div class="doc-hr"></div>
@@ -97,18 +107,18 @@ _gaq.push(['_trackPageview']);
 
     <div class="doc-creator">
         <p>
-            Handcrafted with <i class="fa fa-heart"></i> in Vietnam<br />
+            Handcrafted with <span class="doc-heart"><i class="fa fa-heart"></i></span> in Vietnam<br />
             by <a href="http://twitter.com/nghuuphuoc">@nghuuphuoc</a><br/>
             <img src="http://github.com/nghuuphuoc.png" />
         </p>
         <p><a href="mailto: phuoc@huuphuoc.me" class="btn">Hire me</a></p>
     </div>
 </nav>
-<button class="btn doc-logo">BV</button>
+<button class="btn doc-logo" title="Toggle the navigation"><i class="fa fa-bars"></i></button>
 
     <div id="main" class="doc-content-wrapper">
         <div class="doc-notification">
-    <i class="fa fa-bell-o"></i> <a href="http://programer.tips" title="Daily tips, tricks and best practices for programmers" target="_blank">programer.tips</a>, another cool thing from <a href="http://twitter.com/nghuuphuoc" target="_blank">@nghuuphuoc</a>!
+    <i class="fa fa-bell-o"></i> <a href="/news/v0.5.3-released/">v0.5.3</a> is released on 2014.11.05!
 </div>
 
         <div class="doc-content-container">
@@ -122,53 +132,47 @@ _gaq.push(['_trackPageview']);
         <div class="row">
             <div class="col-md-9">
                 <section>
-    <h2>Download</h2>
+    <h2>What's included?</h2>
 
-    <p>Choose the package you want to download:</p>
-    <p class="text-center">
-        <a class="btn btn-lg btn-primary" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.5.2/bootstrapvalidator-dist-0.5.2.zip" data-toggle="tooltip" title="Including the plugin, its validator source and minified versions. It should be used in the production site">Download v0.5.2</a>
-        <a class="btn btn-lg btn-default" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.5.2.zip" data-toggle="tooltip" title="Including the source code, examples and building script. Download if you want to play with or develop new validators">Download Source</a>
-        <a class="btn btn-lg btn-default" href="https://pledgie.com/campaigns/24885" alt="Click here to lend your support to: BootstrapValidator and make a donation at pledgie.com!">Donate via Paypal</a>
-    </p>
-    <p class="text-center">
-        <span id="downloadCounter"></span> downloads so far
-    </p>
+    <p>The <a href="/download/">BootstrapValidator package</a> consists of the following files:</p>
 
-    <p>See <a href="/news/v0.5.2-released/">what's news</a> in v0.5.2, released on 2014.09.25.</p>
-    <p>For older versions, take a look at the <a href="/news/">News</a> page.</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">bootstrapvalidator/
+├── dist
+│   ├── css
+│   │   ├── bootstrapValidator.css
+│   │   └── bootstrapValidator.min.css
+│   └── js
+│       ├──language
+│       │   ├── de_DE.js
+│       │   ├── en_US.js
+│       │   └── ...
+│       ├── bootstrapValidator.js
+│       └── bootstrapValidator.min.js
+└── src
+    ├── css
+    │   ├── bootstrapValidator.css
+    │   └── bootstrapValidator.min.css
+    └── js
+        ├──language
+        │   ├── de_DE.js
+        │   ├── en_US.js
+        │   └── ...
+        ├── validator
+        │   ├── base64.js
+        │   ├── between.js
+        │   ├── callback.js
+        │   └── ...
+        └── bootstrapValidator.js</code></pre></div>
 
-    <div class="doc-alert doc-alert-warning">
-        You should take a look at the upgrading guides: <a href="/news/upgrading-to-v0.5.0/">v0.4.5 &rarr; v0.5.0</a> and <a href="/news/v0.5.2-released/#upgrade">v0.5.0/v0.5.1 &rarr; v0.5.2</a>
-    </div>
+    <p>The <strong>src</strong> directory consists of the original source files. <strong>src/js/bootstrapValidator.js</strong> is not compressed and doesn't include any validators.</p>
 
-    <h3>Installing with Bower</h3>
-    <p>You can get the latest release by using <a href="http://bower.io">Bower</a>:</p>
+    <p>The <strong>dist</strong> directory consists of files which is combined and compressed.
+    <strong>dist/js/bootstrapValidator(.min).js</strong> includes all validators. It should be used in the production site.</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>bower install bootstrapvalidator</code></pre></div>
-
-    <p>It's also possible to get the latest developing code from the <a href="https://github.com/nghuuphuoc/bootstrapvalidator">master</a> branch:</p>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>bower install bootstrapvalidator#master</code></pre></div>
-
-    <h3>CDN</h3>
-    <p>You also can use the minified version hosted on the following CDN:</p>
-    <ol>
-        <li>
-            <p><a href="http://cdnjs.com">cdnjs</a></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css&quot;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
-        </li>
-
-        <li>
-            <p><a href="http://www.jsdelivr.com/#!jquery.bootstrapvalidator">jsdelivr</a></p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css&quot;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
-        </li>
-    </ol>
-
-    <p>BootstrapValidator also can be found on the official <a href="http://plugins.jquery.com/bootstrapValidator">jQuery plugins page</a>.</p>
+    <p>The language packages are placed inside both <strong>dist/js/language</strong> and <strong>src/js/language</strong> directories.</p>
 
     <h3>Language packages</h3>
+
     <p>BootstrapValidator has been translated into the following languages:</p>
     <table class="table table-condensed">
         <thead>
@@ -426,7 +430,7 @@ _gaq.push(['_trackPageview']);
         If you wonder how to use the language package, then this <a href="/examples/using-language-package/">example</a> is exactly for you
     </div>
 
-    <h4>Translate to other language</h4>
+    <h3>Translate to other language</h3>
     <p>It is very easy to translate default English package into your language. Follow the steps below:</p>
     <ol>
         <li>Fork the <a href="https://github.com/nghuuphuoc/bootstrapvalidator">project</a></li>
@@ -438,69 +442,6 @@ _gaq.push(['_trackPageview']);
         <li>Translate the <a href="https://github.com/nghuuphuoc/bootstrapvalidator/blob/master/src/js/language/en_US.js">English language package</a> into your language file created above</li>
         <li><a href="https://help.github.com/articles/creating-a-pull-request/">Make a pull request</a></li>
     </ol>
-</section>
-
-<script>
-$(function() {
-    $.ajax({
-        dataType: 'jsonp',
-        url: 'https://api.github.com/repos/nghuuphuoc/bootstrapvalidator/releases',
-        success: function(response) {
-            var total = 0;
-            if (response.data) {
-                for (var i in response.data) {
-                    for (var j in response.data[i].assets) {
-                        total += (response.data[i].assets[j].download_count || 0);
-                    }
-                }
-            }
-            $('#downloadCounter').html(total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
-        }
-    });
-});
-</script>
-
-                <div class="doc-hr"></div>
-
-                <section>
-    <h2 id="whats-included">What's included?</h2>
-
-    <p>The package consists of the following files:</p>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">bootstrapvalidator/
-├── dist
-│   ├── css
-│   │   ├── bootstrapValidator.css
-│   │   └── bootstrapValidator.min.css
-│   └── js
-│       ├──language
-│       │   ├── de_DE.js
-│       │   ├── en_US.js
-│       │   └── ...
-│       ├── bootstrapValidator.js
-│       └── bootstrapValidator.min.js
-└── src
-    ├── css
-    │   ├── bootstrapValidator.css
-    │   └── bootstrapValidator.min.css
-    └── js
-        ├──language
-        │   ├── de_DE.js
-        │   ├── en_US.js
-        │   └── ...
-        ├── validator
-        │   ├── base64.js
-        │   ├── between.js
-        │   ├── callback.js
-        │   └── ...
-        └── bootstrapValidator.js</code></pre></div>
-
-    <p>The <strong>src</strong> directory consists of the original source files. <strong>src/js/bootstrapValidator.js</strong> is not compressed and doesn't include any validators.</p>
-
-    <p>The <strong>dist</strong> directory consists of files which is combined and compressed.
-    <strong>dist/js/bootstrapValidator(.min).js</strong> includes all validators. It should be used in the production site.</p>
-
-    <p>The language packages are placed inside both <strong>dist/js/language</strong> and <strong>src/js/language</strong> directories.</p>
 </section>
 
                 <div class="doc-hr"></div>
@@ -1419,17 +1360,14 @@ $(document).ready(function() {
     <div class="container">
         <p>
             <a class="btn" href="https://github.com/nghuuphuoc/bootstrapvalidator/issues">Report an issue</a>
-            <a class="btn" href="mailto: phuoc@huuphuoc.me?subject=Commercial support for BootstrapValidator" data-toggle="tooltip" data-title="Pay me to get the issue solved">Commercial support</a>
         </p>
         <p>
-            &copy; 2013 - 2014 <a href="http://twitter.com/nghuuphuoc">Nguyen Huu Phuoc</a><br>
-            <a href="https://github.com/nghuuphuoc/bootstrapvalidator">Code</a> licensed under <a href="http://opensource.org/licenses/mit-license.html">MIT</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/tree/docs">documentation</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>
+            &copy; 2013 - 2014 <a href="http://twitter.com/nghuuphuoc">Nguyen Huu Phuoc</a>. All rights reserved<br>
         </p>
-        <p>handcrafted with <i class="fa fa-heart"></i> in Vietnam</p>
+        <p>Handcrafted with <span class="doc-heart"><i class="fa fa-heart"></i></span> in Vietnam</p>
     </div>
 </footer>
     </div>
-    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=bootstrapvalidatorcom" id="_carbonads_js"></script>
 
 <script src="/vendor/tocjs/js/toc.min.js"></script>
 <script>

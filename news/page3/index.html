@@ -50,6 +50,11 @@ _gaq.push(['_trackPageview']);
         
             
         
+        <li class=""><a href="/download/">Download</a></li>
+    
+        
+            
+        
         <li class=""><a href="/getting-started/">Getting Started</a></li>
     
         
@@ -82,6 +87,11 @@ _gaq.push(['_trackPageview']);
         
         <li class="doc-nav-active"><a href="/news/">News</a></li>
     
+        
+            
+        
+        <li class=""><a href="/license/">License</a></li>
+    
     </ul>
 
     <div class="doc-hr"></div>
@@ -97,18 +107,18 @@ _gaq.push(['_trackPageview']);
 
     <div class="doc-creator">
         <p>
-            Handcrafted with <i class="fa fa-heart"></i> in Vietnam<br />
+            Handcrafted with <span class="doc-heart"><i class="fa fa-heart"></i></span> in Vietnam<br />
             by <a href="http://twitter.com/nghuuphuoc">@nghuuphuoc</a><br/>
             <img src="http://github.com/nghuuphuoc.png" />
         </p>
         <p><a href="mailto: phuoc@huuphuoc.me" class="btn">Hire me</a></p>
     </div>
 </nav>
-<button class="btn doc-logo">BV</button>
+<button class="btn doc-logo" title="Toggle the navigation"><i class="fa fa-bars"></i></button>
 
     <div id="main" class="doc-content-wrapper">
         <div class="doc-notification">
-    <i class="fa fa-bell-o"></i> <a href="http://programer.tips" title="Daily tips, tricks and best practices for programmers" target="_blank">programer.tips</a>, another cool thing from <a href="http://twitter.com/nghuuphuoc" target="_blank">@nghuuphuoc</a>!
+    <i class="fa fa-bell-o"></i> <a href="/news/v0.5.3-released/">v0.5.3</a> is released on 2014.11.05!
 </div>
 
         <div class="doc-content-container">
@@ -121,6 +131,146 @@ _gaq.push(['_trackPageview']);
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
+                
+                    <div class="doc-post">
+    <h2><a href="/news/v0.4.0-released/">BootstrapValidator v0.4.0 Released</a></h2>
+
+    <div class="doc-post-meta">
+        <a href="https://github.com/nghuuphuoc" title="@nghuuphuoc">
+            <img src="https://github.com/nghuuphuoc.png" />
+        </a>
+        <p>03 Apr 2014</p>
+    </div>
+
+    <div class="doc-post-content">
+        <h3>New features</h3>
+<ul class="doc-list">
+    <li><i class="fa fa-star"></i> <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/14">#14</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/57">#57</a>: Set validator option by using <a href="/examples/#attribute">HTML 5 attributes</a></li>
+    <li><i class="fa fa-star"></i> Support <a href="/examples/#html5">HTML 5 input types</a>:</li>
+</ul>
+
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>HTML 5 attribute</th>
+            <th>Equivalent validator</th>
+            <th>Equivalent HTML attribute</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>min="..."</code></td>
+            <td><a href="/validators/greaterThan/">greaterThan validator</a></td>
+            <td>
+<div class="highlight"><pre><code class="language-html" data-lang="html">data-bv-greaterthan=&quot;true&quot;
+data-bv-greaterthan-value=&quot;...&quot;</code></pre></div>
+            </td>
+        </tr>
+        <tr>
+            <td><code>max="..."</code></td>
+            <td><a href="/validators/lessThan/">lessThan validator</a></td>
+            <td>
+<div class="highlight"><pre><code class="language-html" data-lang="html">data-bv-lessthan=&quot;true&quot;
+data-bv-lessthan-value=&quot;...&quot;</code></pre></div>
+            </td>
+        </tr>
+        <tr>
+            <td><code>maxlength="..."</code></td>
+            <td><a href="/validators/stringLength/">stringLength validator</a></td>
+            <td>
+<div class="highlight"><pre><code class="language-html" data-lang="html">data-bv-stringlength=&quot;true&quot;
+data-bv-stringlength-max=&quot;...&quot;</code></pre></div>
+            </td>
+        </tr>
+        <tr>
+            <td><code>pattern="..."</code></td>
+            <td><a href="/validators/regexp/">regexp validator</a></td>
+            <td>
+<div class="highlight"><pre><code class="language-html" data-lang="html">data-bv-regexp=&quot;true&quot;
+data-bv-regexp-regexp=&quot;...&quot;</code></pre></div>
+            </td>
+        </tr>
+        <tr>
+            <td><code>required</code></td>
+            <td><a href="/validators/notEmpty/">notEmpty validator</a></td>
+            <td><code>data-bv-notempty="true"</code></td>
+        </tr>
+        <tr>
+            <td><code>type="color"</code></td>
+            <td><a href="/validators/hexColor/">hexColor validator</a></td>
+            <td><code>data-bv-hexcolor="true"</code></td>
+        </tr>
+        <tr>
+            <td><code>type="email"</code></td>
+            <td><a href="/validators/emailAddress/">emailAddress validator</a></td>
+            <td><code>data-bv-emailaddress="true"</code></td>
+        </tr>
+        <tr>
+            <td>
+<div class="highlight"><pre><code class="language-html" data-lang="html">type=&quot;range&quot;
+min=&quot;...&quot;
+max=&quot;...&quot;</code></pre></div>
+            </td>
+            <td><a href="/validators/between/">between validator</a></td>
+            <td>
+<div class="highlight"><pre><code class="language-html" data-lang="html">data-bv-between=&quot;true&quot;
+data-bv-between-min=&quot;...&quot;
+data-bv-between-max=&quot;...&quot;</code></pre></div>
+            </td>
+        </tr>
+        <tr>
+            <td><code>type="url"</code></td>
+            <td><a href="/validators/uri/">uri validator</a></td>
+            <td><code>data-bv-uri="true"</code></td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="doc-list">
+    <li><i class="fa fa-star"></i> <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/74">#74</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/103">#103</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/122">#122</a>: Set the custom <a href="/settings/#trigger">trigger event</a>. It's possible to use <code>data-bv-trigger</code> attribute or <code>trigger</code> option.</li>
+    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/109">#109</a>: Add <a href="/api/#set-live-mode"><code>setLiveMode()</code> method</a> to turn on/off the live validating mode</li>
+    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/114">#114</a>: Add <a href="/validators/iban/">iban validator</a> for validating IBAN (International Bank Account Number)</li>
+    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/116">#116</a>: Add <a href="/validators/uuid/">uuid validator</a>, support UUID v3, v4, v5</li>
+    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/128">#128</a>: Add <a href="/validators/numeric/">numeric validator</a></li>
+    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/135">#135</a>: Add <a href="/validators/integer/">integer validator</a></li>
+    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/138">#138</a>: Add <a href="/validators/hex/">hex validator</a></li>
+    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/139">#139</a>: Add <a href="/validators/stringCase/">stringCase validator</a> to check a string is lower or upper case</li>
+</ul>
+
+<h3>Changes</h3>
+<ul class="doc-list">
+    <li><a href="/api/#disable-submit-buttons"><code>disableSubmitButtons()</code></a> is now marked as a public API</li>
+    <li>The first parameter of <a href="/api/#update-status"><code>updateStatus()</code> method</a> now accepts the field name only</li>
+</ul>
+
+<h3>Improvements</h3>
+<ul class="doc-list">
+    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/133">#133</a>: The <a href="/validators/regexp/">regexp validator</a> allows to pass a string</li>
+    <li><i class="fa fa-star"></i> <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/136">#136</a>: Support multiple elements with the <a href="/examples/multiple/">same name</a></li>
+    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/pull/140">#140</a>: Do not validate hidden (<code>type="hidden"</code>) and invisible element, thanks to <a href="https://github.com/easonhan007">@easonhan007</a></li>
+</ul>
+
+<h3>Bug fixes</h3>
+<ul class="doc-list">
+    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/126">#126</a>: Submit button remains disabled after calling custom <code>submitHandler</code> and the form is valid</li>
+    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/132">#132</a>: The <code>fields.[fieldName].message</code> option is not used when showing the error message</li>
+</ul>
+
+<h3>Contributors</h3>
+<p>Thank to the contributors:</p>
+<ul class="doc-list">
+    <li><a href="https://github.com/easonhan007">@easonhan007</a></li>
+</ul>
+
+<h3>Download</h3>
+<div>
+    <a class="btn btn-primary" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.4.0/bootstrapvalidator-dist-0.4.0.zip">bootstrapvalidator-dist-0.4.0.zip</a>
+    <a class="btn btn-default" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.4.0.zip">v0.4.0 Source Code</a>
+</div>
+    </div>
+</div>
+
+                    <div class="doc-hr"></div>
                 
                     <div class="doc-post">
     <h2><a href="/news/v0.3.3-released/">BootstrapValidator v0.3.3 Released</a></h2>
@@ -320,41 +470,6 @@ _gaq.push(['_trackPageview']);
 
                     <div class="doc-hr"></div>
                 
-                    <div class="doc-post">
-    <h2><a href="/news/v0.2.2-released/">BootstrapValidator v0.2.2 Released</a></h2>
-
-    <div class="doc-post-meta">
-        <a href="https://github.com/nghuuphuoc" title="@nghuuphuoc">
-            <img src="https://github.com/nghuuphuoc.png" />
-        </a>
-        <p>07 Jan 2014</p>
-    </div>
-
-    <div class="doc-post-content">
-        <h3>Improvements</h3>
-<ul class="doc-list">
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/15">#15</a>: Focus to the first invalid element</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/31">#31</a>: <a href="/validators/remote/">remote validator</a>: Allow to set additional data to remote URL</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/32">#32</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/43">#43</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/47">#47</a>: Only validate not empty field</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/39">#39</a>: Validate existing fields only</li>
-</ul>
-
-<h3>Bug fixes</h3>
-<ul class="doc-list">
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/34">#34</a>: Avoid from calling form submit recursively</li>
-    <li><a href="https://github.com/nghuuphuoc/bootstrapvalidator/issues/40">#40</a>: Fix the issue when the form label doesn't have class</li>
-</ul>
-
-<h3>Download</h3>
-<div>
-    <a class="btn btn-primary" href="https://github.com/nghuuphuoc/bootstrapvalidator/releases/download/v0.2.2/bootstrapvalidator-dist-0.2.2.zip">bootstrapvalidator-dist-0.2.2.zip</a>
-    <a class="btn btn-default" href="https://github.com/nghuuphuoc/bootstrapvalidator/archive/v0.2.2.zip">v0.2.2 Source Code</a>
-</div>
-    </div>
-</div>
-
-                    <div class="doc-hr"></div>
-                
 
                 <div class="doc-pagination">
                     
@@ -376,17 +491,14 @@ _gaq.push(['_trackPageview']);
     <div class="container">
         <p>
             <a class="btn" href="https://github.com/nghuuphuoc/bootstrapvalidator/issues">Report an issue</a>
-            <a class="btn" href="mailto: phuoc@huuphuoc.me?subject=Commercial support for BootstrapValidator" data-toggle="tooltip" data-title="Pay me to get the issue solved">Commercial support</a>
         </p>
         <p>
-            &copy; 2013 - 2014 <a href="http://twitter.com/nghuuphuoc">Nguyen Huu Phuoc</a><br>
-            <a href="https://github.com/nghuuphuoc/bootstrapvalidator">Code</a> licensed under <a href="http://opensource.org/licenses/mit-license.html">MIT</a>, <a href="https://github.com/nghuuphuoc/bootstrapvalidator/tree/docs">documentation</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>
+            &copy; 2013 - 2014 <a href="http://twitter.com/nghuuphuoc">Nguyen Huu Phuoc</a>. All rights reserved<br>
         </p>
-        <p>handcrafted with <i class="fa fa-heart"></i> in Vietnam</p>
+        <p>Handcrafted with <span class="doc-heart"><i class="fa fa-heart"></i></span> in Vietnam</p>
     </div>
 </footer>
     </div>
-    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=bootstrapvalidatorcom" id="_carbonads_js"></script>
 
 <script src="/vendor/tocjs/js/toc.min.js"></script>
 <script>
