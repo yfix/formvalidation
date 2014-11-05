@@ -18,10 +18,10 @@ timezone:             Asia/Ho_Chi_Minh
 # not defined by Jekyll
 license:
   developer:
-    price:            20$
+    price:            25$
     url:              https://gum.co/bv-developer-license
   organization:
-    price:            60$
+    price:            75$
     url:              https://gum.co/bv-organization-license
 current_version:      0.5.3
 released_date:        2014.11.05

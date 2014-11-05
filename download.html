@@ -13,56 +13,74 @@ permalink: /download/
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <section>
-                    <p>BootstrapValidator is <strong>free to use in non-commercial projects</strong> under the terms of the <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons BY-NC-ND 3.0</a> license.</p>
+                    <h2>Commercial license</h2>
                     <p>For commercial projects, you must purchase commercial license. For more details about license, please see the <a href="/license/">license</a> page.</p>
 
                     <div class="row text-center">
-                        <div class="col-md-4">
-                            <div class="panel panel-success">
-                                <div class="panel-heading">Organization commercial license</div>
-                                <div class="list-group">
-                                    <div class="list-group-item">For an organization with a team of developers</div>
-                                    <div class="list-group-item">Covers the entire team no matter how many developers are working on it</div>
-                                    <div class="list-group-item">
-                                        <a href="{{ site.license.organization.url }}?wanted=true" class="btn doc-buy-btn gumroad-button">Buy ({{ site.license.organization.price }})</a>
+                        <div class="col-md-4 col-md-offset-2">
+                            <div class="doc-plan">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <p>Developer commercial license</p>
+                                        <span>{{ site.license.developer.price }}</span>
+                                    </div>
+                                    <div class="list-group">
+                                        <div class="list-group-item">For individual developers</div>
+                                        <div class="list-group-item">Each individual developer needs to purchase a separate license</div>
+                                        <div class="list-group-item">
+                                            <a href="{{ site.license.developer.url }}?wanted=true" class="btn gumroad-button">Buy</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-md-4">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">Developer commercial license</div>
-                                <div class="list-group">
-                                    <div class="list-group-item">For individual developers</div>
-                                    <div class="list-group-item">Each individual developer needs to purchase a separate license</div>
-                                    <div class="list-group-item">
-                                        <a href="{{ site.license.developer.url }}?wanted=true" class="btn doc-buy-btn gumroad-button">Buy ({{ site.license.developer.price }})</a>
+                            <div class="doc-plan">
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        <p>Organization commercial license</p>
+                                        <span>{{ site.license.organization.price }}</span>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="panel panel-info">
-                                <div class="panel-heading">Free</div>
-                                <div class="list-group">
-                                    <div class="list-group-item">
-                                        For <strong>non-commercial projects</strong> under the terms of the <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons BY-NC-ND 3.0</a> license
-                                    </div>
-                                    <div class="list-group-item">
-                                        <a href="{{ site.download.dist }}" class="btn doc-buy-btn">Try v{{ site.current_version }}</a>
+                                    <div class="list-group">
+                                        <div class="list-group-item">For an organization with a team of developers</div>
+                                        <div class="list-group-item">Covers all developers working within the organization</div>
+                                        <div class="list-group-item">
+                                            <a href="{{ site.license.organization.url }}?wanted=true" class="btn gumroad-button">Buy</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!--<p class="text-center"><span id="downloadCounter"></span> downloads so far</p>-->
-
-                    <p>See <a href="/news/v0.5.3-released/">what's news</a> in v{{ site.current_version }}, released on {{ site.released_date }}.</p>
+                    <p>The latest version, <a href="/news/v0.5.3-released/">v{{ site.current_version }}</a>, is released on {{ site.released_date }}.</p>
                     <div class="doc-alert doc-alert-warning">
                         You should take a look at the upgrading guides: <a href="/news/upgrading-to-v0.5.0/">v0.4.5 &rarr; v0.5.0</a> and <a href="/news/v0.5.2-released/#upgrade">v0.5.0/v0.5.1 &rarr; v0.5.2</a>
+                    </div>
+                </section>
+
+                <div class="doc-hr"></div>
+
+                <section>
+                    <h2>Non-commercial license</h2>
+
+                    <div class="row text-center">
+                        <div class="col-md-4 col-md-offset-4">
+                            <div class="doc-plan">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">Free</div>
+                                    <div class="list-group">
+                                        <div class="list-group-item">
+                                            For <strong>non-commercial projects</strong> under the terms of the <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons BY-NC-ND 3.0</a> license
+                                        </div>
+                                        <div class="list-group-item">
+                                            <a href="{{ site.download.dist }}" class="btn" data-toggle="tooltip" data-title="By clicking this button, you agree to the BootstrapValidator license agreement" data-placement="bottom">Try v{{ site.current_version }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
