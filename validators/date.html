@@ -36,10 +36,22 @@ comments: true
                                 <td>The date format. It is <code>MM/DD/YYYY</code>, by default</td>
                             </tr>
                             <tr>
+                                <td><code>max</code></td>
+                                <td><code>data-bv-date-max</code></td>
+                                <td>String</td>
+                                <td>The value must be earlier than this option</td>
+                            </tr>
+                            <tr>
                                 <td><code>message</code></td>
                                 <td><code>data-bv-date-message</code></td>
                                 <td>String</td>
                                 <td>The error message</td>
+                            </tr>
+                            <tr>
+                                <td><code>min</code></td>
+                                <td><code>data-bv-date-min</code></td>
+                                <td>String</td>
+                                <td>The value must be later than this option</td>
                             </tr>
                             <tr>
                                 <td><code>separator</code></td>
@@ -271,8 +283,8 @@ comments: true
 
                     <h3>Date range example</h3>
 
-                    <p>One more example illustrates how to use the <a href="/validators/callback/">callback</a> validator and <a href="http://momentjs.com/">momentjs</a> to check whether or not a date is in given range.</p>
-                    <p><a href="http://momentjs.com/">momentjs</a> provides <a href="http://momentjs.com/docs/#/query/is-before/"><code>isBefore()</code></a> and <a href="http://momentjs.com/docs/#/query/is-after/"><code>isAfter()</code></a> methods which are exactly what we need.</p>
+                    <p>The following form asks you to enter a date in the range of 2000/01/01 and 2020/12/30.</p>
+                    <p>It can be implemented by using the <code>min</code> and <code>max</code> options.</p>
 
                     <div class="doc-demo">
                         <ul class="nav nav-tabs">
@@ -288,20 +300,49 @@ comments: true
 
                             <div class="tab-pane" id="range-html-tab">
 {% highlight html %}
-<!-- Include the momentjs library to use later -->
-<script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
-
 {% include validators/date/range-example.html %}
 {% endhighlight %}
-                                </div>
+                            </div>
 
-                                <div class="tab-pane" id="range-js-tab">
+                            <div class="tab-pane" id="range-js-tab">
 {% highlight javascript %}
 {% include validators/date/range-example.js %}
 {% endhighlight %}
-                                </div>
                             </div>
                         </div>
+                    </div>
+
+                    <p>You also can use the <a href="/validators/callback/">callback</a> validator and <a href="http://momentjs.com/docs/#/query/is-before/"><code>isBefore()</code></a>, <a href="http://momentjs.com/docs/#/query/is-after/"><code>isAfter()</code></a> methods provided <a href="http://momentjs.com/">momentjs</a>
+                    to check if the date is in the range.</p>
+
+                    <div class="doc-demo">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#range-callback-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#range-callback-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#range-callback-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="range-callback-form-tab">
+                            {% include validators/date/range-callback-example.html %}
+                            </div>
+
+                            <div class="tab-pane" id="range-callback-html-tab">
+{% highlight html %}
+<!-- Include the momentjs library to use later -->
+<script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
+
+{% include validators/date/range-callback-example.html %}
+{% endhighlight %}
+                            </div>
+
+                            <div class="tab-pane" id="range-callback-js-tab">
+{% highlight javascript %}
+{% include validators/date/range-callback-example.js %}
+{% endhighlight %}
+                            </div>
+                        </div>
+                    </div>
                 </section>
             </div>
 
@@ -317,4 +358,5 @@ comments: true
 {% include validators/date/date-picker-example.js %}
 {% include validators/date/custom-format-example.js %}
 {% include validators/date/range-example.js %}
+{% include validators/date/range-callback-example.js %}
 </script>
