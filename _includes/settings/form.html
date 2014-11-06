@@ -12,6 +12,11 @@
         </thead>
         <tbody>
             <tr>
+                <td><code>autoFocus</code></td>
+                <td><code>data-bv-autofocus</code></td>
+                <td><code>true</code></td>
+            </tr>
+            <tr>
                 <td><code>container</code></td>
                 <td><code>data-bv-container</code></td>
                 <td>n/a</td>
@@ -77,6 +82,7 @@
         </tbody>
     </table>
 
+    {% include settings/form/auto-focus.html %}
     {% include settings/form/container.html %}
     {% include settings/form/excluded.html %}
     {% include settings/form/feedback-icons.html %}
