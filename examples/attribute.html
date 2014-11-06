@@ -28,7 +28,7 @@ permalink: /examples/attribute/
 
                     <ol>
                         <li><code>validatorname</code> and <code>validatoroption</code> must be lowercase.</li>
-                        <li>Use <code>data-bv-validatorname</code> or set <code>data-bv-validatorname="true"</code> to enable particular validator for field.</li>
+                        <li>Use <code>data-bv-validatorname</code>, <code>data-bv-validatorname="true"</code>, or <code>data-bv-validatorname="data-bv-validatorname"</code> to enable particular validator for field.</li>
                         <li>Set <code>data-bv-validatorname="false"</code> to disable the validator</li>
                         <li>There are some validators which not all options are configurable via HTML attribute. Refer to each validator documentation to see exactly the equivalent HTML attribute for each option.</li>
                     </ol>
@@ -72,15 +72,15 @@ permalink: /examples/attribute/
                             </div>
 
                             <div class="tab-pane" id="attribute-html-tab">
-                            {% highlight html %}
-                            {% include examples/attribute/example.html %}
-                            {% endhighlight %}
+{% highlight html %}
+{% include examples/attribute/example.html %}
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="attribute-js-tab">
-                            {% highlight javascript %}
-                            {% include examples/attribute/example.js %}
-                            {% endhighlight %}
+{% highlight javascript %}
+{% include examples/attribute/example.js %}
+{% endhighlight %}
                             </div>
                         </div>
                     </div>
