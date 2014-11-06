@@ -211,6 +211,11 @@ _gaq.push(['_trackPageview']);
         </thead>
         <tbody>
             <tr>
+                <td><code>autoFocus</code></td>
+                <td><code>data-bv-autofocus</code></td>
+                <td><code>true</code></td>
+            </tr>
+            <tr>
                 <td><code>container</code></td>
                 <td><code>data-bv-container</code></td>
                 <td>n/a</td>
@@ -275,7 +280,13 @@ _gaq.push(['_trackPageview']);
     </table>
 
     <section>
-    <h3 id="form-container">container: String </h3>
+    <h3 id="form-auto-focus">autoFocus: Boolean</h3>
+
+    <p>Indicate the first invalid field will be focused on automatically. It is <code>true</code>, by default.</p>
+    <p>You also can set this option for <a href="#field-auto-focus">particular field</a>.</p>
+</section>
+    <section>
+    <h3 id="form-container">container: String</h3>
     <p>Indicate where the error messages are shown.</p>
     <table class="table table-condensed">
         <thead>
@@ -864,6 +875,10 @@ $(document).ready(function() {
         </thead>
         <tbody>
             <tr>
+                <td><code>autoFocus</code></td>
+                <td><code>data-bv-autofocus</code></td>
+            </tr>
+            <tr>
                 <td><code>container</code></td>
                 <td><code>data-bv-container</code></td>
             </tr>
@@ -906,6 +921,12 @@ $(document).ready(function() {
         </tbody>
     </table>
 
+    <section>
+    <h3 id="field-auto-focus">autoFocus: Boolean</h3>
+
+    <p>Indicate the field will be focused on automatically if it is not valid. It is <code>true</code>, by default.</p>
+    <p>In some case, you don't want the invalid field to be focused automatically. For example, focusing on a field using a date picker might show up the picker, which seems to be annoyed.</p>
+</section>
     <section>
     <h3 id="field-container">container: String</h3>
 
