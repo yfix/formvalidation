@@ -143,7 +143,7 @@ _gaq.push(['_trackPageview']);
 
                     <ol>
                         <li><code>validatorname</code> and <code>validatoroption</code> must be lowercase.</li>
-                        <li>Use <code>data-bv-validatorname</code> or set <code>data-bv-validatorname="true"</code> to enable particular validator for field.</li>
+                        <li>Use <code>data-bv-validatorname</code>, <code>data-bv-validatorname="true"</code>, or <code>data-bv-validatorname="data-bv-validatorname"</code> to enable particular validator for field.</li>
                         <li>Set <code>data-bv-validatorname="false"</code> to disable the validator</li>
                         <li>There are some validators which not all options are configurable via HTML attribute. Refer to each validator documentation to see exactly the equivalent HTML attribute for each option.</li>
                     </ol>
@@ -272,7 +272,7 @@ _gaq.push(['_trackPageview']);
                             </div>
 
                             <div class="tab-pane" id="attribute-html-tab">
-                            <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;attributeForm&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;attributeForm&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span>
       <span class="na">data-bv-message=</span><span class="s">&quot;This value is not valid&quot;</span>
       <span class="na">data-bv-feedbackicons-valid=</span><span class="s">&quot;glyphicon glyphicon-ok&quot;</span>
       <span class="na">data-bv-feedbackicons-invalid=</span><span class="s">&quot;glyphicon glyphicon-remove&quot;</span>
@@ -363,7 +363,7 @@ _gaq.push(['_trackPageview']);
                             </div>
 
                             <div class="tab-pane" id="attribute-js-tab">
-                            <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#attributeForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">();</span>
 <span class="p">});</span></code></pre></div>
                             </div>
