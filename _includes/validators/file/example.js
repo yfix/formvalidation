@@ -11,7 +11,7 @@ $(document).ready(function() {
                     file: {
                         extension: 'jpeg,png',
                         type: 'image/jpeg,image/png',
-                        maxSize: 2048 * 1024,
+                        maxSize: 2097152,   // 2048 * 1024
                         message: 'The selected file is not valid'
                     }
                 }

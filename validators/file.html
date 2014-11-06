@@ -35,16 +35,40 @@ permalink: /validators/file/
                                 <td>The allowed extensions, separated by a comma</td>
                             </tr>
                             <tr>
+                                <td><code>maxFiles</code></td>
+                                <td><code>data-bv-file-maxfiles</code></td>
+                                <td>Number</td>
+                                <td>The maximum number of files</td>
+                            </tr>
+                            <tr>
                                 <td><code>maxSize</code></td>
                                 <td><code>data-bv-file-maxsize</code></td>
                                 <td>Number</td>
                                 <td>The maximum file size in bytes</td>
                             </tr>
                             <tr>
+                                <td><code>maxTotalSize</code></td>
+                                <td><code>data-bv-file-maxtotalsize</code></td>
+                                <td>Number</td>
+                                <td>The maximum size in bytes for all files</td>
+                            </tr>
+                            <tr>
+                                <td><code>minFiles</code></td>
+                                <td><code>data-bv-file-minfiles</code></td>
+                                <td>Number</td>
+                                <td>The minimum number of files</td>
+                            </tr>
+                            <tr>
                                 <td><code>minSize</code></td>
                                 <td><code>data-bv-file-minsize</code></td>
                                 <td>Number</td>
                                 <td>The minimum file size in bytes</td>
+                            </tr>
+                            <tr>
+                                <td><code>minTotalSize</code></td>
+                                <td><code>data-bv-file-mintotalsize</code></td>
+                                <td>Number</td>
+                                <td>The minimum size in bytes for all files</td>
                             </tr>
                             <tr>
                                 <td><code>message</code></td>
@@ -109,6 +133,7 @@ permalink: /validators/file/
                             <li class="active"><a href="#file-form-tab" data-toggle="tab">Try it</a></li>
                             <li><a href="#file-html-tab" data-toggle="tab">HTML</a></li>
                             <li><a href="#file-js-tab" data-toggle="tab">JS</a></li>
+                            <li><a href="#file-declarative-tab" data-toggle="tab">Declarative usage</a></li>
                         </ul>
 
                         <div class="tab-content">
@@ -117,16 +142,25 @@ permalink: /validators/file/
                             </div>
 
                             <div class="tab-pane" id="file-html-tab">
-                            {% highlight html %}
-                            {% include validators/file/example.html %}
-                            {% endhighlight %}
+{% highlight html %}
+{% include validators/file/example.html %}
+{% endhighlight %}
                             </div>
 
                             <div class="tab-pane" id="file-js-tab">
-                            {% highlight javascript %}
-                            {% include validators/file/example.js %}
-                            {% endhighlight %}
+{% highlight javascript %}
+{% include validators/file/example.js %}
+{% endhighlight %}
                             </div>
+
+                            <div class="tab-pane" id="file-declarative-tab">
+{% highlight html %}
+{% include validators/file/declarative-example.html %}
+
+<script>
+{% include validators/file/declarative-example.js %}
+</script>
+{% endhighlight %}
                         </div>
                     </div>
                 </section>
