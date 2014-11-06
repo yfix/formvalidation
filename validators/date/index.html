@@ -27,7 +27,7 @@
 
 <script src="//oss.maxcdn.com/jquery/1.11.1/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
+<script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
 
 <script type="text/javascript">
 var _gaq = _gaq || [];
@@ -152,10 +152,22 @@ _gaq.push(['_trackPageview']);
                                 <td>The date format. It is <code>MM/DD/YYYY</code>, by default</td>
                             </tr>
                             <tr>
+                                <td><code>max</code></td>
+                                <td><code>data-bv-date-max</code></td>
+                                <td>String</td>
+                                <td>The value must be earlier than this option</td>
+                            </tr>
+                            <tr>
                                 <td><code>message</code></td>
                                 <td><code>data-bv-date-message</code></td>
                                 <td>String</td>
                                 <td>The error message</td>
+                            </tr>
+                            <tr>
+                                <td><code>min</code></td>
+                                <td><code>data-bv-date-min</code></td>
+                                <td>String</td>
+                                <td>The value must be later than this option</td>
                             </tr>
                             <tr>
                                 <td><code>separator</code></td>
@@ -527,8 +539,8 @@ _gaq.push(['_trackPageview']);
 
                     <h3>Date range example</h3>
 
-                    <p>One more example illustrates how to use the <a href="/validators/callback/">callback</a> validator and <a href="http://momentjs.com/">momentjs</a> to check whether or not a date is in given range.</p>
-                    <p><a href="http://momentjs.com/">momentjs</a> provides <a href="http://momentjs.com/docs/#/query/is-before/"><code>isBefore()</code></a> and <a href="http://momentjs.com/docs/#/query/is-after/"><code>isAfter()</code></a> methods which are exactly what we need.</p>
+                    <p>The following form asks you to enter a date in the range of 2000/01/01 and 2020/12/30.</p>
+                    <p>It can be implemented by using the <code>min</code> and <code>max</code> options.</p>
 
                     <div class="doc-demo">
                         <ul class="nav nav-tabs">
@@ -541,8 +553,8 @@ _gaq.push(['_trackPageview']);
                             <div class="tab-pane active" id="range-form-tab">
                             <form id="rangeForm" class="form-horizontal">
     <div class="form-group">
-        <label class="col-sm-6 control-label">Enter a date between 2000/01/01 and 2020/12/30</label>
-        <div class="col-sm-3">
+        <label class="col-sm-3 control-label">Enter a date</label>
+        <div class="col-sm-4">
             <input type="text" class="form-control" name="date" />
         </div>
     </div>
@@ -550,22 +562,81 @@ _gaq.push(['_trackPageview']);
                             </div>
 
                             <div class="tab-pane" id="range-html-tab">
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Include the momentjs library to use later --&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;//oss.maxcdn.com/momentjs/2.8.2/moment.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-
-<span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;rangeForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;rangeForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-6 control-label&quot;</span><span class="nt">&gt;</span>Enter a date between 2000/01/01 and 2020/12/30<span class="nt">&lt;/label&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-3&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-3 control-label&quot;</span><span class="nt">&gt;</span>Enter a date<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-4&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;date&quot;</span> <span class="nt">/&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/form&gt;</span></code></pre></div>
-                                </div>
+                            </div>
 
-                                <div class="tab-pane" id="range-js-tab">
+                            <div class="tab-pane" id="range-js-tab">
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#rangeForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+        <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
+            <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
+            <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
+        <span class="p">},</span>
+        <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">date</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">date</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The date is not valid&#39;</span><span class="p">,</span>
+                        <span class="nx">format</span><span class="o">:</span> <span class="s1">&#39;YYYY/MM/DD&#39;</span><span class="p">,</span>
+                        <span class="nx">min</span><span class="o">:</span> <span class="s1">&#39;2000/01/01&#39;</span><span class="p">,</span>
+                        <span class="nx">max</span><span class="o">:</span> <span class="s1">&#39;2020/12/30&#39;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>You also can use the <a href="/validators/callback/">callback</a> validator and <a href="http://momentjs.com/docs/#/query/is-before/"><code>isBefore()</code></a>, <a href="http://momentjs.com/docs/#/query/is-after/"><code>isAfter()</code></a> methods provided <a href="http://momentjs.com/">momentjs</a>
+                    to check if the date is in the range.</p>
+
+                    <div class="doc-demo">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#range-callback-form-tab" data-toggle="tab">Try it</a></li>
+                            <li><a href="#range-callback-html-tab" data-toggle="tab">HTML</a></li>
+                            <li><a href="#range-callback-js-tab" data-toggle="tab">JS</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="range-callback-form-tab">
+                            <form id="rangeCallbackForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Enter a date</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" name="date" />
+        </div>
+    </div>
+</form>
+                            </div>
+
+                            <div class="tab-pane" id="range-callback-html-tab">
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Include the momentjs library to use later --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;//oss.maxcdn.com/momentjs/2.8.2/moment.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;rangeCallbackForm&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-3 control-label&quot;</span><span class="nt">&gt;</span>Enter a date<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-4&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> <span class="na">name=</span><span class="s">&quot;date&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
+                            </div>
+
+                            <div class="tab-pane" id="range-callback-js-tab">
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#rangeCallbackForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
         <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
             <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
             <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
@@ -593,9 +664,9 @@ _gaq.push(['_trackPageview']);
         <span class="p">}</span>
     <span class="p">});</span>
 <span class="p">});</span></code></pre></div>
-                                </div>
                             </div>
                         </div>
+                    </div>
                 </section>
             </div>
 
@@ -678,6 +749,27 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
     $('#rangeForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            date: {
+                validators: {
+                    date: {
+                        message: 'The date is not valid',
+                        format: 'YYYY/MM/DD',
+                        min: '2000/01/01',
+                        max: '2020/12/30'
+                    }
+                }
+            }
+        }
+    });
+});
+$(document).ready(function() {
+    $('#rangeCallbackForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
