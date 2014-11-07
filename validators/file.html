@@ -2,6 +2,79 @@
 layout: default
 title: Validate file
 permalink: /validators/file/
+mime_types:
+    - ext: doc
+      type: application/msword
+    - ext: pdf
+      type: application/pdf
+    - ext: rtf
+      type: application/rtf
+    - ext: xls
+      type: application/vnd.ms-excel
+    - ext: ppt
+      type: application/vnd.ms-powerpoint
+    - ext: rar
+      type: application/x-rar-compressed
+    - ext: swf
+      type: application/x-shockwave-flash
+    - ext: zip
+      type: application/zip
+    - ext: mid midi kar
+      type: audio/midi
+    - ext: mp3
+      type: audio/mpeg
+    - ext: ogg
+      type: audio/ogg
+    - ext: m4a
+      type: audio/x-m4a
+    - ext: ra
+      type: audio/x-realaudio
+    - ext: gif
+      type: image/gif
+    - ext: jpeg jpg
+      type: image/jpeg
+    - ext: png
+      type: image/png
+    - ext: tif tiff
+      type: image/tiff
+    - ext: wbmp
+      type: image/vnd.wap.wbmp
+    - ext: ico
+      type: image/x-icon
+    - ext: jng
+      type: image/x-jng
+    - ext: bmp
+      type: image/x-ms-bmp
+    - ext: svg svgz
+      type: image/svg+xml
+    - ext: webp
+      type: image/webp
+    - ext: css
+      type: text/css
+    - ext: html htm shtml
+      type: text/html
+    - ext: txt
+      type: text/plain
+    - ext: xml
+      type: text/xml
+    - ext: 3gpp 3gp
+      type: video/3gpp
+    - ext: mp4
+      type: video/mp4
+    - ext: mpeg mpg
+      type: video/mpeg
+    - ext: mov
+      type: video/quicktime
+    - ext: webm
+      type: video/webm
+    - ext: flv
+      type: video/x-flv
+    - ext: m4v
+      type: video/x-m4v
+    - ext: wmv
+      type: video/x-ms-wmv
+    - ext: avi
+      type: video/x-msvideo
 ---
 
 <div class="doc-content-container">
@@ -110,11 +183,10 @@ permalink: /validators/file/
                             </tr>
                         </thead>
                         <tbody>
-                            {% for item in site.data.mime %}
-                            {% assign data = item | split: '|' %}
+                            {% for item in page.mime_types %}
                             <tr>
-                                <td>{{ data[0] }}</td>
-                                <td>{{ data[1] }}</td>
+                                <td>{{ item.type }}</td>
+                                <td>{{ item.ext }}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
