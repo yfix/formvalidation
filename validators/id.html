@@ -341,11 +341,11 @@ $(document).ready(function() {
             .find('select[name="countrySelectBox"]')
                 .val(country)
                 .end()
-            .find('input[name="id"]')
+            .find('input[name="idNumber"]')
                 .val($(this).text());
 
         // Revalidate field
-        $('#idForm').bootstrapValidator('revalidateField', 'id');
+        $('#idForm').bootstrapValidator('revalidateField', 'idNumber');
 
         // Show the result
         var isValid = validator.isValid();
