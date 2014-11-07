@@ -15,7 +15,7 @@ permalink: /examples/enabling-submit-button/
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <p>By default, the submit buttons will be disabled if there is at least one invalid field.</p>
-                <p>If you want to enable the submit buttons all the time, triggering the <a href="/settings/#event-field">status.field.bv</a> event and using the <a href="/api/#disable-submit-buttons">disableSubmitButtons()</a> method:</p>
+                <p>If you want to enable the submit buttons all the time, triggering the <a href="/settings/#event-field">error.field.bv</a>, <a href="/settings/#event-field">success.field.bv</a> event and using the <a href="/api/#disable-submit-buttons">disableSubmitButtons()</a> method:</p>
 
                 <div class="doc-demo">
                     <ul class="nav nav-tabs">
@@ -30,15 +30,15 @@ permalink: /examples/enabling-submit-button/
                         </div>
 
                         <div class="tab-pane" id="enable-button-html-tab">
-                        {% highlight html %}
-                        {% include examples/enabling-submit-button/example.html %}
-                        {% endhighlight %}
+{% highlight html %}
+{% include examples/enabling-submit-button/example.html %}
+{% endhighlight %}
                         </div>
 
                         <div class="tab-pane" id="enable-button-js-tab">
-                        {% highlight javascript %}
-                        {% include examples/enabling-submit-button/example.js %}
-                        {% endhighlight %}
+{% highlight javascript %}
+{% include examples/enabling-submit-button/example.js %}
+{% endhighlight %}
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,12 @@ $(document).ready(function() {
         .bootstrapValidator({
             ...
         })
-        .on('status.field.bv', function(e, data) {
+        .on('error.field.bv', function(e, data) {
+            if (data.bv.getSubmitButton()) {
+                data.bv.disableSubmitButtons(false);
+            }
+        })
+        .on('success.field.bv', function(e, data) {
             if (data.bv.getSubmitButton()) {
                 data.bv.disableSubmitButtons(false);
             }
