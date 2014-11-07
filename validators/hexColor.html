@@ -3,6 +3,7 @@ layout: default
 title: Validate a hex color
 permalink: /validators/hexColor/
 related:
+    - color
     - regexp
 ---
 
@@ -42,6 +43,10 @@ related:
                     <div class="doc-alert doc-alert-info">
                         When setting options via HTML attributes, remember to enable the validator by setting data-bv-hexcolor="true".<br/>
                         You don't need to do that when using HTML 5 type="color" attribute.
+                    </div>
+
+                    <div class="doc-alert doc-alert-warning">
+                        The hexColor validator is deprecated. It will be removed in v0.6.0. You should use the <a href="/validators/color/">color</a> validator instead.
                     </div>
                 </section>
 

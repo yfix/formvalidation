@@ -76,6 +76,23 @@ h4 {
     display: none;
   }
 }
+.doc-sample-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.doc-sample-list li {
+  padding: 5px;
+  position: relative;
+}
+.doc-sample-list li i {
+  position: absolute;
+  right: 0;
+}
+.doc-sample-error a,
+.doc-sample-error i {
+  color: #a94442;
+}
 /* --- Header --- */
 .doc-nav-shown .doc-nav {
   background-color: #191919;

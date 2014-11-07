@@ -14,6 +14,10 @@
   version:      0.3.0
   description:  Check if the number of checked boxes are less or more than a given number
 
+- name:         color
+  version:      0.5.3
+  description:  Validate a color in different formats
+
 - name:         creditCard
   version:      0.2.0
   description:  Validate a credit card number
