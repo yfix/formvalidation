@@ -132,7 +132,7 @@ _gaq.push(['_trackPageview']);
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <p>By default, the submit buttons will be disabled if there is at least one invalid field.</p>
-                <p>If you want to enable the submit buttons all the time, triggering the <a href="/settings/#event-field">status.field.bv</a> event and using the <a href="/api/#disable-submit-buttons">disableSubmitButtons()</a> method:</p>
+                <p>If you want to enable the submit buttons all the time, triggering the <a href="/settings/#event-field">error.field.bv</a>, <a href="/settings/#event-field">success.field.bv</a> event and using the <a href="/api/#disable-submit-buttons">disableSubmitButtons()</a> method:</p>
 
                 <div class="doc-demo">
                     <ul class="nav nav-tabs">
@@ -179,7 +179,7 @@ _gaq.push(['_trackPageview']);
                         </div>
 
                         <div class="tab-pane" id="enable-button-html-tab">
-                        <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;enableButtonForm&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">&quot;enableButtonForm&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-group&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;col-sm-3 control-label&quot;</span><span class="nt">&gt;</span>Task<span class="nt">&lt;/label&gt;</span>
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-sm-5&quot;</span><span class="nt">&gt;</span>
@@ -215,7 +215,7 @@ _gaq.push(['_trackPageview']);
                         </div>
 
                         <div class="tab-pane" id="enable-button-js-tab">
-                        <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#enableButtonForm&#39;</span><span class="p">)</span>
         <span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
             <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
@@ -247,12 +247,19 @@ _gaq.push(['_trackPageview']);
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">})</span>
-        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;status.field.bv&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error.field.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// $(e.target)  --&gt; The field element</span>
             <span class="c1">// data.bv      --&gt; The BootstrapValidator instance</span>
             <span class="c1">// data.field   --&gt; The field name</span>
             <span class="c1">// data.element --&gt; The field element</span>
 
+            <span class="nx">data</span><span class="p">.</span><span class="nx">bv</span><span class="p">.</span><span class="nx">disableSubmitButtons</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;success.field.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// e, data parameters are the same as in error.field.bv event handler</span>
+            <span class="c1">// Despite that the field is valid, by default, the submit button will be disabled if all the following conditions meet</span>
+            <span class="c1">// - The submit button is clicked</span>
+            <span class="c1">// - The form is invalid</span>
             <span class="nx">data</span><span class="p">.</span><span class="nx">bv</span><span class="p">.</span><span class="nx">disableSubmitButtons</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
         <span class="p">});</span>
 <span class="p">});</span></code></pre></div>
@@ -267,7 +274,12 @@ _gaq.push(['_trackPageview']);
         <span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
             <span class="p">...</span>
         <span class="p">})</span>
-        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;status.field.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error.field.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">bv</span><span class="p">.</span><span class="nx">getSubmitButton</span><span class="p">())</span> <span class="p">{</span>
+                <span class="nx">data</span><span class="p">.</span><span class="nx">bv</span><span class="p">.</span><span class="nx">disableSubmitButtons</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;success.field.bv&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">bv</span><span class="p">.</span><span class="nx">getSubmitButton</span><span class="p">())</span> <span class="p">{</span>
                 <span class="nx">data</span><span class="p">.</span><span class="nx">bv</span><span class="p">.</span><span class="nx">disableSubmitButtons</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
             <span class="p">}</span>
@@ -311,12 +323,19 @@ $(document).ready(function() {
                 }
             }
         })
-        .on('status.field.bv', function (e, data) {
+        .on('error.field.bv', function(e, data) {
             // $(e.target)  --> The field element
             // data.bv      --> The BootstrapValidator instance
             // data.field   --> The field name
             // data.element --> The field element
 
+            data.bv.disableSubmitButtons(false);
+        })
+        .on('success.field.bv', function(e, data) {
+            // e, data parameters are the same as in error.field.bv event handler
+            // Despite that the field is valid, by default, the submit button will be disabled if all the following conditions meet
+            // - The submit button is clicked
+            // - The form is invalid
             data.bv.disableSubmitButtons(false);
         });
 });
