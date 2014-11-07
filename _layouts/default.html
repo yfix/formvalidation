@@ -14,6 +14,10 @@
         {% include footer.html %}
     </div>
 
+    {% if page.permalink != "/" and page.permalink != "/download/" and page.permalink != "/license/" %}
+    {% include ad.html %}
+    {% endif %}
+
 <script src="/vendor/tocjs/js/toc.min.js"></script>
 <script>
 $(function() {
