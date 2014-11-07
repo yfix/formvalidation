@@ -346,33 +346,38 @@ _gaq.push(['_trackPageview']);
 
                             <div class="tab-pane" id="dynamic-js-tab">
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#dynamicOptionForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
-        <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
-            <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
-            <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
-        <span class="p">},</span>
-        <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">numFloors</span><span class="o">:</span> <span class="p">{</span>
-                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="nx">between</span><span class="o">:</span> <span class="p">{</span>
-                        <span class="nx">min</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
-                        <span class="nx">max</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
-                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The number of floors must be between 2 and 100&#39;</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#dynamicOptionForm&#39;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">bootstrapValidator</span><span class="p">({</span>
+            <span class="nx">feedbackIcons</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">valid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-ok&#39;</span><span class="p">,</span>
+                <span class="nx">invalid</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-remove&#39;</span><span class="p">,</span>
+                <span class="nx">validating</span><span class="o">:</span> <span class="s1">&#39;glyphicon glyphicon-refresh&#39;</span>
             <span class="p">},</span>
-            <span class="nx">floor</span><span class="o">:</span> <span class="p">{</span>
-                <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="nx">between</span><span class="o">:</span> <span class="p">{</span>
-                        <span class="nx">min</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
-                        <span class="nx">max</span><span class="o">:</span> <span class="s1">&#39;numFloors&#39;</span><span class="p">,</span>
-                        <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The number of floors must be between %s and %s&#39;</span>
+            <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">numFloors</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">between</span><span class="o">:</span> <span class="p">{</span>
+                            <span class="nx">min</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+                            <span class="nx">max</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+                            <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The number of floors must be between 2 and 100&#39;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nx">floor</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">between</span><span class="o">:</span> <span class="p">{</span>
+                            <span class="nx">min</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                            <span class="nx">max</span><span class="o">:</span> <span class="s1">&#39;numFloors&#39;</span><span class="p">,</span>
+                            <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;The number of floors must be between %s and %s&#39;</span>
+                        <span class="p">}</span>
                     <span class="p">}</span>
                 <span class="p">}</span>
             <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">});</span>
+        <span class="p">})</span>
+        <span class="c1">// Revalidate the floor field when changing the number of floors</span>
+        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="s1">&#39;[name=&quot;numFloors&quot;]&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#dynamicOptionForm&#39;</span><span class="p">).</span><span class="nx">bootstrapValidator</span><span class="p">(</span><span class="s1">&#39;revalidateField&#39;</span><span class="p">,</span> <span class="s1">&#39;floor&#39;</span><span class="p">);</span>
+        <span class="p">});</span>
 <span class="p">});</span></code></pre></div>
                             </div>
                         </div>
@@ -436,33 +441,38 @@ $(document).ready(function() {
     });
 });
 $(document).ready(function() {
-    $('#dynamicOptionForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            numFloors: {
-                validators: {
-                    between: {
-                        min: 2,
-                        max: 100,
-                        message: 'The number of floors must be between 2 and 100'
-                    }
-                }
+    $('#dynamicOptionForm')
+        .bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
             },
-            floor: {
-                validators: {
-                    between: {
-                        min: 1,
-                        max: 'numFloors',
-                        message: 'The number of floors must be between %s and %s'
+            fields: {
+                numFloors: {
+                    validators: {
+                        between: {
+                            min: 2,
+                            max: 100,
+                            message: 'The number of floors must be between 2 and 100'
+                        }
+                    }
+                },
+                floor: {
+                    validators: {
+                        between: {
+                            min: 1,
+                            max: 'numFloors',
+                            message: 'The number of floors must be between %s and %s'
+                        }
                     }
                 }
             }
-        }
-    });
+        })
+        // Revalidate the floor field when changing the number of floors
+        .on('keyup', '[name="numFloors"]', function(e) {
+            $('#dynamicOptionForm').bootstrapValidator('revalidateField', 'floor');
+        });
 });
 </script>
 
