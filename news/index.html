@@ -126,6 +126,7 @@ _gaq.push(['_trackPageview']);
         <h1>News</h1>
         <p>The latest news about BootstrapValidator</p>
         <a class="btn doc-edit-btn" href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/docs/news/index.html">Improve it on Github</a>
+        <div id="shareButton" class="doc-share-button"></div>
     </div>
 
     <div class="container">
@@ -807,8 +808,12 @@ _gaq.push(['_trackPageview']);
     
 
 <script src="/vendor/tocjs/js/toc.min.js"></script>
+<script src="/vendor/share/share.min.js"></script>
 <script>
 $(function() {
+    // Create share button
+    new Share('#shareButton');
+
     $('[data-toggle="tooltip"]').tooltip();
 
     $('.doc-logo').on('click', function() {

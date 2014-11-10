@@ -127,6 +127,7 @@ _gaq.push(['_trackPageview']);
         <p>Return true if the value is less than or equals to given number</p>
         <p>&larr; <a href="/validators/">Validators</a></p>
         <a class="btn doc-edit-btn" href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/docs/validators/lessThan.html">Improve it on Github</a>
+        <div id="shareButton" class="doc-share-button"></div>
     </div>
 
     <div class="container">
@@ -220,8 +221,12 @@ _gaq.push(['_trackPageview']);
     
 
 <script src="/vendor/tocjs/js/toc.min.js"></script>
+<script src="/vendor/share/share.min.js"></script>
 <script>
 $(function() {
+    // Create share button
+    new Share('#shareButton');
+
     $('[data-toggle="tooltip"]').tooltip();
 
     $('.doc-logo').on('click', function() {

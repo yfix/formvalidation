@@ -125,6 +125,8 @@ _gaq.push(['_trackPageview']);
     <div class="doc-heading">
         <h1>Download</h1>
         <p><span id="downloadCounter">84,000+</span> downloads so far! It is right choice, absolutely!</p>
+
+        <div id="shareButton" class="doc-share-button"></div>
     </div>
 
     <div class="container">
@@ -274,8 +276,12 @@ _gaq.push(['_trackPageview']);
     
 
 <script src="/vendor/tocjs/js/toc.min.js"></script>
+<script src="/vendor/share/share.min.js"></script>
 <script>
 $(function() {
+    // Create share button
+    new Share('#shareButton');
+
     $('[data-toggle="tooltip"]').tooltip();
 
     $('.doc-logo').on('click', function() {

@@ -127,6 +127,7 @@ _gaq.push(['_trackPageview']);
         <p>Perform remote checking via Ajax request</p>
         <p>&larr; <a href="/validators/">Validators</a></p>
         <a class="btn doc-edit-btn" href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/docs/validators/remote.html">Improve it on Github</a>
+        <div id="shareButton" class="doc-share-button"></div>
     </div>
 
     <div class="container">
@@ -515,8 +516,12 @@ _gaq.push(['_trackPageview']);
     
 
 <script src="/vendor/tocjs/js/toc.min.js"></script>
+<script src="/vendor/share/share.min.js"></script>
 <script>
 $(function() {
+    // Create share button
+    new Share('#shareButton');
+
     $('[data-toggle="tooltip"]').tooltip();
 
     $('.doc-logo').on('click', function() {

@@ -126,6 +126,7 @@ _gaq.push(['_trackPageview']);
         <h1>Playing with Bootstrap Tabs</h1>
         <p>&larr; <a href="/examples/">Examples</a></p>
         <a class="btn doc-edit-btn" href="https://github.com/nghuuphuoc/bootstrapvalidator/edit/docs/examples/bootstrap-tab.html">Improve it on Github</a>
+        <div id="shareButton" class="doc-share-button"></div>
     </div>
 
     <div class="container">
@@ -525,8 +526,12 @@ $(document).ready(function() {
     
 
 <script src="/vendor/tocjs/js/toc.min.js"></script>
+<script src="/vendor/share/share.min.js"></script>
 <script>
 $(function() {
+    // Create share button
+    new Share('#shareButton');
+
     $('[data-toggle="tooltip"]').tooltip();
 
     $('.doc-logo').on('click', function() {
