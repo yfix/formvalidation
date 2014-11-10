@@ -92,6 +92,13 @@ h4 {
 .doc-sample-error i {
   color: #a94442;
 }
+.doc-share-button {
+  margin: 0 auto;
+  text-align: center;
+}
+.doc-share-button label {
+  background: transparent !important;
+}
 /* --- Header --- */
 .doc-nav-shown .doc-nav {
   background-color: #191919;
