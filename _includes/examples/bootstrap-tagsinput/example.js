@@ -31,7 +31,7 @@ $(document).ready(function () {
                     validators: {
                         callback: {
                             message: 'Please enter 2-4 countries you like most.',
-                            callback: function (value, validator) {
+                            callback: function (value, validator, $field) {
                                 // Get the entered elements
                                 var options = validator.getFieldElements('countries').tagsinput('items');
                                 return (options !== null && options.length >= 2 && options.length <= 4);
