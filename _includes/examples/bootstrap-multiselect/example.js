@@ -32,7 +32,7 @@ $(document).ready(function() {
                     validators: {
                         callback: {
                             message: 'Please choose 2-3 browsers you use for developing',
-                            callback: function(value, validator) {
+                            callback: function(value, validator, $field) {
                                 // Get the selected options
                                 var options = validator.getFieldElements('browsers').val();
                                 return (options != null
