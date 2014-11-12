@@ -256,7 +256,7 @@ _gaq.push(['_trackPageview']);
                     <span class="nx">validators</span><span class="o">:</span> <span class="p">{</span>
                         <span class="nx">callback</span><span class="o">:</span> <span class="p">{</span>
                             <span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Please choose 2-3 browsers you use for developing&#39;</span><span class="p">,</span>
-                            <span class="nx">callback</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">validator</span><span class="p">)</span> <span class="p">{</span>
+                            <span class="nx">callback</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">validator</span><span class="p">,</span> <span class="nx">$field</span><span class="p">)</span> <span class="p">{</span>
                                 <span class="c1">// Get the selected options</span>
                                 <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="nx">validator</span><span class="p">.</span><span class="nx">getFieldElements</span><span class="p">(</span><span class="s1">&#39;browsers&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
                                 <span class="k">return</span> <span class="p">(</span><span class="nx">options</span> <span class="o">!=</span> <span class="kc">null</span>
@@ -311,7 +311,7 @@ $(document).ready(function() {
                     validators: {
                         callback: {
                             message: 'Please choose 2-3 browsers you use for developing',
-                            callback: function(value, validator) {
+                            callback: function(value, validator, $field) {
                                 // Get the selected options
                                 var options = validator.getFieldElements('browsers').val();
                                 return (options != null
