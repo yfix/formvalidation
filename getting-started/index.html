@@ -461,13 +461,19 @@ _gaq.push(['_trackPageview']);
     <!-- including -->
     <section>
         <h3>Including library</h3>
-        <p>Since the BootstrapValidator plugin requires jQuery and Bootstrap 3, you have to include the required CSS and JS files to your page:</p>
+        <p>Since the BootstrapValidator plugin requires <a href="http://jquery.com/">jQuery</a> (v1.9.1 or higher) and <a href="http://getbootstrap.com">Bootstrap</a> (v3.0.0 or higher), you have to include the required CSS and JS files to your page:</p>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;/path/to/bootstrap/css/bootstrap.css&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- BootstrapValidator requires Bootstrap CSS v3.0.0 or higher --&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;/path/to/bootstrap/css/bootstrap.css&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;/path/to/dist/css/bootstrapValidator.min.css&quot;</span><span class="nt">/&gt;</span>
 
+<span class="c">&lt;!-- and jQuery v1.9.1 or higher --&gt;</span>
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/path/to/jquery/jquery-1.10.2.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/path/to/bootstrap/js/bootstrap.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
+
+        <div class="doc-alert doc-alert-info">
+            BootstrapValidator doesn't require Bootstrap's Javascript if you don't use Bootstrap <a href="http://getbootstrap.com/javascript/#tooltips">tooltip</a> or <a href="http://getbootstrap.com/javascript/#popovers">popover</a> to show the messages via <a href="/settings/#form-container">container</a> option.
+        </div>
 
         <p>Next, requires the plugin javascript file:</p>
 
@@ -1251,20 +1257,20 @@ $(document).ready(function() {
 <span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;</span>
     <span class="c">&lt;!-- Bootstrap CSS --&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;//cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.min.css&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;//cdn.jsdelivr.net/bootstrap/3.3.1/css/bootstrap.min.css&quot;</span><span class="nt">/&gt;</span>
 
     <span class="c">&lt;!-- Include FontAwesome CSS if you want to use feedback icons provided by FontAwesome --&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;//cdn.jsdelivr.net/fontawesome/4.1.0/css/font-awesome.min.css&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;//cdn.jsdelivr.net/fontawesome/4.2.0/css/font-awesome.min.css&quot;</span> <span class="nt">/&gt;</span>
 
     <span class="c">&lt;!-- BootstrapValidator CSS --&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css&quot;</span><span class="nt">/&gt;</span>
 
     <span class="c">&lt;!-- jQuery and Bootstrap JS --&gt;</span>
     <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;//cdn.jsdelivr.net/jquery/1.11.1/jquery.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;//cdn.jsdelivr.net/bootstrap/3.2.0/js/bootstrap.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;//cdn.jsdelivr.net/bootstrap/3.3.1/js/bootstrap.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 
     <span class="c">&lt;!-- BootstrapValidator JS --&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.0/js/bootstrapValidator.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
 
