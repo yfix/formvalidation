@@ -13,6 +13,9 @@
 - name:   Bulgarian
   file:   bg_BG.js
   author: mraiur
+- name:   Catalan
+  file:   ca_ES.js
+  author: ArnauAregall
 - name:   Chilean Spanish
   file:   es_CL.js
   author: marceloampuerop6
