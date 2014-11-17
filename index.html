@@ -523,8 +523,8 @@ $(function() {
         dataType: 'jsonp',
         url: 'https://api.github.com/repos/nghuuphuoc/bootstrapvalidator',
         success: function(response) {
-            $('#ghStars').html((response && response.data.watchers_count ? parseInt(response.data.watchers_count) : '1376').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
-            $('#ghForks').html((response && response.data.forks_count    ? parseInt(response.data.forks_count)    : '755').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+            $('#ghStars').html((response && response.data.watchers_count ? parseInt(response.data.watchers_count) : '1294').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+            $('#ghForks').html((response && response.data.forks_count    ? parseInt(response.data.forks_count)    : '631').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
         }
     });
 
