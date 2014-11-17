@@ -33,7 +33,14 @@ permalink: /download/
                                         <div class="list-group-item">For individual developers</div>
                                         <div class="list-group-item">Each individual developer needs to purchase a separate license</div>
                                         <div class="list-group-item">
-                                            <a href="{{ site.license.developer.url }}?wanted=true" class="btn gumroad-button"><span></span> Buy</a>
+                                            <script data-selz-t="_selz-btn-default" data-selz-a="modal" data-selz-b="{{ site.license.developer.url }}">
+                                            if (typeof _$elz === "undefined") { var _$elz = {}; }
+                                            if (typeof _$elz.b === "undefined") {
+                                            _$elz.b = { e: document.createElement("script") };
+                                            _$elz.b.e.src = "https://selz.com/embed/button";
+                                            document.body.appendChild(_$elz.b.e); }
+                                            </script>
+                                            <a href="{{ site.license.developer.url }}" target="_blank" class="_selz_nojs_link">Buy this on Selz</a>
                                         </div>
                                     </div>
                                 </div>
@@ -51,7 +58,14 @@ permalink: /download/
                                         <div class="list-group-item">For an organization with a team of developers</div>
                                         <div class="list-group-item">Covers all developers working within the organization</div>
                                         <div class="list-group-item">
-                                            <a href="{{ site.license.organization.url }}?wanted=true" class="btn gumroad-button"><span></span> Buy</a>
+                                            <script data-selz-t="_selz-btn-default" data-selz-a="modal" data-selz-b="{{ site.license.organization.url }}">
+                                            if (typeof _$elz === "undefined") { var _$elz = {}; }
+                                            if (typeof _$elz.b === "undefined") {
+                                            _$elz.b = { e: document.createElement("script") };
+                                            _$elz.b.e.src = "https://selz.com/embed/button";
+                                            document.body.appendChild(_$elz.b.e); }
+                                            </script>
+                                            <a href="{{ site.license.organization.url }}" target="_blank" class="_selz_nojs_link">Buy this on Selz</a>
                                         </div>
                                     </div>
                                 </div>
@@ -60,7 +74,7 @@ permalink: /download/
                     </div>
 
                     <p class="text-center">
-                        All transactions are processed on <a href="https://gumroad.com/">GumRoad</a> through an <strong>encrypted HTTP Secure</strong> connection
+                        All transactions are processed on <a href="https://selz.com/">Selz</a> through an <strong>encrypted HTTP Secure</strong> connection
                     </p>
                 </section>
 
