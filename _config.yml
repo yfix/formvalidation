@@ -19,12 +19,14 @@ timezone:             Asia/Ho_Chi_Minh
 license:
   developer:
     price:            25$
-    url:              https://gum.co/bv-developer-license
-    #url:              http://selz.co/1v8tldQ
+    #url:              https://gum.co/bv-developer-license
+    url:              https://sellfy.com/p/uitF/
+    id:               uitF
   organization:
     price:            75$
-    url:              https://gum.co/bv-organization-license
-    #url:              http://selz.co/1v8tuhB
+    #url:              https://gum.co/bv-organization-license
+    url:              https://sellfy.com/p/eQiZ/
+    id:               eQiZ
 current_version:      0.5.3
 released_date:        2014.11.05
 github_watchers:      1376

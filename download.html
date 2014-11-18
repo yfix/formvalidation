@@ -33,7 +33,7 @@ permalink: /download/
                                         <div class="list-group-item">For individual developers</div>
                                         <div class="list-group-item">Each individual developer needs to purchase a separate license</div>
                                         <div class="list-group-item">
-                                            <a href="{{ site.license.developer.url }}?wanted=true" class="btn gumroad-button"><span></span> Buy</a>
+                                            <a href="{{ site.license.developer.url }}" id="{{ site.license.developer.id }}" class="sellfy-buy-button">Buy now</a>
                                         </div>
                                     </div>
                                 </div>
@@ -51,7 +51,7 @@ permalink: /download/
                                         <div class="list-group-item">For an organization with a team of developers</div>
                                         <div class="list-group-item">Covers all developers working within the organization</div>
                                         <div class="list-group-item">
-                                            <a href="{{ site.license.organization.url }}?wanted=true" class="btn gumroad-button"><span></span> Buy</a>
+                                            <a href="{{ site.license.organization.url }}" id="{{ site.license.organization.id }}" class="sellfy-buy-button">Buy now</a>
                                         </div>
                                     </div>
                                 </div>
@@ -60,7 +60,7 @@ permalink: /download/
                     </div>
 
                     <p class="text-center">
-                        All transactions are processed on <a href="https://gumroad.com/">GumRoad</a> through an <strong>encrypted HTTP Secure</strong> connection
+                        All transactions are processed on <a href="https://sellfy.com/">Sellfy</a> through an <strong>encrypted HTTP Secure</strong> connection
                     </p>
                 </section>
 
@@ -136,3 +136,5 @@ $ bower install bootstrapvalidator#master
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="https://sellfy.com/js/api_buttons.js"></script>
