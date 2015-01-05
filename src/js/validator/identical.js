@@ -1,13 +1,13 @@
 /**
  * identical validator
  *
- * @link        http://bootstrapvalidator.com/validators/identical/
+ * @link        http://formvalidation.io/validators/identical/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             identical: {
                 'default': 'Please enter the same value'
@@ -15,38 +15,66 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.identical = {
+    FormValidation.Validator.identical = {
         html5Attributes: {
             message: 'message',
             field: 'field'
         },
 
         /**
+         * Bind the validator on the live change of the field to compare with current one
+         *
+         * @param {FormValidation.Base} validator The validator plugin instance
+         * @param {jQuery} $field Field element
+         * @param {Object} options Consists of the following key:
+         * - field: The name of field that will be used to compare with current one
+         */
+        init: function(validator, $field, options) {
+            var compareWith = validator.getFieldElements(options.field);
+            validator.onLiveChange(compareWith, 'live_identical', function() {
+                var status = validator.getStatus($field, 'identical');
+                if (status !== validator.STATUS_NOT_VALIDATED) {
+                    validator.revalidateField($field);
+                }
+            });
+        },
+
+        /**
+         * Unbind the validator on the live change of the field to compare with current one
+         *
+         * @param {FormValidation.Base} validator The validator plugin instance
+         * @param {jQuery} $field Field element
+         * @param {Object} options Consists of the following key:
+         * - field: The name of field that will be used to compare with current one
+         */
+        destroy: function(validator, $field, options) {
+            var compareWith = validator.getFieldElements(options.field);
+            validator.offLiveChange(compareWith, 'live_identical');
+        },
+
+        /**
          * Check if input value equals to value of particular one
          *
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Consists of the following key:
          * - field: The name of field that will be used to compare with current one
          * @returns {Boolean}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
-            if (value === '') {
-                return true;
-            }
-
-            var compareWith = validator.getFieldElements(options.field);
+            var value       = validator.getFieldValue($field, 'identical'),
+                compareWith = validator.getFieldElements(options.field);
             if (compareWith === null || compareWith.length === 0) {
                 return true;
             }
 
-            if (value === compareWith.val()) {
-                validator.updateStatus(options.field, validator.STATUS_VALID, 'identical');
+            var compareValue = validator.getFieldValue(compareWith, 'identical');
+            if (value === compareValue) {
+                validator.updateStatus(compareWith, validator.STATUS_VALID, 'identical');
                 return true;
-            } else {
-                return false;
             }
+
+            return false;
         }
     };
 }(jQuery));

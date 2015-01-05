@@ -3,7 +3,7 @@
      * Persian (Farsi) Language package.
      * Translated by @i0
      */
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n, {
         'fa_IR': {
             base64: {
                 'default': 'لطفا متن کد گذاری شده base 64 صحیح وارد فرمایید'
@@ -72,7 +72,6 @@
             },
             iban: {
                 'default': 'لطفا شماره IBAN معتبر وارد فرمایید',
-                countryNotSupported: 'کد کشور %s پشتیبانی نمیشود',
                 country: 'لطفا یک شماره IBAN صحیح در %s وارد فرمایید',
                 countries: {
                     AD: 'آندورا',
@@ -158,7 +157,6 @@
             },
             id: {
                 'default': 'لطفا شماره شناسایی صحیح وارد فرمایید',
-                countryNotSupported: 'کد کشور %s پشتیبانی نمیگردد',
                 country: 'لطفا یک شماره شناسایی معتبر در %s وارد کنید',
                 countries: {
                     BA: 'بوسنی و هرزگوین',
@@ -237,7 +235,6 @@
             },
             phone: {
                 'default': 'لطفا یک شماره تلفن صحیح وارد فرمایید',
-                countryNotSupported: 'کد کشور %s پشتیبانی نمیشود',
                 country: 'لطفا یک شماره تلفن معتبر وارد کنید در %s',
                 countries: {
                     AE: 'امارات متحده عربی',
@@ -249,6 +246,7 @@
                     ES: 'اسپانیا',
                     FR: 'فرانسه',
                     GB: 'بریتانیا',
+                    IN: 'هندوستان',
                     MA: 'مراکش',
                     PK: 'پاکستان',
                     RO: 'رومانی',
@@ -299,7 +297,6 @@
             },
             vat: {
                 'default': 'لطفا یک شماره VAT صحیح وارد فرمایید',
-                countryNotSupported: 'کد کشور %s پشتیبانی نمیگردد',
                 country: 'لطفا یک شماره VAT معتبر در %s وارد کنید',
                 countries: {
                     AT: 'اتریش',
@@ -346,7 +343,6 @@
             },
             zipCode: {
                 'default': 'لطفا یک کدپستی صحیح وارد فرمایید',
-                countryNotSupported: 'کد کشور %s پشتیبانی نمیگردد',
                 country: 'لطفا یک کد پستی معتبر در %s وارد کنید',
                 countries: {
                     AT: 'اتریش',
@@ -356,9 +352,11 @@
                     CZ: 'چک',
                     DE: 'آلمان',
                     DK: 'دانمارک',
+                    ES: 'اسپانیا',
                     FR: 'فرانسه',
                     GB: 'بریتانیا',
                     IE: 'ایرلند',
+                    IN: 'هندوستان',
                     IT: 'ایتالیا',
                     MA: 'مراکش',
                     NL: 'هلند',

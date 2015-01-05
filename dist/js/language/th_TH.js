@@ -3,7 +3,7 @@
      * Thai language package
      * Translated by @figgaro
      */
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n, {
         'th_TH': {
             base64: {
                 'default': 'กรุณาระบุ base 64 encoded ให้ถูกต้อง'
@@ -72,7 +72,6 @@
             },
             iban: {
                 'default': 'กรุณาระบุหมายเลข IBAN ให้ถูกต้อง',
-                countryNotSupported: 'ประเทศ %s ไม่รองรับ',
                 country: 'กรุณาระบุหมายเลข IBAN ใน %s',
                 countries: {
                     AD: 'อันดอร์รา',
@@ -158,7 +157,6 @@
             },
             id: {
                 'default': 'โปรดระบุเลขบัตรประจำตัวประชาชนให้ถูกต้อง',
-                countryNotSupported: 'ประเทศ %s ไม่รองรับ',
                 country: 'โปรดระบุเลขบัตรประจำตัวประชาชนใน %s ให้ถูกต้อง',
                 countries: {
                     BA: 'บอสเนียและเฮอร์เซโก',
@@ -237,7 +235,6 @@
             },
             phone: {
                 'default': 'โปรดระบุหมายเลขโทรศัพท์ให้ถูกต้อง',
-                countryNotSupported: 'ประเทศ %s ไม่รองรับ',
                 country: 'โปรดระบุหมายเลขโทรศัพท์ใน %s ให้ถูกต้อง',
                 countries: {
                     AE: 'สหรัฐอาหรับเอมิเรตส์',
@@ -249,6 +246,7 @@
                     ES: 'สเปน',
                     FR: 'ฝรั่งเศส',
                     GB: 'สหราชอาณาจักร',
+                    IN: 'อินเดีย',
                     MA: 'โมร็อกโก',
                     PK: 'ปากีสถาน',
                     RO: 'โรมาเนีย',
@@ -299,7 +297,6 @@
             },
             vat: {
                 'default': 'โปรดระบุจำนวนภาษีมูลค่าเพิ่ม',
-                countryNotSupported: 'ประเทศ %s ไม่รองรับ',
                 country: 'โปรดระบุจำนวนภาษีมูลค่าเพิ่มใน %s',
                 countries: {
                     AT: 'ออสเตรีย',
@@ -346,7 +343,6 @@
             },
             zipCode: {
                 'default': 'โปรดระบุรหัสไปรษณีย์ให้ถูกต้อง',
-                countryNotSupported: 'ประเทศ %s ไม่รองรับ',
                 country: 'โปรดระบุรหัสไปรษณีย์ให้ถูกต้องใน %s',
                 countries: {
                     AT: 'ออสเตรีย',
@@ -356,9 +352,11 @@
                     CZ: 'สาธารณรัฐเชค',
                     DE: 'เยอรมนี',
                     DK: 'เดนมาร์ก',
+                    ES: 'สเปน',
                     FR: 'ฝรั่งเศส',
                     GB: 'สหราชอาณาจักร',
                     IE: 'ไอร์แลนด์',
+                    IN: 'อินเดีย',
                     IT: 'อิตาลี',
                     MA: 'โมร็อกโก',
                     NL: 'เนเธอร์แลนด์',

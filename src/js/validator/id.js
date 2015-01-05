@@ -1,17 +1,16 @@
 /**
  * id validator
  *
- * @link        http://bootstrapvalidator.com/validators/id/
+ * @link        http://formvalidation.io/validators/id/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             id: {
                 'default': 'Please enter a valid identification number',
-                countryNotSupported: 'The country code %s is not supported',
                 country: 'Please enter a valid identification number in %s',
                 countries: {
                     BA: 'Bosnia and Herzegovina',
@@ -46,7 +45,7 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.id = {
+    FormValidation.Validator.id = {
         html5Attributes: {
             message: 'message',
             country: 'country'
@@ -62,7 +61,7 @@
          * Validate identification number in different countries
          *
          * @see http://en.wikipedia.org/wiki/National_identification_number
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Consist of key:
          * - message: The invalid message
@@ -74,7 +73,7 @@
          * @returns {Boolean|Object}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'id');
             if (value === '') {
                 return true;
             }
@@ -89,7 +88,7 @@
             }
 
             if ($.inArray(country, this.COUNTRY_CODES) === -1) {
-                return { valid: false, message: $.fn.bootstrapValidator.helpers.format($.fn.bootstrapValidator.i18n[locale].id.countryNotSupported, country) };
+                return true;
             }
 
             var method  = ['_', country.toLowerCase()].join('');
@@ -97,7 +96,7 @@
                     ? true
                     : {
                         valid: false,
-                        message: $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n[locale].id.country, $.fn.bootstrapValidator.i18n[locale].id.countries[country.toUpperCase()])
+                        message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].id.country, FormValidation.I18n[locale].id.countries[country.toUpperCase()])
                     };
         },
 
@@ -216,7 +215,7 @@
                 month -= 20;
             }
 
-            if (!$.fn.bootstrapValidator.helpers.date(year, month, day)) {
+            if (!FormValidation.Helper.date(year, month, day)) {
                 return false;
             }
 
@@ -240,11 +239,8 @@
          * @returns {Boolean}
          */
         _br: function(value) {
-            if (!/^\d{11}$/.test(value) && !/^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(value)) {
-                return false;
-            }
+            value = value.replace(/\D/g, '');
 
-            value = value.replace(/\./g, '').replace(/-/g, '');
             if (/^1{11}|2{11}|3{11}|4{11}|5{11}|6{11}|7{11}|8{11}|9{11}|0{11}$/.test(value)) {
                 return false;
             }
@@ -847,7 +843,7 @@
             var year  = parseInt(dob.substr(0, 4), 10),
                 month = parseInt(dob.substr(4, 2), 10),
                 day   = parseInt(dob.substr(6, 2), 10);
-            if (!$.fn.bootstrapValidator.helpers.date(year, month, day)) {
+            if (!FormValidation.Helper.date(year, month, day)) {
                 return false;
             }
             
@@ -893,7 +889,7 @@
                 year += 100;
             }
 
-            if (!$.fn.bootstrapValidator.helpers.date(year, month, day)) {
+            if (!FormValidation.Helper.date(year, month, day)) {
                 return false;
             }
 
@@ -941,7 +937,7 @@
                     break;
             }
 
-            return $.fn.bootstrapValidator.helpers.date(year, month, day);
+            return FormValidation.Helper.date(year, month, day);
         },
 
         /**
@@ -960,32 +956,83 @@
 
         /**
          * Validate Spanish personal identity code (DNI)
-         * Support i) DNI (for Spanish citizens) and ii) NIE (for foreign people)
+         * Support i) DNI (for Spanish citizens), ii) NIE (for foreign people)
+         * and iii) CIF (for legal entities)
          *
          * Examples:
-         * - Valid: i) 54362315K, 54362315-K; ii) X2482300W, X-2482300W, X-2482300-W
-         * - Invalid: i) 54362315Z; ii) X-2482300A
+         * - Valid:
+         *      i) 54362315K, 54362315-K
+         *      ii) X2482300W, X-2482300W, X-2482300-W
+         *      iii) A58818501, A-58818501
+         * - Invalid:
+         *      i) 54362315Z
+         *      ii) X-2482300A
+         *      iii) K58818501, G58818507
          *
          * @see https://en.wikipedia.org/wiki/National_identification_number#Spain
          * @param {String} value The ID
          * @returns {Boolean}
          */
         _es: function(value) {
-            if (!/^[0-9A-Z]{8}[-]{0,1}[0-9A-Z]$/.test(value)                    // DNI
-                && !/^[XYZ][-]{0,1}[0-9]{7}[-]{0,1}[0-9A-Z]$/.test(value)) {    // NIE
+            var isDNI = /^[0-9]{8}[-]{0,1}[A-HJ-NP-TV-Z]$/.test(value),
+                isNIE = /^[XYZ][-]{0,1}[0-9]{7}[-]{0,1}[A-HJ-NP-TV-Z]$/.test(value),
+                isCIF = /^[A-HNPQS][-]{0,1}[0-9]{7}[-]{0,1}[0-9A-J]$/.test(value);
+            if (!isDNI && !isNIE && !isCIF) {
                 return false;
             }
 
             value = value.replace(/-/g, '');
-            var index = 'XYZ'.indexOf(value.charAt(0));
-            if (index !== -1) {
-                // It is NIE number
-                value = index + value.substr(1) + '';
-            }
+            var check;
+            if (isDNI || isNIE) {
+                var index = 'XYZ'.indexOf(value.charAt(0));
+                if (index !== -1) {
+                    // It is NIE number
+                    value = index + value.substr(1) + '';
+                }
 
-            var check = parseInt(value.substr(0, 8), 10);
-            check = 'TRWAGMYFPDXBNJZSQVHLCKE'[check % 23];
-            return (check === value.substr(8, 1));
+                check = parseInt(value.substr(0, 8), 10);
+                check = 'TRWAGMYFPDXBNJZSQVHLCKE'[check % 23];
+                return (check === value.substr(8, 1));
+            } else {
+                check = value.substr(1, 7);
+                var letter  = value[0],
+                    control = value.substr(-1),
+                    sum     = 0;
+
+                // The digits in the even positions are added to the sum directly.
+                // The ones in the odd positions are multiplied by 2 and then added to the sum.
+                // If the result of multiplying by 2 is 10 or higher, add the two digits
+                // together and add that to the sum instead
+                for (var i = 0; i < check.length; i++) {
+                    if (i % 2 !== 0) {
+                        sum += parseInt(check[i], 10);
+                    } else {
+                        var tmp = '' + (parseInt(check[i], 10) * 2);
+                        sum += parseInt(tmp[0], 10);
+                        if (tmp.length === 2) {
+                            sum += parseInt(tmp[1], 10);
+                        }
+                    }
+                }
+
+                // The control digit is calculated from the last digit of the sum.
+                // If that last digit is not 0, subtract it from 10
+                var lastDigit = sum - (Math.floor(sum / 10) * 10);
+                if (lastDigit !== 0) {
+                    lastDigit = 10 - lastDigit;
+                }
+                
+                if ('KQS'.indexOf(letter) !== -1) {
+                    // If the CIF starts with a K, Q or S, the control digit must be a letter
+                    return (control === 'JABCDEFGHI'[lastDigit]);
+                } else if ('ABEH'.indexOf(letter) !== -1) {
+                    // If it starts with A, B, E or H, it has to be a number
+                    return (control === ('' + lastDigit));
+                } else {
+                    // In any other case, it doesn't matter
+                    return (control === ('' + lastDigit) || control === 'JABCDEFGHI'[lastDigit]);
+                }
+            }
         },
 
         /**
@@ -1011,7 +1058,7 @@
                 };
             year = centuries[value.charAt(6)] + year;
 
-            if (!$.fn.bootstrapValidator.helpers.date(year, month, day)) {
+            if (!FormValidation.Helper.date(year, month, day)) {
                 return false;
             }
 
@@ -1037,7 +1084,7 @@
             if (!/^[0-9]{11}$/.test(value)) {
                 return false;
             }
-            return $.fn.bootstrapValidator.helpers.mod11And10(value);
+            return FormValidation.Helper.mod11And10(value);
         },
 
         /**
@@ -1098,7 +1145,7 @@
                 century = parseInt(value.charAt(9), 10);
 
             year = (century === 9) ? (1900 + year) : ((20 + century) * 100 + year);
-            if (!$.fn.bootstrapValidator.helpers.date(year, month, day, true)) {
+            if (!FormValidation.Helper.date(year, month, day, true)) {
                 return false;
             }
             // Validate the check digit
@@ -1132,7 +1179,7 @@
                 day     = parseInt(value.substr(5, 2), 10),
                 century = (gender % 2 === 0) ? (17 + gender / 2) : (17 + (gender + 1) / 2);
             year = century * 100 + year;
-            if (!$.fn.bootstrapValidator.helpers.date(year, month, day, true)) {
+            if (!FormValidation.Helper.date(year, month, day, true)) {
                 return false;
             }
 
@@ -1181,7 +1228,7 @@
                 year  = parseInt(value.substr(4, 2), 10);
             year = year + 1800 + parseInt(value.charAt(6), 10) * 100;
 
-            if (!$.fn.bootstrapValidator.helpers.date(year, month, day, true)) {
+            if (!FormValidation.Helper.date(year, month, day, true)) {
                 return false;
             }
 
@@ -1265,7 +1312,7 @@
             }
             if (gender !== 9) {
                 year = centuries[gender + ''] + year;
-                if (!$.fn.bootstrapValidator.helpers.date(year, month, day)) {
+                if (!FormValidation.Helper.date(year, month, day)) {
                     return false;
                 }
             }
@@ -1303,12 +1350,12 @@
             var year  = parseInt(value.substr(0, 2), 10) + 1900,
                 month = parseInt(value.substr(2, 2), 10),
                 day   = parseInt(value.substr(4, 2), 10);
-            if (!$.fn.bootstrapValidator.helpers.date(year, month, day)) {
+            if (!FormValidation.Helper.date(year, month, day)) {
                 return false;
             }
 
             // Validate the last check digit
-            return $.fn.bootstrapValidator.helpers.luhn(value);
+            return FormValidation.Helper.luhn(value);
         },
 
         /**
@@ -1379,12 +1426,12 @@
                 day         = parseInt(value.substr(4, 2), 10);
             year = (year >= currentYear) ? (year + 1900) : (year + 2000);
 
-            if (!$.fn.bootstrapValidator.helpers.date(year, month, day)) {
+            if (!FormValidation.Helper.date(year, month, day)) {
                 return false;
             }
 
             // Validate the last check digit
-            return $.fn.bootstrapValidator.helpers.luhn(value);
+            return FormValidation.Helper.luhn(value);
         }
     };
 }(jQuery));

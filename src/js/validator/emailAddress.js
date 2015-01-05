@@ -1,13 +1,13 @@
 /**
  * emailAddress validator
  *
- * @link        http://bootstrapvalidator.com/validators/emailAddress/
+ * @link        http://formvalidation.io/validators/emailAddress/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             emailAddress: {
                 'default': 'Please enter a valid email address'
@@ -15,7 +15,7 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.emailAddress = {
+    FormValidation.Validator.emailAddress = {
         html5Attributes: {
             message: 'message',
             multiple: 'multiple',
@@ -29,7 +29,7 @@
         /**
          * Return true if and only if the input value is a valid email address
          *
-         * @param {BootstrapValidator} validator Validate plugin instance
+         * @param {FormValidation.Base} validator Validate plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} [options]
          * - multiple: Allow multiple email addresses, separated by a comma or semicolon; default is false.
@@ -37,7 +37,7 @@
          * @returns {Boolean}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'emailAddress');
             if (value === '') {
                 return true;
             }

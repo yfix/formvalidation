@@ -3,7 +3,7 @@
      * French language package
      * Translated by @dlucazeau. Updated by @neilime, @jazzzz
      */
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n, {
         'fr_FR': {
             base64: {
                 'default': 'Veuillez fournir une donnée correctement encodée en Base64'
@@ -72,7 +72,6 @@
             },
             iban: {
                 'default': 'Veuillez fournir un code IBAN valide',
-                countryNotSupported: 'Le code de pays %s n\'est pas accepté',
                 country: 'Veuillez fournir un code IBAN valide pour %s',
                 countries: {
                     AD: 'Andorre',
@@ -158,7 +157,6 @@
             },
             id: {
                 'default': 'Veuillez fournir un numéro d\'identification valide',
-                countryNotSupported: 'Le code de pays %s n\'est pas accepté',
                 country: 'Veuillez fournir un numéro d\'identification valide pour %s',
                 countries: {
                     BA: 'Bosnie-Herzégovine',
@@ -237,7 +235,6 @@
             },
             phone: {
                 'default': 'Veuillez fournir un numéro de téléphone valide',
-                countryNotSupported: 'Le code de pays %s n\'est pas accepté',
                 country: 'Veuillez fournir un numéro de téléphone valide pour %s',
                 countries: {
                     AE: 'Émirats Arabes Unis',
@@ -249,6 +246,7 @@
                     ES: 'Espagne',
                     FR: 'France',
                     GB: 'Royaume-Uni',
+                    IN: 'Inde',
                     MA: 'Maroc',
                     PK: 'Pakistan',
                     RO: 'Roumanie',
@@ -299,7 +297,6 @@
             },
             vat: {
                 'default': 'Veuillez fournir un code VAT valide',
-                countryNotSupported: 'Le code de pays %s n\'est pas accepté',
                 country: 'Veuillez fournir un code VAT valide pour %s',
                 countries: {
                     AT: 'Autriche',
@@ -346,7 +343,6 @@
             },
             zipCode: {
                 'default': 'Veuillez fournir un code postal valide',
-                countryNotSupported: 'Le code de pays %s n\'est pas accepté',
                 country: 'Veuillez fournir un code postal valide pour %s',
                 countries: {
                     AT: 'Autriche',
@@ -356,9 +352,11 @@
                     CZ: 'République Tchèque',
                     DE: 'Allemagne',
                     DK: 'Danemark',
+                    ES: 'Espagne',
                     FR: 'France',
                     GB: 'Royaume-Uni',
                     IE: 'Irlande',
+                    IN: 'Inde',
                     IT: 'Italie',
                     MA: 'Maroc',
                     NL: 'Pays-Bas',

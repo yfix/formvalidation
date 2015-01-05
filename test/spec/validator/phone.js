@@ -13,6 +13,7 @@ describe('phone', function() {
                         '<option value="ES">Spain</option>',
                         '<option value="FR">France</option>',
                         '<option value="GB">United Kingdom</option>',
+                        '<option value="IN">India</option>',
                         '<option value="MA">Morocco</option>',
                         '<option value="PK">Pakistan</option>',
                         '<option value="RO">Romania</option>',
@@ -24,50 +25,50 @@ describe('phone', function() {
                     '</select>',
                 '</div>',
                 '<div class="form-group">',
-                    '<input type="text" name="phone" data-bv-phone />',
+                    '<input type="text" name="phone" data-fv-phone />',
                 '</div>',
             '</form>',
         ].join('\n')).appendTo('body');
 
-        $('#phoneForm').bootstrapValidator();
+        $('#phoneForm').formValidation();
 
         /**
-         * @type {BootstrapValidator}
+         * @type {FormValidation.Base}
          */
-        this.bv       = $('#phoneForm').data('bootstrapValidator');
-        this.$country = this.bv.getFieldElements('country');
-        this.$phone   = this.bv.getFieldElements('phone');
+        this.fv       = $('#phoneForm').data('formValidation');
+        this.$country = this.fv.getFieldElements('country');
+        this.$phone   = this.fv.getFieldElements('phone');
     });
 
     afterEach(function() {
-        $('#phoneForm').bootstrapValidator('destroy').remove();
+        $('#phoneForm').formValidation('destroy').remove();
     });
 
     it('dynamic country', function() {
-        this.$phone.attr('data-bv-phone-country', 'country');
-        this.bv.destroy();
-        this.bv = $('#phoneForm').bootstrapValidator().data('bootstrapValidator');
+        this.$phone.attr('data-fv-phone-country', 'country');
+        this.fv.destroy();
+        this.fv = $('#phoneForm').formValidation().data('formValidation');
 
         this.$country.val('BR');
         this.$phone.val('16920894635');
-        this.bv.validate();
-        expect(this.bv.isValid()).toBeTruthy();
+        this.fv.validate();
+        expect(this.fv.isValid()).toBeTruthy();
 
-        this.bv.resetForm();
+        this.fv.resetForm();
         this.$country.val('FR');
         this.$phone.val('0644444444');
-        this.bv.validate();
-        expect(this.bv.isValid()).toBeTruthy();
+        this.fv.validate();
+        expect(this.fv.isValid()).toBeTruthy();
 
-        this.bv.resetForm();
+        this.fv.resetForm();
         this.$country.val('GB');
         this.$phone.val('012345678900');
-        this.bv.validate();
-        expect(this.bv.isValid()).toBeFalsy();
+        this.fv.validate();
+        expect(this.fv.isValid()).toBeFalsy();
     });
 
     it('United Arab Emirates phone number', function() {
-        this.bv.updateOption('phone', 'phone', 'country', 'AE');
+        this.fv.updateOption('phone', 'phone', 'country', 'AE');
 
         // Valid samples
         var validSamples = [
@@ -84,15 +85,15 @@ describe('phone', function() {
             '600-540-000'
         ];
         for (var i in validSamples) {
-            this.bv.resetForm();
+            this.fv.resetForm();
             this.$phone.val(validSamples[i]);
-            this.bv.validate();
-            expect(this.bv.isValid()).toBeTruthy();
+            this.fv.validate();
+            expect(this.fv.isValid()).toBeTruthy();
         }
     });
 
     it('Brazil phone number', function() {
-        this.bv.updateOption('phone', 'phone', 'country', 'BR');
+        this.fv.updateOption('phone', 'phone', 'country', 'BR');
 
         // Valid samples
         var validSamples = [
@@ -103,15 +104,15 @@ describe('phone', function() {
             '(+55)(15)3702-7523', '(+55) 15 3702-7523', '(+55) 15 99202-7523', '99202-4635', '(16) 9208-4635'
         ];
         for (var i in validSamples) {
-            this.bv.resetForm();
+            this.fv.resetForm();
             this.$phone.val(validSamples[i]);
-            this.bv.validate();
-            expect(this.bv.isValid()).toBeTruthy();
+            this.fv.validate();
+            expect(this.fv.isValid()).toBeTruthy();
         }
     });
 
     it('China phone number', function() {
-        this.bv.updateOption('phone', 'phone', 'country', 'CN');
+        this.fv.updateOption('phone', 'phone', 'country', 'CN');
 
         // Valid samples
         var validSamples = [
@@ -122,15 +123,15 @@ describe('phone', function() {
             '+86 20 61302222-8866', '+86 20 6130-2222-8866', '+86 10 59081185'
         ];
         for (var i in validSamples) {
-            this.bv.resetForm();
+            this.fv.resetForm();
             this.$phone.val(validSamples[i]);
-            this.bv.validate();
-            expect(this.bv.isValid()).toBeTruthy();
+            this.fv.validate();
+            expect(this.fv.isValid()).toBeTruthy();
         }
     });
 
     it('Czech Republic phone number', function() {
-        this.bv.updateOption('phone', 'phone', 'country', 'CZ');
+        this.fv.updateOption('phone', 'phone', 'country', 'CZ');
 
         // Valid samples
         var validSamples = [
@@ -138,10 +139,10 @@ describe('phone', function() {
             '+420123456789', '+420 123456789', '+420 123 456 789', '123456789', '123 456 789'
         ];
         for (var i in validSamples) {
-            this.bv.resetForm();
+            this.fv.resetForm();
             this.$phone.val(validSamples[i]);
-            this.bv.validate();
-            expect(this.bv.isValid()).toBeTruthy();
+            this.fv.validate();
+            expect(this.fv.isValid()).toBeTruthy();
         }
 
         // Invalid samples
@@ -151,15 +152,15 @@ describe('phone', function() {
             '+421 123 456 789'
         ];
         for (i in invalidSamples) {
-            this.bv.resetForm();
+            this.fv.resetForm();
             this.$phone.val(invalidSamples[i]);
-            this.bv.validate();
-            expect(this.bv.isValid()).toEqual(false);
+            this.fv.validate();
+            expect(this.fv.isValid()).toEqual(false);
         }
     });
 
     it('France phone number', function() {
-        this.bv.updateOption('phone', 'phone', 'country', 'FR');
+        this.fv.updateOption('phone', 'phone', 'country', 'FR');
 
         // Valid samples
         var validSamples = [
@@ -172,10 +173,10 @@ describe('phone', function() {
             '+33(0)644444444', '+33 (0) 644444444'
         ];
         for (var i in validSamples) {
-            this.bv.resetForm();
+            this.fv.resetForm();
             this.$phone.val(validSamples[i]);
-            this.bv.validate();
-            expect(this.bv.isValid()).toBeTruthy();
+            this.fv.validate();
+            expect(this.fv.isValid()).toBeTruthy();
         }
 
         // Invalid samples
@@ -196,28 +197,43 @@ describe('phone', function() {
             '06.44.44.44.44.'
         ];
         for (i in invalidSamples) {
-            this.bv.resetForm();
+            this.fv.resetForm();
             this.$phone.val(invalidSamples[i]);
-            this.bv.validate();
-            expect(this.bv.isValid()).toEqual(false);
+            this.fv.validate();
+            expect(this.fv.isValid()).toEqual(false);
         }
     });
 
     it('Germany phone number', function() {
-        this.bv.updateOption('phone', 'phone', 'country', 'DE');
+        this.fv.updateOption('phone', 'phone', 'country', 'DE');
 
         // Valid samples
         var validSamples = ['+49(89)123456', '089-1234567', '0891234567', '0049-89-123456', '089 123456-78'];
         for (var i in validSamples) {
-            this.bv.resetForm();
+            this.fv.resetForm();
             this.$phone.val(validSamples[i]);
-            this.bv.validate();
-            expect(this.bv.isValid()).toBeTruthy();
+            this.fv.validate();
+            expect(this.fv.isValid()).toBeTruthy();
         }
     });
 
+    it('India phone number', function() {
+        this.fv.updateOption('phone', 'phone', 'country', 'IN');
+
+        // Valid samples
+        var validSamples = [
+            '9999114011', '+919911112341', '+91 9415007327', '03598245785', '+911204312280', '1302231221'
+        ];
+        for (var i in validSamples) {
+            this.fv.resetForm();
+            this.$phone.val(validSamples[i]);
+            this.fv.validate();
+            expect(this.fv.isValid()).toBeTruthy();
+        }
+    });
+    
     it('United Kingdom phone number', function() {
-        this.bv.updateOption('phone', 'phone', 'country', 'GB');
+        this.fv.updateOption('phone', 'phone', 'country', 'GB');
 
         // Valid samples
         var validSamples = [
@@ -229,10 +245,10 @@ describe('phone', function() {
             '0161 123 4567 ext. 123', '01611234567x123', '+44161234567x123', '+44 (0) 161 1234567 ext 123'
         ];
         for (var i in validSamples) {
-            this.bv.resetForm();
+            this.fv.resetForm();
             this.$phone.val(validSamples[i]);
-            this.bv.validate();
-            expect(this.bv.isValid()).toBeTruthy();
+            this.fv.validate();
+            expect(this.fv.isValid()).toBeTruthy();
         }
 
         // Invalid samples
@@ -244,15 +260,15 @@ describe('phone', function() {
             '061 123 4567'  // Invalid area code
         ];
         for (i in invalidSamples) {
-            this.bv.resetForm();
+            this.fv.resetForm();
             this.$phone.val(invalidSamples[i]);
-            this.bv.validate();
-            expect(this.bv.isValid()).toEqual(false);
+            this.fv.validate();
+            expect(this.fv.isValid()).toEqual(false);
         }
     });
 
     it('Morocco phone number', function() {
-        this.bv.updateOption('phone', 'phone', 'country', 'MA');
+        this.fv.updateOption('phone', 'phone', 'country', 'MA');
 
         // Valid samples
         var validSamples = [
@@ -265,10 +281,10 @@ describe('phone', function() {
             '+212(0)644444444', '+212 (0) 644444444'
         ];
         for (var i in validSamples) {
-            this.bv.resetForm();
+            this.fv.resetForm();
             this.$phone.val(validSamples[i]);
-            this.bv.validate();
-            expect(this.bv.isValid()).toBeTruthy();
+            this.fv.validate();
+            expect(this.fv.isValid()).toBeTruthy();
         }
 
         // Invalid samples
@@ -280,28 +296,28 @@ describe('phone', function() {
             '(0)644444444'                              // Bad parenthesis
         ];
         for (i in invalidSamples) {
-            this.bv.resetForm();
+            this.fv.resetForm();
             this.$phone.val(invalidSamples[i]);
-            this.bv.validate();
-            expect(this.bv.isValid()).toEqual(false);
+            this.fv.validate();
+            expect(this.fv.isValid()).toEqual(false);
         }
     });
 
     it('Pakistan phone number', function() {
-        this.bv.updateOption('phone', 'phone', 'country', 'PK');
+        this.fv.updateOption('phone', 'phone', 'country', 'PK');
 
         // Valid samples
         var validSamples = ['03336527366'];
         for (var i in validSamples) {
-            this.bv.resetForm();
+            this.fv.resetForm();
             this.$phone.val(validSamples[i]);
-            this.bv.validate();
-            expect(this.bv.isValid()).toBeTruthy();
+            this.fv.validate();
+            expect(this.fv.isValid()).toBeTruthy();
         }
     });
 
     it('Romania phone number', function() {
-        this.bv.updateOption('phone', 'phone', 'country', 'RO');
+        this.fv.updateOption('phone', 'phone', 'country', 'RO');
 
         // Valid samples
         var validSamples = [
@@ -311,10 +327,10 @@ describe('phone', function() {
             '0760512346', '0770512346', '0780512346'
         ];
         for (var i in validSamples) {
-            this.bv.resetForm();
+            this.fv.resetForm();
             this.$phone.val(validSamples[i]);
-            this.bv.validate();
-            expect(this.bv.isValid()).toBeTruthy();
+            this.fv.validate();
+            expect(this.fv.isValid()).toBeTruthy();
         }
 
         // Invalid samples
@@ -324,28 +340,28 @@ describe('phone', function() {
             '0790512346'    // Invalid mobile phone number (The valid one is 072xxxxxxx - 078xxxxxxx)
         ];
         for (i in invalidSamples) {
-            this.bv.resetForm();
+            this.fv.resetForm();
             this.$phone.val(invalidSamples[i]);
-            this.bv.validate();
-            expect(this.bv.isValid()).toEqual(false);
+            this.fv.validate();
+            expect(this.fv.isValid()).toEqual(false);
         }
     });
 
     it('Russia phone number', function() {
-        this.bv.updateOption('phone', 'phone', 'country', 'RU');
+        this.fv.updateOption('phone', 'phone', 'country', 'RU');
 
         // Valid samples
         var validSamples = ['+7(911)976-91-04'];
         for (var i in validSamples) {
-            this.bv.resetForm();
+            this.fv.resetForm();
             this.$phone.val(validSamples[i]);
-            this.bv.validate();
-            expect(this.bv.isValid()).toBeTruthy();
+            this.fv.validate();
+            expect(this.fv.isValid()).toBeTruthy();
         }
     });
 
     it('Slovakia phone number', function() {
-        this.bv.updateOption('phone', 'phone', 'country', 'SK');
+        this.fv.updateOption('phone', 'phone', 'country', 'SK');
 
         // Valid samples
         var validSamples = [
@@ -353,10 +369,10 @@ describe('phone', function() {
             '+420123456789', '+420 123456789', '+420 123 456 789', '123456789', '123 456 789'
         ];
         for (var i in validSamples) {
-            this.bv.resetForm();
+            this.fv.resetForm();
             this.$phone.val(validSamples[i]);
-            this.bv.validate();
-            expect(this.bv.isValid()).toBeTruthy();
+            this.fv.validate();
+            expect(this.fv.isValid()).toBeTruthy();
         }
 
         // Invalid samples
@@ -366,10 +382,86 @@ describe('phone', function() {
             '+421 123 456 789'
         ];
         for (i in invalidSamples) {
-            this.bv.resetForm();
+            this.fv.resetForm();
             this.$phone.val(invalidSamples[i]);
-            this.bv.validate();
-            expect(this.bv.isValid()).toEqual(false);
+            this.fv.validate();
+            expect(this.fv.isValid()).toEqual(false);
+        }
+    });
+
+    it('Spanish phone number', function() {
+        this.fv.updateOption('phone', 'phone', 'country', 'ES');
+
+        // Valid samples
+        var validSamples = [
+            // Landline numbers
+            '912345678',
+            // Special prefixes
+            '900900900', '902902902',
+            // Mobile numbers
+            '611222333', '744555666',
+            // VoIP lines
+            '538564738',
+            // Premium-rate services
+            '806396847',
+
+            // International versions
+            '0034912345678', '0034900900900',
+            '0034902902902', '0034611222333',
+            '0034744555666', '0034538564738',
+            '0034806396847',
+            '+34912345678', '+34900900900',
+            '+34902902902', '+34611222333',
+            '+34744555666', '+34538564738',
+            '+34806396847'
+        ];
+        for (var i in validSamples) {
+            this.fv.resetForm();
+            this.$phone.val(validSamples[i]);
+            this.fv.validate();
+            expect(this.fv.isValid()).toBeTruthy();
+        }
+
+        // Invalid samples
+        var invalidSamples = [
+            '472849284',    // Invalid prefix
+            '938191230420', // Too many digits
+            '938191',       // Too few digits
+            '00952345754',  // Lacks international prefix
+            '+745295738'    // Lacks international prefix
+        ];
+        for (i in invalidSamples) {
+            this.fv.resetForm();
+            this.$phone.val(invalidSamples[i]);
+            this.fv.validate();
+            expect(this.fv.isValid()).toEqual(false);
+        }
+    });
+
+    it('US phone number', function() {
+        this.fv.updateOption('phone', 'phone', 'country', 'US');
+
+        // Valid samples
+        var validSamples = [
+            '1444-555-1234', '246.555.8888', '1235554567', '(123)456-7890', '123)456.0987', '1-444-555-1234',
+            '14325678901', '1(123)456-7890', '+1 246.555-8888', '+1 (123)456-7890', '+1(123)456-7890'
+        ];
+        for (var i in validSamples) {
+            this.fv.resetForm();
+            this.$phone.val(validSamples[i]);
+            this.fv.validate();
+            expect(this.fv.isValid()).toBeTruthy();
+        }
+
+        // Invalid samples
+        var invalidSamples = [
+            '7334-12.111', 'v123.11.1111', '(23)440.4448', '123(456)7890', '0800 333333 abcdef'
+        ];
+        for (i in invalidSamples) {
+            this.fv.resetForm();
+            this.$phone.val(invalidSamples[i]);
+            this.fv.validate();
+            expect(this.fv.isValid()).toEqual(false);
         }
     });
 });

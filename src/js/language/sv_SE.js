@@ -3,7 +3,7 @@
      * Swedish language package
      * Translated by @ulsa
      */
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n, {
         'sv_SE': {
             base64: {
                 'default': 'Vänligen mata in ett giltigt Base64-kodat värde'
@@ -72,7 +72,6 @@
             },
             iban: {
                 'default': 'Vänligen mata in ett giltigt IBAN-nummer',
-                countryNotSupported: 'Landskoden %s stöds inte',
                 country: 'Vänligen mata in ett giltigt IBAN-nummer i %s',
                 countries: {
                     AD: 'Andorra',
@@ -158,7 +157,6 @@
             },
             id: {
                 'default': 'Vänligen mata in ett giltigt identifikationsnummer',
-                countryNotSupported: 'Landskoden %s stöds inte',
                 country: 'Vänligen mata in ett giltigt identifikationsnummer i %s',
                 countries: {
                     BA: 'Bosnien och Hercegovina',
@@ -237,7 +235,6 @@
             },
             phone: {
                 'default': 'Vänligen mata in ett giltigt telefonnummer',
-                countryNotSupported: 'Landskoden %s stöds inte',
                 country: 'Vänligen mata in ett giltigt telefonnummer i %s',
                 countries: {
                     AE: 'Förenade Arabemiraten',
@@ -249,6 +246,7 @@
                     ES: 'Spanien',
                     FR: 'Frankrike',
                     GB: 'Storbritannien',
+                    IN: 'Indien',
                     MA: 'Marocko',
                     PK: 'Pakistan',
                     RO: 'Rumänien',
@@ -299,7 +297,6 @@
             },
             vat: {
                 'default': 'Vänligen mata in ett giltigt momsregistreringsnummer',
-                countryNotSupported: 'Landskoden %s stöds inte',
                 country: 'Vänligen mata in ett giltigt momsregistreringsnummer i %s',
                 countries: {
                     AT: 'Österrike',
@@ -346,7 +343,6 @@
             },
             zipCode: {
                 'default': 'Vänligen mata in ett giltigt postnummer',
-                countryNotSupported: 'Landskoden %s stöds inte',
                 country: 'Vänligen mata in ett giltigt postnummer i %s',
                 countries: {
                     AT: 'Österrike',
@@ -356,9 +352,11 @@
                     CZ: 'Tjeckien',
                     DE: 'Tyskland',
                     DK: 'Danmark',
+                    ES: 'Spanien',
                     FR: 'Frankrike',
                     GB: 'Förenade Kungariket',
                     IE: 'Irland',
+                    IN: 'Indien',
                     IT: 'Italien',
                     MA: 'Marocko',
                     NL: 'Nederländerna',

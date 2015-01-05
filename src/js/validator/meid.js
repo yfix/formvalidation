@@ -1,13 +1,13 @@
 /**
  * meid validator
  *
- * @link        http://bootstrapvalidator.com/validators/meid/
+ * @link        http://formvalidation.io/validators/meid/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             meid: {
                 'default': 'Please enter a valid MEID number'
@@ -15,7 +15,7 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.meid = {
+    FormValidation.Validator.meid = {
         /**
          * Validate MEID (Mobile Equipment Identifier)
          * Examples:
@@ -23,14 +23,14 @@
          * - Invalid: 2936087365007037101
          *
          * @see http://en.wikipedia.org/wiki/Mobile_equipment_identifier
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following keys:
          * - message: The invalid message
          * @returns {Boolean}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'meid');
             if (value === '') {
                 return true;
             }
@@ -52,7 +52,7 @@
 
                     // If it's all digits, luhn base 10 is used
                     if (value.match(/^\d*$/i)) {
-                        return $.fn.bootstrapValidator.helpers.luhn(value);
+                        return FormValidation.Helper.luhn(value);
                     }
 
                     // Strip the check digit

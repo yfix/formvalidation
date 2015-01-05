@@ -1,13 +1,13 @@
 /**
  * callback validator
  *
- * @link        http://bootstrapvalidator.com/validators/callback/
+ * @link        http://formvalidation.io/validators/callback/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             callback: {
                 'default': 'Please enter a valid value'
@@ -15,7 +15,7 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.callback = {
+    FormValidation.Validator.callback = {
         html5Attributes: {
             message: 'message',
             callback: 'callback'
@@ -24,7 +24,7 @@
         /**
          * Return result from the callback method
          *
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following keys:
          * - callback: The callback method that passes 2 parameters:
@@ -37,12 +37,12 @@
          * @returns {Deferred}
          */
         validate: function(validator, $field, options) {
-            var value  = $field.val(),
+            var value  = validator.getFieldValue($field, 'callback'),
                 dfd    = new $.Deferred(),
                 result = { valid: true };
 
             if (options.callback) {
-                var response = $.fn.bootstrapValidator.helpers.call(options.callback, [value, validator, $field]);
+                var response = FormValidation.Helper.call(options.callback, [value, validator, $field]);
                 result = ('boolean' === typeof response) ? { valid: response } : response;
             }
 

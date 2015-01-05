@@ -1,13 +1,13 @@
 /**
  * creditCard validator
  *
- * @link        http://bootstrapvalidator.com/validators/creditCard/
+ * @link        http://formvalidation.io/validators/creditCard/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             creditCard: {
                 'default': 'Please enter a valid credit card number'
@@ -15,19 +15,19 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.creditCard = {
+    FormValidation.Validator.creditCard = {
         /**
          * Return true if the input value is valid credit card number
          * Based on https://gist.github.com/DiegoSalazar/4075533
          *
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} [options] Can consist of the following key:
          * - message: The invalid message
          * @returns {Boolean|Object}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'creditCard');
             if (value === '') {
                 return true;
             }
@@ -38,7 +38,7 @@
             }
             value = value.replace(/\D/g, '');
 
-            if (!$.fn.bootstrapValidator.helpers.luhn(value)) {
+            if (!FormValidation.Helper.luhn(value)) {
                 return false;
             }
 

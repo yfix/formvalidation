@@ -1,13 +1,13 @@
 /**
  * integer validator
  *
- * @link        http://bootstrapvalidator.com/validators/integer/
+ * @link        http://formvalidation.io/validators/integer/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             integer: {
                 'default': 'Please enter a valid number'
@@ -15,7 +15,7 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.integer = {
+    FormValidation.Validator.integer = {
         enableByHtml5: function($field) {
             return ('number' === $field.attr('type')) && ($field.attr('step') === undefined || $field.attr('step') % 1 === 0);
         },
@@ -23,7 +23,7 @@
         /**
          * Return true if the input value is an integer
          *
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following key:
          * - message: The invalid message
@@ -34,7 +34,7 @@
                 return false;
             }
 
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'integer');
             if (value === '') {
                 return true;
             }

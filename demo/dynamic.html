@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>BootstrapValidator demo</title>
+    <title>FormValidation demo</title>
 
     <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css"/>
-    <link rel="stylesheet" href="../dist/css/bootstrapValidator.css"/>
+    <link rel="stylesheet" href="../dist/css/formValidation.css"/>
 
     <script type="text/javascript" src="../vendor/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../dist/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="../dist/js/formValidation.js"></script>
+    <script type="text/javascript" src="../dist/js/framework/bootstrap.js"></script>
 </head>
 <body>
 <div class="container">
@@ -100,7 +101,7 @@
                 $templateEle = $('#' + template + 'Template'),
                 $row         = $templateEle.clone().removeAttr('id').insertBefore($templateEle).removeClass('hide'),
                 $el          = $row.find('input').eq(0).attr('name', template + '[]');
-            $('#defaultForm').bootstrapValidator('addField', $el);
+            $('#defaultForm').formValidation('addField', $el);
 
             // Set random value for checkbox and textbox
             if ('checkbox' == $el.attr('type') || 'radio' == $el.attr('type')) {
@@ -111,15 +112,15 @@
             }
 
             $row.on('click', '.removeButton', function(e) {
-                $('#defaultForm').bootstrapValidator('removeField', $el);
+                $('#defaultForm').formValidation('removeField', $el);
                 $row.remove();
             });
         });
 
         $('#defaultForm')
-            .bootstrapValidator({
+            .formValidation({
                 message: 'This value is not valid',
-                feedbackIcons: {
+                icon: {
                     valid: 'glyphicon glyphicon-ok',
                     invalid: 'glyphicon glyphicon-remove',
                     validating: 'glyphicon glyphicon-refresh'
@@ -148,16 +149,16 @@
                     }
                 }
             })
-            .on('error.field.bv', function(e, data) {
-                //console.log('error.field.bv -->', data.element);
+            .on('err.field.fv', function(e, data) {
+                //console.log('err.field.fv -->', data.element);
             })
-            .on('success.field.bv', function(e, data) {
-                //console.log('success.field.bv -->', data.element);
+            .on('success.field.fv', function(e, data) {
+                //console.log('success.field.fv -->', data.element);
             })
-            .on('added.field.bv', function(e, data) {
+            .on('added.field.fv', function(e, data) {
                 //console.log('Added element -->', data.field, data.element);
             })
-            .on('removed.field.bv', function(e, data) {
+            .on('removed.field.fv', function(e, data) {
                 //console.log('Removed element -->', data.field, data.element);
             });
     });

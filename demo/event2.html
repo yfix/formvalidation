@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>BootstrapValidator demo</title>
+    <title>FormValidation demo</title>
 
     <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css"/>
-    <link rel="stylesheet" href="../dist/css/bootstrapValidator.css"/>
+    <link rel="stylesheet" href="../dist/css/formValidation.css"/>
 
     <script type="text/javascript" src="../vendor/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../dist/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="../dist/js/formValidation.js"></script>
+    <script type="text/javascript" src="../dist/js/framework/bootstrap.js"></script>
 </head>
 <body>
     <div class="container">
@@ -45,9 +46,9 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $('#pickupForm')
-        .bootstrapValidator({
+        .formValidation({
             message: 'This value is not valid',
-            feedbackIcons: {
+            icon: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
@@ -70,13 +71,13 @@ $(document).ready(function() {
                 }
             }
         })
-        .on('error.field.bv', function(e, data) {
+        .on('err.field.fv', function(e, data) {
             if (data.field == 'postalCode') {
                 // The postal code is not valid
                 $('#lookupBtn').prop('disabled', true).removeClass('btn-success btn-warning').addClass('btn-warning');
             }
         })
-        .on('success.field.bv', function(e, data) {
+        .on('success.field.fv', function(e, data) {
             if (data.field == 'postalCode') {
                 // The postal code is valid
                 $('#lookupBtn').prop('disabled', false).removeClass('btn-success btn-warning').addClass('btn-success');

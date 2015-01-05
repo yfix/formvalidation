@@ -1,17 +1,16 @@
 /**
  * iban validator
  *
- * @link        http://bootstrapvalidator.com/validators/iban/
+ * @link        http://formvalidation.io/validators/iban/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             iban: {
                 'default': 'Please enter a valid IBAN number',
-                countryNotSupported: 'The country code %s is not supported',
                 country: 'Please enter a valid IBAN number in %s',
                 countries: {
                     AD: 'Andorra',
@@ -98,7 +97,7 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.iban = {
+    FormValidation.Validator.iban = {
         html5Attributes: {
             message: 'message',
             country: 'country'
@@ -193,7 +192,7 @@
          * To test it, take the sample IBAN from
          * http://www.nordea.com/Our+services/International+products+and+services/Cash+Management/IBAN+countries/908462.html
          *
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following keys:
          * - message: The invalid message
@@ -205,7 +204,7 @@
          * @returns {Boolean|Object}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'iban');
             if (value === '') {
                 return true;
             }
@@ -221,16 +220,13 @@
 
             var locale = validator.getLocale();
             if (!this.REGEX[country]) {
-                return {
-                    valid: false,
-                    message: $.fn.bootstrapValidator.helpers.format($.fn.bootstrapValidator.i18n[locale].iban.countryNotSupported, country)
-                };
+                return true;
             }
 
             if (!(new RegExp('^' + this.REGEX[country] + '$')).test(value)) {
                 return {
                     valid: false,
-                    message: $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n[locale].iban.country, $.fn.bootstrapValidator.i18n[locale].iban.countries[country])
+                    message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].iban.country, FormValidation.I18n[locale].iban.countries[country])
                 };
             }
 
@@ -252,7 +248,7 @@
 
             return {
                 valid: (temp === 1),
-                message: $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n[locale].iban.country, $.fn.bootstrapValidator.i18n[locale].iban.countries[country])
+                message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].iban.country, FormValidation.I18n[locale].iban.countries[country])
             };
         }
     };

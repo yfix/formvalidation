@@ -8,7 +8,7 @@ describe('dynamic fields', function() {
             '</form>'
         ].join('\n')).appendTo('body');
 
-        $('#dynamicForm').bootstrapValidator({
+        $('#dynamicForm').formValidation({
             fields: {
                 fullName: {
                     validators: {
@@ -38,15 +38,15 @@ describe('dynamic fields', function() {
             }
         });
 
-        this.bv        = $('#dynamicForm').data('bootstrapValidator');
-        this.$fullName = this.bv.getFieldElements('fullName');
+        this.fv        = $('#dynamicForm').data('formValidation');
+        this.$fullName = this.fv.getFieldElements('fullName');
     });
 
     afterEach(function() {
-        $('#dynamicForm').bootstrapValidator('destroy').remove();
+        $('#dynamicForm').formValidation('destroy').remove();
     });
 
-    // https://github.com/nghuuphuoc/bootstrapvalidator/pull/725
+    // https://github.com/formvalidation/formvalidation/pull/725
     it('adding field [does not exist but is already set in "fields" option]', function() {
         var $div   = $('<div/>').addClass('form-group').appendTo($('#dynamicForm'));
             $email = $('<input/>')
@@ -55,19 +55,19 @@ describe('dynamic fields', function() {
                         .attr('name', 'email')
                         .appendTo($div);
 
-        this.bv.addField('email');
+        this.fv.addField('email');
 
         this.$fullName.val('Phuoc Nguyen');
 
         $email.val('not valid@email');
-        this.bv.validate();
-        expect(this.bv.isValidField('email')).toBeFalsy();
-        expect(this.bv.isValid()).toBeFalsy();
+        this.fv.validate();
+        expect(this.fv.isValidField('email')).toBeFalsy();
+        expect(this.fv.isValid()).toBeFalsy();
 
-        this.bv.resetForm();
+        this.fv.resetForm();
         $email.val('valid@email.com');
-        this.bv.validate();
-        expect(this.bv.isValidField('email')).toBeTruthy();
-        expect(this.bv.isValid()).toBeTruthy();
+        this.fv.validate();
+        expect(this.fv.isValidField('email')).toBeTruthy();
+        expect(this.fv.isValid()).toBeTruthy();
     });
 });

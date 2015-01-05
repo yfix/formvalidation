@@ -11,7 +11,7 @@ describe('message', function() {
         ].join('\n');
 
         $(html).appendTo('body');
-        $('#messageForm').bootstrapValidator({
+        $('#messageForm').formValidation({
             fields: {
                 password: {
                     validators: {
@@ -55,43 +55,43 @@ describe('message', function() {
             }
         });
 
-        this.bv        = $('#messageForm').data('bootstrapValidator');
-        this.$password = this.bv.getFieldElements('password');
+        this.fv        = $('#messageForm').data('formValidation');
+        this.$password = this.fv.getFieldElements('password');
     });
 
     afterEach(function() {
-        $('#messageForm').bootstrapValidator('destroy').parent().remove();
+        $('#messageForm').formValidation('destroy').parent().remove();
     });
 
     it('update message from callback', function() {
-        this.bv.resetForm();
+        this.fv.resetForm();
         this.$password.val('123');
-        this.bv.validate();
-        expect(this.bv.getMessages('password', 'callback')[0]).toEqual('The password must be more than 6 characters');
+        this.fv.validate();
+        expect(this.fv.getMessages('password', 'callback')[0]).toEqual('The password must be more than 6 characters');
 
-        this.bv.resetForm();
+        this.fv.resetForm();
         this.$password.val('no_upper_case!@#');
-        this.bv.validate();
-        expect(this.bv.getMessages('password', 'callback')[0]).toEqual('The password must contain at least one upper case character');
+        this.fv.validate();
+        expect(this.fv.getMessages('password', 'callback')[0]).toEqual('The password must contain at least one upper case character');
 
-        this.bv.resetForm();
+        this.fv.resetForm();
         this.$password.val('NO_LOWER_CASE123');
-        this.bv.validate();
-        expect(this.bv.getMessages('password', 'callback')[0]).toEqual('The password must contain at least one lower case character');
+        this.fv.validate();
+        expect(this.fv.getMessages('password', 'callback')[0]).toEqual('The password must contain at least one lower case character');
 
-        this.bv.resetForm();
+        this.fv.resetForm();
         this.$password.val('NoDigits!@#');
-        this.bv.validate();
-        expect(this.bv.getMessages('password', 'callback')[0]).toEqual('The password must contain at least one digit');
+        this.fv.validate();
+        expect(this.fv.getMessages('password', 'callback')[0]).toEqual('The password must contain at least one digit');
     });
 
     it('call updateMessage()', function() {
-        this.bv.updateStatus('password', this.bv.STATUS_INVALID, 'callback');
+        this.fv.updateStatus('password', this.fv.STATUS_INVALID, 'callback');
 
-        this.bv.updateMessage('password', 'callback', 'The password is weak');
-        expect(this.bv.getMessages('password', 'callback')[0]).toEqual('The password is weak');
+        this.fv.updateMessage('password', 'callback', 'The password is weak');
+        expect(this.fv.getMessages('password', 'callback')[0]).toEqual('The password is weak');
 
-        this.bv.updateMessage(this.$password, 'callback', 'The password is not strong');
-        expect(this.bv.getMessages(this.$password, 'callback')[0]).toEqual('The password is not strong');
+        this.fv.updateMessage(this.$password, 'callback', 'The password is not strong');
+        expect(this.fv.getMessages(this.$password, 'callback')[0]).toEqual('The password is not strong');
     });
 });

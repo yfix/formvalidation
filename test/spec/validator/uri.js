@@ -4,19 +4,19 @@ describe('uri', function() {
             '<form class="form-horizontal" id="uriForm">',
                 '<div id="msg"></div>',
                 '<div class="form-group">',
-                    '<input type="text" name="uri" data-bv-uri />',
+                    '<input type="text" name="uri" data-fv-uri />',
                 '</div>',
             '</form>'
         ].join('\n')).appendTo('body');
 
-        $('#uriForm').bootstrapValidator();
+        $('#uriForm').formValidation();
 
-        this.bv   = $('#uriForm').data('bootstrapValidator');
-        this.$uri = this.bv.getFieldElements('uri');
+        this.fv   = $('#uriForm').data('formValidation');
+        this.$uri = this.fv.getFieldElements('uri');
     });
 
     afterEach(function() {
-        $('#uriForm').bootstrapValidator('destroy').remove();
+        $('#uriForm').formValidation('destroy').remove();
     });
 
     var validGlobalURIs = [
@@ -57,6 +57,53 @@ describe('uri', function() {
         'http://1337.net',
         'http://a.b-c.de',
         'http://223.255.255.254'
+    ];
+
+    var validEmptyProtocolURIs = [
+        'foo.com/blah_blah',
+        'foo.com/blah_blah',
+        'foo.com/blah_blah/',
+        'foo.com/blah_blah_(wikipedia)',
+        'foo.com/blah_blah_(wikipedia)_(again)',
+        'www.example.com/wpstyle/?p=364',
+        'www.example.com/foo/?bar=baz&inga=42&quux',
+        '✪df.ws/123',
+        'userid:password@example.com:8080',
+        'userid:password@example.com:8080/',
+        'userid@example.com',
+        'userid@example.com/',
+        'userid@example.com:8080',
+        'userid@example.com:8080/',
+        'userid:password@example.com',
+        'userid:password@example.com/',
+        '142.42.1.1/',
+        '142.42.1.1:8080/',
+        '➡.ws/䨹',
+        '⌘.ws',
+        '⌘.ws/',
+        'foo.com/blah_(wikipedia)#cite-1',
+        'foo.com/blah_(wikipedia)_blah#cite-1',
+        'foo.com/unicode_(✪)_in_parens',
+        'foo.com/(something)?after=parens',
+        '☺.damowmow.com/',
+        'code.google.com/events/#&product=browser',
+        'j.mp',
+        'foo.bar/baz',
+        'foo.bar/?q=Test%20URL-encoded%20stuff',
+        '例子.测试',
+        'उदाहरण.परीक्षा',
+        "-.~_!$&'()*+,;=:%40:80%2f::::::@example.com",
+        '1337.net',
+        'a.b-c.de',
+        '223.255.255.254'
+    ];
+
+    var invalidEmptyProtocolURIs = [
+        'gopher://foo.com/blah_blah',
+        'news://foo.com/blah_blah',
+        'http:/foo.com/blah_blah/',
+        '://foo.com/blah_blah_(wikipedia)',
+        'http://http://foo.com/blah_blah_(wikipedia)_(again)'
     ];
 
     var invalidGlobalURIs = [
@@ -115,44 +162,66 @@ describe('uri', function() {
     ];
 
     it('Valid URIs (allowLocal=false)', function() {
-        var me = this;
+        var that = this;
         $.each(validGlobalURIs, function(index, uri) {
-            me.bv.resetForm();
-            me.$uri.val(uri);
-            me.bv.validate();
-            expect(me.bv.isValid()).toBeTruthy();
+            that.fv.resetForm();
+            that.$uri.val(uri);
+            that.fv.validate();
+            expect(that.fv.isValid()).toBeTruthy();
         });
     });
 
     it('Invalid URIs (allowLocal=false)', function() {
-        var me = this;
+        var that = this;
         $.each(invalidGlobalURIs.concat(localURIs), function(index, uri) {
-            me.bv.resetForm();
-            me.$uri.val(uri);
-            me.bv.validate();
-            expect(me.bv.isValid()).toEqual(false);
+            that.fv.resetForm();
+            that.$uri.val(uri);
+            that.fv.validate();
+            expect(that.fv.isValid()).toEqual(false);
         });
     });
 
     it('Valid URIs (allowLocal=true)', function() {
-        var me = this;
-        me.bv.updateOption('uri', 'uri', 'allowLocal', true);
+        var that = this;
+        this.fv.updateOption('uri', 'uri', 'allowLocal', true);
         $.each(validGlobalURIs.concat(localURIs), function(index, uri) {
-            me.bv.resetForm();
-            me.$uri.val(uri);
-            me.bv.validate();
-            expect(me.bv.isValid()).toBeTruthy();
+            that.fv.resetForm();
+            that.$uri.val(uri);
+            that.fv.validate();
+            expect(that.fv.isValid()).toBeTruthy();
         });
     });
 
     it('Invalid URIs (allowLocal=true)', function() {
-        var me = this;
-        me.bv.updateOption('uri', 'uri', 'allowLocal', true);
+        var that = this;
+        this.fv.updateOption('uri', 'uri', 'allowLocal', true);
         $.each(invalidGlobalURIs, function(index, uri) {
-            me.bv.resetForm();
-            me.$uri.val(uri);
-            me.bv.validate();
-            expect(me.bv.isValid()).toEqual(false);
+            that.fv.resetForm();
+            that.$uri.val(uri);
+            that.fv.validate();
+            expect(that.fv.isValid()).toEqual(false);
+        });
+    });
+
+    it('Valid URIs (allowEmptyProtocol=true)', function() {
+        var that = this;
+        this.fv.updateOption('uri', 'uri', 'allowEmptyProtocol', true);
+        $.each(validGlobalURIs.concat(validEmptyProtocolURIs), function(index, uri) {
+            that.fv.resetForm();
+            that.$uri.val(uri);
+            that.fv.validate();
+            expect(that.fv.isValid()).toBeTruthy();
+        });
+    });
+
+    it('Invalid URIs (allowEmptyProtocol=true)', function() {
+        var that = this;
+        this.fv.updateOption('uri', 'uri', 'allowEmptyProtocol', true);
+        $.each(invalidEmptyProtocolURIs, function(index, uri) {
+            that.fv.resetForm();
+            that.$uri.val(uri);
+            that.fv.validate();
+            expect(that.fv.isValid()).toBeFalsy();
         });
     });
 });

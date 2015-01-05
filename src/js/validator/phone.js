@@ -1,17 +1,16 @@
 /**
  * phone validator
  *
- * @link        http://bootstrapvalidator.com/validators/phone/
+ * @link        http://formvalidation.io/validators/phone/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             phone: {
                 'default': 'Please enter a valid phone number',
-                countryNotSupported: 'The country code %s is not supported',
                 country: 'Please enter a valid phone number in %s',
                 countries: {
                     AE: 'United Arab Emirates',
@@ -23,6 +22,7 @@
                     ES: 'Spain',
                     FR: 'France',
                     GB: 'United Kingdom',
+                    IN: 'India',
                     MA: 'Morocco',
                     PK: 'Pakistan',
                     RO: 'Romania',
@@ -36,20 +36,20 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.phone = {
+    FormValidation.Validator.phone = {
         html5Attributes: {
             message: 'message',
             country: 'country'
         },
 
         // The supported countries
-        COUNTRY_CODES: ['AE', 'BR', 'CN', 'CZ', 'DE', 'DK', 'ES', 'FR', 'GB', 'MA', 'PK', 'RO', 'RU', 'SK', 'TH', 'US', 'VE'],
+        COUNTRY_CODES: ['AE', 'BR', 'CN', 'CZ', 'DE', 'DK', 'ES', 'FR', 'GB', 'IN', 'MA', 'PK', 'RO', 'RU', 'SK', 'TH', 'US', 'VE'],
 
         /**
          * Return true if the input value contains a valid phone number for the country
          * selected in the options
          *
-         * @param {BootstrapValidator} validator Validate plugin instance
+         * @param {FormValidation.Base} validator Validate plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Consist of key:
          * - message: The invalid message
@@ -62,7 +62,7 @@
          * @returns {Boolean|Object}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'phone');
             if (value === '') {
                 return true;
             }
@@ -75,10 +75,7 @@
             }
 
             if (!country || $.inArray(country.toUpperCase(), this.COUNTRY_CODES) === -1) {
-                return {
-                    valid: false,
-                    message: $.fn.bootstrapValidator.helpers.format($.fn.bootstrapValidator.i18n[locale].phone.countryNotSupported, country)
-                };
+                return true;
             }
 
             var isValid = true;
@@ -123,8 +120,15 @@
 
                 case 'ES':
                     // http://regex101.com/r/rB9mA9/1
+                    // Telephone numbers in Spain go like this:
+                    //     9: Landline phones and special prefixes.
+                    //     6, 7: Mobile phones.
+                    //     5: VoIP lines.
+                    //     8: Premium-rate services.
+                    // There are also special 5-digit and 3-digit numbers, but
+                    // maybe it would be overkill to include them all.
                     value   = $.trim(value);
-                    isValid = (/^(?:(?:(?:\+|00)34\D?))?(?:9|6)(?:\d\D?){8}$/).test(value);
+                    isValid = (/^(?:(?:(?:\+|00)34\D?))?(?:5|6|7|8|9)(?:\d\D?){8}$/).test(value);
                     break;
 
                 case 'FR':
@@ -134,12 +138,20 @@
                     break;
 
             	case 'GB':
-            		// http://aa-asterisk.org.uk/index.php/Regular_Expressions_for_Validating_and_Formatting_GB_Telephone_Numbers#Match_GB_telephone_number_in_any_format
-            		// Test: http://regexr.com/38uhv
-            		value   = $.trim(value);
-            		isValid = (/^\(?(?:(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?\(?(?:0\)?[\s-]?\(?)?|0)(?:\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}|\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4}|\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3})|\d{5}\)?[\s-]?\d{4,5}|8(?:00[\s-]?11[\s-]?11|45[\s-]?46[\s-]?4\d))(?:(?:[\s-]?(?:x|ext\.?\s?|\#)\d+)?)$/).test(value);
+                    // http://aa-asterisk.org.uk/index.php/Regular_Expressions_for_Validating_and_Formatting_GB_Telephone_Numbers#Match_GB_telephone_number_in_any_format
+                    // Test: http://regexr.com/38uhv
+                    value   = $.trim(value);
+                    isValid = (/^\(?(?:(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?\(?(?:0\)?[\s-]?\(?)?|0)(?:\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}|\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4}|\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3})|\d{5}\)?[\s-]?\d{4,5}|8(?:00[\s-]?11[\s-]?11|45[\s-]?46[\s-]?4\d))(?:(?:[\s-]?(?:x|ext\.?\s?|\#)\d+)?)$/).test(value);
                     break;
-
+            
+                case 'IN':
+                    // http://stackoverflow.com/questions/18351553/regular-expression-validation-for-indian-phone-number-and-mobile-number
+                    // Test: http://regex101.com/r/qL6eZ5/1
+                    // May begin with +91. Supports mobile and land line numbers
+                    value   = $.trim(value);
+                    isValid = (/((\+?)((0[ -]+)*|(91 )*)(\d{12}|\d{10}))|\d{5}([- ]*)\d{6}/).test(value);
+                    break;
+                    
                 case 'MA':
                     // http://en.wikipedia.org/wiki/Telephone_numbers_in_Morocco
                     // Test: http://regexr.com/399n8
@@ -153,11 +165,11 @@
                     isValid = (/^0?3[0-9]{2}[0-9]{7}$/).test(value);
                     break;
 
-        		case 'RO':
-        		    // All mobile network and land line
+                case 'RO':
+                    // All mobile network and land line
                     // http://regexr.com/39fv1
-        		    isValid = (/^(\+4|)?(07[0-8]{1}[0-9]{1}|02[0-9]{2}|03[0-9]{2}){1}?(\s|\.|\-)?([0-9]{3}(\s|\.|\-|)){2}$/g).test(value);
-        		    break;
+                    isValid = (/^(\+4|)?(07[0-8]{1}[0-9]{1}|02[0-9]{2}|03[0-9]{2}){1}?(\s|\.|\-)?([0-9]{3}(\s|\.|\-|)){2}$/g).test(value);
+                    break;
 
                 case 'RU':
                     // http://regex101.com/r/gW7yT5/5
@@ -170,9 +182,9 @@
                     break;
 
                 case 'TH':
-        		    // http://regex101.com/r/vM5mZ4/2
-        		    isValid = (/^0\(?([6|8-9]{2})*-([0-9]{3})*-([0-9]{4})$/).test(value);
-        		    break;
+                    // http://regex101.com/r/vM5mZ4/2
+                    isValid = (/^0\(?([6|8-9]{2})*-([0-9]{3})*-([0-9]{4})$/).test(value);
+                    break;
 
                 case 'VE':
                     // http://regex101.com/r/eM2yY0/6
@@ -187,14 +199,13 @@
                     // May start with 1, +1, or 1-; should discard
                     // Area code may be delimited with (), & sections may be delimited with . or -
                     // Test: http://regexr.com/38mqi
-                    value   = value.replace(/\D/g, '');
-                    isValid = (/^(?:(1\-?)|(\+1 ?))?\(?(\d{3})[\)\-\.]?(\d{3})[\-\.]?(\d{4})$/).test(value) && (value.length === 10);
+                    isValid = (/^(?:(1\-?)|(\+1 ?))?\(?(\d{3})[\)\-\.]?(\d{3})[\-\.]?(\d{4})$/).test(value);
                     break;
             }
 
             return {
                 valid: isValid,
-                message: $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n[locale].phone.country, $.fn.bootstrapValidator.i18n[locale].phone.countries[country])
+                message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].phone.country, FormValidation.I18n[locale].phone.countries[country])
             };
         }
     };

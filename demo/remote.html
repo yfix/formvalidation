@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>BootstrapValidator demo</title>
+    <title>FormValidation demo</title>
 
      <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css"/>
-    <link rel="stylesheet" href="../dist/css/bootstrapValidator.css"/>
+    <link rel="stylesheet" href="../dist/css/formValidation.css"/>
 
     <script type="text/javascript" src="../vendor/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../dist/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="../dist/js/formValidation.js"></script>
+    <script type="text/javascript" src="../dist/js/framework/bootstrap.js"></script>
 </head>
 <body>
     <div class="container">
@@ -100,10 +101,10 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-    $('#defaultForm').bootstrapValidator({
+    $('#defaultForm').formValidation({
         message: 'This value is not valid',
 //        live: 'disabled',
-        feedbackIcons: {
+        icon: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
@@ -120,10 +121,6 @@ $(document).ready(function() {
                         url: 'remote.php',
                         message: 'The username is not available',
                         delay: 1000
-                    },
-                    different: {
-                        field: 'password',
-                        message: 'The username and password can\'t be the same as each other'
                     }
                 }
             },
@@ -147,10 +144,6 @@ $(document).ready(function() {
                 validators: {
                     notEmpty: {
                         message: 'The password is required and can\'t be empty'
-                    },
-                    identical: {
-                        field: 'confirmPassword',
-                        message: 'The password and its confirm are not the same'
                     },
                     different: {
                         field: 'username',

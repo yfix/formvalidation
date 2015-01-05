@@ -1,13 +1,13 @@
 /**
  * uri validator
  *
- * @link        http://bootstrapvalidator.com/validators/uri/
+ * @link        http://formvalidation.io/validators/uri/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             uri: {
                 'default': 'Please enter a valid URI'
@@ -15,10 +15,11 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.uri = {
+    FormValidation.Validator.uri = {
         html5Attributes: {
             message: 'message',
             allowlocal: 'allowLocal',
+            allowemptyprotocol: 'allowEmptyProtocol',
             protocol: 'protocol'
         },
 
@@ -29,16 +30,17 @@
         /**
          * Return true if the input value is a valid URL
          *
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options
          * - message: The error message
          * - allowLocal: Allow the private and local network IP. Default to false
+         * - allowEmptyProtocol: Allow the URI without protocol. Default to false
          * - protocol: The protocols, separated by a comma. Default to "http, https, ftp"
          * @returns {Boolean}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'uri');
             if (value === '') {
                 return true;
             }
@@ -74,12 +76,17 @@
             //
             // - Added possibility of choosing a custom protocol
             //
-            var allowLocal = options.allowLocal === true || options.allowLocal === 'true',
-                protocol   = (options.protocol || 'http, https, ftp').split(',').join('|').replace(/\s/g, ''),
-                urlExp     = new RegExp(
+            // - Add option to validate without protocol
+            //
+            var allowLocal         = options.allowLocal === true || options.allowLocal === 'true',
+                allowEmptyProtocol = options.allowEmptyProtocol === true || options.allowEmptyProtocol === 'true',
+                protocol           = (options.protocol || 'http, https, ftp').split(',').join('|').replace(/\s/g, ''),
+                urlExp             = new RegExp(
                     "^" +
                     // protocol identifier
                     "(?:(?:" + protocol + ")://)" +
+                    // allow empty protocol
+                    (allowEmptyProtocol ? '?' : '') +
                     // user:pass authentication
                     "(?:\\S+(?::\\S*)?@)?" +
                     "(?:" +
@@ -100,9 +107,9 @@
                     "(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))" +
                     "|" +
                     // host name
-                    "(?:(?:[a-z\\u00a1-\\uffff0-9]+-?)*[a-z\\u00a1-\\uffff0-9]+)" +
+                    "(?:(?:[a-z\\u00a1-\\uffff0-9]-?)*[a-z\\u00a1-\\uffff0-9]+)" +
                     // domain name
-                    "(?:\\.(?:[a-z\\u00a1-\\uffff0-9]+-?)*[a-z\\u00a1-\\uffff0-9]+)*" +
+                    "(?:\\.(?:[a-z\\u00a1-\\uffff0-9]-?)*[a-z\\u00a1-\\uffff0-9])*" +
                     // TLD identifier
                     "(?:\\.(?:[a-z\\u00a1-\\uffff]{2,}))" +
                     // Allow intranet sites (no TLD) if `allowLocal` is true
@@ -113,7 +120,7 @@
                     // resource path
                     "(?:/[^\\s]*)?" +
                     "$", "i"
-            );
+                );
 
             return urlExp.test(value);
         }

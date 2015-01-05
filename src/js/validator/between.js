@@ -1,13 +1,13 @@
 /**
  * between validator
  *
- * @link        http://bootstrapvalidator.com/validators/between/
+ * @link        http://formvalidation.io/validators/between/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             between: {
                 'default': 'Please enter a value between %s and %s',
@@ -16,7 +16,7 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.between = {
+    FormValidation.Validator.between = {
         html5Attributes: {
             message: 'message',
             min: 'min',
@@ -38,7 +38,7 @@
         /**
          * Return true if the input value is between (strictly or not) two given numbers
          *
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following keys:
          * - min
@@ -55,7 +55,7 @@
          * @returns {Boolean|Object}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'between');
             if (value === '') {
                 return true;
             }
@@ -75,11 +75,11 @@
 			return (options.inclusive === true || options.inclusive === undefined)
                     ? {
                         valid: value >= minValue && value <= maxValue,
-                        message: $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n[locale].between['default'], [min, max])
+                        message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].between['default'], [min, max])
                     }
                     : {
                         valid: value > minValue  && value <  maxValue,
-                        message: $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n[locale].between.notInclusive, [min, max])
+                        message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].between.notInclusive, [min, max])
                     };
         },
 

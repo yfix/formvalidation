@@ -3,7 +3,7 @@
      * The Dutch language package
      * Translated by @jvanderheide
      */
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n, {
         'nl_NL': {
             base64: {
                 'default': 'Voer een geldige Base64 geëncodeerde tekst in'
@@ -72,7 +72,6 @@
             },
             iban: {
                 'default': 'Voer een geldig IBAN nummer in',
-                countryNotSupported: 'De land code %s wordt niet ondersteund',
                 country: 'Voer een geldig IBAN nummer in uit %s',
                 countries: {
                     AD: 'Andorra',
@@ -158,7 +157,6 @@
             },
             id: {
                 'default': 'Voer een geldig identificatie nummer in',
-                countryNotSupported: 'De land code %s wordt niet ondersteund',
                 country: 'Voer een geldig identificatie nummer in uit %s',
                 countries: {
                     BA: 'Bosnië en Herzegovina',
@@ -237,7 +235,6 @@
             },
             phone: {
                 'default': 'Voer een geldig telefoonnummer in',
-                countryNotSupported: 'De land code %s wordt niet ondersteund',
                 country: 'Voer een geldig telefoonnummer in uit %s',
                 countries: {
                     AE: 'Verenigde Arabische Emiraten',
@@ -249,6 +246,7 @@
                     ES: 'Spanje',
                     FR: 'Frankrijk',
                     GB: 'Verenigd Koninkrijk',
+                    IN: 'Indië',
                     MA: 'Marokko',
                     PK: 'Pakistan',
                     RO: 'Roemenië',
@@ -299,7 +297,6 @@
             },
             vat: {
                 'default': 'Voer een geldig BTW-nummer in',
-                countryNotSupported: 'De land code %s wordt niet ondersteund',
                 country: 'Voer een geldig BTW-nummer in uit %s',
                 countries: {
                     AT: 'Oostenrijk',
@@ -346,7 +343,6 @@
             },
             zipCode: {
                 'default': 'Voer een geldige postcode in',
-                countryNotSupported: 'De land code %s wordt niet ondersteund',
                 country: 'Voer een geldige postcode in uit %s',
                 countries: {
                     AT: 'Oostenrijk',
@@ -356,9 +352,11 @@
                     CZ: 'Tsjechische Republiek',
                     DE: 'Duitsland',
                     DK: 'Denemarken',
+                    ES: 'Spanje',
                     FR: 'Frankrijk',
                     GB: 'Verenigd Koninkrijk',
                     IE: 'Ierland',
+                    IN: 'Indië',
                     IT: 'Italië',
                     MA: 'Marokko',
                     NL: 'Nederland',

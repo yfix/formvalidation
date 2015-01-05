@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>BootstrapValidator demo</title>
+    <title>FormValidation demo</title>
 
     <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css"/>
-    <link rel="stylesheet" href="../dist/css/bootstrapValidator.css"/>
+    <link rel="stylesheet" href="../dist/css/formValidation.css"/>
     <script type="text/javascript" src="../vendor/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../dist/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="../dist/js/formValidation.js"></script>
+    <script type="text/javascript" src="../dist/js/framework/bootstrap.js"></script>
 </head>
 <body>
     <div class="container">
@@ -82,10 +83,12 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-    $('#defaultForm').bootstrapValidator({
+    $('#defaultForm').formValidation({
         message: 'This value is not valid',
-        container: 'tooltip',
-        feedbackIcons: {
+        err: {
+            container: 'tooltip'
+        },
+        icon: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
@@ -137,15 +140,11 @@ $(document).ready(function() {
                     regexp: {
                         regexp: /^[a-zA-Z0-9_\.]+$/,
                         message: 'The username can only consist of alphabetical, number, dot and underscore'
-                    },
-                    different: {
-                        field: 'password',
-                        message: 'The username and password cannot be the same as each other'
                     }
                 }
             },
             email: {
-                container: 'popover',
+                err: 'popover',
                 validators: {
                     emailAddress: {
                         message: 'The input is not a valid email address'
@@ -153,7 +152,7 @@ $(document).ready(function() {
                 }
             },
             password: {
-                container: 'popover',
+                err: 'popover',
                 validators: {
                     notEmpty: {
                         message: 'The password is required and cannot be empty'

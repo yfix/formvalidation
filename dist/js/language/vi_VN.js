@@ -3,7 +3,7 @@
      * Vietnamese language package
      * Translated by @nghuuphuoc
      */
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n, {
         'vi_VN': {
             base64: {
                 'default': 'Vui lòng nhập chuỗi mã hoá base64 hợp lệ'
@@ -72,7 +72,6 @@
             },
             iban: {
                 'default': 'Vui lòng nhập số IBAN hợp lệ',
-                countryNotSupported: 'Mã quốc gia %s không được hỗ trợ',
                 country: 'Vui lòng nhập mã IBAN hợp lệ của %s',
                 countries: {
                     AD: 'Andorra',
@@ -158,7 +157,6 @@
             },
             id: {
                 'default': 'Vui lòng nhập mã ID hợp lệ',
-                countryNotSupported: 'Mã quốc gia %s không được hỗ trợ',
                 country: 'Vui lòng nhập mã ID hợp lệ của %s',
                 countries: {
                     BA: 'Bosnia và Herzegovina',
@@ -237,7 +235,6 @@
             },
             phone: {
                 'default': 'Vui lòng nhập số điện thoại hợp lệ',
-                countryNotSupported: 'Mã quốc gia %s không được hỗ trợ',
                 country: 'Vui lòng nhập số điện thoại hợp lệ của %s',
                 countries: {
                     AE: 'Tiểu vương quốc Ả Rập thống nhất',
@@ -249,6 +246,7 @@
                     ES: 'Tây Ban Nha',
                     FR: 'Pháp',
                     GB: 'Vương quốc Anh',
+                    IN: 'Ấn Độ',
                     MA: 'Maroc',
                     PK: 'Pakistan',
                     RO: 'Romania',
@@ -299,7 +297,6 @@
             },
             vat: {
                 'default': 'Vui lòng nhập số VAT hợp lệ',
-                countryNotSupported: 'Mã quốc gia %s không được hỗ trợ',
                 country: 'Vui lòng nhập số VAT hợp lệ của %s',
                 countries: {
                     AT: 'Áo',
@@ -346,7 +343,6 @@
             },
             zipCode: {
                 'default': 'Vui lòng nhập mã bưu điện hợp lệ',
-                countryNotSupported: 'Mã quốc gia %s không được hỗ trợ',
                 country: 'Vui lòng nhập mã bưu điện hợp lệ của %s',
                 countries: {
                     AT: 'Áo',
@@ -356,9 +352,11 @@
                     CZ: 'Séc',
                     DE: 'Đức',
                     DK: 'Đan Mạch',
+                    ES: 'Tây Ban Nha',
                     FR: 'Pháp',
                     GB: 'Vương quốc Anh',
                     IE: 'Ireland',
+                    IN: 'Ấn Độ',
                     IT: 'Ý',
                     MA: 'Maroc',
                     NL: 'Hà Lan',

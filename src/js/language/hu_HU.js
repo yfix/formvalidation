@@ -3,7 +3,7 @@
      * Hungarian language package
      * Translated by @blackfyre
      */
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n, {
         'hu_HU': {
             base64: {
                 'default': 'Kérlek, hogy érvényes base 64 karakter láncot adj meg'
@@ -72,7 +72,6 @@
             },
             iban: {
                 'default': 'Kérlek, hogy érvényes IBAN számot ajd meg',
-                countryNotSupported: 'A(z) %s országkód nem támogatott',
                 country: 'Kérlek, hogy %s érvényes  IBAN számot adj meg',
                 countries: {
                     AD: 'az Andorrai Fejedelemségben', /* Special case */
@@ -158,7 +157,6 @@
             },
             id: {
                 'default': 'Kérlek, hogy érvényes személy azonosító számot adj meg',
-                countryNotSupported: 'A(z) %s országkód nem támogatott',
                 country: 'Kérlek, hogy %s érvényes személy azonosító számot ajd meg',
                 countries: {
                     BA: 'Bosznia-Hercegovinában',
@@ -237,7 +235,6 @@
             },
             phone: {
                 'default': 'Kérlek, hogy érvényes telefonszámot adj meg',
-                countryNotSupported: 'A(z) %s országkód nem támogatott',
                 country: 'Kérlek, hogy %s érvényes telefonszámot adj meg',
                 countries: {
                     AE: 'az Egyesült Arab Emírségekben', /* Special case */
@@ -249,6 +246,7 @@
                     ES: 'Spanyolországban',
                     FR: 'Franciaországban',
                     GB: 'az Egyesült Királyságban',
+                    IN: 'India',
                     MA: 'Marokkóban',
                     PK: 'Pakisztánban',
                     RO: 'Romániában',
@@ -299,7 +297,6 @@
             },
             vat: {
                 'default': 'Kérlek, hogy helyes adó számot adj meg',
-                countryNotSupported: '%s - nem támogatott ország',
                 country: 'Kérlek, hogy %s helyes  adószámot ajd meg',
                 countries: {
                     AT: 'Ausztriában',
@@ -346,7 +343,6 @@
             },
             zipCode: {
                 'default': 'Kérlek, hogy érvényes irányítószámot adj meg',
-                countryNotSupported: '%s - nem támogatott ország',
                 country: 'Kérlek, hogy %s érvényes irányítószámot adj meg',
                 countries: {
                     AT: 'Ausztriában',
@@ -356,9 +352,11 @@
                     CZ: 'Csehországban',
                     DE: 'Németországban',
                     DK: 'Dániában',
+                    ES: 'Spanyolországban',
                     FR: 'Franciaországban',
                     GB: 'az Egyesült Királyságban',
                     IE: 'Írországban',
+                    IN: 'India',
                     IT: 'Olaszországban',
                     MA: 'Marokkóban',
                     NL: 'Hollandiában',

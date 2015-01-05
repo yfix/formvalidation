@@ -1,13 +1,13 @@
 /**
  * notEmpty validator
  *
- * @link        http://bootstrapvalidator.com/validators/notEmpty/
+ * @link        http://formvalidation.io/validators/notEmpty/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             notEmpty: {
                 'default': 'Please enter a value'
@@ -15,7 +15,7 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.notEmpty = {
+    FormValidation.Validator.notEmpty = {
         enableByHtml5: function($field) {
             var required = $field.attr('required') + '';
             return ('required' === required || 'true' === required);
@@ -24,7 +24,7 @@
         /**
          * Check if input value is empty or not
          *
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options
          * @returns {Boolean}
@@ -32,8 +32,9 @@
         validate: function(validator, $field, options) {
             var type = $field.attr('type');
             if ('radio' === type || 'checkbox' === type) {
+                var ns = validator.getNamespace();
                 return validator
-                            .getFieldElements($field.attr('data-bv-field'))
+                            .getFieldElements($field.attr('data-' + ns + '-field'))
                             .filter(':checked')
                             .length > 0;
             }

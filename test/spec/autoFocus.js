@@ -6,7 +6,7 @@ describe('autoFocus', function() {
                     '<input type="text" name="username" required />',
                 '</div>',
                 '<div class="form-group">',
-                    '<input type="text" name="email" required data-bv-emailaddress />',
+                    '<input type="text" name="email" required data-fv-emailaddress />',
                 '</div>',
                 '<div class="form-group">',
                     '<button type="submit" id="submitButton">Submit</button>',
@@ -14,18 +14,18 @@ describe('autoFocus', function() {
             '</form>'
         ].join('')).appendTo('body');
 
-        this.bv        = $('#autoFocusForm')
-                            .bootstrapValidator()
+        this.fv        = $('#autoFocusForm')
+                            .formValidation()
                             .submit(function(e) {
                                 e.preventDefault();
                             })
-                            .data('bootstrapValidator');
-        this.$username = this.bv.getFieldElements('username');
-        this.$email    = this.bv.getFieldElements('email');
+                            .data('formValidation');
+        this.$username = this.fv.getFieldElements('username');
+        this.$email    = this.fv.getFieldElements('email');
     });
 
     afterEach(function() {
-        $('#autoFocusForm').bootstrapValidator('destroy').remove();
+        $('#autoFocusForm').formValidation('destroy').remove();
     });
 
     it('default option (autoFocus=true)', function() {
@@ -33,7 +33,7 @@ describe('autoFocus', function() {
         expect(this.$username.is(':focus')).toBeTruthy();
         expect($(document.activeElement).attr('name')).toEqual('username');
 
-        this.bv.resetForm();
+        this.fv.resetForm();
         this.$username.val('user_name');
         this.$email.val('');
         $('#submitButton').click();
@@ -43,8 +43,8 @@ describe('autoFocus', function() {
 
     it('set autoFocus=false for form', function() {
         $('#autoFocusForm')
-                .bootstrapValidator('destroy')
-                .bootstrapValidator({
+                .formValidation('destroy')
+                .formValidation({
                     autoFocus: false
                 });
         this.$username.val('');
@@ -56,7 +56,7 @@ describe('autoFocus', function() {
     });
 
     it('set autoFocus=false for all fields', function() {
-        this.bv
+        this.fv
             .addField('username', {
                 autoFocus: false
             })
@@ -72,7 +72,7 @@ describe('autoFocus', function() {
     });
 
     it('set different autoFocus value for fields', function() {
-        this.bv
+        this.fv
             .addField('username', {
                 autoFocus: false
             })

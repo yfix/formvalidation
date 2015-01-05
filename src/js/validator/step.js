@@ -1,13 +1,13 @@
 /**
  * step validator
  *
- * @link        http://bootstrapvalidator.com/validators/step/
+ * @link        http://formvalidation.io/validators/step/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             step: {
                 'default': 'Please enter a valid step of %s'
@@ -15,7 +15,7 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.step = {
+    FormValidation.Validator.step = {
         html5Attributes: {
             message: 'message',
             base: 'baseValue',
@@ -25,7 +25,7 @@
         /**
          * Return true if the input value is valid step one
          *
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following keys:
          * - baseValue: The base value
@@ -34,7 +34,7 @@
          * @returns {Boolean|Object}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'step');
             if (value === '') {
                 return true;
             }
@@ -70,7 +70,7 @@
                 mod    = floatMod(value - options.baseValue, options.step);
             return {
                 valid: mod === 0.0 || mod === options.step,
-                message: $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n[locale].step['default'], [options.step])
+                message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].step['default'], [options.step])
             };
         }
     };

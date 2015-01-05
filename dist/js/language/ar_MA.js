@@ -3,7 +3,7 @@
      * Arabic language package
      * Translated by @Arkni
      */
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n, {
         'ar_MA': {
             base64: {
                 'default': 'الرجاء إدخال قيمة مشفرة طبقا للقاعدة 64.'
@@ -72,7 +72,6 @@
             },
             iban: {
                 'default': 'الرجاء إدخال رقم IBAN صالح.',
-                countryNotSupported: 'البلد ذو الرمز %s غير معتمد.',
                 country: 'الرجاء إدخال رقم IBAN صالح في %s.',
                 countries: {
                     AD: 'أندورا',
@@ -158,7 +157,6 @@
             },
             id: {
                 'default': 'الرجاء إدخال رقم هوية صالحة.',
-                countryNotSupported: 'البلد ذو الرمز %s غير معتمد.',
                 country: 'الرجاء إدخال رقم تعريف صالح في %s.',
                 countries: {
                     BA: 'البوسنة والهرسك',
@@ -237,7 +235,6 @@
             },
             phone: {
                 'default': 'الرجاء إدخال رقم هاتف صحيح.',
-                countryNotSupported: 'البلد ذو الرمز %s غير معتمد.',
                 country: 'الرجاء إدخال رقم هاتف صالح في %s.',
                 countries: {
                     AE: 'الإمارات العربية المتحدة',
@@ -249,6 +246,7 @@
                     ES: 'إسبانيا',
                     FR: 'فرنسا',
                     GB: 'المملكة المتحدة',
+                    IN: 'الهند',
                     MA: 'المغرب',
                     PK: 'باكستان',
                     RO: 'رومانيا',
@@ -299,7 +297,6 @@
             },
             vat: {
                 'default': 'الرجاء إدخال رقم VAT صالح.',
-                countryNotSupported: 'البلد ذو الرمز %s غير معتمد.',
                 country: 'الرجاء إدخال رقم VAT صالح في %s.',
                 countries: {
                     AT: 'النمسا',
@@ -346,7 +343,6 @@
             },
             zipCode: {
                 'default': 'الرجاء إدخال رمز بريدي صالح.',
-                countryNotSupported: 'البلد ذو الرمز %s غير معتمد.',
                 country: 'الرجاء إدخال رمز بريدي صالح في %s.',
                 countries: {
                     AT: 'النمسا',
@@ -356,9 +352,11 @@
                     CZ: 'التشيك',
                     DE: 'ألمانيا',
                     DK: 'الدنمارك',
+                    ES: 'إسبانيا',
                     FR: 'فرنسا',
                     GB: 'المملكة المتحدة',
                     IE: 'أيرلندا',
+                    IN: 'الهند',
                     IT: 'إيطاليا',
                     MA: 'المغرب',
                     NL: 'هولندا',

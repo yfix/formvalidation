@@ -4,11 +4,12 @@
     <title>Submit Handler Demo</title>
 
     <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css"/>
-    <link rel="stylesheet" href="../dist/css/bootstrapValidator.css"/>
+    <link rel="stylesheet" href="../dist/css/formValidation.css"/>
 
     <script type="text/javascript" src="../vendor/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../dist/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="../dist/js/formValidation.js"></script>
+    <script type="text/javascript" src="../dist/js/framework/bootstrap.js"></script>
 </head>
 <body>
 <div class="container">
@@ -59,10 +60,10 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $('#defaultForm')
-        .bootstrapValidator({
+        .formValidation({
             message: 'This value is not valid',
             //live: 'submitted',
-            feedbackIcons: {
+            icon: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
@@ -108,12 +109,12 @@ $(document).ready(function() {
                 }
             }
         })
-        .on('success.form.bv', function(e) {
+        .on('success.form.fv', function(e) {
             // Prevent submit form
             e.preventDefault();
 
             var $form     = $(e.target),
-                validator = $form.data('bootstrapValidator');
+                validator = $form.data('formValidation');
             $form.find('.alert').html('Thanks for signing up. Now you can sign in as ' + validator.getFieldElements('username').val()).show();
         });
 });

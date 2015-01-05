@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>BootstrapValidator demo</title>
+    <title>FormValidation demo</title>
 
     <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css"/>
-    <link rel="stylesheet" href="../dist/css/bootstrapValidator.css"/>
+    <link rel="stylesheet" href="../dist/css/formValidation.css"/>
 
     <script type="text/javascript" src="../vendor/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../dist/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="../dist/js/formValidation.js"></script>
+    <script type="text/javascript" src="../dist/js/framework/bootstrap.js"></script>
 </head>
 <body>
 <div class="container">
@@ -79,14 +80,14 @@
                             <label class="col-lg-3 control-label">Address</label>
                             <div class="col-lg-5">
                                 <input class="form-control" type="text" name="receiverAddress"
-                                        required data-bv-notempty-message="The address is required" />
+                                        required data-fv-notempty-message="The address is required" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-3 control-label">City</label>
                             <div class="col-lg-5">
                                 <input class="form-control" type="text" name="receiverCity"
-                                        required data-bv-notempty-message="The city is required" />
+                                        required data-fv-notempty-message="The city is required" />
                             </div>
                         </div>
                     </div>
@@ -105,12 +106,12 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#shippingForm')
-            .on('init.form.bv', function(e, data) {
+            .on('init.form.fv', function(e, data) {
                 //console.log(data);
             })
-            .bootstrapValidator({
+            .formValidation({
                 message: 'This value is not valid',
-                feedbackIcons: {
+                icon: {
                     valid: 'glyphicon glyphicon-ok',
                     invalid: 'glyphicon glyphicon-remove',
                     validating: 'glyphicon glyphicon-refresh'
@@ -150,7 +151,7 @@
                     }
                 }
             })
-            .on('added.field.bv', function(e, data) {
+            .on('added.field.fv', function(e, data) {
                 console.log('Added element --> ', data.field, data.element, data.options);
             })
             .on('change', 'input[type="checkbox"][name="receiver"]', function() {
@@ -163,24 +164,24 @@
 
                     $('#shippingForm')
                         // Remove field
-                        .bootstrapValidator('removeField', 'receiverName')
-                        .bootstrapValidator('removeField', 'receiverAddress')
-                        .bootstrapValidator('removeField', $receiverPhone)
-                        .bootstrapValidator('removeField', $receiverCity);
+                        .formValidation('removeField', 'receiverName')
+                        .formValidation('removeField', 'receiverAddress')
+                        .formValidation('removeField', $receiverPhone)
+                        .formValidation('removeField', $receiverCity);
                 } else {
                     $('#receiverInfo').show();
 
                     $('#shippingForm')
                         // Add field
-                        .bootstrapValidator('addField', 'receiverName', {
+                        .formValidation('addField', 'receiverName', {
                             validators: {
                                 notEmpty: {
                                     message: 'The name is required'
                                 }
                             }
                         })
-                        .bootstrapValidator('addField', 'receiverAddress')      // The options are automatically parsed from HTML attributes
-                        .bootstrapValidator('addField', $receiverPhone, {
+                        .formValidation('addField', 'receiverAddress')      // The options are automatically parsed from HTML attributes
+                        .formValidation('addField', $receiverPhone, {
                             message: 'The phone number is not valid',
                             validators: {
                                 notEmpty: {
@@ -191,7 +192,7 @@
                                 }
                             }
                         })
-                        .bootstrapValidator('addField', $receiverCity);  // The options are automatically parsed from HTML attributes
+                        .formValidation('addField', $receiverCity);  // The options are automatically parsed from HTML attributes
                 }
             });
     });

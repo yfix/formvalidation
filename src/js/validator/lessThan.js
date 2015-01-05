@@ -1,13 +1,13 @@
 /**
  * lessThan validator
  *
- * @link        http://bootstrapvalidator.com/validators/lessThan/
+ * @link        http://formvalidation.io/validators/lessThan/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             lessThan: {
                 'default': 'Please enter a value less than or equal to %s',
@@ -16,7 +16,7 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.lessThan = {
+    FormValidation.Validator.lessThan = {
         html5Attributes: {
             message: 'message',
             value: 'value',
@@ -38,7 +38,7 @@
         /**
          * Return true if the input value is less than or equal to given number
          *
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following keys:
          * - value: The number used to compare to. It can be
@@ -52,7 +52,7 @@
          * @returns {Boolean|Object}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'lessThan');
             if (value === '') {
                 return true;
             }
@@ -70,11 +70,11 @@
             return (options.inclusive === true || options.inclusive === undefined)
                     ? {
                         valid: value <= compareToValue,
-                        message: $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n[locale].lessThan['default'], compareTo)
+                        message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].lessThan['default'], compareTo)
                     }
                     : {
                         valid: value < compareToValue,
-                        message: $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n[locale].lessThan.notInclusive, compareTo)
+                        message: FormValidation.Helper.format(options.message || FormValidation.I18n[locale].lessThan.notInclusive, compareTo)
                     };
         },
 

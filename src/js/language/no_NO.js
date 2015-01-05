@@ -3,7 +3,7 @@
      * Norwegian language package
      * Translated by @trondulseth
      */
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n, {
         'no_NO': {
             base64: {
                 'default': 'Vennligst fyll ut dette feltet med en gyldig base64-kodet verdi'
@@ -72,7 +72,6 @@
             },
             iban: {
                 'default': 'Vennligst fyll ut dette feltet med et gyldig IBAN-nummer',
-                countryNotSupported: 'Landskoden %s støttes desverre ikke',
                 country: 'Vennligst fyll ut dette feltet med et gyldig IBAN-nummer i %s',
                 countries: {
                     AD: 'Andorra',
@@ -158,7 +157,6 @@
             },
             id: {
                 'default': 'Vennligst fyll ut dette feltet med et gyldig identifikasjons-nummer',
-                countryNotSupported: 'Landskoden %s støttes desverre ikke',
                 country: 'Vennligst fyll ut dette feltet med et gyldig identifikasjons-nummer i %s',
                 countries: {
                     BA: 'Bosnien-Hercegovina',
@@ -237,7 +235,6 @@
             },
             phone: {
                 'default': 'Vennligst fyll ut dette feltet med et gyldig telefonnummer',
-                countryNotSupported: 'Landskoden %s støttes desverre ikke',
                 country: 'Vennligst fyll ut dette feltet med et gyldig telefonnummer i %s',
                 countries: {
                     AE: 'De Forente Arabiske Emirater',
@@ -249,6 +246,7 @@
                     ES: 'Spania',
                     FR: 'Frankrike',
                     GB: 'Storbritannia',
+                    IN: 'India',
                     MA: 'Marokko',
                     PK: 'Pakistan',
                     RO: 'Rumenia',
@@ -299,7 +297,6 @@
             },
             vat: {
                 'default': 'Vennligst fyll ut dette feltet med et gyldig MVA nummer',
-                countryNotSupported: 'Landskoden %s støttes desverre ikke',
                 country: 'Vennligst fyll ut dette feltet med et gyldig MVA nummer i %s',
                 countries: {
                     AT: 'Østerrike',
@@ -346,7 +343,6 @@
             },
             zipCode: {
                 'default': 'Vennligst fyll ut dette feltet med et gyldig postnummer',
-                countryNotSupported: 'Landskoden %s støttes desverre ikke',
                 country: 'Vennligst fyll ut dette feltet med et gyldig postnummer i %s',
                 countries: {
                     AT: 'Østerrike',
@@ -356,9 +352,11 @@
                     CZ: 'Tsjekkia',
                     DE: 'Tyskland',
                     DK: 'Danmark',
+                    ES: 'Spania',
                     FR: 'Frankrike',
                     GB: 'Storbritannia',
                     IE: 'Irland',
+                    IN: 'India',
                     IT: 'Italia',
                     MA: 'Marokko',
                     NL: 'Nederland',

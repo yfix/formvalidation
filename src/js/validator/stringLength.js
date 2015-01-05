@@ -1,13 +1,13 @@
 /**
  * stringLength validator
  *
- * @link        http://bootstrapvalidator.com/validators/stringLength/
+ * @link        http://formvalidation.io/validators/stringLength/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             stringLength: {
                 'default': 'Please enter a value with valid length',
@@ -18,7 +18,7 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.stringLength = {
+    FormValidation.Validator.stringLength = {
         html5Attributes: {
             message: 'message',
             min: 'min',
@@ -44,7 +44,7 @@
         /**
          * Check if the length of element value is less or more than given number
          *
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Consists of following keys:
          * - min
@@ -62,7 +62,7 @@
          * @returns {Object}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'stringLength');
             if (options.trim === true || options.trim === 'true') {
                 value = $.trim(value);
             }
@@ -92,7 +92,7 @@
                              },
                 length     = options.utf8Bytes ? utf8Length(value) : value.length,
                 isValid    = true,
-                message    = options.message || $.fn.bootstrapValidator.i18n[locale].stringLength['default'];
+                message    = options.message || FormValidation.I18n[locale].stringLength['default'];
 
             if ((min && length < parseInt(min, 10)) || (max && length > parseInt(max, 10))) {
                 isValid = false;
@@ -100,15 +100,15 @@
 
             switch (true) {
                 case (!!min && !!max):
-                    message = $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n[locale].stringLength.between, [parseInt(min, 10), parseInt(max, 10)]);
+                    message = FormValidation.Helper.format(options.message || FormValidation.I18n[locale].stringLength.between, [parseInt(min, 10), parseInt(max, 10)]);
                     break;
 
                 case (!!min):
-                    message = $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n[locale].stringLength.more, parseInt(min, 10));
+                    message = FormValidation.Helper.format(options.message || FormValidation.I18n[locale].stringLength.more, parseInt(min, 10));
                     break;
 
                 case (!!max):
-                    message = $.fn.bootstrapValidator.helpers.format(options.message || $.fn.bootstrapValidator.i18n[locale].stringLength.less, parseInt(max, 10));
+                    message = FormValidation.Helper.format(options.message || FormValidation.I18n[locale].stringLength.less, parseInt(max, 10));
                     break;
 
                 default:

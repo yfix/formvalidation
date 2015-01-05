@@ -1,13 +1,13 @@
 /**
  * file validator
  *
- * @link        http://bootstrapvalidator.com/validators/file/
+ * @link        http://formvalidation.io/validators/file/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             file: {
                 'default': 'Please choose a valid file'
@@ -15,7 +15,7 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.file = {
+    FormValidation.Validator.file = {
         html5Attributes: {
             extension: 'extension',
             maxfiles: 'maxFiles',
@@ -31,7 +31,7 @@
         /**
          * Validate upload file. Use HTML 5 API if the browser supports
          *
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following keys:
          * - extension: The allowed extensions, separated by a comma
@@ -46,7 +46,7 @@
          * @returns {Boolean}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'file');
             if (value === '') {
                 return true;
             }

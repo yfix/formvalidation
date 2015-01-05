@@ -3,7 +3,7 @@
      * Serbian Latin language package
      * Translated by @markocrni
      */
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n, {
         'sr_RS': {
             base64: {
                 'default': 'Molimo da unesete važeći base 64 enkodovan'
@@ -72,7 +72,6 @@
             },
             iban: {
                 'default': 'Molimo da unesete ispravan IBAN broj',
-                countryNotSupported: 'Kod %s nije podržan',
                 country: 'Molimo da unesete ispravan IBAN broj %s',
                 countries: {
                     AD: 'Andore',
@@ -158,7 +157,6 @@
             },
             id: {
                 'default': 'Molimo da unesete ispravan identifikacioni broj',
-                countryNotSupported: 'Kod %s nije podržan',
                 country: 'Molimo da unesete ispravan identifikacioni broj %s',
                 countries: {
                     BA: 'Bosne i Herzegovine',
@@ -237,7 +235,6 @@
             },
             phone: {
                 'default': 'Molimo da unesete ispravan broj telefona',
-                countryNotSupported: 'Broj %s nije podržan',
                 country: 'Molimo da unesete ispravan broj telefona %s',
                 countries: {
                     AE: 'Ujedinjenih Arapskih Emirata',
@@ -249,6 +246,7 @@
                     ES: 'Španije',
                     FR: 'Francuske',
                     GB: 'Engleske',
+                    IN: 'Индија',
                     MA: 'Maroka',
                     PK: 'Pakistana',
                     RO: 'Rumunije',
@@ -299,7 +297,6 @@
             },
             vat: {
                 'default': 'Molimo da unesete ispravan VAT broj',
-                countryNotSupported: 'Kod %s nije podržan',
                 country: 'Molimo da unesete ispravan VAT broj %s',
                 countries: {
                     AT: 'Austrije',
@@ -346,7 +343,6 @@
             },
             zipCode: {
                 'default': 'Molimo da unesete ispravan poštanski broj',
-                countryNotSupported: 'Kod %s nije podržan',
                 country: 'Molimo da unesete ispravan poštanski broj %s',
                 countries: {
                     AT: 'Austrije',
@@ -356,9 +352,11 @@
                     CZ: 'Češke',
                     DE: 'Nemačke',
                     DK: 'Danske',
+                    ES: 'Španije',
                     FR: 'Francuske',
                     GB: 'Engleske',
                     IE: 'Irske',
+                    IN: 'Индија',
                     IT: 'Italije',
                     MA: 'Maroka',
                     NL: 'Holandije',

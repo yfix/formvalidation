@@ -3,7 +3,7 @@
      * Hebrew language package
      * Translated by @yakidahan
      */
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n, {
         'he_IL': {
             base64: {
                 'default': 'נא להזין ערך המקודד בבסיס 64'
@@ -72,7 +72,6 @@
             },
             iban: {
                 'default': 'נא להזין מספר IBAN תקין',
-                countryNotSupported: 'קוד המדינה של %s אינו נתמך',
                 country: 'נא להזין מספר IBAN תקני ב%s',
                 countries: {
                     AD: 'אנדורה',
@@ -158,7 +157,6 @@
             },
             id: {
                 'default': 'נא להזין מספר זהות תקין',
-                countryNotSupported: 'קוד המדינה של %s אינו נתמך',
                 country: 'נא להזין מספר זהות תקני ב%s',
                 countries: {
                     BA: 'בוסניה והרצגובינה',
@@ -237,7 +235,6 @@
             },
             phone: {
                 'default': 'נא להין מספר טלפון תקין',
-                countryNotSupported: 'קוד המדינה של %s אינו נתמך',
                 country: 'נא להזין מספר טלפון תקין ב%s',
                 countries: {
                     AE: 'איחוד האמירויות הערבי',
@@ -249,6 +246,7 @@
                     ES: 'ספרד',
                     FR: 'צרפת',
                     GB: 'בריטניה',
+                    IN: 'הודו',
                     MA: 'מרוקו',
                     PK: 'פקיסטן',
                     RO: 'רומניה',
@@ -299,7 +297,6 @@
             },
             vat: {
                 'default': 'נא להזין מספר VAT תקין',
-                countryNotSupported: 'קוד המדינה של %s אינו נתמך',
                 country: 'נא להזין מספר VAT תקין ב%s',
                 countries: {
                     AT: 'אוסטריה',
@@ -346,7 +343,6 @@
             },
             zipCode: {
                 'default': 'נא להזין מיקוד תקין',
-                countryNotSupported: 'קוד המדינה של %s אינו נתמך',
                 country: 'נא להזין מיקוד תקין ב%s',
                 countries: {
                     AT: 'אוסטריה',
@@ -356,9 +352,11 @@
                     CZ: 'צכיה',
                     DE: 'גרמניה',
                     DK: 'דנמרק',
+                    ES: 'ספרד',
                     FR: 'צרפת',
                     GB: 'בריטניה',
                     IE: 'אירלנד',
+                    IN: 'הודו',
                     IT: 'איטליה',
                     MA: 'מרוקו',
                     NL: 'הולנד',

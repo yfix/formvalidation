@@ -1,13 +1,13 @@
 /**
  * ismn validator
  *
- * @link        http://bootstrapvalidator.com/validators/ismn/
+ * @link        http://formvalidation.io/validators/ismn/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             ismn: {
                 'default': 'Please enter a valid ISMN number'
@@ -15,7 +15,7 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.ismn = {
+    FormValidation.Validator.ismn = {
         /**
          * Validate ISMN (International Standard Music Number)
          * Examples:
@@ -23,14 +23,14 @@
          * - Invalid: 9790060115614
          *
          * @see http://en.wikipedia.org/wiki/International_Standard_Music_Number
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following keys:
          * - message: The invalid message
          * @returns {Boolean}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'ismn');
             if (value === '') {
                 return true;
             }

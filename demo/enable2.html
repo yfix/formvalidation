@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>BootstrapValidator demo</title>
+    <title>FormValidation demo</title>
 
     <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css"/>
-    <link rel="stylesheet" href="../dist/css/bootstrapValidator.css"/>
+    <link rel="stylesheet" href="../dist/css/formValidation.css"/>
 
     <script type="text/javascript" src="../vendor/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../dist/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="../dist/js/formValidation.js"></script>
+    <script type="text/javascript" src="../dist/js/framework/bootstrap.js"></script>
 </head>
 <body>
     <div class="container">
@@ -54,9 +55,9 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-    $('#signupForm').bootstrapValidator({
+    $('#signupForm').formValidation({
         message: 'This value is not valid',
-        feedbackIcons: {
+        icon: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
@@ -74,10 +75,6 @@ $(document).ready(function() {
                 validators: {
                     notEmpty: {
                         message: 'The password is required and cannot be empty'
-                    },
-                    identical: {
-                        field: 'confirm_password',
-                        message: 'The password and its confirm must be the same'
                     }
                 }
             },
@@ -99,11 +96,11 @@ $(document).ready(function() {
     // Enable the password/confirm password validators if the password is not empty
     $('#signupForm').find('[name="password"]').on('keyup', function() {
         var isEmpty = $(this).val() == '';
-        $('#signupForm').bootstrapValidator('enableFieldValidators', 'password', !isEmpty)
-                        .bootstrapValidator('enableFieldValidators', 'confirm_password', !isEmpty);
+        $('#signupForm').formValidation('enableFieldValidators', 'password', !isEmpty)
+                        .formValidation('enableFieldValidators', 'confirm_password', !isEmpty);
         if ($(this).val().length == 1) {
-            $('#signupForm').bootstrapValidator('validateField', 'password')
-                            .bootstrapValidator('validateField', 'confirm_password');
+            $('#signupForm').formValidation('validateField', 'password')
+                            .formValidation('validateField', 'confirm_password');
         }
     });
 });

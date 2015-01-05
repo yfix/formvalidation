@@ -1,13 +1,13 @@
 /**
  * cvv validator
  *
- * @link        http://bootstrapvalidator.com/validators/cvv/
+ * @link        http://formvalidation.io/validators/cvv/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             cvv: {
                 'default': 'Please enter a valid CVV number'
@@ -15,16 +15,51 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.cvv = {
+    FormValidation.Validator.cvv = {
         html5Attributes: {
             message: 'message',
             ccfield: 'creditCardField'
         },
 
         /**
+         * Bind the validator on the live change of the credit card field
+         *
+         * @param {FormValidation.Base} validator The validator plugin instance
+         * @param {jQuery} $field Field element
+         * @param {Object} options Consists of the following key:
+         * - creditCardField: The credit card number field
+         */
+        init: function(validator, $field, options) {
+            if (options.creditCardField) {
+                var creditCardField = validator.getFieldElements(options.creditCardField);
+                validator.onLiveChange(creditCardField, 'live_cvv', function() {
+                    var status = validator.getStatus($field, 'cvv');
+                    if (status !== validator.STATUS_NOT_VALIDATED) {
+                        validator.revalidateField($field);
+                    }
+                });
+            }
+        },
+
+        /**
+         * Unbind the validator on the live change of the credit card field
+         *
+         * @param {FormValidation.Base} validator The validator plugin instance
+         * @param {jQuery} $field Field element
+         * @param {Object} options Consists of the following key:
+         * - creditCardField: The credit card number field
+         */
+        destroy: function(validator, $field, options) {
+            if (options.creditCardField) {
+                var creditCardField = validator.getFieldElements(options.creditCardField);
+                validator.offLiveChange(creditCardField, 'live_cvv');
+            }
+        },
+
+        /**
          * Return true if the input value is a valid CVV number.
          *
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following keys:
          * - creditCardField: The credit card number field. It can be null
@@ -32,7 +67,7 @@
          * @returns {Boolean}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'cvv');
             if (value === '') {
                 return true;
             }

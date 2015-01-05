@@ -3,7 +3,7 @@
      * Simplified Chinese language package
      * Translated by @shamiao
      */
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n, {
         'zh_CN': {
             base64: {
                 'default': '请输入有效的Base64编码'
@@ -72,7 +72,6 @@
             },
             iban: {
                 'default': '请输入有效的IBAN(国际银行账户)号码',
-                countryNotSupported: '不支持 %s 国家或地区',
                 country: '请输入有效的 %s 国家或地区的IBAN(国际银行账户)号码',
                 countries: {
                     AD: '安道​​尔',
@@ -158,7 +157,6 @@
             },
             id: {
                 'default': '请输入有效的身份证件号码',
-                countryNotSupported: '不支持 %s 国家或地区',
                 country: '请输入有效的 %s 国家或地区的身份证件号码',
                 countries: {
                     BA: '波黑',
@@ -237,7 +235,6 @@
             },
             phone: {
                 'default': '请输入有效的电话号码',
-                countryNotSupported: '不支持 %s 国家或地区',
                 country: '请输入有效的 %s 国家或地区的电话号码',
                 countries: {
                     AE: '阿联酋',
@@ -249,6 +246,7 @@
                     ES: '西班牙',
                     FR: '法国',
                     GB: '英国',
+                    IN: '印度',
                     MA: '摩洛哥',
                     PK: '巴基斯坦',
                     RO: '罗马尼亚',
@@ -299,7 +297,6 @@
             },
             vat: {
                 'default': '请输入有效的VAT(税号)',
-                countryNotSupported: '不支持 %s 国家或地区',
                 country: '请输入有效的 %s 国家或地区的VAT(税号)',
                 countries: {
                     AT: '奥地利',
@@ -346,7 +343,6 @@
             },
             zipCode: {
                 'default': '请输入有效的邮政编码',
-                countryNotSupported: '不支持 %s 国家或地区',
                 country: '请输入有效的 %s 国家或地区的邮政编码',
                 countries: {
                     AT: '奥地利',
@@ -356,9 +352,11 @@
                     CZ: '捷克共和国',
                     DE: '德国',
                     DK: '丹麦',
+                    ES: '西班牙',
                     FR: '法国',
                     GB: '英国',
                     IE: '爱尔兰',
+                    IN: '印度',
                     IT: '意大利',
                     MA: '摩洛哥',
                     NL: '荷兰',

@@ -1,13 +1,13 @@
 /**
  * digits validator
  *
- * @link        http://bootstrapvalidator.com/validators/digits/
+ * @link        http://formvalidation.io/validators/digits/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             digits: {
                 'default': 'Please enter only digits'
@@ -15,17 +15,17 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.digits = {
+    FormValidation.Validator.digits = {
         /**
          * Return true if the input value contains digits only
          *
-         * @param {BootstrapValidator} validator Validate plugin instance
+         * @param {FormValidation.Base} validator Validate plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} [options]
          * @returns {Boolean}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'digits');
             if (value === '') {
                 return true;
             }

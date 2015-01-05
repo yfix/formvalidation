@@ -1,13 +1,13 @@
 /**
  * siret validator
  *
- * @link        http://bootstrapvalidator.com/validators/siret/
+ * @link        http://formvalidation.io/validators/siret/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
 		'en_US': {
 			siret: {
 				'default': 'Please enter a valid SIRET number'
@@ -15,18 +15,18 @@
 		}
     });
 
-	$.fn.bootstrapValidator.validators.siret = {
+	FormValidation.Validator.siret = {
         /**
          * Check if a string is a siret number
          *
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Consist of key:
          * - message: The invalid message
          * @returns {Boolean}
          */
 		validate: function(validator, $field, options) {
-			var value = $field.val();
+			var value = validator.getFieldValue($field, 'siret');
 			if (value === '') {
 				return true;
 			}

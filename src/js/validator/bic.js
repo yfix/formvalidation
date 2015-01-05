@@ -1,13 +1,13 @@
 /**
  * bic validator
  *
- * @link        http://bootstrapvalidator.com/validators/bic/
+ * @link        http://formvalidation.io/validators/bic/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             bic: {
                 'default': 'Please enter a valid BIC number'
@@ -15,22 +15,21 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.bic = {
+    FormValidation.Validator.bic = {
         /**
          * Validate an Business Identifier Code (BIC), also known as ISO 9362, SWIFT-BIC, SWIFT ID or SWIFT code
          *
          * For more information see http://en.wikipedia.org/wiki/ISO_9362
          *
          * @todo The 5 and 6 characters are an ISO 3166-1 country code, this could also be validated
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following keys:
          * - message: The invalid message
          * @returns {Object}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
-
+            var value = validator.getFieldValue($field, 'bic');
             if (value === '') {
                 return true;
             }

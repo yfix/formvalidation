@@ -3,7 +3,7 @@
      * Default English package. It's included in the dist, so you do NOT need to include it to your head tag
      * The only reason I put it here is that you can clone it, and translate it into your language
      */
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n, {
         'en_US': {
             base64: {
                 'default': 'Please enter a valid base 64 encoded'
@@ -72,7 +72,6 @@
             },
             iban: {
                 'default': 'Please enter a valid IBAN number',
-                countryNotSupported: 'The country code %s is not supported',
                 country: 'Please enter a valid IBAN number in %s',
                 countries: {
                     AD: 'Andorra',
@@ -158,7 +157,6 @@
             },
             id: {
                 'default': 'Please enter a valid identification number',
-                countryNotSupported: 'The country code %s is not supported',
                 country: 'Please enter a valid identification number in %s',
                 countries: {
                     BA: 'Bosnia and Herzegovina',
@@ -237,7 +235,6 @@
             },
             phone: {
                 'default': 'Please enter a valid phone number',
-                countryNotSupported: 'The country code %s is not supported',
                 country: 'Please enter a valid phone number in %s',
                 countries: {
                     AE: 'United Arab Emirates',
@@ -249,6 +246,7 @@
                     ES: 'Spain',
                     FR: 'France',
                     GB: 'United Kingdom',
+                    IN: 'India',
                     MA: 'Morocco',
                     PK: 'Pakistan',
                     RO: 'Romania',
@@ -299,7 +297,6 @@
             },
             vat: {
                 'default': 'Please enter a valid VAT number',
-                countryNotSupported: 'The country code %s is not supported',
                 country: 'Please enter a valid VAT number in %s',
                 countries: {
                     AT: 'Austria',
@@ -346,7 +343,6 @@
             },
             zipCode: {
                 'default': 'Please enter a valid postal code',
-                countryNotSupported: 'The country code %s is not supported',
                 country: 'Please enter a valid postal code in %s',
                 countries: {
                     AT: 'Austria',
@@ -356,9 +352,11 @@
                     CZ: 'Czech Republic',
                     DE: 'Germany',
                     DK: 'Denmark',
+                    ES: 'Spain',
                     FR: 'France',
                     GB: 'United Kingdom',
                     IE: 'Ireland',
+                    IN: 'India',
                     IT: 'Italy',
                     MA: 'Morocco',
                     NL: 'Netherlands',

@@ -1,13 +1,13 @@
 /**
  * regexp validator
  *
- * @link        http://bootstrapvalidator.com/validators/regexp/
+ * @link        http://formvalidation.io/validators/regexp/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             regexp: {
                 'default': 'Please enter a value matching the pattern'
@@ -15,7 +15,7 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.regexp = {
+    FormValidation.Validator.regexp = {
         html5Attributes: {
             message: 'message',
             regexp: 'regexp'
@@ -35,14 +35,14 @@
         /**
          * Check if the element value matches given regular expression
          *
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Consists of the following key:
          * - regexp: The regular expression you need to check
          * @returns {Boolean}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'regexp');
             if (value === '') {
                 return true;
             }

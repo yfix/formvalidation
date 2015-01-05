@@ -3,7 +3,7 @@
      * Polish language package
      * Translated by @grzesiek
      */
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n, {
         'pl_PL': {
             base64: {
                 'default': 'Wpisz poprawny ciąg znaków zakodowany w base 64'
@@ -72,7 +72,6 @@
             },
             iban: {
                 'default': 'Wprowadź poprawny numer IBAN',
-                countryNotSupported: 'Kod kraju %s nie jest obsługiwany',
                 country: 'Wprowadź poprawny numer IBAN w kraju %s',
                 countries: {
                     AD: 'Andora',
@@ -158,7 +157,6 @@
             },
             id: {
                 'default': 'Wprowadź poprawny numer identyfikacyjny',
-                countryNotSupported: 'Kod kraju %s nie jest obsługiwany',
                 country: 'Wprowadź poprawny numer identyfikacyjny w kraju %s',
                 countries: {
                     BA: 'Bośnia i Hercegowina',
@@ -237,7 +235,6 @@
             },
             phone: {
                 'default': 'Wprowadź poprawny numer telefonu',
-                countryNotSupported: 'Kod kraju %s nie jest wspierany',
                 country: 'Wprowadź poprawny numer telefonu w kraju %s',
                 countries: {
                     AE: 'Zjednoczone Emiraty Arabskie',
@@ -249,6 +246,7 @@
                     ES: 'Hiszpania',
                     FR: 'Francja',
                     GB: 'Wielka Brytania',
+                    IN: 'Indie',
                     MA: 'Maroko',
                     PK: 'Pakistan',
                     RO: 'Rumunia',
@@ -299,7 +297,6 @@
             },
             vat: {
                 'default': 'Wprowadź poprawny numer VAT',
-                countryNotSupported: 'Kod kraju %s nie jest wsperany',
                 country: 'Wprowadź poprawny numer VAT w kraju %s',
                 countries: {
                     AT: 'Austria',
@@ -346,7 +343,6 @@
             },
             zipCode: {
                 'default': 'Wprowadź poprawny kod pocztowy',
-                countryNotSupported: 'Kod kraju %s nie jest obsługiwany',
                 country: 'Wprowadź poprawny kod pocztowy w kraju %s',
                 countries: {
                     AT: 'Austria',
@@ -356,9 +352,11 @@
                     CZ: 'Czechy',
                     DE: 'Niemcy',
                     DK: 'Dania',
+                    ES: 'Hiszpania',
                     FR: 'Francja',
                     GB: 'Wielka Brytania',
                     IE: 'Irlandia',
+                    IN: 'Indie',
                     IT: 'Włochy',
                     MA: 'Maroko',
                     NL: 'Holandia',

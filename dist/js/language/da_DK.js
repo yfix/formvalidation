@@ -3,7 +3,7 @@
      * Danish language package
      * Translated by @Djarnis
      */
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n, {
         'da_DK': {
             base64: {
                 'default': 'Udfyld venligst dette felt med en gyldig base64-kodet værdi'
@@ -72,7 +72,6 @@
             },
             iban: {
                 'default': 'Udfyld venligst dette felt med et gyldigt IBAN-nummer',
-                countryNotSupported: 'Landekoden %s understøttes desværre ikke',
                 country: 'Udfyld venligst dette felt med et gyldigt IBAN-nummer i %s',
                 countries: {
                     AD: 'Andorra',
@@ -158,7 +157,6 @@
             },
             id: {
                 'default': 'Udfyld venligst dette felt med et gyldigt identifikations-nummer',
-                countryNotSupported: 'Landekoden %s understøttes desværre ikke',
                 country: 'Udfyld venligst dette felt med et gyldigt identifikations-nummer i %s',
                 countries: {
                     BA: 'Bosnien-Hercegovina',
@@ -237,7 +235,6 @@
             },
             phone: {
                 'default': 'Udfyld venligst dette felt med et gyldigt telefonnummer',
-                countryNotSupported: 'Landekoden %s understøttes desværre ikke',
                 country: 'Udfyld venligst dette felt med et gyldigt telefonnummer i %s',
                 countries: {
                     AE: 'De Forenede Arabiske Emirater',
@@ -249,6 +246,7 @@
                     ES: 'Spanien',
                     FR: 'Frankrig',
                     GB: 'Storbritannien',
+                    IN: 'Indien',
                     MA: 'Marokko',
                     PK: 'Pakistan',
                     RO: 'Rumænien',
@@ -299,7 +297,6 @@
             },
             vat: {
                 'default': 'Udfyld venligst dette felt med et gyldig moms-nummer',
-                countryNotSupported: 'Landekoden %s understøttes desværre ikke',
                 country: 'Udfyld venligst dette felt med et gyldigt moms-nummer i %s',
                 countries: {
                     AT: 'Østrig',
@@ -346,7 +343,6 @@
             },
             zipCode: {
                 'default': 'Udfyld venligst dette felt med et gyldigt postnummer',
-                countryNotSupported: 'Landekoden %s understøttes desværre ikke',
                 country: 'Udfyld venligst dette felt med et gyldigt postnummer i %s',
                 countries: {
                     AT: 'Østrig',
@@ -356,9 +352,11 @@
                     CZ: 'Tjekkiet',
                     DE: 'Tyskland',
                     DK: 'Danmark',
+                    ES: 'Spanien',
                     FR: 'Frankrig',
                     GB: 'Storbritannien',
                     IE: 'Irland',
+                    IN: 'Indien',
                     IT: 'Italien',
                     MA: 'Marokko',
                     NL: 'Holland',

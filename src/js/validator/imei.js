@@ -1,13 +1,13 @@
 /**
  * imei validator
  *
- * @link        http://bootstrapvalidator.com/validators/imei/
+ * @link        http://formvalidation.io/validators/imei/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             imei: {
                 'default': 'Please enter a valid IMEI number'
@@ -15,7 +15,7 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.imei = {
+    FormValidation.Validator.imei = {
         /**
          * Validate IMEI (International Mobile Station Equipment Identity)
          * Examples:
@@ -23,14 +23,14 @@
          * - Invalid: 490154203237517
          *
          * @see http://en.wikipedia.org/wiki/International_Mobile_Station_Equipment_Identity
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following keys:
          * - message: The invalid message
          * @returns {Boolean}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'imei');
             if (value === '') {
                 return true;
             }
@@ -40,7 +40,7 @@
                 case /^\d{2}-\d{6}-\d{6}-\d{1}$/.test(value):
                 case /^\d{2}\s\d{6}\s\d{6}\s\d{1}$/.test(value):
                     value = value.replace(/[^0-9]/g, '');
-                    return $.fn.bootstrapValidator.helpers.luhn(value);
+                    return FormValidation.Helper.luhn(value);
 
                 case /^\d{14}$/.test(value):
                 case /^\d{16}$/.test(value):

@@ -1,13 +1,13 @@
 /**
  * ip validator
  *
- * @link        http://bootstrapvalidator.com/validators/ip/
+ * @link        http://formvalidation.io/validators/ip/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             ip: {
                 'default': 'Please enter a valid IP address',
@@ -17,7 +17,7 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.ip = {
+    FormValidation.Validator.ip = {
         html5Attributes: {
             message: 'message',
             ipv4: 'ipv4',
@@ -27,7 +27,7 @@
         /**
          * Return true if the input value is a IP address.
          *
-         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {FormValidation.Base} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following keys:
          * - ipv4: Enable IPv4 validator, default to true
@@ -36,7 +36,7 @@
          * @returns {Boolean|Object}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val();
+            var value = validator.getFieldValue($field, 'ip');
             if (value === '') {
                 return true;
             }
@@ -51,19 +51,19 @@
             switch (true) {
                 case (options.ipv4 && !options.ipv6):
                     valid   = ipv4Regex.test(value);
-                    message = options.message || $.fn.bootstrapValidator.i18n[locale].ip.ipv4;
+                    message = options.message || FormValidation.I18n[locale].ip.ipv4;
                     break;
 
                 case (!options.ipv4 && options.ipv6):
                     valid   = ipv6Regex.test(value);
-                    message = options.message || $.fn.bootstrapValidator.i18n[locale].ip.ipv6;
+                    message = options.message || FormValidation.I18n[locale].ip.ipv6;
                     break;
 
                 case (options.ipv4 && options.ipv6):
                 /* falls through */
                 default:
                     valid   = ipv4Regex.test(value) || ipv6Regex.test(value);
-                    message = options.message || $.fn.bootstrapValidator.i18n[locale].ip['default'];
+                    message = options.message || FormValidation.I18n[locale].ip['default'];
                     break;
             }
 

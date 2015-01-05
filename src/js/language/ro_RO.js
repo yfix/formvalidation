@@ -3,7 +3,7 @@
      * Romanian language package
      * Translated by @filipac
      */
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n, {
         'ro_RO': {
             base64: {
                 'default': 'Te rog introdu un base64 valid'
@@ -72,7 +72,6 @@
             },
             iban: {
                 'default': 'Te rog sa introduci un IBAN valid',
-                countryNotSupported: 'Tara %s nu este acceptata',
                 country: 'Te rog sa introduci un IBAN valid din %s',
                 countries: {
                     AD: 'Andorra',
@@ -158,7 +157,6 @@
             },
             id: {
                 'default': 'Te rog sa introduci un numar de identificare valid',
-                countryNotSupported: 'Codul %s nu este suportat',
                 country: 'Te rog sa introduci un numar de identificare valid din %s',
                 countries: {
                     BA: 'Bosnia si Herzegovina',
@@ -237,7 +235,6 @@
             },
             phone: {
                 'default': 'Te rog sa introduci un numar de telefon valid',
-                countryNotSupported: 'Prefixul %s nu este suportat',
                 country: 'Te rog sa introduci un numar de telefon valid din %s',
                 countries: {
                     AE: 'Emiratele Arabe unite',
@@ -249,6 +246,7 @@
                     ES: 'Spania',
                     FR: 'Franta',
                     GB: 'Regatul Unit',
+                    IN: 'India',
                     MA: 'Maroc',
                     PK: 'Pakistan',
                     RO: 'Romania',
@@ -299,7 +297,6 @@
             },
             vat: {
                 'default': 'Te rog sa introduci un numar TVA valid',
-                countryNotSupported: 'Tara %s nu este acceptata',
                 country: 'Te rog sa introduci un numar TVA valid din %s',
                 countries: {
                     AT: 'Austria',
@@ -346,7 +343,6 @@
             },
             zipCode: {
                 'default': 'Te rog sa introduci un cod postal valid',
-                countryNotSupported: 'Tara %s nu este acceptata',
                 country: 'Te rog sa introduci un cod postal valid din %s',
                 countries: {
                     AT: 'Austria',
@@ -356,9 +352,11 @@
                     CZ: 'Republica Cehia',
                     DE: 'Germania',
                     DK: 'Danemarca',
+                    ES: 'Spania',
                     FR: 'Franta',
                     GB: 'Regatul Unit',
                     IE: 'Irlanda',
+                    IN: 'India',
                     IT: 'Italia',
                     MA: 'Maroc',
                     NL: 'Olanda',

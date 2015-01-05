@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>BootstrapValidator demo</title>
+    <title>FormValidation demo</title>
 
     <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css"/>
-    <link rel="stylesheet" href="../dist/css/bootstrapValidator.css"/>
+    <link rel="stylesheet" href="../dist/css/formValidation.css"/>
 
     <script type="text/javascript" src="../vendor/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../dist/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="../dist/js/formValidation.js"></script>
+    <script type="text/javascript" src="../dist/js/framework/bootstrap.js"></script>
 </head>
 <body>
     <div class="container">
@@ -56,9 +57,9 @@ $(document).ready(function() {
     generateCaptcha();
 
     $('#form')
-        .bootstrapValidator({
+        .formValidation({
             message: 'This value is not valid',
-            feedbackIcons: {
+            icon: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
@@ -75,7 +76,7 @@ $(document).ready(function() {
                     validators: {
                         callback: {
                             message: 'Wrong answer',
-                            callback: function(value, validator) {
+                            callback: function(value, validator, $field) {
                                 var items = $('#captchaOperation').html().split(' '), sum = parseInt(items[0]) + parseInt(items[2]);
                                 return value == sum;
                             }
@@ -84,11 +85,11 @@ $(document).ready(function() {
                 }
             }
         })
-        .on('error.form.bv', function(e) {
-            var $form              = $(e.target),
-                bootstrapValidator = $form.data('bootstrapValidator');
+        .on('err.form.fv', function(e) {
+            var $form          = $(e.target),
+                formValidation = $form.data('formValidation');
 
-            if (!bootstrapValidator.isValidField('captcha')) {
+            if (!formValidation.isValidField('captcha')) {
                 // The captcha is not valid
                 // Regenerate the captcha
                 generateCaptcha();

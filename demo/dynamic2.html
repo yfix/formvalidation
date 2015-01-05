@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>BootstrapValidator demo</title>
+    <title>FormValidation demo</title>
 
     <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css"/>
-    <link rel="stylesheet" href="../dist/css/bootstrapValidator.css"/>
+    <link rel="stylesheet" href="../dist/css/formValidation.css"/>
 
     <script type="text/javascript" src="../vendor/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../dist/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="../dist/js/formValidation.js"></script>
+    <script type="text/javascript" src="../dist/js/framework/bootstrap.js"></script>
 </head>
 <body>
 <div class="container">
@@ -77,7 +78,7 @@
                     .end()
                 .on('click', '.removeButton', function() {
                     // Remove field when clicking the Remove button
-                    $('#contactForm').bootstrapValidator('removeField', fieldName);
+                    $('#contactForm').formValidation('removeField', fieldName);
 
                     // Enable the Add button
                     $that.parent().removeClass('disabled');
@@ -87,7 +88,7 @@
                 });
 
             // Add new field
-            $('#contactForm').bootstrapValidator('addField', fieldName, {
+            $('#contactForm').formValidation('addField', fieldName, {
                 message: 'The phone number is not valid',
                 validators: {
                     digits: {
@@ -98,9 +99,9 @@
         });
 
         $('#contactForm')
-            .bootstrapValidator({
+            .formValidation({
                 message: 'This value is not valid',
-                feedbackIcons: {
+                icon: {
                     valid: 'glyphicon glyphicon-ok',
                     invalid: 'glyphicon glyphicon-remove',
                     validating: 'glyphicon glyphicon-refresh'
@@ -119,10 +120,10 @@
                     }
                 }
             })
-            .on('error.field.bv', function(e, data) {
+            .on('err.field.fv', function(e, data) {
                 console.log(data.field, data.element, '-->error');
             })
-            .on('success.field.bv', function(e, data) {
+            .on('success.field.fv', function(e, data) {
                 console.log(data.field, data.element, '-->success');
             });
     });

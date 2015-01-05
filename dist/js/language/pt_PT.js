@@ -3,7 +3,7 @@
      * Portuguese (Portugal) language package
      * Translated by @rtbfreitas
      */
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n, {
         'pt_PT': {
             base64: {
                 'default': 'Por favor insira um código base 64 válido'
@@ -72,7 +72,6 @@
             },
             iban: {
                 'default': 'Por favor insira um número IBAN válido',
-                countryNotSupported: 'O código do país %s não é suportado',
                 country: 'Por favor insira um número IBAN válido em %s',
                 countries: {
                     AD: 'Andorra',
@@ -158,7 +157,6 @@
             },
             id: {
                 'default': 'Por favor insira um código de identificação válido',
-                countryNotSupported: 'O código do país %s não é suportado',
                 country: 'Por favor insira um número de indentificação válido em %s',
                 countries: {
                     BA: 'Bósnia e Herzegovina',
@@ -237,7 +235,6 @@
             },
             phone: {
                 'default': 'Por favor insira um número de telefone válido',
-                countryNotSupported: 'O código de país %s não é suportado',
                 country: 'Por favor insira um número de telefone válido em %s',
                 countries: {
                     AE: 'Emirados Árabes',
@@ -249,6 +246,7 @@
                     ES: 'Espanha',
                     FR: 'França',
                     GB: 'Reino Unido',
+                    IN: 'Índia',
                     MA: 'Marrocos',
                     PK: 'Paquistão',
                     RO: 'Roménia',
@@ -299,7 +297,6 @@
             },
             vat: {
                 'default': 'Por favor insira um VAT válido',
-                countryNotSupported: 'O código do país %s não é suportado',
                 country: 'Por favor insira um número VAT válido em %s',
                 countries: {
                     AT: 'Áustria',
@@ -346,7 +343,6 @@
             },
             zipCode: {
                 'default': 'Por favor insira um código postal válido',
-                countryNotSupported: 'O código postal do país %s não é suportado',
                 country: 'Por favor insira um código postal válido em %s',
                 countries: {
                     AT: 'Áustria',
@@ -356,9 +352,11 @@
                     CZ: 'República Checa',
                     DE: 'Alemanha',
                     DK: 'Dinamarca',
+                    ES: 'Espanha',
                     FR: 'França',
                     GB: 'Reino Unido',
                     IE: 'Irlanda',
+                    IN: 'Índia',
                     IT: 'Itália',
                     MA: 'Marrocos',
                     NL: 'Holanda',

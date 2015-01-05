@@ -1,13 +1,13 @@
 /**
  * remote validator
  *
- * @link        http://bootstrapvalidator.com/validators/remote/
+ * @link        http://formvalidation.io/validators/remote/
  * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2014 Nguyen Huu Phuoc
- * @license     http://bootstrapvalidator.com/license/
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
+ * @license     http://formvalidation.io/license/
  */
 (function($) {
-    $.fn.bootstrapValidator.i18n = $.extend(true, $.fn.bootstrapValidator.i18n || {}, {
+    FormValidation.I18n = $.extend(true, FormValidation.I18n || {}, {
         'en_US': {
             remote: {
                 'default': 'Please enter a valid value'
@@ -15,7 +15,7 @@
         }
     });
 
-    $.fn.bootstrapValidator.validators.remote = {
+    FormValidation.Validator.remote = {
         html5Attributes: {
             message: 'message',
             name: 'name',
@@ -29,16 +29,18 @@
          * Destroy the timer when destroying the bootstrapValidator (using validator.destroy() method)
          */
         destroy: function(validator, $field, options) {
-            if ($field.data('bv.remote.timer')) {
-                clearTimeout($field.data('bv.remote.timer'));
-                $field.removeData('bv.remote.timer');
+            var ns    = validator.getNamespace(),
+                timer = $field.data(ns + '.remote.timer');
+            if (timer) {
+                clearTimeout(timer);
+                $field.removeData(ns + '.remote.timer');
             }
         },
 
         /**
          * Request a remote server to check the input value
          *
-         * @param {BootstrapValidator} validator Plugin instance
+         * @param {FormValidation.Base} validator Plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Can consist of the following keys:
          * - url {String|Function}
@@ -54,14 +56,15 @@
          * @returns {Deferred}
          */
         validate: function(validator, $field, options) {
-            var value = $field.val(),
+            var ns    = validator.getNamespace(),
+                value = validator.getFieldValue($field, 'remote'),
                 dfd   = new $.Deferred();
             if (value === '') {
                 dfd.resolve($field, 'remote', { valid: true });
                 return dfd;
             }
 
-            var name    = $field.attr('data-bv-field'),
+            var name    = $field.attr('data-' + ns + '-field'),
                 data    = options.data || {},
                 url     = options.url,
                 type    = options.type || 'GET',
@@ -106,11 +109,11 @@
             if (options.delay) {
                 // Since the form might have multiple fields with the same name
                 // I have to attach the timer to the field element
-                if ($field.data('bv.remote.timer')) {
-                    clearTimeout($field.data('bv.remote.timer'));
+                if ($field.data(ns + '.remote.timer')) {
+                    clearTimeout($field.data(ns + '.remote.timer'));
                 }
 
-                $field.data('bv.remote.timer', setTimeout(runCallback, options.delay));
+                $field.data(ns + '.remote.timer', setTimeout(runCallback, options.delay));
                 return dfd;
             } else {
                 return runCallback();
